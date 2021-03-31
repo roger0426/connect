@@ -1,4 +1,4 @@
-# connect-aboutus
+# connect
 
 這是一個成大學生創建的網站
 
