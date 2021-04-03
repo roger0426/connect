@@ -1,28 +1,27 @@
 /************/
 /*font style*/
 /************/
-import 'taipei-sans-tc';
+/*import 'taipei-sans-tc';*//*台北黑體*/
 @font-face {
-  font-family: Gentium;
-  src: url(http://www.example.com/fonts/Gentium.);
-  src: url(https://github.com/roger0426/connect/file/jf-openhuninn-1.1.ttf) format("opentype");
+  font-family: huninn;
+  src: url(https://github.com/roger0426/open-huninn-font/blob/master/font/jf-openhuninn-1.1.ttf) format("opentype");
   /*src: url(https://cdn.jsdelivr.net/npm/taipei-sans-tc);*/
 }
 
 
 :root
 {
-    --background_color: rgba(255, 255, 255, 0.45);
+    --background_color: #FFFFFF;
     --background_color_card: #E8E8E8;
     /*--main_*/
     --fontcolor_header: #88C8FF;
     --fontcolor_text: #D287FF;
-    --font-family-header: "Futura";
-    --font-style-header: "italic";
-    --font-family-text: "taipei-sans-tc";
-    --font-style-text: "none";
-    --font-family-card: "taipei-sans-tc";
-    --font-style-card: "none";
+    --font-family-header: huninn;
+    --font-style-header: none;
+    --font-family-text: huninn;
+    --font-style-text: none;
+    --font-family-card: huninn;
+    --font-style-card: none;
 }
 
 
@@ -103,7 +102,7 @@ p
     background-color: var(--background_color);
     border-radius: 0px 0px 50px 50px;
          /*UpLeft/UR/DR/DL*/
-    opacity: 1;
+    opacity: 0.45;
     z-index: 1;
 }
 
