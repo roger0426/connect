@@ -50,7 +50,7 @@ import 'taipei-sans-tc';
     top: 15px;
     left: 0;
     height: 100px;
-    width: 350px;
+    width: 100%;
     opacity: 1;
     z-index: 0;
 }
@@ -127,9 +127,9 @@ p
 .card
 {
     background-color: #FFA511;
-    height: 360;
+    height: 360px;
     width: 240px;
-    left: 0;
+    left: 10%;
     bottom: 0;
     font-size: 36px;
     
@@ -144,7 +144,7 @@ p
     background-color: #AD15FF;
     height: 30%;
     width: 100%;
-    left: 0;
+    left: 50%;
     bottom: 0;
     font-size: 36px;
     
