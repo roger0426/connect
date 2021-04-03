@@ -1,10 +1,11 @@
 /************/
 /*font style*/
 /************/
-/*import 'taipei-sans-tc';*//*台北黑體*/
+import 'taipei-sans-tc';/*台北黑體*/
+
 @font-face {
-  font-family: huninn;
-  src: url(https://github.com/roger0426/open-huninn-font/blob/master/font/jf-openhuninn-1.1.ttf) format("opentype");
+  font-family: jf-openhuninn;
+  src: url(./file/"jf-openhuninn-1.1.ttf") format("opentype");
   /*src: url(https://cdn.jsdelivr.net/npm/taipei-sans-tc);*/
 }
 
@@ -13,14 +14,13 @@
 {
     --background_color: #FFFFFF;
     --background_color_card: #E8E8E8;
-    /*--main_*/
-    --fontcolor_header: #88C8FF;
-    --fontcolor_text: #D287FF;
-    --font-family-header: huninn;
+    --fontcolor_header: #181818;
+    --fontcolor_text: #000000;
+    --font-family-header: "jf-openhuninn", "taipei-sans-tc";
     --font-style-header: none;
-    --font-family-text: huninn;
+    --font-family-text: jf-openhuninn;
     --font-style-text: none;
-    --font-family-card: huninn;
+    --font-family-card: jf-openhuninn;
     --font-style-card: none;
 }
 
@@ -106,26 +106,31 @@ p
     z-index: 1;
 }
 
-#Title{
-    font-family: Futura;
-    font-style: italic;
+#title{
+    font-family: var(--font-family-header);
+    font-style: var(--font-style-header);
     font-weight: 500;
     font-size: 64px;
+    /*top: 0px;*/
     line-height: 85px;
-
-color: #000000;
+    color: var(--fontcolor_header);
 }
 
 /*logo*/
 
 /*button*/
-#navbar ul{
+#navbar ul
+{
     display:flex;
     justify-content: space-around;
     white-space:nowrap;
     list-style-type:none;
-  }
-  #navbar li {
+    
+}
+
+
+#navbar li
+{
     display: block;
     float:right;
     margin:32px;
@@ -133,16 +138,27 @@ color: #000000;
     white-space: normal;
     word-break: break-all;
     word-wrap: break-word;
-  }
+}
 
 /***********/
 /*main area*/
 /***********/
 
+#gap1
+{
+    width: 100%;
+    height: 5px;
+}
+
 #img-cards
 {
+    
+    position: absolute;
     background-color: green;
+    /*UL/UR/DR/DL*/
+    border-radius: 50px 50px 0px 0px;
     width: 100%;
+    top: 500px;
     z-index: 1;
 }
 
@@ -178,9 +194,7 @@ color: #000000;
     height: 30%;
     width: 100%;
     left: 50%;
-    bottom: 0;
-    font-size: 36px;
-    text-align: left;
+    top: 50%;
     
     /*UL/UR/DR/DL*/
     border-radius: 30px 30px 30px 30px;
@@ -188,5 +202,10 @@ color: #000000;
     z-index: 4;
 }
 
-
+.card-detail *
+{
+    font-size: 36px;
+    text-align: left;
+    color: var(--fontcolor_header);
+}
 
