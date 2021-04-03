@@ -45,7 +45,7 @@ import 'taipei-sans-tc';
 }
 #group-img
 {
-    background: url("./file/about_us/groupphoto_1.jpg") center / cover no-repeat;
+    background: url("./file/groupphoto_1.jpg") center / cover no-repeat;
     position: fixed;
     top: 15px;
     left: 0;
