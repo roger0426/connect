@@ -3,7 +3,7 @@
 /************/
 import 'taipei-sans-tc';
 @font-face {
-  font-family: Gentium;
+  font-family: taipei-sans-tc;
   src: url(https://cdn.jsdelivr.net/npm/taipei-sans-tc);
 }
 
@@ -17,9 +17,9 @@ import 'taipei-sans-tc';
     --fontcolor_text: #D287FF;
     --font-family-header: "Futura";
     --font-style-header: "italic";
-    --font-family-text: "taipei-sans-tc";
+    --font-family-text: taipei-sans-tc, serif;
     --font-style-text: "none";
-    --font-family-card: "taipei-sans-tc";
+    --font-family-card: taipei-sans-tc, serif;
     --font-style-card: "none";
 }
 
@@ -48,6 +48,8 @@ import 'taipei-sans-tc';
 }
 #group-img
 {
+    background-image: url("./file/groupphoto_1.jpg");
+
     position: fixed;
     top: 0;
     left: 0;
@@ -140,7 +142,7 @@ p
 
 #img-cards .personal-img
 {
-    background: url("./file/name1.jpg");
+    background-image: url("./file/name1.jpg");
     position: absolute;
     width: 240px;
     height: auto;
