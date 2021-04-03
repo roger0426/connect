@@ -10,15 +10,17 @@ import 'taipei-sans-tc';
 
 .theme_light
 {
-    --background_color: #FFFFFF;
+    --background_color: #FFD4B7;
     --background_color_card: #E8E8E8;
     --main_
-    --title: #000000;
-    --text: #000000;
+    --fontcolor_header: #88C8FF;
+    --fontcolor_text: #D287FF;
     --font-family-header: "Futura";
     --font-style-header: "italic";
     --font-family-text: "taipei-sans-tc";
-    --font-style-header: "none";
+    --font-style-text: "none";
+    --font-family-card: "taipei-sans-tc";
+    --font-style-card: "none";
 }
 
 
@@ -43,14 +45,14 @@ import 'taipei-sans-tc';
 }
 #group-img
 {
-    background: url("./file/about_us/xxx.png") center / cover no-repeat;
+    background: url("./file/about_us/groupphoto_1.jpg") center / cover no-repeat;
     position: fixed;
     top: 15px;
     left: 0;
     height: 100px;
     width: 350px;
+    opacity: 1;
     z-index: 0;
-    opacity: 0;
 }
 
 /********/
@@ -59,10 +61,10 @@ import 'taipei-sans-tc';
 
 h1
 {
-    position: absolute;
-    transform: translate(-50%, -50%);
+    position: static;
+    /*transform: translate(-50%, -50%);*/
     left: 50%;
-    
+    color: var(--fontcolor_header);
     font-size: 64px;
     font-weight: 500;
     font-family: var(--font-family-header);
@@ -74,14 +76,17 @@ h1
 p
 {
     /*要怎麼限制在一定的(左右)範圍內？*/
-    position: absolute;
+    position: static;
     transform: translate(-50%, -50%);
     left: 50%;
+    text-align: center;
     
-    font-size: 64px;
+    color: var(--fontcolor_text);
+    font-size: 18px;
     font-weight: 500;
     font-family: var(--font-family-header);
     font-style: var(--font-style-header);
+    
     text-decoration: none;
 }
 /*********/
@@ -99,6 +104,7 @@ p
     border-radius: 0px 0px 50px 50px;
          /*UpLeft/UR/DR/DL*/
     opacity: 0.45;
+    z-index: 1;
 }
 
 /*logo*/
@@ -111,20 +117,42 @@ p
 /*main area*/
 /***********/
 
+#img-cards
+{
+    background-color: green;
+    width: 100%;
+    z-index: 1;
+}
+
 .card
 {
-    background-color: var(--background_color_card);
+    background-color: #FFA511;
+    height: 360;
+    width: 240px;
+    left: 0;
+    bottom: 0;
+    font-size: 36px;
+    
+    /*UL/UR/DR/DL*/
+    border-radius: 30px 30px 30px 30px;
+    opacity: 1;
+    z-index: 3;
+}
+
+.card-detail
+{
+    background-color: #AD15FF;
     height: 30%;
     width: 100%;
     left: 0;
     bottom: 0;
+    font-size: 36px;
     
     /*UL/UR/DR/DL*/
-    border-radius: 30px 30px 0px 0px;
-    opacity: 1;
+    border-radius: 30px 30px 30px 30px;
+    opacity: 0.7;
+    z-index: 4;
 }
-
-
 
 
 
