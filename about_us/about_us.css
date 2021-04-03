@@ -138,8 +138,9 @@ p
     z-index: 3;
 }
 
-.personal-img
+#img-cards .personal-img
 {
+    background: url("./file/name1.jpg");
     position: absolute;
     width: 100%;
     height: auto;
