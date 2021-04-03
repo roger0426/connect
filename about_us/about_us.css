@@ -3,26 +3,25 @@
 /************/
 import 'taipei-sans-tc';
 @font-face {
-  font-family: taipei-sans-tc;
+  font-family: Gentium;
   src: url(https://cdn.jsdelivr.net/npm/taipei-sans-tc);
 }
 
 
-.theme_light
+:root
 {
-    --background_color: #FFD4B7;
+    --background_color: rgba(255, 255, 255, 0.45);
     --background_color_card: #E8E8E8;
-    --main_
+    /*--main_*/
     --fontcolor_header: #88C8FF;
     --fontcolor_text: #D287FF;
     --font-family-header: "Futura";
     --font-style-header: "italic";
-    --font-family-text: taipei-sans-tc, serif;
+    --font-family-text: "taipei-sans-tc";
     --font-style-text: "none";
-    --font-family-card: taipei-sans-tc, serif;
+    --font-family-card: "taipei-sans-tc";
     --font-style-card: "none";
 }
-
 
 
 
@@ -44,12 +43,10 @@ import 'taipei-sans-tc';
     background-color: var(--background_color);
     z-index: -1;
     width: 100%;
-    height: 1000px;
+    height: 100%;
 }
 #group-img
 {
-    background-image: url("./file/groupphoto_1.jpg");
-
     position: fixed;
     top: 0;
     left: 0;
@@ -104,15 +101,38 @@ p
     background-color: var(--background_color);
     border-radius: 0px 0px 50px 50px;
          /*UpLeft/UR/DR/DL*/
-    opacity: 0.45;
+    opacity: 1;
     z-index: 1;
+}
+
+#Title{
+    font-family: Futura;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 85px;
+
+color: #000000;
 }
 
 /*logo*/
 
 /*button*/
-/*ul li部分我不熟，需要支援xdd_____rg*/
-
+#navbar ul{
+    display:flex;
+    justify-content: space-around;
+    white-space:nowrap;
+    list-style-type:none;
+  }
+  #navbar li {
+    display: block;
+    float:right;
+    margin:32px;
+    overflow: left;
+    white-space: normal;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
 
 /***********/
 /*main area*/
@@ -142,7 +162,7 @@ p
 
 #img-cards .personal-img
 {
-    background-image: url("./file/name1.jpg");
+    background: url("./file/name1.jpg");
     position: absolute;
     width: 240px;
     height: auto;
