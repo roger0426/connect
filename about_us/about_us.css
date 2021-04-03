@@ -44,16 +44,16 @@ import 'taipei-sans-tc';
     background-color: var(--background_color);
     z-index: -1;
     width: 100%;
-    height: 100%;
+    height: 1000px;
 }
 #group-img
 {
     background: url("./file/groupphoto_1.jpg") center / cover no-repeat;
     position: fixed;
-    top: 15px;
+    top: 100px;
     left: 0;
-    height: auto;
     width: 100%;
+    height: auto;
     opacity: 1;
     z-index: 0;
 }
