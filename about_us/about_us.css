@@ -1,43 +1,130 @@
+/************/
+/*font style*/
+/************/
+import 'taipei-sans-tc';
+@font-face {
+  font-family: Gentium;
+  src: url(https://cdn.jsdelivr.net/npm/taipei-sans-tc);
+}
+
+
 .theme_light
 {
     --background_color: #FFFFFF;
+    --background_color_card: #E8E8E8;
     --main_
     --title: #000000;
     --text: #000000;
-    
+    --font-family-header: "Futura";
+    --font-style-header: "italic";
+    --font-family-text: "taipei-sans-tc";
+    --font-style-header: "none";
 }
+
+
+
+
+
 /*************/
 /*entire area*/
 /*************/
+*
+{
+  margin: 0;
+  padding: 0;
+}
+
 
 /*background_group photo*/
+#background
+{
+    background-color: var(--background_color);
+    z-index: -1;
+}
+#group-img
+{
+    background: url("./file/about_us/xxx.png") center / cover no-repeat;
+    position: fixed;
+    top: 15px;
+    left: 0;
+    height: 100px;
+    width: 350px;
+    z-index: 0;
+    opacity: 0;
+}
+
+/********/
+/*header*/
+/********/
+
+h1
+{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    
+    font-size: 64px;
+    font-weight: 500;
+    font-family: var(--font-family-header);
+    font-style: var(--font-style-header);
+    text-decoration: none;
+}
 
 
-
+p
+{
+    /*要怎麼限制在一定的(左右)範圍內？*/
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    
+    font-size: 64px;
+    font-weight: 500;
+    font-family: var(--font-family-header);
+    font-style: var(--font-style-header);
+    text-decoration: none;
+}
 /*********/
-/*top_bar*/
+/*nav_bar*/
 /*********/
+
+#navbar
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background-color: var(--background_color);
+    border-radius: 0px 0px 50px 50px;
+         /*UpLeft/UR/DR/DL*/
+    opacity: 0.45;
+}
 
 /*logo*/
 
 /*button*/
-
+/*ul li部分我不熟，需要支援xdd_____rg*/
 
 
 /***********/
 /*main area*/
 /***********/
 
-/*title & slogan*/
-/*heading*/
-
-
-/*cards*/
-
-
-
-
-*{
-  margin: 0;
-  padding: 0;
+.card
+{
+    background-color: var(--background_color_card);
+    height: 30%;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    
+    /*UL/UR/DR/DL*/
+    border-radius: 30px 30px 0px 0px;
+    opacity: 1;
 }
+
+
+
+
+
