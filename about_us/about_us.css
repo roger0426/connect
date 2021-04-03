@@ -4,7 +4,9 @@
 import 'taipei-sans-tc';
 @font-face {
   font-family: Gentium;
-  src: url(https://cdn.jsdelivr.net/npm/taipei-sans-tc);
+  src: url(http://www.example.com/fonts/Gentium.);
+  src: url(https://github.com/roger0426/connect/file/jf-openhuninn-1.1.ttf) format("opentype");
+  /*src: url(https://cdn.jsdelivr.net/npm/taipei-sans-tc);*/
 }
 
 
