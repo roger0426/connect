@@ -49,7 +49,7 @@ import 'taipei-sans-tc';
     position: fixed;
     top: 15px;
     left: 0;
-    height: 100px;
+    height: auto;
     width: 100%;
     opacity: 1;
     z-index: 0;
