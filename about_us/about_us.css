@@ -3,13 +3,6 @@
 /************/
 import 'taipei-sans-tc';/*台北黑體*/
 
-@font-face {
-  font-family: jf-openhuninn;
-  src: url(./file/"jf-openhuninn-1.1.ttf") format("opentype");
-  /*src: url(https://cdn.jsdelivr.net/npm/taipei-sans-tc);*/
-  
-}
-
 @font-face
 {
   font-family: 'jf-openhuninn';
