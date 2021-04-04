@@ -1,14 +1,14 @@
 /************/
 /*font style*/
 /************/
-import 'taipei-sans-tc';/*台北黑體*/
 
+/*不確定為什麼，不可以有import 字體，下面這個字體會出不來*/
 @font-face
 {
-  font-family: 'jf-openhuninn';
-  src: url('./fonts/jf-openhuninn-1.1.woff') format("woff"),
-         url('./fonts/jf-openhuninn-1.1.ttf') format("truetype"),
-         url('./fonts/jf-openhuninn-1.1.eot') format("embedded-opentype");
+  font-family: jf-openhuninn;
+  src: url("./file/jf-openhuninn-1.1.ttf") format("truetype"),
+       url('./fonts/jf-openhuninn-1.1.woff') format("woff"),
+       url('./fonts/jf-openhuninn-1.1.eot') format("embedded-opentype");
 }
 
 
@@ -18,11 +18,11 @@ import 'taipei-sans-tc';/*台北黑體*/
     --background_color_card: #E8E8E8;
     --fontcolor_header: #181818;
     --fontcolor_text: #000000;
-    --font-family-header: "jf-openhuninn", "taipei-sans-tc";
+    --font-family-header: "jf-openhuninn";
     --font-style-header: none;
-    --font-family-text: jf-openhuninn;
+    --font-family-text: "jf-openhuninn";
     --font-style-text: none;
-    --font-family-card: jf-openhuninn;
+    --font-family-card: "jf-openhuninn";
     --font-style-card: none;
 }
 
