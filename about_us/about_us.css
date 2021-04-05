@@ -107,7 +107,7 @@ p
     width: 100%;
     height: 90px;
     background-color: var(--background_color);
-    border-radius: 0px 0px 50px 50px;
+    border-radius: 0px 0px 4vw 4vw;
          /*UpLeft/UR/DR/DL*/
     opacity: 0.45;
     z-index: 1;
@@ -117,7 +117,7 @@ p
     font-family: var(--font-family-header);
     font-style: var(--font-style-header);
     font-weight: 500;
-    font-size: 64px;
+    font-size: 3vw;
     /*top: 0px;*/
     line-height: 85px;
     color: var(--fontcolor_header);
@@ -131,9 +131,11 @@ p
 {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    gap: 10%;
     white-space: nowrap;
     list-style-type: none;
-    margin-right: 2%;
+    margin-right: 5%;
 }
 
 
@@ -141,13 +143,13 @@ p
 {
     display: block;
     float: right;
-    margin: 32px;
+    /*margin: 32px;*/
     overflow: left;
-    white-space: normal;
-    word-break: break-all;
-    word-wrap: break-word;
+    white-space: nowrap;
+    word-break: normal;
+    word-wrap: nowrap;
     /*font-size: 36px;*/
-    font-size: 2.5em;
+    font-size: 2vw;
 }
 
 /***********/
@@ -166,7 +168,7 @@ p
     position: absolute;
     background-color: green;
     /*UL/UR/DR/DL*/
-    border-radius: 50px 50px 0px 0px;
+    border-radius: 4vw 4vw 0px 0px;
     width: 100%;
     top: 55vw;
     z-index: 1;
@@ -199,7 +201,7 @@ p
     font-size: 36px;
     
     /*UL/UR/DR/DL*/
-    border-radius: 30px 30px 30px 30px;
+    border-radius: 1.5vw;
     opacity: 1;
     z-index: 3;
 }
@@ -225,7 +227,7 @@ p
     bottom: 0px;
     
     /*UL/UR/DR/DL*/
-    border-radius: 30px 30px 30px 30px;
+    border-radius: 1.5vw;
     opacity: 0.7;
     z-index: 4;
 }
