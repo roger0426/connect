@@ -16,14 +16,14 @@
 {
     --background_color: #FFFFFF;
     --background_color_card: #E8E8E8;
-    --fontcolor_header: #000000;
+    --fontcolor_header: #181818;
     --fontcolor_text: #000000;
     --font-family-header: "jf-openhuninn";
-    --font-style-header: normal;
+    --font-style-header: none;
     --font-family-text: "jf-openhuninn";
-    --font-style-text: normal;
+    --font-style-text: none;
     --font-family-card: "jf-openhuninn";
-    --font-style-card: normal;
+    --font-style-card: none;
 }
 
 
@@ -72,7 +72,7 @@ h1
     text-align: center;
     color: var(--fontcolor_header);
     font-size: 64px;
-    font-weight: normal;
+    font-weight: 500;
     font-family: var(--font-family-header);
     font-style: var(--font-style-header);
     text-decoration: none;
@@ -93,12 +93,6 @@ p
     
     text-decoration: none;
 }
-
-#slogan
-{
-    margin: 0 30% 0 30%;
-}
-
 /*********/
 /*nav_bar*/
 /*********/
@@ -115,18 +109,17 @@ p
     width: 100%;
     height: 90px;
     background-color: var(--background_color);
-    border-radius: 0px 0px 50px 50px;
+    border-radius: 0px 0px 4vw 4vw;
          /*UpLeft/UR/DR/DL*/
-    opacity: 0.8;
+    opacity: 0.45;
     z-index: 1;
 }
 
-#title
-{
+#title{
     font-family: var(--font-family-header);
     font-style: var(--font-style-header);
     font-weight: 500;
-    font-size: 64px;
+    font-size: 3vw;
     /*top: 0px;*/
     line-height: 85px;
     color: var(--fontcolor_header);
@@ -140,9 +133,11 @@ p
 {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    gap: 10%;
     white-space: nowrap;
     list-style-type: none;
-    margin-right: 2%;
+    margin-right: 5%;
 }
 
 
@@ -150,13 +145,13 @@ p
 {
     display: block;
     float: right;
-    margin: 32px;
+    /*margin: 32px;*/
     overflow: left;
-    white-space: normal;
-    word-break: break-all;
-    word-wrap: break-word;
+    white-space: nowrap;
+    word-break: normal;
+    word-wrap: nowrap;
     /*font-size: 36px;*/
-    font-size: 2.5em;
+    font-size: 2vw;
 }
 
 /***********/
@@ -169,20 +164,15 @@ p
     height: 0px;
 }
 
-#gap2
-{
-    width: 100%;
-    height: 100px;
-}
-
 #img-cards
 {
+    
     position: absolute;
-    background-color: white;
+    background-color: green;
     /*UL/UR/DR/DL*/
-    border-radius: 50px 50px 0px 0px;
+    border-radius: 4vw 4vw 0px 0px;
     width: 100%;
-    top: 50vw;
+    top: 55vw;
     z-index: 1;
 }
 
@@ -190,7 +180,6 @@ p
 {
     display:flex;
     flex-direction: column;
-    margin: 0 10% 0 10%;
 }
 
 .flex-row
@@ -200,65 +189,49 @@ p
     justify-content: center;
     flex-wrap: wrap;
     gap: 3%;
-    margin: 1.5% 0 1.5% 0;
+    margin: 3% 0 3% 0;
 }
 
 
 .card
 {
-    position: relative;
-    background-color: #A5A5A5;
-    height: 300px;
-    width: 193px;
+    background-color: #FFA511;/*橘色*/
+    height: 360px;
+    width: 240px;
+    left: 10%;
+    bottom: 0;
     font-size: 36px;
     
     /*UL/UR/DR/DL*/
-    border-radius: 30px 30px 30px 30px;
+    border-radius: 1.5vw;
     opacity: 1;
-    z-index: 2;
-}
-
-#personal_pic1
-{
-    position: absolute; /*父空間的position不能為static*/
-    transform: translate(-50%, 0);
-    bottom: 0;
-    left: 50%;
-    border-radius: 30px 30px 30px 30px;
-    width: 100%;
-    height: 100%;
-    
-    content: url('./file/name1.jpg');
     z-index: 3;
 }
 
-.card-bg
+#img-cards .personal-img
 {
-    position: absolute;
-    height: 28%;
-    width: 100%;
+    background: url("./file/name1.jpg");
+    position: relative;
+    width: 240px;
+    height: auto;
+    top: 0;
     left: 0;
-    bottom: 0;
-    
-    background-color: #FAAD95;
-    border-radius: 30px 30px 30px 30px;
-    opacity: 0.95;
-    z-index: 4;
+    display: none;
 }
 
 .card-detail
 {
-    position: absolute;
-    transform: translate(5%, 0);
-    height: 28%;
+    background-color: #AD15FF;/*紫色*/
+    height: 30%;
     width: 100%;
-    left: 0;
-    bottom: 0;
+    left: 50%;
+    top: 50%;
+    bottom: 0px;
     
     /*UL/UR/DR/DL*/
-    border-radius: 30px 30px 30px 30px;
-    opacity: 1;
-    z-index: 5;
+    border-radius: 1.5vw;
+    opacity: 0.7;
+    z-index: 4;
 }
 
 .card-detail *
