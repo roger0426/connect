@@ -226,7 +226,7 @@ p
     transform: translate(-50%, 0);
     bottom: 0;
     left: 50%;
-    border-radius: 30px 30px 30px 30px;
+    border-radius: 1.5vw;
     width: 100%;
     height: 100%;
     
@@ -243,7 +243,7 @@ p
     bottom: 0;
     
     background-color: #FAAD95;
-    border-radius: 30px 30px 30px 30px;
+    border-radius: 1.5vw;
     opacity: 0.95;
     z-index: 4;
 }
