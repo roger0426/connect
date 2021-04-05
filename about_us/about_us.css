@@ -16,8 +16,10 @@
 {
     --background_color: #FFFFFF;
     --background_color_card: #E8E8E8;
+    --fontcolor-navbarbutton: #000000;
     --fontcolor_header: #000000;
     --fontcolor_text: #000000;
+    --color-main: #FAAD95;
     --font-family-header: "jf-openhuninn";
     --font-style-header: normal;
     --font-family-text: "jf-openhuninn";
@@ -94,6 +96,11 @@ p
     text-decoration: none;
 }
 
+a
+{
+    color: var(--fontcolor_header);
+}
+
 #slogan
 {
     margin: 0 30% 0 30%;
@@ -113,7 +120,7 @@ p
     top: 0;
     left: 0;
     width: 100%;
-    height: 90px;
+    height: 105px;
     background-color: var(--background_color);
     border-radius: 0px 0px 4vw 4vw;
          /*UpLeft/UR/DR/DL*/
@@ -125,10 +132,10 @@ p
 {
     font-family: var(--font-family-header);
     font-style: var(--font-style-header);
-    font-weight: 500;
-    font-size: 3vw;
+    font-weight: 250;
+    font-size: 4.5vw;
     /*top: 0px;*/
-    line-height: 85px;
+    line-height: 105px;
     color: var(--fontcolor_header);
     margin-left: 3.5%;
 }
@@ -158,7 +165,7 @@ p
     word-break: normal;
     word-wrap: nowrap;
     /*font-size: 36px;*/
-    font-size: 2vw;
+    font-size: 2.5vw;
 }
 
 /***********/
@@ -184,7 +191,7 @@ p
     /*UL/UR/DR/DL*/
     border-radius: 4vw 4vw 0px 0px;
     width: 100%;
-    top: 50vw;
+    top: 87%;
     z-index: 1;
 }
 
@@ -242,7 +249,7 @@ p
     left: 0;
     bottom: 0;
     
-    background-color: #FAAD95;
+    background-color: var(--color-main);
     border-radius: 1.5vw;
     opacity: 0.95;
     z-index: 4;
