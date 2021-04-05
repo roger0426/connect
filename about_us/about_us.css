@@ -223,7 +223,7 @@ a
 .card
 {
     position: relative;
-    background-color: #A5A5A5;
+    background-color: #F5F5F5;
     height: 300px;
     width: 193px;
     font-size: 36px;
@@ -235,19 +235,6 @@ a
     margin-right: 3%;
 }
 
-#personal_pic1
-{
-    position: absolute; /*父空間的position不能為static*/
-    transform: translate(-50%, 0);
-    bottom: 0;
-    left: 50%;
-    border-radius: 1.5vw;
-    width: 100%;
-    height: 100%;
-    
-    content: url('./file/name1.jpg');
-    z-index: 3;
-}
 
 .card-bg
 {
@@ -261,6 +248,17 @@ a
     border-radius: 1.5vw;
     opacity: 0.95;
     z-index: 4;
+}
+
+.personal_pic
+{
+    position: absolute; /*父空間的position不能為static*/
+    transform: translate(-50%, 0);
+    bottom: 0;
+    left: 50%;
+    border-radius: 1.5vw;
+    width: 100%;
+    z-index: 3;
 }
 
 .card-detail
