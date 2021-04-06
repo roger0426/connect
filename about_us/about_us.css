@@ -1,3 +1,7 @@
+/*移动端使用方案
+ 在移动端适配方案中，我们可以通过与less、scss、postcss等预编译期相结合，通过定义一些函数或者使用一些插件，根据设计稿，定一个基准尺寸，根据这个尺寸，计算出相对应的vh、vw元素块大小。从而做到自适应适配。
+ vw vh vmax vmin*/
+
 /************/
 /*font style*/
 /************/
@@ -83,7 +87,7 @@ h1
     position: static;
     text-align: center;
     color: var(--fontcolor_header);
-    font-size: 64px;
+    font-size: 9vh;
     font-weight: normal;
     font-family: var(--font-family-header);
     font-style: var(--font-style-header);
@@ -130,7 +134,7 @@ a
     top: 0;
     left: 0;
     width: 100%;
-    height: 5.2vw;
+    height: 7.5vw;
     background-color: var(--background_color);
     border-radius: 0px 0px 4vw 4vw;
          /*UpLeft/UR/DR/DL*/
@@ -142,15 +146,13 @@ a
 {
     font-family: var(--font-family-header);
     font-style: var(--font-style-header);
-    font-weight: 250;
-    font-size: 4.5vw;
+    font-weight: 100;
+    font-size: 4.7vw;
     /*top: 0px;*/
-    line-height: 5.2vw;
+    line-height: 7.5vw;
     color: var(--fontcolor_header);
     margin-left: 3.5%;
 }
-
-/*logo*/
 
 /*button*/
 #navbar ul
@@ -194,7 +196,13 @@ a
 #gap2
 {
     width: 100%;
-    height: 5%;
+    height: 10vh;
+}
+
+#gap3
+{
+    width: 100%;
+    height: 5vh;
 }
 
 #img-cards
@@ -204,7 +212,7 @@ a
     /*UL/UR/DR/DL*/
     border-radius: 4vw 4vw 0px 0px;
     width: 100%;
-    top: 87%;
+    top: 85%;
     z-index: 1;
 }
 
