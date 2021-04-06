@@ -6,9 +6,9 @@
 @font-face
 {
   font-family: jf-openhuninn;
-  src: url("./file/jf-openhuninn-1.1.ttf") format("truetype"),
-       url('./fonts/jf-openhuninn-1.1.woff') format("woff"),
-       url('./fonts/jf-openhuninn-1.1.eot') format("embedded-opentype");
+  src: /*url("./file/jf-openhuninn-1.1.ttf") format("truetype"),*/
+       url('./fonts/jf-openhuninn-1.1.woff') format("woff");/*chrome, safari*/
+       /*url('./fonts/jf-openhuninn-1.1.eot') format("embedded-opentype");*/
 }
 
 
