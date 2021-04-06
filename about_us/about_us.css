@@ -5,10 +5,19 @@
 /*不確定為什麼，前面import 台北黑體會error，下面這個字體會出不來*/
 @font-face
 {
-  font-family: jf-openhuninn;
-  src: /*url("./file/jf-openhuninn-1.1.ttf") format("truetype"),*/
-       url('./fonts/jf-openhuninn-1.1.woff') format("woff");/*chrome, safari*/
+    font-family: jf-openhuninn;
+    src: /*url("./file/jf-openhuninn-1.1.ttf") format("truetype"),*/
+        url('./fonts/jf-openhuninn-1.1.woff') format("woff");/*chrome, safari*/
        /*url('./fonts/jf-openhuninn-1.1.eot') format("embedded-opentype");*/
+    font-display: swap;
+    
+    /*
+     auto(default)：預設值，與block一樣，當載入完時，文字才顯示。
+     block：當文字加載完畢後，將當前的文字替換過去。
+     swap：邊載入時，文字套用。
+     allback：一開始先顯示預設字型，當字型載入完畢後，再一次替換，但加載時間過長時(3秒為限)，則會以預設字型文字，則不再加載。
+     optional：此模式最為特別，會依照使用者的網路狀況，當網路速度太慢時，則不加載字型，以預設的字型為主。
+     */
 }
 
 
