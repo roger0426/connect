@@ -29,11 +29,11 @@
     --fontcolor_header: #000000;
     --fontcolor_text: #000000;
     --color-main: #FAAD95;
-    --font-family-header: "jf-openhuninn";
+    --font-family-header: "jf-openhuninn", Tahoma, Arial;
     --font-style-header: normal;
-    --font-family-text: "jf-openhuninn";
+    --font-family-text: "jf-openhuninn", Tahoma, Arial;
     --font-style-text: normal;
-    --font-family-card: "jf-openhuninn";
+    --font-family-card: "jf-openhuninn", Tahoma, Arial;
     --font-style-card: normal;
 }
 
