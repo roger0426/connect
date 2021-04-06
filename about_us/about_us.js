@@ -6,9 +6,9 @@ $(document).ready(function(){
 
   $('.card') // card animation
   .on('mouseenter', function(){ // mouse enter
-    $('.card-detail', this).filter(':not(:animated)').stop(true, false).animate({height: '100%'}, 300);
-    $('.card-bg', this).filter(':not(:animated)').stop(true, false).animate({height: '100%', opacity: 0.7}, 300);
-    $('.personal-name', this).filter(':not(:animated)').stop(true, false).animate({'padding-bottom': '2%'}, 300);
+    $('.card-detail', this).stop(true, false).animate({height: '100%'}, 300);
+    $('.card-bg', this).stop(true, false).animate({height: '100%', opacity: 0.7}, 300);
+    $('.personal-name', this).stop(true, false).animate({'padding-bottom': '2%'}, 300);
     $('.card-detail div', this).show(duration = 300); // show hidden details
   })
 
