@@ -304,3 +304,16 @@ a
 {
     font-size: 18px; /* the font size is soooo weird */
 }
+
+@media only screen and (max-width: 768px) {
+    /* display on phone */
+    #group-img
+    {
+        top: 105px;
+    }
+
+    #img-cards
+    {
+        top: 63%;
+    }
+}
