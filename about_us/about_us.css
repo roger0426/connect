@@ -9,7 +9,7 @@
     src: /*url("./file/jf-openhuninn-1.1.ttf") format("truetype"),*/
         url('./fonts/jf-openhuninn-1.1.woff') format("woff");/*chrome, safari*/
        /*url('./fonts/jf-openhuninn-1.1.eot') format("embedded-opentype");*/
-    font-display: swap;
+    font-display: auto;
     
     /*
      auto(default)：預設值，與block一樣，當載入完時，文字才顯示。
