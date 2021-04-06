@@ -63,7 +63,7 @@
     height: auto;
     opacity: 1;
     z-index: 0;
-    content: url(./file/groupphoto_1.jpg); /* moved the src from html file to here */
+    content: url(./file/groupphoto_1.png); /* moved the src from html file to here */
 }
 
 /********/

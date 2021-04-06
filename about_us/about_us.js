@@ -1,29 +1,33 @@
-//computer -> 'hover' or 'mouseenter, mouselesve'
+//computer -> 'hover' or 'mouseenter, mouseleave'
 
 //touchscreen -> 'single touch'
 
 $(document).ready(function(){
 
-  $('.card')
+  $('.card') // card animation
   .on('mouseenter', function(){ // mouse enter
-    $('.card-detail', this).animate({height: '100%'}, 300);
-    $('.card-bg', this).animate({height: '100%', opacity: 0.7}, 300);
-    $('.personal-name', this).animate({'padding-bottom': '2%'}, 300);
-    $('.card-detail div', this).show(); // show hidden details
+    $('.card-detail', this).filter(':not(:animated)').stop(true, false).animate({height: '100%'}, 300);
+    $('.card-bg', this).filter(':not(:animated)').stop(true, false).animate({height: '100%', opacity: 0.7}, 300);
+    $('.personal-name', this).filter(':not(:animated)').stop(true, false).animate({'padding-bottom': '2%'}, 300);
+    $('.card-detail div', this).show(duration = 300); // show hidden details
   })
 
   .on('mouseleave', function(){ // mouse release
-    $('.card-detail', this).animate({height: '28%'}, 700);
-    $('.card-bg', this).animate({height: '28%', opacity: 0.85}, 700);
-    $('.personal-name', this).animate({'padding-bottom': 0}, 700);
-    $('.card-detail div', this).hide();
+    $('.card-detail', this).stop(true, false).animate({height: '28%'}, 700);
+    $('.card-bg', this).stop(true, false).animate({height: '28%', opacity: 0.85}, 700);
+    $('.personal-name', this).stop(true, false).animate({'padding-bottom': 0}, 700);
+    $('.card-detail div', this).stop(true, false).hide(duration = 700);
   })
+
+  if (!$('card-bg').is(':animated')) { // prevent unexpected showing details
+    $('.card-detail div').hide();
+  }
     
-  $('.button')
+  $('.button') // navbar button animation
   .on('mouseenter', function(){
     $(this).css("text-decoration", "underline");
   })
-  .on('mouseleave', function(){ // mouse release
+  .on('mouseout', function(){ // mouse release
     $(this).css("text-decoration", "none");
   })
 })
