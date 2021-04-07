@@ -6,10 +6,10 @@ $(document).ready(function(){
 
   $('.card') // card animation
   .on('mouseenter', function(){ // mouse enter
-    $('.card-detail', this).stop(true, false).animate({height: '100%'}, 300);
-    $('.card-bg', this).stop(true, false).animate({height: '100%', opacity: 0.7}, 300);
-    $('.personal-name', this).stop(true, false).animate({'padding-bottom': '2%'}, 300);
-    $('.card-detail div', this).show(duration = 300); // show hidden details
+    $('.card-detail', this).stop(true, false).animate({height: '100%'}, 400);
+    $('.card-bg', this).stop(true, false).animate({height: '100%', opacity: 0.9}, 400);
+    $('.personal-name', this).stop(true, false).animate({'padding-bottom': '2%'}, 400);
+    $('.card-detail div', this).stop(true, false).show(duration = 400); // show hidden details
   })
 
   .on('mouseleave', function(){ // mouse release
