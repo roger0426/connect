@@ -1,0 +1,1 @@
+{"version":3,"sources":["../dist/about_us.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA","file":"about_us.6156682c.css","sourceRoot":"..","sourcesContent":["#container {\n  display: flex;\n  justify-content: space-around; }\n  #container button {\n    color: red;\n    padding: 30px; }\n"]}
