@@ -1,6 +1,0 @@
-#container {
-  display: flex;
-  justify-content: space-around; }
-  #container button {
-    color: red;
-    padding: 30px; }
