@@ -1,8 +1,15 @@
-# connect
+# CONNECT - Django
 
-這是一個成大學生創建的網站
+## Important!
+Please do paste the secret key inside `settings.py`
 
-給大學生的履歷
+## Run server
+1. move to src file
+2. `$ python manage.py`
 
+## Do anything relate to models
+1. `$ python manage.py makemigrations`
+2. `$ python manage.py migrate`
 
-https://roger0426.github.io/connect/about_us/about_us.html
+## Add admin account
+1. `$ python manage.py createsuperuser`
