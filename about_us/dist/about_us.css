@@ -1,2 +1,6 @@
-#container{display:flex;justify-content:space-around}#container button{color:red;padding:200px}
-/*# sourceMappingURL=about_us.css.map */
+#container {
+  display: flex;
+  justify-content: space-around; }
+  #container button {
+    color: green;
+    padding: 200px; }

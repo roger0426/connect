@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAIA,AAAA,UAAU,AAAC,CACT,OAAO,CAAE,IAAI,CACb,eAAe,CAAE,YAAY,CAGR,AALvB,AAGE,UAHQ,CAGR,MAAM,AAAC,CACL,KAAK,CAAE,GAAG,CACV,OAAO,CAAE,KAAK,CAAG",
-    "sources": [
-        "../app/about_us.sass"
-    ],
-    "names": [],
-    "file": "about_us.css"
-}
