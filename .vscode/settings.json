@@ -1,0 +1,14 @@
+{
+    "liveSassCompile.settings.autoprefix": [],
+
+    "liveSassCompile.settings.formats": [
+        {
+          "format": "compressed",
+          "extensionName": ".css",
+          "savePath": "~/../dist"
+        }
+      ],
+      "liveSassCompile.settings.includeItems": [
+        "./"
+      ]
+}
