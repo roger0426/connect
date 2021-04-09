@@ -117,74 +117,53 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"../about_us.js":[function(require,module,exports) {
+//computer -> 'hover' or 'mouseenter, mouseleave'
+//touchscreen -> 'single touch'
+$(document).ready(function () {
+  $('.card') // card animation
+  .on('mouseenter', function () {
+    // mouse enter
+    $('.card-detail', this).stop(true, false).animate({
+      height: '100%'
+    }, 400);
+    $('.card-bg', this).stop(true, false).animate({
+      height: '100%',
+      opacity: 0.9
+    }, 400);
+    $('.personal-name', this).stop(true, false).animate({
+      'padding-bottom': '2%'
+    }, 400);
+    $('.card-detail div', this).stop(true, false).show(duration = 400); // show hidden details
+  }).on('mouseleave', function () {
+    // mouse release
+    $('.card-detail', this).stop(true, false).animate({
+      height: '28%'
+    }, 700);
+    $('.card-bg', this).stop(true, false).animate({
+      height: '28%',
+      opacity: 0.85
+    }, 700);
+    $('.personal-name', this).stop(true, false).animate({
+      'padding-bottom': 0
+    }, 700);
+    $('.card-detail div', this).stop(true, false).hide(duration = 700);
+  });
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
+  if (!$('card-bg').is(':animated')) {
+    // prevent unexpected showing details
+    $('.card-detail div').hide();
   }
 
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../../../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../../../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  $('.button') // navbar button animation
+  .on('mouseenter', function () {
+    $(this).css("text-decoration", "underline");
+  }).on('mouseout', function () {
+    // mouse release
+    $(this).css("text-decoration", "none");
+  });
+});
+},{}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -388,5 +367,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/about_us.js.map
+},{}]},{},["../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","../about_us.js"], null)
+//# sourceMappingURL=/about_us.83d9ee64.js.map
