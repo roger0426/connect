@@ -1,7 +1,15 @@
 # CONNECT - Django
 
 ## Important!
-Please do paste the secret key inside `settings.py`
+Please do store the SECRET_KEY to local before doing any editing
+
+NOTE: you have to do this step only one time
+
+`export SECRET_KEY=[SECRET_KEY]`
+
+make sure you have store successfully with `echo $SECRET_KEY`
+
+SECRET_KEY has been already in google drive, check it there
 
 ## Run server
 1. move to src file
