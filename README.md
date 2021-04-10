@@ -1,7 +1,7 @@
 # CONNECT - Django
 
 ## Important!
-Please do paste the secret key inside `settings.py`
+Please do **NOT** spaste the secret key inside `settings.py`
 
 ## Run server
 1. move to src file
