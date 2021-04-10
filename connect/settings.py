@@ -26,7 +26,7 @@ DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-   'https://stormy-badlands-28729.herokuapp.com/',
+   'https://connectuniverse.herokuapp.com/',
    'localhost',
    '127.0.0.1'
 ]
