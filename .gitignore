@@ -2,3 +2,6 @@
 
 *.xcodeproj/
 DerivedData/
+
+*.pyc
+__pycache__

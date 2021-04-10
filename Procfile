@@ -1,1 +1,1 @@
-web: hunicorn connectuniverse.wsgi
+web: gunicorn connectuniverse.wsgi
