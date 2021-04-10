@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY =  SECRET_KEY = '8-f(pjlb&(v&5i28(pt^ig!an%x&b6+hrjfhix7pt%+#_zf7*f'
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -132,3 +132,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+DISABLE_COLLECTSTATIC=1
