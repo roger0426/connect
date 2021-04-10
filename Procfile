@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath connectuniverse connectuniverse.wsgi
+web: gunicorn --pythonpath connect connect.wsgi
