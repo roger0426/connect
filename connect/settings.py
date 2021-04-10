@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =  SECRET_KEY = '8-f(pjlb&(v&5i28(pt^ig!an%x&b6+hrjfhix7pt%+#_zf7*f'
+SECRET_KEY =  os.environ['SECRET_KEY']
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 # SECURITY WARNING: don't run with debug turned on in production!
