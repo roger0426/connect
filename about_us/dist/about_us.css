@@ -79,9 +79,6 @@ p {
 a {
   color: var(--fontcolor_header); }
 
-br {
-  line-height: 1.2em; }
-
 #slogan {
   margin: 0 32vw 0 32vw; }
 
@@ -242,6 +239,11 @@ br {
 .description {
   font-size: 18px;
   padding-right: 10%; }
+
+.hidden-description {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 1vh; }
 
 @media only screen and (max-width: 1024px) {
   /* display on phone */
