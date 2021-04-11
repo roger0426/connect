@@ -5,33 +5,24 @@
 /*********** */
 /*font style */
 /*********** */
-/*不確定為什麼，前面import 台北黑體會error，下面這個字體會出不來 */
 @font-face {
   font-family: jf-openhuninn;
-  src: url("./fonts/jf-openhuninn-1.1.woff") format("woff");
-  /*chrome, safari */
-  /*url('./fonts/jf-openhuninn-1.1.eot') format("embedded-opentype"); */
-  font-display: auto;
-  /*
-   *auto(default)：預設值，與block一樣，當載入完時，文字才顯示。
-   *block：當文字加載完畢後，將當前的文字替換過去。
-   *swap：邊載入時，文字套用。
-   *allback：一開始先顯示預設字型，當字型載入完畢後，再一次替換，但加載時間過長時(3秒為限)，則會以預設字型文字，則不再加載。
-   *optional：此模式最為特別，會依照使用者的網路狀況，當網路速度太慢時，則不加載字型，以預設的字型為主。 */ }
+  src: url("../fonts/jf-openhuninn-1.1.woff") format("woff");
+  font-display: auto; }
 
 :root {
-  --background_color:#FFFFFF {}
-  --background_color_card:#E8E8E8 {}
-  --fontcolor-navbarbutton:#000000 {}
-  --fontcolor_header:#000000 {}
-  --fontcolor_text:#000000 {}
-  --color-main:#FAAD95 {}
-  --font-family-header:"jf-openhuninn", "Tahoma", "Arial" {}
-  --font-style-header:normal {}
-  --font-family-text:"jf-openhuninn", "Tahoma", "Arial" {}
-  --font-style-text:normal {}
-  --font-family-card:"jf-openhuninn", "Tahoma", "Arial" {}
-  --font-style-card:normal {} ; }
+  --background_color: #FFFFFF;
+  --background_color_card: #E8E8E8;
+  --fontcolor-navbarbutton: #000000;
+  --fontcolor_header: #000000;
+  --fontcolor_text: #000000;
+  --color-main: #FAAD95;
+  --font-family-header: "jf-openhuninn", "Tahoma", "Arial";
+  --font-style-header: normal;
+  --font-family-text: "jf-openhuninn", "Tahoma", "Arial";
+  --font-style-text: normal;
+  --font-family-card: "jf-openhuninn", "Tahoma", "Arial";
+  --font-style-card: normal; }
 
 /************ */
 /*entire area */
@@ -82,10 +73,14 @@ p {
   font-weight: 500;
   font-family: var(--font-family-text);
   font-style: var(--font-style-text);
-  text-decoration: none; }
+  text-decoration: none;
+  line-height: 1.4825em; }
 
 a {
   color: var(--fontcolor_header); }
+
+br {
+  line-height: 1.2em; }
 
 #slogan {
   margin: 0 32vw 0 32vw; }
@@ -125,7 +120,7 @@ a {
   justify-content: space-around;
   align-items: center;
   /*gap: 10%; */
-  white-space: nowrap;
+  white-space: nowrasp;
   list-style-type: none;
   margin-right: 5%; }
 
@@ -223,6 +218,7 @@ a {
   width: 100%;
   left: 0;
   bottom: 0;
+  /*卡片背景沒有顯示 */
   /*UL/UR/DR/DL */
   border-radius: 1.5vw;
   opacity: 0.7;
