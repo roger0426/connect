@@ -1,37 +1,22 @@
 @charset "UTF-8";
-/*移动端使用方案
- *在移动端适配方案中，我们可以通过与less、scss、postcss等预编译期相结合，通过定义一些函数或者使用一些插件，根据设计稿，定一个基准尺寸，根据这个尺寸，计算出相对应的vh、vw元素块大小。从而做到自适应适配。
- *vw vh vmax vmin */
-/*********** */
-/*font style */
-/*********** */
-/*不確定為什麼，前面import 台北黑體會error，下面這個字體會出不來 */
 @font-face {
   font-family: jf-openhuninn;
-  src: url("/static/fonts/jf-openhuninn-1.1.woff") format("woff");
-  /*chrome, safari */
-  /*url('./fonts/jf-openhuninn-1.1.eot') format("embedded-opentype"); */
-  font-display: auto;
-  /*
-   *auto(default)：預設值，與block一樣，當載入完時，文字才顯示。
-   *block：當文字加載完畢後，將當前的文字替換過去。
-   *swap：邊載入時，文字套用。
-   *allback：一開始先顯示預設字型，當字型載入完畢後，再一次替換，但加載時間過長時(3秒為限)，則會以預設字型文字，則不再加載。
-   *optional：此模式最為特別，會依照使用者的網路狀況，當網路速度太慢時，則不加載字型，以預設的字型為主。 */ }
+  src: url("../fonts/jf-openhuninn-1.1.woff") format("woff");
+  font-display: auto; }
 
 :root {
-  --background_color:#FFFFFF {}
-  --background_color_card:#E8E8E8 {}
-  --fontcolor-navbarbutton:#000000 {}
-  --fontcolor_header:#000000 {}
-  --fontcolor_text:#000000 {}
-  --color-main:#FAAD95 {}
-  --font-family-header:"jf-openhuninn", "Tahoma", "Arial" {}
-  --font-style-header:normal {}
-  --font-family-text:"jf-openhuninn", "Tahoma", "Arial" {}
-  --font-style-text:normal {}
-  --font-family-card:"jf-openhuninn", "Tahoma", "Arial" {}
-  --font-style-card:normal {} ; }
+  --background_color: #FFFFFF;
+  --background_color_card: #E8E8E8;
+  --fontcolor-navbarbutton: #000000;
+  --fontcolor_header: #000000;
+  --fontcolor_text: #000000;
+  --color-main: #FAAD95;
+  --font-family-header: "jf-openhuninn", "Tahoma", "Arial";
+  --font-style-header: normal;
+  --font-family-text: "jf-openhuninn", "Tahoma", "Arial";
+  --font-style-text: normal;
+  --font-family-card: "jf-openhuninn", "Tahoma", "Arial";
+  --font-style-card: normal; }
 
 /************ */
 /*entire area */
@@ -82,7 +67,8 @@ p {
   font-weight: 500;
   font-family: var(--font-family-text);
   font-style: var(--font-style-text);
-  text-decoration: none; }
+  text-decoration: none;
+  line-height: 1.4825em; }
 
 a {
   color: var(--fontcolor_header); }
@@ -223,6 +209,7 @@ a {
   width: 100%;
   left: 0;
   bottom: 0;
+  /*卡片背景沒有顯示 */
   /*UL/UR/DR/DL */
   border-radius: 1.5vw;
   opacity: 0.7;
@@ -230,7 +217,7 @@ a {
   .card-detail * {
     font-size: 36px;
     text-align: left;
-    bgcolor: var(--fontcolor_header); }
+    color: var(--fontcolor_header); }
   .card-detail p {
     text-align: left;
     padding-left: 5%;
@@ -246,6 +233,11 @@ a {
 .description {
   font-size: 18px;
   padding-right: 10%; }
+
+.hidden-description {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 1vh; }
 
 @media only screen and (max-width: 1024px) {
   /* display on phone */
