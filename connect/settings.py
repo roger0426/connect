@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from pypugjs.ext.django.compiler import enable_pug_translations
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third party libraries
+    'sass_processor',
+
     # owned
     'about_us',
 ]
@@ -63,13 +67,21 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "templates")],
-        'APP_DIRS': True,
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+            ],# PyPugJS part:
+            'loaders': [
+                ('pypugjs.ext.django.Loader', (
+                    'django.template.loaders.filesystem.Loader',
+                    'django.template.loaders.app_directories.Loader',
+                ))
+            ],'builtins': [
+                'pypugjs.ext.django.templatetags',
             ],
         },
     },
@@ -126,7 +138,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static")
+# ]
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+SASS_PRECISION = 8
+
+
+enable_pug_translations()

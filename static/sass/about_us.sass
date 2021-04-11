@@ -1,0 +1,280 @@
+/*移动端使用方案
+ *在移动端适配方案中，我们可以通过与less、scss、postcss等预编译期相结合，通过定义一些函数或者使用一些插件，根据设计稿，定一个基准尺寸，根据这个尺寸，计算出相对应的vh、vw元素块大小。从而做到自适应适配。
+ *vw vh vmax vmin
+/***********
+/*font style
+/***********
+/*不確定為什麼，前面import 台北黑體會error，下面這個字體會出不來
+@font-face
+  font-family: jf-openhuninn
+  src: url('./fonts/jf-openhuninn-1.1.woff') format("woff")
+
+  /*chrome, safari
+  /*url('./fonts/jf-openhuninn-1.1.eot') format("embedded-opentype");
+  font-display: auto
+
+  /*
+   *auto(default)：預設值，與block一樣，當載入完時，文字才顯示。
+   *block：當文字加載完畢後，將當前的文字替換過去。
+   *swap：邊載入時，文字套用。
+   *allback：一開始先顯示預設字型，當字型載入完畢後，再一次替換，但加載時間過長時(3秒為限)，則會以預設字型文字，則不再加載。
+   *optional：此模式最為特別，會依照使用者的網路狀況，當網路速度太慢時，則不加載字型，以預設的字型為主。
+\:root
+  --background_color:#FFFFFF
+  --background_color_card:#E8E8E8
+  --fontcolor-navbarbutton:#000000
+  --fontcolor_header:#000000
+  --fontcolor_text:#000000
+  --color-main:#FAAD95
+  --font-family-header:"jf-openhuninn", "Tahoma", "Arial"
+  --font-style-header:normal
+  --font-family-text:"jf-openhuninn", "Tahoma", "Arial"
+  --font-style-text:normal
+  --font-family-card:"jf-openhuninn", "Tahoma", "Arial"
+  --font-style-card:normal
+
+/************
+/*entire area
+/************
+*
+  margin: 0
+  padding: 0
+
+/*background_group photo
+#background
+  position: fixed
+  background-color: #EEEEEE
+  z-index: -1
+  width: 100%
+  height: 100%
+  opacity: 1
+
+#group-img
+  position: fixed
+  transform: translate(0, -5%)
+
+  /*top: 0;
+  top: 0
+  left: 0
+  width: 100%
+  height: auto
+  opacity: 1
+  z-index: 0
+
+/*******
+/*header
+/*******
+h1
+  position: static
+  text-align: center
+  color: var(--fontcolor_header)
+  font-size: 9vh
+  font-weight: normal
+  font-family: var(--font-family-header)
+  font-style: var(--font-style-header)
+  text-decoration: none
+
+p
+  /*要怎麼限制在一定的(左右)範圍內？
+  position: static
+  text-align: center
+  color: var(--fontcolor_text)
+  font-size: 18px
+  font-weight: 500
+  font-family: var(--font-family-text)
+  font-style: var(--font-style-text)
+  text-decoration: none
+
+a
+  color: var(--fontcolor_header)
+
+#slogan
+  margin: 0 32vw 0 32vw
+
+/********
+/*nav_bar
+/********
+#navbar
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  flex-wrap: wrap
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 7.5vw
+  background-color: var(--background_color)
+  border-radius: 0px 0px 4vw 4vw
+
+  /*UpLeft/UR/DR/DL
+  opacity: 0.8
+  z-index: 1
+
+#title
+  font-family: var(--font-family-header)
+  font-style: var(--font-style-header)
+  font-weight: 100
+  font-size: 4.7vw
+
+  /*top: 0px;
+  line-height: 7.5vw
+  color: var(--fontcolor_header)
+  margin-left: 3.5%
+
+/*button
+#navbar
+  ul
+    display: flex
+    justify-content: space-around
+    align-items: center
+
+    /*gap: 10%;
+    white-space: nowrasp
+    list-style-type: none
+    margin-right: 5%
+
+  li
+    display: block
+    float: right
+
+    /*margin: 32px;
+    overflow: left
+    white-space: nowrap
+    word-break: normal
+    word-wrap: nowrap
+
+    /*font-size: 36px;
+    font-size: 2.5vw
+    font-family: var(--font-family-text)
+    font-style: var(--font-style-text)
+    margin-right: 10%
+
+/**********
+/*main area
+/**********
+#gap1
+  width: 100%
+  height: 0px
+
+#gap2
+  width: 100%
+  height: 7vh
+
+#gap3
+  width: 100%
+  height: 3vh
+
+#img-cards
+  position: absolute
+  background-color: white
+
+  /*UL/UR/DR/DL
+  border-radius: 4vw 4vw 0px 0px
+  width: 100%
+  top: 85%
+  z-index: 1
+
+  h1
+    /* about us words
+    padding-bottom: 3%
+
+#flex-column
+  display: flex
+  flex-direction: column
+  margin: 0 10% 0 10%
+
+.flex-row
+  display: flex
+  flex-direction: row
+  justify-content: center
+  flex-wrap: wrap
+
+  /*gap: 3%;
+  margin: 1.5% 0 1.5% 0
+
+.card
+  position: relative
+  background-color: #F5F5F5
+  height: 300px
+  width: 193px
+  font-size: 36px
+
+  /*UL/UR/DR/DL
+  border-radius: 1.5vw
+  opacity: 1
+  z-index: 2
+  margin-right: 3%
+
+.card-bg
+  position: absolute
+  height: 28%
+  width: 100%
+  left: 0
+  bottom: 0
+  background-color: var(--color-main)
+  border-radius: 1.5vw
+  opacity: 0.95
+  z-index: 4
+
+.personal_pic
+  position: absolute
+
+  /*父空間的position不能為static
+  transform: translate(-50%, 0)
+  bottom: 0
+  left: 50%
+  border-radius: 1.5vw
+  width: 100%
+  z-index: 3
+
+.card-detail
+  position: absolute
+  transform: translate(5%, 0)
+  height: 28%
+  width: 100%
+  left: 0
+  bottom: 0
+
+  /*UL/UR/DR/DL
+  border-radius: 1.5vw
+  opacity: 0.7
+  z-index: 4
+
+  *
+    font-size: 36px
+    text-align: left
+    bgcolor: var(--fontcolor_header)
+
+  p
+    text-align: left
+    padding-left: 5%
+    margin: 2% 0
+
+.personal-name
+  font-size: 36px
+  line-height: 1em
+  margin: 0
+  padding-top: 5%
+  padding-left: 5%
+
+.description
+  font-size: 18px
+  padding-right: 10%
+
+@media only screen and (max-width: 1024px)
+  /* display on phone
+  #group-img
+    top: 5.2vw
+
+  #slogan
+    margin: 0 14vw
+
+  #img-cards
+    top: 35%
+
+  .card
+    margin-bottom: 5%
+
+  .flex-row
+    margin: 0

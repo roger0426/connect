@@ -1,0 +1,148 @@
+doctype html                                               
+html                                                          
+  head
+    meta(charset="utf-8")
+    meta(content="width=device-width, initial-scale=1", name="viewport")                 
+    title CONNECT 
+    {% load sass_tags %}
+    link(href="{% sass_src 'sass/about_us.sass' %}",rel="stylesheet",type="text/css")  
+
+  header
+    #navbar 
+      #title CONNECT.
+
+      ul
+        li 
+          a.button(href="#") home
+        li 
+          a.button(href="#") activity
+        li 
+          a.button(href="#") about us
+
+  body
+    #background
+    {% load static %}
+    img#group-img(src="{% static './file/groupphoto_2.png'%}")
+    #about_details 
+    #img-cards
+
+      #gap1 
+      h1 about us.
+      p#slogan 我們是一群由成功大學電機系、工設系、不分系和外文系的學生所組成的一個團隊，目標是在這學期結束前架構出一個專門為大學生設計的社群網站 - CONNECT，讓大學生們可以在學校裡更容易找到志同道合的夥伴共事
+      #gap2 
+
+      #flex-column
+        .flex-row
+          .card
+            {% load static %}
+            img.personal_pic(src="{% static 'file/name1_2.png'%}")
+            .card-bg
+            .card-detail 
+              p.personal-name 張仲喆
+              p.description 工程師
+              div(style = "display: none")
+                {% for i in '012'|make_list %}
+                br
+                {% endfor %}
+                p.description 技能：c, c++, lr
+                p.description 系所：電機系111
+                p.description 興趣：攝影, 打桌球, 打code, 彈吉他
+          
+          .card
+            {% load static %}
+            img.personal_pic(src="{% static 'file/name2_2.png'%}")
+            .card-bg
+            .card-detail 
+              p.personal-name 蔡孟芩
+              p.description 設計師
+              div(style = "display: none")
+                {% for i in '01'|make_list %}
+                br
+                {% endfor %}
+                p.description 技能：英文, 德文, 翻譯
+                p.description 系所：外文系110
+                p.description 興趣：學習語言, 寫詞編曲, 烘焙
+
+          .card
+            {% load static %}
+            img.personal_pic(src="{% static 'file/name3_2.png'%}")
+            .card-bg
+            .card-detail 
+              p.personal-name 陳亮州
+              p.description 工程師
+              div(style = "display: none")
+                {% for i in '012'|make_list %}
+                br
+                {% endfor %}
+                p.description 技能：Java, C, C++, Python
+                p.description 系所：電機系111
+                p.description 興趣：聽音樂, 看電影, 打code
+
+          .card
+            {% load static %}
+            img.personal_pic(src="{% static 'file/name4_2.png'%}")
+            .card-bg
+            .card-detail 
+              p.personal-name 鄭有希
+              p.description 設計師
+              div(style = "display: none")
+                {% for i in '012'|make_list %}
+                br
+                {% endfor %}
+                p.description 技能：ps, ai, pr, solidworks
+                p.description 系所：工設110
+                p.description 興趣：看小說, 打排球, 彈吉他
+
+        .flex-row
+          .card
+            {% load static %}
+            img.personal_pic(src="{% static 'file/name5_2.png'%}")
+            .card-bg
+            .card-detail 
+              p.personal-name 鄭价閎
+              p.description 工程師
+              div(style = "display: none")
+                {% for i in '012'|make_list %}
+                br
+                {% endfor %}
+                p.description 技能：Java, C
+                p.description 系所：電機系111
+                p.description 興趣：球類, 手遊, 漫畫, 魔方
+
+          .card
+            {% load static %}
+            img.personal_pic(src="{% static 'file/name6_2.png'%}")
+            .card-bg
+            .card-detail 
+              p.personal-name 蕭孟恩
+              p.description 設計師
+              div(style = "display: none")
+                {% for i in '012'|make_list %}
+                br
+                {% endfor %}
+                p.description 技能：Ai, ID, Miro, Figma
+                p.description 系所：不分系110
+                p.description 興趣：科幻電影, 獨立音樂
+
+          .card
+            {% load static %}
+            img.personal_pic(src="{% static 'file/name7_2.png'%}")
+            .card-bg
+            .card-detail 
+              p.personal-name 林雯琪
+              p.description 工程師
+              div(style = "display: none")
+                {% for i in '012'|make_list %}
+                br
+                {% endfor %}
+                p.description 技能：C++, Python
+                p.description 系所：電機系111
+                p.description 興趣：聽音樂, 打遊戲
+
+        #gap3 
+
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+      script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
+      {% load static %}
+      script(src="{% static 'js/about_us.js' %}")
