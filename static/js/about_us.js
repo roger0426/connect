@@ -3,7 +3,6 @@
 //touchscreen -> 'single touch'
 
 $(document).ready(function(){
-
   $('.card') // card animation
   .on('mouseenter', function(){ // mouse enter
     $('.card-detail', this).stop(true, false).animate({height: '100%'}, 400);
