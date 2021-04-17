@@ -1,5 +1,7 @@
+{% load static %}
 doctype html                                               
-html                                                          
+html
+  {% include 'navbar.pug' %}                                                    
   head
     meta(charset="utf-8")
     meta(content="width=device-width, initial-scale=1", name="viewport")                 
@@ -7,21 +9,8 @@ html
     {% load sass_tags %}
     link(href="{% sass_src 'sass/about_us.sass' %}",rel="stylesheet",type="text/css")  
 
-  header
-    #navbar 
-      #title CONNECT.
-
-      ul
-        li 
-          a.button(href="#") home
-        li 
-          a.button(href="#") activity
-        li 
-          a.button(href="#") about us
-
   body
     #background
-    {% load static %}
     img#group-img(src="{% static './file/groupphoto_2.png'%}")
     #about_details 
     #img-cards
@@ -34,7 +23,6 @@ html
       #flex-column
         .flex-row
           .card
-            {% load static %}
             img.personal_pic(src="{% static 'file/name1_2.png'%}")
             .card-bg
             .card-detail 
@@ -46,7 +34,6 @@ html
                 p.description 興趣：攝影, 打桌球, 打code, 彈吉他
           
           .card
-            {% load static %}
             img.personal_pic(src="{% static 'file/name2_2.png'%}")
             .card-bg
             .card-detail 
@@ -58,7 +45,6 @@ html
                 p.description 興趣：學習語言, 寫詞編曲, 烘焙
 
           .card
-            {% load static %}
             img.personal_pic(src="{% static 'file/name3_2.png'%}")
             .card-bg
             .card-detail 
@@ -70,7 +56,6 @@ html
                 p.description 興趣：聽音樂, 看電影, 打code
 
           .card
-            {% load static %}
             img.personal_pic(src="{% static 'file/name4_2.png'%}")
             .card-bg
             .card-detail 
@@ -83,7 +68,6 @@ html
 
         .flex-row
           .card
-            {% load static %}
             img.personal_pic(src="{% static 'file/name5_2.png'%}")
             .card-bg
             .card-detail 
@@ -95,7 +79,6 @@ html
                 p.description 興趣：球類, 手遊, 漫畫, 魔方
 
           .card
-            {% load static %}
             img.personal_pic(src="{% static 'file/name6_2.png'%}")
             .card-bg
             .card-detail 
@@ -107,7 +90,6 @@ html
                 p.description 興趣：科幻電影, 獨立音樂
 
           .card
-            {% load static %}
             img.personal_pic(src="{% static 'file/name7_2.png'%}")
             .card-bg
             .card-detail 
@@ -123,5 +105,4 @@ html
       script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
       script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
       script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
-      {% load static %}
       script(src="{% static 'js/about_us.js' %}")
