@@ -7,21 +7,74 @@ body
   display: flex
   flex-direction: row
   position: absolute
-  top: 50%
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  top:  50%
+  left: 75%
+  -ms-transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%)
+  margin-top: 3%
 
 #background-element
-  margin-right: 10%
-  
+  span
+    border-radius: 50%
+    display: block
+.grey-bubble
+  position: absolute
+  background-color: #DEDEDE
+#grey-bubble1
+  height: 30vh
+  width:  30vh
+  top:    28%
+  left:   18%
+  z-index: -2
+#grey-bubble2
+  height: 10vh
+  width:  10vh
+  top:    65%
+  left:   39%
+  z-index: 2
+#grey-bubble3
+  height: 8vh
+  width:  8vh
+  top:    30%
+  left:   40%
+  z-index: 3
+#grey-bubble4
+  height: 5vh
+  width:  5vh
+  top:    80%
+  left:   20%
+  z-index: 3
+
+#white-bubble1
+  height: 50vh
+  width:  50vh
+  top:    30%
+  left:   20%
+  position: absolute
+  z-index: -1
+  background-color: #FFFFFF
+  display: block
+
+#introduction
+  position: absolute
+  z-index: 1
+  top:    43%
+  left:   24%
+  text-align: center
+
+
 
 #login-panel
   background-color: #FFCFBF
   border: 2px solid #FFFFFF
   box-shadow: 5px 10px 25px 0px #00000026
   border-radius: 3vh
+  display: flex
+  flex-direction: column
+  align-items: stretch
   padding: 6vh
+  z-index: 10
+
 
   h1
     text-align: center
@@ -49,5 +102,9 @@ body
 
       #sign-up
         margin-right: 0
+  
+  hr
+    margin: 0
+
 
 

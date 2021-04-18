@@ -6,21 +6,12 @@ html
     meta(content="width=device-width, initial-scale=1", name="viewport")                 
     title CONNECT 
     {% load sass_tags %}
-    link(href="{% sass_src 'sass/login.sass' %}",rel="stylesheet",type="text/css")  
+    link(href="{% sass_src 'sass/login.sass' %}",rel="stylesheet",type="text/css")
+    link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
   {% include 'navbar.pug' %}
 
   body
     #panel1 <!-- bubble and loging panel -->
-      #background-element
-        #bubbles
-          #grey-bubble1.grey-bubble 
-          #grey-bubble2.grey-bubble
-          #grey-bubble3.grey-bubble
-          #grey-bubble4.grey-bubble 
-          #white-bubble1
-        #introduction <!-- join us.. -->
-          h1 Join us now.
-          p.description introduction introduction introduction
       
       #login-panel
         h1 Login 
@@ -35,6 +26,18 @@ html
           input(type="button", value="Login")
           p or 
           p#sign-up Sign up
+
+    #background-element
+      #bubbles
+        span#grey-bubble1.grey-bubble 
+        span#grey-bubble2.grey-bubble
+        span#grey-bubble3.grey-bubble
+        span#grey-bubble4.grey-bubble 
+        span#white-bubble1
+      #introduction <!-- join us.. -->
+        h1 Join us now.
+        p.description introduction introduction introduction
+      
 
     
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
