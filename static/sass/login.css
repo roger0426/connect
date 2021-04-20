@@ -81,13 +81,16 @@ body {
     font-size: 3vw; }
   #login-panel .input-area {
     border-radius: 3vh;
-    height: 3vw; }
+    height: 3vw;
+    font-size: 1.3vw;
+    outline: none; }
   #login-panel .input-description {
     margin: 1.5vw 0 0.5vw 0; }
   #login-panel .buttons {
     display: flex;
     flex-direction: row;
-    margin-left: 5vw; }
+    margin-left: 5vw;
+    outline: none; }
     #login-panel .buttons input {
       margin: 0 1vw 0 0;
       padding: 5%;
