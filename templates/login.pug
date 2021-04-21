@@ -12,20 +12,22 @@ html
 
   body
     #panel1 <!-- bubble and loging panel -->
-      
-      #login-panel
-        h1 Login 
-        hr.solid
-        p.input-description User ID
-        input.input-area(type="text")
-        p.input-description Password 
-        input.input-area(type="password")
-        p#forgot Forgot Password?
+      form(action="", method="post")
+        #login-panel
+          h1 Login 
+          hr.solid
+          p.input-description User ID
+          label(for='username')
+          input#username.input-area(type="text", name='username')
+          p.input-description Password 
+          label(for='password')
+          input#password.input-area(type="password", name='password')
+          p#forgot Forgot Password?
 
-        .buttons 
-          input(type="button", value="Login")
-          //p or
-          p#sign-up Sign up
+          .buttons 
+            input(value="Login", type="submmit")
+            //p or
+            p#sign-up Sign up
 
     #background-element
       #bubbles
