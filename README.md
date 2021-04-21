@@ -2,7 +2,8 @@
 
 ## CONNECT webpages
 - hosted by Heroku
-- about-us https://connectuniverse.herokuapp.com/about_us/
+- about-us   https://connectuniverse.herokuapp.com/about_us/
+- login page https://connectuniverse.herokuapp.com/login/
 
 ## Important!
 Please do **NOT** paste the secret key inside `settings.py`
