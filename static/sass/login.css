@@ -1,3 +1,25 @@
+@font-face {
+  font-family: jf-openhuninn;
+  src: url("../fonts/jf-openhuninn-1.1.woff") format("woff");
+  font-display: auto; }
+
+:root {
+  --background-color: #FFFFFF;
+  --background-color-card: #E8E8E8;
+  --fontcolor-navbarbutton: #000000;
+  --fontcolor-header: #000000;
+  --fontcolor-text: #000000;
+  --color-main: #FAAD95;
+  --font-family-header: "jf-openhuninn", "Tahoma", "Arial";
+  --font-style-header: normal;
+  --font-family-text: "jf-openhuninn", "Tahoma", "Arial";
+  --font-style-text: normal;
+  --font-family-card: "jf-openhuninn", "Tahoma", "Arial";
+  --font-style-card: normal; }
+
+* {
+  font-family: var(--font-family-text); }
+
 body {
   background-color: #FAAD95;
   width: 100%;
@@ -13,6 +35,14 @@ body {
   transform: translate(-50%, -50%);
   margin-top: 3%; }
 
+#bubbles {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  left: 30%;
+  top: 54%;
+  width: 50%;
+  height: 50px; }
+
 #background-element span {
   border-radius: 50%;
   display: block; }
@@ -21,49 +51,81 @@ body {
   position: absolute;
   background-color: #DEDEDE; }
 
+.bbox {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%; }
+
+#gb1 {
+  transform: translate(-50%, -50%) rotate(0.12turn);
+  z-index: -2; }
+
 #grey-bubble1 {
   height: 30vh;
   width: 30vh;
-  top: 28%;
-  left: 18%;
-  z-index: -2; }
+  position: absolute;
+  transform: translate(-105%, -50%);
+  top: 50%;
+  left: 50%; }
+
+#gb2 {
+  transform: translate(-50%, -50%) rotate(0.13turn);
+  z-index: 2; }
 
 #grey-bubble2 {
   height: 10vh;
   width: 10vh;
-  top: 65%;
-  left: 39%;
-  z-index: 2; }
+  position: absolute;
+  transform: translate(200%, -50%);
+  top: 50%;
+  left: 50%; }
+
+#gb3 {
+  transform: translate(-50%, -50%) rotate(0.86turn);
+  z-index: 3; }
 
 #grey-bubble3 {
   height: 8vh;
   width: 8vh;
-  top: 30%;
-  left: 40%;
-  z-index: 3; }
+  position: absolute;
+  transform: translate(285%, -50%);
+  top: 50%;
+  left: 50%; }
+
+#gb4 {
+  transform: translate(-50%, -50%) rotate(0.33turn);
+  z-index: 4; }
 
 #grey-bubble4 {
   height: 5vh;
   width: 5vh;
-  top: 80%;
-  left: 20%;
-  z-index: 3; }
+  position: absolute;
+  transform: translate(600%, -50%);
+  top: 50%;
+  left: 50%; }
+
+#wb1 {
+  transform: translate(-50%, -50%) rotate(0.12turn);
+  z-index: -1; }
 
 #white-bubble1 {
   height: 50vh;
   width: 50vh;
-  top: 30%;
-  left: 20%;
+  top: 50%;
+  left: 50%;
   position: absolute;
-  z-index: -1;
+  transform: translate(-50%, -50%);
   background-color: #FFFFFF;
   display: block; }
 
 #introduction {
   position: absolute;
+  transform: translate(-50%, -50%);
   z-index: 1;
-  top: 43%;
-  left: 24%;
+  top: 50%;
+  left: 30%;
   text-align: center; }
 
 #login-panel {
