@@ -29,9 +29,10 @@ body
 #panel1
   display: flex
   flex-direction: row
+  flex-wrap: wrap
   position: absolute
   top:  50%
-  left: 75%
+  left: 80%
   -ms-transform: translate(-50%, -50%)
   transform: translate(-50%, -50%)
   margin-top: 3%
@@ -64,8 +65,8 @@ body
   transform: translate(-50%, -50%) rotate(0.12turn)
   z-index: -2
 #grey-bubble1
-  height: 30vh
-  width:  30vh
+  height: 15vw
+  width:  15vw
   position: absolute
   transform: translate(-105%, -50%)
   top:    50%
@@ -75,8 +76,8 @@ body
   transform: translate(-50%, -50%) rotate(0.13turn)
   z-index: 2
 #grey-bubble2
-  height: 10vh
-  width:  10vh
+  height: 5vw
+  width:  5vw
   position: absolute
   transform: translate(200%, -50%)
   top:    50%
@@ -86,8 +87,8 @@ body
   transform: translate(-50%, -50%) rotate(0.86turn)
   z-index: 3
 #grey-bubble3
-  height: 8vh
-  width:  8vh
+  height: 4vw
+  width:  4vw
   position: absolute
   transform: translate(285%, -50%)
   top:    50%
@@ -97,8 +98,8 @@ body
   transform: translate(-50%, -50%) rotate(0.33turn)
   z-index: 4
 #grey-bubble4
-  height: 5vh
-  width:  5vh
+  height: 2.5vw
+  width:  2.5vw
   position: absolute
   transform: translate(600%, -50%)
   top:    50%
@@ -108,8 +109,8 @@ body
   transform: translate(-50%, -50%) rotate(0.12turn)
   z-index: -1
 #white-bubble1
-  height: 50vh
-  width:  50vh
+  height: 25vw
+  width:  25vw
   top:    50%
   left:   50%
   position: absolute
@@ -125,6 +126,10 @@ body
   left: 30%
   text-align: center
 
+  h1
+    font-size: 3vw
+  p
+    font-size: 1.3vw
 
 
 #login-panel
@@ -137,7 +142,7 @@ body
   align-items: stretch
   padding: 6vh
   z-index: 10
-
+  width:   45%
 
   h1
     text-align: center
@@ -151,32 +156,46 @@ body
 
   .input-description
     margin: 1.5vw 0 0.5vw 0
+    font-size: 1.3vw
+
+  #forgot
+    font-size:  1vw
+    text-align: right
+    margin-top: 0
+  #forgot:hover
+    cursor: pointer
+    text-decoration: underline
 
   .buttons
     display: flex
     flex-direction: row
-    margin-left: 5vw
+    margin: 10% 0 0 6vw
+    font-size:  1vw
     outline: none
 
     input
       //outline: none
       margin: 0 1vw 0 0 
-      padding: 5%
+      padding: 8%
       background-color: #3AEDC2
       border: none
       border-radius: 1.5vh
       height: 5vh
+      font-size: 1vw
+    
+    input:hover
+      cursor: pointer
 
     p
-      margin: 0 1vw 0 0
-      text-align: center
-      font-size: 1.5vw
+      margin: 0 5% 0 0
+      text-align: center 
+      padding-top: 8%
 
-      #sign-up
-        margin-right: 0
+    #sign-up
+      margin: auto 0
+    #sign-up:hover
+      cursor: pointer
+      text-decoration: underline
   
   hr
     margin: 0
-
-
-
