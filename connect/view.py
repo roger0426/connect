@@ -14,8 +14,8 @@ def login(request, *args, **kwargs):
 
   user = auth.authenticate(username=username, password=password)
 
-  if user is not None and user.is_active:
-    auth.login(request, user)
-    return HttpResponseRedirect('/')
-  else:
-    return render(request, 'login.pug', {})
+  # if user is not None and user.is_active:
+  #   auth.login(request, user)
+  #   return HttpResponseRedirect('/')
+  # else:
+  return render(request, 'login.pug', {})
