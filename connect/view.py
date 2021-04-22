@@ -1,5 +1,6 @@
 from django.contrib import auth
 from django.shortcuts import render
+from django.http import HttpResponseRedirect 
 
 def login(request, *args, **kwargs):
 
