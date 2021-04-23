@@ -4,7 +4,7 @@ html
   head
     meta(charset="utf-8")
     meta(content="width=device-width, initial-scale=1", name="viewport")                 
-    title CONNECT 
+    title CONNECT - Login
     {% load sass_tags %}
     link(href="{% sass_src 'sass/login.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
@@ -12,7 +12,7 @@ html
 
   body
     #panel1 <!-- bubble and loging panel -->
-      form(action="", method="post")
+      form(action="", method="post") {% csrf_token %} <!-- csrf_token is for safety concern of django -->
         #login-panel
           h1 Login 
           hr.solid

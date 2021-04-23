@@ -71,6 +71,10 @@
   margin-right: 10%; }
 
 #navbar a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: var(--fontcolor-navbarbutton); }
+
+#navbar a:hover {
+  text-decoration: underline; }
 
 /*# sourceMappingURL=navbar.css.map */

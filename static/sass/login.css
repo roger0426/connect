@@ -153,14 +153,16 @@ body {
     font-size: 1.3vw;
     outline: none;
     text-indent: 1em;
-    padding-bottom: 0; }
+    padding-bottom: 0;
+    margin: 0; }
   #login-panel .input-description {
     margin: 1.5vw 0 0.5vw 0;
     font-size: 1.3vw; }
   #login-panel #forgot {
     font-size: 1vw;
     text-align: right;
-    margin-top: 0; }
+    margin-top: 0;
+    padding-right: 0.5vw; }
   #login-panel #forgot:hover {
     cursor: pointer;
     text-decoration: underline; }
@@ -176,8 +178,8 @@ body {
       background-color: #3AEDC2;
       border: none;
       border-radius: 1.5vh;
-      height: 3vh;
-      width: 3vw;
+      height: 5vh;
+      width: auto;
       font-size: 1vw;
       outline: none; }
     #login-panel .buttons input:hover {
