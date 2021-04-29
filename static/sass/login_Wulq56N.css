@@ -25,10 +25,21 @@ body {
   width: 100%;
   height: 100%; }
 
+#panel1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin-top: 3%; }
+
 #bubbles {
   position: fixed;
   transform: translate(-50%, -50%);
-  left: 32%;
+  left: 30%;
   top: 54%;
   width: 50%;
   height: 50px; }
@@ -116,23 +127,11 @@ body {
   z-index: 1;
   top: 50%;
   left: 30%;
-  text-align: center;
-  width: 20vw; }
+  text-align: center; }
   #introduction h1 {
     font-size: 3vw; }
   #introduction p {
     font-size: 1.3vw; }
-
-#panel1 {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  position: absolute;
-  top: 50%;
-  left: 70%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  margin-top: 3%; }
 
 #login-panel {
   background-color: #FFCFBF;
@@ -144,7 +143,7 @@ body {
   align-items: stretch;
   padding: 5vw;
   z-index: 10;
-  width: 100%; }
+  width: 40vw; }
   #login-panel h1 {
     text-align: center;
     font-size: 3vw; }
@@ -202,24 +201,13 @@ body {
 
 @media only screen and (max-width: 450px) {
   #navbar {
-    display: none;
-    visibility: hidden; }
+    display: none; }
   #bubbles {
     display: none; }
   #panel1 {
-    top: 40%;
-    left: 50%;
-    width: 65%;
-    height: 60%; }
+    left: 50%; }
   #introduction {
-    top: 85%;
-    left: 50%;
-    width: 80%; }
-    #introduction h1 {
-      font-size: 13vw;
-      margin: 10px 0px; }
-    #introduction p {
-      font-size: 5vw;
-      margin: 10px 0px; } }
+    top: 80%;
+    left: 50%; } }
 
 /*# sourceMappingURL=login.css.map */

@@ -26,21 +26,10 @@ body
   width: 100%
   height: 100%
 
-#panel1
-  display: flex
-  flex-direction: row
-  flex-wrap: wrap
-  position: absolute
-  top:  50%
-  left: 80%
-  -ms-transform: translate(-50%, -50%)
-  transform: translate(-50%, -50%)
-  margin-top: 3%
-
 #bubbles
   position: fixed
   transform: translate(-50%, -50%)
-  left: 30%
+  left: 32%
   top: 54%
   width: 50%
   height: 50px
@@ -125,11 +114,22 @@ body
   top: 50%
   left: 30%
   text-align: center
-
+  width: 20vw
   h1
     font-size: 3vw
   p
     font-size: 1.3vw
+
+#panel1
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  position: absolute
+  top:  50%
+  left: 70%
+  -ms-transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%)
+  margin-top: 3%
 
 
 #login-panel
@@ -140,14 +140,13 @@ body
   display: flex
   flex-direction: column
   align-items: stretch
-  padding: 6vh
+  padding: 5vw
   z-index: 10
-  width:   45%
+  width: 100%
 
   h1
     text-align: center
     font-size: 3vw
-
 
   form 
     display: flex
@@ -160,7 +159,7 @@ body
     font-size: 1.3vw
     outline: none
     text-indent: 1em
-    padding-bottom: 0
+    padding: 5px 0px 5px 0px
 
   .input-description
     margin: 1.5vw 0 0.5vw 0
@@ -214,12 +213,23 @@ body
 
 @media only screen and (max-width: 450px)
   #navbar
+    display: none
     visibility: hidden
   #bubbles
-    visibility: hidden
+    display: none
   #panel1
+    top: 40%
     left: 50%
+    width: 65%
+    height: 60%
+  
   #introduction
-    top: 80%
+    top: 85%
     left: 50%
-
+    width: 80% 
+    h1
+      font-size: 13vw
+      margin: 10px 0px
+    p
+      font-size: 5vw
+      margin: 10px 0px
