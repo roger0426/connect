@@ -5,9 +5,11 @@ html
     meta(charset="utf-8")
     meta(content="width=device-width, initial-scale=1", name="viewport")                 
     title CONNECT - Login
+    link(href="{% static 'file/logo.ico' %}",rel="icon")
     {% load sass_tags %}
     link(href="{% sass_src 'sass/login.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
+    
   {% include 'navbar.pug' %}
 
   body
@@ -45,6 +47,7 @@ html
           label(for='sign-pwd')
           input#sign-pwd.input-area(type="password", name="sign-pwd", placeholder="Password")
           input#terms(type="checkbox", name="terms")
+          p#err-msg(style="display: none")
           label(for='terms') I Accept Terms and Condition, Privacy Policy
 
           .buttons

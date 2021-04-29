@@ -32,6 +32,7 @@ def login_view(request, *args, **kwargs):
 
   print(fname)
 
+  
   user = auth.authenticate(username=username, password=password)
 
   if user is not None and user.is_active:
