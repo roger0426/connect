@@ -1,8 +1,9 @@
 from django.contrib import auth
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.http import HttpResponseRedirect 
 
-def login(request, *args, **kwargs):
+def login_view(request, *args, **kwargs):
 
   if request.user.is_authenticated:
     return HttpResponseRedirect('/')
@@ -10,7 +11,26 @@ def login(request, *args, **kwargs):
   username = request.POST.get('username', '')
   password = request.POST.get('password', '')
 
-  print(request.POST.get('username', ''))
+  fname = request.POST.get('fname', '')
+  lname = request.POST.get('lname', '')
+  sid   = request.POST.get('sid', '')
+  email = request.POST.get('email', '')
+  sign_pwd = request.POST.get('sign-pwd', '')
+
+  if 'terms' in request.POST:
+    user = User.objects.create_user(
+      email = email,
+      username = sid,
+      first_name = fname,
+      last_name = lname,
+      password = sign_pwd
+    )
+    user.save()
+
+    print(sid, "account create successfully")
+
+
+  print(fname)
 
   user = auth.authenticate(username=username, password=password)
 
