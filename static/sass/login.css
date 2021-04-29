@@ -199,4 +199,15 @@ body {
   #login-panel hr {
     margin: 0; }
 
+@media only screen and (max-width: 450px) {
+  #navbar {
+    visibility: hidden; }
+  #bubbles {
+    visibility: hidden; }
+  #panel1 {
+    left: 50%; }
+  #introduction {
+    top: 80%;
+    left: 50%; } }
+
 /*# sourceMappingURL=login.css.map */
