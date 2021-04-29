@@ -12,8 +12,9 @@ html
 
   body
     #panel1 <!-- bubble and loging panel -->
-      form(action="", method="post") {% csrf_token %} <!-- csrf_token is for safety concern of django -->
-        #login-panel
+      
+      #login-panel
+        form(action="", method="post") {% csrf_token %} <!-- csrf_token is for safety concern of django -->
           h1 Login 
           hr.solid
           p.input-description User ID
@@ -25,9 +26,30 @@ html
           p#forgot Forgot Password?
 
           .buttons 
-            input(value="Login", type="submit")
+            input#login-btn(value="Login", type="submit")
             //p or
             p#sign-up Sign up
+      
+      #sign-up-panel(style="display: none")
+        form(action ="", method="post") {% csrf_token %}
+          h1 Sign Up
+          hr.solid
+          label(for='fname')
+          input#fname.input-area(type="text", name='fname', placeholder="First Name")
+          label(for='lname')
+          input#lname.input-area(type="text", name='lname', placeholder="Last Name")
+          label(for='sid')
+          input#sid.input-area(type="text", name='sid', placeholder="Student ID")
+          label(for='email')
+          input#email.input-area(type="email", name='email', placeholder="Email")
+          label(for='sign-pwd')
+          input#sign-pwd.input-area(type="password", name="sign-pwd", placeholder="Password")
+          input#terms(type="checkbox", name="terms")
+          label(for='terms') I Accept Terms and Condition, Privacy Policy
+
+          .buttons
+            input#sign-up-btn(value="Sign Up", type="submit")
+            p#login Log in
 
     #background-element
       #bubbles

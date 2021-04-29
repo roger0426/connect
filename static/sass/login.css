@@ -147,14 +147,17 @@ body {
   #login-panel h1 {
     text-align: center;
     font-size: 3vw; }
+  #login-panel form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; }
   #login-panel .input-area {
     border-radius: 3vh;
     height: 3vw;
     font-size: 1.3vw;
     outline: none;
     text-indent: 1em;
-    padding-bottom: 0;
-    margin: 0; }
+    padding-bottom: 0; }
   #login-panel .input-description {
     margin: 1.5vw 0 0.5vw 0;
     font-size: 1.3vw; }

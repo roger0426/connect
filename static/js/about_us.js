@@ -1,7 +1,3 @@
-//computer -> 'hover' or 'mouseenter, mouseleave'
-
-//touchscreen -> 'single touch'
-
 $(document).ready(function(){
   $('.card') // card animation
   .on('mouseenter', function(){ // mouse enter
@@ -30,3 +26,4 @@ $(document).ready(function(){
     $(this).css("text-decoration", "none");
   })
 })
+
