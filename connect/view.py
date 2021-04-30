@@ -2,9 +2,11 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.http import HttpResponseRedirect 
+import time
+
 
 def login_view(request, *args, **kwargs):
-
+  time.sleep(0.4)
   if request.user.is_authenticated:
     return HttpResponseRedirect('/')
 
@@ -16,8 +18,9 @@ def login_view(request, *args, **kwargs):
   sid   = request.POST.get('sid', '')
   email = request.POST.get('email', '')
   sign_pwd = request.POST.get('sign-pwd', '')
+  double_pwd = request.POST.get('double-pwd', '')
 
-  if 'terms' in request.POST:
+  if 'terms' in request.POST and sign_pwd == double_pwd:
     user = User.objects.create_user(
       email = email,
       username = sid,
@@ -28,6 +31,8 @@ def login_view(request, *args, **kwargs):
     user.save()
 
     print(sid, "account create successfully")
+  else:
+    print("something went wrong, check term or password")
 
 
   print(fname)

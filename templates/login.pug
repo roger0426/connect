@@ -46,8 +46,10 @@ html
           input#email.input-area(type="email", name='email', placeholder="Email")
           label(for='sign-pwd')
           input#sign-pwd.input-area(type="password", name="sign-pwd", placeholder="Password")
-          input#terms(type="checkbox", name="terms")
+          label(for='double-pwd')
+          input#double-pwd.input-area(type="password", name="double-pwd", placeholder="Please type password again")
           p#err-msg(style="display: none")
+          input#terms(type="checkbox", name="terms")
           label(for='terms') I Accept Terms and Condition, Privacy Policy
 
           .buttons
