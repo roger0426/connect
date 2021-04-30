@@ -209,9 +209,6 @@ body {
     margin: 0; }
 
 @media only screen and (max-width: 450px) {
-  #navbar {
-    display: none;
-    visibility: hidden; }
   #bubbles {
     display: none; }
   #panel1 {
