@@ -34,13 +34,24 @@ $(document).ready(function(){
 })
 
 // check password validaty dynamically
-let intervalId = window.setInterval(function(){ // check every 1.5 seconds
+let intervalId = window.setInterval(function(){ // check every 0.5 seconds
   if ($('#double-pwd').val().length > 0) {
     if ($('#sign-pwd').val() === $('#double-pwd').val()) {
       $('#err-msg').hide();
+      $('#sign-up-btn').prop('disabled', false);
     } else {
       $('#err-msg').show();
+      $('#sign-up-btn').prop('disabled', true);
       $('#err-msg').text("喔不，你的密碼好像打錯了！");
     }
   }
-}, 1500);
+  if (!($('#terms').is(':checked')) ||
+      $('#double-pwd').val().length == 0 ||
+      $('#email').val().length == 0 ||
+      $('#sid').val().length == 0) {
+    $('#sign-up-btn').prop('disabled', true);
+  } else {
+    $('#sign-up-btn').prop('disabled', false);
+  }
+
+}, 500);
