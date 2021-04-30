@@ -26,13 +26,17 @@ body
   width: 100%
   height: 100%
 
+::placeholder
+  color: #FFCFBF
+  opacity: 1
+
 #bubbles
   position: fixed
   transform: translate(-50%, -50%)
   left: 32%
   top: 54%
-  width: 50%
-  height: 50px
+  width: 200px
+  height: 200px
 
 #background-element
   span
@@ -147,6 +151,9 @@ body
   h1
     text-align: center
     font-size: 3vw
+  
+  hr
+    background-color: black
 
   form 
     display: flex
@@ -160,7 +167,6 @@ body
     outline: none
     text-indent: 1em
     padding: 5px 0px 5px 0px
-
   .input-description
     margin: 1.5vw 0 0.5vw 0
     font-size: 1.3vw
@@ -168,7 +174,7 @@ body
   #forgot
     font-size:  1vw
     text-align: right
-    margin-top: 0
+    margin-top: 0.2vw
     padding-right: 0.5vw
   #forgot:hover
     cursor: pointer
@@ -177,32 +183,39 @@ body
   .buttons
     display: flex
     flex-direction: row
-    margin: 10% 0 0 6vw
-    font-size:  1vw
+    //margin: 10% 0 0 6vw
     outline: none
 
     input
       //outline: none
-      margin: 0 1vw 0 0 
-      padding: 8%
+      //position: absolute
+      transform: translate(-50%, 0)
+      //top: 50%
+      //left: 50%
+      margin: 0 1vw 0 50% 
+      padding: 5% 10% 5% 10%
       background-color: #3AEDC2
       border: none
-      border-radius: 1.5vh
-      height: 5vh
+      border-radius: 3vh
+      height: auto
       width: auto
-      font-size: 1vw
-      outline: none
-    
+      outline: none 
+      font-size:  1.7vw
     input:hover
       cursor: pointer
 
     p
       margin: 0 5% 0 0
+      transform: translate(-50%, 0)
       text-align: center 
       padding-top: 8%
+      font-size:  1vw
 
     #sign-up
-      margin: auto 0
+      //margin: auto 0
+      font-size:  1.2vw
+      transform: translate(-50%, 0)
+
     #sign-up:hover
       cursor: pointer
       text-decoration: underline
@@ -210,7 +223,7 @@ body
   hr
     margin: 0
 
-
+//phone responsive
 @media only screen and (max-width: 450px)
   #navbar
     display: none

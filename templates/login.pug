@@ -17,24 +17,24 @@ html
       
       #login-panel
         form(action="", method="post") {% csrf_token %} <!-- csrf_token is for safety concern of django -->
-          h1 Login 
+          h1 登入 
           hr.solid
-          p.input-description User ID
+          p.input-description 使用者帳號
           label(for='username')
-          input#username.input-area(type="text", name='username', placeholder="Username")
-          p.input-description Password 
+          input#username.input-area(type="text", name='username', placeholder="帳號")
+          p.input-description 使用者密碼 
           label(for='password')
-          input#password.input-area(type="password", name='password', placeholder="Password")
-          p#forgot Forgot Password?
+          input#password.input-area(type="password", name='password', placeholder="密碼")
+          p#forgot 忘記密碼？
 
           .buttons 
-            input#login-btn(value="Login", type="submit")
-            //p or
-            p#sign-up Sign up
+            input#login-btn(value="登入", type="submit")
+            p or
+            p#sign-up 註冊
       
       #sign-up-panel(style="display: none")
         form(action ="", method="post") {% csrf_token %}
-          h1 Sign Up
+          h1 註冊
           hr.solid
           label(for='fname')
           input#fname.input-area(type="text", name='fname', placeholder="First Name")
