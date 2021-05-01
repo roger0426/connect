@@ -14,9 +14,86 @@ html
 
   body
 
+    .container
+      .PostColumn
+        .header
+          img src="./使用者的頭像"
+        .PostForm
+          .header
+            img src="./使用者的頭像"
+          .user
+            p 使用者的姓名  
+          <div data-role="popup" id="myPopup">      
+            <form action="./資料送去的地址" method="post">
+              <input type="text" name="title" value="活動標題">
+              <input type="text" name="subtitle" value="副標題">
+              <textarea rows="輸入框的列數" cols="輸入框的行數">內容詳情</textarea>
+              <input type="submit" value="發佈>">
+            </form>
+          </div>
 
+      .divider
+        .line
+        .word
+          p  分類
+        <select nabe="category">
+          <option value="recommend">推薦</option>
+          <option value="recommend">推薦</option>
+          <option value="recommend">推薦</option>
+        </select>
+        .word
+          p 排序
+        <select nabe="sort">
+          <option value="like">感興趣</option>
+          <option value="like">感興趣</option>
+          <option value="like">感興趣</option>
+        </select>
 
+      .board
+        <div data-page="PostUnit_0">
+          .frame
+          .main
+          .mark
+            img #mark src="./白色的書籤"
+          .title 
+            p ＃揪團 去COSTCO
+          .subtitle 
+            p 有會員卡，缺司機
+          .attach  
+            img src="./"
+            img src="./"
+          .like 
+            img src="./愛心的圖案"
+            a //愛心的數字
+          .comment
+            img src="./留言的圖案"
+            a //留言的數字
+        </div>
+        <div data-page="PostUnit_{n}"></div>
+          .frame
+          .main
+          .mark
+            img #mark src="./白色的書籤"
+          .title 
+            p 一起讀書好朋友
+          .subtitle 
+            p 期末互相監督成長
+          .attach  
+            img src="./"
+            img src="./"
+          .like 
+            img src="./愛心的圖案"
+            a //愛心的數字
+          .comment
+            img src="./留言的圖案"
+            a //留言的數字
+
+    #gotop
+      p ˄
+    
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
     script(src="{% static 'js/login.js' %}")
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
