@@ -45,3 +45,7 @@ def login_view(request, *args, **kwargs):
     return HttpResponseRedirect('/')
   else:
     return render(request, 'login.pug', {})
+
+  
+def home_view(request):
+  return render(request, 'homepage.pug', {})
