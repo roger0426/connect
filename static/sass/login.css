@@ -18,7 +18,9 @@
   --font-style-card: normal; }
 
 * {
-  font-family: var(--font-family-text); }
+  font-family: var(--font-family-text);
+  padding: 0;
+  margin: 0; }
 
 body {
   background-color: #FAAD95;
@@ -136,22 +138,24 @@ body {
   left: 70%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  margin-top: 3%; }
+  margin-top: 3%;
+  width: 22vw; }
 
 #login-panel {
   background-color: #FFCFBF;
-  border: 2px solid #FFFFFF;
+  border: 1.5px solid #FFFFFF;
   box-shadow: 5px 10px 25px 0px #00000026;
   border-radius: 3vh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 5vw;
+  padding: 2vw;
   z-index: 10;
   width: 100%; }
   #login-panel h1 {
     text-align: center;
-    font-size: 3vw; }
+    font-size: 3vw;
+    margin: 1vw 0 2vw 0; }
   #login-panel hr {
     background-color: black; }
   #login-panel form {
@@ -161,10 +165,10 @@ body {
   #login-panel .input-area {
     border-radius: 3vh;
     height: 3vw;
-    font-size: 1.3vw;
     outline: none;
     text-indent: 1em;
-    padding: 5px 0px 5px 0px; }
+    padding: 5px 0px 5px 0px;
+    border: 0; }
   #login-panel .input-description {
     margin: 1.5vw 0 0.5vw 0;
     font-size: 1.3vw; }
@@ -177,12 +181,15 @@ body {
     cursor: pointer;
     text-decoration: underline; }
   #login-panel .buttons {
-    display: flex;
-    flex-direction: row;
-    outline: none; }
+    position: relative;
+    margin: 7% 0 10% 0;
+    outline: none;
+    height: 5vw; }
     #login-panel .buttons input {
-      transform: translate(-50%, 0);
-      margin: 0 1vw 0 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
       padding: 5% 10% 5% 10%;
       background-color: #3AEDC2;
       border: none;
@@ -194,14 +201,19 @@ body {
     #login-panel .buttons input:hover {
       cursor: pointer; }
     #login-panel .buttons p {
-      margin: 0 5% 0 0;
-      transform: translate(-50%, 0);
+      position: absolute;
+      transform: translate(-50%, -60%);
+      top: 50%;
+      right: 16%;
       text-align: center;
-      padding-top: 8%;
       font-size: 1vw; }
     #login-panel .buttons #sign-up {
       font-size: 1.2vw;
-      transform: translate(-50%, 0); }
+      position: absolute;
+      transform: translate(0, -50%);
+      top: 50%;
+      right: 5%;
+      color: #3AEDC2; }
     #login-panel .buttons #sign-up:hover {
       cursor: pointer;
       text-decoration: underline; }

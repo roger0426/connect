@@ -20,6 +20,8 @@
 
 *
   font-family: var(--font-family-text)
+  padding: 0
+  margin: 0
 
 body
   background-color:#FAAD95
@@ -134,24 +136,24 @@ body
   -ms-transform: translate(-50%, -50%)
   transform: translate(-50%, -50%)
   margin-top: 3%
-
+  width: 22vw
 
 #login-panel
   background-color: #FFCFBF
-  border: 2px solid #FFFFFF
+  border: 1.5px solid #FFFFFF
   box-shadow: 5px 10px 25px 0px #00000026
   border-radius: 3vh
   display: flex
   flex-direction: column
   align-items: stretch
-  padding: 5vw
+  padding: 2vw
   z-index: 10
   width: 100%
 
   h1
     text-align: center
     font-size: 3vw
-  
+    margin: 1vw 0 2vw 0   
   hr
     background-color: black
 
@@ -163,10 +165,11 @@ body
   .input-area
     border-radius: 3vh
     height: 3vw
-    font-size: 1.3vw
+    //font-size: 1.3vw
     outline: none
     text-indent: 1em
     padding: 5px 0px 5px 0px
+    border: 0
   .input-description
     margin: 1.5vw 0 0.5vw 0
     font-size: 1.3vw
@@ -181,18 +184,20 @@ body
     text-decoration: underline
 
   .buttons
-    display: flex
-    flex-direction: row
-    //margin: 10% 0 0 6vw
+    //display: flex
+    //flex-direction: row
+    position: relative
+    margin: 7% 0 10% 0
     outline: none
+    height: 5vw
 
     input
       //outline: none
-      //position: absolute
-      transform: translate(-50%, 0)
-      //top: 50%
-      //left: 50%
-      margin: 0 1vw 0 50% 
+      position: absolute
+      transform: translate(-50%, -50%)
+      top: 50%
+      left: 50%
+      //margin: 0 1vw 0 50% 
       padding: 5% 10% 5% 10%
       background-color: #3AEDC2
       border: none
@@ -205,16 +210,23 @@ body
       cursor: pointer
 
     p
-      margin: 0 5% 0 0
-      transform: translate(-50%, 0)
+      position: absolute
+      transform: translate(-50%, -60%)
+      top: 50%
+      right: 16%
+      //margin: 0 5% 0 0
       text-align: center 
-      padding-top: 8%
+      //padding-top: 8%
       font-size:  1vw
 
     #sign-up
       //margin: auto 0
       font-size:  1.2vw
-      transform: translate(-50%, 0)
+      position: absolute
+      transform: translate(0, -50%)
+      top: 50%
+      right: 5%
+      color: #3AEDC2
 
     #sign-up:hover
       cursor: pointer
