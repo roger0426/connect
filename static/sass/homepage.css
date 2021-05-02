@@ -47,7 +47,7 @@ body {
   height: 47vw;
   background-color: #A0A0A0;
   border-radius: 5vw;
-  z-index: 0; }
+  z-index: 2; }
   #eventwindow * {
     font-color: #000000; }
   #eventwindow #description {
@@ -136,10 +136,16 @@ body {
       width: 5vw;
       background-color: green; }
   #eventwindow #sent {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
     width: 100%;
     height: 100%;
-    z-index: 2; }
-    #eventwindow #sent #background {
+    opacity: 0.7;
+    z-index: 1;
+    background-color: #000000; }
+    #eventwindow #sent #sentbackbround {
       background-color: #000000;
       opacity: 0.3;
       -webkit-backdrop-filter: blur(5px);

@@ -23,6 +23,7 @@ $("#mark").click(function() {
 });
 
 
-$("#title").click(function() {
+$("#sent, #title").click(function() {
   $("#eventwindow").toggle();
-})
+  $("sent").css.toggle();
+});
