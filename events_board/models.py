@@ -2,10 +2,10 @@ from django.db import models
 from django.conf import settings
 
 # Create your models here.
-class EventBoard(models.Model):
+class EventsBoard(models.Model):
   # basic information
-  title = models.CharField(max_length=8)
-  subtitle = models.CharField(max_length=30)
+  title = models.CharField(max_length=50)
+  subtitle = models.CharField(max_length=70)
   detail = models.TextField()
 
   #about people

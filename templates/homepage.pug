@@ -49,13 +49,13 @@ html
         .line
         .word
           p  分類
-        select #category
+        select#category
           option(value='recommend')推薦
           option(value='recommend')推薦
           option(value='recommend')推薦
         .word
           p 排序
-        select #sort
+        select#sort
           option(value='hot')最多人喜歡
           option(value='hot')最多人喜歡
           option(value='hot')最多人喜歡
@@ -65,7 +65,7 @@ html
           .frame
           .main
           .mark
-            img #mark src="./白色的書籤"
+            img#mark src="./白色的書籤"
           .title 
             p ＃揪團 去COSTCO
           .subtitle 
@@ -84,7 +84,7 @@ html
           .frame
           .main
           .mark
-            img #mark src="./白色的書籤"
+            img#mark src="./白色的書籤"
           .title 
             p ＃揪團 去COSTCO
           .subtitle 
@@ -104,14 +104,15 @@ html
       
     #eventwindow
       #description
-        h1 揪團去costco
+        h1 {{ event_obj.title }}
         #keywords
           #kw1 costco
           p ,
           #kw2 有會員卡
           p ,
           #kw3 缺司機
-        #detail 我真的很想去costco我真的很想去costco我真的很想去costco我真的很想去costco
+        #subtitle {{ event_obj.subtitle }}
+        #detail {{ event_obj.detail }}
 
       #member
         #organizer.member
@@ -128,7 +129,7 @@ html
           
         #date 2021/5/2
         #organizerpic
-        p 蔡孟岑
+        p {{ event_obj.host.username }}
 
         #likebutton
           #like-y

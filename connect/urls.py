@@ -16,8 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from connect.view import login_view, home_view
+from connect.view import login_view
 from about_us.views import about_us_view
+from events_board.views import home_view
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
