@@ -38,4 +38,123 @@ body {
   cursor: pointer;
   z-index: 1000; }
 
+#eventwindow {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 65vw;
+  height: 47vw;
+  background-color: #A0A0A0;
+  border-radius: 5vw;
+  z-index: 0; }
+  #eventwindow * {
+    font-color: #000000; }
+  #eventwindow #description {
+    position: absolute;
+    left: 5.5vw;
+    top: 5.5vw;
+    height: 65%;
+    width: 50%; }
+    #eventwindow #description h1 {
+      font-size: 5vw;
+      color: blue; }
+    #eventwindow #description #keywords {
+      display: flex;
+      flex-direction: row;
+      margin: 1vw 0 0 0; }
+      #eventwindow #description #keywords * {
+        font-size: 2vw;
+        color: red; }
+    #eventwindow #description #detail {
+      font-size: 2vw;
+      color: yellow;
+      margin: 2.5vw 0 0 0; }
+  #eventwindow #member {
+    position: absolute;
+    transform: translate(0, -100%);
+    display: flex;
+    flex-direction: row;
+    bottom: -1.5vw;
+    width: 70%;
+    height: 5vw;
+    left: 5vw; }
+    #eventwindow #member * {
+      position: relative;
+      margin: 0 0.5vw 0 0.5vw; }
+    #eventwindow #member #bar {
+      width: 0.5vw;
+      height: 4vw;
+      transform: translate(0, -50%);
+      top: 50%;
+      background-color: red; }
+    #eventwindow #member .member {
+      height: 5vw;
+      width: 5vw;
+      border-radius: 2.5vw;
+      background-color: #FFC3B0; }
+  #eventwindow #eventoperate {
+    position: absolute;
+    transform: translate(0, -50%);
+    height: 100%;
+    width: 20%;
+    top: 50%;
+    right: 3vw; }
+    #eventwindow #eventoperate * {
+      position: absolute;
+      transform: translate(-50%, -50%); }
+    #eventwindow #eventoperate #flag {
+      transform: translate(-50%, 0);
+      top: 0;
+      left: 50%; }
+    #eventwindow #eventoperate #date {
+      top: 15%;
+      left: 50%;
+      opacity: 0.8;
+      font-size: 2.5vw; }
+    #eventwindow #eventoperate #organizerpic {
+      height: 8vw;
+      width: 8vw;
+      top: 14vw;
+      left: 50%;
+      border-radius: 4vw;
+      background-color: green; }
+    #eventwindow #eventoperate p {
+      top: 20vw;
+      left: 50%;
+      font-size: 2vw; }
+    #eventwindow #eventoperate #likebutton {
+      left: 25%;
+      bottom: 0;
+      height: 5vw;
+      width: 5vw;
+      background-color: red; }
+    #eventwindow #eventoperate #applybutton {
+      left: 75%;
+      bottom: 0;
+      height: 5vw;
+      width: 5vw;
+      background-color: green; }
+  #eventwindow #sent {
+    width: 100%;
+    height: 100%;
+    z-index: 2; }
+    #eventwindow #sent #background {
+      background-color: #000000;
+      opacity: 0.3;
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px); }
+    #eventwindow #sent #mailicon {
+      position: absolute;
+      transform: translate(-50%, -100%);
+      height: 30%;
+      width: auto;
+      top: 65%;
+      left: 50%; }
+    #eventwindow #sent p {
+      font-size: 3vw;
+      transform: translate(-50%, 0);
+      top: 70%;
+      left: 50%; }
+
 /*# sourceMappingURL=homepage.css.map */

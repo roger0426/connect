@@ -44,40 +44,68 @@ body
 
 #eventwindow
   position: fixed
-  width: 70%
-  height: 70%
+  transform: translate(-50%, -50%)
+  top: 50%
+  left: 50%
+  width: 65vw
+  height: 47vw
+  background-color: #A0A0A0
+  border-radius: 5vw
+  //opacity: 0.2
+  z-index: 0
+  
+  *
+    font-color: #000000
   
   #description
     position: absolute
-    left: 10%
-    top: 10%
+    left: 5.5vw
+    top: 5.5vw
     height: 65%
-    width: 60%
+    width: 50%
     
+    h1
+      font-size: 5vw
+      color: blue
+          
     #keywords
+      display: flex
+      flex-direction: row
+      margin: 1vw 0 0 0
       *
-        display: flex
-        flex-direction: row
         font-size: 2vw
-        color: #B0B0B0
-    
-    p
-      margin: 5vw 0 0 0
+        color: red
+        
+    #detail
       font-size: 2vw
+      color: yellow
+      margin: 2.5vw 0 0 0
 
   #member
-    position:absolute
-    left: 5%
-    top: 75%
-    hr
-      width: 1px
-      size: 10px
-      color: #0A0A0A
+    position: absolute
+    transform: translate(0, -100%)
+    display: flex
+    flex-direction: row
+    bottom: -1.5vw
+    width: 70%
+    height: 5vw
+    left: 5vw
+    
+    *
+      position: relative
+      margin: 0 0.5vw 0 0.5vw
+      
+    #bar
+      width: 0.5vw
+      height: 4vw
+      transform: translate(0, -50%)
+      top: 50%
+      background-color: red
+      
     .member
-      position: absolute
-      height: 3vw
-      width: 3vw
-      border-radius: 1.5vw
+      height: 5vw
+      width: 5vw
+      border-radius: 2.5vw
       background-color: #FFC3B0
 
     #organizer
@@ -90,11 +118,11 @@ body
       
   #eventoperate
     position: absolute
-    transform: translate(-50%, -50%)
+    transform: translate(0, -50%)
     height: 100%
     width: 20%
     top: 50%
-    right: 15%
+    right: 3vw
     *
       position: absolute
       transform: translate(-50%, -50%)
@@ -103,45 +131,54 @@ body
       transform: translate(-50%, 0)
       top: 0
       left: 50%
+      
     #date
       top: 15%
       left: 50%
       opacity: 0.8
+      font-size: 2.5vw
 
     #organizerpic
-      height: 5vw
-      width: 5vw
-      border-radius: 2.5vw
-      background-color: #FFC3B0
+      height: 8vw
+      width: 8vw
+      top: 14vw
+      left: 50%
+      border-radius: 4vw
+      background-color: green
+      
     p
-      font-size: 0.5vw
+      top: 20vw
+      left: 50%
+      font-size: 2vw
     
     #likebutton
       left: 25%
-      bottom: 10%
-      height: 3vw
-      width: 3vw
-
+      bottom: 0
+      height: 5vw
+      width: 5vw
+      background-color: red
+      
       #like-y
-        {% load static %}
-        background: url()
+        //{% load static %}
+        //background: url()
 
       #like-n
-        {% load static %}
-        background: url()
+        //{% load static %}
+        //background: url()
     
     #applybutton
-      right: 25%
-      bottom: 10%
-      height: 3vw
-      width: 3vw
+      left: 75%
+      bottom: 0
+      height: 5vw
+      width: 5vw
+      background-color: green
 
       #apply-y
-        {% load static %}
-        background: url()
+        //{% load static %}
+        //background: url()
       #apply-n
-        {% load static %}
-        background: url()
+        //{% load static %}
+        //background: url()
 
   #sent
     width: 100%
@@ -155,8 +192,8 @@ body
       backdrop-filter: blur(5px);
 
     #mailicon
-      {% load static %}
-      background: url()
+      //{% load static %}
+      //background: url()
       position: absolute
       transform: translate(-50%, -100%)
       height: 30%
