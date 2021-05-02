@@ -43,8 +43,8 @@ body {
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  width: 65vw;
-  height: 47vw;
+  width: 70%;
+  height: 70%;
   background-color: #A0A0A0;
   border-radius: 5vw;
   z-index: 2; }
@@ -144,19 +144,25 @@ body {
     height: 100%;
     border-radius: 5vw;
     opacity: 0.6;
-    z-index: 1;
-    background-color: #5A5A5A; }
+    z-index: 1; }
+    #eventwindow #sent #bgblur {
+      opacity: 50%;
+      backdrop-filter: blur(5px);
+      border-radius: 5vw;
+      height: 100%;
+      width: 100%;
+      z-index: 3; }
     #eventwindow #sent #mailicon {
       position: absolute;
       transform: translate(-50%, -100%);
-      height: 30%;
+      height: 100%;
       width: auto;
       top: 65%;
       left: 50%; }
     #eventwindow #sent p {
       position: absolute;
       transform: translate(-50%, 0);
-      font-size: 5vw;
+      font-size: 3.5vw;
       text-align: center;
       bottom: 20%;
       left: 50%;

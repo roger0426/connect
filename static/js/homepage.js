@@ -23,7 +23,18 @@ $("#mark").click(function() {
 });
 
 
-$("#sent, #title").click(function() {
+$("#title").click(function() {
+  console.log("click title");
   $("#eventwindow").toggle();
-  $("sent").toggle();
+  $("#sent").toggle();
+});
+
+$("#sent").click(function() {
+  console.log("click sent");
+  $("#sent").hide();
+});
+
+$("#applybutton").click(function() {
+  console.log("click apply");
+  $("#sent").show();
 });
