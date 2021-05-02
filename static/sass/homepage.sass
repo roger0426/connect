@@ -29,16 +29,143 @@ body
 
 .container
 
-#gotop {
-    position: fixed;
-    border-radius: 50px;
-    right: 20px;
-    bottom: 30px;
-    padding: 10px 16px;
-    font-size: 25px;
-    background: rgba(228, 211, 211, 0.36);
-    color: #FAFCFD;
-    cursor: pointer;
-    z-index: 1000;
-}
+#gotop 
+  position: fixed;
+  border-radius: 50px;
+  right: 20px;
+  bottom: 30px;
+  padding: 10px 16px;
+  font-size: 25px;
+  background: rgba(228, 211, 211, 0.36);
+  color: #FAFCFD;
+  cursor: pointer;
+  z-index: 1000;
 
+
+#eventwindow
+  position: fixed
+  width: 70%
+  height: 70%
+  
+  #description
+    position: absolute
+    left: 10%
+    top: 10%
+    height: 65%
+    width: 60%
+    
+    #keywords
+      *
+        display: flex
+        flex-direction: row
+        font-size: 2vw
+        color: #B0B0B0
+    
+    p
+      margin: 5vw 0 0 0
+      font-size: 2vw
+
+  #member
+    position:absolute
+    left: 5%
+    top: 75%
+    hr
+      width: 1px
+      size: 10px
+      color: #0A0A0A
+    .member
+      position: absolute
+      height: 3vw
+      width: 3vw
+      border-radius: 1.5vw
+      background-color: #FFC3B0
+
+    #organizer
+      
+    #member1
+    #member2
+    #member3
+    #member4
+    #member5
+      
+  #eventoperate
+    position: absolute
+    transform: translate(-50%, -50%)
+    height: 100%
+    width: 20%
+    top: 50%
+    right: 15%
+    *
+      position: absolute
+      transform: translate(-50%, -50%)
+
+    #flag
+      transform: translate(-50%, 0)
+      top: 0
+      left: 50%
+    #date
+      top: 15%
+      left: 50%
+      opacity: 0.8
+
+    #organizerpic
+      height: 5vw
+      width: 5vw
+      border-radius: 2.5vw
+      background-color: #FFC3B0
+    p
+      font-size: 0.5vw
+    
+    #likebutton
+      left: 25%
+      bottom: 10%
+      height: 3vw
+      width: 3vw
+
+      #like-y
+        {% load static %}
+        background: url()
+
+      #like-n
+        {% load static %}
+        background: url()
+    
+    #applybutton
+      right: 25%
+      bottom: 10%
+      height: 3vw
+      width: 3vw
+
+      #apply-y
+        {% load static %}
+        background: url()
+      #apply-n
+        {% load static %}
+        background: url()
+
+  #sent
+    width: 100%
+    height: 100%
+    z-index: 2
+
+    #background
+      background-color: #000000
+      opacity: 0.3
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+
+    #mailicon
+      {% load static %}
+      background: url()
+      position: absolute
+      transform: translate(-50%, -100%)
+      height: 30%
+      width: auto
+      top: 65%
+      left: 50%
+    
+    p
+      font-size: 3vw
+      transform: translate(-50%, 0)
+      top: 70%
+      left: 50%
