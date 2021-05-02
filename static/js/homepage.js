@@ -25,5 +25,5 @@ $("#mark").click(function() {
 
 $("#sent, #title").click(function() {
   $("#eventwindow").toggle();
-  $("sent").css.toggle();
+  $("sent").toggle();
 });

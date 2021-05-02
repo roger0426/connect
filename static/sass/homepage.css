@@ -142,14 +142,10 @@ body {
     left: 50%;
     width: 100%;
     height: 100%;
-    opacity: 0.7;
+    border-radius: 5vw;
+    opacity: 0.6;
     z-index: 1;
-    background-color: #000000; }
-    #eventwindow #sent #sentbackbround {
-      background-color: #000000;
-      opacity: 0.3;
-      -webkit-backdrop-filter: blur(5px);
-      backdrop-filter: blur(5px); }
+    background-color: #5A5A5A; }
     #eventwindow #sent #mailicon {
       position: absolute;
       transform: translate(-50%, -100%);
@@ -158,9 +154,14 @@ body {
       top: 65%;
       left: 50%; }
     #eventwindow #sent p {
-      font-size: 3vw;
+      position: absolute;
       transform: translate(-50%, 0);
-      top: 70%;
-      left: 50%; }
+      font-size: 5vw;
+      text-align: center;
+      bottom: 20%;
+      left: 50%;
+      width: 100%;
+      opacity: 1;
+      color: white; }
 
 /*# sourceMappingURL=homepage.css.map */
