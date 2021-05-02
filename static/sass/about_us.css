@@ -2,7 +2,8 @@
 @font-face {
   font-family: jf-openhuninn;
   src: url("../fonts/jf-openhuninn-1.1.woff") format("woff");
-  font-display: auto; }
+  font-display: auto;
+}
 
 :root {
   --background-color: #FFFFFF;
@@ -16,14 +17,16 @@
   --font-family-text: "jf-openhuninn", "Tahoma", "Arial";
   --font-style-text: normal;
   --font-family-card: "jf-openhuninn", "Tahoma", "Arial";
-  --font-style-card: normal; }
+  --font-style-card: normal;
+}
 
 /************ */
 /*entire area */
 /************ */
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /*background-group photo */
 #background {
@@ -32,18 +35,21 @@
   z-index: -1;
   width: 100%;
   height: 100%;
-  opacity: 1; }
+  opacity: 1;
+}
 
 #group-img {
   position: fixed;
-  transform: translate(0, -5%);
+  -webkit-transform: translate(0, -5%);
+          transform: translate(0, -5%);
   /*top: 0; */
   top: 0;
   left: 0;
   width: 100%;
   height: auto;
   opacity: 1;
-  z-index: 0; }
+  z-index: 0;
+}
 
 /******* */
 /*header */
@@ -56,7 +62,8 @@ h1 {
   font-weight: normal;
   font-family: var(--font-family-header);
   font-style: var(--font-style-header);
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 p {
   /*要怎麼限制在一定的(左右)範圍內？ */
@@ -68,28 +75,34 @@ p {
   font-family: var(--font-family-text);
   font-style: var(--font-style-text);
   text-decoration: none;
-  line-height: 1.4825em; }
+  line-height: 1.4825em;
+}
 
 a {
-  color: var(--fontcolor-header); }
+  color: var(--fontcolor-header);
+}
 
 #slogan {
-  margin: 0 32vw 0 32vw; }
+  margin: 0 32vw 0 32vw;
+}
 
 /********** */
 /*main area */
 /********** */
 #gap1 {
   width: 100%;
-  height: 0px; }
+  height: 0px;
+}
 
 #gap2 {
   width: 100%;
-  height: 7vh; }
+  height: 7vh;
+}
 
 #gap3 {
   width: 100%;
-  height: 3vh; }
+  height: 3vh;
+}
 
 #img-cards {
   position: absolute;
@@ -98,24 +111,42 @@ a {
   border-radius: 4vw 4vw 0px 0px;
   width: 100%;
   top: 85%;
-  z-index: 1; }
-  #img-cards h1 {
-    /* about us words */
-    padding-top: 1%;
-    padding-bottom: 3%; }
+  z-index: 1;
+}
+
+#img-cards h1 {
+  /* about us words */
+  padding-top: 1%;
+  padding-bottom: 3%;
+}
 
 #flex-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  margin: 0 10% 0 10%; }
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 10% 0 10%;
+}
 
 .flex-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   /*gap: 3%; */
-  margin: 1.5% 0 1.5% 0; }
+  margin: 1.5% 0 1.5% 0;
+}
 
 .card {
   position: relative;
@@ -127,7 +158,8 @@ a {
   border-radius: 1.5vw;
   opacity: 1;
   z-index: 2;
-  margin-right: 3%; }
+  margin-right: 3%;
+}
 
 .card-bg {
   position: absolute;
@@ -138,21 +170,25 @@ a {
   background-color: var(--color-main);
   border-radius: 1.5vw;
   opacity: 0.95;
-  z-index: 4; }
+  z-index: 4;
+}
 
 .personal_pic {
   position: absolute;
   /*父空間的position不能為static */
-  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
   bottom: 0;
   left: 50%;
   border-radius: 1.5vw;
   width: 100%;
-  z-index: 3; }
+  z-index: 3;
+}
 
 .card-detail {
   position: absolute;
-  transform: translate(5%, 0);
+  -webkit-transform: translate(5%, 0);
+          transform: translate(5%, 0);
   height: 28%;
   width: 100%;
   left: 0;
@@ -161,43 +197,56 @@ a {
   /*UL/UR/DR/DL */
   border-radius: 1.5vw;
   opacity: 0.7;
-  z-index: 4; }
-  .card-detail * {
-    font-size: 36px;
-    text-align: left;
-    color: var(--fontcolor-header); }
-  .card-detail p {
-    text-align: left;
-    padding-left: 5%;
-    margin: 2% 0; }
+  z-index: 4;
+}
+
+.card-detail * {
+  font-size: 36px;
+  text-align: left;
+  color: var(--fontcolor-header);
+}
+
+.card-detail p {
+  text-align: left;
+  padding-left: 5%;
+  margin: 2% 0;
+}
 
 .personal-name {
   font-size: 36px;
   line-height: 1em;
   margin: 0;
   padding-top: 5%;
-  padding-left: 5%; }
+  padding-left: 5%;
+}
 
 .description {
   font-size: 18px;
-  padding-right: 10%; }
+  padding-right: 10%;
+}
 
 .hidden-description {
   position: absolute;
   bottom: 0;
-  padding-bottom: 1vh; }
+  padding-bottom: 1vh;
+}
 
 @media only screen and (max-width: 1024px) {
   /* display on phone */
   #group-img {
-    top: 5.2vw; }
+    top: 5.2vw;
+  }
   #slogan {
-    margin: 0 14vw; }
+    margin: 0 14vw;
+  }
   #img-cards {
-    top: 35%; }
+    top: 35%;
+  }
   .card {
-    margin-bottom: 5%; }
+    margin-bottom: 5%;
+  }
   .flex-row {
-    margin: 0; } }
-
+    margin: 0;
+  }
+}
 /*# sourceMappingURL=about_us.css.map */
