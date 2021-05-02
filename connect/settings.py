@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     # owned
     'about_us',
+    'event_board',
 ]
 
 MIDDLEWARE = [
