@@ -12,14 +12,17 @@ class EventBoard(models.Model):
   host = models.ForeignKey(
     settings.AUTH_USER_MODEL,
     on_delete=models.CASCADE, # delete when author deleted
+    related_name="host_name",
   )
 
   participants = models.ForeignKey(
     settings.AUTH_USER_MODEL,
     on_delete=models.CASCADE,
+    related_name="participant_name",
   )
 
   interested_users = models.ForeignKey(
     settings.AUTH_USER_MODEL,
     on_delete=models.CASCADE,
+    related_name="intereted_user_name",
   )
