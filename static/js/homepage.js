@@ -21,3 +21,8 @@ $("#mark").click(function() {
 		toggle = true;
 	}
 });
+
+
+$("#title").click(function() {
+  $("#eventwindow").toggle();
+})

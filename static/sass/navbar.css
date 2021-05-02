@@ -4,8 +4,7 @@
 @font-face {
   font-family: jf-openhuninn;
   src: url("../fonts/jf-openhuninn-1.1.woff") format("woff");
-  font-display: auto;
-}
+  font-display: auto; }
 
 :root {
   --background_color: #FFFFFF;
@@ -19,22 +18,13 @@
   --font-family-text: "jf-openhuninn", "Tahoma", "Arial";
   --font-style-text: normal;
   --font-family-card: "jf-openhuninn", "Tahoma", "Arial";
-  --font-style-card: normal;
-}
+  --font-style-card: normal; }
 
 #navbar {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
   position: fixed;
   top: 0;
   left: 0;
@@ -44,8 +34,7 @@
   border-radius: 0px 0px 4vw 4vw;
   /*UpLeft/UR/DR/DL */
   opacity: 0.8;
-  z-index: 1;
-}
+  z-index: 1; }
 
 #title {
   font-family: var(--font-family-header);
@@ -55,24 +44,17 @@
   /*top: 0px; */
   line-height: 7.5vw;
   color: var(--fontcolor_header);
-  margin-left: 3.5%;
-}
+  margin-left: 3.5%; }
 
 /*button */
 #navbar ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-around;
+  align-items: center;
   /*gap: 10%; */
   white-space: nowrasp;
   list-style-type: none;
-  margin-right: 5%;
-}
+  margin-right: 5%; }
 
 #navbar li {
   display: block;
@@ -86,21 +68,17 @@
   font-size: 2.5vw;
   font-family: var(--font-family-text);
   font-style: var(--font-style-text);
-  margin-right: 10%;
-}
+  margin-right: 10%; }
 
 #navbar a {
   text-decoration: none;
-  color: var(--fontcolor-navbarbutton);
-}
+  color: var(--fontcolor-navbarbutton); }
 
 #navbar a:hover {
-  text-decoration: underline;
-}
+  text-decoration: underline; }
 
 @media only screen and (max-width: 450px) {
   #navbar {
-    display: none;
-  }
-}
+    display: none; } }
+
 /*# sourceMappingURL=navbar.css.map */
