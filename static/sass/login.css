@@ -1,7 +1,8 @@
 @font-face {
   font-family: jf-openhuninn;
   src: url("../fonts/jf-openhuninn-1.1.woff") format("woff");
-  font-display: auto; }
+  font-display: auto;
+}
 
 :root {
   --background-color: #FFFFFF;
@@ -15,96 +16,138 @@
   --font-family-text: "jf-openhuninn", "Tahoma", "Arial";
   --font-style-text: normal;
   --font-family-card: "jf-openhuninn", "Tahoma", "Arial";
-  --font-style-card: normal; }
+  --font-style-card: normal;
+}
 
 * {
   font-family: var(--font-family-text);
   padding: 0;
-  margin: 0; }
+  margin: 0;
+}
 
 body {
   background-color: #FAAD95;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+}
+
+::-webkit-input-placeholder {
+  color: #FFCFBF;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #FFCFBF;
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  color: #FFCFBF;
+  opacity: 1;
+}
 
 ::placeholder {
   color: #FFCFBF;
-  opacity: 1; }
+  opacity: 1;
+}
 
 #bubbles {
   position: fixed;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   left: 32%;
   top: 54%;
   width: 200px;
-  height: 200px; }
+  height: 200px;
+}
 
 #background-element span {
   border-radius: 50%;
-  display: block; }
+  display: block;
+}
 
 .grey-bubble {
   position: absolute;
-  background-color: #DEDEDE; }
+  background-color: #DEDEDE;
+}
 
 .bbox {
   height: 50px;
   width: 50px;
   position: absolute;
   left: 50%;
-  top: 50%; }
+  top: 50%;
+}
 
 #gb1 {
-  transform: translate(-50%, -50%) rotate(0.12turn);
-  z-index: -2; }
+  -webkit-transform: translate(-50%, -50%) rotate(0.12turn);
+          transform: translate(-50%, -50%) rotate(0.12turn);
+  z-index: -2;
+}
 
 #grey-bubble1 {
   height: 15vw;
   width: 15vw;
   position: absolute;
-  transform: translate(-105%, -50%);
+  -webkit-transform: translate(-105%, -50%);
+          transform: translate(-105%, -50%);
   top: 50%;
-  left: 50%; }
+  left: 50%;
+}
 
 #gb2 {
-  transform: translate(-50%, -50%) rotate(0.13turn);
-  z-index: 2; }
+  -webkit-transform: translate(-50%, -50%) rotate(0.13turn);
+          transform: translate(-50%, -50%) rotate(0.13turn);
+  z-index: 2;
+}
 
 #grey-bubble2 {
   height: 5vw;
   width: 5vw;
   position: absolute;
-  transform: translate(200%, -50%);
+  -webkit-transform: translate(200%, -50%);
+          transform: translate(200%, -50%);
   top: 50%;
-  left: 50%; }
+  left: 50%;
+}
 
 #gb3 {
-  transform: translate(-50%, -50%) rotate(0.86turn);
-  z-index: 3; }
+  -webkit-transform: translate(-50%, -50%) rotate(0.86turn);
+          transform: translate(-50%, -50%) rotate(0.86turn);
+  z-index: 3;
+}
 
 #grey-bubble3 {
   height: 4vw;
   width: 4vw;
   position: absolute;
-  transform: translate(285%, -50%);
+  -webkit-transform: translate(285%, -50%);
+          transform: translate(285%, -50%);
   top: 50%;
-  left: 50%; }
+  left: 50%;
+}
 
 #gb4 {
-  transform: translate(-50%, -50%) rotate(0.33turn);
-  z-index: 4; }
+  -webkit-transform: translate(-50%, -50%) rotate(0.33turn);
+          transform: translate(-50%, -50%) rotate(0.33turn);
+  z-index: 4;
+}
 
 #grey-bubble4 {
   height: 2.5vw;
   width: 2.5vw;
   position: absolute;
-  transform: translate(600%, -50%);
+  -webkit-transform: translate(600%, -50%);
+          transform: translate(600%, -50%);
   top: 50%;
-  left: 50%; }
+  left: 50%;
+}
 
 #wb1 {
-  transform: translate(-50%, -50%) rotate(0.12turn);
-  z-index: -1; }
+  -webkit-transform: translate(-50%, -50%) rotate(0.12turn);
+          transform: translate(-50%, -50%) rotate(0.12turn);
+  z-index: -1;
+}
 
 #white-bubble1 {
   height: 25vw;
@@ -112,131 +155,198 @@ body {
   top: 50%;
   left: 50%;
   position: absolute;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   background-color: #FFFFFF;
-  display: block; }
+  display: block;
+}
 
 #introduction {
   position: absolute;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   z-index: 1;
   top: 50%;
   left: 30%;
   text-align: center;
-  width: 20vw; }
-  #introduction h1 {
-    font-size: 3vw; }
-  #introduction p {
-    font-size: 1.3vw; }
+  width: 20vw;
+}
+
+#introduction h1 {
+  font-size: 3vw;
+}
+
+#introduction p {
+  font-size: 1.3vw;
+}
 
 #panel1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   position: absolute;
   top: 50%;
   left: 70%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   margin-top: 3%;
-  width: 22vw; }
+  width: 22vw;
+}
 
 #login-panel {
   background-color: #FFCFBF;
   border: 1.5px solid #FFFFFF;
-  box-shadow: 5px 10px 25px 0px #00000026;
+  -webkit-box-shadow: 5px 10px 25px 0px #00000026;
+          box-shadow: 5px 10px 25px 0px #00000026;
   border-radius: 3vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   padding: 2vw;
   z-index: 10;
-  width: 100%; }
-  #login-panel h1 {
-    text-align: center;
-    font-size: 3vw;
-    margin: 1vw 0 2vw 0; }
-  #login-panel hr {
-    background-color: black; }
-  #login-panel form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch; }
-  #login-panel .input-area {
-    border-radius: 3vh;
-    height: 3vw;
-    outline: none;
-    text-indent: 1em;
-    padding: 5px 0px 5px 0px;
-    border: 0; }
-  #login-panel .input-description {
-    margin: 1.5vw 0 0.5vw 0;
-    font-size: 1.3vw; }
-  #login-panel #forgot {
-    font-size: 1vw;
-    text-align: right;
-    margin-top: 0.2vw;
-    padding-right: 0.5vw; }
-  #login-panel #forgot:hover {
-    cursor: pointer;
-    text-decoration: underline; }
-  #login-panel .buttons {
-    position: relative;
-    margin: 7% 0 10% 0;
-    outline: none;
-    height: 5vw; }
-    #login-panel .buttons input {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      top: 50%;
-      left: 50%;
-      padding: 5% 10% 5% 10%;
-      background-color: #3AEDC2;
-      border: none;
-      border-radius: 3vh;
-      height: auto;
-      width: auto;
-      outline: none;
-      font-size: 1.7vw; }
-    #login-panel .buttons input:hover {
-      cursor: pointer; }
-    #login-panel .buttons p {
-      position: absolute;
-      transform: translate(-50%, -60%);
-      top: 50%;
-      right: 16%;
-      text-align: center;
-      font-size: 1vw; }
-    #login-panel .buttons #sign-up {
-      font-size: 1.2vw;
-      position: absolute;
-      transform: translate(0, -50%);
-      top: 50%;
-      right: 5%;
-      color: #3AEDC2; }
-    #login-panel .buttons #sign-up:hover {
-      cursor: pointer;
-      text-decoration: underline; }
-  #login-panel hr {
-    margin: 0; }
+  width: 100%;
+}
+
+#login-panel h1 {
+  text-align: center;
+  font-size: 3vw;
+  margin: 1vw 0 2vw 0;
+}
+
+#login-panel hr {
+  background-color: black;
+}
+
+#login-panel form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+#login-panel .input-area {
+  border-radius: 3vh;
+  height: 3vw;
+  outline: none;
+  text-indent: 1em;
+  padding: 5px 0px 5px 0px;
+  border: 0;
+}
+
+#login-panel .input-description {
+  margin: 1.5vw 0 0.5vw 0;
+  font-size: 1.3vw;
+}
+
+#login-panel #forgot {
+  font-size: 1vw;
+  text-align: right;
+  margin-top: 0.2vw;
+  padding-right: 0.5vw;
+}
+
+#login-panel #forgot:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#login-panel .buttons {
+  position: relative;
+  margin: 7% 0 10% 0;
+  outline: none;
+  height: 5vw;
+}
+
+#login-panel .buttons input {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  padding: 5% 10% 5% 10%;
+  background-color: #3AEDC2;
+  border: none;
+  border-radius: 3vh;
+  height: auto;
+  width: auto;
+  outline: none;
+  font-size: 1.7vw;
+}
+
+#login-panel .buttons input:hover {
+  cursor: pointer;
+}
+
+#login-panel .buttons p {
+  position: absolute;
+  -webkit-transform: translate(-50%, -60%);
+          transform: translate(-50%, -60%);
+  top: 50%;
+  right: 16%;
+  text-align: center;
+  font-size: 1vw;
+}
+
+#login-panel .buttons #sign-up {
+  font-size: 1.2vw;
+  position: absolute;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  top: 50%;
+  right: 5%;
+  color: #3AEDC2;
+}
+
+#login-panel .buttons #sign-up:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#login-panel hr {
+  margin: 0;
+}
 
 @media only screen and (max-width: 450px) {
   #bubbles {
-    display: none; }
+    display: none;
+  }
   #panel1 {
     top: 40%;
     left: 50%;
     width: 65%;
-    height: 60%; }
+    height: 60%;
+  }
   #introduction {
     top: 85%;
     left: 50%;
-    width: 80%; }
-    #introduction h1 {
-      font-size: 13vw;
-      margin: 10px 0px; }
-    #introduction p {
-      font-size: 5vw;
-      margin: 10px 0px; } }
-
+    width: 80%;
+  }
+  #introduction h1 {
+    font-size: 13vw;
+    margin: 10px 0px;
+  }
+  #introduction p {
+    font-size: 5vw;
+    margin: 10px 0px;
+  }
+}
 /*# sourceMappingURL=login.css.map */
