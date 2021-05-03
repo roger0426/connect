@@ -143,7 +143,7 @@ html
       #sent
         #bgblur
         {% load static %}
-        img#mailicon src={% static '../file/lettericon.png' %}
+        img#mailicon(src="{% static 'file/lettericon.png' %}")
         p 已向發起者送出邀請
     
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")

@@ -182,16 +182,17 @@ body
         //background: url()
 
   #sent
-    position: absolute
+    position: relative
     transform: translate(-50%, -50%)
     top: 50%
     left: 50%
     width: 100%
     height: 100%
     border-radius: 5vw
-    opacity: 0.6
+    opacity: 0.9
     z-index: 1
-    
+    backdrop-filter: blur(10px)
+    -webkit-backdrop-filter: blur(10px)
         
     //-webkit-backdrop-filter: blur(3px)
     //backdrop-filter: blur(8px)
@@ -199,8 +200,7 @@ body
     //backdrop-filter: contrast(40%)
 
     #bgblur
-      opacity: 50%
-      backdrop-filter: blur(5px)
+      opacity: 0.5
       border-radius: 5vw
       height: 100%
       width: 100%
