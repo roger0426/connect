@@ -41,12 +41,14 @@ body {
 #eventwindow {
   position: fixed;
   transform: translate(-50%, -50%);
-  top: 50%;
+  top: 55%;
   left: 50%;
-  width: 70%;
-  height: 70%;
-  background-color: #A0A0A0;
+  width: 60%;
+  padding-top: 40%;
+  background-color: #F5FBFE;
   border-radius: 5vw;
+  border: 5px solid rgba(58, 237, 194, 0.5);
+  box-shadow: 10px 10px 25px 5px #00000026;
   z-index: 2; }
   #eventwindow * {
     font-color: #000000; }
@@ -55,21 +57,22 @@ body {
     left: 5.5vw;
     top: 5.5vw;
     height: 65%;
-    width: 50%; }
+    width: 60%; }
     #eventwindow #description h1 {
-      font-size: 5vw;
-      color: blue; }
+      font-size: 3.5vw;
+      color: #000000; }
     #eventwindow #description #keywords {
       display: flex;
       flex-direction: row;
       margin: 1vw 0 0 0; }
       #eventwindow #description #keywords * {
-        font-size: 2vw;
-        color: red; }
+        font-size: 1.5vw;
+        color: purple; }
     #eventwindow #description #detail {
-      font-size: 2vw;
-      color: yellow;
-      margin: 2.5vw 0 0 0; }
+      font-size: 1.5vw;
+      color: #000000;
+      margin: 2.5vw 0 0 0;
+      line-height: 1.5em; }
   #eventwindow #member {
     position: absolute;
     transform: translate(0, -100%);
@@ -83,16 +86,24 @@ body {
       position: relative;
       margin: 0 0.5vw 0 0.5vw; }
     #eventwindow #member #bar {
-      width: 0.5vw;
-      height: 4vw;
+      width: 5px;
+      height: 3vw;
       transform: translate(0, -50%);
       top: 50%;
-      background-color: red; }
+      background-color: #B0B0B0; }
     #eventwindow #member .member {
       height: 5vw;
       width: 5vw;
       border-radius: 2.5vw;
       background-color: #FFC3B0; }
+  #eventwindow #operatebg {
+    background-color: rgba(58, 237, 194, 0.5);
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    width: 32%;
+    height: 20%;
+    border-radius: 5vw 0 5vw 0; }
   #eventwindow #eventoperate {
     position: absolute;
     transform: translate(0, -50%);
@@ -101,69 +112,68 @@ body {
     top: 50%;
     right: 3vw; }
     #eventwindow #eventoperate * {
-      position: absolute;
-      transform: translate(-50%, -50%); }
+      position: absolute; }
     #eventwindow #eventoperate #flag {
       transform: translate(-50%, 0);
       top: 0;
       left: 50%; }
     #eventwindow #eventoperate #date {
+      transform: translate(-50%, -50%);
       top: 15%;
       left: 50%;
       opacity: 0.8;
-      font-size: 2.5vw; }
+      font-size: 2vw; }
     #eventwindow #eventoperate #organizerpic {
+      transform: translate(-50%, -50%);
       height: 8vw;
       width: 8vw;
-      top: 14vw;
+      top: 12.5vw;
       left: 50%;
       border-radius: 4vw;
       background-color: green; }
     #eventwindow #eventoperate p {
-      top: 20vw;
+      transform: translate(-50%, -50%);
+      top: 18vw;
       left: 50%;
       font-size: 2vw; }
     #eventwindow #eventoperate #likebutton {
-      left: 25%;
-      bottom: 0;
+      left: 0;
+      bottom: 1vw;
       height: 5vw;
       width: 5vw;
       background-color: red; }
     #eventwindow #eventoperate #applybutton {
-      left: 75%;
-      bottom: 0;
+      right: 0;
+      bottom: 1vw;
       height: 5vw;
       width: 5vw;
       background-color: green; }
   #eventwindow #sent {
-    position: relative;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    display: block;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    width: auto;
+    height: auto;
+    overflow: hidden;
     border-radius: 5vw;
-    opacity: 0.9;
-    z-index: 1;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); }
-    #eventwindow #sent #bgblur {
-      opacity: 0.5;
-      border-radius: 5vw;
-      height: 100%;
-      width: 100%;
-      z-index: 3; }
+    opacity: 0;
+    z-index: -1;
+    backdrop-filter: blur(5px) contrast(40%) saturate(40%) brightness(70%);
+    -webkit-backdrop-filter: blur(5px) contrast(40%) saturate(40%) brightness(70%); }
     #eventwindow #sent #mailicon {
       position: absolute;
       transform: translate(-50%, -100%);
-      height: 100%;
+      height: 40%;
       width: auto;
       top: 65%;
       left: 50%; }
     #eventwindow #sent p {
       position: absolute;
       transform: translate(-50%, 0);
-      font-size: 3.5vw;
+      font-size: 4vw;
       text-align: center;
       bottom: 20%;
       left: 50%;
