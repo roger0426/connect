@@ -122,6 +122,8 @@ html
         #member3.member
         #member4.member
       
+      #operatebg
+      
       #eventoperate
         #flag
           #flag-y
@@ -131,6 +133,7 @@ html
         #organizerpic
         p {{ event_obj.host.username }}
 
+          
         #likebutton
           #like-y
           #like-n
@@ -141,7 +144,6 @@ html
 
 
       #sent
-        #bgblur
         {% load static %}
         img#mailicon(src="{% static 'file/lettericon.png' %}")
         p 已向發起者送出邀請

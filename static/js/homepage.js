@@ -21,22 +21,26 @@ $(document).ready(function(){
       $("img").attr("src", "./白色的書籤")
       toggle = true;
     }
-  });
+  })
 
 
   $("#title").click(function() {
     console.log("click title");
     $("#eventwindow").toggle();
     $("#sent").toggle();
-  });
-
-  $("#sent").click(function() {
-    console.log("click sent");
-    $("#sent").hide();
-  });
+  })
 
   $("#applybutton").click(function() {
     console.log("click apply");
-    $("#sent").show();
-  });
+    //$("#sent").show();
+    $('#sent').css({"z-index": 1});
+    $("#sent").animate({opacity: 1}, 500, function() {
+    })
+  })
+  
+  $("#sent").click(function() {
+    console.log("click sent");
+    $("#sent").css({opacity: 0, "z-index": -1});
+  })
+
 })
