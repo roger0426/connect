@@ -46,13 +46,14 @@ body
 #eventwindow
   position: fixed
   transform: translate(-50%, -50%)
-  top: 50%
+  top: 55%
   left: 50%
-  width: 70%
-  height: 70%
-  background-color: #A0A0A0
+  width: 60%
+  padding-top: 40%
+  background-color: #F5FBFE
   border-radius: 5vw
-  //opacity: 0.2
+  border: 5px solid rgba(58, 237, 194, 0.5)
+  box-shadow: 10px 10px 25px 5px #00000026
   z-index: 2
   
   *
@@ -63,24 +64,25 @@ body
     left: 5.5vw
     top: 5.5vw
     height: 65%
-    width: 50%
+    width: 60%
     
     h1
-      font-size: 5vw
-      color: blue
+      font-size: 3.5vw
+      color: #000000
           
     #keywords
       display: flex
       flex-direction: row
       margin: 1vw 0 0 0
       *
-        font-size: 2vw
-        color: red
+        font-size: 1.5vw
+        color: purple
         
     #detail
-      font-size: 2vw
-      color: yellow
+      font-size: 1.5vw
+      color: #000000
       margin: 2.5vw 0 0 0
+      line-height: 1.5em
 
   #member
     position: absolute
@@ -97,11 +99,11 @@ body
       margin: 0 0.5vw 0 0.5vw
       
     #bar
-      width: 0.5vw
-      height: 4vw
+      width: 5px
+      height: 3vw
       transform: translate(0, -50%)
       top: 50%
-      background-color: red
+      background-color: #B0B0B0
       
     .member
       height: 5vw
@@ -117,6 +119,16 @@ body
     #member4
     #member5
       
+      
+  #operatebg
+    background-color: rgba(58, 237, 194, 0.5)
+    position: absolute
+    right: -2px
+    bottom: -2px
+    width: 32%
+    height: 20%
+    border-radius: 5vw 0 5vw 0
+  
   #eventoperate
     position: absolute
     transform: translate(0, -50%)
@@ -126,7 +138,6 @@ body
     right: 3vw
     *
       position: absolute
-      transform: translate(-50%, -50%)
 
     #flag
       transform: translate(-50%, 0)
@@ -134,27 +145,30 @@ body
       left: 50%
       
     #date
+      transform: translate(-50%, -50%)
       top: 15%
       left: 50%
       opacity: 0.8
-      font-size: 2.5vw
+      font-size: 2vw
 
     #organizerpic
+      transform: translate(-50%, -50%)
       height: 8vw
       width: 8vw
-      top: 14vw
+      top: 12.5vw
       left: 50%
       border-radius: 4vw
       background-color: green
       
     p
-      top: 20vw
+      transform: translate(-50%, -50%)
+      top: 18vw
       left: 50%
       font-size: 2vw
     
     #likebutton
-      left: 25%
-      bottom: 0
+      left: 0
+      bottom: 1vw
       height: 5vw
       width: 5vw
       background-color: red
@@ -168,8 +182,8 @@ body
         //background: url()
     
     #applybutton
-      left: 75%
-      bottom: 0
+      right: 0
+      bottom: 1vw
       height: 5vw
       width: 5vw
       background-color: green
@@ -182,37 +196,26 @@ body
         //background: url()
 
   #sent
-    position: relative
-    transform: translate(-50%, -50%)
-    top: 50%
-    left: 50%
-    width: 100%
-    height: 100%
+    position: absolute
+    //transform: translate(-50%, -50%)
+    display: block
+    top: -6px
+    left: -6px
+    right: -6px
+    bottom: -6px
+    width: auto
+    height: auto
+    overflow: hidden
     border-radius: 5vw
-    opacity: 0.9
-    z-index: 1
-    backdrop-filter: blur(10px)
-    -webkit-backdrop-filter: blur(10px)
-        
-    //-webkit-backdrop-filter: blur(3px)
-    //backdrop-filter: blur(8px)
-    //backdrop-filter: saturate(70%)
-    //backdrop-filter: contrast(40%)
-
-    #bgblur
-      opacity: 0.5
-      border-radius: 5vw
-      height: 100%
-      width: 100%
-      z-index: 3
+    opacity: 0
+    z-index: -1
+    backdrop-filter: blur(5px) contrast(40%) saturate(40%) brightness(70%)
+    -webkit-backdrop-filter: blur(5px) contrast(40%) saturate(40%) brightness(70%)
 
     #mailicon
       position: absolute
       transform: translate(-50%, -100%)
-      //{% load static %}
-      //background-image: url('../file/lettericon.png')
-      //"{% static 'css/custom_styles_2.css' %}"
-      height: 100%
+      height: 40%
       width: auto
       top: 65%
       left: 50%
@@ -220,7 +223,7 @@ body
     p
       position: absolute
       transform: translate(-50%, 0)
-      font-size: 3.5vw
+      font-size: 4vw
       text-align: center
       bottom: 20%
       left: 50%
