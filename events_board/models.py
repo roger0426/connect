@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from taggit.managers import TaggableManager
 
 # Create your models here.
 class EventsBoard(models.Model):
@@ -7,6 +8,7 @@ class EventsBoard(models.Model):
   title = models.CharField(max_length=50)
   subtitle = models.CharField(max_length=70)
   detail = models.TextField()
+  event_tag = TaggableManager()
 
   #about people
   host = models.ForeignKey(
@@ -15,14 +17,14 @@ class EventsBoard(models.Model):
     related_name="host_name",
   )
 
-  participants = models.ForeignKey(
+  participants = models.ManyToManyField(
     settings.AUTH_USER_MODEL,
-    on_delete=models.CASCADE,
     related_name="participant_name",
+    blank = True,
   )
 
-  interested_users = models.ForeignKey(
+  interested_users = models.ManyToManyField(
     settings.AUTH_USER_MODEL,
-    on_delete=models.CASCADE,
     related_name="intereted_user_name",
+    blank = True,
   )
