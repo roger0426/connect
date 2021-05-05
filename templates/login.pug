@@ -37,24 +37,27 @@ html
           h1 註冊
           hr.solid
           label(for='fname')
-          input#fname.input-area(type="text", name='fname', placeholder="First Name")
+          input#fname.input-area(type="text", name='fname', placeholder="貴姓")
           label(for='lname')
-          input#lname.input-area(type="text", name='lname', placeholder="Last Name")
+          input#lname.input-area(type="text", name='lname', placeholder="大名")
           label(for='sid')
-          input#sid.input-area(type="text", name='sid', placeholder="Student ID")
+          input#sid.input-area(type="text", name='sid', placeholder="學號")
           label(for='email')
-          input#email.input-area(type="email", name='email', placeholder="Email")
+          input#email.input-area(type="email", name='email', placeholder="信箱")
           label(for='sign-pwd')
-          input#sign-pwd.input-area(type="password", name="sign-pwd", placeholder="Password")
+          input#sign-pwd.input-area(type="password", name="sign-pwd", placeholder="密碼")
           label(for='double-pwd')
-          input#double-pwd.input-area(type="password", name="double-pwd", placeholder="Please type password again")
+          input#double-pwd.input-area(type="password", name="double-pwd", placeholder="請再輸入一次密碼")
           p#err-msg(style="display: none")
-          input#terms(type="checkbox", name="terms")
-          label(for='terms') I Accept Terms and Condition, Privacy Policy
+
+          #term-div
+            input#terms(type="checkbox", name="terms")
+            label(for='terms') I Accept Terms and Condition, Privacy Policy
 
           .buttons
-            input#sign-up-btn(value="Sign Up", type="submit")
-            p#login Log in
+            input#sign-up-btn(value="註冊", type="submit")
+            p or
+            p#login 登入
 
     #background-element
       #bubbles
