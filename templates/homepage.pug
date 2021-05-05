@@ -105,12 +105,14 @@ html
     #eventwindow
       #description
         h1 {{ event_obj.title }}
-        #keywords
-          #kw1 costco
-          p ,
-          #kw2 有會員卡
-          p ,
-          #kw3 缺司機
+        //- pug多行註解：//之後要註解的都縮排
+        //
+          #keywords
+            #kw1 costco
+            p ,
+            #kw2 有會員卡
+            p ,
+            #kw3 缺司機
         #subtitle {{ event_obj.subtitle }}
         #detail {{ event_obj.detail }}
 
@@ -126,8 +128,8 @@ html
       
       #eventoperate
         #flag
-          #flag-y
-          #flag-n
+          img#flag-y(src="{% static 'file/flag-y.png' %}")
+          img#flag-n(src="{% static 'file/flag-n.png' %}")
           
         #date 2021/5/2
         #organizerpic
@@ -135,13 +137,12 @@ html
 
           
         #likebutton
-          #like-y
-          #like-n
+          {% load static %}
+          img#like-y(src="{% static 'file/like-y.png' %}")
+          img#like-n(src="{% static 'file/lettericon.png' %}")
 
         #applybutton
-          #apply-y
-          #apply-n
-
+          img#apply-y(src="{% static 'file/applyicon.png' %}")
 
       #sent
         {% load static %}

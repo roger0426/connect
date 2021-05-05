@@ -30,6 +30,13 @@ body
 //<<<<<<< HEAD
 .container
 
+
+
+
+
+
+
+
 #gotop 
   position: fixed;
   border-radius: 50px;
@@ -44,6 +51,7 @@ body
 
 
 #eventwindow
+  //display: none
   position: fixed
   transform: translate(-50%, -50%)
   top: 55%
@@ -69,7 +77,12 @@ body
     h1
       font-size: 3.5vw
       color: #000000
-          
+    
+    #subtitle
+      margin: 1vw 0 0 0
+      font-size: 1.5vw
+      color: purple
+    
     #keywords
       display: flex
       flex-direction: row
@@ -143,7 +156,20 @@ body
       transform: translate(-50%, 0)
       top: 0
       left: 50%
-      
+      width: 3vw
+      height: auto
+      #flag-y
+        display: none
+        width: 100%
+        height: auto
+        box-shadow: 10px 10px 25px 5px #00000026
+        
+      #flag-n
+        display: block
+        width: 100%
+        height: auto
+        box-shadow: 10px 10px 25px 5px #00000026
+        
     #date
       transform: translate(-50%, -50%)
       top: 15%
@@ -171,13 +197,14 @@ body
       bottom: 1vw
       height: 5vw
       width: 5vw
-      background-color: red
       
       #like-y
+        display: block
         //{% load static %}
         //background: url()
 
       #like-n
+        display: none
         //{% load static %}
         //background: url()
     
@@ -186,12 +213,13 @@ body
       bottom: 1vw
       height: 5vw
       width: 5vw
-      background-color: green
 
       #apply-y
+        display: block
         //{% load static %}
         //background: url()
       #apply-n
+        display: none
         //{% load static %}
         //background: url()
 

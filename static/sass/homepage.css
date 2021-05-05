@@ -61,6 +61,10 @@ body {
     #eventwindow #description h1 {
       font-size: 3.5vw;
       color: #000000; }
+    #eventwindow #description #subtitle {
+      margin: 1vw 0 0 0;
+      font-size: 1.5vw;
+      color: purple; }
     #eventwindow #description #keywords {
       display: flex;
       flex-direction: row;
@@ -116,7 +120,19 @@ body {
     #eventwindow #eventoperate #flag {
       transform: translate(-50%, 0);
       top: 0;
-      left: 50%; }
+      left: 50%;
+      width: 3vw;
+      height: auto; }
+      #eventwindow #eventoperate #flag #flag-y {
+        display: none;
+        width: 100%;
+        height: auto;
+        box-shadow: 10px 10px 25px 5px #00000026; }
+      #eventwindow #eventoperate #flag #flag-n {
+        display: block;
+        width: 100%;
+        height: auto;
+        box-shadow: 10px 10px 25px 5px #00000026; }
     #eventwindow #eventoperate #date {
       transform: translate(-50%, -50%);
       top: 15%;
@@ -140,14 +156,20 @@ body {
       left: 0;
       bottom: 1vw;
       height: 5vw;
-      width: 5vw;
-      background-color: red; }
+      width: 5vw; }
+      #eventwindow #eventoperate #likebutton #like-y {
+        display: block; }
+      #eventwindow #eventoperate #likebutton #like-n {
+        display: none; }
     #eventwindow #eventoperate #applybutton {
       right: 0;
       bottom: 1vw;
       height: 5vw;
-      width: 5vw;
-      background-color: green; }
+      width: 5vw; }
+      #eventwindow #eventoperate #applybutton #apply-y {
+        display: block; }
+      #eventwindow #eventoperate #applybutton #apply-n {
+        display: none; }
   #eventwindow #sent {
     position: absolute;
     display: block;
