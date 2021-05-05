@@ -152,6 +152,37 @@ html
         img#mailicon(src="{% static 'file/lettericon.png' %}")
         p 已向發起者送出邀請
     
+    
+    
+    
+    #eventcreatewindow
+      form(action="", method="post") {% csrf_token %}
+        #profile
+          #pic
+          h1 {{ event_obj.host.full_name }}
+        input#eventtitle.input-area(type="?????", name='eventtitle', placeholder="活動標題")
+        ul
+          li
+            a.tag tag1
+          li
+            a.tag tag2
+          li
+            a.tag tag3
+          li
+            a.tag tag4
+          li
+            a.tag tag5
+
+        input#eventsubtitle.input-area(type="?????", name='eventsubtitle', placeholder="副標題")
+        input#eventdescription.input-area(type="?????", name='eventdescription', placeholder="內容描述")
+
+        #buttons
+          img#submit-btn(src="{% static 'file/submitbtn.png' %}")
+          //img#vector(src="{% static 'file/vectoricon.png' %}")
+          //p#submit 發佈
+    
+    
+    
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
