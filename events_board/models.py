@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from taggit.managers import TaggableManager
+from datetime import date
 
 # Create your models here.
 class EventsBoard(models.Model):
@@ -10,6 +11,8 @@ class EventsBoard(models.Model):
   detail = models.TextField()
   event_tag = TaggableManager()
   image = models.ImageField(upload_to='events', blank=True)
+  create_date = models.DateField(default = date.today)
+  event_date = models.DateField(default = date.today)
 
   #about people
   host = models.ForeignKey(
@@ -41,6 +44,8 @@ class ProjectBoard(models.Model):
   detail = models.TextField()
   event_tag = TaggableManager()
   image = models.ImageField(upload_to='projects', blank=True)
+  create_date = models.DateField(default = date.today)
+  event_date = models.DateField(default = date.today)
 
   #about people
   host = models.ForeignKey(
@@ -67,3 +72,5 @@ class PersonalBoard(models.Model):
   detail = models.TextField()
   event_tag = TaggableManager()
   image = models.ImageField(upload_to='personal, blank=True')
+  create_date = models.DateField(default = date.today)
+  event_date = models.DateField(default = date.today)
