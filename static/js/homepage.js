@@ -27,6 +27,7 @@ $(document).ready(function(){
   $("#title").click(function() {
     console.log("click title");
     $("#eventwindow").show();
+    $('#eventwindow').css({"opacity": 1});
     //$("#sent").toggle();
   });
   
@@ -37,6 +38,7 @@ $(document).ready(function(){
     //$("#sent").show();
     $('#sent').css({"z-index": 1});
     $("#sent").animate({opacity: 1}, 500, function() {
+      
     })
   });
   
@@ -45,6 +47,12 @@ $(document).ready(function(){
     $("#sent").css({opacity: 0, "z-index": -1});
   });
   
+  $("#exitbutton").click(function() {
+    console.log("click event exit");
+    $("#eventwindow").animate({opacity: 0}, 200, function() {
+      $("#eventwindow").hide();
+    })
+  });
   
   //按window外，關閉event window
   /* Mark 1 的原理：
@@ -52,6 +60,7 @@ $(document).ready(function(){
   1. 点击事件的对象不是目标区域本身
   2. 事件对象同时也不是目标区域的子元素
   */
+  /*
   $(document).click(function(e){
     var _con = $('#eventwindow');   // 设置目标区域
     if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1
@@ -62,6 +71,6 @@ $(document).ready(function(){
       $("#sent").hide();
     }
   });
-  
+  */
 
 })
