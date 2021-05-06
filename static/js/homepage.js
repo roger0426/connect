@@ -28,6 +28,9 @@ $(document).ready(function(){
     console.log("click title");
     $("#eventwindow").show();
     $('#eventwindow').css({"opacity": 1});
+    
+    $("#eventcreatewindow").show();
+    $("#eventcreatewindow").css({"opacity": 1});
     //$("#sent").toggle();
   });
   
@@ -47,10 +50,17 @@ $(document).ready(function(){
     $("#sent").css({opacity: 0, "z-index": -1});
   });
   
-  $("#exitbutton").click(function() {
+  $("#exitbtn1").click(function() {
     console.log("click event exit");
     $("#eventwindow").animate({opacity: 0}, 200, function() {
       $("#eventwindow").hide();
+    })
+  });
+  
+  $("#exitbtn2").click(function() {
+    console.log("click event exit");
+    $("#eventcreatewindow").animate({opacity: 0}, 200, function() {
+      $("#eventcreatewindow").hide();
     })
   });
   
