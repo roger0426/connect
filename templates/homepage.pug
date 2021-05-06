@@ -16,38 +16,14 @@ html
 
     #container
       #PostColumn
-        .header
+        #header
           img src="./使用者的頭像"
-        button #write
-        #PostForm
-          .header
-            img src="./使用者的頭像"
-          .user
-            p #{使用者的姓名} 
-        //    
-          #myPopup(data-role='popup')  
-            form(method="post" action="./資料送去的位址.php")
-              input(
-                type='text'
-                name='title'
-                value='活動標題'    
-                required 
-              )
-              input(
-                type='text'
-                name='subtitle'
-                value='副標題'    
-              )
-              textarea(
-                id="textarea"
-                maxlength='100'
-                placeholder='內容詳情'
-                required
-              )
-              botton(type="submit")發佈
+        button#postarea
+          place-holder:發起活動？
 
       #divider
-        #line
+        #line1
+        #word
         p  分類
         select#category
           option(value='recommend')推薦
@@ -58,6 +34,7 @@ html
           option(value='hot')最多人喜歡
           option(value='hot')最多人喜歡
           option(value='hot')最多人喜歡
+        #line2
 
       #board
         .PostUnit

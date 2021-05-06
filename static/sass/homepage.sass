@@ -368,33 +368,52 @@ body
 
 //>>>>>>> 624262fa0fa70d15c8079445b5ad13cd4ca108c8
 
-#container
-  width: 30%
-  background-color: rgba(245, 251, 254, 1)
+///
+  #container
 
-  #Postcolumn
-    display: inline-flex;
-    flex-direction:column;
+    #Postcolumn
+      margin-left:15%;
+      margin-right:15%;
 
-    #header
-      radius: 83px;
-    #PostForm
-      background: #E6E8EF;
-      border-radius: 20px;
+      height:133px;
+      border-radius: 36px;
 
-  #divider
-    display: inline-flex;
-    flex-direction: row;
+      vertical-align:middle;
 
-    #line
-      height: 1px;
-      font-size:15px;
-      font-color:rgba(0, 0, 0, 1);
+      display:inline-flex;
+      flex-direction:row;
+      flex-wrap:nowrap;
 
-  #board
-    display: flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    padding: 26px;
+      #header
+        radius: 80px;
+        padding-left:80px;
+        padding-right:20px;
 
-    div
+      #postarea
+        background: #E6E8EF;
+        border-radius: 20px;
+        padding-left:20px;
+        padding-right:60px;
+        font-color:rgba(0, 0, 0, 1);
+
+    #divider
+      display: inline-flex;
+      flex-direction: row;
+      flex-wrap:nowrap;
+
+      #line1
+        height: 1px;
+        width:528p;
+
+      
+        font-size:15px;
+        font-color:rgba(0, 0, 0, 1);
+
+    #board
+      display: flex;
+      flex-direction:row;
+      flex-wrap:wrap;
+      padding: 26px;
+
+      div
+      
