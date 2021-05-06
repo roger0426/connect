@@ -1,35 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
-from taggit.models import TaggedItemBase
 from events_board.models import EventsBoard, ProjectBoard, PersonalBoard
-
-class TaggedPersonalities(TaggedItemBase):
-  content_obj = models.ForeignKey(
-    "UserExtend",
-    on_delete = models.CASCADE
-  )
-
-class TaggedSkills(TaggedItemBase):
-  content_obj = models.ForeignKey(
-    "UserExtend",
-    on_delete = models.CASCADE
-  )
-
-class TaggedInterests(TaggedItemBase):
-  content_obj = models.ForeignKey(
-    "UserExtend",
-    on_delete = models.CASCADE
-  )
 
 class UserExtend(models.Model):
   user = models.OneToOneField(User, on_delete = models.CASCADE)
   full_name = models.CharField(max_length=10, default='')
 
   # tags
-  personalities_tag = TaggableManager(through=TaggedPersonalities, related_name='personalities')
-  skills_tag = TaggableManager(through=TaggedSkills, related_name='skills')
-  interests_tag = TaggableManager(through=TaggedInterests, related_name='interests')
+  tag = TaggableManager()
 
   personal_description = models.TextField(
     max_length=400,
