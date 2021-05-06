@@ -127,12 +127,12 @@ html
       #operatebg
       
       #eventoperate
+              
+        img#exitbtn1(src="{% static 'file/exiticon.png' %}")
         #flag
           img#flag-y(src="{% static 'file/flag-y.png' %}")
           img#flag-n(src="{% static 'file/flag-n.png' %}")
         
-        img#exitbutton(src="{% static 'file/exiticon.png' %}")
-          
           
         #date 2021/5/2
         #organizerpic
@@ -156,11 +156,14 @@ html
     
     
     #eventcreatewindow
+      img#exitbtn2(src="{% static 'file/exiticon.png' %}")
+      
       form(action="", method="post") {% csrf_token %}
         #profile
           #pic
           h1 {{ event_obj.host.full_name }}
-        input#eventtitle.input-area(type="text", name='eventtitle', placeholder="活動標題", maxlength="25")
+        textarea#eventtitle.input-area(type="text", name='eventtitle', placeholder="活動標題", maxlength="8")
+        
         ul
           li
             a.tag tag1
@@ -173,7 +176,7 @@ html
           li
             a.tag tag5
 
-        input#eventsubtitle.input-area(type="text", name='eventsubtitle', placeholder="副標題", maxlength="35")
+        textarea#eventsubtitle.input-area(type="text", name='eventsubtitle', placeholder="副標題", maxlength="20")
         textarea#eventdescription.input-area(placeholder="內容描述")
 
         #buttons

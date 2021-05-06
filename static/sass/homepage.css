@@ -108,6 +108,12 @@ body {
     width: 32%;
     height: 20%;
     border-radius: 5vw 0 5vw 0; }
+  #eventwindow #exitbtn1 {
+    transform: translate(-50%, 0);
+    top: 5%;
+    right: -10%;
+    width: 2vw;
+    height: auto; }
   #eventwindow #eventoperate {
     position: absolute;
     transform: translate(0, -50%);
@@ -133,12 +139,6 @@ body {
         width: 100%;
         height: auto;
         box-shadow: 10px 10px 25px 5px #00000026; }
-    #eventwindow #eventoperate #exitbutton {
-      transform: translate(-50%, 0);
-      top: 5%;
-      right: -10%;
-      width: 2vw;
-      height: auto; }
     #eventwindow #eventoperate #date {
       transform: translate(-50%, -50%);
       top: 15%;
@@ -221,44 +221,70 @@ body {
   border: 5px solid rgba(58, 237, 194, 0.5);
   box-shadow: 10px 10px 25px 5px #00000026;
   z-index: 2; }
-  #eventcreatewindow h1 {
-    font-size: 4vw; }
+  #eventcreatewindow #exitbtn2 {
+    position: absolute;
+    transform: translate(-50%, 0);
+    top: 3vw;
+    right: 2vw;
+    width: 2vw;
+    height: auto; }
+  #eventcreatewindow #profile {
+    display: flex;
+    margin-bottom: 1vw; }
+    #eventcreatewindow #profile #pic {
+      height: 4vw;
+      width: 4vw;
+      border-radius: 2vw;
+      background-color: red; }
+    #eventcreatewindow #profile h1 {
+      align-items: center;
+      font-size: 3.5vw;
+      line-height: 100%;
+      margin-left: 1vw;
+      top: 50%; }
   #eventcreatewindow ul {
     display: flex;
-    justify-content: space-around;
     align-items: center;
     white-space: nowrasp;
     list-style-type: none;
-    margin-right: 0;
+    margin: 0.5vw;
     width: 90%; }
   #eventcreatewindow li {
     display: block;
     float: left;
-    overflow: left;
     white-space: nowrap;
     word-break: normal;
     word-wrap: nowrap;
-    /*font-size: 36px; */
-    font-size: 1.5vw;
+    align-items: center;
+    font-size: 1vw;
     font-family: var(--font-family-text);
     font-style: var(--font-style-text);
-    margin-right: 10%; }
+    margin-right: 1vw;
+    padding: 0.2vw 0.5vw;
+    background-color: #3AEDC2;
+    height: 1.5vw;
+    border-radius: 1vw; }
   #eventcreatewindow .input-area {
     width: 90%;
-    word-break: normal; }
+    word-break: normal;
+    margin: 0.5vw;
+    border-radius: 2vw;
+    padding: 0.7vw 0 0 1vw; }
   #eventcreatewindow #eventtitle {
     font-size: 2.2vw;
-    height: 10vw; }
+    height: 2.5vw; }
   #eventcreatewindow #eventsubtitle {
-    font-size: 2vw;
+    font-size: 2.2vw;
     height: 2.5vw; }
   #eventcreatewindow #eventdescription {
     font-size: 1.7vw;
-    height: 2.5vw; }
+    height: 15vw; }
   #eventcreatewindow #buttons {
     position: absolute;
-    height: 5vw;
-    width: 5vw; }
+    height: 5.5vw;
+    width: 5.5vw;
+    right: 2.5vw;
+    bottom: 2.5vw; }
     #eventcreatewindow #buttons #submit-btn {
       width: 100%; }
 
