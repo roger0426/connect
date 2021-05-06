@@ -138,6 +138,100 @@ body
   margin-top: 3%
   width: 22vw
 
+#sign-up-panel
+  background-color: #FFCFBF
+  border: 1.5px solid #FFFFFF
+  box-shadow: 5px 10px 25px 0px #00000026
+  border-radius: 3vh
+  display: flex
+  flex-direction: column
+  align-items: stretch
+  padding: 2vw
+  z-index: 10
+  width: 100%
+
+  h1
+    text-align: center
+    font-size: 3vw
+    margin: 1vw 0 1vw 0   
+  hr
+    background-color: black
+    margin-bottom: 1vw
+
+  form 
+    display: flex
+    flex-direction: column
+    align-items: stretch
+
+  .input-area
+    border-radius: 2vh
+    height: 2vw
+    //font-size: 1.3vw
+    outline: none
+    text-indent: 1em
+    padding: 5px 0px 5px 0px
+    border: 0
+    margin: 0.5vw 0.5vw 0
+  
+  #term-div
+    display: flex
+    flex-direction: row
+    label
+      margin-top: 0.7vw
+      margin-left: 0.8vw
+      font-size: 0.8vw
+    input
+      margin-top: 0.7vw
+      margin-left: 0.8vw
+  .buttons
+    //display: flex
+    //flex-direction: row
+    position: relative
+    margin: 5% 0 3% 0
+    outline: none
+    height: 5vw
+
+    input
+      //outline: none
+      position: absolute
+      transform: translate(-50%, -50%)
+      top: 50%
+      left: 50%
+      //margin: 0 1vw 0 50% 
+      padding: 5% 10% 5% 10%
+      background-color: #3AEDC2
+      border: none
+      border-radius: 3vh
+      height: auto
+      width: auto
+      outline: none 
+      font-size:  1.7vw
+
+    p
+      position: absolute
+      transform: translate(-50%, -60%)
+      top: 50%
+      right: 18%
+      //margin: 0 5% 0 0
+      text-align: center 
+      //padding-top: 8%
+      font-size:  1vw
+
+    #login
+      //margin: auto 0
+      font-size:  1.2vw
+      position: absolute
+      transform: translate(0, -50%)
+      top: 50%
+      right: 5%
+      color: #3AEDC2
+
+    #login:hover
+      cursor: pointer
+      text-decoration: underline
+  
+  
+
 #login-panel
   background-color: #FFCFBF
   border: 1.5px solid #FFFFFF
@@ -213,7 +307,7 @@ body
       position: absolute
       transform: translate(-50%, -60%)
       top: 50%
-      right: 16%
+      right: 18%
       //margin: 0 5% 0 0
       text-align: center 
       //padding-top: 8%

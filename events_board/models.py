@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from taggit.managers import TaggableManager
+from datetime import date
 
 # Create your models here.
 class EventsBoard(models.Model):
@@ -7,22 +9,68 @@ class EventsBoard(models.Model):
   title = models.CharField(max_length=50)
   subtitle = models.CharField(max_length=70)
   detail = models.TextField()
+  event_tag = TaggableManager()
+  image = models.ImageField(upload_to='events', blank=True)
+  create_date = models.DateField(default = date.today)
+  event_date = models.DateField(default = date.today)
 
   #about people
   host = models.ForeignKey(
-    settings.AUTH_USER_MODEL,
+    "user_extend.UserExtend",
     on_delete=models.CASCADE, # delete when author deleted
-    related_name="host_name",
+    related_name="event_host_name",
+    default = '',
+    null=True
   )
 
-  participants = models.ForeignKey(
-    settings.AUTH_USER_MODEL,
-    on_delete=models.CASCADE,
-    related_name="participant_name",
+  participants = models.ManyToManyField(
+    "user_extend.UserExtend",
+    related_name="event_participant_name",
+    default = '',
+    blank = True,
   )
 
-  interested_users = models.ForeignKey(
-    settings.AUTH_USER_MODEL,
-    on_delete=models.CASCADE,
-    related_name="intereted_user_name",
+  interested_users = models.ManyToManyField(
+    "user_extend.UserExtend",
+    related_name="event_intereted_user_name",
+    default = '',
+    blank = True,
   )
+
+class ProjectBoard(models.Model):
+  # basic information
+  title = models.CharField(max_length=50)
+  subtitle = models.CharField(max_length=70)
+  detail = models.TextField()
+  event_tag = TaggableManager()
+  image = models.ImageField(upload_to='projects', blank=True)
+  create_date = models.DateField(default = date.today)
+  event_date = models.DateField(default = date.today)
+
+  #about people
+  host = models.ForeignKey(
+    "user_extend.UserExtend",
+    on_delete=models.CASCADE, # delete when author deleted
+    related_name="project_host_name",
+  )
+
+  participants = models.ManyToManyField(
+    "user_extend.UserExtend",
+    related_name="project_participant_name",
+    blank = True,
+  )
+
+  interested_users = models.ManyToManyField(
+    "user_extend.UserExtend",
+    related_name="project_intereted_user_name",
+    blank = True,
+  )
+
+class PersonalBoard(models.Model):
+  title = models.CharField(max_length=50)
+  subtitle = models.CharField(max_length=70)
+  detail = models.TextField()
+  event_tag = TaggableManager()
+  image = models.ImageField(upload_to='personal, blank=True')
+  create_date = models.DateField(default = date.today)
+  event_date = models.DateField(default = date.today)

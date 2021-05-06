@@ -30,6 +30,13 @@ ALLOWED_HOSTS = [
    '*',
 ]
 
+# You will need to add email information as specified here: https://docs.djangoproject.com/en/3.1/topics/email/
+# This can include:
+EMAIL_HOST = ''
+EMAIL_PORT = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+# and the EMAIL_USE_TLS and EMAIL_USE_SSL settings control whether a secure connection is used.
 
 
 # Application definition
@@ -44,11 +51,30 @@ INSTALLED_APPS = [
 
     # third party libraries
     'sass_processor',
+    'django_notification_system',
+    'taggit',
 
     # owned
     'about_us',
     'events_board',
+    'user_extend'
 ]
+
+# NOTIFICATION settings
+NOTIFICATION_SYSTEM_CREATORS = []
+
+NOTIFICATION_SYSTEM_HANDLER = []
+
+NOTIAFICATION_SYSTEM_TARGET = {
+  "twilio_sms": {
+    'account_sid': '',
+    'auth_token': '',
+    'sender': '' # This is the phone number associated with the Twilio account
+  },
+  "email": {
+    'from_email': '' # Sending email address
+  }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

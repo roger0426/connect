@@ -4,7 +4,7 @@ html
   head
     meta(charset="utf-8")
     meta(content="width=device-width, initial-scale=1", name="viewport")
-    title CONNECT - Login
+    title CONNECT
     link(href="{% static 'file/logo.ico' %}",rel="icon")
     {% load sass_tags %}
     link(href="{% sass_src 'sass/homepage.sass' %}",rel="stylesheet",type="text/css")
@@ -104,12 +104,14 @@ html
     #eventwindow
       #description
         h1 {{ event_obj.title }}
-        #keywords
-          #kw1 costco
-          p ,
-          #kw2 有會員卡
-          p ,
-          #kw3 缺司機
+        //- pug多行註解：//之後要註解的都縮排
+        //
+          #keywords
+            #kw1 costco
+            p ,
+            #kw2 有會員卡
+            p ,
+            #kw3 缺司機
         #subtitle {{ event_obj.subtitle }}
         #detail {{ event_obj.detail }}
 
@@ -121,33 +123,68 @@ html
         #member3.member
         #member4.member
       
+      #operatebg
+      
       #eventoperate
+              
+        img#exitbtn1(src="{% static 'file/exiticon.png' %}")
         #flag
-          #flag-y
-          #flag-n
+          img#flag-y(src="{% static 'file/flag-y.png' %}")
+          img#flag-n(src="{% static 'file/flag-n.png' %}")
+        
           
         #date 2021/5/2
         #organizerpic
-        p {{ event_obj.host.username }}
+        p {{ event_obj.host.full_name }}
 
+          
         #likebutton
-          #like-y
-          #like-n
+          {% load static %}
+          img#like-y(src="{% static 'file/like-y.png' %}")
+          img#like-n(src="{% static 'file/lettericon.png' %}")
 
         #applybutton
-          #apply-y
-          #apply-n
-
+          img#apply-y(src="{% static 'file/applyicon.png' %}")
 
       #sent
-        #bgblur
         {% load static %}
-        img#mailicon src={% static '../file/lettericon.png' %}
+        img#mailicon(src="{% static 'file/lettericon.png' %}")
         p 已向發起者送出邀請
     
+    
+    
+    
+    #eventcreatewindow
+      img#exitbtn2(src="{% static 'file/exiticon.png' %}")
+      
+      form(action="", method="post") {% csrf_token %}
+        #profile
+          #pic
+          h1 {{ event_obj.host.full_name }}
+        textarea#eventtitle.input-area(type="text", name='eventtitle', placeholder="活動標題", maxlength="8")
+        
+        ul
+          li
+            a.tag tag1
+          li
+            a.tag tag2
+          li
+            a.tag tag3
+          li
+            a.tag tag4
+          li
+            a.tag tag5
+
+        textarea#eventsubtitle.input-area(type="text", name='eventsubtitle', placeholder="副標題", maxlength="20")
+        textarea#eventdescription.input-area(placeholder="內容描述")
+
+        #buttons
+          img#submit-btn(src="{% static 'file/submitbtn.png' %}")
+          //img#vector(src="{% static 'file/vectoricon.png' %}")
+          //p#submit 發佈
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
+    //- script(src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js")
+    //- script(src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js")
     script(src="{% static 'js/homepage.js' %}")
-    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
