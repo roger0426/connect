@@ -101,7 +101,9 @@ html
 
     #gotop
       p ˄
-      
+    
+    #filter1
+    
     #eventwindow
       #description
         h1 {{ event_obj.title }}
@@ -123,6 +125,7 @@ html
         #member2.member
         #member3.member
         #member4.member
+        #member5.member
       
       #operatebg
       
@@ -142,7 +145,7 @@ html
         #likebutton
           {% load static %}
           img#like-y(src="{% static 'file/like-y.png' %}")
-          img#like-n(src="{% static 'file/lettericon.png' %}")
+          img#like-n(src="{% static 'file/like-n.png' %}")
 
         #applybutton
           img#apply-y(src="{% static 'file/applyicon.png' %}")
@@ -175,6 +178,8 @@ html
             a.tag tag4
           li
             a.tag tag5
+          li
+            p#plus +
 
         textarea#eventsubtitle.input-area(type="text", name='eventsubtitle', placeholder="副標題", maxlength="20")
         textarea#eventdescription.input-area(placeholder="內容描述")
