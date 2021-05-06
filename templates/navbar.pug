@@ -1,5 +1,6 @@
 {% load sass_tags %}
 {% url 'about_us' as about_us_url %}
+{% url 'home' as home_url %}
 link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")  
 header
   #navbar 
@@ -7,7 +8,7 @@ header
 
     ul
       li 
-        a.button(href="#") home
+        a.button(href="{{ home_url }}") home
       li 
         a.button(href="#") activity
       li 

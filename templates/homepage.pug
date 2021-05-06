@@ -160,7 +160,7 @@ html
         #profile
           #pic
           h1 {{ event_obj.host.full_name }}
-        input#eventtitle.input-area(type="?????", name='eventtitle', placeholder="活動標題")
+        input#eventtitle.input-area(type="text", name='eventtitle', placeholder="活動標題", maxlength="25")
         ul
           li
             a.tag tag1
@@ -173,8 +173,8 @@ html
           li
             a.tag tag5
 
-        input#eventsubtitle.input-area(type="?????", name='eventsubtitle', placeholder="副標題")
-        input#eventdescription.input-area(type="?????", name='eventdescription', placeholder="內容描述")
+        input#eventsubtitle.input-area(type="text", name='eventsubtitle', placeholder="副標題", maxlength="35")
+        textarea#eventdescription.input-area(placeholder="內容描述")
 
         #buttons
           img#submit-btn(src="{% static 'file/submitbtn.png' %}")
@@ -183,6 +183,6 @@ html
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
-    script(src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js")
-    script(src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js")
+    //- script(src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js")
+    //- script(src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js")
     script(src="{% static 'js/homepage.js' %}")
