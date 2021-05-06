@@ -14,15 +14,15 @@ html
 
   body
 
-    .container
-      .PostColumn
-        .header
+    #container
+      #PostColumn
+        #header
           img src="./使用者的頭像"
         button #write
-        .PostForm
-          .header
+        #PostForm
+          #header
             img src="./使用者的頭像"
-          .user
+          #user
             p #{使用者的姓名}  
           #myPopup(data-role='popup')  
             form(method="post" action="./資料送去的位址.php")
@@ -45,57 +45,57 @@ html
               )
               botton(type="submit")發佈
 
-      .divider
-        .line
-        .word
+      #divider
+        #line
+        #word
           p  分類
         select#category
           option(value='recommend')推薦
           option(value='recommend')推薦
           option(value='recommend')推薦
-        .word
+        #word
           p 排序
         select#sort
           option(value='hot')最多人喜歡
           option(value='hot')最多人喜歡
           option(value='hot')最多人喜歡
 
-      .board
-        .PostUnit
+      #board
+        #PostUnit
           div(data-page="PostUnit_0")
-            .frame
-            .main
-            .mark
+            #frame
+            #main
+            #mark
               img #mark src="./白色的書籤"
-            .title 
+            #title
               p ＃揪團 去COSTCO
-            .subtitle 
+            #subtitle
               p 有會員卡，缺司機
-            .attach  
+            #attach
               img src="./"
               img src="./"
-            .like 
+            #like
               img src="./愛心的圖案"
               a //愛心的數字
-            .comment
+            #comment
               img src="./留言的圖案"
               a //留言的數字
           div(data-page="PostUnit_{n}")
-            .frame
-            .main
-            .mark
+            #frame
+            #main
+            #mark
               img #mark src="./白色的書籤"
-            .title 
+            #title
               p ＃揪團 去COSTCO
-            .subtitle 
+            #subtitle
               p 有會員卡，缺司機
-            .attach  
+            #attach
               img src="./"
               img src="./"
-            .like 
+            #like
               img src="./愛心的圖案"
               a //愛心的數字
-            .comment
+            #comment
               img src="./留言的圖案"
               a //留言的數字
 
