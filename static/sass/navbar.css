@@ -29,7 +29,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 7.5vw;
+  height: 4.5vw;
   background-color: var(--background_color);
   border-radius: 0px 0px 4vw 4vw;
   /*UpLeft/UR/DR/DL */
@@ -40,9 +40,9 @@
   font-family: var(--font-family-header);
   font-style: var(--font-style-header);
   font-weight: 100;
-  font-size: 4.7vw;
+  font-size: 2.7vw;
   /*top: 0px; */
-  line-height: 7.5vw;
+  line-height: 4.5vw;
   color: var(--fontcolor_header);
   margin-left: 3.5%; }
 
@@ -51,21 +51,18 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /*gap: 10%; */
   white-space: nowrasp;
   list-style-type: none;
-  margin-right: 5%; }
+  margin-right: 4%; }
 
 #navbar li {
   display: block;
   float: right;
-  /*margin: 32px; */
   overflow: left;
   white-space: nowrap;
   word-break: normal;
   word-wrap: nowrap;
-  /*font-size: 36px; */
-  font-size: 2.5vw;
+  font-size: 1.7vw;
   font-family: var(--font-family-text);
   font-style: var(--font-style-text);
   margin-right: 10%; }

@@ -13,53 +13,55 @@ html
   {% include 'navbar.pug' %}
 
   body
-
     #container
-      #PostColumn
-        #header
-          img src="./使用者的頭像"
-        button #write
-        #PostForm
+      //-
+        #postcolumn
           #header
             img src="./使用者的頭像"
-          #user
-            p #{使用者的姓名}  
-          #myPopup(data-role='popup')  
-            form(method="post" action="./資料送去的位址.php")
-              input(
-                type='text'
-                name='title'
-                value='活動標題'    
-                required 
-              )
-              input(
-                type='text'
-                name='subtitle'
-                value='副標題'    
-              )
-              textarea(
-                id="textarea"
-                maxlength='100'
-                placeholder='內容詳情'
-                required
-              )
-              botton(type="submit")發佈
-
+          button #insert
+          #postform
+            #header
+              img src="./使用者的頭像"
+            #user
+              p #{使用者的姓名}
+            #mypopup(data-role='popup')
+              form(method="post" action="./資料送去的位址.php")
+                input(
+                  type='text'
+                  name='title'
+                  value='活動標題'
+                  required
+                )
+                input(
+                  type='text'
+                  name='subtitle'
+                  value='副標題'
+                )
+                textarea(
+                  id="textarea"
+                  maxlength='100'
+                  placeholder='內容詳情'
+                  required
+                )
+                botton(type="submit")發佈
+      #create
+        #userpic
+        #insertbox
+      
       #divider
-        #line
-        #word
-          p  分類
+        hr#line1.line
+        p 分類
         select#category
-          option(value='recommend')推薦
-          option(value='recommend')推薦
-          option(value='recommend')推薦
-        #word
-          p 排序
+          option(value='recommend') 推薦
+          option(value='recommend') 推薦
+          option(value='recommend') 推薦
+        p 排序
         select#sort
-          option(value='hot')最多人喜歡
-          option(value='hot')最多人喜歡
-          option(value='hot')最多人喜歡
-
+          option(value='hot') 最多人喜歡
+          option(value='hot') 最多人喜歡
+          option(value='hot') 最多人喜歡
+        hr#line2.line
+        
       #board
         #PostUnit
           div(data-page="PostUnit_0")
