@@ -6,3 +6,7 @@ DerivedData/
 
 *.pyc
 __pycache__
+
+*.css
+*.css.map
+*.html
