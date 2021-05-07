@@ -296,8 +296,9 @@ body {
     height: auto; }
   #eventcreatewindow #profile {
     display: flex;
-    margin: 1vw 0 1vw 3.5vw;
-    height: 4vw; }
+    margin: 1vw 0;
+    height: 4vw;
+    margin: 0 0 1vw 3.5vw; }
     #eventcreatewindow #profile #pic {
       height: 4vw;
       width: 4vw;
@@ -308,6 +309,28 @@ body {
       font-size: 3vw;
       line-height: 4vw;
       margin-left: 1vw; }
+  #eventcreatewindow label {
+    display: none; }
+  #eventcreatewindow input {
+    margin: 0 0 0 3.5vw; }
+  #eventcreatewindow textarea {
+    margin: 0 0 0 3.5vw; }
+  #eventcreatewindow p:nth-child(3) {
+    background-color: red; }
+    #eventcreatewindow p:nth-child(3) input:nth-child(2) {
+      background-color: yellow; }
+  #eventcreatewindow p:nth-child(4) {
+    background-color: blue; }
+  #eventcreatewindow p:nth-child(5) {
+    background-color: green; }
+  #eventcreatewindow p:nth-child(6) {
+    background-color: red; }
+  #eventcreatewindow p:nth-child(7) {
+    background-color: blue; }
+  #eventcreatewindow p:nth-child(8) {
+    background-color: green; }
+  #eventcreatewindow #id_title {
+    font-size: 2vw; }
   #eventcreatewindow ul {
     display: flex;
     align-items: center;
@@ -362,9 +385,9 @@ body {
   display: none; }
 
 #eventwindow {
-  display: none; }
+  display: block; }
 
 #eventcreatewindow {
-  display: none; }
+  display: block; }
 
 /*# sourceMappingURL=homepage.css.map */
