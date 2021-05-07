@@ -28,6 +28,74 @@ body
   width: 100%
   height: 100%
 
+#intro
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  background-color: #FFCFBF
+  border-radius: 3vw
+  position: absolute
+  top: 15%
+  left: 3%
+  width: 90%
+  padding: 1.5vw
+  #info
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    #user-img
+      width: 5vw
+      height: 5vw
+      border-radius: 50%
+      background-color: red
+      margin-bottom: 0.5vh
+    #user-name
+      font-size: 2vw
+      margin-bottom: 0.5vh
+    #school-info 
+      display: flex
+      flex-direction: row
+      #department
+        font-size: 1.5vw
+        margin-right: 0.5vw
+      #grade 
+        font-size: 1.5vw
+  
+  #description-tag 
+    display: flex
+    flex-direction: column
+    #description-background 
+      background-color: white
+      border: solid 2px
+      border-radius: 3vw 
+      border-color: grey
+      padding: 2vw
+      margin-bottom: 0.5vw
+      p 
+        font-size: 1vw 
+    
+    .tag-field
+      background-color: white 
+      border-radius: 2vw
+      margin-bottom: 0.5vw
+      padding: 1vw
+      p
+        font-size: 1vw
+    
+    #buttons
+      input
+        font-size: 1vw 
+        border-radius: 2vw 
+        padding: 1vw
+        float: right
+        border: solid 2px
+        background-color: #FFCFBF
+        border-color: var(--color-main)
+        
+
+      input:nth-child(1)  
+        margin-left: 1vw
+
 
 //phone responsive
 @media only screen and (max-width: 450px)
