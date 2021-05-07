@@ -5,7 +5,7 @@ DerivedData/
 .vscode/
 
 *.pyc
-__pycache__
+*/__pycache__
 
 *.css
 *.css.map
