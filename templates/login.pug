@@ -1,0 +1,83 @@
+{% load static %}
+doctype html                                               
+html                                            
+  head
+    meta(charset="utf-8")
+    meta(content="width=device-width, initial-scale=1", name="viewport")                 
+    title CONNECT - Login
+    link(href="{% static 'file/logo.ico' %}",rel="icon")
+    {% load sass_tags %}
+    link(href="{% sass_src 'sass/login.sass' %}",rel="stylesheet",type="text/css")
+    link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
+    
+  {% include 'navbar.pug' %}
+
+  body
+    #panel1 <!-- bubble and loging panel -->
+      
+      #login-panel
+        form(action="", method="post") {% csrf_token %} <!-- csrf_token is for safety concern of django -->
+          h1 登入 
+          hr.solid
+          p.input-description 使用者帳號
+          label(for='username')
+          input#username.input-area(type="text", name='username', placeholder="帳號")
+          p.input-description 使用者密碼 
+          label(for='password')
+          input#password.input-area(type="password", name='password', placeholder="密碼")
+          p#forgot 忘記密碼？
+
+          .buttons 
+            input#login-btn(value="登入", type="submit")
+            p or
+            p#sign-up 註冊
+      
+      #sign-up-panel(style="display: none")
+        form(action ="", method="post") {% csrf_token %}
+          h1 註冊
+          hr.solid
+          label(for='fname')
+          input#fname.input-area(type="text", name='fname', placeholder="貴姓")
+          label(for='lname')
+          input#lname.input-area(type="text", name='lname', placeholder="大名")
+          label(for='sid')
+          input#sid.input-area(type="text", name='sid', placeholder="學號")
+          label(for='email')
+          input#email.input-area(type="email", name='email', placeholder="信箱")
+          label(for='sign-pwd')
+          input#sign-pwd.input-area(type="password", name="sign-pwd", placeholder="密碼")
+          label(for='double-pwd')
+          input#double-pwd.input-area(type="password", name="double-pwd", placeholder="請再輸入一次密碼")
+          p#err-msg(style="display: none")
+
+          #term-div
+            input#terms(type="checkbox", name="terms")
+            label(for='terms') I Accept Terms and Condition, Privacy Policy
+
+          .buttons
+            input#sign-up-btn(value="註冊", type="submit")
+            p or
+            p#login 登入
+
+    #background-element
+      #bubbles
+        #gb1.bbox
+          span#grey-bubble1.grey-bubble 
+        #gb2.bbox
+          span#grey-bubble2.grey-bubble
+        #gb3.bbox
+          span#grey-bubble3.grey-bubble
+        #gb4.bbox
+          span#grey-bubble4.grey-bubble 
+        #wb1.bbox
+        span#white-bubble1
+      #introduction <!-- join us.. -->
+        h1 Join us now.
+        p.description introduction introduction introduction
+      
+
+    
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
+    script(src="{% static 'js/login.js' %}")
