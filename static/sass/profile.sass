@@ -24,78 +24,143 @@
   margin: 0
 
 body
-  background-color:#FAAD95
+  background-color: #FAAD95
   width: 100%
   height: 100%
-
-#intro
-  display: flex
-  flex-direction: row
-  justify-content: space-around
-  background-color: #FFCFBF
-  border-radius: 3vw
+  
+#profilepanel
   position: absolute
-  top: 15%
-  left: 3%
-  width: 90%
-  padding: 1.5vw
-  #info
-    display: flex
-    flex-direction: column
-    justify-content: space-around
-    #user-img
-      width: 5vw
-      height: 5vw
-      border-radius: 50%
-      background-color: red
-      margin-bottom: 0.5vh
-    #user-name
-      font-size: 2vw
-      margin-bottom: 0.5vh
-    #school-info 
+  transform: translate(-50%, 0)
+  top: 10%
+  left: 50%
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  width: 60%
+  background-color: white
+  border-radius: 3vw
+  padding-bottom: 3vw
+  
+  
+  #top-region
+    margin: 0 0 2vw 0
+
+    #intro
+      position: relative
+      transform: translate(-50%, 0)
+      left: 50%
       display: flex
       flex-direction: row
-      #department
-        font-size: 1.5vw
-        margin-right: 0.5vw
-      #grade 
-        font-size: 1.5vw
-  
-  #description-tag 
+      justify-content: space-around
+      background-color: #FFCFBF
+      border-radius: 3vw
+      width: calc(100%-3vw)
+      padding: 1.5vw
+      
+      #info
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
+        
+        #user-img
+          width: 13vw
+          height: 13vw
+          border-radius: 50%
+          background-color: red
+          margin-bottom: 0.5vh
+        #user-name
+          font-size: 2vw
+          margin-bottom: 0.5vh
+        #school-info
+          display: flex
+          flex-direction: row
+          margin-bottom: 5%
+          #department
+            font-size: 1.3vw
+            margin-right: 0.5vw
+          #grade
+            font-size: 1.3vw
+      
+      #description-tag
+        display: flex
+        flex-direction: column
+        width: 75%
+        
+        
+        #description-background
+          background-color: white
+          border: solid 2px
+          border-radius: 2vw
+          border-color: #3AEDC2
+          padding: 2vw 1vw
+          width: calc(100%-4vw)
+          margin-bottom: 0.5vw
+          p
+            font-size: 1vw
+        
+        .tag-field
+          background-color: white
+          border-radius: 1.5vw
+          margin-bottom: 0.5vw
+          padding: 1vw
+          width: calc(100%-4vw)
+          p
+            font-size: 1vw
+        
+        #buttons
+          *
+            width: auto
+          input
+            font-size: 1vw
+            border-radius: 2vw
+            padding: 0.5vw 1vw
+            margin: 0.5vw 0 0 0
+            float: right
+            border: solid 2px
+            background-color: #FFCFBF
+            border-color: var(--color-main)
+            
+
+          input:nth-child(1)
+            margin-left: 1vw
+
+#bottom-region
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  width: 100%
+  background-color: purple
+
+  #left-pane
     display: flex
     flex-direction: column
-    #description-background 
-      background-color: white
-      border: solid 2px
-      border-radius: 3vw 
-      border-color: grey
-      padding: 2vw
-      margin-bottom: 0.5vw
-      p 
-        font-size: 1vw 
+    justify-content: flex-start;
+    align-items: flex-start
     
-    .tag-field
-      background-color: white 
-      border-radius: 2vw
-      margin-bottom: 0.5vw
-      padding: 1vw
-      p
-        font-size: 1vw
+    top: 30%
+    left: 20%
+    width: 21%
+    height: auto
+    background-color: yellow
+    border-radius: 1.5vw
+    padding: 1.5vw 1vw
     
-    #buttons
-      input
-        font-size: 1vw 
-        border-radius: 2vw 
-        padding: 1vw
-        float: right
-        border: solid 2px
-        background-color: #FFCFBF
-        border-color: var(--color-main)
-        
-
-      input:nth-child(1)  
-        margin-left: 1vw
-
+    #divider1
+      background-color: black
+      align: center
+      height: 1px
+      width: 100%
+      //margin: 0 1vw
+      border: none
+      
+    
+  #right-pane
+    background-color: pink
+    width: 70%
+    border-radius: 1.5vw
+    padding: 1.5vw 1vw
+    
 
 //phone responsive
 @media only screen and (max-width: 450px)

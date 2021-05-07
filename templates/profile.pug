@@ -13,97 +13,100 @@ html
   {% include 'navbar.pug' %}
 
   body
-    #intro 
-      #info
-        #user-img
-        #user-name 張天豪
-        #school-info
-          #department 電機工程學系
-          #grade 四年級
-      #description-tag
-        #description-background
-          p#description 嗨大家好我是天豪，我很喜歡去爬山還有去costco買菜，我應該算好相處，歡迎大家跟我一起去好市多
-        .tag-field
+    #profilepanel
+      #top-region
+        #intro
+          #info
+            #user-img
+            #user-name 張天豪
+            #school-info
+              #department 電機工程學系
+              #grade 四年級
+          #description-tag
+            #description-background
+              p#description 嗨大家好我是天豪，我很喜歡去爬山還有去costco買菜，我應該算好相處，歡迎大家跟我一起去好市多嗨大家好我是天豪，我很喜歡去爬山還有去costco買菜，我應該算好相處，歡多嗨大家好我是天
+            .tag-field
+              p 個性
+              .tags#personality-tag
+            .tag-field
+              p 專長
+              .tags#skill-tag
+            .tag-field
+              p 有興趣活動
+              .tags#interested-tag
+
+            #buttons
+              input(type="button", value="建立連結")
+              input(type="button", value="傳訊息")
+      #bottom-region
+        #left-pane
+          p 聯絡人
+          p#friend-count 120
+          #friends-avatar
+          hr#divider1
+
           p 個性
-          .tags#personality-tag 
-        .tag-field
-          p 專長
-          .tags#skill-tag
-        .tag-field 
-          p 有興趣活動
-          .tags#interested-tag
+          .tags#personality-left
 
-        #buttons  
-          input(type="button", value="建立連結")
-          input(type="button", value="傳訊息")
+        #right-pane
+          #tab-navbar
+            input(type="button", value="參與活動")
+            input(type="button", value="參與專案")
+            input(type="button", value="個人專案")
 
-    #left-pane 
-      p 聯絡人
-      p#friend-count 120
-      #friends-avatar 
-
-      p 個性
-      .tags#personality-left 
-
-    #right-pane
-      #tab-navbar 
-        input(type="button", value="參與活動")
-        input(type="button", value="參與專案")
-        input(type="button", value="個人專案")
-
-      #activities
-        #activity-cards-panel 
-          #activity-card 
-            #activity-img
-            #activity-date 2021年5月1日
-            h4#activity-title COSTCO大採買之我要吃爆
-            #activity-rate 
-              p 8.7
-            #activity-character
-              p 主辦人
-            
-            #activity-comments-panel
-              #activity-comment
-                #activity-participant-img
-                p#activity-participant-name 張三
-                p#activity-participant-comment 天豪真的很會挑水果
-                #pactivity-articipatn-rate 
+          #activities
+            #activity-cards-panel
+              #activity-card
+                #activity-img
+                #activity-date 2021年5月1日
+                h4#activity-title COSTCO大採買之我要吃爆
+                #activity-rate
                   p 8.7
-            
-              // so many comments
+                #activity-character
+                  p 主辦人
+                
+                #activity-comments-panel
+                  #activity-comment
+                    #activity-participant-img
+                    p#activity-participant-name 張三
+                    p#activity-participant-comment 天豪真的很會挑水果
+                    #pactivity-articipatn-rate
+                      p 8.7
+                
+                  // so many comments
 
-          // so many cards (use for to solve it after the backend has constructed)
-      
-      #projects
-        #projects-card 
-            #projects-img
-            #projects-date 2021年5月1日
-            h4#projects-title 資料科學與文本分析課程
-            #projects-rate 
-              p 8.7
-            .tags#projects-tag
-              p UI&前端
-            
-            #projects-comments-panel
-              #projects-comment
-                #projects-participant-img
-                p#projects-participant-name 張三
-                p#projects-participant-comment 天豪真的很會設計網頁
-                #projects-participatn-rate 
+              // so many cards (use for to solve it after the backend has constructed)
+          
+          #projects
+            #projects-card
+                #projects-img
+                #projects-date 2021年5月1日
+                h4#projects-title 資料科學與文本分析課程
+                #projects-rate
                   p 8.7
-            
-              // so many comments
+                .tags#projects-tag
+                  p UI&前端
+                
+                #projects-comments-panel
+                  #projects-comment
+                    #projects-participant-img
+                    p#projects-participant-name 張三
+                    p#projects-participant-comment 天豪真的很會設計網頁
+                    #projects-participatn-rate
+                      p 8.7
+                
+                  // so many comments
 
-          // so many cards (use for to solve it after the backend has constructed)
+              // so many cards (use for to solve it after the backend has constructed)
 
-      #personal
-        #personal-card 
-            #personal-img
-            #personal-date 2021年5月1日
-            h4#personal-title 臺南深夜亂亂拍
-            p#personal-detail 前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸!
+          #personal
+            #personal-card
+                #personal-img
+                #personal-date 2021年5月1日
+                h4#personal-title 臺南深夜亂亂拍
+                p#personal-detail 前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸!前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸!前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸!前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸!
 
-          // so many cards (use for to solve it after the backend has constructed)
+            // so many cards (use for to solve it after the backend has constructed)
 
 
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
