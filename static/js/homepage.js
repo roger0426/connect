@@ -27,10 +27,15 @@ $(document).ready(function(){
   $("#title").click(function() {
     console.log("click title");
     $("#eventwindow").show();
-    $('#eventwindow').css({"opacity": 1});
+    $("#eventwindow").animate({opacity: 1}, 400);
     
     $("#eventcreatewindow").show();
-    $("#eventcreatewindow").css({"opacity": 1});
+    $("#eventcreatewindow").animate({opacity: 1}, 400);
+    
+    
+    $("#filter1").show();
+    $("#filter1").animate({opacity: 1}, 400, function() {
+    })
     //$("#sent").toggle();
   });
   
@@ -50,17 +55,23 @@ $(document).ready(function(){
     $("#sent").css({opacity: 0, "z-index": -1});
   });
   
-  $("#exitbtn1").click(function() {
+  $("#exitbtn1, #filter1").click(function() {
     console.log("click event exit");
-    $("#eventwindow").animate({opacity: 0}, 200, function() {
+    $("#eventwindow").animate({opacity: 0}, 400, function() {
       $("#eventwindow").hide();
+    })
+    $("#filter1").animate({opacity: 0}, 400, function() {
+      $("#filter1").hide();
     })
   });
   
   $("#exitbtn2").click(function() {
     console.log("click event exit");
-    $("#eventcreatewindow").animate({opacity: 0}, 200, function() {
+    $("#eventcreatewindow").animate({opacity: 0}, 400, function() {
       $("#eventcreatewindow").hide();
+    })
+    $("#filter1").animate({opacity: 0}, 400, function() {
+      $("#filter1").hide();
     })
   });
   

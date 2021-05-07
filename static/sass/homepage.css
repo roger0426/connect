@@ -25,10 +25,68 @@
 }
 
 body {
+<<<<<<< HEAD
   background-color: #FAAD95;
   width: 100%;
   height: 100%;
 }
+=======
+  background-color: #FAAD95; }
+
+#container {
+  position: fixed;
+  transform: translate(-50%, 0);
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+  width: 70%;
+  height: auto;
+  top: 15%;
+  left: 50%;
+  background-color: green; }
+  #container #create {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: red;
+    width: 100%;
+    height: 7vw;
+    border-radius: 2vw; }
+    #container #create #userpic {
+      margin: 0 2vw 0 3vw;
+      width: 5vw;
+      height: 5vw;
+      border-radius: 2.5vw;
+      background-color: yellow; }
+    #container #create #insertbox {
+      height: 3.5vw;
+      width: calc(100% - 13vw);
+      border-radius: 1.2vw;
+      background-color: yellow; }
+  #container #divider {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1vw;
+    background-color: purple; }
+    #container #divider p {
+      margin-right: 0;
+      font-size: 1.5vw; }
+    #container #divider .line {
+      background-color: #F0F0F0;
+      align: center;
+      height: 0.2vw;
+      border: none; }
+    #container #divider #line1 {
+      width: 60%; }
+    #container #divider #line2 {
+      width: 5%; }
+>>>>>>> c8d2bfd1aea43a303dd3e5ea898b3cbd4216b3ea
 
 #gotop {
   position: fixed;
@@ -43,6 +101,15 @@ body {
   z-index: 1000;
 }
 
+#filter1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vw;
+  backdrop-filter: blur(5px) contrast(70%) saturate(70%) brightness(70%);
+  -webkit-backdrop-filter: blur(5px) contrast(70%) saturate(70%) brightness(70%); }
+
 #eventwindow {
   position: fixed;
 <<<<<<< HEAD
@@ -54,8 +121,8 @@ body {
   top: 55%;
 >>>>>>> 9e6b76ce4494ff702ce91c2db93dec23be3acda6
   left: 50%;
-  width: 60%;
-  padding-top: 40%;
+  width: 45%;
+  padding-top: 30%;
   background-color: #F5FBFE;
   border-radius: 5vw;
 <<<<<<< HEAD
@@ -253,16 +320,16 @@ body {
     font-color: #000000; }
   #eventwindow #description {
     position: absolute;
-    left: 5.5vw;
-    top: 5.5vw;
+    left: 3.5vw;
+    top: 3.5vw;
     height: 65%;
     width: 60%; }
     #eventwindow #description h1 {
-      font-size: 3.5vw;
+      font-size: 3vw;
       color: #000000; }
     #eventwindow #description #subtitle {
-      margin: 1vw 0 0 0;
-      font-size: 1.5vw;
+      margin: 0.5vw 0 0 0;
+      font-size: 1.3vw;
       color: purple; }
     #eventwindow #description #keywords {
       display: flex;
@@ -274,20 +341,20 @@ body {
     #eventwindow #description #detail {
       font-size: 1.5vw;
       color: #000000;
-      margin: 2.5vw 0 0 0;
-      line-height: 1.5em; }
+      margin: 0.5vw 0 0 0;
+      line-height: 1.7vw; }
   #eventwindow #member {
     position: absolute;
     transform: translate(0, -100%);
     display: flex;
     flex-direction: row;
-    bottom: -1.5vw;
+    bottom: -1vw;
     width: 70%;
-    height: 5vw;
-    left: 5vw; }
+    height: 3vw;
+    left: 3.3vw; }
     #eventwindow #member * {
       position: relative;
-      margin: 0 0.5vw 0 0.5vw; }
+      margin: 0 0.5vw 0 0; }
     #eventwindow #member #bar {
       width: 5px;
       height: 3vw;
@@ -295,9 +362,9 @@ body {
       top: 50%;
       background-color: #B0B0B0; }
     #eventwindow #member .member {
-      height: 5vw;
-      width: 5vw;
-      border-radius: 2.5vw;
+      height: 3vw;
+      width: 3vw;
+      border-radius: 1.5vw;
       background-color: #FFC3B0; }
   #eventwindow #operatebg {
     background-color: rgba(58, 237, 194, 0.5);
@@ -309,9 +376,9 @@ body {
     border-radius: 5vw 0 5vw 0; }
   #eventwindow #exitbtn1 {
     transform: translate(-50%, 0);
-    top: 5%;
+    top: 3vw;
     right: -10%;
-    width: 2vw;
+    width: 1.5vw;
     height: auto; }
   #eventwindow #eventoperate {
     position: absolute;
@@ -323,6 +390,7 @@ body {
     #eventwindow #eventoperate * {
       position: absolute; }
     #eventwindow #eventoperate #flag {
+      display: none;
       transform: translate(-50%, 0);
       top: 0;
       left: 50%;
@@ -340,41 +408,45 @@ body {
         box-shadow: 10px 10px 25px 5px #00000026; }
     #eventwindow #eventoperate #date {
       transform: translate(-50%, -50%);
-      top: 15%;
+      top: 6vw;
       left: 50%;
       opacity: 0.8;
-      font-size: 2vw; }
+      font-size: 1.5vw; }
     #eventwindow #eventoperate #organizerpic {
       transform: translate(-50%, -50%);
-      height: 8vw;
-      width: 8vw;
-      top: 12.5vw;
+      height: 6vw;
+      width: 6vw;
+      top: 10.5vw;
       left: 50%;
-      border-radius: 4vw;
+      border-radius: 3vw;
       background-color: green; }
     #eventwindow #eventoperate p {
       transform: translate(-50%, -50%);
-      top: 18vw;
+      top: 14.7vw;
       left: 50%;
-      font-size: 2vw; }
+      font-size: 1.5vw; }
     #eventwindow #eventoperate #likebutton {
-      left: 0;
+      left: 1vw;
       bottom: 1vw;
-      height: 5vw;
-      width: 5vw; }
+      height: 3vw;
+      width: 3vw; }
       #eventwindow #eventoperate #likebutton #like-y {
-        display: block; }
+        display: none;
+        width: 100%; }
       #eventwindow #eventoperate #likebutton #like-n {
-        display: none; }
+        display: block;
+        width: 100%; }
     #eventwindow #eventoperate #applybutton {
-      right: 0;
+      right: 0.5vw;
       bottom: 1vw;
-      height: 5vw;
-      width: 5vw; }
+      height: 3vw;
+      width: 3vw; }
       #eventwindow #eventoperate #applybutton #apply-y {
-        display: block; }
+        display: block;
+        width: 100%; }
       #eventwindow #eventoperate #applybutton #apply-n {
-        display: none; }
+        display: none;
+        width: 100%; }
   #eventwindow #sent {
     position: absolute;
     display: block;
@@ -413,8 +485,8 @@ body {
   transform: translate(-50%, -50%);
   top: 55%;
   left: 50%;
-  width: 50%;
-  padding: 5%;
+  width: 45%;
+  padding: 3% 0;
   background-color: #F5FBFE;
   border-radius: 5vw;
   border: 5px solid rgba(58, 237, 194, 0.5);
@@ -425,11 +497,12 @@ body {
     transform: translate(-50%, 0);
     top: 3vw;
     right: 2vw;
-    width: 2vw;
+    width: 1.5vw;
     height: auto; }
   #eventcreatewindow #profile {
     display: flex;
-    margin-bottom: 1vw; }
+    margin: 1vw 0 1vw 3.5vw;
+    height: 4vw; }
     #eventcreatewindow #profile #pic {
       height: 4vw;
       width: 4vw;
@@ -437,16 +510,16 @@ body {
       background-color: red; }
     #eventcreatewindow #profile h1 {
       align-items: center;
-      font-size: 3.5vw;
-      line-height: 100%;
-      margin-left: 1vw;
-      top: 50%; }
+      font-size: 3vw;
+      line-height: 4vw;
+      margin-left: 1vw; }
   #eventcreatewindow ul {
     display: flex;
     align-items: center;
     white-space: nowrasp;
     list-style-type: none;
-    margin: 0.5vw;
+    margin-top: 0.5vw;
+    margin-left: 4vw;
     width: 90%; }
   #eventcreatewindow li {
     display: block;
@@ -455,6 +528,8 @@ body {
     word-break: normal;
     word-wrap: nowrap;
     align-items: center;
+    text-align: center;
+    line-height: 1.5vw;
     font-size: 1vw;
     font-family: var(--font-family-text);
     font-style: var(--font-style-text);
@@ -464,28 +539,41 @@ body {
     height: 1.5vw;
     border-radius: 1vw; }
   #eventcreatewindow .input-area {
-    width: 90%;
+    width: 70%;
     word-break: normal;
-    margin: 0.5vw;
     border-radius: 2vw;
-    padding: 0.7vw 0 0 1vw; }
+    margin: 0.5vw 0 0 3.5vw;
+    padding: 0.7vw 0 0 1vw;
+    outline: none; }
   #eventcreatewindow #eventtitle {
-    font-size: 2.2vw;
+    font-size: 2vw;
     height: 2.5vw; }
   #eventcreatewindow #eventsubtitle {
-    font-size: 2.2vw;
-    height: 2.5vw; }
-  #eventcreatewindow #eventdescription {
     font-size: 1.7vw;
-    height: 15vw; }
+    height: 2.3vw; }
+  #eventcreatewindow #eventdescription {
+    font-size: 1vw;
+    height: 7vw; }
   #eventcreatewindow #buttons {
     position: absolute;
-    height: 5.5vw;
-    width: 5.5vw;
+    height: 5vw;
+    width: 5vw;
     right: 2.5vw;
     bottom: 2.5vw; }
     #eventcreatewindow #buttons #submit-btn {
       width: 100%; }
 
+<<<<<<< HEAD
 >>>>>>> 9e6b76ce4494ff702ce91c2db93dec23be3acda6
+=======
+#filter1 {
+  display: none; }
+
+#eventwindow {
+  display: none; }
+
+#eventcreatewindow {
+  display: none; }
+
+>>>>>>> c8d2bfd1aea43a303dd3e5ea898b3cbd4216b3ea
 /*# sourceMappingURL=homepage.css.map */
