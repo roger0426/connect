@@ -1,13 +1,15 @@
 from django import forms
 from .models import EventsBoard
 
-class CreateEventForm(forms.ModelForm):
+class EventCreateForm(forms.ModelForm):
 
   class Meta:
     model = EventsBoard
     fields = (
       'title',
       'subtitle',
+      'event_tag',
       'detail',
-      'event_tag'
+      'event_type',
+      'image',
     )

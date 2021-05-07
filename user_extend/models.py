@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
-from events_board.models import EventsBoard, ProjectBoard, PersonalBoard
+from events_board.models import EventsBoard
 
 class UserExtend(models.Model):
   user = models.OneToOneField(User, on_delete = models.CASCADE)
@@ -51,23 +51,7 @@ class UserExtend(models.Model):
     blank = True,
     null = True
   )
-
-  projects = models.ForeignKey(
-    ProjectBoard,
-    on_delete = models.CASCADE,
-    related_name = 'projects',
-    default = '',
-    blank = True,
-    null = True
-  )
-
-  personal = models.ForeignKey(
-    PersonalBoard,
-    on_delete = models.CASCADE,
-    related_name = 'personal',
-    default = '',
-    blank = True,
-    null = True
-  )
+  def __str__(self):
+       return "User {0}".format(self.user.username)
 
   

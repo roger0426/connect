@@ -3,6 +3,7 @@ from django.conf import settings
 from taggit.managers import TaggableManager
 from datetime import date
 
+from django.utils import timezone
 # Create your models here.
 class EventsBoard(models.Model):
   # basic information
@@ -10,7 +11,7 @@ class EventsBoard(models.Model):
   subtitle = models.CharField(max_length=70)
   detail = models.TextField()
   event_tag = TaggableManager()
-  image = models.ImageField(upload_to='events', blank=True)
+  image = models.ImageField(upload_to='events/', blank=True)
   create_date = models.DateField(default = date.today)
   event_date = models.DateField(default = date.today)
 
@@ -37,40 +38,37 @@ class EventsBoard(models.Model):
     blank = True,
   )
 
-class ProjectBoard(models.Model):
-  # basic information
-  title = models.CharField(max_length=50)
-  subtitle = models.CharField(max_length=70)
-  detail = models.TextField()
-  event_tag = TaggableManager()
-  image = models.ImageField(upload_to='projects', blank=True)
-  create_date = models.DateField(default = date.today)
-  event_date = models.DateField(default = date.today)
+  EVENT_CHOICES = [
+    ('activity', '活動'),
+    ('project', '專案'),
+    ('personal', '個人專案')
+  ]
 
-  #about people
-  host = models.ForeignKey(
-    "user_extend.UserExtend",
-    on_delete=models.CASCADE, # delete when author deleted
-    related_name="project_host_name",
+  event_type = models.CharField(max_length=10, choices=EVENT_CHOICES, default='activity')
+
+class IntegerRangeField(models.IntegerField):
+    def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
+        self.min_value, self.max_value = min_value, max_value
+        models.IntegerField.__init__(self, verbose_name, name, **kwargs)
+    def formfield(self, **kwargs):
+        defaults = {'min_value': self.min_value, 'max_value':self.max_value}
+        defaults.update(kwargs)
+        return super(IntegerRangeField, self).formfield(**defaults)
+
+class Comment(models.Model):
+  text = models.CharField(max_length=40)
+  for_event = models.ForeignKey(
+    EventsBoard,
+    on_delete=models.CASCADE, 
+    related_name='comments'
   )
-
-  participants = models.ManyToManyField(
+  author = models.ForeignKey(
     "user_extend.UserExtend",
-    related_name="project_participant_name",
-    blank = True,
+    on_delete = models.CASCADE,
+    related_name='comment_author'
   )
+  rate = IntegerRangeField(min_value=1, max_value=10)
+  date = models.DateTimeField(default=timezone.now)
+  def __str__(self):
+    return self.text
 
-  interested_users = models.ManyToManyField(
-    "user_extend.UserExtend",
-    related_name="project_intereted_user_name",
-    blank = True,
-  )
-
-class PersonalBoard(models.Model):
-  title = models.CharField(max_length=50)
-  subtitle = models.CharField(max_length=70)
-  detail = models.TextField()
-  event_tag = TaggableManager()
-  image = models.ImageField(upload_to='personal, blank=True')
-  create_date = models.DateField(default = date.today)
-  event_date = models.DateField(default = date.today)
