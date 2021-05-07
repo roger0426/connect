@@ -1,8 +1,7 @@
 @font-face {
   font-family: jf-openhuninn;
   src: url("../fonts/jf-openhuninn-1.1.woff") format("woff");
-  font-display: auto;
-}
+  font-display: auto; }
 
 :root {
   --background-color: #FFFFFF;
@@ -15,22 +14,14 @@
   --font-style-header: normal;
   --font-family-text: "jf-openhuninn", "Tahoma", "Arial";
   --font-style-text: normal;
-  --font-family-card: "jf-openhuninn", "Tahoma", "Arial";
-}
+  --font-family-card: "jf-openhuninn", "Tahoma", "Arial"; }
 
 * {
   font-family: var(--font-family-text);
   padding: 0;
-  margin: 0;
-}
+  margin: 0; }
 
 body {
-<<<<<<< HEAD
-  background-color: #FAAD95;
-  width: 100%;
-  height: 100%;
-}
-=======
   background-color: #FAAD95; }
 
 #container {
@@ -86,7 +77,6 @@ body {
       width: 60%; }
     #container #divider #line2 {
       width: 5%; }
->>>>>>> c8d2bfd1aea43a303dd3e5ea898b3cbd4216b3ea
 
 #gotop {
   position: fixed;
@@ -98,8 +88,7 @@ body {
   background: rgba(228, 211, 211, 0.36);
   color: #FAFCFD;
   cursor: pointer;
-  z-index: 1000;
-}
+  z-index: 1000; }
 
 #filter1 {
   position: fixed;
@@ -112,207 +101,13 @@ body {
 
 #eventwindow {
   position: fixed;
-<<<<<<< HEAD
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  top: 50%;
-=======
   transform: translate(-50%, -50%);
   top: 55%;
->>>>>>> 9e6b76ce4494ff702ce91c2db93dec23be3acda6
   left: 50%;
   width: 45%;
   padding-top: 30%;
   background-color: #F5FBFE;
   border-radius: 5vw;
-<<<<<<< HEAD
-  z-index: 2;
-}
-
-#eventwindow * {
-  font-color: #000000;
-}
-
-#eventwindow #description {
-  position: absolute;
-  left: 5.5vw;
-  top: 5.5vw;
-  height: 65%;
-  width: 50%;
-}
-
-#eventwindow #description h1 {
-  font-size: 5vw;
-  color: blue;
-}
-
-#eventwindow #description #keywords {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  margin: 1vw 0 0 0;
-}
-
-#eventwindow #description #keywords * {
-  font-size: 2vw;
-  color: red;
-}
-
-#eventwindow #description #detail {
-  font-size: 2vw;
-  color: yellow;
-  margin: 2.5vw 0 0 0;
-}
-
-#eventwindow #member {
-  position: absolute;
-  -webkit-transform: translate(0, -100%);
-          transform: translate(0, -100%);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  bottom: -1.5vw;
-  width: 70%;
-  height: 5vw;
-  left: 5vw;
-}
-
-#eventwindow #member * {
-  position: relative;
-  margin: 0 0.5vw 0 0.5vw;
-}
-
-#eventwindow #member #bar {
-  width: 0.5vw;
-  height: 4vw;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
-  top: 50%;
-  background-color: red;
-}
-
-#eventwindow #member .member {
-  height: 5vw;
-  width: 5vw;
-  border-radius: 2.5vw;
-  background-color: #FFC3B0;
-}
-
-#eventwindow #eventoperate {
-  position: absolute;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
-  height: 100%;
-  width: 20%;
-  top: 50%;
-  right: 3vw;
-}
-
-#eventwindow #eventoperate * {
-  position: absolute;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-#eventwindow #eventoperate #flag {
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
-  top: 0;
-  left: 50%;
-}
-
-#eventwindow #eventoperate #date {
-  top: 15%;
-  left: 50%;
-  opacity: 0.8;
-  font-size: 2.5vw;
-}
-
-#eventwindow #eventoperate #organizerpic {
-  height: 8vw;
-  width: 8vw;
-  top: 14vw;
-  left: 50%;
-  border-radius: 4vw;
-  background-color: green;
-}
-
-#eventwindow #eventoperate p {
-  top: 20vw;
-  left: 50%;
-  font-size: 2vw;
-}
-
-#eventwindow #eventoperate #likebutton {
-  left: 25%;
-  bottom: 0;
-  height: 5vw;
-  width: 5vw;
-  background-color: red;
-}
-
-#eventwindow #eventoperate #applybutton {
-  left: 75%;
-  bottom: 0;
-  height: 5vw;
-  width: 5vw;
-  background-color: green;
-}
-
-#eventwindow #sent {
-  position: absolute;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  border-radius: 5vw;
-  opacity: 0.6;
-  z-index: 1;
-}
-
-#eventwindow #sent #bgblur {
-  opacity: 50%;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  border-radius: 5vw;
-  height: 100%;
-  width: 100%;
-  z-index: 3;
-}
-
-#eventwindow #sent #mailicon {
-  position: absolute;
-  -webkit-transform: translate(-50%, -100%);
-          transform: translate(-50%, -100%);
-  height: 100%;
-  width: auto;
-  top: 65%;
-  left: 50%;
-}
-
-#eventwindow #sent p {
-  position: absolute;
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
-  font-size: 3.5vw;
-  text-align: center;
-  bottom: 20%;
-  left: 50%;
-  width: 100%;
-  opacity: 1;
-  color: white;
-}
-=======
   border: 5px solid rgba(58, 237, 194, 0.5);
   box-shadow: 10px 10px 25px 5px #00000026;
   z-index: 2; }
@@ -563,9 +358,6 @@ body {
     #eventcreatewindow #buttons #submit-btn {
       width: 100%; }
 
-<<<<<<< HEAD
->>>>>>> 9e6b76ce4494ff702ce91c2db93dec23be3acda6
-=======
 #filter1 {
   display: none; }
 
@@ -575,5 +367,4 @@ body {
 #eventcreatewindow {
   display: none; }
 
->>>>>>> c8d2bfd1aea43a303dd3e5ea898b3cbd4216b3ea
 /*# sourceMappingURL=homepage.css.map */
