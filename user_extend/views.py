@@ -27,6 +27,7 @@ def profile_view(requests, id, *args, **kwargs):
   activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
   projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
   personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
+
   
   context = {
     'user': obj,

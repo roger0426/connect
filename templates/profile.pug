@@ -116,18 +116,25 @@ html
                 h4#activity-title {{ activity.title }}
                 #activity-img.panel-img
                 #activity-date {{ actvity.event_date }}
+                {% if activity.comments.count > 0 %}
                 #activity-rate
-                  p 8.7
+                  p {{ activity.get_avg_rating }}
+                {% endif %}
                 #activity-character
                   p 主辦人
                 
                 #activity-comments-panel
+                  {% for comment in activity.comments.all %}
                   #activity-comment
-                    #activity-participant-img
-                    p#activity-participant-name 張三
-                    p#activity-participant-comment 天豪真的很會挑水果
+                    img#activity-participant-img(src="{{ commennt.author.img.url }}")
+                    p#activity-participant-name {{ comment.author.full_name }}
+                    p#activity-participant-comment {{ comment.text }}
                     #pactivity-articipatn-rate
-                      p 8.7
+                      p {{ comment.rate }}
+                  {% empty %}
+                  p 這個活動好像還沒有評論
+                  {% endfor %}
+
               {% empty %}
               p 看來他好像還沒參加過活動喔
               {% endfor %}
@@ -143,18 +150,26 @@ html
                 h4#projects-title {{ project.title }}
                 #projects-img.panel-img
                 #projects-date {{ project.event_date }}
+                {% if activity.comments.count > 0 %}
                 #projects-rate
-                  p 8.7
+                  p {{ project.get_avg_rating }}
+                {% endif %}
                 .tags#projects-tag
-                  p UI&前端
+                  {% for tag in project.event_tag.all %}
+                  p {{ tag.name }}
+                  {% endfor %}
                 
                 #projects-comments-panel
+                  {% for comment in project.comments.all %}
                   #projects-comment
-                    #projects-participant-img
-                    p#projects-participant-name 張三
-                    p#projects-participant-comment 天豪真的很會設計網頁
+                    img#projects-participant-img(src="{{ commennt.author.img.url }}")
+                    p#projects-participant-name {{ comment.author.full_name }}
+                    p#projects-participant-comment {{ comment.text }}
                     #projects-participatn-rate
-                      p 8.7
+                      p {{ comment.rate }}
+                  {% empty %}
+                  p 這個活動好像還沒有評論
+                  {% endfor %}
 
               {% empty %}
               p 看來他好像還沒參與過專案
