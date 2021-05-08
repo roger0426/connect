@@ -387,7 +387,7 @@ body
   padding: 3% 0
   background-color: #F5FBFE
   border-radius: 5vw
-  border: 5px solid rgba(58, 237, 194, 0.5)
+  border: 5px solid #FFAD94
   box-shadow: 10px 10px 25px 5px #00000026
   z-index: 2
       
@@ -405,7 +405,7 @@ body
     display: flex
     margin: 1vw 0
     height: 4vw
-    margin: 0 0 1vw 3.5vw
+    margin: 0 0 1vw 0
         
     #pic
       height: 4vw
@@ -420,38 +420,75 @@ body
       //transform: translate(0, -50%)
       margin-left: 1vw
   
-  label
-    display: none
-  input
-    margin: 0 0 0 3.5vw
-  textarea
-    margin: 0 0 0 3.5vw
-  
-  p:nth-child(3)
-    background-color: red
-    input:nth-child(2)
-      background-color: yellow
+  form 
+    display: flex
+    flex-direction: column
+    align-items: stetch
+    padding-left: 3vw
+    padding-right: 3vw
+    padding-bottom: 3vw
+    label
+      display: none
+    span
+      display: none
+    br
+      display: none
+    input[type=text]
+      border-radius: 1vw
+      margin-bottom: 1vw
+      height: 3vw
+      font-size: 1vw
+      padding: 0 10px
+      outline: none
+      border: none
+      background-color: #EEEEEE
+    input[type=text]:focus
+      border: 2px solid #B9B9B9
+    textarea
+      bordere-radius: 1vw
+      background-color: #EEEEEE
+      border-radius: 1vw
+      padding: 1vw 10px
+      margin-bottom: 1vw
+      outline: none
+      border: none
+      font-size: 1vw
+      height: 8vw
+    
+    select
+      background-color: #EEEEEE
+      height: 2vw
+      font-size: 1vw
+      border-radius: 1vw
+      outline: none
+      border: none
+      margin-bottom: 1vw
+      padding: 0 10px
+    
+    
+    // p:nth-child(3)
+    //   background-color: red
+    //   input:nth-child(2)
+    //     background-color: yellow
+          
+    //   input:nth-child(1)
         
-    input:nth-child(1)
       
+    // p:nth-child(4)
+    //   background-color: blue
+      
+    // p:nth-child(5)
+    //   background-color: green
+      
+    // p:nth-child(6)
+    //   background-color: red
+      
+    // p:nth-child(7)
+    //   background-color: blue
+      
+    // p:nth-child(8)
+    //   background-color: green
     
-  p:nth-child(4)
-    background-color: blue
-    
-  p:nth-child(5)
-    background-color: green
-    
-  p:nth-child(6)
-    background-color: red
-    
-  p:nth-child(7)
-    background-color: blue
-    
-  p:nth-child(8)
-    background-color: green
-    
-  #id_title
-    font-size: 2vw
   
   
   ul
@@ -509,10 +546,12 @@ body
     position: absolute
     height: 5vw
     width: 5vw
-    right: 2.5vw
-    bottom: 2.5vw
+    right: 3.2vw
+    bottom: 2vw
     #submit-btn
       width: 100%
+      background: none
+      height: auto
 
 #filter1
   display: none

@@ -10,7 +10,7 @@ class EventsBoard(models.Model):
   title = models.CharField(max_length=50)
   subtitle = models.CharField(max_length=70)
   detail = models.TextField()
-  event_tag = TaggableManager()
+  event_tag = TaggableManager(blank=True)
   image = models.ImageField(upload_to='events/', blank=True)
   create_date = models.DateField(default = date.today)
   event_date = models.DateField(default = date.today)

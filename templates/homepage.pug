@@ -100,8 +100,8 @@ html
       form(action="", method="post") {% csrf_token %}
         #profile
           #pic
-          h1 {{ user.username }}
-        {{ form.as_p }}
+          h1 {{ user.userextend.full_name }}
+        {{ form.as_table }}
         //- textarea#eventtitle.input-area(type="text", name='eventtitle', placeholder="活動標題", maxlength="8")
         
         //- ul
