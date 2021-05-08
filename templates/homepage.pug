@@ -62,44 +62,25 @@ html
           option(value='hot') 最多人喜歡
         hr#line2.line
         
+
       #board
-        #PostUnit
-          div(data-page="PostUnit_0")
-            #frame
-            #main
+          #postwrapper
+          #postype
             #mark
-              img #mark src="./白色的書籤"
+              img(src="{% static 'file/applyicon.png' %}")
             #title
               p ＃揪團 去COSTCO
             #subtitle
               p 有會員卡，缺司機
-            #attach
+            #attachpic
               img src="./"
               img src="./"
-            #like
-              img src="./愛心的圖案"
-              a //愛心的數字
+            #likebutton
+              img(src="{% static 'file/like-y.png' %}")
+              h 160
             #comment
-              img src="./留言的圖案"
-              a //留言的數字
-          div(data-page="PostUnit_{n}")
-            #frame
-            #main
-            #mark
-              img #mark src="./白色的書籤"
-            #title
-              p ＃揪團 去COSTCO
-            #subtitle
-              p 有會員卡，缺司機
-            #attach
-              img src="./"
-              img src="./"
-            #like
-              img src="./愛心的圖案"
-              a //愛心的數字
-            #comment
-              img src="./留言的圖案"
-              a //留言的數字
+              img(src="{% static 'file/msgicon.png' %}")
+              h 36            
 
     #gotop
       p ˄
