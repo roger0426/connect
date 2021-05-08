@@ -44,6 +44,9 @@ body
   
   #top-region
     margin: 0 0 2vw 0
+    //position: sticky
+    top: 10%
+    left: 50%
 
     #intro
       position: relative
@@ -141,6 +144,7 @@ body
   flex-direction: row
   justify-content: space-between
   width: 100%
+  height: 100vw
   background-color: purple
 
   #left-pane
@@ -153,7 +157,7 @@ body
     left: 20%
     width: 21%
     height: auto
-    background-color: yellow
+    background-color: #FFCFBF
     border-radius: 1.5vw
     padding: 1.5vw 1vw
     
@@ -162,16 +166,61 @@ body
       align: center
       height: 1px
       width: 100%
-      //margin: 0 1vw
+      margin: 10px 0
       border: none
       
     
   #right-pane
     background-color: pink
-    width: 70%
+    width: 73%
     border-radius: 1.5vw
-    padding: 1.5vw 1vw
+    //padding: 0 1vw 1.5vw 1vw
     
+    #indextag
+      height: 2.5vw
+      width: 100%
+      display: flex
+      flex-direction: row
+      align-items: flex-end
+      justify-content: space-between
+      
+      z-index: 0
+      
+      .tag
+        width: 20%
+        height: 100%
+        background-color: #FDF2EF
+        opacity: 0.2
+        z-index: 0
+        border-radius: 1vw 1vw 0 0
+                
+      .tag:nth-child(1)
+        opacity: 1
+        
+    #tab-navbar
+      position: relative
+      top: -1.8vw
+      display: flex
+      flex-direction: row
+      align-items: flex-end
+      justify-content: space-around
+      z-index: 2
+      *
+        width: 15%
+        z-index: 1
+        font-size: 1.3vw
+        border: none
+        background-color: transparent
+        
+        
+    #activities
+      margin: 0 1.5vw 1.5vw 1.5vw
+      
+    #projects
+      margin: 0 1.5vw 1.5vw 1.5vw
+      
+    #personal
+      margin: 0 1.5vw 1.5vw 1.5vw
 
 //phone responsive
 @media only screen and (max-width: 450px)
