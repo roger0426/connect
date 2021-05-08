@@ -48,39 +48,41 @@ html
         #userpic
         #insertbox
       
-      #divider
-        hr#line1.line
-        p 分類
-        select#category
-          option(value='recommend') 推薦
-          option(value='recommend') 推薦
-          option(value='recommend') 推薦
-        p 排序
-        select#sort
-          option(value='hot') 最多人喜歡
-          option(value='hot') 最多人喜歡
-          option(value='hot') 最多人喜歡
-        hr#line2.line
+
         
 
       #board
-          #postwrapper
-          #postype
-            #mark
-              img(src="{% static 'file/applyicon.png' %}")
-            #title
-              p ＃揪團 去COSTCO
-            #subtitle
-              p 有會員卡，缺司機
-            #attachpic
-              img src="./"
-              img src="./"
-            #likebutton
-              img(src="{% static 'file/like-y.png' %}")
-              h 160
-            #comment
-              img(src="{% static 'file/msgicon.png' %}")
-              h 36            
+        #divider
+          hr#line1.line
+          p 分類
+          select#category
+            option(value='recommend') 推薦
+            option(value='recommend') 推薦
+            option(value='recommend') 推薦
+          p 排序
+          select#sort
+            option(value='hot') 最多人喜歡
+            option(value='hot') 最多人喜歡
+            option(value='hot') 最多人喜歡
+          hr#line2.line
+
+        #postwrapper
+        #postype
+          #mark
+            img(src="{% static 'file/applyicon.png' %}")
+          #title
+            p ＃揪團 去COSTCO
+          #subtitle
+            p 有會員卡，缺司機
+          #attachpic
+            img(src="{% static 'file/exiticon.png' %}")
+            img(src="{% static 'file/exiticon.png' %}")
+          #likebutton
+            img(src="{% static 'file/like-y.png' %}")
+            h 160
+          #comment
+            img(src="{% static 'file/msgicon.png' %}")
+            h 36            
 
     #gotop
       p ˄
