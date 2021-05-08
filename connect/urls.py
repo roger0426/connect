@@ -22,6 +22,9 @@ from events_board.views import home_view, event_detail_view, like_view
 from user_extend.views import profile_view
 from django.contrib.auth import views as auth_views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('', home_view, name='home'),
     path('profile/<int:id>/', profile_view, name='profile'),
@@ -30,4 +33,4 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('about_us/', about_us_view, name='about_us'),
     path('admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

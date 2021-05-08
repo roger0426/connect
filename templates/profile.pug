@@ -17,7 +17,8 @@ html
       #top-region
         #intro
           #info
-            #user-img {{ user.img }}
+            {% load static %}
+            img#user-img(src="{{ user.img.url }}")
             #user-name {{ user.full_name }}
             #school-info
               #department {{ user.department }}
@@ -57,14 +58,40 @@ html
         #left-pane
           p 聯絡人
           p#friend-count 120
-          #friends-avatar
+          #friends-avatar.left-region
             {% for friend in user.friends.all %}
             .friend-img {{ friend.img }}
             {% empty %}
             p 快去建立連結吧
             {% endfor %}
-          hr#divider1
+          hr#divider1.lefthr
           p 個性
+          #personality.left-region
+            {% for personality in personality %}
+            .tag-style
+              p.tags {{ personality }}
+            {% empty %}
+            p 他好像還沒設定個性
+            {% endfor %}
+          hr#divider2.lefthr
+          p 專長
+          #shill.left-region
+            {% for skill in skill %}
+            .tag-style
+              p.tags {{ skill }}
+            {% empty %}
+            p 他好像還沒設定專長
+            {% endfor %}
+          hr#divider3.lefthr
+          p 有興趣活動
+          #interest.left-region
+            {% for interest in interest %}
+            .tag-style
+              p.tags {{ interest }}
+            {% empty %}
+            p 他好像還沒設定有興趣的活動
+            {% endfor %}
+            
           .tags#personality-left
 
         #right-pane
@@ -82,13 +109,13 @@ html
             input(type="button", value="...")
             input(type="button", value="...")
 
-          #activities
-            #activity-cards-panel
+          #activities.page
+            #activity-cards
               {% for activity in activities %}
-              #activity-card
-                #activity-img
-                #activity-date {{ actvity.event_date }}
+              #activity-card.card-panel
                 h4#activity-title {{ activity.title }}
+                #activity-img.panel-img
+                #activity-date {{ actvity.event_date }}
                 #activity-rate
                   p 8.7
                 #activity-character
@@ -109,25 +136,25 @@ html
 
               // so many cards (use for to solve it after the backend has constructed)
           
-          #projects(style="display: none")
-            #project-cards-panel
+          #projects.page(style="display: none")
+            #project-cards
               {% for project in projects %}
-              #projects-card
-                  #projects-img
-                  #projects-date {{ project.event_date }}
-                  h4#projects-title {{ project.title }}
-                  #projects-rate
-                    p 8.7
-                  .tags#projects-tag
-                    p UI&前端
-                  
-                  #projects-comments-panel
-                    #projects-comment
-                      #projects-participant-img
-                      p#projects-participant-name 張三
-                      p#projects-participant-comment 天豪真的很會設計網頁
-                      #projects-participatn-rate
-                        p 8.7
+              #projects-card.card-panel
+                h4#projects-title {{ project.title }}
+                #projects-img.panel-img
+                #projects-date {{ project.event_date }}
+                #projects-rate
+                  p 8.7
+                .tags#projects-tag
+                  p UI&前端
+                
+                #projects-comments-panel
+                  #projects-comment
+                    #projects-participant-img
+                    p#projects-participant-name 張三
+                    p#projects-participant-comment 天豪真的很會設計網頁
+                    #projects-participatn-rate
+                      p 8.7
 
               {% empty %}
               p 看來他好像還沒參與過專案
@@ -137,13 +164,13 @@ html
 
               // so many cards (use for to solve it after the backend has constructed)
 
-          #personal(style="display: none")
-            #personal-cards-panel
+          #personal.page(style="display: none")
+            #personal-cards
               {% for personal_proj in personal_projs %}
-              #personal-card
-                  #personal-img
-                  #personal-date {{ personal_proj.event_date }}
+              #personal-card.card-panel
                   h4#personal-title {{ personal_proj.title }}
+                  #personal-img.panel-img
+                  #personal-date {{ personal_proj.event_date }}
                   p#personal-detail {{ personal_proj.detail }}
               {% empty %}
               p 看來他好像還沒新增過個人專案
