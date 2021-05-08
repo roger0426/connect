@@ -114,15 +114,15 @@ html
             #activity-card.card
               .cardleft
                 #activity-img.card-img
-                #activity-date {{ actvity.event_date }}
-                  {% for comment in actvity.event_date %}
-                  p {{ actvity.event_date }}
-                  {% empty %}
-                  p 未設定日期
-                  {% endfor %}
+                #activity-date 
+                {% if actvity.event_date != NULL %}
+                p.date {{ actvity.event_date }}
+                {% else %}
+                p.date 未設定日期
+                {% endif %}
               
               .cardright
-                #info
+                .info
                   p#activity-title.cardinfott {{ activity.title }}
                   {% if activity.comments.count > 0 %}
                   p#activity-rate.rate {{ activity.get_avg_rating }}★
@@ -145,60 +145,71 @@ html
                   {% endfor %}
 
             {% empty %}
-            p 看來他好像還沒參加過活動喔
+            p.hint 看來他好像還沒參加過活動喔
             {% endfor %}
               
             // so many comments
 
             // so many cards (use for to solve it after the backend has constructed)
           
-          #projects.page(style="display: none")
-            #project-cards
-              {% for project in projects %}
-              #projects-card.card-panel
-                h4#projects-title {{ project.title }}
-                #projects-img.panel-img
-                #projects-date {{ project.event_date }}
-                {% if activity.comments.count > 0 %}
-                #projects-rate
-                  p {{ project.get_avg_rating }}
+          #projects.page-panel(style="display: none")
+            {% for project in projects %}
+            #projects-card.card
+              .cardleft
+                #projects-img.card-img
+                #projects-date 
+                {% if project.event_date != NULL %}
+                p.date {{ project.event_date }}
+                {% else %}
+                p.date 未設定日期
                 {% endif %}
-                .tags#projects-tag
-                  {% for tag in project.event_tag.all %}
-                  p {{ tag.name }}
-                  {% endfor %}
-                
-                #projects-comments-panel
+
+              .cardright
+                .info
+                  p#project-title.cardinfott {{ project.title }}
+                  {% if project.comments.count > 0 %}
+                  p#projects-rate {{ project.get_avg_rating }}★
+                  {% endif %}
+
+                #projects-comment.comments
                   {% for comment in project.comments.all %}
-                  #projects-comment
+                  .activity-comment
                     img#projects-participant-img(src="{{ commennt.author.img.url }}")
-                    p#projects-participant-name {{ comment.author.full_name }}
-                    p#projects-participant-comment {{ comment.text }}
-                    #projects-participatn-rate
-                      p {{ comment.rate }}
+                    .comment-right
+                      p#projects-participant-name {{ comment.author.full_name }}
+                      p#projects-participant-comment {{ comment.text }}
+                      p#projects-participatn-rate {{ comment.rate }}
                   {% empty %}
-                  p 這個活動好像還沒有評論
+                  .activity-comment
+                    .comment-right
+                      p 這個活動好像還沒有評論
                   {% endfor %}
 
-              {% empty %}
-              p 看來他好像還沒參與過專案
-              {% endfor %}
+            {% empty %}
+            p.hint 看來他好像還沒參與過專案
+            {% endfor %}
                   
-              // so many comments
+            // so many comments
 
-              // so many cards (use for to solve it after the backend has constructed)
+            // so many cards (use for to solve it after the backend has constructed)
 
-          #personal.page(style="display: none")
-            #personal-cards
-              {% for personal_proj in personal_projs %}
-              #personal-card.card-panel
-                  h4#personal-title {{ personal_proj.title }}
-                  #personal-img.panel-img
-                  #personal-date {{ personal_proj.event_date }}
-                  p#personal-detail {{ personal_proj.detail }}
-              {% empty %}
-              p 看來他好像還沒新增過個人專案
-              {% endfor %}
+          #personal.page-panel(style="display: none")
+            {% for personal_proj in personal_projs %}
+            #personal-card.card
+              .cardleft
+                #personal-img.card-img
+                #personal-date
+                {% if personal_proj.event_date != NULL %}
+                p.date {{ personal_proj.event_date }}
+                {% else %}
+                p.date 未設定日期
+                {% endif %}
+              .cardright 
+                p#personal-title {{ personal_proj.title }}
+                p#personal-detail {{ personal_proj.detail }}
+            {% empty %}
+            p.hint 看來他好像還沒新增過個人專案
+            {% endfor %}
 
             // so many cards (use for to solve it after the backend has constructed)
 
