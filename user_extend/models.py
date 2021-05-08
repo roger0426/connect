@@ -6,7 +6,7 @@ from events_board.models import EventsBoard
 class UserExtend(models.Model):
   user = models.OneToOneField(User, on_delete = models.CASCADE)
   full_name = models.CharField(max_length=10, default='')
-  img = models.ImageField(upload_to='user/', blank=True)
+  img = models.ImageField(upload_to='user/', default='user/user_img_default.png')
   # tags
   tag = TaggableManager()
 

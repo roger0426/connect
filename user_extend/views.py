@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import UserExtend, EventsBoard
+from events_board.models import Comment
 
 # Create your views here.
 def update_profile(request, user_id):
@@ -26,7 +27,7 @@ def profile_view(requests, id, *args, **kwargs):
   activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
   projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
   personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
-  print(projects)
+  
   context = {
     'user': obj,
     'personality': personality_tags,
