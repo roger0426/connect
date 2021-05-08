@@ -17,23 +17,38 @@ html
       #top-region
         #intro
           #info
-            #user-img
-            #user-name 張天豪
+            #user-img {{ user.img }}
+            #user-name {{ user.full_name }}
             #school-info
-              #department 電機工程學系
-              #grade 四年級
+              #department {{ user.department }}
+              #grade {{ user.grade }}
           #description-tag
             #description-background
-              p#description 嗨大家好我是天豪，我很喜歡去爬山還有去costco買菜，我應該算好相處，歡迎大家跟我一起去好市多嗨大家好我是天豪，我很喜歡去爬山還有去costco買菜，我應該算好相處，歡多嗨大家好我是天
+              p#description {{ user.personal_description }}
             .tag-field
               p 個性
-              .tags#personality-tag
+              {% for personality in personality %}
+              .tag-style
+                p.tags {{ personality }}
+              {% empty %}
+              p 他好像還沒設定個性
+              {% endfor %}
             .tag-field
               p 專長
-              .tags#skill-tag
+              {% for skill in skill %}
+              .tag-style
+                p.tags {{ skill }}
+              {% empty %}
+              p 他好像還沒設定專長
+              {% endfor %}
             .tag-field
               p 有興趣活動
-              .tags#interested-tag
+              {% for interest in interest %}
+              .tag-style
+                p.tags {{ interest }}
+              {% empty %}
+              p 他好像還沒設定有興趣的活動
+              {% endfor %}
 
             #buttons
               input(type="button", value="建立連結")
@@ -43,8 +58,12 @@ html
           p 聯絡人
           p#friend-count 120
           #friends-avatar
+            {% for friend in user.friends.all %}
+            .friend-img {{ friend.img }}
+            {% empty %}
+            p 快去建立連結吧
+            {% endfor %}
           hr#divider1
-
           p 個性
           .tags#personality-left
 
@@ -56,10 +75,11 @@ html
 
           #activities
             #activity-cards-panel
+              {% for activity in activities %}
               #activity-card
                 #activity-img
-                #activity-date 2021年5月1日
-                h4#activity-title COSTCO大採買之我要吃爆
+                #activity-date {{ actvity.event_date }}
+                h4#activity-title {{ activity.title }}
                 #activity-rate
                   p 8.7
                 #activity-character
@@ -72,39 +92,53 @@ html
                     p#activity-participant-comment 天豪真的很會挑水果
                     #pactivity-articipatn-rate
                       p 8.7
+              {% empty %}
+              p 看來他好像還沒參加過活動喔
+              {% endfor %}
                 
-                  // so many comments
+              // so many comments
 
               // so many cards (use for to solve it after the backend has constructed)
           
-          #projects
-            #projects-card
-                #projects-img
-                #projects-date 2021年5月1日
-                h4#projects-title 資料科學與文本分析課程
-                #projects-rate
-                  p 8.7
-                .tags#projects-tag
-                  p UI&前端
-                
-                #projects-comments-panel
-                  #projects-comment
-                    #projects-participant-img
-                    p#projects-participant-name 張三
-                    p#projects-participant-comment 天豪真的很會設計網頁
-                    #projects-participatn-rate
-                      p 8.7
-                
-                  // so many comments
+          #projects(style="display: none")
+            #project-cards-panel
+              {% for project in projects %}
+              #projects-card
+                  #projects-img
+                  #projects-date {{ project.event_date }}
+                  h4#projects-title {{ project.title }}
+                  #projects-rate
+                    p 8.7
+                  .tags#projects-tag
+                    p UI&前端
+                  
+                  #projects-comments-panel
+                    #projects-comment
+                      #projects-participant-img
+                      p#projects-participant-name 張三
+                      p#projects-participant-comment 天豪真的很會設計網頁
+                      #projects-participatn-rate
+                        p 8.7
+
+              {% empty %}
+              p 看來他好像還沒參與過專案
+              {% endfor %}
+                  
+              // so many comments
 
               // so many cards (use for to solve it after the backend has constructed)
 
-          #personal
-            #personal-card
-                #personal-img
-                #personal-date 2021年5月1日
-                h4#personal-title 臺南深夜亂亂拍
-                p#personal-detail 前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸!前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸!前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸!前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸，前幾天在台南亂亂拍照，台南晚上hen美欸!
+          #personal(style="display: none")
+            #personal-cards-panel
+              {% for personal_proj in personal_projs %}
+              #personal-card
+                  #personal-img
+                  #personal-date {{ personal_proj.event_date }}
+                  h4#personal-title {{ personal_proj.title }}
+                  p#personal-detail {{ personal_proj.detail }}
+              {% empty %}
+              p 看來他好像還沒新增過個人專案
+              {% endfor %}
 
             // so many cards (use for to solve it after the backend has constructed)
 
