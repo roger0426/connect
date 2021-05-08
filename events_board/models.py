@@ -14,6 +14,8 @@ class EventsBoard(models.Model):
   image = models.ImageField(upload_to='events/', blank=True)
   create_date = models.DateField(default = date.today)
   event_date = models.DateField(default = date.today)
+  people_wanted = models.IntegerField(default=1)
+  likes = models.ManyToManyField("user_extend.UserExtend", related_name='event_like')
 
   #about people
   host = models.ForeignKey(
@@ -45,6 +47,9 @@ class EventsBoard(models.Model):
   ]
 
   event_type = models.CharField(max_length=10, choices=EVENT_CHOICES, default='activity')
+
+  def number_of_likes(self):
+      return self.likes.count()
 
 class IntegerRangeField(models.IntegerField):
     def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):

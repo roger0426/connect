@@ -18,13 +18,14 @@ from django.urls import path, include
 
 from connect.view import login_view
 from about_us.views import about_us_view
-from events_board.views import home_view
+from events_board.views import home_view, event_detail_view
 from user_extend.views import profile_view
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', home_view, name='home'),
     path('profile/<int:id>/', profile_view, name='profile'),
+    path('events/<int:id>/', event_detail_view, name='event_detail'),
     path('login/', login_view, name='login'),
     path('about_us/', about_us_view, name='about_us'),
     path('admin/', admin.site.urls),
