@@ -113,7 +113,8 @@ html
             {% for activity in activities %}
             #activity-card.card
               .cardleft
-                #activity-img.card-img
+                {% load static %}
+                #activity-img.card-img(src="{{ actvity.img.url }}")
                 #activity-date 
                 {% if actvity.event_date != NULL %}
                 p.date {{ actvity.event_date }}
@@ -170,6 +171,7 @@ html
                   {% if project.comments.count > 0 %}
                   p#projects-rate {{ project.get_avg_rating }}★
                   {% endif %}
+                  p#activity-character.charname 主辦人
 
                 #projects-comment.comments
                   {% for comment in project.comments.all %}
@@ -204,7 +206,7 @@ html
                 {% else %}
                 p.date 未設定日期
                 {% endif %}
-              .cardright 
+              .cardright
                 p#personal-title {{ personal_proj.title }}
                 p#personal-detail {{ personal_proj.detail }}
             {% empty %}

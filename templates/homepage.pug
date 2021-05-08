@@ -99,7 +99,8 @@ html
       
       form(action="", method="post") {% csrf_token %}
         #profile
-          #pic
+          {% load static %}
+          img#user-img(src="{{ user.img.url }}")
           h1 {{ user.userextend.full_name }}
         {{ form.as_table }}
         //- textarea#eventtitle.input-area(type="text", name='eventtitle', placeholder="活動標題", maxlength="8")
@@ -123,6 +124,7 @@ html
 
         #buttons
           input#submit-btn(type="image" src="{% static 'file/submitbtn.png' %}" alt="Submit Form")
+          //#submit-btn(alt="Submit Form")
           //img#vector(src="{% static 'file/vectoricon.png' %}")
           //p#submit 發佈
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
