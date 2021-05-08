@@ -46,7 +46,7 @@ class UserExtend(models.Model):
   events = models.ForeignKey(
     EventsBoard,
     on_delete = models.CASCADE,
-    related_name = 'events',
+    related_name = 'user',
     default = '',
     blank = True,
     null = True

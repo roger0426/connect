@@ -70,7 +70,7 @@ class Comment(models.Model):
   author = models.ForeignKey(
     "user_extend.UserExtend",
     on_delete = models.CASCADE,
-    related_name='comment_author'
+    related_name='comments'
   )
   rate = IntegerRangeField(min_value=1, max_value=10)
   date = models.DateTimeField(default=timezone.now)
