@@ -32,24 +32,68 @@ html
             option(value='hot') 最多人喜歡
             option(value='hot') 最多人喜歡
           hr#line2.line
-
-        #postwrapper
-          #postype
-            #mark
-              p +
-            #title
-              p ＃揪團 去COSTCO
-            #subtitle
-              p 有會員卡，缺司機
-            #attachpic
-              img(src="{% static 'file/exiticon.png' %}")
-              img(src="{% static 'file/exiticon.png' %}")
-          #count
-            img#likebutton(src="{% static 'file/like-y.png' %}")
-            h 160  
-            img#comment(src="{% static 'file/msgicon.png' %}")
-            h 36            
-
+          
+        //
+          #postwrapper
+            #postype
+              #mark
+                p +
+              #title
+                p ＃揪團 去COSTCO
+              #subtitle
+                p 有會員卡，缺司機
+              #attachpic
+                img(src="{% static 'file/exiticon.png' %}")
+                img(src="{% static 'file/exiticon.png' %}")
+            #count
+              img#likebutton(src="{% static 'file/like-y.png' %}")
+              h 160
+              img#comment(src="{% static 'file/msgicon.png' %}")
+              h 36
+              
+        #eventboard
+          {% for event in event_obj %}
+          #eventpost
+            p {{ event }}
+            p {{ event.subtitle }}
+            //p {{ event.detail }}
+                        
+            #postimgs
+              
+              #add_pic
+                #addpic_bg
+                p +
+              
+              
+            #posttag
+              #tags
+            
+            #postcreatdate
+              p {{ event.create_date }}
+              
+            #postwanted
+              //p {{ event.people_wanted }}
+              
+            #postlikes
+              {% load static %}
+              img#likeicon(src="{% static 'file/like-y.png' %}")
+              p {{ event.number_of_likes }}
+            
+            #postcomments
+              {% load static %}
+              img#commenticon(src="{% static 'file/commenticon.png' %}")
+              //p {{ event.number_of_comments }}
+            
+          {% empty %}
+          #eventpost
+            p no event
+          {% endfor %}
+        
+        
+        
+        
+        
+        
     #gotop
       p ˄
     
