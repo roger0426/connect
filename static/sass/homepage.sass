@@ -28,6 +28,10 @@ input, textarea, button, select, a
 body
   background-color: white
 
+  a
+  text-decoration: none
+  color: black
+
 #container
   position: fixed
   transform: translate(-50%, 0)
@@ -269,17 +273,14 @@ body
     .member
       height: 3vw
       width: 3vw
-      border-radius: 1.5vw
-      background-color: #FFC3B0
+      border-radius: 50%
+      background-color: #E0E0E0
+    .participant
+      border: var(--color-main) solid 0.2vw
 
     #organizer
-      
-    #member1
-    #member2
-    #member3
-    #member4
-    #member5
-      
+      border: #75E1C7 solid 0.2vw
+
       
   #operatebg
     background-color: rgba(58, 237, 194, 0.5)
@@ -333,20 +334,25 @@ body
       opacity: 0.8
       font-size: 1.5vw
 
-    #organizerpic
+    a
       transform: translate(-50%, -50%)
-      height: 6vw
-      width: 6vw
-      top: 10.5vw
       left: 50%
-      border-radius: 3vw
-      background-color: green
-      
-    p
-      transform: translate(-50%, -50%)
-      top: 14.7vw
-      left: 50%
-      font-size: 1.5vw
+      #organizerpic
+        transform: translate(-50%, -50%)
+        height: 6vw
+        width: 6vw
+        top: 10.5vw
+        left: 50%
+        border-radius: 3vw
+        background-color: #C4C4C4
+        
+      p
+        transform: translate(-50%, -50%)
+        top: 14.7vw
+        left: 50%
+        font-size: 1.5vw
+        color: black
+        width: 5vw
     
     #likebutton
       left: 1vw

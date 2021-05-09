@@ -28,7 +28,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', home_view, name='home'),
     path('profile/<int:id>/', profile_view, name='profile'),
-    path('events/<int:id>/', event_detail_view, name='event_detail'),
+    path('event/<int:id>/', event_detail_view, name='event_detail'),
     path('like/<int:id>', like_view, name="like"),
     path('login/', login_view, name='login'),
     path('about_us/', about_us_view, name='about_us'),

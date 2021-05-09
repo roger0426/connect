@@ -4,7 +4,7 @@ html
   head
     meta(charset="utf-8")
     meta(content="width=device-width, initial-scale=1", name="viewport")
-    title CONNECT
+    title CONNECT - {{ event_obj.title }}
     link(href="{% static 'file/logo.ico' %}",rel="icon")
     {% load sass_tags %}
     link(href="{% sass_src 'sass/homepage.sass' %}",rel="stylesheet",type="text/css")
@@ -28,13 +28,21 @@ html
         #detail {{ event_obj.detail }}
 
       #member
-        #organizer.member
+        a(href="{% url 'profile' id=event_obj.host.pk %}")
+          img#organizer.member(src='{{ event_obj.host.img.url }}')
         #bar
-        #member1.member
-        #member2.member
-        #member3.member
-        #member4.member
-        #member5.member
+        {% for participant in event_obj.participants.all %}
+        a(href="{% url 'profile' id=participant.pk %}")
+          img.member.participant(src='{{ participant.img.url }}')
+        {% empty %}
+        {% if event_obj.number_of_likes == 0 %}
+        p 還沒有參與者
+        {% endif %}
+        {% endfor %}
+        {% for interested_user in event_obj.likes.all %}
+        a(href="{% url 'profile' id=interested_user.pk %}")
+          img.member.interested(src='{{ interested_user.img.url }}')
+        {% endfor %}
       
       #operatebg
       
@@ -47,8 +55,9 @@ html
         
           
         #date 2021/5/2
-        #organizerpic
-        p {{ event_obj.host.full_name }}
+        a(href="{% url 'profile' id=event_obj.host.pk %}")
+          img#organizerpic(src='{{ event_obj.host.img.url }}')
+          p {{ event_obj.host.full_name }}
 
           
         #likebutton

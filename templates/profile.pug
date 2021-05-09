@@ -117,7 +117,8 @@ html
             #activity-card.card
               .cardleft
                 {% if activity.image %}
-                img#activity-img.card-img(src="{{ activity.image.url }}")
+                a(href="{% url 'event_detail' id=activity.pk %}")
+                  img#activity-img.card-img(src="{{ activity.image.url }}")
                 {% else %}
                 #activity-img.card-img
                   p#nopicalert 尚未新增圖片
@@ -131,7 +132,8 @@ html
               
               .cardright
                 .info
-                  p#activity-title.cardinfott {{ activity.title }}
+                  a(href="{% url 'event_detail' id=activity.pk %}")
+                    p#activity-title.cardinfott {{ activity.title }}
                   {% if activity.comments.count > 0 %}
                   p#activity-rate.rate {{ activity.get_avg_rating }}★
                   {% endif %}
@@ -141,9 +143,11 @@ html
                   {% for comment in activity.comments.all %}
                   .activity-comment
                     {% load static %}
-                    img#participant-img(src="{{ comment.author.img.url }}")
+                    a(href="{% url 'profile' id=comment.author.pk %}")
+                      img#participant-img(src="{{ comment.author.img.url }}")
                     .comment-right
-                      p#participant-name {{ comment.author.full_name }}
+                      a(href="{% url 'profile' id=comment.author.pk %}")
+                        p#participant-name {{ comment.author.full_name }}
                       p#participant-comment {{ comment.text }}
                       p#participant-rate {{ comment.rate }}★
                   {% empty %}

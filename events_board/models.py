@@ -33,12 +33,12 @@ class EventsBoard(models.Model):
     blank = True,
   )
 
-  interested_users = models.ManyToManyField(
-    "user_extend.UserExtend",
-    related_name="event_intereted_user_name",
-    default = '',
-    blank = True,
-  )
+  # interested_users = models.ManyToManyField(
+  #   "user_extend.UserExtend",
+  #   related_name="event_intereted_user_name",
+  #   default = '',
+  #   blank = True,
+  # )
 
   EVENT_CHOICES = [
     ('activity', '活動'),
