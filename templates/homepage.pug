@@ -54,15 +54,16 @@ html
         #eventboard
           {% for event in event_obj %}
           #eventpost
-            p {{ event }}
+            p {{ event.title }}
             p {{ event.subtitle }}
-            //p {{ event.detail }}
-                        
+            {% if event.image %}            
+            img#postimgs(src="{{ event.image.url }}")
+            {% else %}  
             #postimgs
-              
-              #add_pic
-                #addpic_bg
-                p +
+            {% endif %}
+            #add_pic
+              #addpic_bg
+                #addicon
               
               
             #posttag
@@ -82,7 +83,7 @@ html
             #postcomments
               {% load static %}
               img#commenticon(src="{% static 'file/commenticon.png' %}")
-              //p {{ event.number_of_comments }}
+              p {{ event.number_of_comments }}
             
           {% empty %}
           #eventpost

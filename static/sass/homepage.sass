@@ -33,8 +33,7 @@ body
   color: black
 
 #container
-  position: fixed
-  transform: translate(-50%, 0)
+
   display: flex
   justify-content: flex-start
   align-items: stretch
@@ -47,6 +46,7 @@ body
   left: 50%
   bottom: 0%
   background-color: white
+  margin: 5vw auto 5vw auto
 
   #create
     display: flex
@@ -111,7 +111,7 @@ body
         
     #eventboard
       display: flex
-      flex-direction: column
+      flex-direction: row
       flex-wrap: wrap
       align-content: center
       justify-content: flex-start
@@ -128,7 +128,11 @@ body
         margin: 3vw
         width: 17vw
         font-size: 1.4vw
-      
+        #postimgs
+          height: 3vw
+          width: 3vw
+          border-radius: 0.5vw
+
       #postlikes
         #likeicon
           height: 1vw
@@ -357,7 +361,7 @@ body
     bottom: -6px
     width: auto
     height: auto
-    overflow: hidden
+    overflow: scroll
     border-radius: 5vw
     opacity: 0
     z-index: -1

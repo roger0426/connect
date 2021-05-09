@@ -33,12 +33,6 @@ class EventsBoard(models.Model):
     blank = True,
   )
 
-  # interested_users = models.ManyToManyField(
-  #   "user_extend.UserExtend",
-  #   related_name="event_intereted_user_name",
-  #   default = '',
-  #   blank = True,
-  # )
 
   EVENT_CHOICES = [
     ('activity', '活動'),
@@ -47,6 +41,9 @@ class EventsBoard(models.Model):
   ]
 
   event_type = models.CharField(max_length=10, choices=EVENT_CHOICES, default='activity')
+
+  def number_of_comments(self):
+    return self.comments.count()
 
   def number_of_likes(self):
       return self.likes.count()
