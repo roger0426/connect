@@ -57,10 +57,10 @@ html
       #bottom-region
         #left-pane
           p 聯絡人
-          p#friend-count 120
+          p#friend-count {{ friend_count }}
           #friends-avatar.left-region
             {% for friend in user.friends.all %}
-            .friend-img {{ friend.img }}
+            img.friend-img(src="{{ friend.img.url }}")
             {% empty %}
             p 快去建立連結吧
             {% endfor %}
@@ -113,10 +113,13 @@ html
             {% for activity in activities %}
             #activity-card.card
               .cardleft
-                {% load static %}
-                #activity-img.card-img(src="{{ actvity.img.url }}")
+                {% if activty.image %}
+                img#activity-img.card-img(src="{{ actvity.image.url }}")
+                {% else %}
+                #activity-img.card-img
+                {% endif %}
                 #activity-date 
-                {% if actvity.event_date != NULL %}
+                {% if actvity.event_date %}
                 p.date {{ actvity.event_date }}
                 {% else %}
                 p.date 未設定日期
@@ -157,9 +160,13 @@ html
             {% for project in projects %}
             #projects-card.card
               .cardleft
+                {% if project.image %}
+                img#projects-img.card-img(src="{{ project.image.url }}")
+                {% else %}
                 #projects-img.card-img
+                {% endif %}
                 #projects-date 
-                {% if project.event_date != NULL %}
+                {% if project.event_date %}
                 p.date {{ project.event_date }}
                 {% else %}
                 p.date 未設定日期
@@ -199,9 +206,13 @@ html
             {% for personal_proj in personal_projs %}
             #personal-card.card
               .cardleft
+                {% if personal_proj.image %}
+                img#personal-img.card-img(src="{{ personal_proj.image.url }}")
+                {% else %}
                 #personal-img.card-img
+                {% endif %}
                 #personal-date
-                {% if personal_proj.event_date != NULL %}
+                {% if personal_proj.event_date %}
                 p.date {{ personal_proj.event_date }}
                 {% else %}
                 p.date 未設定日期

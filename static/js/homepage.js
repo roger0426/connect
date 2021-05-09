@@ -74,6 +74,22 @@ $(document).ready(function(){
       $("#filter1").hide();
     })
   });
+
+  $("#submit-btn").click(function() {
+    console.log("click event submit");
+    console.log($("#id_title").val().length)
+    if ($("#id_title").val().length > 0 && $("#id_detail").val().length > 0) {
+      $("#eventcreatewindow").animate({opacity: 0}, 400, function() {
+        $("#eventcreatewindow").hide();
+      })
+      $("#filter1").animate({opacity: 0}, 400, function() {
+        $("#filter1").hide();
+      })
+      alert("活動已創建！");
+    } else {
+      alert("活動未創建，請輸入必要欄位")
+    }
+  })
   
   //按window外，關閉event window
   /* Mark 1 的原理：

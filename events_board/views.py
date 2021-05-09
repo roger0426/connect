@@ -7,7 +7,7 @@ from .forms import EventCreateForm
 # Create your views here.
 def home_view(requests, *args, **kwargs):
   obj = EventsBoard.objects.all()
-  form = EventCreateForm(requests.POST or None)
+  form = EventCreateForm(requests.POST, requests.FILES or None)
   if form.is_valid():
     instance = form.save(commit=False)
     instance.host = requests.user.userextend

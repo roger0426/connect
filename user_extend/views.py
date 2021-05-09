@@ -10,6 +10,7 @@ def update_profile(request, user_id):
 def profile_view(requests, id, *args, **kwargs):
   obj = UserExtend.objects.get(id=id)
   tags = obj.tag.all()
+  friend_count = obj.friends.count()
   personality_tags = []
   skill_tags = []
   interest_tags = []
@@ -27,13 +28,13 @@ def profile_view(requests, id, *args, **kwargs):
   activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
   projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
   personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
-
   
   context = {
     'user': obj,
     'personality': personality_tags,
     'skill': skill_tags,
     'interest': interest_tags,
+    'friend_count': friend_count,
     'activities': activities,
     'projects': projects,
     'personal_projs': personal_projs

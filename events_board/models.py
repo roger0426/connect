@@ -8,7 +8,7 @@ from django.utils import timezone
 class EventsBoard(models.Model):
   # basic information
   title = models.CharField(max_length=50)
-  subtitle = models.CharField(max_length=70)
+  subtitle = models.CharField(max_length=70, blank=True)
   detail = models.TextField()
   event_tag = TaggableManager(blank=True)
   image = models.ImageField(upload_to='events/', blank=True)
@@ -58,6 +58,8 @@ class EventsBoard(models.Model):
     for comment in comments:
       sum += comment.rate
     return (sum/count)
+  def __str__(self):
+    return self.title
 
 class IntegerRangeField(models.IntegerField):
     def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):

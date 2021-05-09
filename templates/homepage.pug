@@ -89,44 +89,21 @@ html
     
     #filter1
     
-    
-    
-    
-    
+
     
     #eventcreatewindow
       img#exitbtn2(src="{% static 'file/exiticon.png' %}")
       
-      form(action="", method="post") {% csrf_token %}
+      form(action="", method="post", enctype="multipart/form-data") {% csrf_token %}
         #profile
           {% load static %}
-          img#user-img(src="{{ user.img.url }}")
+          img#user-img(src="{{ user.userextend.img.url }}")
           h1 {{ user.userextend.full_name }}
         {{ form.as_table }}
-        //- textarea#eventtitle.input-area(type="text", name='eventtitle', placeholder="活動標題", maxlength="8")
-        
-        //- ul
-        //-   li
-        //-     a.tag tag1
-        //-   li
-        //-     a.tag tag2
-        //-   li
-        //-     a.tag tag3
-        //-   li
-        //-     a.tag tag4
-        //-   li
-        //-     a.tag tag5
-        //-   li
-        //-     p#plus +
-
-        //- textarea#eventsubtitle.input-area(type="text", name='eventsubtitle', placeholder="副標題", maxlength="20")
-        //- textarea#eventdescription.input-area(placeholder="內容描述")
 
         #buttons
           input#submit-btn(type="image" src="{% static 'file/submitbtn.png' %}" alt="Submit Form")
-          //#submit-btn(alt="Submit Form")
-          //img#vector(src="{% static 'file/vectoricon.png' %}")
-          //p#submit 發佈
+
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
