@@ -54,37 +54,37 @@ html
         #eventboard
           {% for event in event_obj %}
           #eventpost
-            p {{ event.title }}
-            p {{ event.subtitle }}
-            {% if event.image %}            
-            img#postimgs(src="{{ event.image.url }}")
-            {% else %}  
-            #postimgs
-            {% endif %}
-            #add_pic
-              #addpic_bg
-                #addicon
+            #posttop
+              p#post_title {{ event.title }}
+              p#post_subtitle {{ event.subtitle }}
+              {% if event.image %}
+              img#postimgs(src="{{ event.image.url }}")
+              {% else %}
+              #postimgs
+              {% endif %}
+              #add_pic
+                #addpic_bg
+                  #addicon
+                
+                
+              #posttag
+                #tags
               
+              #postcreatdate
+                p {{ event.create_date }}
+                
+              #postwanted
+                //p {{ event.people_wanted }}
               
-            #posttag
-              #tags
-            
-            #postcreatdate
-              p {{ event.create_date }}
-              
-            #postwanted
-              //p {{ event.people_wanted }}
-              
-            #postlikes
+            #postbottom
               {% load static %}
               img#likeicon(src="{% static 'file/like-y.png' %}")
-              p {{ event.number_of_likes }}
+              p#likesnum {{ event.number_of_likes }}
             
-            #postcomments
               {% load static %}
               img#commenticon(src="{% static 'file/commenticon.png' %}")
-              p {{ event.number_of_comments }}
-            
+              p#commentnum {{ event.number_of_comments }}
+          
           {% empty %}
           #eventpost
             p no event
