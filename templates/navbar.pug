@@ -17,6 +17,6 @@ header
       li 
         a#message.button(href="#") 
       li 
-        a#profile.button(href="{% url 'profile' id=request.user.id %}")
+        a#profile.button(href="{% url 'profile' id=request.user.pk %}")
         
         //a.button(href="javascript:window.location.reload({{ about_us_url }})") about us
