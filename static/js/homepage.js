@@ -40,7 +40,6 @@ $(document).ready(function(){
   });
   
   
-
   $("#applybutton").click(function() {
     console.log("click apply");
     //$("#sent").show();
