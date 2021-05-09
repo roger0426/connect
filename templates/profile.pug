@@ -120,6 +120,7 @@ html
                 img#activity-img.card-img(src="{{ activity.image.url }}")
                 {% else %}
                 #activity-img.card-img
+                  p#nopicalert 尚未新增圖片
                 {% endif %}
                 #activity-date 
                 {% if activity.event_date %}
@@ -167,6 +168,7 @@ html
                 img#projects-img.card-img(src="{{ project.image.url }}")
                 {% else %}
                 #projects-img.card-img
+                  p#nopicalert 尚未新增圖片
                 {% endif %}
                 #projects-date 
                 {% if project.event_date %}
@@ -213,6 +215,7 @@ html
                 img#personal-img.card-img(src="{{ personal_proj.image.url }}")
                 {% else %}
                 #personal-img.card-img
+                  p#nopicalert 尚未新增圖片
                 {% endif %}
                 #personal-date
                 {% if personal_proj.event_date %}
