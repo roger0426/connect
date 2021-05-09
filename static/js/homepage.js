@@ -24,12 +24,14 @@ $(document).ready(function(){
   });
 
 
-  $("#title").click(function() {
+  $("#insertbox").click(function() {
     console.log("click title");
-    $("#eventwindow").show();
-    $("#eventwindow").animate({opacity: 1}, 400);
+    //$("#eventwindow").show();
+    //$("#eventwindow").animate({opacity: 1}, 400);
     
     $("#eventcreatewindow").show();
+    $('input[type=text]').val('');
+    $('textarea').val('');
     $("#eventcreatewindow").animate({opacity: 1}, 400);
     
     
@@ -54,7 +56,7 @@ $(document).ready(function(){
     $("#sent").css({opacity: 0, "z-index": -1});
   });
   
-  $("#exitbtn1, #filter1").click(function() {
+  $("#exitbtn1").click(function() {
     console.log("click event exit");
     $("#eventwindow").animate({opacity: 0}, 400, function() {
       $("#eventwindow").hide();
@@ -64,9 +66,11 @@ $(document).ready(function(){
     })
   });
   
-  $("#exitbtn2").click(function() {
+  $("#exitbtn2, #filter1").click(function() {
     console.log("click event exit");
     $("#eventcreatewindow").animate({opacity: 0}, 400, function() {
+      $('input[type=text]').val('');
+      $('textarea').val('');
       $("#eventcreatewindow").hide();
     })
     $("#filter1").animate({opacity: 0}, 400, function() {
