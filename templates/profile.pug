@@ -116,14 +116,14 @@ html
             {% for activity in activities %}
             #activity-card.card
               .cardleft
-                {% if activty.image %}
-                img#activity-img.card-img(src="{{ actvity.image.url }}")
+                {% if activity.image %}
+                img#activity-img.card-img(src="{{ activity.image.url }}")
                 {% else %}
                 #activity-img.card-img
                 {% endif %}
                 #activity-date 
-                {% if actvity.event_date %}
-                p.date {{ actvity.event_date }}
+                {% if activity.event_date %}
+                p.date {{ activity.event_date }}
                 {% else %}
                 p.date 未設定日期
                 {% endif %}
