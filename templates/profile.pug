@@ -169,7 +169,8 @@ html
             #projects-card.card
               .cardleft
                 {% if project.image %}
-                img#projects-img.card-img(src="{{ project.image.url }}")
+                a(href="{% url 'event_detail' id=project.pk %}")
+                  img#projects-img.card-img(src="{{ project.image.url }}")
                 {% else %}
                 #projects-img.card-img
                   p#nopicalert 尚未新增圖片
@@ -183,7 +184,8 @@ html
 
               .cardright
                 .info
-                  p#project-title.cardinfott {{ project.title }}
+                  a(href="{% url 'event_detail' id=project.pk %}")
+                    p#project-title.cardinfott {{ project.title }}
                   {% if project.comments.count > 0 %}
                   p#projects-rate {{ project.get_avg_rating }}★
                   {% endif %}
@@ -216,7 +218,8 @@ html
             #personal-card.card
               .cardleft
                 {% if personal_proj.image %}
-                img#personal-img.card-img(src="{{ personal_proj.image.url }}")
+                a(href="{% url 'event_detail' id=personal_proj.pk %}")
+                  img#personal-img.card-img(src="{{ personal_proj.image.url }}")
                 {% else %}
                 #personal-img.card-img
                   p#nopicalert 尚未新增圖片
@@ -228,7 +231,8 @@ html
                 p.date 未設定日期
                 {% endif %}
               .cardright
-                p#personal-title {{ personal_proj.title }}
+                a(href="{% url 'event_detail' id=personal_proj.pk %}")
+                  p#personal-title {{ personal_proj.title }}
                 p#personal-detail {{ personal_proj.detail }}
             {% empty %}
             p.hint 看來他好像還沒新增過個人專案
