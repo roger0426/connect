@@ -17,8 +17,11 @@ html
       #top-region
         #intro
           #info
-            {% load static %}
+            {% if user.img %}
             img#user-img(src="{{ user.img.url }}")
+            {% else %}
+            #user-img
+            {% endif %}
             #user-name {{ user.full_name }}
             #school-info
               #department {{ user.department }}
