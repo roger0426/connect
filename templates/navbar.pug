@@ -17,6 +17,9 @@ header
       li 
         a#message.button(href="#") 
       li 
+        {% if request.user.is_authenticated %}
         a#profile.button(href="{% url 'profile' id=request.user.pk %}")
-        
+        {% else %}
+        a#profile.button(href="{% url 'login' %}")
+        {% endif %}
         //a.button(href="javascript:window.location.reload({{ about_us_url }})") about us
