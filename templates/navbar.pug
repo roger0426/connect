@@ -5,16 +5,18 @@ link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
 header
   #navbar 
     #title CONNECT.
+
     form
-      input(type="text", name="search")
-    
+     input(type="text", placeholder="Search")
 
     ul
       li 
-        
+        a#event.button(href="{{ home_url }}") 
       li 
-        a.button(href="#")
+        a#alert.button(href="#")
       li 
-        a.button(href="{{ about_us_url }}") us
+        a#message.button(href="#") 
+      li 
+        a#profile.button(href="{% url 'profile' id=request.user.id %}")
         
         //a.button(href="javascript:window.location.reload({{ about_us_url }})") about us

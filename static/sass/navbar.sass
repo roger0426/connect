@@ -32,11 +32,9 @@
   left: 0
   width: 100%
   height: 3.5vw
-  background-color: var(--background_color)
-  border-radius: 0px 0px 4vw 4vw
+  background-color: var(--color-main)
 
   /*UpLeft/UR/DR/DL
-  opacity: 0.9
   z-index: 1
 
 #title
@@ -52,6 +50,19 @@
 
 /*button
 #navbar
+  form
+    position: relative
+    input
+      height: 2vw
+      width: 25vw
+      border-radius: 1vw
+      border: none
+      outline: none
+      margin-top: 0.75vw
+      background-color: #FFCFBF
+      padding-left: 1vw
+    
+
   ul
     display: flex
     justify-content: space-around
@@ -59,11 +70,13 @@
 
     white-space: nowrasp
     list-style-type: none
-    margin-right: 4%
+    margin-right: 10%
 
   li
     display: block
     float: right
+    width: 1.5vw
+    height: 1.5vw
 
     overflow: left
     white-space: nowrap
@@ -73,13 +86,23 @@
     font-size: 1.7vw
     font-family: var(--font-family-text)
     font-style: var(--font-style-text)
-    margin-right: 10%
-  a
-    text-decoration: none
-    color: var(--fontcolor-navbarbutton)
-  
-  a:hover
-    text-decoration: underline
+    margin-right: 40%
+    a
+      width: 1.5vw
+      height: 1.5vw
+      display: inline-block
+      overflow: hidden
+      background-repeat: no-repeat
+      background-position: center center;
+      background-size: contain
+    #event
+      background-image: url('../file/scheduleicon.png')
+    #alert
+      background-image: url('../file/noticeicon.png')
+    #message
+      background-image: url('../file/msgicon.png')
+    #profile
+      background-image: url('../file/personalinfoicon.png')
 @media only screen and (max-width: 450px)
   #navbar
     display: none
