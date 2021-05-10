@@ -32,6 +32,7 @@ $(document).ready(function(){
     $("#eventcreatewindow").show();
     $('input[type=text]').val('');
     $('textarea').val('');
+    $('#id_image').val('');
     $("#eventcreatewindow").animate({opacity: 1}, 400);
     
     
@@ -71,6 +72,7 @@ $(document).ready(function(){
     $("#eventcreatewindow").animate({opacity: 0}, 400, function() {
       $('input[type=text]').val('');
       $('textarea').val('');
+      $('#id_image').val('');
       $("#eventcreatewindow").hide();
     })
     $("#filter1").animate({opacity: 0}, 400, function() {
