@@ -64,8 +64,8 @@ html
           a(href="{% url 'event_detail' id=event.pk %}" margin='0')
             #eventpost
               #posttop
-                p#post_title {{ event.title }}
-                p#post_subtitle {{ event.subtitle }}
+                p#post_title.title {{ event.title }}
+                p#post_subtitle.subtitle {{ event.subtitle }}
                 {% if event.image %}
                 img#postimgs(src="{{ event.image.url }}")
                 {% else %}

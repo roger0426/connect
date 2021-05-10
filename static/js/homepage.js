@@ -12,17 +12,6 @@ $(document).ready(function(){
     }
   });
 
-  var toggle = true;
-  $("#mark").click(function() {
-    if (toggle) {
-      $("img").attr("src", "./橘色的書籤")
-      toggle = false;
-    } else {
-      $("img").attr("src", "./白色的書籤")
-      toggle = true;
-    }
-  });
-
 
   $("#insertbox").click(function() {
     console.log("click title");
@@ -92,7 +81,7 @@ $(document).ready(function(){
       })
       alert("活動已創建！");
     } else {
-      alert("活動未創建，請輸入必要欄位")
+      alert("活動未創建，請輸入必要欄位");
     }
   })
 
@@ -102,6 +91,21 @@ $(document).ready(function(){
     console.log('here')
     $('#eventwindow').show();
   }
+
+  
+  $('.title').each(function () {
+    if ($(this).text().length > 7) {
+      console.log($(this).text())
+      $(this).text($(this).text().substring(0,7) + "...");
+    }
+  })
+
+  $('.subtitle').each(function () {
+    if ($(this).text().length > 10) {
+      console.log($(this).text())
+      $(this).text($(this).text().substring(0,10) + "...");
+    }
+  })
   
   //按window外，關閉event window
   /* Mark 1 的原理：
