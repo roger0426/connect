@@ -35,7 +35,7 @@ html
               .tag-style
                 p.tags {{ personality }}
               {% empty %}
-              p 他好像還沒設定個性
+              p(style="color: #E98C6F") 他好像還沒設定個性
               {% endfor %}
             .tag-field
               p 專長
@@ -43,7 +43,7 @@ html
               .tag-style
                 p.tags {{ skill }}
               {% empty %}
-              p 他好像還沒設定專長
+              p(style="color: #E98C6F") 他好像還沒設定專長
               {% endfor %}
             .tag-field
               p 有興趣活動
@@ -51,7 +51,7 @@ html
               .tag-style
                 p.tags {{ interest }}
               {% empty %}
-              p 他好像還沒設定有興趣的活動
+              p(style="color: #E98C6F") 他好像還沒設定有興趣的活動
               {% endfor %}
 
             #buttons
@@ -74,7 +74,7 @@ html
             .tag-style
               p.tags {{ personality }}
             {% empty %}
-            p 他好像還沒設定個性
+            p(style="color: #E98C6F") 他好像還沒設定個性
             {% endfor %}
           hr#divider2.lefthr
           p 專長
@@ -83,7 +83,7 @@ html
             .tag-style
               p.tags {{ skill }}
             {% empty %}
-            p 他好像還沒設定專長
+            p(style="color: #E98C6F") 他好像還沒設定專長
             {% endfor %}
           hr#divider3.lefthr
           p 有興趣活動
@@ -92,7 +92,7 @@ html
             .tag-style
               p.tags {{ interest }}
             {% empty %}
-            p 他好像還沒設定有興趣的活動
+            p(style="color: #E98C6F") 他好像還沒設定有興趣的活動
             {% endfor %}
             
           .tags#personality-left
@@ -157,7 +157,8 @@ html
                   {% endfor %}
 
             {% empty %}
-            p.hint 看來他好像還沒參加過活動喔
+            #activity-card.card
+              p.hint(style="color: #E98C6F") 看來他好像還沒參加過活動喔
             {% endfor %}
               
             // so many comments
@@ -206,7 +207,8 @@ html
                   {% endfor %}
 
             {% empty %}
-            p.hint 看來他好像還沒參與過專案
+            #activity-card.card
+              p.hint(style="color: #E98C6F") 看來他好像還沒參與過專案
             {% endfor %}
                   
             // so many comments
@@ -235,7 +237,8 @@ html
                   p#personal-title {{ personal_proj.title }}
                 p#personal-detail {{ personal_proj.detail }}
             {% empty %}
-            p.hint 看來他好像還沒新增過個人專案
+            #activity-card.card
+              p.hint(style="color: #E98C6F") 看來他好像還沒新增過個人專案
             {% endfor %}
 
             // so many cards (use for to solve it after the backend has constructed)

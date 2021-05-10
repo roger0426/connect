@@ -15,7 +15,7 @@ $(document).ready(function(){
 
   $('#login-btn')
   .on('click touch', function(){
-    $('#white-bubble1').animate({width: '1000%', height: '1000%'}, 500);
+    $('#white-bubble1').animate({width: '2000%', height: '2000%'}, 1000);
     $('#white-bubble1').css('position', 'relative');
     $('#white-bubble1').css('z-index', 1000);
   })
