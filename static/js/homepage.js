@@ -94,9 +94,9 @@ $(document).ready(function(){
 
   
   $('.title').each(function () {
-    if ($(this).text().length > 7) {
+    if ($(this).text().length > 8) {
       console.log($(this).text())
-      $(this).text($(this).text().substring(0,7) + "...");
+      $(this).text($(this).text().substring(0,8) + "...");
     }
   })
 

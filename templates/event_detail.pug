@@ -33,7 +33,7 @@
       img#flag-n(src="{% static 'file/flag-n.png' %}")
     
       
-    #date 2021/5/2
+    #date {{ event_detail.create_date }}
     a(href="{% url 'profile' id=event_detail.host.pk %}")
       img#organizerpic(src='{{ event_detail.host.img.url }}')
       p {{ event_detail.host.full_name }}

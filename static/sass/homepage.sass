@@ -1,0 +1,596 @@
+@font-face
+  font-family: jf-openhuninn
+  src: url('../fonts/jf-openhuninn-1.1.woff') format("woff")
+
+  font-display: auto
+
+\:root
+  --background-color: #FFFFFF
+  --background-color-card: #E8E8E8
+  --fontcolor-navbarbutton: #000000
+  --fontcolor-header: #000000
+  --fontcolor-text: #000000
+  --color-main: #FAAD95
+  --font-family-header: "jf-openhuninn", "Tahoma", "Arial"
+  --font-style-header: normal
+  --font-family-text: "jf-openhuninn", "Tahoma", "Arial"
+  --font-style-text: normal
+  --font-family-card: "jf-openhuninn", "Tahoma", "Arial"
+
+*
+  font-family: var(--font-family-text)
+  padding: 0
+  margin: 0
+  
+input, textarea, button, select, a
+  -webkit-tap-highlight-color: rgba(255, 228 ,220, 0.5)
+
+body
+  background-color: white
+
+a
+  text-decoration: none
+  color: black
+
+#container
+
+  display: flex
+  justify-content: flex-start
+  align-items: stretch
+  flex-direction: column
+  flex-wrap: nowrap
+  align-content: space-around
+  
+  width: 70%
+  top: 10%
+  left: 50%
+  bottom: 0%
+  background-color: white
+  margin: 5vw auto 5vw auto
+
+  #create
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+    background-color: rgba(255, 219, 208, 1)
+    width: 100%
+    height: 12%
+    border-radius: 1.5vw
+    margin-bottom: 15px
+    padding: 1vw 0
+    
+    #userpic
+      margin: 0 2vw 0 3vw
+      width: 5vw
+      height: 5vw
+      border-radius: 2.5vw
+      background-color: rgba(196, 196, 196, 1)
+    #inserta
+      width: calc(100% - 13vw)
+
+    #insertbox
+      height: 6vh
+      width: calc(100% - 13vw)
+      border-radius: 1.2vw
+      background-color: rgba(247, 247, 247, 1)
+      cursor: pointer
+      border: none
+      
+  
+
+  #board
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    flex-wrap: nowrap
+    align-content: center
+    align-items: stretch
+    background-color: rgba(255, 219, 208, 1)
+    width: 100%
+    
+    border-radius: 1.5vw  
+    z-index: 0
+    #divider
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      align-items: center
+      margin: 1vw
+      background-color: rgba(255, 219, 208, 1)
+      
+      p
+        margin-right: 0
+        font-size: 1.5vw
+      
+      .line
+        background-color: rgba(255, 219, 208, 1)
+        align: center
+        height: 0.2vw
+        //margin: 0 1vw
+        border: none
+      #line1
+        width: 60%
+      #line2
+        width: 5%
+        
+    #eventboard
+      display: flex
+      flex-direction: row
+      flex-wrap: wrap
+      align-content: center
+      justify-content: space-between
+      align-items: flex-start
+      margin: 0 7vw
+      margin-bottom: 7vw
+      
+      #eventpost
+        display: flex
+        flex-direction: column
+        flex-wrap: nowrap
+        align-content: center
+        justify-content: flex-start
+        align-items: flex-start
+                
+        width: 14vw
+        background-color: white
+        margin: 0.7vw 0
+        padding: 1vw 1.5vw 0.5vw 1.5vw
+        border-radius: 1.5vw
+        
+        *
+          margin: 0
+        p
+          //margin-bottom: 0.3vw
+        
+        #posttop
+          transform: translate(-1.55vw, -1.1vw)
+          width: 14.1vw
+          padding: 1vw 1.5vw 0.3vw 1.5vw
+          border-radius: 1.5vw
+          background-color: #FFAD94
+          min-height: 5.5vw
+          
+          #postimgs
+            height: 2.5vw
+            width: 2.5vw
+            border-radius: 0.5vw
+            border: solid 1px
+            border-color: #999999
+            background-color: #FFDBD0
+            
+          #post_title
+            font-size: 1.4vw
+            font-weight: 600
+            width: 13.5vw
+            overflow: hidden
+            white-space: nowrap
+            text-overflow: ellipsis
+            margin-bottom: 0.3vw
+          #post_subtitle
+            font-size: 0.85vw
+            width: 13.5vw
+            overflow: hidden
+            white-space: nowrap
+            text-overflow: ellipsis
+            font-weight: 100
+            margin-bottom: 0.3vw
+          #postcreatdate
+            font-size: 0.8vw
+            color: #777777
+            text-align: right
+          
+            
+        #postbottom
+          display: flex
+          flex-direction: row
+          flex-wrap: nowrap
+          justify-content: center
+          align-items: center
+          width: 100%
+          padding: 0
+          
+          *
+            margin: 0 1vw
+          img
+            margin-right: 0
+            
+          p
+            line-height: 1.5vw
+            font-size: 1vw
+            
+          #likeicon
+            height: 1.5vw
+            width: auto
+            
+          #commenticon
+            height: 1.5vw
+            width: auto
+      #virtualdiv
+        *
+          background: none
+      a
+        margin-left: 0
+          
+      
+#gotop 
+  position: fixed
+  border-radius: 50px
+  right: 20px
+  bottom: 30px
+  padding: 10px 16px
+  font-size: 25px
+  background: rgba(250, 173, 149, 1)
+  color: rgba(0, 0, 0, 1)
+  cursor: pointer
+  z-index: 5
+  
+  
+#filter1
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  backdrop-filter: blur(5px) contrast(70%) saturate(70%) brightness(70%)
+  -webkit-backdrop-filter: blur(5px) contrast(70%) saturate(70%) brightness(70%)
+  z-index: 6
+
+#eventwindow
+  //display: none
+  position: fixed
+  transform: translate(-50%, -50%)
+  top: 55%
+  left: 50%
+  width: 45%
+  padding-top: 30%
+  background-color: #F5FBFE
+  border-radius: 5vw
+  border: 5px solid rgba(58, 237, 194, 0.5)
+  box-shadow: 10px 10px 25px 5px #00000026
+  z-index: 2
+  
+  *
+    font-color: #000000
+  
+  #description
+    position: absolute
+    left: 3.5vw
+    top: 3.5vw
+    height: 65%
+    width: 60%
+    
+    h1
+      font-size: 3vw
+      color: #000000
+    
+    #subtitle
+      margin: 0.5vw 0 0 0
+      font-size: 1.3vw
+      color: purple
+    
+    #keywords
+      display: flex
+      flex-direction: row
+      margin: 1vw 0 0 0
+      *
+        font-size: 1.5vw
+        color: purple
+        
+    #detail
+      font-size: 1.5vw
+      color: #000000
+      margin: 0.5vw 0 0 0
+      line-height: 1.7vw
+
+  #member
+    position: absolute
+    transform: translate(0, -100%)
+    display: flex
+    flex-direction: row
+    bottom: -1vw
+    width: 70%
+    height: 3vw
+    left: 3.3vw
+    
+    *
+      position: relative
+      margin: 0 0.5vw 0 0
+      
+    #bar
+      width: 5px
+      height: 3vw
+      transform: translate(0, -50%)
+      top: 50%
+      background-color: #B0B0B0
+      
+    .member
+      height: 3vw
+      width: 3vw
+      border-radius: 50%
+      background-color: #E0E0E0
+    .participant
+      border: var(--color-main) solid 0.2vw
+
+    #organizer
+      border: #75E1C7 solid 0.2vw
+
+      
+  #operatebg
+    background-color: rgba(58, 237, 194, 0.5)
+    position: absolute
+    right: -2px
+    bottom: -2px
+    width: 32%
+    height: 20%
+    border-radius: 5vw 0 5vw 0
+  
+  #exitbtn1
+    transform: translate(-50%, 0)
+    top: 3vw
+    right: -10%
+    width: 1.5vw
+    height: auto
+  
+  #eventoperate
+    position: absolute
+    transform: translate(0, -50%)
+    height: 100%
+    width: 20%
+    top: 50%
+    right: 3vw
+    *
+      position: absolute
+
+    #flag
+      display: none
+      transform: translate(-50%, 0)
+      top: 0
+      left: 50%
+      width: 3vw
+      height: auto
+      #flag-y
+        display: none
+        width: 100%
+        height: auto
+        box-shadow: 10px 10px 25px 5px #00000026
+        
+      #flag-n
+        display: block
+        width: 100%
+        height: auto
+        box-shadow: 10px 10px 25px 5px #00000026
+      
+    #date
+      transform: translate(-50%, -50%)
+      top: 6vw
+      left: 70%
+      width: 10vw
+      opacity: 0.8
+      font-size: 1vw
+
+    a
+      transform: translate(-50%, -50%)
+      left: 50%
+      #organizerpic
+        transform: translate(-50%, -50%)
+        height: 6vw
+        width: 6vw
+        top: 10.5vw
+        left: 50%
+        border-radius: 3vw
+        background-color: #C4C4C4
+        
+      p
+        transform: translate(-50%, -50%)
+        top: 14.7vw
+        left: 50%
+        font-size: 1.5vw
+        color: black
+        width: 5vw
+    
+    #likebutton
+      left: 1vw
+      bottom: 1vw
+      height: 3vw
+      width: 3vw
+      form
+        button
+          background: url('../file/like-n.png')
+          width: 20px
+          height: 20px
+    
+      #like-y
+        display: none
+        width: 100%
+
+      #like-n
+        display: block
+        width: 100%
+    
+    #applybutton
+      right: 0.5vw
+      bottom: 1vw
+      height: 3vw
+      width: 3vw
+
+      #apply-y
+        display: block
+        width: 100%
+        
+      #apply-n
+        display: none
+        width: 100%
+
+  #sent
+    position: absolute
+    //transform: translate(-50%, -50%)
+    display: block
+    top: -6px
+    left: -6px
+    right: -6px
+    bottom: -6px
+    width: auto
+    height: auto
+    overflow: scroll
+    border-radius: 5vw
+    opacity: 0
+    z-index: -1
+    backdrop-filter: blur(5px) contrast(40%) saturate(40%) brightness(70%)
+    -webkit-backdrop-filter: blur(5px) contrast(40%) saturate(40%) brightness(70%)
+
+    #mailicon
+      position: absolute
+      transform: translate(-50%, -100%)
+      height: 40%
+      width: auto
+      top: 65%
+      left: 50%
+    
+    p
+      position: absolute
+      transform: translate(-50%, 0)
+      font-size: 4vw
+      text-align: center
+      bottom: 20%
+      left: 50%
+      width: 100%
+      opacity: 1
+      color: white
+      
+      
+#eventcreatewindow
+  //display: none
+  position: fixed
+  transform: translate(-50%, -50%)
+  top: 55%
+  left: 50%
+  width: 40%
+  padding: 3% 0
+  background-color: #F5FBFE
+  border-radius: 3vw
+  border: 5px solid #FFAD94
+  box-shadow: 10px 10px 25px 5px #00000026
+  z-index: 7
+      
+  #exitbtn2
+    position: absolute
+    transform: translate(-50%, 0)
+    top: 3vw
+    right: 2vw
+    width: 1.5vw
+    height: auto
+    
+      
+  
+  #profile
+    display: flex
+    margin: 1vw 0
+    margin: 0 0 1vw 0
+        
+    #user-img
+      height: 5vw
+      width: 5vw
+      border-radius: 2.5vw
+      border: solid 2px
+      border-color: #CCCCCC
+      //#3AEDC2
+      background-color:
+      
+    h1
+      align-items: center
+      font-size: 2.5vw
+      line-height: 5vw
+      //transform: translate(0, -50%)
+      margin-left: 1vw
+  
+  form 
+    display: flex
+    flex-direction: column
+    align-items: stetch
+    padding: 0 2vw 2vw 2vw
+    //padding-left: 3vw
+    //padding-right: 3vw
+    //padding-bottom: 3vw
+    label
+      display: none
+    span
+      display: none
+    br
+      display: none
+    li
+      display: none
+    input[type=text]
+      border-radius: 2.5vw
+      margin-bottom: 0.7vw
+      height: 2vw
+      font-size: 1vw
+      padding: 0 1vw
+      outline: none
+      border: none
+      background-color: #EEEEEE
+    input[type=text]:focus
+      border: 2px solid #B9B9B9
+    textarea
+      border-radius: 1vw
+      background-color: #EEEEEE
+      border-radius: 2.2vw
+      margin-bottom: 0.7vw
+      padding: 1vw 1vw
+      outline: none
+      border: none
+      font-size: 1vw
+      height: 8vw
+    
+    select
+      background-color: #EEEEEE
+      color: #666666
+      height: 2vw
+      font-size: 1vw
+      border-radius: 1vw
+      outline: none
+      border: none
+      margin-bottom: 1vw
+      padding: 0 1vw
+      
+    #id_image
+      color: #666666
+      font-size: 1vw
+      margin-left: 1vw
+    
+      
+  .input-area
+    width: 70%
+    word-break: normal
+    border-radius: 2vw
+    margin: 0.5vw 0 0 3.5vw
+    padding: 0.7vw 0 0 1vw
+    outline: none
+  
+      
+  #buttons
+    position: absolute
+    //transform: translate(-50%, 0)
+    height: 5vw
+    width: 5vw
+    //left: 50%
+    right: 3.2vw
+    bottom: 2vw
+    #submit-btn
+      width: 100%
+      background: none
+      height: auto
+      font-size: 2vw
+      //background-color: #32DEB5
+      border-radius: 2vw
+      padding: 0.5vw 1vw
+      //margin-top: 2vw
+    #submit-btn:hover
+      background-color: #9FE4D4
+
+#filter1
+  display: none
+#eventwindow
+  display: none
+#eventcreatewindow
+  display: none
