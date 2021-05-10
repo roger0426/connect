@@ -9,13 +9,13 @@ html
     {% load sass_tags %}
     link(href="{% sass_src 'sass/homepage.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
-
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
   {% include 'navbar.pug' %}
 
   body
     #container
       #create
-        #userpic
+        img#userpic(src="{{ request.user.userextend.img.url }}")
         button#insertbox
 
       #board
@@ -53,55 +53,52 @@ html
               
         #eventboard
           {% for event in event_obj %}
-          #eventpost
-            #posttop
-              p#post_title {{ event.title }}
-              p#post_subtitle {{ event.subtitle }}
-              {% if event.image %}
-              img#postimgs(src="{{ event.image.url }}")
-              {% else %}
-              #postimgs
-              {% endif %}
-              #add_pic
-                #addpic_bg
-                  #addicon
+          a(href="{% url 'event_detail' id=event.pk %}")
+            #eventpost
+              #posttop
+                p#post_title {{ event.title }}
+                p#post_subtitle {{ event.subtitle }}
+                {% if event.image %}
+                img#postimgs(src="{{ event.image.url }}")
+                {% else %}
+                #postimgs
+                {% endif %}
+                #add_pic
+                  #addpic_bg
+                    #addicon
+                  
+                  
+                #posttag
+                  #tags
                 
+                #postcreatdate
+                  p {{ event.create_date }}
+                  
+                #postwanted
+                  //p {{ event.people_wanted }}
                 
-              #posttag
-                #tags
+              #postbottom
+                {% load static %}
+                img#likeicon(src="{% static 'file/like-y.png' %}")
+                p#likesnum {{ event.number_of_likes }}
               
-              #postcreatdate
-                p {{ event.create_date }}
-                
-              #postwanted
-                //p {{ event.people_wanted }}
-              
-            #postbottom
-              {% load static %}
-              img#likeicon(src="{% static 'file/like-y.png' %}")
-              p#likesnum {{ event.number_of_likes }}
-            
-              {% load static %}
-              img#commenticon(src="{% static 'file/commenticon.png' %}")
-              p#commentnum {{ event.number_of_comments }}
-          
+                {% load static %}
+                img#commenticon(src="{% static 'file/commenticon.png' %}")
+                p#commentnum {{ event.number_of_comments }}
           {% empty %}
           #eventpost
             p no event
           {% endfor %}
         
         
-        
-        
-        
-        
+
+    .event-detail    
+      {% include 'event_detail.pug' %}
+
     #gotop
       p ˄
     
     #filter1
-    
-
-    
     #eventcreatewindow
       img#exitbtn2(src="{% static 'file/exiticon.png' %}")
       

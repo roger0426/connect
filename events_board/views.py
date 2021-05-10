@@ -21,11 +21,21 @@ def home_view(requests, *args, **kwargs):
 
 
 def event_detail_view(requests, id, *args, **kwargs):
-  obj = EventsBoard.objects.get(id=id)
+  obj = EventsBoard.objects.all()
+  event_detail = EventsBoard.objects.get(id=id)
+  form = EventCreateForm(requests.POST, requests.FILES or None)
+  if form.is_valid():
+    instance = form.save(commit=False)
+    instance.host = requests.user.userextend
+    instance.save()
+  
   context = {
-    'event_obj': obj
+    'event_obj': obj,
+    'form': form,
+    'event_detail': event_detail
   }
-  return render(requests, 'event_detail.pug', context)
+  
+  return render(requests, 'homepage.pug', context)
 
 def like_view(requests, id):
   print(id)

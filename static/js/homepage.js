@@ -93,6 +93,13 @@ $(document).ready(function(){
       alert("活動未創建，請輸入必要欄位")
     }
   })
+
+  
+  let searchParams = window.location.href
+  if (searchParams.includes('event')) {
+    console.log('here')
+    $('#eventwindow').show();
+  }
   
   //按window外，關閉event window
   /* Mark 1 的原理：

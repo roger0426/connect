@@ -4,7 +4,8 @@
 link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")  
 header
   #navbar 
-    #title CONNECT.
+    a(href="{% url 'home' %}")
+      #title CONNECT.
 
     form
      input(type="text", placeholder="Search")
