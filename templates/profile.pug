@@ -146,8 +146,8 @@ html
                     a(href="{% url 'profile' id=comment.author.pk %}")
                       img#participant-img(src="{{ comment.author.img.url }}")
                     .comment-right
-                      a(href="{% url 'profile' id=comment.author.pk %}")
-                        p#participant-name {{ comment.author.full_name }}
+                      a(href="{% url 'profile' id=comment.author.pk %}") {{ comment.author.full_name }}
+                        //p#participant-name {{ comment.author.full_name }}
                       p#participant-comment {{ comment.text }}
                       p#participant-rate {{ comment.rate }}★
                   {% empty %}
