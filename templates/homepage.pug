@@ -111,7 +111,7 @@ html
 
     #gotop
       p ˄
-    
+    {% if request.user.is_authenticated %}
     #filter1
     #eventcreatewindow
       img#exitbtn2(src="{% static 'file/exiticon.png' %}")
@@ -127,7 +127,7 @@ html
           input#submit-btn(type="image" src="{% static 'file/submitbtn.png' %}" alt="Submit Form")
           //input#submit-btn(alt="Submit Form") 發佈
           //p#submit-btn 發佈
-          
+    {% endif %}
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
