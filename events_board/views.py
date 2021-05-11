@@ -28,6 +28,7 @@ def event_detail_view(requests, id, *args, **kwargs):
     instance = form.save(commit=False)
     instance.host = requests.user.userextend
     instance.save()
+    return HttpResponseRedirect('/')
   
   context = {
     'event_obj': obj,
