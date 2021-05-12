@@ -6,7 +6,7 @@ from .forms import EventCreateForm
 
 # Create your views here.
 def home_view(requests, *args, **kwargs):
-  obj = EventsBoard.objects.order_by('-id')
+  obj = EventsBoard.objects.order_by('-create_date')
   form = EventCreateForm(requests.POST, requests.FILES or None)
   if form.is_valid():
     instance = form.save(commit=False)
@@ -21,7 +21,7 @@ def home_view(requests, *args, **kwargs):
 
 
 def event_detail_view(requests, id, *args, **kwargs):
-  obj = EventsBoard.objects.order_by('-id')
+  obj = EventsBoard.objects.order_by('-create_date')
   event_detail = EventsBoard.objects.get(id=id)
   form = EventCreateForm(requests.POST, requests.FILES or None)
   if form.is_valid():

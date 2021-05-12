@@ -1,5 +1,6 @@
 {% load static %}
 {% if event_detail.host %}
+
 #eventwindow
   #description
     h1 {{ event_detail.title }}
@@ -71,4 +72,5 @@
     img#mailicon(src="{% static 'file/lettericon.png' %}")
     p 已向發起者送出邀請
   {% endif %}
+#filter1(style="display: block")
 {% endif %}

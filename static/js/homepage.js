@@ -46,7 +46,7 @@ $(document).ready(function(){
     $("#sent").css({opacity: 0, "z-index": -1});
   });
   
-  $("#exitbtn1").click(function() {
+  $("#exitbtn1, #filter1").click(function() {
     console.log("click event exit");
     $("#eventwindow").animate({opacity: 0}, 400, function() {
       $("#eventwindow").hide();

@@ -237,15 +237,24 @@ a
       
 #gotop 
   position: fixed
-  border-radius: 50px
+  border-radius: 50%
   right: 20px
   bottom: 30px
-  padding: 10px 16px
-  font-size: 25px
+  width: 4vw
+  height: 4vw
+  font-size: 3vw
   background: rgba(250, 173, 149, 1)
   color: rgba(0, 0, 0, 1)
   cursor: pointer
   z-index: 5
+  text-align: center
+  p
+    position: relative
+    top: 30%
+    color: #666666
+
+#gotop:hover
+  background-color: #ffdbd0
   
   
 #filter1
@@ -267,10 +276,10 @@ a
   width: 45%
   padding-top: 30%
   background-color: #F5FBFE
-  border-radius: 5vw
+  border-radius: 3vw
   border: 5px solid rgba(58, 237, 194, 0.5)
   box-shadow: 10px 10px 25px 5px #00000026
-  z-index: 2
+  z-index: 7
   
   *
     font-color: #000000
@@ -354,7 +363,7 @@ a
     bottom: -2px
     width: 32%
     height: 20%
-    border-radius: 5vw 0 5vw 0
+    border-radius: 5vw 0 3vw 0
   
   #exitbtn1
     transform: translate(-50%, 0)
@@ -478,7 +487,7 @@ a
     bottom: -6px
     width: auto
     height: auto
-    border-radius: 5vw
+    border-radius: 3vw
     opacity: 0
     z-index: -1
     backdrop-filter: blur(5px) contrast(40%) saturate(40%) brightness(70%)

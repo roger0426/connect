@@ -59,11 +59,12 @@ html
               input(type="button", value="傳訊息")
       #bottom-region
         #left-pane
-          p 聯絡人
-          p#friend-count {{ friend_count }}
+          #title-count
+            p 聯絡人
+            p#friend-count {{ friend_count }}
           #friends-avatar.left-region
             {% for friend in user.friends.all %}
-            img.friend-img(src="{{ friend.img.url }}")
+            img.friend-img(src="{{ friend.userextend.img.url }}")
             {% empty %}
             p 快去建立連結吧
             {% endfor %}
