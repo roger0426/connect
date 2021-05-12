@@ -13,23 +13,14 @@ $(document).ready(function () {
       $('#gotop').stop().fadeOut("fast");
     }
   });
-  var toggle = true;
-  $("#mark").click(function () {
-    if (toggle) {
-      $("img").attr("src", "./橘色的書籤");
-      toggle = false;
-    } else {
-      $("img").attr("src", "./白色的書籤");
-      toggle = true;
-    }
-  });
-  $("#title").click(function () {
-    console.log("click title");
-    $("#eventwindow").show();
-    $("#eventwindow").animate({
-      opacity: 1
-    }, 400);
+  $("#insertbox").click(function () {
+    console.log("click title"); //$("#eventwindow").show();
+    //$("#eventwindow").animate({opacity: 1}, 400);
+
     $("#eventcreatewindow").show();
+    $('input[type=text]').val('');
+    $('textarea').val('');
+    $('#id_image').val('');
     $("#eventcreatewindow").animate({
       opacity: 1
     }, 400);
@@ -55,31 +46,32 @@ $(document).ready(function () {
       "z-index": -1
     });
   });
-  $("#exitbtn1, #filter1").click(function () {
+  $("#exitbtn1").click(function () {
     console.log("click event exit");
     $("#eventwindow").animate({
       opacity: 0
     }, 400, function () {
       $("#eventwindow").hide();
     });
+    $("#filter1").show();
     $("#filter1").animate({
-      opacity: 0
-    }, 400, function () {
-      $("#filter1").hide();
-    });
+      opacity: 1
+    }, 400, function () {});
   });
-  $("#exitbtn2").click(function () {
+  $("#exitbtn2, #filter1").click(function () {
     console.log("click event exit");
     $("#eventcreatewindow").animate({
       opacity: 0
     }, 400, function () {
+      $('input[type=text]').val('');
+      $('textarea').val('');
+      $('#id_image').val('');
       $("#eventcreatewindow").hide();
     });
+    $("#filter1").show();
     $("#filter1").animate({
-      opacity: 0
-    }, 400, function () {
-      $("#filter1").hide();
-    });
+      opacity: 1
+    }, 400, function () {});
   });
   $("#submit-btn").click(function () {
     console.log("click event submit");
@@ -99,6 +91,25 @@ $(document).ready(function () {
       alert("活動已創建！");
     } else {
       alert("活動未創建，請輸入必要欄位");
+    }
+  });
+  var searchParams = window.location.href;
+
+  if (searchParams.includes('event')) {
+    console.log('here');
+    $('#eventwindow').show();
+  }
+
+  $('.title').each(function () {
+    if ($(this).text().length > 8) {
+      console.log($(this).text());
+      $(this).text($(this).text().substring(0, 8) + "...");
+    }
+  });
+  $('.subtitle').each(function () {
+    if ($(this).text().length > 10) {
+      console.log($(this).text());
+      $(this).text($(this).text().substring(0, 10) + "...");
     }
   }); //按window外，關閉event window
 

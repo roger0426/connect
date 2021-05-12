@@ -22,7 +22,7 @@ html
         a(href="{% url 'login' %}")
           #userpic
         a#inserta(href="{% url 'login' %}")
-          button#insertbox
+        button#insertbox
         {% endif %}
         
 
@@ -31,33 +31,15 @@ html
           hr#line1.line
           p 分類
           select#category
+            option(value='recommend') 最新
             option(value='recommend') 推薦
-            option(value='recommend') 推薦
-            option(value='recommend') 推薦
+            option(value='recommend') 隨機
           p 排序
           select#sort
             option(value='hot') 最多人喜歡
-            option(value='hot') 最多人喜歡
-            option(value='hot') 最多人喜歡
+            option(value='hot') 最多人參與
+            option(value='hot') 最多人留言
           hr#line2.line
-          
-        //
-          #postwrapper
-            #postype
-              #mark
-                p +
-              #title
-                p ＃揪團 去COSTCO
-              #subtitle
-                p 有會員卡，缺司機
-              #attachpic
-                img(src="{% static 'file/exiticon.png' %}")
-                img(src="{% static 'file/exiticon.png' %}")
-            #count
-              img#likebutton(src="{% static 'file/like-y.png' %}")
-              h 160
-              img#comment(src="{% static 'file/msgicon.png' %}")
-              h 36
               
         #eventboard
           {% for event in event_obj %}
@@ -87,12 +69,13 @@ html
                 
               #postbottom
                 {% load static %}
-                img#likeicon(src="{% static 'file/like-y.png' %}")
-                p#likesnum {{ event.number_of_likes }}
+                img#commenticon(src="{% static 'file/participant.png' %}")
+                p#commentnum {{ event.number_of_comments }}
               
                 {% load static %}
-                img#commenticon(src="{% static 'file/commenticon.png' %}")
-                p#commentnum {{ event.number_of_comments }}
+                img#likeicon(src="{% static 'file/like-y.png' %}")
+                p#likesnum {{ event.number_of_likes }}
+                
           {% empty %}
           #eventpost
             p no event
