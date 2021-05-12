@@ -55,13 +55,14 @@
     #applybutton
       img#apply-y(src="{% static 'file/applyicon.png' %}")
     {% else %}
-    a#login-redirect(href="{% url 'login' %}")
-      #likebutton
-        button(type="image")
+    #likebutton(style="background-image: url('/static/file/like-n.png')", href="{% url 'login' %}")
+      form(action="", method="POST")
+        {% csrf_token %}
+        button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
           span#like-img
 
-      #applybutton
-        img#apply-y(src="{% static 'file/applyicon.png' %}")
+    #applybutton
+      img#apply-y(src="{% static 'file/applyicon.png' %}")
     {% endif %}
 
   {% if request.user.is_authenticated %}
