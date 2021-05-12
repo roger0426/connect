@@ -1,8 +1,19 @@
 @font-face
   font-family: jf-openhuninn
   src: url('../fonts/jf-openhuninn-1.1.woff') format("woff")
-
   font-display: auto
+
+@font-face
+  font-family: GlowSansTC-Extended-Regular
+  src: url('../fonts/GlowSansTC-Extended-Regular.otf') format("opentype")
+  font-display: auto
+
+@font-face
+  font-family: GlowSansTC-Normal-Regular
+  src: url('../fonts/GlowSansTC-Normal-Regular.otf') format("opentype")
+  font-display: auto
+
+
 
 \:root
   --background-color: #FFFFFF
@@ -11,14 +22,13 @@
   --fontcolor-header: #000000
   --fontcolor-text: #000000
   --color-main: #FAAD95
-  --font-family-header: "jf-openhuninn", "Tahoma", "Arial"
-  --font-style-header: normal
-  --font-family-text: "jf-openhuninn", "Tahoma", "Arial"
-  --font-style-text: normal
-  --font-family-card: "jf-openhuninn", "Tahoma", "Arial"
+  --font-family-extended: "GlowSansTC-Extended-Regular", "jf-openhuninn", "Tahoma", "Arial"
+  --font-style-extended: normal
+  --font-family-normal: "GlowSansTC-Normal-Regular", "Noto-Sans CJK TC", "jf-openhuninn", "Tahoma", "Arial"
+  --font-style-extended: normal
 
 *
-  font-family: var(--font-family-text)
+  font-family: var(--font-family-normal)
   padding: 0
   margin: 0
   
@@ -67,12 +77,13 @@ a
       height: 5vw
       border-radius: 2.5vw
       background-color: rgba(196, 196, 196, 1)
+      
     #inserta
       width: calc(100% - 6vw)
 
     #insertbox
       margin-right: 4%
-      height: 6vh
+      height: 3.5vw
       width: calc(100% - 6vw)
       border-radius: 1.2vw
       background-color: rgba(247, 247, 247, 1)
