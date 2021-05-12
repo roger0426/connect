@@ -10,6 +10,7 @@
     a(href="{% url 'profile' id=event_detail.host.pk %}")
       img#organizer.member(src='{{ event_detail.host.img.url }}')
     #bar
+    
     {% for participant in event_detail.participants.all %}
     a(href="{% url 'profile' id=participant.pk %}")
       img.member.participant(src='{{ participant.img.url }}')
@@ -18,6 +19,7 @@
     p 還沒有參與者
     {% endif %}
     {% endfor %}
+
     {% for interested_user in event_detail.likes.all %}
     a(href="{% url 'profile' id=interested_user.pk %}")
       img.member.interested(src='{{ interested_user.img.url }}')
@@ -38,21 +40,33 @@
       img#organizerpic(src='{{ event_detail.host.img.url }}')
       p {{ event_detail.host.full_name }}
 
-      
+    {% if request.user.is_authenticated %}  
     #likebutton
       form(action="{% url 'like' event_detail.pk %}", method="POST")
         {% csrf_token %}
         button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
           span#like-img
+
       //
         img#like-y(src="{% static 'file/like-y.png' %}")
         img#like-n(src="{% static 'file/like-n.png' %}")
 
     #applybutton
       img#apply-y(src="{% static 'file/applyicon.png' %}")
+    {% else %}
+    a#login-redirect(href="{% url 'login' %}")
+      #likebutton
+        button(type="image")
+          span#like-img
 
+      #applybutton
+        img#apply-y(src="{% static 'file/applyicon.png' %}")
+    {% endif %}
+
+  {% if request.user.is_authenticated %}
   #sent
     {% load static %}
     img#mailicon(src="{% static 'file/lettericon.png' %}")
     p 已向發起者送出邀請
+  {% endif %}
 {% endif %}
