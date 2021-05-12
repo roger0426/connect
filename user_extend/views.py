@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.contrib.auth.models import User
 from .models import UserExtend, EventsBoard
 from events_board.models import Comment
 
@@ -9,8 +8,7 @@ def update_profile(request, user_id):
     user.save()
 
 def profile_view(requests, id, *args, **kwargs):
-  obj_user = User.objects.get(id=id)
-  obj = obj_user.userextend
+  obj = UserExtend.objects.get(id=id)
   tags = obj.tag.all()
   friend_count = obj.friends.count()
   personality_tags = []
@@ -30,7 +28,7 @@ def profile_view(requests, id, *args, **kwargs):
   activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
   projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
   personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
-
+  
   context = {
     'user': obj,
     'personality': personality_tags,
