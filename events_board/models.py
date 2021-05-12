@@ -5,6 +5,15 @@ from datetime import date
 
 from django.utils import timezone
 # Create your models here.
+class IntegerRangeField(models.IntegerField):
+    def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
+        self.min_value, self.max_value = min_value, max_value
+        models.IntegerField.__init__(self, verbose_name, name, **kwargs)
+    def formfield(self, **kwargs):
+        defaults = {'min_value': self.min_value, 'max_value':self.max_value}
+        defaults.update(kwargs)
+        return super(IntegerRangeField, self).formfield(**defaults)
+
 class EventsBoard(models.Model):
   # basic information
   title = models.CharField(max_length=50)
@@ -14,7 +23,7 @@ class EventsBoard(models.Model):
   image = models.ImageField(upload_to='events/', blank=True)
   create_date = models.DateField(default = date.today)
   event_date = models.DateField(default = date.today)
-  people_wanted = models.IntegerField(default=1)
+  people_limit = IntegerRangeField(min_value=1)
   likes = models.ManyToManyField("user_extend.UserExtend", related_name='event_like', blank=True)
   
   #about people
@@ -58,14 +67,6 @@ class EventsBoard(models.Model):
   def __str__(self):
     return self.title
 
-class IntegerRangeField(models.IntegerField):
-    def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
-        self.min_value, self.max_value = min_value, max_value
-        models.IntegerField.__init__(self, verbose_name, name, **kwargs)
-    def formfield(self, **kwargs):
-        defaults = {'min_value': self.min_value, 'max_value':self.max_value}
-        defaults.update(kwargs)
-        return super(IntegerRangeField, self).formfield(**defaults)
 
 class Comment(models.Model):
   text = models.CharField(max_length=40)

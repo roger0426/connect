@@ -1,5 +1,10 @@
 from django import forms
+import datetime
 from .models import EventsBoard
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 class EventCreateForm(forms.ModelForm):
 
@@ -8,7 +13,8 @@ class EventCreateForm(forms.ModelForm):
     fields = (
       'title',
       'subtitle',
-      'event_tag',
+      'event_date',
+      'people_limit',
       'detail',
       'event_type',
       'image',
@@ -18,4 +24,5 @@ class EventCreateForm(forms.ModelForm):
       'subtitle': forms.TextInput(attrs={'placeholder':'  活動副標題'}),
       'event_tag': forms.TextInput(attrs={'placeholder': '  標籤'}),
       'detail': forms.Textarea(attrs={'placeholder': '* 編輯文字'}),
+      'event_date': DateInput(),
     }

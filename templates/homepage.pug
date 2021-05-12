@@ -17,7 +17,7 @@ html
       #create
         {% if request.user.is_authenticated %}
         img#userpic(src="{{ request.user.userextend.img.url }}")
-        button#insertbox
+        button#insertbox 發起活動？
         {% else %}
         a(href="{% url 'login' %}")
           #userpic
@@ -40,6 +40,7 @@ html
             option(value='hot') 最多人參與
             option(value='hot') 最多人留言
           hr#line2.line
+          
               
         #eventboard
           {% for event in event_obj %}
@@ -101,9 +102,6 @@ html
       
       form(action="", method="post", enctype="multipart/form-data") {% csrf_token %}
         #profile
-          {% load static %}
-          img#user-img(src="{{ user.userextend.img.url }}")
-          h1 {{ user.userextend.full_name }}
         {{ form.as_table }}
 
         #buttons

@@ -29,15 +29,12 @@ def login_view(request, *args, **kwargs):
       password = sign_pwd
     )
     user.save()
-
-    print(sid, "account create successfully")
+    auth.login(request, user)
+    return HttpResponseRedirect('/')
+    print(sid, "[INFO] account create successfully")
   else:
-    print("something went wrong, check term or password")
+    print("[INFO] something went wrong, check term or password")
 
-
-  print(fname)
-
-  
   user = auth.authenticate(username=username, password=password)
 
   if user is not None and user.is_active:

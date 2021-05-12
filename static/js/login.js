@@ -50,9 +50,11 @@ let intervalId = window.setInterval(function(){ // check every 0.5 seconds
       $('#email').val().length == 0 ||
       $('#sid').val().length == 0) {
     $('#sign-up-btn').prop('disabled', true);
+
   } else {
     $('#sign-up-btn').prop('disabled', false);
   }
+  
 
 }, 500);
 
