@@ -2,6 +2,9 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.http import HttpResponseRedirect 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from user_extend.models import UserExtend
 import time
 
 
@@ -43,6 +46,10 @@ def login_view(request, *args, **kwargs):
   else:
     return render(request, 'login.pug', {})
 
+@receiver(post_save, sender=User)
+def create_extends(sender, instance, created, **kwargs):
+    if created:
+        UserExtend.objects.create(user=instance)
   
 def home_view(request):
   return render(request, 'homepage.pug', {})

@@ -23,7 +23,7 @@ class EventsBoard(models.Model):
   image = models.ImageField(upload_to='events/', blank=True)
   create_date = models.DateField(default = date.today)
   event_date = models.DateField(default = date.today)
-  people_limit = IntegerRangeField(min_value=1)
+  people_limit = IntegerRangeField(min_value=1, max_value=999)
   likes = models.ManyToManyField("user_extend.UserExtend", related_name='event_like', blank=True)
   
   #about people

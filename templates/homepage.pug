@@ -22,7 +22,7 @@ html
         a(href="{% url 'login' %}")
           #userpic
         a#inserta(href="{% url 'login' %}")
-          button#insertbox
+        button#insertbox 發起活動？
         {% endif %}
         
 
@@ -36,6 +36,7 @@ html
             option(value='recommend') 隨機
           p 排序
           select#sort
+            option(value='hot') 最新
             option(value='hot') 最多人喜歡
             option(value='hot') 最多人參與
             option(value='hot') 最多人留言

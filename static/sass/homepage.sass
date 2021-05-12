@@ -79,7 +79,7 @@ a
       background-color: rgba(196, 196, 196, 1)
       
     #inserta
-      width: calc(100% - 6vw)
+      width: 50vw
 
     #insertbox
       margin-right: 4%
@@ -544,7 +544,9 @@ a
   
   form 
     display: flex
-    flex-direction: column
+    flex-direction: row
+    flex-wrap: wrap;
+    justify-content: flex-start;
     align-items: stetch
     padding: 0 2vw 2vw 2vw
     //padding-left: 3vw
@@ -563,6 +565,7 @@ a
       border-radius: 2.5vw
       margin-bottom: 0.7vw
       height: 2vw
+      width: 100%
       font-size: 1vw
       padding: 0 1vw
       outline: none
@@ -582,22 +585,22 @@ a
       background-color: #EEEEEE
       color: #666666
       padding-left: 1.8vw
+      margin-right: 0.7vw
     input[type=date]:focus
       border: 2px solid #B9B9B9
     input[type=number]
       border-radius: 2.5vw
       margin-bottom: 0.7vw
       height: 2vw
-      width: 10vw
+      width: 5vw
       font-size: 1vw
       padding: 0 1vw
       outline: none
       border: none
       background-color: #EEEEEE
       color: #666666
-      padding-left: 1.8vw
-      position: relative
-      transform: translate(calc(100% + 0.7vw), -2.7vw)
+      padding-left: 1vw
+      margin-right: 0.7vw
     input[type=number]:focus
       border: 2px solid #B9B9B9
     textarea
@@ -610,8 +613,6 @@ a
       border: none
       font-size: 1vw
       height: 8vw
-      position: relative
-      transform: translateY(-2.7vw)
     
     select
       background-color: #EEEEEE
@@ -623,8 +624,7 @@ a
       border: none
       margin-bottom: 1vw
       padding: 0 1vw
-      position: relative
-      transform: translateY(-2.7vw)
+
     
     #id_title
       height: 2.5vw
@@ -633,8 +633,6 @@ a
       color: #666666
       font-size: 1vw
       margin-left: 1vw
-      position: relative
-      transform: translateY(-2.7vw)
       
   .input-area
     width: 70%
