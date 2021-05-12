@@ -55,7 +55,10 @@ class EventsBoard(models.Model):
     return self.comments.count()
 
   def number_of_likes(self):
-      return self.likes.count()
+    return self.likes.count()
+  
+  def number_of_participants(self):
+    return self.participants.count()
   
   def get_avg_rating(self):
     comments = Comment.objects.filter(for_event=self)
