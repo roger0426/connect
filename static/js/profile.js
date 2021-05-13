@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('#tab-navbar :nth-child(1)')
+  $("#tag1, #tab-navbar :nth-child(1)")
   .on('click touch', function(){ 
     $('#activities').show();
     $('#projects').hide();
@@ -11,7 +11,7 @@ $(document).ready(function(){
     $('#indextag :nth-child(5)').css('background-color','white')
   });
 
-  $('#tab-navbar :nth-child(2)')
+  $('#tab-navbar :nth-child(2), #tag2')
   .on('click touch', function(){ 
     $('#activities').hide();
     $('#projects').show();
@@ -23,7 +23,7 @@ $(document).ready(function(){
     $('#indextag :nth-child(5)').css('background-color','white')
   });
   
-  $('#tab-navbar :nth-child(3)')
+  $('#tab-navbar :nth-child(3), #tag3')
   .on('click touch', function(){ 
     $('#activities').hide();
     $('#projects').hide();
@@ -35,7 +35,7 @@ $(document).ready(function(){
     $('#indextag :nth-child(5)').css('background-color','white')
   });
   
-  $('#tab-navbar :nth-child(4)')
+  $('#tab-navbar :nth-child(4), #tag4')
   .on('click touch', function(){
     $('#activities').hide();
     $('#projects').hide();
@@ -47,7 +47,7 @@ $(document).ready(function(){
     $('#indextag :nth-child(5)').css('background-color','white')
   });
   
-  $('#tab-navbar :nth-child(5)')
+  $('#tab-navbar :nth-child(5), #tag5')
   .on('click touch', function(){
     $('#activities').hide();
     $('#projects').hide();

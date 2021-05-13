@@ -108,7 +108,7 @@ a
           width: auto
           margin-bottom: 0.5vw
           p
-            font-size: 1vw
+            font-size: 1.25vw
             padding-left: 0.5vw
         
         .tag-field
@@ -150,8 +150,9 @@ a
             border: solid 2px
             background-color: #FDF2EF
             border-color: var(--color-main)
+          input:hover
+            background-color: #FFDFDF
             
-
           input:nth-child(1)
             margin-left: 1vw
 
@@ -243,7 +244,10 @@ a
         border-radius: 50%
         border: grey solid 0.05vw
         margin-top: 0.5vw
-    
+      .vitualimg
+        width: 3.2vw
+        height: 0
+      
   #right-pane
     background-color: #FFE4DC
     width: 73%
@@ -270,9 +274,15 @@ a
         border-color: #FFE4DC
         border-radius: 1vw 1vw 0 0
         //box-shadow: 1px 0px 2px #FF79BC
+      .tag:hover
+        cursor: pointer
                 
       .tag:nth-child(1)
         background-color: #FFE4DC
+        
+    #tab-navbar
+      input:hover
+        cursor: pointer
         
     #tab-navbar
       position: relative
@@ -288,6 +298,9 @@ a
         font-size: 1.3vw
         border: none
         background-color: transparent
+      *:hover
+        position: relative
+        transform: scale(1.02)
     
     .page-panel
       display: flex
@@ -380,8 +393,13 @@ a
           justify-content: flex-start
           align-items: flex-start
           width: 100%
+          height: 15vw
+          overflow: scroll
+          //overflow-scrolling: touch
+          //-webkit-overflow-scrolling: touch
+          //appearance: none
           
-          .activity-comment
+          .comment
             display: flex
             flex-direction: row;
             flex-wrap: nowrap;
@@ -394,8 +412,9 @@ a
               height: 2.5vw
               border-radius: 50%
             .comment-right
+              position: relative
               background-color: #EFFFFB
-              padding: 0 0.5vw 0.2vw 0.5vw
+              padding: 0 0.5vw 0.7vw 0.5vw
               border-radius: 1vw
               margin-top: 0.5vw
               width: 15.5vw
@@ -406,9 +425,10 @@ a
               a
                 //position: absolute
                 font-size: 1vw
+                font-weight: 600
                 text-align: left
-                margin-left: 0
-              #participant-comment
+                margin: -0.5v
+              .comments
                 //background-color: blue
                 font-size: 1vw
                 text-align: left
@@ -416,12 +436,14 @@ a
                 //background-color: green
                 font-size: 1vw
                 text-align: right
-                position: relative
-                right: 0
-                bottom: 0
-              p
+                position: absolute
+                right: 0.5vw
+                top: 0.5vw
+              #participant-comment
                 font-size: 1vw
                 text-align: left
+                margin: 0.1vw 1.2vw 0 1vw
+                color: #333333
 
     #personal-title
       font-size: 1.6vw
