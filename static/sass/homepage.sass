@@ -67,7 +67,7 @@ a
       width: 5vw
       height: 5vw
       border-radius: 2.5vw
-      background-color: rgba(196, 196, 196, 1)
+      background-color: rgba(205, 205, 205, 1)
 
     #inserta
       position: absolute
@@ -146,6 +146,10 @@ a
       margin: 0 7vw
       margin-bottom: 7vw
       
+      #eventpost:hover
+        position: relative
+        transform: scale(1.03)
+      
       #eventpost
         display: flex
         flex-direction: column
@@ -159,7 +163,7 @@ a
         margin: 0.7vw 0
         padding: 1vw 1.5vw 0.5vw 1.5vw
         border-radius: 1.5vw
-        box-shadow: 5px 10px 20px 0px
+        box-shadow: 0.2vw 0.3vw 0.3vw 0.1vw rgba(150, 150, 150, 0.7)
         
         *
           margin: 0
@@ -167,10 +171,10 @@ a
           //margin-bottom: 0.3vw
         
         #posttop
-          transform: translate(-1.55vw, -1.1vw)
-          width: 14.1vw
+          transform: translate(calc(-1.5vw - 1px), calc(-1vw - 1px))
+          width: calc(14vw + 2px)
           padding: 1vw 1.5vw 0.3vw 1.5vw
-          border-radius: 1.5vw
+          border-radius: 1.5vw 1.5vw 0 0
           background-color: #FFAD94
           min-height: 5.5vw
           
@@ -202,7 +206,7 @@ a
             font-size: 0.8vw
             color: #777777
             text-align: right
-          
+        
             
         #postbottom
           display: flex
@@ -229,11 +233,13 @@ a
           #commenticon
             height: 1.5vw
             width: auto
-      #virtualdiv
-        *
-          background: none
       a
         margin-left: 0
+      #virtualdiv
+        #eventpost
+          box-shadow: none
+        *
+          background: none
           
       
 #gotop 
@@ -301,7 +307,7 @@ a
       font-weight: 600
     
     #subtitle
-      margin: 0.5vw 0 0 0
+      margin: 0.7vw 0 0 0
       font-size: 1.3vw
       color: rgba(61, 201, 167, 1)
     
@@ -314,9 +320,9 @@ a
         color: purple
         
     #detail
-      font-size: 1vw
+      font-size: 1.3vw
       color: #000000
-      margin: 0.5vw 0 0 0
+      margin: 1vw 0 0 0
       line-height: 1.7vw
       height: 60%
       overflow: scroll
@@ -328,15 +334,18 @@ a
     transform: translate(0, -100%)
     display: flex
     flex-direction: row
+    align-itemS: center
     bottom: -1vw
     width: 70%
     height: 3vw
     left: 3.3vw
     
     *
-      position: relative
-      margin: 0 0.5vw 0 0
+      //position: relative
+      margin: 0 0.7vw 0 0
     
+    a
+      margin: 0
     p
       font-size: 1vw
       vertical-align: middle
@@ -344,10 +353,10 @@ a
       padding: 1vw 0
       
     #bar
-      width: 5px
+      width: 0.2vw
       height: 3vw
-      transform: translate(0, -50%)
-      top: 55%
+      //transform: translate(0, -50%)
+      //top: 55%
       background-color: #B0B0B0
       
     .member
