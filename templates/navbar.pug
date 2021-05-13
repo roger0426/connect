@@ -19,7 +19,7 @@ header
         a#message.button(href="#") 
       li 
         {% if request.user.is_authenticated %}
-        a#profile.button(href="{% url 'profile' id=request.user.pk %}")
+        a#profile.button(href="{% url 'profile' id=request.user.userextend.pk %}")
         {% else %}
         a#profile.button(href="{% url 'login' %}")
         {% endif %}

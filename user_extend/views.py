@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import UserExtend, EventsBoard
+from django.contrib.auth.models import User
 from events_board.models import Comment
 
 # Create your views here.

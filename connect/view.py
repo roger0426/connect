@@ -36,8 +36,8 @@ def login_view(request, *args, **kwargs):
     )
     user_extend.save()
     auth.login(request, user)
-    return HttpResponseRedirect('/')
     print(sid, "[INFO] account create successfully")
+    return HttpResponseRedirect('/')
   else:
     print("[INFO] something went wrong, check term or password")
 
