@@ -231,15 +231,18 @@ a
       
     #friends-avatar
       display: flex
+      flex-direction: row
+      flex-wrap: wrap
+      align-content: flex-start
+      justify-content: space-around
+      align-items: flex-start
       
       .friend-img
         width: 3.2vw
         height: 3.2vw
         border-radius: 50%
-        margin-right: 0.4vw
-        margin-left: 0.4vw
-        margin-bottom: 0.5vw
         border: grey solid 0.05vw
+        margin-top: 0.5vw
     
   #right-pane
     background-color: #FFE4DC
