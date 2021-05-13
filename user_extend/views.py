@@ -10,21 +10,14 @@ def update_profile(request, user_id):
 
 def profile_view(requests, id, *args, **kwargs):
   obj = UserExtend.objects.get(id=id)
-  tags = obj.tag.all()
   friend_count = obj.friends.count()
-  personality_tags = []
-  skill_tags = []
-  interest_tags = []
-  
-  # separate different tags
-  for tag in tags:
-    tag_str = str(tag) # stringify
-    if tag_str[0] == '0':
-      personality_tags.append(tag_str[2:])
-    elif tag_str[0] == '1':
-      skill_tags.append(tag_str[2:])
-    elif tag_str[0] == '2':
-      interest_tags.append(tag_str[2:])
+
+  personality_tags = obj.user.tags.filter(tag_type='個性')
+  skill_tags = obj.user.tags.filter(tag_type='專長')
+  interest_tags = obj.user.tags.filter(tag_type='有興趣的活動')
+
+  print(personality_tags, skill_tags)
+
 
   activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
   projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
@@ -45,21 +38,12 @@ def profile_view(requests, id, *args, **kwargs):
 def profile_event_view(requests, id, event_id):
   obj = UserExtend.objects.get(id=id)
   event_obj = EventsBoard.objects.get(id=event_id)
-  tags = obj.tag.all()
   friend_count = obj.friends.count()
-  personality_tags = []
-  skill_tags = []
-  interest_tags = []
-  
-  # separate different tags
-  for tag in tags:
-    tag_str = str(tag) # stringify
-    if tag_str[0] == '0':
-      personality_tags.append(tag_str[2:])
-    elif tag_str[0] == '1':
-      skill_tags.append(tag_str[2:])
-    elif tag_str[0] == '2':
-      interest_tags.append(tag_str[2:])
+
+  personality_tags = obj.user.tags.filter(tag_type='個性')
+  skill_tags = obj.user.tags.filter(tag_type='專長')
+  interest_tags = obj.user.tags.filter(tag_type='有興趣的活動')
+
 
   activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
   projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')

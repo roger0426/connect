@@ -52,12 +52,12 @@ INSTALLED_APPS = [
     # third party libraries
     'sass_processor',
     'django_notification_system',
-    'taggit',
 
     # owned
     'about_us',
     'events_board',
-    'user_extend'
+    'user_extend',
+    'tags',
 ]
 
 # NOTIFICATION settings

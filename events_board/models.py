@@ -1,10 +1,8 @@
 from django.db import models
 from django.conf import settings
-from taggit.managers import TaggableManager
 from datetime import date
-
 from django.utils import timezone
-# Create your models here.
+
 class IntegerRangeField(models.IntegerField):
     def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
         self.min_value, self.max_value = min_value, max_value
@@ -19,7 +17,6 @@ class EventsBoard(models.Model):
   title = models.CharField(max_length=50)
   subtitle = models.CharField(max_length=70, blank=True)
   detail = models.TextField()
-  event_tag = TaggableManager(blank=True)
   image = models.ImageField(upload_to='events/', blank=True)
   create_date = models.DateField(default = date.today)
   event_date = models.DateField(default = date.today)
