@@ -58,5 +58,29 @@ $(document).ready(function(){
     $('#indextag :nth-child(3)').css('background-color','white')
     $('#indextag :nth-child(4)').css('background-color','white')
   });
+
+  $("#applybutton").click(function() {
+    console.log("click apply");
+    //$("#sent").show();
+    $('#sent').css({"z-index": 1});
+    $("#sent").animate({opacity: 1}, 500, function() {
+      
+    })
+  });
+  
+  $("#sent").click(function() {
+    console.log("click sent");
+    $("#sent").css({opacity: 0, "z-index": -1});
+  });
+  
+  $("#exitbtn1, #filter1").click(function() {
+    console.log("click event exit");
+    $("#eventwindow").animate({opacity: 0}, 400, function() {
+      $("#eventwindow").hide();
+    })
+    $("#filter1").animate({opacity: 0}, 400, function() {
+      $("#filter1").hide();
+    })
+  });
   
 })

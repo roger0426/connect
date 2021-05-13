@@ -13,6 +13,7 @@ html
   {% include 'navbar.pug' %}
 
   body
+    {% include 'event_detail.pug' %}
     #profilepanel
       #top-region
         #intro
@@ -118,7 +119,7 @@ html
             #activity-card.card
               .cardleft
                 {% if activity.image %}
-                a(href="{% url 'event_detail' id=activity.pk %}")
+                a(href="{% url 'profile_event' id=request.user.userextend.pk event_id=activity.pk%}")
                   img#activity-img.card-img(src="{{ activity.image.url }}")
                 {% else %}
                 #activity-img.card-img
@@ -133,7 +134,7 @@ html
               
               .cardright
                 .info
-                  a(href="{% url 'event_detail' id=activity.pk %}")
+                  a(href="{% url 'profile_event' id=request.user.userextend.pk event_id=activity.pk%}")
                     p#activity-title.cardinfott {{ activity.title }}
                   {% if activity.comments.count > 0 %}
                   p#activity-rate.rate {{ activity.get_avg_rating }}★
@@ -171,7 +172,7 @@ html
             #projects-card.card
               .cardleft
                 {% if project.image %}
-                a(href="{% url 'event_detail' id=project.pk %}")
+                a(href="{% url 'profile_event' id=request.user.userextend.pk event_id=project.pk%}")
                   img#projects-img.card-img(src="{{ project.image.url }}")
                 {% else %}
                 #projects-img.card-img
@@ -186,7 +187,7 @@ html
 
               .cardright
                 .info
-                  a(href="{% url 'event_detail' id=project.pk %}")
+                  a(href="{% url 'profile_event' id=request.user.userextend.pk event_id=project.pk%}")
                     p#project-title.cardinfott {{ project.title }}
                   {% if project.comments.count > 0 %}
                   p#projects-rate {{ project.get_avg_rating }}★
@@ -221,7 +222,7 @@ html
             #personal-card.card
               .cardleft
                 {% if personal_proj.image %}
-                a(href="{% url 'event_detail' id=personal_proj.pk %}")
+                a(href="{% url 'profile_event' id=request.user.userextend.pk event_id=personal_proj.pk%}")
                   img#personal-img.card-img(src="{{ personal_proj.image.url }}")
                 {% else %}
                 #personal-img.card-img
@@ -234,7 +235,7 @@ html
                 p.date 未設定日期
                 {% endif %}
               .cardright
-                a(href="{% url 'event_detail' id=personal_proj.pk %}")
+                a(href="{% url 'profile_event' id=request.user.userextend.pk event_id=personal_proj.pk%}")
                   p#personal-title {{ personal_proj.title }}
                 p#personal-detail {{ personal_proj.detail }}
             {% empty %}
