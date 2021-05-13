@@ -5,7 +5,7 @@ $(document).ready(function(){
     },1000);
   });
   $(window).scroll(function() {
-    if ( $(this).scrollTop() > 300){
+    if ( $(this).scrollTop() > 50){
         $('#gotop').fadeIn("fast");
     } else {
         $('#gotop').stop().fadeOut("fast");
@@ -92,20 +92,7 @@ $(document).ready(function(){
     $('#eventwindow').show();
   }
 
-  
-  $('.title').each(function () {
-    if ($(this).text().length > 8) {
-      console.log($(this).text())
-      $(this).text($(this).text().substring(0,8) + "...");
-    }
-  })
 
-  $('.subtitle').each(function () {
-    if ($(this).text().length > 10) {
-      console.log($(this).text())
-      $(this).text($(this).text().substring(0,10) + "...");
-    }
-  })
   
   //按window外，關閉event window
   /* Mark 1 的原理：
