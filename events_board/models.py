@@ -14,8 +14,8 @@ class IntegerRangeField(models.IntegerField):
 
 class EventsBoard(models.Model):
   # basic information
-  title = models.CharField(max_length=50)
-  subtitle = models.CharField(max_length=70, blank=True)
+  title = models.CharField(max_length=15)
+  subtitle = models.CharField(max_length=25, blank=True)
   detail = models.TextField()
   image = models.ImageField(upload_to='events/', blank=True)
   create_date = models.DateField(default = date.today)

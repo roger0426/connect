@@ -1,4 +1,8 @@
 $(document).ready(function(){
+  $('#loadingfilter').hide();
+  $('#loadinggif').hide();
+  
+  
   $('.card') // card animation
   .on('mouseenter', function(){ // mouse enter
     $('.card-detail', this).stop(true, false).animate({height: '100%'}, 400);

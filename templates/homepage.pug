@@ -20,6 +20,7 @@ html
         a(href="{% url 'profile' id=request.user.userextend.pk %}")
           img#userpic(src="{{ request.user.userextend.img.url }}")
         button#insertbox 發起活動？
+          p#insertbar |
         
         {% else %}
         
@@ -110,9 +111,9 @@ html
         {{ form.as_table }}
 
         #buttons
-          input#submit-btn(type="image" src="{% static 'file/submitbtn.png' %}" alt="Submit Form")
+          //input#submit-btn(type="image" src="{% static 'file/submitbtn.png' %}" alt="Submit Form")
           //input#submit-btn(alt="Submit Form") 發佈
-          //p#submit-btn 發佈
+          p#submit-btn 發佈
     {% endif %}
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")

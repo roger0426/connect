@@ -1,4 +1,8 @@
 $(document).ready(function(){
+  $('#loadingfilter').hide();
+  $('#loadinggif').hide();
+  
+  
   console.log('in');
   $('#sign-up')
   .on('click touch', function(){ 

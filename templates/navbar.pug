@@ -3,7 +3,12 @@
 {% url 'home' as home_url %}
 link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")  
 header
-  #navbar 
+  #navbar
+    #loadingfilter
+    {% load static %}
+    img#loadinggif
+  
+  
     a(href="{% url 'home' %}")
       #title CONNECT.
 
@@ -17,7 +22,9 @@ header
       li 
         a#alert.button(href="#" title="功能開發中")
       li 
-        a#message.button(href="#" title="功能開發中") 
+        a#message.button(href="#" title="功能開發中")
+      li
+        a#aboutus.button(href="/about_us" title="about us")
       li 
         {% if request.user.is_authenticated %}
         //a#profile.button(href="{% url 'profile' id=request.user.userextend.pk %}")

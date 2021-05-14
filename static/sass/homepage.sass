@@ -74,7 +74,7 @@ a
       width: 6vw
       height: 6vw
       border-radius: 50%
-      background-color: rgba(205, 205, 205, 1)
+      background-color: rgba(210, 210, 210, 0.8)
 
     #inserta
       position: absolute
@@ -82,7 +82,13 @@ a
       width: 48vw
       height: 3.5vw
 
+    #insertbox:hover
+      color: #666666
+
     #insertbox
+      display: flex
+      flex-direction: row
+      align-items: center
       margin-right: 4%
       height: 3.5vw
       width: 48vw
@@ -93,8 +99,13 @@ a
       text-align: left
       padding-left: 1.5vw
       font-size: 1.5vw
-      color: #666666
-      
+      color: #888888
+    
+    #insertbar
+      position: relative
+      font-size: 1.7vw
+      padding-bottom: 0.25vw
+      color: #999999
   
 
   #board
@@ -155,7 +166,8 @@ a
       
       #eventpost:hover
         position: relative
-        transform: scale(1.03)
+        transform: scale(1.01)
+        box-shadow: 0.3vw 0.45vw 0.4vw 0.1vw rgba(150, 150, 150, 0.7)
       
       #eventpost
         display: flex
@@ -163,7 +175,7 @@ a
         flex-wrap: nowrap
         align-content: center
         justify-content: flex-start
-        align-items: flex-start
+        align-items: center
                 
         width: 14vw
         background-color: white
@@ -178,12 +190,12 @@ a
           //margin-bottom: 0.3vw
         
         #posttop
-          transform: translate(calc(-1.5vw - 1px), calc(-1vw - 1px))
-          width: calc(14vw + 2px)
+          transform: translate(0, calc(-1vw - 1px))
+          width: 14vw
           padding: 1vw 1.5vw 0.3vw 1.5vw
           border-radius: 1.5vw 1.5vw 0 0
           background-color: #FFAD94
-          min-height: 5.5vw
+          height: 5.65vw
           
           
           #postimgs
@@ -693,21 +705,22 @@ a
       
   #buttons
     position: absolute
-    //transform: translate(-50%, 0)
+    transform: translate(-50%, 0)
     height: 5vw
     width: 5vw
-    //left: 50%
+    left: 50%
     right: 3.2vw
     bottom: 2vw
     #submit-btn
       width: 100%
       background: none
       height: auto
-      font-size: 2vw
-      //background-color: #32DEB5
+      font-size: 1.7vw
+      background-color: #32DEB5
       border-radius: 2vw
       padding: 0.5vw 1vw
-      //margin-top: 2vw
+      text-align: center
+      margin-top: 2vw
     #submit-btn:hover
       background-color: #9FE4D4
 

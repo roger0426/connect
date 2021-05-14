@@ -72,7 +72,8 @@ html
             p#friend-count {{ friend_count }}
           #friends-avatar.left-region
             {% for friend in user.friends.all %}
-            img.friend-img(src="{{ friend.userextend.img.url }}")
+            a(href="{% url 'profile' id=friend.userextend.pk %}")
+              img.friend-img(src="{{ friend.userextend.img.url }}")
             {% empty %}
             p 快去建立連結吧
             {% endfor %}
@@ -113,15 +114,15 @@ html
             #tag1.tag
             #tag2.tag
             #tag3.tag
-            #tag4.tag
-            #tag5.tag
+            //#tag4.tag
+            //#tag5.tag
         
           #tab-navbar
             input(type="button", value="參與活動")
             input(type="button", value="參與專案")
             input(type="button", value="個人專案")
-            input(type="button", value="...")
-            input(type="button", value="...")
+            //input(type="button", value="...")
+            //input(type="button", value="...")
 
           #activities.page-panel
             {% for activity in activities %}

@@ -1,4 +1,7 @@
 $(document).ready(function(){
+  $('#loadingfilter').hide();
+  $('#loadinggif').hide();
+  
   $("#gotop").click(function(){
     jQuery("html,body").animate({
         scrollTop:0
@@ -91,6 +94,11 @@ $(document).ready(function(){
     console.log('here')
     $('#eventwindow').show();
   }
+
+  let intervalId = window.setInterval(function(){ // check every 0.5 seconds
+    $('#insertbar').toggle();
+
+  }, 450);
 
 
   
