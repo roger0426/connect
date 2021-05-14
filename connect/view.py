@@ -52,3 +52,7 @@ def login_view(request, *args, **kwargs):
   
 def home_view(request):
   return render(request, 'homepage.pug', {})
+
+def logout(request):
+  auth.logout(request)
+  return HttpResponseRedirect('/')
