@@ -12,15 +12,17 @@ header
 
     ul
       li 
-        a#event.button(href="{{ home_url }}") 
+        //a#event.button(href="{{ home_url }}")
+        a#feedback.button(href="https://forms.gle/jg1putGAWZntSeNPA" title="問題回報")
       li 
-        a#alert.button(href="#")
+        a#alert.button(href="#" title="功能開發中")
       li 
-        a#message.button(href="#") 
+        a#message.button(href="#" title="功能開發中") 
       li 
         {% if request.user.is_authenticated %}
-        a#profile.button(href="{% url 'profile' id=request.user.userextend.pk %}")
+        //a#profile.button(href="{% url 'profile' id=request.user.userextend.pk %}")
+        a#logout.button(href="/logout/" title="登出")
         {% else %}
-        a#profile.button(href="{% url 'login' %}")
+        a#profile.button(href="{% url 'login' %}" title="登入")
         {% endif %}
         //a.button(href="javascript:window.location.reload({{ about_us_url }})") about us

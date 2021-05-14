@@ -16,13 +16,18 @@ html
     #container
       #create
         {% if request.user.is_authenticated %}
-        img#userpic(src="{{ request.user.userextend.img.url }}")
+        
+        a(href="{% url 'profile' id=request.user.userextend.pk %}")
+          img#userpic(src="{{ request.user.userextend.img.url }}")
         button#insertbox 發起活動？
+        
         {% else %}
+        
         a(href="{% url 'login' %}")
           #userpic
         a#inserta(href="{% url 'login' %}")
         button#insertbox 發起活動？
+        
         {% endif %}
         
 

@@ -58,7 +58,8 @@ html
             #buttons
               
               {% if request.user.is_authenticated and request.user.pk == user.user.pk %}
-              a(href="/logout/") 登出
+              //a(href="/logout/") 登出
+              a(href="#") 編輯
               {% else %}
               input(type="button", value="建立連結")
               input(type="button", value="傳訊息")

@@ -73,12 +73,9 @@ a
 
     white-space: nowrasp
     list-style-type: none
-    margin-right: 10%
+    margin-right: 7%
+    height: 100%
 
-  li
-    a:hover
-      position: relative
-      transform: scale(1.1)
   li
     display: block
     float: right
@@ -95,6 +92,9 @@ a
     font-style: var(--font-style-text)
     margin-right: 40%
     a
+      position: relative
+      transform: translate(-50%, -50%)
+      top: 50%
       width: 1.5vw
       height: 1.5vw
       display: inline-block
@@ -102,6 +102,21 @@ a
       background-repeat: no-repeat
       background-position: center center;
       background-size: contain
+      
+    a:hover
+      position: relative
+      transform: scale(1.1) translate(-50%, -50%)
+      
+    #feedback:hover
+      position: relative
+      transform: scale(1.1) translate(-55%, -50%)
+      
+    #feedback
+      background-image: url('../file/feedbackicon.png')
+      width: 2.5vw
+      height: 2.5vw
+      transform: translate(-60%, -50%)
+      
     #event
       background-image: url('../file/scheduleicon.png')
     #alert
@@ -110,6 +125,8 @@ a
       background-image: url('../file/msgicon.png')
     #profile
       background-image: url('../file/personalinfoicon.png')
+    #logout
+      background-image: url('../file/logouticon.png')
 @media only screen and (max-width: 450px)
   #navbar
     display: none
