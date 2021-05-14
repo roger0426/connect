@@ -57,7 +57,7 @@ html
 
             #buttons
               
-              {% if request.user.is_authenticated %}
+              {% if request.user.is_authenticated and request.user.pk == user.user.pk %}
               a(href="/logout/") 登出
               {% else %}
               input(type="button", value="建立連結")
