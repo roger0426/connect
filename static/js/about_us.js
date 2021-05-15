@@ -3,6 +3,25 @@ $(document).ready(function(){
   $('#loadinggif').hide();
   
   
+  $('#alert').click(function(){
+    if ( $('#notificationboard').css('display') == 'block') {
+      console.log("關閉通知");
+      $("#alert").css({opacity: 1})
+      $("#notificationboard").animate({height: 0}, 500, function() {
+        
+        $("#notificationboard").hide();
+      });
+    } else {
+      console.log("打開通知");
+      $("#alert").css({opacity: 0.6})
+      $("#notificationboard").show();
+      //$('#notificationboard').css({"display": 'flex'});
+      
+      $("#notificationboard").animate({height: '55vh'}, 500, function() {
+      });
+    }
+  });
+  
   $('.card') // card animation
   .on('mouseenter', function(){ // mouse enter
     $('.card-detail', this).stop(true, false).animate({height: '100%'}, 400);

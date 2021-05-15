@@ -2,6 +2,26 @@ $(document).ready(function(){
   $('#loadingfilter').hide();
   $('#loadinggif').hide();
   
+    
+  $('#alert').click(function(){
+    if ( $('#notificationboard').css('display') == 'block') {
+      console.log("關閉通知");
+      $("#alert").css({opacity: 1})
+      $("#notificationboard").animate({height: 0}, 500, function() {
+        
+        $("#notificationboard").hide();
+      });
+    } else {
+      console.log("打開通知");
+      $("#alert").css({opacity: 0.6})
+      $("#notificationboard").show();
+      //$('#notificationboard').css({"display": 'flex'});
+      
+      $("#notificationboard").animate({height: '55vh'}, 500, function() {
+      });
+    }
+  });
+  
   
   $("#tab-navbar :nth-child(1),#tag1")
   .on('click touch', function(){ 

@@ -22,7 +22,9 @@
   --font-family-card: "jf-openhuninn", "Tahoma", "Arial"
   --font-style-card: normal
 
-
+*
+  margin: 0
+  padding: 0
 
 #navbar
   display: flex
@@ -138,6 +140,9 @@ a
       width: 2.5vw
       height: 2.5vw
       transform: translate(-60%, -50%)
+    
+    a
+      cursor: pointer
       
     #event
       background-image: url('../file/scheduleicon.png')
@@ -156,36 +161,103 @@ a
       
     #notificationboard
       display: none
-      margin: 0 0 0 -1vw
+      margin: 0.5vw 0 0 -1vw
       padding: 1vw
     
       position: relative
       height: 0vh
-      width: 18vw
+      width: 24vw
       top: 0
-      right: 3vw
-      background-color: white
-      opacity: 0.85
+      right: 12vw
+      background-color: #FAFAFA
+      opacity: 0.95
       
-      border-radius: 1.5vw
+      border-radius: 2vw
+      
+      #noticeheading
+        font-size: 2.5vw
+        margin: 0.5vw 0 0.5vw 1vw
     
-    #notices
-      
-      display: flex
-      flex-direction: column
-      flex-wrap: nowrap
-      justify-content: flex-start
-      align-items: stretch
-      
-      overflow: scroll
-      height: 38vh
-      
-      z-index: 0
-      
-      .notion
-        background-color: #DDDDDD
-        margin: 0.5vw 0
-      
+      #notices
+        display: flex
+        flex-direction: column
+        flex-wrap: nowrap
+        justify-content: flex-start
+        align-items: stretch
+        
+        overflow: scroll
+        height: 48.5vh
+        
+        z-index: 0
+        
+        .notice:hover
+          background: #F0F0F0
+        
+        .notice
+          display: flex
+          flex-direction: row
+          flex-wrap: nowrap
+          justify-content: flex-start
+          align-items: stretch
+          background-color: white
+          margin: 0.5vw
+          padding: 0.2vw
+          border-radius: 1vw
+          
+          a
+            margin: 0
+          
+          #noticesenderpic
+            height: 3.5vw
+            width: 3.5vw
+            border-radius: 50%
+            background-color: white
+        
+          #notice-right
+            display: flex
+            flex-direction: column
+            flex-wrap: nowrap
+            justify-content: space-evenly
+            align-content: flex-start
+            margin: 0 0.5vw
+            
+            
+            #notion-righttop
+              display: flex
+              flex-direction: row
+              flex-wrap: nowrap
+              align-content: flex-start
+              justify-content: flex-start
+              align-items: flex-end
+              //background-color: purple
+              
+              p
+                font-size: 1vw
+                color: #333333
+                line-height: 1.2vw
+                margin: 0 0.35vw
+              
+              #noticesendername
+                font-size: 1.2vw
+                font-weight: 600
+              #notice-detail
+                font-size: 1vw
+              #noticeevent
+                font-size: 1.2vw
+                font-weight: 600
+                width: 8vw
+                //max-width: 8vw
+                overflow: hidden
+                white-space: nowrap
+                text-overflow: ellipsis
+                
+              
+            #notion-rightbottom
+              #notice-date
+                font-size: 0.85vw
+                color: #777777
+                font-weight: 900
+                //background-color: pink
       
 @media only screen and (max-width: 450px)
   #navbar

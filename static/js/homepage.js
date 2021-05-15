@@ -18,7 +18,7 @@ $(document).ready(function(){
       $("#notificationboard").show();
       //$('#notificationboard').css({"display": 'flex'});
       
-      $("#notificationboard").animate({height: '40vh'}, 500, function() {
+      $("#notificationboard").animate({height: '55vh'}, 500, function() {
       });
     }
   });
