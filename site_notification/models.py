@@ -12,7 +12,7 @@ class SiteNotification(models.Model):
   )
   from_user = models.ForeignKey(
     User,
-    on_delete = models.CASCADE,
+    on_delete=models.CASCADE,
     related_name='sent_notification'
   )
   event = models.ForeignKey(

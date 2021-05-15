@@ -106,16 +106,14 @@ a
     width: 1.5vw
     height: 1.5vw
 
-    overflow: left
     white-space: nowrap
     word-break: normal
-    word-wrap: nowrap
 
     font-size: 1.7vw
     font-family: var(--font-family-text)
     font-style: var(--font-style-text)
     margin-right: 40%
-    a
+    .button
       position: relative
       transform: translate(-50%, -50%)
       top: 50%
@@ -127,7 +125,7 @@ a
       background-position: center center;
       background-size: contain
       
-    a:hover
+    .button:hover
       position: relative
       transform: scale(1.1) translate(-50%, -50%)
       
@@ -155,6 +153,40 @@ a
       background-image: url('../file/personalinfoicon.png')
     #logout
       background-image: url('../file/logouticon.png')
+      
+    #notificationboard
+      display: none
+      margin: 0 0 0 -1vw
+      padding: 1vw
+    
+      position: relative
+      height: 0vh
+      width: 18vw
+      top: 0
+      right: 3vw
+      background-color: white
+      opacity: 0.85
+      
+      border-radius: 1.5vw
+    
+    #notices
+      
+      display: flex
+      flex-direction: column
+      flex-wrap: nowrap
+      justify-content: flex-start
+      align-items: stretch
+      
+      overflow: scroll
+      height: 38vh
+      
+      z-index: 0
+      
+      .notion
+        background-color: #DDDDDD
+        margin: 0.5vw 0
+      
+      
 @media only screen and (max-width: 450px)
   #navbar
     display: none
