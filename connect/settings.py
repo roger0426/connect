@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'events_board',
     'user_extend',
     'tags',
+    'site_notification',
 ]
 
 # NOTIFICATION settings
