@@ -75,12 +75,14 @@ html
                   //p {{ event.people_wanted }}
                 
               #postbottom
-                {% load static %}
                 img#commenticon(src="{% static 'file/participant.png' %}")
                 p#commentnum {{ event.number_of_participants }}
               
-                {% load static %}
+                {% if request.user.userextend in event.likes.all %}
                 img#likeicon(src="{% static 'file/like-y.png' %}")
+                {% else %}
+                img#likeicon(src="{% static 'file/like-grey.png' %}")
+                {% endif %}
                 p#likesnum {{ event.number_of_likes }}
                 
           {% empty %}

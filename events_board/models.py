@@ -19,7 +19,7 @@ class EventsBoard(models.Model):
   detail = models.TextField()
   image = models.ImageField(upload_to='events/', blank=True)
   create_date = models.DateField(default = date.today)
-  event_date = models.DateField(default = date.today)
+  event_date = models.DateField(default = date.today, blank=True)
   people_limit = IntegerRangeField(min_value=1, max_value=999)
   likes = models.ManyToManyField("user_extend.UserExtend", related_name='event_like', blank=True)
   
@@ -67,7 +67,7 @@ class EventsBoard(models.Model):
   def __str__(self):
     return self.title
 
-
+# After event held comment
 class Comment(models.Model):
   text = models.CharField(max_length=40)
   for_event = models.ForeignKey(
@@ -85,3 +85,19 @@ class Comment(models.Model):
   def __str__(self):
     return self.text
 
+# Comment messages on the board
+class BoardMessage(models.Model):
+  text = models.CharField(max_length=50)
+  for_event = models.ForeignKey(
+    EventsBoard,
+    on_delete=models.CASCADE, 
+    related_name='board_message'
+  )
+  author = models.ForeignKey(
+    "user_extend.UserExtend",
+    on_delete = models.CASCADE,
+    related_name='board_message'
+  )
+  date = models.DateTimeField(default=timezone.now)
+  def __str__(self):
+    return self.for_event + "-" + self.author + "-" + self.text

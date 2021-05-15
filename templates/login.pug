@@ -48,7 +48,10 @@ html
           input#sign-pwd.input-area(type="password", name="sign-pwd", placeholder="密碼")
           label(for='double-pwd')
           input#double-pwd.input-area(type="password", name="double-pwd", placeholder="請再輸入一次密碼")
-          p#err-msg(style="display: none")
+          {% if error_message %}
+          p.err-msg {{ error_message }}
+          {% endif %}
+          p.err-msg(style="display: none")
 
           #term-div
             input#terms(type="checkbox", name="terms")

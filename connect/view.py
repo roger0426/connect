@@ -21,6 +21,11 @@ def login_view(request, *args, **kwargs):
   sign_pwd = request.POST.get('sign-pwd', '')
   double_pwd = request.POST.get('double-pwd', '')
 
+  if User.objects.filter(username=sid).exists():
+    return render(request, 'login.pug', {'error_message': "這個帳號已經被註冊過了"})
+  if User.objects.filter(email=email).exists():
+    return render(request, 'login.pug', {'error_message': "這個信箱已經被使用過了"})
+
   if 'terms' in request.POST and sign_pwd == double_pwd:
     user = User.objects.create_user(
       email = email,
