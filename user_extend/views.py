@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import UserExtend, EventsBoard
 from django.contrib.auth.models import User
 from events_board.models import Comment
-
+from site_notification.models import SiteNotification
 # Create your views here.
 def update_profile(request, user_id):
     user = User.objects.get(pk=user_id)
@@ -19,6 +19,7 @@ def profile_view(requests, id, *args, **kwargs):
   activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
   projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
   personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
+  notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
   
   context = {
     'user': obj,
@@ -28,7 +29,8 @@ def profile_view(requests, id, *args, **kwargs):
     'friend_count': friend_count,
     'activities': activities,
     'projects': projects,
-    'personal_projs': personal_projs
+    'personal_projs': personal_projs,
+    'notice': notification,
   }
   return render(requests, 'profile.pug', context)
 
@@ -45,6 +47,7 @@ def profile_event_view(requests, id, event_id):
   activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
   projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
   personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
+  notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
   
   context = {
     'user': obj,
@@ -56,5 +59,6 @@ def profile_event_view(requests, id, event_id):
     'projects': projects,
     'personal_projs': personal_projs,
     'event_detail': event_obj,
+    'notice': notification,
   }
   return render(requests, 'profile.pug', context)

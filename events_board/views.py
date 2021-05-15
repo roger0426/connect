@@ -9,6 +9,7 @@ from .forms import EventCreateForm
 def home_view(requests, *args, **kwargs):
   obj = EventsBoard.objects.order_by('-create_date')
   form = EventCreateForm(requests.POST, requests.FILES or None)
+  notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
   if form.is_valid():
     instance = form.save(commit=False)
     instance.host = requests.user.userextend
@@ -16,7 +17,8 @@ def home_view(requests, *args, **kwargs):
   
   context = {
     'event_obj': obj,
-    'form': form
+    'form': form,
+    'notice': notification,
   }
   return render(requests, 'homepage.pug', context)
 
@@ -25,6 +27,7 @@ def event_detail_view(requests, id, *args, **kwargs):
   obj = EventsBoard.objects.order_by('-create_date')
   event_detail = EventsBoard.objects.get(id=id)
   form = EventCreateForm(requests.POST, requests.FILES or None)
+  notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
   if form.is_valid():
     instance = form.save(commit=False)
     instance.host = requests.user.userextend
@@ -34,7 +37,8 @@ def event_detail_view(requests, id, *args, **kwargs):
   context = {
     'event_obj': obj,
     'form': form,
-    'event_detail': event_detail
+    'event_detail': event_detail,
+    'notice': notification,
   }
   
   return render(requests, 'homepage.pug', context)
@@ -48,7 +52,8 @@ def like_view(requests, id):
     receiver = event.host.user
     sender = requests.user
     notification = SiteNotification.objects.create(
-      text = sender.userextend.full_name + "對您的活動 '" + event.title + "' 感到有興趣， 快去看看吧",
+      text = sender.userextend.full_name + "對您的活動感到有興趣， 快去看看吧",
+      event = event,
       for_user = receiver,
       from_user = sender
     )

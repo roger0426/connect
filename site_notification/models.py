@@ -15,6 +15,12 @@ class SiteNotification(models.Model):
     on_delete = models.CASCADE,
     related_name='sent_notification'
   )
+  event = models.ForeignKey(
+    'events_board.EventsBoard',
+    on_delete = models.CASCADE,
+    related_name = 'notification',
+    blank = True
+  )
   date = models.DateTimeField(default=timezone.now)
   def __str__(self):
     return self.from_user.username + "-" + self.for_user.username + "-" + self.text
