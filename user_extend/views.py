@@ -19,7 +19,10 @@ def profile_view(requests, id, *args, **kwargs):
   activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
   projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
   personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
-  notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+  if(requests.user.is_authenticated):
+    notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+  else:
+    notification = None
   
   context = {
     'user': obj,
@@ -47,7 +50,10 @@ def profile_event_view(requests, id, event_id):
   activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
   projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
   personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
-  notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+  if(requests.user.is_authenticated):
+    notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+  else:
+    notification = None
   
   context = {
     'user': obj,

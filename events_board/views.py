@@ -9,7 +9,11 @@ from .forms import EventCreateForm
 def home_view(requests, *args, **kwargs):
   obj = EventsBoard.objects.order_by('-create_date')
   form = EventCreateForm(requests.POST, requests.FILES or None)
-  notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+  if(requests.user.is_authenticated):
+    notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+  else:
+    notification = None
+
   if form.is_valid():
     instance = form.save(commit=False)
     instance.host = requests.user.userextend
@@ -27,7 +31,11 @@ def event_detail_view(requests, id, *args, **kwargs):
   obj = EventsBoard.objects.order_by('-create_date')
   event_detail = EventsBoard.objects.get(id=id)
   form = EventCreateForm(requests.POST, requests.FILES or None)
-  notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+  if(requests.user.is_authenticated):
+    notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+  else:
+    notification = None
+
   if form.is_valid():
     instance = form.save(commit=False)
     instance.host = requests.user.userextend
