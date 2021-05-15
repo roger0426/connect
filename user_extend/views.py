@@ -16,9 +16,6 @@ def profile_view(requests, id, *args, **kwargs):
   skill_tags = obj.user.tags.filter(tag_type='專長')
   interest_tags = obj.user.tags.filter(tag_type='有興趣的活動')
 
-  print(personality_tags, skill_tags)
-
-
   activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
   projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
   personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
