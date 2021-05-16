@@ -52,6 +52,11 @@ def event_detail_view(requests, id, *args, **kwargs):
   return render(requests, 'homepage.pug', context)
 
 def like_view(requests, id):
+  prev_url = requests.META.get('HTTP_REFERER')
+  url_split = prev_url.split('/')
+  caller_type = url_split[3]
+
+  print(url_split)
   event = get_object_or_404(EventsBoard, id=requests.POST.get('event_id'))
   if event.likes.filter(id=requests.user.userextend.id).exists():
     event.likes.remove(requests.user.userextend)
@@ -66,4 +71,7 @@ def like_view(requests, id):
       from_user = sender
     )
     notification.save()
-  return HttpResponseRedirect(reverse('event_detail', args=[str(id)]))
+  if caller_type == "event":
+    return HttpResponseRedirect(reverse('event_detail', args=[str(id)]))
+  else:
+    return HttpResponseRedirect(reverse('profile_event', args=[url_split[4], str(id)]))
