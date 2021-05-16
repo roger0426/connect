@@ -25,5 +25,5 @@ class EventCreateForm(forms.ModelForm):
       'event_tag': forms.TextInput(attrs={'placeholder': '  標籤'}),
       'detail': forms.Textarea(attrs={'placeholder': '* 編輯文字'}),
       'people_limit': forms.NumberInput(attrs={'placeholder': '* 人數'}),
-      'event_date': DateInput(),
+      'event_date':  DateInput
     }

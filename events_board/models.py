@@ -19,7 +19,7 @@ class EventsBoard(models.Model):
   detail = models.TextField()
   image = models.ImageField(upload_to='events/', blank=True)
   create_date = models.DateField(default = date.today)
-  event_date = models.DateField(default = date.today, blank=True)
+  event_date = models.DateField(default = date.today, blank=True, null=True)
   people_limit = IntegerRangeField(min_value=1, max_value=999)
   likes = models.ManyToManyField("user_extend.UserExtend", related_name='event_like', blank=True)
   
@@ -100,4 +100,4 @@ class BoardMessage(models.Model):
   )
   date = models.DateTimeField(default=timezone.now)
   def __str__(self):
-    return self.for_event + "-" + self.author + "-" + self.text
+    return self.for_event.title + "-" + self.author.user.username + "-" + self.text
