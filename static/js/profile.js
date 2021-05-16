@@ -2,6 +2,9 @@ $(document).ready(function(){
   $('#loadingfilter').hide();
   $('#loadinggif').hide();
   
+  $('#phoneerrormsg').click(function(){
+    $('#phoneerrormsg').hide();
+  });
     
   $('#alert').click(function(){
     if ( $('#notificationboard').css('display') == 'block') {

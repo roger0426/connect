@@ -6,7 +6,8 @@ header
   #navbar
     //#loadingfilter
     //img#loadinggif
-  
+    
+    #clickfilter
   
     a(href="{% url 'home' %}")
       #title CONNECT.
@@ -39,7 +40,10 @@ header
                   p#notice-date {{ noticedata.date }}
             
             {% empty %}
-            .notion(style=) 目前沒有通知喔～
+            .notice
+              #notice-right
+                #notion-righttop
+                  p 目前沒有通知喔～
             {% endfor %}
       li 
         a#message.button(href="#" title="功能開發中")

@@ -13,6 +13,13 @@ html
   {% include 'navbar.pug' %}
 
   body
+    #phoneerrormsg
+      //#errorlogo
+      p 尚未針對窄螢幕優化
+        br
+        | 請先以電腦網頁瀏覽
+      #errorfilter
+  
     #container
       #create
         {% if request.user.is_authenticated %}

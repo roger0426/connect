@@ -32,6 +32,30 @@ a
   text-decoration: none
   color: black
   
+#phoneerrormsg
+  display: none
+  position: fixed
+  top: -20%
+  height: 150%
+  width: 100%
+  
+  //z-index: 10
+  
+  #errorlogo
+  p
+    position: absolute
+    transform: translate(-50%, -50%)
+    bottom: 25%
+    left: 50%
+    width: 80%
+    text-align: center
+    font-size: 1.8em
+    
+  #errorfilter
+  backdrop-filter: blur(6px) contrast(80%) saturate(70%) brightness(65%)
+  -webkit-backdrop-filter: blur(5px) contrast(70%) saturate(70%) brightness(70%)
+  z-index: 6
+  
 #profilepanel
   position: absolute
   transform: translate(-50%, 0)
@@ -724,5 +748,6 @@ a
     
 //phone responsive
 @media only screen and (max-width: 450px)
-  body
-  background-color:#FAAD95
+  
+  #phoneerrormsg
+    display: block
