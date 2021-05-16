@@ -9,7 +9,8 @@ $(document).ready(function(){
   $('#alert').click(function(){
     if ( $('#notificationboard').css('display') == 'block') {
       console.log("關閉通知");
-      $("#alert").css({opacity: 1})
+      $("#alert").css({opacity: 1});
+      $('#clickfilter').hide();
       $("#notificationboard").animate({height: 0}, 500, function() {
         
         $("#notificationboard").hide();
@@ -18,9 +19,21 @@ $(document).ready(function(){
       console.log("打開通知");
       $("#alert").css({opacity: 0.6})
       $("#notificationboard").show();
+      $('#clickfilter').show();
       //$('#notificationboard').css({"display": 'flex'});
       
-      $("#notificationboard").animate({height: '55vh'}, 500, function() {
+      $("#notificationboard").animate({height: '45vh'}, 500, function() {
+      });
+    }
+  });
+  
+  $('#clickfilter').click(function() {
+    if ( $('#notificationboard').css('display') == 'block') {
+      console.log("關閉通知");
+      $("#alert").css({opacity: 1});
+      $('#clickfilter').hide();
+      $("#notificationboard").animate({height: 0}, 500, function() {
+        $("#notificationboard").hide();
       });
     }
   });

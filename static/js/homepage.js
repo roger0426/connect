@@ -10,7 +10,8 @@ $(document).ready(function(){
   $('#alert').click(function(){
     if ( $('#notificationboard').css('display') == 'block') {
       console.log("關閉通知");
-      $("#alert").css({opacity: 1})
+      $("#alert").css({opacity: 1});
+      $('#clickfilter').hide();
       $("#notificationboard").animate({height: 0}, 500, function() {
         
         $("#notificationboard").hide();
@@ -30,7 +31,7 @@ $(document).ready(function(){
   $('#clickfilter').click(function() {
     if ( $('#notificationboard').css('display') == 'block') {
       console.log("關閉通知");
-      $("#alert").css({opacity: 1})
+      $("#alert").css({opacity: 1});
       $('#clickfilter').hide();
       $("#notificationboard").animate({height: 0}, 500, function() {
         $("#notificationboard").hide();
