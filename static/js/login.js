@@ -41,12 +41,12 @@ $(document).ready(function(){
 let intervalId = window.setInterval(function(){ // check every 0.5 seconds
   if ($('#double-pwd').val().length > 0) {
     if ($('#sign-pwd').val() === $('#double-pwd').val()) {
-      $('#err-msg').hide();
+      $('.err-msg').hide();
       $('#sign-up-btn').prop('disabled', false);
     } else {
-      $('#err-msg').show();
+      $('.err-msg').show();
       $('#sign-up-btn').prop('disabled', true);
-      $('#err-msg').text("喔不，你的密碼好像打錯了！");
+      $('.err-msg').text("喔不，你的密碼好像打錯了！");
     }
   }
   if (!($('#terms').is(':checked')) ||
