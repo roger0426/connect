@@ -97,22 +97,21 @@ link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/
     #description
       #description-top
         #event-title {{ event_detail.title }}
-        #event-date 活動日期：{{ event_detail.event_date }}
+        #event-date 活動日期:{{ event_detail.event_date }}
       #event-subtitle {{ event_detail.subtitle }}
       #event-detail {{ event_detail.detail }}
     #eventmsgregion
       #eventmsg-board
         {% for eventmsg in event_detail.board_message.all %}
-        #eventmsg
+        .eventmsg
           a(href="{% url 'profile' id=eventmsg.author.pk %}")
             img.member.sendmsg(src='{{ eventmsg.author.img.url }}')
           #eventmsg-right
             #eventmsg-righttop
               a#eventmsg-sendername(href="{% url 'profile' id=eventmsg.author.pk %}") {{ eventmsg.author.full_name }}
+              p#event-date {{ eventmsg.date }}
+            #eventmsg-rightbottom
               p {{ eventmsg.text }}
-            #notion-rightbottom
-              p#notice-date {{ eventmsg.date }}
-        
         {% empty %}
         
         .notice

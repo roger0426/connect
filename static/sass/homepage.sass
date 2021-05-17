@@ -344,6 +344,8 @@ a
   
   #eventwindow-bg
     position: absolute
+    z-index: -1
+    opacity: 0.2
     
   #eventwindow-left
     display: flex
@@ -368,8 +370,22 @@ a
       flex-wrap: wrap;
       align-content: flex-start;
       justify-content: flex-start;
-      align-items: center;
-  
+      align-items: flex-end
+      
+      #event-title
+        font-size: 2.5vw
+        font-weight: 900
+        
+      #event-date
+        font-size: 1vw
+        color: #444444
+        
+    #event-subtitle
+      font-size: 1.3vw
+      color: #3DC9A7
+    
+    
+    
     #eventmsgregion
       display: flex
       flex-direction: column;
@@ -378,6 +394,9 @@ a
       align-items: flex-start;
       justify-content: flex-start;
       
+      width: 100%
+      height: 20%
+      
       #eventmsg-board
         display: flex
         flex-direction: column;
@@ -385,6 +404,31 @@ a
         align-content: center;
         justify-content: flex-start;
         align-items: flex-start;
+        
+        width: 100%
+        height: 20%
+        overflow: scroll
+        
+        .eventmsg
+          display: flex
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: center;
+          
+          #eventmsg-right
+            display: flex
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+            
+            #eventmsg-righttop
+              display: flex
+              flex-direction: row;
+              flex-wrap: nowrap;
+              align-content: center;
+              align-items: center;
+              justify-content: space-between;
         
     #eventmsg-sender
       display: flex

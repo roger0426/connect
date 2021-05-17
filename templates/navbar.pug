@@ -29,13 +29,13 @@ header
               a(href="{% url 'profile' id=noticedata.from_user.userextend.pk %}")
                 img#noticesenderpic(src="{{ noticedata.from_user.userextend.img.url }}")
               #notice-right
-                #notion-righttop
+                #notice-righttop
                   a#noticesendername(href="{% url 'profile' id=noticedata.from_user.userextend.pk %}") {{ noticedata.from_user.userextend.full_name }}
                   //p#notice-detail {{ noticedata.text }}
                   p 對
                   a#noticeevent(href="{% url 'event_detail' id=noticedata.event.pk %}") {{ noticedata.event }}
                   p 有興趣
-                #notion-rightbottom
+                #notice-rightbottom
                   p#notice-date {{ noticedata.date }}
             
             {% empty %}
