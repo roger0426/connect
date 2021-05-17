@@ -131,7 +131,8 @@ $(document).ready(function(){
   let searchParams = window.location.href
   if (searchParams.includes('event')) {
     console.log('here')
-    $('#eventwindow').show();
+    //$('#eventwindow').show();
+    $('#eventwindow').css({'display': 'flex'});
   }
 
   let intervalId = window.setInterval(function(){ // check every 0.5 seconds

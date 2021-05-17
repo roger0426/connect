@@ -1,78 +1,183 @@
 {% load static %}
-{% if event_detail.host %}
+//-
+  {% if event_detail.host %}
 
-#eventwindow
-  #description
-    p {{ event_detail.title }}
-    #subtitle {{ event_detail.subtitle }}
-    #detail {{ event_detail.detail }}
+  #eventwindow
+    #description
+      p {{ event_detail.title }}
+      #subtitle {{ event_detail.subtitle }}
+      #detail {{ event_detail.detail }}
 
-  #member
-    a(href="{% url 'profile' id=event_detail.host.pk %}")
-      img#organizer.member(src='{{ event_detail.host.img.url }}')
-    #bar
-    
-    {% for participant in event_detail.participants.all %}
-    a(href="{% url 'profile' id=participant.pk %}")
-      img.member.participant(src='{{ participant.img.url }}')
-    {% endfor %}
-
-    {% for interested_user in event_detail.likes.all %}
-    a(href="{% url 'profile' id=interested_user.pk %}")
-      img.member.interested(src='{{ interested_user.img.url }}')
-    {% endfor %}
-  
-  #operatebg
-  
-  #eventoperate
-    a 
-      img#exitbtn1(src="{% static 'file/exiticon.png' %}")
-    #flag
-      img#flag-y(src="{% static 'file/flag-y.png' %}")
-      img#flag-n(src="{% static 'file/flag-n.png' %}")
-    
+    #member
+      a(href="{% url 'profile' id=event_detail.host.pk %}")
+        img#organizer.member(src='{{ event_detail.host.img.url }}')
+      #bar
       
-    #date {{ event_detail.event_date }}
-    a(href="{% url 'profile' id=event_detail.host.pk %}")
-      img#organizerpic(src='{{ event_detail.host.img.url }}')
-      p {{ event_detail.host.full_name }}
+      {% for participant in event_detail.participants.all %}
+      a(href="{% url 'profile' id=participant.pk %}")
+        img.member.participant(src='{{ participant.img.url }}')
+      {% endfor %}
+
+      {% for interested_user in event_detail.likes.all %}
+      a(href="{% url 'profile' id=interested_user.pk %}")
+        img.member.interested(src='{{ interested_user.img.url }}')
+      {% endfor %}
+    
+    #operatebg
+    
+    #eventoperate
+      a
+        img#exitbtn1(src="{% static 'file/exiticon.png' %}")
+      #flag
+        img#flag-y(src="{% static 'file/flag-y.png' %}")
+        img#flag-n(src="{% static 'file/flag-n.png' %}")
+      
+        
+      #date {{ event_detail.event_date }}
+      a(href="{% url 'profile' id=event_detail.host.pk %}")
+        img#organizerpic(src='{{ event_detail.host.img.url }}')
+        p {{ event_detail.host.full_name }}
+
+      {% if request.user.is_authenticated %}
+
+      {% if event_detail in request.user.userextend.event_like.all %}
+      #likebutton(style="background-image: url('/static/file/like-y.png')")
+        form(action="{% url 'like' event_detail.pk %}", method="POST")
+          {% csrf_token %}
+          button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
+            span#like-img
+      {% else %}
+      #likebutton(style="background-image: url('/static/file/like-n.png')")
+        form(action="{% url 'like' event_detail.pk %}", method="POST")
+          {% csrf_token %}
+          button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
+            span#like-img
+      {% endif %}
+
+      #applybutton
+        img#apply-y(src="{% static 'file/applyicon.png' %}")
+        
+        
+      {% else %}
+      a.login-redirect(href="{% url 'login' %}")
+      #likebutton(style="background-image: url('/static/file/like-n.png')", href="{% url 'login' %}")
+        form(action="", method="POST")
+          {% csrf_token %}
+          button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
+            span#like-img
+      #applybutton
+        img#apply-y(src="{% static 'file/applyicon.png' %}")
+      {% endif %}
 
     {% if request.user.is_authenticated %}
-
-    {% if event_detail in request.user.userextend.event_like.all %}
-    #likebutton(style="background-image: url('/static/file/like-y.png')")
-      form(action="{% url 'like' event_detail.pk %}", method="POST")
-        {% csrf_token %}
-        button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
-          span#like-img
-    {% else %}
-    #likebutton(style="background-image: url('/static/file/like-n.png')")
-      form(action="{% url 'like' event_detail.pk %}", method="POST")
-        {% csrf_token %}
-        button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
-          span#like-img
+    #sent
+      {% load static %}
+      img#mailicon(src="{% static 'file/lettericon.png' %}")
+      p 已向發起者送出邀請
     {% endif %}
-
-    #applybutton
-      img#apply-y(src="{% static 'file/applyicon.png' %}")
-      
-      
-    {% else %}
-    a.login-redirect(href="{% url 'login' %}")
-    #likebutton(style="background-image: url('/static/file/like-n.png')", href="{% url 'login' %}")
-      form(action="", method="POST")
-        {% csrf_token %}
-        button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
-          span#like-img
-    #applybutton
-      img#apply-y(src="{% static 'file/applyicon.png' %}")
-    {% endif %}
-
-  {% if request.user.is_authenticated %}
-  #sent
-    {% load static %}
-    img#mailicon(src="{% static 'file/lettericon.png' %}")
-    p 已向發起者送出邀請
+  #filter1(style="display: block")
   {% endif %}
+
+
+
+
+#eventwindow
+  #eventwindow-bg
+    #bgpics
+      {% for eventmsg in board_message.all %}
+      #eventpic
+        img.pic(src='{{ event_detail.img.url }}')
+      {% empty %}
+      #eventpic
+        p 好像沒有圖片
+      
+      {% endfor %}
+  #eventwindow-left
+    #description
+      #description-top
+        #event-title {{ event_detail.title }}
+        #event-date 活動日期：{{ event_detail.event_date }}
+      #event-subtitle {{ event_detail.subtitle }}
+      #event-detail {{ event_detail.detail }}
+    #eventmsgregion
+      #eventmsg-board
+        {% for eventmsg in board_message.all %}
+        #eventmsg
+          a(href="{% url 'profile' id=eventmsg.author.pk %}")
+            img.member.sendmsg(src='{{ eventmsg.author.img.url }}')
+          #eventmsg-right
+            #eventmsg-righttop
+              a#eventmsg-sendername(href="{% url 'profile' id='#' %}") {{ 'name' }}
+              p {{ eventmsg.text }}
+            #notion-rightbottom
+              p#notice-date {{ eventmsg.date }}
+        
+        {% empty %}
+        
+        .notice
+          #notice-right
+            #notion-righttop
+              p 目前沒有通知喔～
+        
+        {% endfor %}
+        
+      #eventmsg-sender
+        {% if request.user.is_authenticated %}
+        a(href="{% url 'profile' id=request.user.userextend.pk %}")
+          img#senderpic(src="{{ request.user.userextend.img.url }}")
+        {% else %}
+        img#userpic
+        {% endif %}
+        
+        input#eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
+        input#eventmsg-btn(type="button")
+    
+  
+  #eventwindow-right
+    #joinevent-btn
+    
+    #eventoperate
+      a
+        img#exitbtn1(src="{% static 'file/exiticon.png' %}")
+        
+      #member
+        a(href="{% url 'profile' id=event_detail.host.pk %}")
+          img#organizer.member(src='{{ event_detail.host.img.url }}')
+        #bar
+        
+        {% for participant in event_detail.participants.all %}
+        a(href="{% url 'profile' id=participant.pk %}")
+          img.member.participant(src='{{ participant.img.url }}')
+        {% endfor %}
+
+        {% for interested_user in event_detail.likes.all %}
+        a(href="{% url 'profile' id=interested_user.pk %}")
+          img.member.interested(src='{{ interested_user.img.url }}')
+        {% endfor %}
+        
+      {% if request.user.is_authenticated %}
+
+      {% if event_detail in request.user.userextend.event_like.all %}
+      #likebutton(style="background-image: url('/static/file/like-y.png')")
+        form(action="{% url 'like' event_detail.pk %}", method="POST")
+          {% csrf_token %}
+          button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
+            span#like-img
+      {% else %}
+      #likebutton(style="background-image: url('/static/file/like-n.png')")
+        form(action="{% url 'like' event_detail.pk %}", method="POST")
+          {% csrf_token %}
+          button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
+            span#like-img
+      {% endif %}
+        
+        
+      {% else %}
+      a.login-redirect(href="{% url 'login' %}")
+      #likebutton(style="background-image: url('/static/file/like-n.png')", href="{% url 'login' %}")
+        form(action="", method="POST")
+          {% csrf_token %}
+          button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
+            span#like-img
+      {% endif %}
 #filter1(style="display: block")
-{% endif %}
