@@ -18,7 +18,7 @@ from django.urls import path, include
 
 from connect.view import login_view, logout
 from about_us.views import about_us_view
-from events_board.views import home_view, event_detail_view, like_view
+from events_board.views import home_view, event_detail_view, like_view, comment_view, search_view
 from user_extend.views import profile_view, profile_event_view
 from django.contrib.auth import views as auth_views
 
@@ -33,8 +33,10 @@ urlpatterns = [
 
     path('event/<int:id>/', event_detail_view, name='event_detail'),
     path('like/<int:id>', like_view, name="like"),
+    path('comment/event/<int:event_id>/<int:id>', comment_view, name="comment"),
 
     path('login/', login_view, name='login'),
+    path('search/', search_view, name='search'),
     path('about_us/', about_us_view, name='about_us'),
     path('admin/', admin.site.urls),
     path('logout/', logout),

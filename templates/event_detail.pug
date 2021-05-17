@@ -80,18 +80,17 @@
 
 
 
-
+{% if event_detail.host %}
 #eventwindow
   #eventwindow-bg
     #bgpics
-      {% for eventmsg in board_message.all %}
+      {% if event_detail.image %}
       #eventpic
-        img.pic(src='{{ event_detail.img.url }}')
-      {% empty %}
+        img.pic(src='{{ event_detail.image.url }}')
+      {% else %}
       #eventpic
         p 好像沒有圖片
-      
-      {% endfor %}
+      {% endif %}
   #eventwindow-left
     #description
       #description-top
@@ -101,13 +100,13 @@
       #event-detail {{ event_detail.detail }}
     #eventmsgregion
       #eventmsg-board
-        {% for eventmsg in board_message.all %}
+        {% for eventmsg in event_detail.board_message.all %}
         #eventmsg
           a(href="{% url 'profile' id=eventmsg.author.pk %}")
             img.member.sendmsg(src='{{ eventmsg.author.img.url }}')
           #eventmsg-right
             #eventmsg-righttop
-              a#eventmsg-sendername(href="{% url 'profile' id='#' %}") {{ 'name' }}
+              a#eventmsg-sendername(href="{% url 'profile' id=eventmsg.author.pk %}") {{ eventmsg.author.full_name }}
               p {{ eventmsg.text }}
             #notion-rightbottom
               p#notice-date {{ eventmsg.date }}
@@ -128,9 +127,10 @@
         {% else %}
         img#userpic
         {% endif %}
-        
-        input#eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
-        input#eventmsg-btn(type="button")
+        form(action="{% url 'comment' event_detail.pk request.user.userextend.pk %}", method="POST") 
+          {% csrf_token %}
+          input#eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
+          input#eventmsg-btn(type="submit")
     
   
   #eventwindow-right
@@ -171,8 +171,8 @@
             span#like-img
       {% endif %}
         
-        
-      {% else %}
+      // user not authenticated 
+      {% else %} 
       a.login-redirect(href="{% url 'login' %}")
       #likebutton(style="background-image: url('/static/file/like-n.png')", href="{% url 'login' %}")
         form(action="", method="POST")
@@ -181,3 +181,4 @@
             span#like-img
       {% endif %}
 #filter1(style="display: block")
+{% endif %}

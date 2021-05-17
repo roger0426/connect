@@ -12,8 +12,8 @@ header
     a(href="{% url 'home' %}")
       #title CONNECT.
 
-    form
-     input(type="text", placeholder="Search")
+    form(action="{% url 'search' %}", method="GET") 
+     input(type="text", placeholder="Search", name="search")
 
     ul
       li 
