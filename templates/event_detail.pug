@@ -84,60 +84,62 @@
 {% load sass_tags %}
 link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/css")
 #eventwindow
-  #eventwindow-bg
-    #bgpics
+  #eventwindow-left
+    #eventwindow-bg
       {% if event_detail.image %}
       #eventpic
         img.pic(src='{{ event_detail.image.url }}')
       {% else %}
       #eventpic
-        p 好像沒有圖片
+        p 目前沒有圖片
       {% endif %}
-  #eventwindow-left
     #description
       #description-top
         #event-title {{ event_detail.title }}
-        #event-date 活動日期:{{ event_detail.event_date }}
+        #event-date 活動日期
+          br
+          | {{ event_detail.event_date }}
       #event-subtitle {{ event_detail.subtitle }}
       #event-detail {{ event_detail.detail }}
     #eventmsgregion
+      p#msgtitle 留言板
       #eventmsg-board
         {% for eventmsg in event_detail.board_message.all %}
         .eventmsg
           a(href="{% url 'profile' id=eventmsg.author.pk %}")
-            img.member.sendmsg(src='{{ eventmsg.author.img.url }}')
+            img.sender(src='{{ eventmsg.author.img.url }}')
           #eventmsg-right
             #eventmsg-righttop
               a#eventmsg-sendername(href="{% url 'profile' id=eventmsg.author.pk %}") {{ eventmsg.author.full_name }}
               p#event-date {{ eventmsg.date }}
             #eventmsg-rightbottom
-              p {{ eventmsg.text }}
+              p#eventmsgtext {{ eventmsg.text }}
         {% empty %}
         
-        .notice
-          #notice-right
-            #notion-righttop
-              p 目前沒有通知喔～
+        .eventmsg
+          #eventmsg-right
+            #eventmsg-righttop
+              p#event-date 目前沒有留言喔～
         
         {% endfor %}
         
-      #eventmsg-sender
-        {% if request.user.is_authenticated %}
-        a(href="{% url 'profile' id=request.user.userextend.pk %}")
-          img#senderpic(src="{{ request.user.userextend.img.url }}")
-        {% else %}
-        img#userpic
-        {% endif %}
-        {% if request.user.is_authenticated %}
-        form(action="{% url 'comment' event_detail.pk request.user.userextend.pk %}", method="POST") 
-          {% csrf_token %}
-          input#eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
-          input#eventmsg-btn(type="submit")
-        {% else %}
-        a(href="{% url 'login' %}")
-          input#eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
-          input#eventmsg-btn(type="submit")
-        {% endif %}
+    #eventmsg-sender
+      {% if request.user.is_authenticated %}
+      a(href="{% url 'profile' id=request.user.userextend.pk %}")
+        img#senderpic(src="{{ request.user.userextend.img.url }}")
+      {% else %}
+      img#senderpic
+      {% endif %}
+      {% if request.user.is_authenticated %}
+      form(action="{% url 'comment' event_detail.pk request.user.userextend.pk %}", method="POST")
+        {% csrf_token %}
+        input#eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
+        input#eventmsg-btn(type="submit")
+      {% else %}
+      a(href="{% url 'login' %}")
+        input#eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
+        input#eventmsg-btn(type="submit")
+      {% endif %}
   
   #eventwindow-right
     #joinevent-btn
