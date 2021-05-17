@@ -123,3 +123,37 @@ def search_view(requests):
     return render(requests, 'homepage.pug', context)
 
   return HttpResponseRedirect('/')
+
+def order_view(requests):
+  if requests.method == 'GET':
+    selected_item = requests.GET['order']
+    print(selected_item)
+    obj = EventsBoard.objects.order_by('-create_date')
+    if (selected_item == 'newest'):
+      obj = EventsBoard.objects.order_by('-create_date')
+    elif (selected_item == 'recent'):
+      obj = EventsBoard.objects.order_by('-event_date')
+    elif (selected_item == 'most-like'):
+      unsorted_obj = EventsBoard.objects.all()
+      obj = sorted(unsorted_obj, key=lambda t: -t.number_of_likes())
+    elif (selected_item == 'most-participant'):
+      unsorted_obj = EventsBoard.objects.all()
+      obj = sorted(unsorted_obj, key=lambda t: -t.number_of_participants())
+
+    form = EventCreateForm(requests.POST, requests.FILES or None)
+    if(requests.user.is_authenticated):
+      notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+    else:
+      notification = None
+
+    if form.is_valid():
+      instance = form.save(commit=False)
+      instance.host = requests.user.userextend
+      instance.save()
+    
+    context = {
+      'event_obj': obj,
+      'form': form,
+      'notice': notification,
+    }
+    return render(requests, 'homepage.pug', context)

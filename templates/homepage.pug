@@ -42,16 +42,18 @@ html
       #board
         #divider
           hr#line1.line
-          p 分類
-          select#category
-            option(value='recommend') 推薦
-            option(value='recommend') 隨機
-          p 排序
-          select#sort
-            option(value='hot') 最新
-            option(value='hot') 最近期
-            option(value='hot') 最多人喜歡
-            option(value='hot') 最多人參與
+          form
+            p 分類
+            select#category
+              option(value='recommend') 推薦
+              option(value='recommend') 隨機
+          form(action="{% url 'order' %}", method="GET")
+            p 排序
+            select#sort(name='order', onchange="this.form.submit()")
+              option(value='newest') 最新
+              option(value='recent') 最近期
+              option(value='most-like') 最多人喜歡
+              option(value='most-participant') 最多人參與
           hr#line2.line
           
               
