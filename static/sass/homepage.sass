@@ -99,7 +99,8 @@ a
       width: 6vw
       height: 6vw
       border-radius: 50%
-      background-color: rgba(210, 210, 210, 0.8)
+      border: solid 0.2vw white
+      background-color: #EEEEEE
 
     #inserta
       position: absolute
@@ -148,7 +149,7 @@ a
     #divider
       display: flex
       flex-direction: row
-      justify-content: space-between
+      justify-content: flex-end
       align-items: center
       margin: 1.5vw 1vw 0.5vw 1vw
       background-color: rgba(255, 219, 208, 1)
@@ -163,10 +164,17 @@ a
         height: 0.2vw
         //margin: 0 1vw
         border: none
-      #line1
-        width: 55%
+      //#line1
+        //width: 55%
       #line2
         width: 7.5%
+      
+      form
+        display: flex
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-left: 0.5vw
         
       #category
         width: 6.3vw
@@ -178,6 +186,7 @@ a
         border-radius: 1vw
         padding: 0.2vw 0.7vw
         outline: none
+        margin: 0 0.5vw
         
     #eventboard
       display: flex
@@ -433,7 +442,7 @@ a
       background-color: #EFFFFB
       border-radius: 1.5vw
       padding: 0.5vw
-      margin: 0.5vw 0 0 0
+      margin: 0.5vw 0 0 0.5vw
       
       #msgtitle
         //position: absolute
@@ -515,6 +524,7 @@ a
       flex-wrap: nowrap;
       align-items: center;
       justify-content: flex-start;
+      margin-left: 0.5vw
       
       a
         margin: 0
@@ -541,7 +551,7 @@ a
           outline: none
           border: none
           width: 19.5vw
-          border-radius: 0.8vw 0 0 0.8vw
+          border-radius: 1vw 0 0 1vw
           background-color: #F2F2F2
           padding: 0.5vw 2.5vw 0.5vw 1vw
           font-size: 1.1vw
@@ -553,7 +563,7 @@ a
           transform: translateX(-2.5vw)
           outline: none
           border: none
-          border-radius: 0.8vw
+          border-radius: 1vw
           background-color: #75E1C7
           padding: 0.5vw 1vw
           margin: 0 0 0 0.5vw
