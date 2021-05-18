@@ -393,7 +393,7 @@ a
       align-content: flex-start;
       justify-content: space-between
       align-items: flex-end
-      width: 23vw
+      width: 22vw
       margin-left: 9vw
       
       #event-title
@@ -433,7 +433,6 @@ a
       background-color: #EFFFFB
       border-radius: 1.5vw
       padding: 0.5vw
-      
       margin: 0.5vw 0 0 0
       
       #msgtitle
@@ -507,8 +506,8 @@ a
                 text-align: right
                 
             #eventmsgtext
-              font-size: 1vw
-              color: #444444
+              font-size: 1.1vw
+              color: #595959
         
     #eventmsg-sender
       display: flex
@@ -517,11 +516,16 @@ a
       align-items: center;
       justify-content: flex-start;
       
+      a
+        margin: 0
+      
       #senderpic
         width: 3vw
         height: 3vw
         border-radius: 50%
         background-color: #EEEEEE
+        border: none
+        margin-left: 1vw
         
       .comment-operate-region
         display: flex
@@ -536,19 +540,25 @@ a
         .eventmsg-insert
           outline: none
           border: none
-          height: 2vw
-          border-radius: 0.8vw
+          width: 19.5vw
+          border-radius: 0.8vw 0 0 0.8vw
           background-color: #F2F2F2
-          padding-left: 0.5vw
+          padding: 0.5vw 2.5vw 0.5vw 1vw
+          font-size: 1.1vw
+        
+        
+          
         .eventmsg-btn
+          position: relative
+          transform: translateX(-2.5vw)
           outline: none
           border: none
-          height: 2vw
           border-radius: 0.8vw
           background-color: #75E1C7
-          padding: 0 1vw
-          position: relative
-          transform: translateX(-1vw)
+          padding: 0.5vw 1vw
+          margin: 0 0 0 0.5vw
+          font-size: 1vw
+          cursor: pointer
 
       
   
@@ -571,8 +581,27 @@ a
       justify-content: flex-start;
       
       #exitbtn1
+        position: absolute
+        transform: translate(1.1vw, -3.7vw)
         width: 1.5vw
         height: 1.5vw
+        cursor: pointer
+      
+      
+      #organizer
+        width: 3vw
+        height: 3vw
+        margin-bottom: 0.4vw
+        border-radius: 50%
+        border: solid 0.2vw #CCCCCC
+        
+        
+      #bar
+        width: 2.5vw
+        height: 0.2vw
+        background-color: #555555
+        border-radius: 0.05vw
+        margin-bottom: 0.4vw
       
       #member
         display: flex
@@ -580,17 +609,50 @@ a
         flex-wrap: nowrap;
         justify-content: flex-start;
         align-items: center;
+        height: 20vw
+        overflow: scroll
         .member
           width: 3vw
           height: 3vw
+          margin-bottom: 0.4vw
+          border-radius: 50%
+          
+        .participant
+          border: solid 0.2vw #CCCCCC
+        .interested
+          border: solid 0.2vw #EEEEEE
+          
         
+        
+          
       #likebutton
-        width: 1.5vw
-        height: 1.5vw
+        background-image: url('../file/like-n.png')
+        background-repeat: no-repeat
+        background-size: contain
         
-        button
-          width: 100%
-          height: 100%
+        #likebtn-bg
+          background-color: gray
+          
+          
+        form
+          button:hover
+            position: relative
+            transform: scale(1.02)
+        
+          button
+            background: Transparent
+            border: none
+            height: 4vw
+            width: 4vw
+            cursor: pointer
+      
+        #like-y
+          display: none
+          //width: 70%
+
+        #like-n
+          display: block
+          //width: 70%
       
   
   
@@ -617,8 +679,6 @@ a
     width: 1.5vw
     height: auto
     
-      
-  
   #profile
     display: flex
     margin: 1vw 0
