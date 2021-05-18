@@ -131,14 +131,14 @@ link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/
       img#senderpic
       {% endif %}
       {% if request.user.is_authenticated %}
-      form(action="{% url 'comment' event_detail.pk request.user.userextend.pk %}", method="POST")
+      form.comment-operate-region(action="{% url 'comment' event_detail.pk request.user.userextend.pk %}", method="POST")
         {% csrf_token %}
-        input#eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
-        input#eventmsg-btn(type="submit")
+        input.eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
+        input.eventmsg-btn(type="submit", value="送出")
       {% else %}
-      a(href="{% url 'login' %}")
-        input#eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
-        input#eventmsg-btn(type="submit")
+      a.comment-operate-region(href="{% url 'login' %}")
+        input.eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
+        input.eventmsg-btn(type="submit", value="送出")
       {% endif %}
   
   #eventwindow-right

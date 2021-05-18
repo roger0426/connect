@@ -417,6 +417,7 @@ a
       margin: 2.2vw 0 0 1vw
       
       overflow: scroll
+      overflow-x: hidden
     
     
     #eventmsgregion
@@ -450,6 +451,7 @@ a
         align-items: flex-start;
         
         overflow: scroll
+        overflow-x: hidden
         
         .eventmsg:hover
           background-color: #EFFFFB
@@ -521,7 +523,7 @@ a
         border-radius: 50%
         background-color: #EEEEEE
         
-      form
+      .comment-operate-region
         display: flex
         flex-direction: row;
         flex-wrap: nowrap;
@@ -529,9 +531,25 @@ a
         align-items: center;
         justify-content: space-around;
         margin: 1vw
+        height: 1.5vw
         
-        #eventmsg-insert
+        .eventmsg-insert
           outline: none
+          border: none
+          height: 2vw
+          border-radius: 0.8vw
+          background-color: #F2F2F2
+          padding-left: 0.5vw
+        .eventmsg-btn
+          outline: none
+          border: none
+          height: 2vw
+          border-radius: 0.8vw
+          background-color: #75E1C7
+          padding: 0 1vw
+          position: relative
+          transform: translateX(-1vw)
+
       
   
   #eventwindow-right

@@ -83,12 +83,13 @@ def comment_view(requests, event_id, id):
   if requests.method == "POST":
     event = get_object_or_404(EventsBoard, id=event_id)
     author = UserExtend.objects.get(id=id)
-    comment_obj = BoardMessage.objects.create(
-      author = author,
-      for_event = event,
-      text = requests.POST.get('text')
-    )
-    comment_obj.save()
+    if (requests.POST.get('text')) != "":
+      comment_obj = BoardMessage.objects.create(
+        author = author,
+        for_event = event,
+        text = requests.POST.get('text')
+      )
+      comment_obj.save()
   return HttpResponseRedirect(reverse('event_detail', args=[str(event_id)]))
 
 
