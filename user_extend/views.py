@@ -84,7 +84,7 @@ def modify(request, id):
       print(image_name)
       user.update(img = image_name)
     if(request.POST.get('personality')):
-      history_tag = Tag.objects.filter(text = request.POST.get('personality'))
+      history_tag = Tag.objects.filter(text = request.POST.get('personality')).filter(user=request.user)
       if (history_tag):
         history_tag.update(is_hidden=False)
       else:
@@ -96,7 +96,7 @@ def modify(request, id):
         new_tag.save()
     
     if(request.POST.get('skill')):
-      history_tag = Tag.objects.filter(text = request.POST.get('skill'))
+      history_tag = Tag.objects.filter(text = request.POST.get('skill')).filter(user=request.user)
       if (history_tag):
         history_tag.update(is_hidden=False)
       else:
@@ -108,7 +108,7 @@ def modify(request, id):
         new_tag.save()
     
     if(request.POST.get('interest')):
-      history_tag = Tag.objects.filter(text = request.POST.get('interest'))
+      history_tag = Tag.objects.filter(text = request.POST.get('interest')).filter(user=request.user)
       if (history_tag):
         history_tag.update(is_hidden=False)
       else:
