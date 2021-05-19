@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from events_board.models import Comment
 from site_notification.models import SiteNotification
 from tags.models import Tag
+from django.core.files.storage import default_storage
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 # Create your views here.
@@ -79,7 +80,9 @@ def profile_modify_view(request, id):
       user.update(personal_description = request.POST.get('description'))
     if(request.FILES):
       image = request.FILES['image']
-      user.update(img = image)
+      image_name = default_storage.save("user/" + image.name, image)
+      print(image_name)
+      user.update(img = image_name)
     if(request.POST.get('personality')):
       history_tag = Tag.objects.filter(text = request.POST.get('personality'))
       if (history_tag):
