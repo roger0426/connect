@@ -1,0 +1,300 @@
+{% load static %}
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(content="width=device-width, initial-scale=1", name="viewport")
+    title CONNECT - Profile
+    link(href="{% static 'file/logo.ico' %}",rel="icon")
+    {% load sass_tags %}
+    link(href="{% sass_src 'sass/profile.sass' %}",rel="stylesheet",type="text/css")
+    link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
+
+  {% include 'navbar.pug' %}
+
+  body
+    #phoneerrormsg
+      //#errorlogo
+      p 尚未針對窄螢幕優化
+        br
+        | 請先以電腦網頁瀏覽
+      #errorfilter
+  
+    {% include 'event_detail.pug' %}
+    #profilepanel
+      #top-region
+        form#intro(method="POST", action="{% url 'profile_modify' request.user.userextend.pk %}", enctype="multipart/form-data" )
+          {% csrf_token %}
+          #info
+            {% if user.img %}
+            input#user-image(type="file", name="image", alt="image", src="{{ user.img.url }}")
+            //- img#user-img(src="{{ user.img.url }}")
+            {% else %}
+            #user-img
+            {% endif %}
+            #user-name {{ user.full_name }}
+            #school-info
+              #department {{ user.department }}
+              #grade {{ user.grade }}
+          #description-tag
+            #description-background
+              input#description(type="text", name="description", placeholder="{{ user.personal_description }}")
+            .tag-field
+              p 個性
+              {% for personality in personality %}
+              .tag-style
+                p.tags {{ personality.text }}
+                
+              {% empty %}
+              p.plus-button +
+              input(type='text', name='personality')
+              {% endfor %}
+
+              {% if personality %}
+              p.plus-button +
+              input(type='text', name='personality')
+              {% endif %}
+
+            .tag-field
+              p 專長
+              {% for skill in skill %}
+              .tag-style
+                p.tags {{ skill.text }}
+              {% empty %}
+              p.plus-button +
+              input(type='text', name='skill')
+              {% endfor %}
+
+              {% if skill %}
+              p.plus-button +
+              input(type='text', name='skill')
+              {% endif %}
+
+            .tag-field
+              p 有興趣活動
+              {% for interest in interest %}
+              .tag-style
+                p.tags {{ interest.text }}
+              {% empty %}
+              p.plus-button +
+              input(type='text', name='interest')
+              {% endfor %}
+
+              {% if interest %}
+              p.plus-button +
+              input(type='text', name='interest')
+              {% endif %}
+
+            #buttons
+              
+              {% if request.user.is_authenticated and request.user.pk == user.user.pk %}
+              //a(href="/logout/") 登出
+              input(type='submit') 完成
+              {% else %}
+              input(type="button", value="建立連結")
+              input(type="button", value="傳訊息")
+              {% endif %}
+              
+      #bottom-region
+        #left-pane
+          #title-count
+            p 聯絡人
+            p#friend-count {{ friend_count }}
+          #friends-avatar.left-region
+            {% for friend in user.friends.all %}
+            a(href="{% url 'profile' id=friend.userextend.pk %}")
+              img.friend-img(src="{{ friend.userextend.img.url }}")
+            {% empty %}
+            p 快去建立連結吧
+            {% endfor %}
+            .vitualimg
+            .vitualimg
+          hr#divider1.lefthr
+          p 個性
+          #personality.left-region
+            {% for personality in personality %}
+            .tag-style
+              p.tags {{ personality.text }}
+            {% empty %}
+            p(style="color: #E98C6F") 他好像還沒設定個性
+            {% endfor %}
+          hr#divider2.lefthr
+          p 專長
+          #shill.left-region
+            {% for skill in skill %}
+            .tag-style
+              p.tags {{ skill.text }}
+            {% empty %}
+            p(style="color: #E98C6F") 他好像還沒設定專長
+            {% endfor %}
+          hr#divider3.lefthr
+          p 有興趣活動
+          #interest.left-region
+            {% for interest in interest %}
+            .tag-style
+              p.tags {{ interest.text }}
+            {% empty %}
+            p(style="color: #E98C6F") 他好像還沒設定有興趣的活動
+            {% endfor %}
+            
+          .tags#personality-left
+
+        #right-pane
+          #indextag
+            #tag1.tag
+            #tag2.tag
+            #tag3.tag
+            //#tag4.tag
+            //#tag5.tag
+        
+          #tab-navbar
+            input(type="button", value="參與活動")
+            input(type="button", value="參與專案")
+            input(type="button", value="個人專案")
+            //input(type="button", value="...")
+            //input(type="button", value="...")
+
+          #activities.page-panel
+            {% for activity in activities %}
+            #activity-card.card
+              .cardleft
+                {% if activity.image %}
+                a(href="{% url 'profile_event' id=user.pk event_id=activity.pk%}")
+                  img#activity-img.card-img(src="{{ activity.image.url }}")
+                {% else %}
+                #activity-img.card-img
+                  p#nopicalert 尚未新增圖片
+                {% endif %}
+                #activity-date 
+                {% if activity.event_date %}
+                p.date {{ activity.event_date }}
+                {% else %}
+                p.date 未設定日期
+                {% endif %}
+              
+              .cardright
+                .info
+                  a(href="{% url 'profile_event' id=user.pk event_id=activity.pk%}")
+                    p#activity-title.cardinfott {{ activity.title }}
+                  {% if activity.comments.count > 0 %}
+                  p#activity-rate.rate {{ activity.get_avg_rating }}★
+                  {% endif %}
+                  p#activity-character.charname 主辦人
+              
+                #activity-comment.comments
+                  {% for comment in activity.comments.all %}
+                  .comment
+                    {% load static %}
+                    a(href="{% url 'profile' id=comment.author.pk %}")
+                      img#participant-img(src="{{ comment.author.img.url }}")
+                    .comment-right
+                      a(href="{% url 'profile' id=comment.author.pk %}") {{ comment.author.full_name }}
+                        //p#participant-name {{ comment.author.full_name }}
+                      p#participant-comment {{ comment.text }}
+                      p#participant-rate {{ comment.rate }}★
+                  {% empty %}
+                  .comment
+                    .comment-right
+                      #participant-comment
+                        p 這個活動好像還沒有評論
+                  {% endfor %}
+
+            {% empty %}
+            #activity-card.card
+              p.hint(style="color: #E98C6F") 看來他好像還沒參加過活動喔
+            {% endfor %}
+              
+            // so many comments
+
+            // so many cards (use for to solve it after the backend has constructed)
+          
+          #projects.page-panel(style="display: none")
+            {% for project in projects %}
+            #projects-card.card
+              .cardleft
+                {% if project.image %}
+                a(href="{% url 'profile_event' id=user.pk event_id=project.pk%}")
+                  img#projects-img.card-img(src="{{ project.image.url }}")
+                {% else %}
+                #projects-img.card-img
+                  p#nopicalert 尚未新增圖片
+                {% endif %}
+                #projects-date 
+                {% if project.event_date %}
+                p.date {{ project.event_date }}
+                {% else %}
+                p.date 未設定日期
+                {% endif %}
+                
+              .cardright
+                .info
+                  a(href="{% url 'profile_event' id=user.pk event_id=project.pk%}")
+                    p#project-title.cardinfott {{ project.title }}
+                  {% if projects.comments.count > 0 %}
+                  p#projects-rate.rate {{ project.get_avg_rating }}★
+                  {% endif %}
+                  p#projects-character.charname 主辦人
+              
+                #projects-comment.comments
+                  {% for comment in project.comments.all %}
+                  .comment
+                    {% load static %}
+                    a(href="{% url 'profile' id=comment.author.pk %}")
+                      img#participant-img(src="{{ comment.author.img.url }}")
+                    .comment-right
+                      a(href="{% url 'profile' id=comment.author.pk %}") {{ comment.author.full_name }}
+                        //p#participant-name {{ comment.author.full_name }}
+                      p#participant-comment {{ comment.text }}
+                      p#participant-rate {{ comment.rate }}★
+                  {% empty %}
+                  .comment
+                    .comment-right
+                      #participant-comment
+                        p 這個活動好像還沒有評論
+                  {% endfor %}
+                  
+              
+
+            {% empty %}
+            #activity-card.card
+              p.hint(style="color: #E98C6F") 看來他好像還沒參與過專案
+            {% endfor %}
+                  
+            // so many comments
+
+            // so many cards (use for to solve it after the backend has constructed)
+
+          #personal.page-panel(style="display: none")
+            {% for personal_proj in personal_projs %}
+            #personal-card.card
+              .cardleft
+                {% if personal_proj.image %}
+                a(href="{% url 'profile_event' id=user.pk event_id=personal_proj.pk%}")
+                  img#personal-img.card-img(src="{{ personal_proj.image.url }}")
+                {% else %}
+                #personal-img.card-img
+                  p#nopicalert 尚未新增圖片
+                {% endif %}
+                #personal-date
+                {% if personal_proj.event_date %}
+                p.date {{ personal_proj.event_date }}
+                {% else %}
+                p.date 未設定日期
+                {% endif %}
+              .cardright
+                a(href="{% url 'profile_event' id=user.pk event_id=personal_proj.pk%}")
+                  p#personal-title {{ personal_proj.title }}
+                p#personal-detail {{ personal_proj.detail }}
+            {% empty %}
+            #activity-card.card
+              p.hint(style="color: #E98C6F") 看來他好像還沒新增過個人專案
+            {% endfor %}
+
+            // so many cards (use for to solve it after the backend has constructed)
+      footer
+        {% include "footer.pug" %}
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
+    script(src="{% static 'js/profile.js' %}")

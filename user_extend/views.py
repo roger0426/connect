@@ -73,15 +73,13 @@ def profile_event_view(requests, id, event_id):
   return render(requests, 'profile.pug', context)
 
 def profile_modify_view(request, id):
-  user = UserExtend.objects.get(id = id)
+  user = UserExtend.objects.filter(id = id)
   if(request.method == 'POST'):
-    if(request.POST.get('detail')):
-      user.update(personal_description = request.POST.get('detail'))
-      user.save()
-    if(request.FILES['image']):
+    if(request.POST.get('description')):
+      user.update(personal_description = request.POST.get('description'))
+    if(request.FILES):
       image = request.FILES['image']
-      user.img = image
-      user.save()
+      user.update(img = image)
     if(request.POST.get('personality')):
       history_tag = Tag.objects.filter(text = request.POST.get('personality'))
       if (history_tag):
@@ -89,7 +87,7 @@ def profile_modify_view(request, id):
       else:
         new_tag = Tag.objects.create(
           text = request.POST.get('personality'),
-          for_user = user,
+          user = user.get(id=id).user,
           tag_type = "個性"
         )
         new_tag.save()
@@ -101,7 +99,7 @@ def profile_modify_view(request, id):
       else:
         new_tag = Tag.objects.create(
           text = request.POST.get('skill'),
-          for_user = user,
+          user = user.get(id=id).user,
           tag_type = "專長"
         )
         new_tag.save()
@@ -113,8 +111,35 @@ def profile_modify_view(request, id):
       else:
         new_tag = Tag.objects.create(
           text = request.POST.get('interest'),
-          for_user = user,
+          user = user.get(id=id).user,
           tag_type = "有興趣的活動"
         )
         new_tag.save()
-  return HttpResponseRedirect(reverse('profile_modify', args=[str(id)]))
+
+  obj = UserExtend.objects.get(id=id)
+  friend_count = obj.friends.count()
+
+  personality_tags = obj.user.tags.filter(tag_type='個性')
+  skill_tags = obj.user.tags.filter(tag_type='專長')
+  interest_tags = obj.user.tags.filter(tag_type='有興趣的活動')
+
+  activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
+  projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
+  personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
+  if(request.user.is_authenticated):
+    notification = SiteNotification.objects.filter(for_user = request.user).order_by('-date')
+  else:
+    notification = None
+  
+  context = {
+    'user': obj,
+    'personality': personality_tags,
+    'skill': skill_tags,
+    'interest': interest_tags,
+    'friend_count': friend_count,
+    'activities': activities,
+    'projects': projects,
+    'personal_projs': personal_projs,
+    'notice': notification,
+  }
+  return render(request, 'profile_edit.pug', context)
