@@ -104,7 +104,7 @@ link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/
     #eventmsgregion
       p#msgtitle 留言板
       #eventmsg-board
-        {% for eventmsg in event_detail.board_message.all %}
+        {% for eventmsg in event_detail.board_message.all reversed %}
         .eventmsg
           a(href="{% url 'profile' id=eventmsg.author.pk %}")
             img.sender(src='{{ eventmsg.author.img.url }}')
@@ -182,11 +182,9 @@ link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/
       // user not authenticated 
       {% else %} 
       a.login-redirect(href="{% url 'login' %}")
-      #likebutton(style="background-image: url('/static/file/like-n.png')", href="{% url 'login' %}")
+      #likebutton(style="background-image: url('/static/file/like-bg-n.png')", href="{% url 'login' %}")
         form(action="", method="POST")
-          {% csrf_token %}
-          button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
-            span#like-img
+          button(type="image", src="{% static 'file/like-bg-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
       {% endif %}
 #filter1(style="display: block")
 {% endif %}
