@@ -6,8 +6,9 @@
 
 
 \:root
-  --background-color: #FFFFFF
+  --background-color: #FFF6ED
   --background-color-card: #E8E8E8
+  --background-color-field: #F2F2F2
   --fontcolor-navbarbutton: #000000
   --fontcolor-header: #000000
   --fontcolor-text: #000000
@@ -17,20 +18,34 @@
   --font-family-text: "jf-openhuninn", "Tahoma", "Arial"
   --font-style-text: normal
   --font-family-card: "jf-openhuninn", "Tahoma", "Arial"
-
 *
   font-family: var(--font-family-text)
   padding: 0
   margin: 0
+html
+  display: flex
+  justify-content: space-between
 
 body
-  background-color: white
+  background-color: var(--background-color)
   width: 100%
   height: 100%
+
 
 a
   text-decoration: none
   color: black
+
+footer
+  height: 2vw
+  background-color: var(--color-main)
+  width: 99.2vw
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  left: -50%
+  padding-top: 1vw
+  
   
 #phoneerrormsg
   display: none
@@ -65,9 +80,10 @@ a
   flex-direction: column
   justify-content: flex-start
   width: 60%
-  background-color: white
+  background-color: var(--background-color)
   border-radius: 3vw
-  padding-bottom: 3vw
+  // align-items: center;
+  // padding-bottom: 3vw
   
   
   #top-region
@@ -83,7 +99,7 @@ a
       display: flex
       flex-direction: row
       justify-content: space-around
-      background-color: #FFCFBF
+      background-color: white
       border-radius: 3vw
       width: auto
       padding: 1.5vw
@@ -125,7 +141,7 @@ a
         
         
         #description-background
-          background-color: white
+          background-color: var(--background-color-field)
           //border: solid 2px
           border-radius: 1.3vw
           //border-color: #3AEDC2
@@ -137,7 +153,7 @@ a
             padding-left: 0.5vw
         
         .tag-field
-          background-color: white
+          background-color: var(--background-color-field)
           border-radius: 1.5vw
           margin-bottom: 0.5vw
           padding: 0.5vw
@@ -273,9 +289,11 @@ a
         height: 0
       
   #right-pane
-    background-color: #FFE4DC
+    background-color: white
     width: 73%
     border-radius: 1.5vw
+    border: solid 2px #FFCFBF
+    border-top: none
     //padding: 0 1vw 1.5vw 1vw
     
     #indextag
@@ -746,7 +764,7 @@ a
   backdrop-filter: blur(5px) contrast(70%) saturate(70%) brightness(70%)
   -webkit-backdrop-filter: blur(5px) contrast(70%) saturate(70%) brightness(70%)
   z-index: 6
-    
+
 //phone responsive
 @media only screen and (max-width: 450px)
   

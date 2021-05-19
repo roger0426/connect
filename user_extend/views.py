@@ -78,6 +78,10 @@ def profile_modify_view(request, id):
     if(request.POST.get('detail')):
       user.update(personal_description = request.POST.get('detail'))
       user.save()
+    if(request.FILES['image']):
+      image = request.FILES['image']
+      user.img = image
+      user.save()
     if(request.POST.get('personality')):
       history_tag = Tag.objects.filter(text = request.POST.get('personality'))
       if (history_tag):
@@ -113,4 +117,4 @@ def profile_modify_view(request, id):
           tag_type = "有興趣的活動"
         )
         new_tag.save()
-  return HttpResponseRedirect(reverse('modify', args=[str(id)]))
+  return HttpResponseRedirect(reverse('profile_modify', args=[str(id)]))

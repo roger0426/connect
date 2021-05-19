@@ -1,7 +1,7 @@
 {% load static %}
 doctype html                                               
 html
-  {% include 'navbar.pug' %}                                                    
+                                                     
   head
     meta(charset="utf-8")
     meta(content="width=device-width, initial-scale=1", name="viewport")                 
@@ -11,6 +11,7 @@ html
     link(href="{% sass_src 'sass/about_us.sass' %}",rel="stylesheet",type="text/css")  
 
   body
+    {% include 'navbar.pug' %} 
     #background
     img#group-img(src="{% static './file/groupphoto_2.png'%}")
     #about_details 
