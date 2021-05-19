@@ -73,7 +73,7 @@ def profile_event_view(requests, id, event_id):
   }
   return render(requests, 'profile.pug', context)
 
-def profile_modify_view(request, id):
+def modify(request, id):
   user = UserExtend.objects.filter(id = id)
   if(request.method == 'POST'):
     if(request.POST.get('description')):
@@ -118,6 +118,11 @@ def profile_modify_view(request, id):
           tag_type = "有興趣的活動"
         )
         new_tag.save()
+  return HttpResponseRedirect(reverse('profile', args=[str(id)]))
+
+  
+
+def profile_edit_view(request, id):
 
   obj = UserExtend.objects.get(id=id)
   friend_count = obj.friends.count()

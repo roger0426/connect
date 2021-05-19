@@ -23,7 +23,7 @@ html
     {% include 'event_detail.pug' %}
     #profilepanel
       #top-region
-        form#intro(method="POST", action="{% url 'profile_modify' request.user.userextend.pk %}", enctype="multipart/form-data" )
+        form#intro(method="POST", action="{% url 'modify_profile' request.user.userextend.pk %}", enctype="multipart/form-data" )
           {% csrf_token %}
           #info
             {% if user.img %}
