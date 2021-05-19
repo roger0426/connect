@@ -23,6 +23,8 @@ class Tag(models.Model):
     default='活動',
   )
 
+  is_hidden = models.BooleanField(default = False)
+
   def number_of_comments(self):
     return self.comments.count()
 

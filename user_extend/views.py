@@ -3,6 +3,9 @@ from .models import UserExtend, EventsBoard
 from django.contrib.auth.models import User
 from events_board.models import Comment
 from site_notification.models import SiteNotification
+from tags.models import Tag
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 # Create your views here.
 def update_profile(request, user_id):
     user = User.objects.get(pk=user_id)
@@ -68,3 +71,46 @@ def profile_event_view(requests, id, event_id):
     'notice': notification,
   }
   return render(requests, 'profile.pug', context)
+
+def profile_modify_view(request, id):
+  user = UserExtend.objects.get(id = id)
+  if(request.method == 'POST'):
+    if(request.POST.get('detail')):
+      user.update(personal_description = request.POST.get('detail'))
+      user.save()
+    if(request.POST.get('personality')):
+      history_tag = Tag.objects.filter(text = request.POST.get('personality'))
+      if (history_tag):
+        history_tag.update(is_hidden=False)
+      else:
+        new_tag = Tag.objects.create(
+          text = request.POST.get('personality'),
+          for_user = user,
+          tag_type = "個性"
+        )
+        new_tag.save()
+    
+    if(request.POST.get('skill')):
+      history_tag = Tag.objects.filter(text = request.POST.get('skill'))
+      if (history_tag):
+        history_tag.update(is_hidden=False)
+      else:
+        new_tag = Tag.objects.create(
+          text = request.POST.get('skill'),
+          for_user = user,
+          tag_type = "專長"
+        )
+        new_tag.save()
+    
+    if(request.POST.get('interest')):
+      history_tag = Tag.objects.filter(text = request.POST.get('interest'))
+      if (history_tag):
+        history_tag.update(is_hidden=False)
+      else:
+        new_tag = Tag.objects.create(
+          text = request.POST.get('interest'),
+          for_user = user,
+          tag_type = "有興趣的活動"
+        )
+        new_tag.save()
+  return HttpResponseRedirect(reverse('modify', args=[str(id)]))
