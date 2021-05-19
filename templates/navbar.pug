@@ -19,6 +19,7 @@ header
       li 
         //a#event.button(href="{{ home_url }}")
         a#feedback.button(href="https://forms.gle/jg1putGAWZntSeNPA" title="問題回報")
+        #feedback-hover.hover 問題回報
       li
         a#alert.button(title="通知")
         #notificationboard
@@ -44,19 +45,24 @@ header
                 #notion-righttop
                   p 目前沒有通知喔～
             {% endfor %}
+        #alert-hover.hover 通知
       li 
         a#message.button(href="#" title="功能開發中")
+        #message-hover.hover 訊息
       li
         a#aboutus.button(href="/about_us" title="about us")
+        #aboutus-hover.hover 關於我們
         
       {% if request.user.is_authenticated %}
       
       {% if request.user.is_authenticated and request.user.pk == user.user.pk %}
       li
         a#logout.button(href="/logout/" title="登出")
+        #logout-hover.hover 登出
       {% else %}
       li
         a#profile.button(href="{% url 'profile' id=request.user.userextend.pk %}")
+          img#userpic(src="{{ request.user.userextend.img.url }}")
       {% endif %}
       
       {% else %}

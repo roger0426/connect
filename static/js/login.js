@@ -2,6 +2,35 @@ $(document).ready(function(){
   $('#loadingfilter').hide();
   $('#loadinggif').hide();
   
+  $("#feedback").mouseenter(function() {
+    $("#feedback-hover").show();
+  });
+  $('#feedback').mouseleave(function() {
+    $("#feedback-hover").hide();
+  });
+  
+  $("#alert").mouseenter(function() {
+    if( $('#notificationboard').css('display') == 'none' ) {
+      $("#alert-hover").show();
+    }
+  });
+  $('#alert').mouseleave(function() {
+    $("#alert-hover").hide();
+  });
+  
+  $("#message").mouseenter(function() {
+    $("#message-hover").show();
+  });
+  $('#message').mouseleave(function() {
+    $("#message-hover").hide();
+  });
+  
+  $("#aboutus").mouseenter(function() {
+    $("#aboutus-hover").show();
+  });
+  $('#aboutus').mouseleave(function() {
+    $("#aboutus-hover").hide();
+  });
   
   console.log('in');
   $('#sign-up')

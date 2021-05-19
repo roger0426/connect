@@ -5,6 +5,47 @@ $(document).ready(function(){
   $('#phoneerrormsg').click(function(){
     $('#phoneerrormsg').hide();
   });
+  
+  
+  
+  $("#feedback").mouseenter(function() {
+    $("#feedback-hover").show();
+  });
+  $('#feedback').mouseleave(function() {
+    $("#feedback-hover").hide();
+  });
+  
+  $("#alert").mouseenter(function() {
+    if( $('#notificationboard').css('display') == 'none' ) {
+      $("#alert-hover").show();
+    }
+  });
+  $('#alert').mouseleave(function() {
+    $("#alert-hover").hide();
+  });
+  
+  $("#message").mouseenter(function() {
+    $("#message-hover").show();
+  });
+  $('#message').mouseleave(function() {
+    $("#message-hover").hide();
+  });
+  
+  $("#aboutus").mouseenter(function() {
+    $("#aboutus-hover").show();
+  });
+  $('#aboutus').mouseleave(function() {
+    $("#aboutus-hover").hide();
+  });
+  
+  $("#logout").mouseenter(function() {
+    $("#logout-hover").show();
+  });
+  $('#logout').mouseleave(function() {
+    $("#logout-hover").hide();
+  });
+  
+  
     
   $('#alert').click(function(){
     if ( $('#notificationboard').css('display') == 'block') {
@@ -16,6 +57,7 @@ $(document).ready(function(){
         $("#notificationboard").hide();
       });
     } else {
+      $("#alert-hover").hide();
       console.log("打開通知");
       $("#alert").css({opacity: 0.6})
       $("#notificationboard").show();
