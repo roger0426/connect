@@ -63,6 +63,7 @@ header
       li
         a#profile.button(href="{% url 'profile' id=request.user.userextend.pk %}")
           img#userpic(src="{{ request.user.userextend.img.url }}")
+        #profile-hover.hover 個人頁面
       {% endif %}
       
       {% else %}

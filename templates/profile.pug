@@ -160,7 +160,7 @@ html
                     p#activity-character.charname 主辦人
                 
                   #activity-comment.comments
-                    {% for comment in activity.comments.all reversed %}
+                    {% for comment in activity.comments.all%}
                     .comment
                       {% load static %}
                       a(href="{% url 'profile' id=comment.author.pk %}")

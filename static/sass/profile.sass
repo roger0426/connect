@@ -124,6 +124,42 @@ footer
         align-items: center
         
         #user-img
+          cursor: pointer
+          border-radius: 50%
+          
+          input
+            display: none
+              
+          #editpicfilter:hover
+            font-size: 1.33vw
+          
+          #editpicfilter
+            display: block
+            position: absolute
+            width: 13.6vw
+            height: 13.6vw
+            border-radius: 50%
+            background-color: white
+            opacity: 0.7
+            text-align: center
+            font-size: 1.3vw
+            line-height: 13.6vw
+            color: #505050
+            
+          #fileselectedfilter
+            display: none
+            position: absolute
+            width: 13.6vw
+            height: 13.6vw
+            border-radius: 50%
+            background-color: white
+            opacity: 0.7
+            text-align: center
+            font-size: 1.3vw
+            line-height: 13.6vw
+            color: #505050
+          
+        #user-img
           width: 13vw
           height: 13vw
           border-radius: 50%
@@ -158,12 +194,27 @@ footer
           //border: solid 2px
           border-radius: 1.3vw
           //border-color: #3AEDC2
-          padding: 2vw 1vw
+          padding: 1.5vw 1vw
           width: auto
           margin-bottom: 0.5vw
-          p
+          
+          #description
             font-size: 1.25vw
             padding-left: 0.5vw
+          #descriptionarea
+            border: none
+            background-color: #F9F9F9
+            font-size: 1.25vw
+            padding-left: 0.5vw
+            resize: none
+            height: 2.5vw
+            width: 97%
+            padding: 0.5vw
+            border-radius: 0.6vw
+            outline: none
+            color: #666666
+          #descriptionarea:focus
+            color: black
         
         .tag-field
           background-color: var(--background-color-field)
@@ -173,23 +224,51 @@ footer
           width: auto
           display: flex
           flex-direction: row
-          flex-wrap: wrap
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: flex-start;
           p
             font-size: 0.9vw
             margin: 0 0.5vw
             padding: 0.3vw
-            top: 50%
           .tag-style
             background-color: #FFCFBF
             border-radius: 1vw
             margin-right: 0.5vw
+            
           .tag-style:hover
+            background-color: #FFAD94
+            
+          input
+            font-size: 0.9vw
+            margin: 0 0.5vw
+            padding: 0.3vw 0.8vw
+            border-radius: 1vw
+            border: none
+            outline: none
+            width: 0.5vw
+            
+            font-size: 0.9vw
+            
+          input::-webkit-input-placeholder
+            content: "test"
+            color: black
+          input:focus
+            width: 5vw
+          
+          input
+            background-color: #FFCFBF
+          input:hover
             background-color: #FFAD94
         
         .tag-field:nth-child(4)
           .tag-style
             background-color: #9FE4D4
           .tag-style:hover
+            background-color: #32DEB5
+          input
+            background-color: #9FE4D4
+          input:hover
             background-color: #32DEB5
         
         #buttons
@@ -203,6 +282,7 @@ footer
             border: solid 2px
             background-color: #FDF2EF
             border-color: var(--color-main)
+            cursor: pointer
           *:hover
             background-color: #FFDFDF
             
@@ -450,7 +530,7 @@ footer
           //background-image: linear-gradient(#EEEEEE, #FFFFFF)
           //border-radius: 1.5vw
           width: 100%
-          height: 10vw
+          height: 12vw
           overflow: scroll
           overflow-x: hidden
           //overflow-scrolling: touch

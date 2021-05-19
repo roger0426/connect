@@ -32,6 +32,13 @@ $(document).ready(function(){
     $("#aboutus-hover").hide();
   });
   
+  $("#profile").mouseenter(function() {
+    $("#profile-hover").show();
+  });
+  $('#profile').mouseleave(function() {
+    $("#profile-hover").hide();
+  });
+  
   
   $('#alert').click(function(){
     if ( $('#notificationboard').css('display') == 'block') {
