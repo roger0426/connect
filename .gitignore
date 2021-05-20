@@ -10,3 +10,4 @@ DerivedData/
 *.css
 *.css.map
 *.html
+db.sqlite3
