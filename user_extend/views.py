@@ -80,8 +80,9 @@ def modify(request, id):
       user.update(personal_description = request.POST.get('description'))
     if(request.FILES):
       image = request.FILES['image']
+      if (user.get(id=id).img):
+        user.get(id=id).img.delete()
       image_name = default_storage.save("user/" + image.name, image)
-      print(image_name)
       user.update(img = image_name)
     if(request.POST.get('personality')):
       history_tag = Tag.objects.filter(text = request.POST.get('personality')).filter(user=request.user)
