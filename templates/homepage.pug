@@ -109,9 +109,8 @@ html
 
     .event-detail    
       {% include 'event_detail.pug' %}
-
-    #gotop
-      p ˄
+    {% load static %}
+    image#gotop(src="{% static 'file/gotop.png' %}")
     {% if request.user.is_authenticated %}
     #filter1
     #eventcreatewindow
