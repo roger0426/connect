@@ -117,7 +117,7 @@ html
     #eventcreatewindow
       img#exitbtn2(src="{% static 'file/exiticon.png' %}")
       
-      form(action="", method="post", enctype="multipart/form-data") {% csrf_token %}
+      form(action="", method="post", enctype="multipart/form-data", autocomplete="off") {% csrf_token %}
         #profile
         {{ form.as_table }}
 

@@ -24,7 +24,7 @@ html
     #profileall
       #profilepanel
         #top-region
-          form#intro(method="POST", action="{% url 'modify_profile' request.user.userextend.pk %}", enctype="multipart/form-data" )
+          form#intro(method="POST", action="{% url 'modify_profile' request.user.userextend.pk %}", enctype="multipart/form-data", autocomplete="off")
             {% csrf_token %}
             #info
               {% if user.img %}
