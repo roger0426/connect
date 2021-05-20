@@ -77,6 +77,13 @@ $(document).ready(function(){
     }
   });
   
+  $("#gotop").mouseenter(function() {
+    $("#gotop").css({opacity: 0.65});
+  });
+  $('#gotop').mouseleave(function() {
+    $("#gotop").css({opacity: 1});
+  });
+  
   $("#gotop").click(function(){
     jQuery("html,body").animate({
         scrollTop:0
