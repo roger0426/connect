@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import cloudinary
+import cloudinary_storage
 from pypugjs.ext.django.compiler import enable_pug_translations
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -52,6 +54,8 @@ INSTALLED_APPS = [
     # third party libraries
     'sass_processor',
     'django_notification_system',
+    'cloudinary',
+    'cloudinary_storage',
 
     # owned
     'about_us',
@@ -184,3 +188,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 enable_pug_translations()
+
+# Cloudinary stuff
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'connect-universe',
+    'API_KEY': os.environ['CLOUDINARY_KEY'],
+    'API_SECRET': os.environ['CLOUDINARY_SECRET'],
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
