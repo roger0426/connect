@@ -38,8 +38,8 @@ html
               {% endif %}
               #user-name {{ user.full_name }}
               #school-info
-                #department {{ user.department }}
-                #grade {{ user.grade }}
+                input#department(placeholder="{{ user.department }}", name="department")
+                input#grade(placeholder="{{ user.grade }}", name="grade")
             #description-tag
               #description-background
                 //input#description(type="text", name="description", value="{{ user.personal_description }}")

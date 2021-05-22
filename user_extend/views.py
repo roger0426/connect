@@ -78,6 +78,10 @@ def modify(request, id):
   if(request.method == 'POST'):
     if(request.POST.get('description')):
       user.update(personal_description = request.POST.get('description'))
+    if(request.POST.get('department')):
+      user.update(department = request.POST.get('department'))
+    if(request.POST.get('grade')):
+      user.update(grade = request.POST.get('grade'))
     if(request.FILES):
       image = request.FILES['image']
       if (user.get(id=id).img):
