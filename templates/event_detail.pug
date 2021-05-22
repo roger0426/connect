@@ -97,7 +97,7 @@ link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/
         $(document).ready(function(){
           $("#likebutton").on("click", function() {
             console.log('in script')
-            like_handler("{% url 'like' %}", "{{ csrf_token }}", "{{ event_detail.id }}", "{{ request.user.userextend.img.url }}");
+            like_handler("{% url 'like' %}", "{{ csrf_token }}", "{{ event_detail.id }}");
           })
         })
       // user not authenticated 

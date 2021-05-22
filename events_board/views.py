@@ -89,6 +89,7 @@ def like_view(request):
       return JsonResponse({
         'add': False,
         'remove': True,
+        'user_img_url': request.user.userextend.img.url,
         'status': '200'
       })
     else:
@@ -105,6 +106,7 @@ def like_view(request):
       return JsonResponse({
         'add': True,
         'remove': False,
+        'user_img_url': request.user.userextend.img.url,
         'status': '200'
       })
   return JsonResponse({

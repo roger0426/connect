@@ -1,4 +1,4 @@
-function like_handler(URL, CSRF, event_id, img_url) {
+function like_handler(URL, CSRF, event_id) {
   $.ajaxSetup({
     data: {
       csrfmiddlewaretoken: CSRF
@@ -14,6 +14,7 @@ function like_handler(URL, CSRF, event_id, img_url) {
     success: function(data) {
       if (data.status == '200') {
         console.log('success')
+        let img_url = data.user_img_url;
         if (data.add) {
           let str = "<a herf='{% url 'profile' request.user.userextend.pk %}'>\
           <img class='member interested' src= " + img_url + "></a>";
