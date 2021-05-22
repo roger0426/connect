@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from .models import EventsBoard, BoardMessage
 from site_notification.models import SiteNotification
@@ -52,31 +52,66 @@ def event_detail_view(requests, id, *args, **kwargs):
   
   return render(requests, 'homepage.pug', context)
 
-#functional view
-def like_view(requests, id):
-  prev_url = requests.META.get('HTTP_REFERER')
-  url_split = prev_url.split('/')
-  caller_type = url_split[3]
+# # functional view
+# def like_view(requests, id):
+#   prev_url = requests.META.get('HTTP_REFERER')
+#   url_split = prev_url.split('/')
+#   caller_type = url_split[3]
 
-  print(url_split)
-  event = get_object_or_404(EventsBoard, id=requests.POST.get('event_id'))
-  if event.likes.filter(id=requests.user.userextend.id).exists():
-    event.likes.remove(requests.user.userextend)
-  else:
-    event.likes.add(requests.user.userextend)
-    receiver = event.host.user
-    sender = requests.user
-    notification = SiteNotification.objects.create(
-      text = sender.userextend.full_name + "對您的活動感到有興趣， 快去看看吧",
-      event = event,
-      for_user = receiver,
-      from_user = sender
-    )
-    notification.save()
-  if caller_type == "event":
-    return HttpResponseRedirect(reverse('event_detail', args=[str(id)]))
-  else:
-    return HttpResponseRedirect(reverse('profile_event', args=[url_split[4], str(id)]))
+#   print(url_split)
+#   event = get_object_or_404(EventsBoard, id=requests.POST.get('event_id'))
+#   if event.likes.filter(id=requests.user.userextend.id).exists():
+#     event.likes.remove(requests.user.userextend)
+#   else:
+#     event.likes.add(requests.user.userextend)
+#     receiver = event.host.user
+#     sender = requests.user
+#     notification = SiteNotification.objects.create(
+#       text = sender.userextend.full_name + "對您的活動感到有興趣， 快去看看吧",
+#       event = event,
+#       for_user = receiver,
+#       from_user = sender
+#     )
+#     notification.save()
+#   if caller_type == "event":
+#     return HttpResponseRedirect(reverse('event_detail', args=[str(id)]))
+#   else:
+#     return HttpResponseRedirect(reverse('profile_event', args=[url_split[4], str(id)]))
+
+# Ajax function
+def like_view(request):
+  if request.is_ajax() and request.method == 'POST':
+    data = request.POST
+    event = get_object_or_404(EventsBoard, id=data.get('event_id'))
+    
+    if event.likes.filter(id=request.user.userextend.id).exists():
+      event.likes.remove(request.user.userextend)
+      return JsonResponse({
+        'add': False,
+        'remove': True,
+        'status': '200'
+      })
+    else:
+      event.likes.add(request.user.userextend)
+      receiver = event.host.user
+      sender = request.user
+      notification = SiteNotification.objects.create(
+        text = sender.userextend.full_name + "對您的活動感到有興趣， 快去看看吧",
+        event = event,
+        for_user = receiver,
+        from_user = sender
+      )
+      notification.save()
+      return JsonResponse({
+        'add': True,
+        'remove': False,
+        'status': '200'
+      })
+  return JsonResponse({
+    'status': '404',
+    'error_message': '[Error] Not ajax request'
+  })
+  
 
 #functional view
 def comment_view(requests, event_id, id):

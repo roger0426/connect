@@ -1,85 +1,4 @@
 {% load static %}
-//-
-  {% if event_detail.host %}
-
-  #eventwindow
-    #description
-      p {{ event_detail.title }}
-      #subtitle {{ event_detail.subtitle }}
-      #detail {{ event_detail.detail }}
-
-    #member
-      a(href="{% url 'profile' id=event_detail.host.pk %}")
-        img#organizer.member(src='{{ event_detail.host.img.url }}')
-      #bar
-      
-      {% for participant in event_detail.participants.all %}
-      a(href="{% url 'profile' id=participant.pk %}")
-        img.member.participant(src='{{ participant.img.url }}')
-      {% endfor %}
-
-      {% for interested_user in event_detail.likes.all %}
-      a(href="{% url 'profile' id=interested_user.pk %}")
-        img.member.interested(src='{{ interested_user.img.url }}')
-      {% endfor %}
-    
-    #operatebg
-    
-    #eventoperate
-      a
-        img#exitbtn1(src="{% static 'file/exiticon.png' %}")
-      #flag
-        img#flag-y(src="{% static 'file/flag-y.png' %}")
-        img#flag-n(src="{% static 'file/flag-n.png' %}")
-      
-        
-      #date {{ event_detail.event_date }}
-      a(href="{% url 'profile' id=event_detail.host.pk %}")
-        img#organizerpic(src='{{ event_detail.host.img.url }}')
-        p {{ event_detail.host.full_name }}
-
-      {% if request.user.is_authenticated %}
-
-      {% if event_detail in request.user.userextend.event_like.all %}
-      #likebutton(style="background-image: url('/static/file/like-y.png')")
-        form(action="{% url 'like' event_detail.pk %}", method="POST")
-          {% csrf_token %}
-          button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
-            span#like-img
-      {% else %}
-      #likebutton(style="background-image: url('/static/file/like-n.png')")
-        form(action="{% url 'like' event_detail.pk %}", method="POST")
-          {% csrf_token %}
-          button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
-            span#like-img
-      {% endif %}
-
-      #applybutton
-        img#apply-y(src="{% static 'file/applyicon.png' %}")
-        
-        
-      {% else %}
-      a.login-redirect(href="{% url 'login' %}")
-      #likebutton(style="background-image: url('/static/file/like-n.png')", href="{% url 'login' %}")
-        form(action="", method="POST")
-          {% csrf_token %}
-          button(type="image", src="{% static 'file/like-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
-            span#like-img
-      #applybutton
-        img#apply-y(src="{% static 'file/applyicon.png' %}")
-      {% endif %}
-
-    {% if request.user.is_authenticated %}
-    #sent
-      {% load static %}
-      img#mailicon(src="{% static 'file/lettericon.png' %}")
-      p 已向發起者送出邀請
-    {% endif %}
-  #filter1(style="display: block")
-  {% endif %}
-
-
-
 {% if event_detail.host %}
 {% load sass_tags %}
 link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/css")
@@ -167,18 +86,20 @@ link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/
       
       {% if event_detail in request.user.userextend.event_like.all %}
       #likebutton(style="background-image: url('/static/file/like-bg-y.png')")
-        form(action="{% url 'like' event_detail.pk %}", method="POST")
-          {% csrf_token %}
-          button(type="image", src="{% static 'file/like-bg-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
-            span#like-img
+        button(type="image", src="{% static 'file/like-bg-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
+          span#like-img
       {% else %}
       #likebutton(style="background-image: url('/static/file/like-bg-n.png')")
-        form(action="{% url 'like' event_detail.pk %}", method="POST")
-          {% csrf_token %}
-          button(type="image", src="{% static 'file/like-bg-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
-            span#like-img
+        button(type="image", src="{% static 'file/like-bg-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
+          span#like-img
       {% endif %}
-        
+      script.
+        $(document).ready(function(){
+          $("#likebutton").on("click", function() {
+            console.log('in script')
+            like_handler("{% url 'like' %}", "{{ csrf_token }}", "{{ event_detail.id }}", "{{ request.user.userextend.img.url }}");
+          })
+        })
       // user not authenticated 
       {% else %} 
       a.login-redirect(href="{% url 'login' %}")
@@ -186,5 +107,6 @@ link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/
         form(action="", method="POST")
           button(type="image", src="{% static 'file/like-bg-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
       {% endif %}
-#filter1(style="display: block")
+#filter1(style="display: block") 
+script(src="{% static 'js/event_detail.js' %}")
 {% endif %}

@@ -37,7 +37,7 @@ urlpatterns = [
     path('tag_delete/<int:tag_id>', tag_delete_view, name='tag_delete'),
 
     path('event/<int:id>/', event_detail_view, name='event_detail'),
-    path('like/<int:id>', like_view, name="like"),
+    path('like/', like_view, name="like"),
     path('comment/event/<int:event_id>/<int:id>', comment_view, name="comment"),
     path('order/', order_view, name="order"),
 
