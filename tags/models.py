@@ -25,9 +25,6 @@ class Tag(models.Model):
 
   is_hidden = models.BooleanField(default = False)
 
-  class Meta:
-    unique_together = (('text', 'user'),)
-
   def number_of_comments(self):
     return self.comments.count()
 
