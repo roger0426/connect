@@ -91,7 +91,7 @@ def like_view(request):
         'add': False,
         'remove': True,
         'user_img_url': request.user.userextend.img.url,
-        'status': '200'
+        'status': 200
       })
     else:
       event.likes.add(request.user.userextend)
@@ -109,11 +109,11 @@ def like_view(request):
         'remove': False,
         'user_img_url': request.user.userextend.img.url,
         'user_id': request.user.userextend.id,
-        'status': '200'
+        'status': 200
       })
   return JsonResponse({
-    'status': '404',
-    'error_message': '[Error] Not ajax request'
+    'status': 404,
+    'error_message': 'Not ajax request'
   })
   
 

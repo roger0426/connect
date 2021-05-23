@@ -18,6 +18,11 @@ def tag_edit_view(request):
   tag_type = data.get('type')
   user = request.user
   history_tag = Tag.objects.filter(text = data.get('text')).filter(user=request.user)
+  if (data.get('text') == ''):
+    return JsonResponse({
+      'status': 500,
+      'error_message': "Blank tag input"
+    })
   if (history_tag):
     if(history_tag.filter(is_hidden=True)):
       history_tag.update(is_hidden=False)

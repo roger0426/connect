@@ -100,7 +100,7 @@ html
                     tag_edit_handler(
                     "{% url 'tag_edit' %}", 
                     "{{ csrf_token }}", 
-                    $(".personality-input").val(),
+                    $.trim($(".personality-input").val()),
                     "personality");
                   });
 
@@ -108,7 +108,7 @@ html
                     tag_edit_handler(
                     "{% url 'tag_edit' %}", 
                     "{{ csrf_token }}", 
-                    $(".skill-input").val(),
+                    $.trim($(".skill-input").val()),
                     "skill");
                   });
 
@@ -116,7 +116,7 @@ html
                     tag_edit_handler(
                     "{% url 'tag_edit' %}", 
                     "{{ csrf_token }}", 
-                    $(".interest-input").val(),
+                    $.trim($(".interest-input").val()),
                     "interest");
                   });
 
@@ -124,7 +124,7 @@ html
                     tag_delete_handler(
                       "{% url 'tag_delete' %}",
                       "{{ csrf_token }}",
-                      $(this).text(),
+                      $.trim($(this).text()),
                     );
                     $(this).hide();
                   })

@@ -12,7 +12,7 @@ function like_handler(URL, CSRF, event_id) {
     },
     dataType: 'json',
     success: function(data) {
-      if (data.status == '200') {
+      if (data.status == 200) {
         console.log('success')
         let img_url = data.user_img_url;
         let hostname = $(location).attr('hostname');
