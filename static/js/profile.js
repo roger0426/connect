@@ -7,138 +7,45 @@ $(document).ready(function(){
   });
   
   
-  
-  $("#feedback").mouseenter(function() {
-    $("#feedback-hover").show();
-  });
-  $('#feedback').mouseleave(function() {
-    $("#feedback-hover").hide();
-  });
-  
-  $("#alert").mouseenter(function() {
-    if( $('#notificationboard').css('display') == 'none' ) {
-      $("#alert-hover").show();
-    }
-  });
-  $('#alert').mouseleave(function() {
-    $("#alert-hover").hide();
-  });
-  
-  $("#message").mouseenter(function() {
-    $("#message-hover").show();
-  });
-  $('#message').mouseleave(function() {
-    $("#message-hover").hide();
-  });
-  
-  $("#aboutus").mouseenter(function() {
-    $("#aboutus-hover").show();
-  });
-  $('#aboutus').mouseleave(function() {
-    $("#aboutus-hover").hide();
-  });
-  
-  $("#logout").mouseenter(function() {
-    $("#logout-hover").show();
-  });
-  $('#logout').mouseleave(function() {
-    $("#logout-hover").hide();
-  });
-  
-  
-    
-  $('#alert').click(function(){
-    if ( $('#notificationboard').css('display') == 'block') {
-      console.log("關閉通知");
-      $("#alert").css({opacity: 1});
-      $('#clickfilter').hide();
-      $("#notificationboard").animate({height: 0}, 500, function() {
-        
-        $("#notificationboard").hide();
-      });
-    } else {
-      $("#alert-hover").hide();
-      console.log("打開通知");
-      $("#alert").css({opacity: 0.6})
-      $("#notificationboard").show();
-      $('#clickfilter').show();
-      //$('#notificationboard').css({"display": 'flex'});
-      
-      $("#notificationboard").animate({height: '45vh'}, 500, function() {
-      });
-    }
-  });
-  
-  $('#clickfilter').click(function() {
-    if ( $('#notificationboard').css('display') == 'block') {
-      console.log("關閉通知");
-      $("#alert").css({opacity: 1});
-      $('#clickfilter').hide();
-      $("#notificationboard").animate({height: 0}, 500, function() {
-        $("#notificationboard").hide();
-      });
-    }
-  });
-  
-  
-  $("#tab-navbar :nth-child(1),#tag1")
-  .on('click touch', function(){ 
+  $("#tab-navbar :nth-child(1),#tag1").on('click touch', function(){
+    console.log("1");
     $('#activities').show();
     $('#projects').hide();
     $('#personal').hide();
     $('#indextag :nth-child(1)').css('background-color','#FFE4DC')
-    $('#indextag :nth-child(2)').css('background-color','white')
-    $('#indextag :nth-child(3)').css('background-color','white')
-    $('#indextag :nth-child(4)').css('background-color','white')
-    $('#indextag :nth-child(5)').css('background-color','white')
+    $('#indextag :not(:nth-child(1))').css('background-color','white')
   });
-
-  $('#tab-navbar :nth-child(2),#tag2')
-  .on('click touch', function(){ 
+  $("#tab-navbar :nth-child(2),#tag2").on('click touch', function(){
+    console.log("2");
     $('#activities').hide();
     $('#projects').show();
     $('#personal').hide();
     $('#indextag :nth-child(2)').css('background-color','#FFE4DC')
-    $('#indextag :nth-child(1)').css('background-color','white')
-    $('#indextag :nth-child(3)').css('background-color','white')
-    $('#indextag :nth-child(4)').css('background-color','white')
-    $('#indextag :nth-child(5)').css('background-color','white')
+    $('#indextag :not(:nth-child(2))').css('background-color','white')
   });
-  
-  $('#tab-navbar :nth-child(3),#tag3')
-  .on('click touch', function(){ 
-    $('#activities').hide();
-    $('#projects').hide();
-    $('#personal').show();
-    $('#indextag :nth-child(3)').css('background-color','#FFE4DC')
-    $('#indextag :nth-child(1)').css('background-color','white')
-    $('#indextag :nth-child(2)').css('background-color','white')
-    $('#indextag :nth-child(4)').css('background-color','white')
-    $('#indextag :nth-child(5)').css('background-color','white')
-  });
-  
-  $('#tab-navbar :nth-child(4), #tag4')
-  .on('click touch', function(){
-    $('#activities').hide();
+  $("#tab-navbar :nth-child(3),#tag3").on('click touch', function(){
+    console.log("3");
+    $('#activities').show();
     $('#projects').hide();
     $('#personal').hide();
-    $('#indextag :nth-child(4)').css('background-color','#FFE4DC')
-    $('#indextag :nth-child(1)').css('background-color','white')
-    $('#indextag :nth-child(2)').css('background-color','white')
-    $('#indextag :nth-child(3)').css('background-color','white')
-    $('#indextag :nth-child(5)').css('background-color','white')
+    $('#indextag :nth-child(3)').css('background-color','#FFE4DC')
+    $('#indextag :not(:nth-child(3))').css('background-color','white')
   });
-  
-  $('#tab-navbar :nth-child(5), #tag5')
-  .on('click touch', function(){
+  $("#tab-navbar :nth-child(4),#tag4").on('click touch', function(){
+    console.log("4");
     $('#activities').hide();
+    $('#projects').show();
+    $('#personal').hide();
+    $('#indextag :nth-child(4)').css('background-color','#FFE4DC')
+    $('#indextag :not(:nth-child(4))').css('background-color','white')
+  });
+  $("#tab-navbar :nth-child(5),#tag5").on('click touch', function(){
+    console.log("5");
+    $('#activities').show();
     $('#projects').hide();
     $('#personal').hide();
     $('#indextag :nth-child(5)').css('background-color','#FFE4DC')
-    $('#indextag :nth-child(1)').css('background-color','white')
-    $('#indextag :nth-child(2)').css('background-color','white')
-    $('#indextag :nth-child(3)').css('background-color','white')
-    $('#indextag :nth-child(4)').css('background-color','white')
+    $('#indextag :not(:nth-child(5))').css('background-color','white')
   });
 
   $("#applybutton").click(function() {

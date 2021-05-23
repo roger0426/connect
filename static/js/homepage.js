@@ -6,76 +6,6 @@ $(document).ready(function(){
     $('#phoneerrormsg').hide();
   });
   
-  $("#feedback").mouseenter(function() {
-    $("#feedback-hover").show();
-  });
-  $('#feedback').mouseleave(function() {
-    $("#feedback-hover").hide();
-  });
-  
-  $("#alert").mouseenter(function() {
-    if( $('#notificationboard').css('display') == 'none' ) {
-      $("#alert-hover").show();
-    }
-  });
-  $('#alert').mouseleave(function() {
-    $("#alert-hover").hide();
-  });
-  
-  $("#message").mouseenter(function() {
-    $("#message-hover").show();
-  });
-  $('#message').mouseleave(function() {
-    $("#message-hover").hide();
-  });
-  
-  $("#aboutus").mouseenter(function() {
-    $("#aboutus-hover").show();
-  });
-  $('#aboutus').mouseleave(function() {
-    $("#aboutus-hover").hide();
-  });
-  
-  $("#profile").mouseenter(function() {
-    $("#profile-hover").show();
-  });
-  $('#profile').mouseleave(function() {
-    $("#profile-hover").hide();
-  });
-  
-  
-  $('#alert').click(function(){
-    if ( $('#notificationboard').css('display') == 'block') {
-      console.log("關閉通知");
-      $("#alert").css({opacity: 1});
-      $('#clickfilter').hide();
-      $("#notificationboard").animate({height: 0}, 500, function() {
-        
-        $("#notificationboard").hide();
-      });
-    } else {
-      $("#alert-hover").hide();
-      console.log("打開通知");
-      $("#alert").css({opacity: 0.6})
-      $("#notificationboard").show();
-      $('#clickfilter').show();
-      //$('#notificationboard').css({"display": 'flex'});
-      
-      $("#notificationboard").animate({height: '45vh'}, 500, function() {
-      });
-    }
-  });
-  
-  $('#clickfilter').click(function() {
-    if ( $('#notificationboard').css('display') == 'block') {
-      console.log("關閉通知");
-      $("#alert").css({opacity: 1});
-      $('#clickfilter').hide();
-      $("#notificationboard").animate({height: 0}, 500, function() {
-        $("#notificationboard").hide();
-      });
-    }
-  });
   
   $("#gotop").mouseenter(function() {
     $("#gotop").css({opacity: 0.65});
@@ -99,19 +29,24 @@ $(document).ready(function(){
 
 
   $("#insertbox").click(function() {
-    console.log("click title");
+    console.log("click createevent");
     //$("#eventwindow").show();
     //$("#eventwindow").animate({opacity: 1}, 400);
     
-    $("#eventcreatewindow").show();
+    
     $('input[type=text]').val('');
     $('textarea').val('');
     $('#id_image').val('');
-    $("#eventcreatewindow").animate({opacity: 1}, 400);
-    
     
     $("#filter1").show();
-    $("#filter1").animate({opacity: 1}, 400, function() {
+    $("#filter1").animate({opacity: 1}, 200, function() {
+      if ($("#eventcreatewindow").css('display') == 'none') {
+        $("#eventcreatewindow").show();
+      }
+      else {
+        $("#eventcreatewindow").css({'content-visibility': 'visible'});
+      }
+      $("#eventcreatewindow").animate({opacity: 1}, 400);
     })
     //$("#sent").toggle();
   });
@@ -147,9 +82,9 @@ $(document).ready(function(){
       $('input[type=text]').val('');
       $('textarea').val('');
       $('#id_image').val('');
-      $("#eventcreatewindow").hide();
+      $("#eventcreatewindow").css({'content-visibility':  'hidden'});
     })
-    $("#filter1").animate({opacity: 0}, 400, function() {
+    $("#filter1").animate({opacity: 0}, 150, function() {
       $("#filter1").hide();
     })
   });

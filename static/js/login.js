@@ -2,37 +2,10 @@ $(document).ready(function(){
   $('#loadingfilter').hide();
   $('#loadinggif').hide();
   
-  $("#feedback").mouseenter(function() {
-    $("#feedback-hover").show();
-  });
-  $('#feedback').mouseleave(function() {
-    $("#feedback-hover").hide();
-  });
+  //$("#alert").parent().hide();
   
-  $("#alert").mouseenter(function() {
-    if( $('#notificationboard').css('display') == 'none' ) {
-      $("#alert-hover").show();
-    }
-  });
-  $('#alert').mouseleave(function() {
-    $("#alert-hover").hide();
-  });
+  //$("#message").parent().hide();
   
-  $("#message").mouseenter(function() {
-    $("#message-hover").show();
-  });
-  $('#message').mouseleave(function() {
-    $("#message-hover").hide();
-  });
-  
-  $("#aboutus").mouseenter(function() {
-    $("#aboutus-hover").show();
-  });
-  $('#aboutus').mouseleave(function() {
-    $("#aboutus-hover").hide();
-  });
-  
-  console.log('in');
   $('#sign-up')
   .on('click touch', function(){ 
     $('#login-panel').hide();
@@ -67,7 +40,7 @@ $(document).ready(function(){
 })
 
 // check password validaty dynamically
-let intervalId = window.setInterval(function(){ // check every 0.5 seconds
+$('#double-pwd').keyup(function(){
   if ($('#double-pwd').val().length > 0) {
     if ($('#sign-pwd').val() === $('#double-pwd').val()) {
       $('.err-msg').hide();
@@ -87,10 +60,8 @@ let intervalId = window.setInterval(function(){ // check every 0.5 seconds
   } else {
     $('#sign-up-btn').prop('disabled', false);
   }
-  
-
-}, 500);
-
+  console.log("test double-pw")
+})
 
 
 
