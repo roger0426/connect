@@ -55,7 +55,6 @@ link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/
         input.eventmsg-btn(type="button", value="送出")
         script.
           $(document).ready(function(){
-            console.log('in script');
             $(".eventmsg-btn").on("click", function() {
               message_handler(
               "{% url 'comment' event_detail.pk request.user.userextend.pk %}", 

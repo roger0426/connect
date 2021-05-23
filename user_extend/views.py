@@ -88,45 +88,9 @@ def modify(request, id):
         user.get(id=id).img.delete()
       image_name = default_storage.save("user/" + image.name, image)
       user.update(img = image_name)
-    if(request.POST.get('personality')):
-      history_tag = Tag.objects.filter(text = request.POST.get('personality')).filter(user=request.user)
-      if (history_tag):
-        history_tag.update(is_hidden=False)
-      else:
-        new_tag = Tag.objects.create(
-          text = request.POST.get('personality'),
-          user = user.get(id=id).user,
-          tag_type = "個性"
-        )
-        new_tag.save()
-    
-    if(request.POST.get('skill')):
-      history_tag = Tag.objects.filter(text = request.POST.get('skill')).filter(user=request.user)
-      if (history_tag):
-        history_tag.update(is_hidden=False)
-      else:
-        new_tag = Tag.objects.create(
-          text = request.POST.get('skill'),
-          user = user.get(id=id).user,
-          tag_type = "專長"
-        )
-        new_tag.save()
-    
-    if(request.POST.get('interest')):
-      history_tag = Tag.objects.filter(text = request.POST.get('interest')).filter(user=request.user)
-      if (history_tag):
-        history_tag.update(is_hidden=False)
-      else:
-        new_tag = Tag.objects.create(
-          text = request.POST.get('interest'),
-          user = user.get(id=id).user,
-          tag_type = "有興趣的活動"
-        )
-        new_tag.save()
   return HttpResponseRedirect(reverse('profile', args=[str(id)]))
 
   
-
 def profile_edit_view(request, id):
 
   obj = UserExtend.objects.get(id=id)

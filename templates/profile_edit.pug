@@ -9,6 +9,7 @@ html
     {% load sass_tags %}
     link(href="{% sass_src 'sass/profile.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
 
   {% include 'navbar.pug' %}
 
@@ -45,51 +46,89 @@ html
                 //input#description(type="text", name="description", value="{{ user.personal_description }}")
                 textarea#descriptionarea(type="text", name="description") {{ user.personal_description }}
                 
-              .tag-field
+              .tag-field.personality-field
                 p 個性
                 {% for personality in personality %}
+                {% if not personality.is_hidden %}
                 .tag-style
                   p.tags {{ personality.text }}
+                {% endif %}
                   
                 {% empty %}
-                //p.plus-button +
-                input(type='text', name='personality', placeholder='+', onfocus="this.placeholder = ''", onblur="this.placeholder = '+'")
+                input.personality-input(type='text', name='personality', placeholder='+', onfocus="this.placeholder = ''", onblur="this.placeholder = '+'")
                 {% endfor %}
 
                 {% if personality %}
-                //p.plus-button +
-                input(type='text', name='personality', placeholder='+', onfocus="this.placeholder = ''", onblur="this.placeholder = '+'")
+                input.personality-input(type='text', name='personality', placeholder='+', onfocus="this.placeholder = ''", onblur="this.placeholder = '+'")
                 {% endif %}
 
-              .tag-field
+              .tag-field.skill-field
                 p 專長
                 {% for skill in skill %}
+                {% if not skill.is_hidden %}
                 .tag-style
                   p.tags {{ skill.text }}
+                {% endif %}
+                
                 {% empty %}
-                //p.plus-button +
-                input(type='text', name='skill', placeholder='+', onfocus="this.placeholder = ''", onblur="this.placeholder = '+'")
+                input.skill-input(type='text', name='skill', placeholder='+', onfocus="this.placeholder = ''", onblur="this.placeholder = '+'")
                 {% endfor %}
 
                 {% if skill %}
-                //p.plus-button +
-                input(type='text', name='skill', placeholder='+', onfocus="this.placeholder = ''", onblur="this.placeholder = '+'")
+                input.skill-input(type='text', name='skill', placeholder='+', onfocus="this.placeholder = ''", onblur="this.placeholder = '+'")
                 {% endif %}
 
-              .tag-field
+              .tag-field.interest-field
                 p 有興趣活動
                 {% for interest in interest %}
+                {% if not interest.is_hidden %}
                 .tag-style
                   p.tags {{ interest.text }}
+                {% endif %}
+
                 {% empty %}
-                //p.plus-button +
-                input(type='text', name='interest', placeholder='+', onfocus="this.placeholder = ''", onblur="this.placeholder = '+'")
+                input.interest-input(type='text', name='interest', placeholder='+', onfocus="this.placeholder = ''", onblur="this.placeholder = '+'")
                 {% endfor %}
 
                 {% if interest %}
-                //p.plus-button +
-                input(type='text', name='interest', placeholder='+', onfocus="this.placeholder = ''", onblur="this.placeholder = '+'")
+                input.interest-input(type='text', name='interest', placeholder='+', onfocus="this.placeholder = ''", onblur="this.placeholder = '+'")
                 {% endif %}
+              
+              script.
+                $(document).ready(function(){
+                  $(".personality-input").on("focusout", function() {
+                    tag_edit_handler(
+                    "{% url 'tag_edit' %}", 
+                    "{{ csrf_token }}", 
+                    $(".personality-input").val(),
+                    "personality");
+                  });
+
+                  $(".skill-input").on("focusout", function() {
+                    tag_edit_handler(
+                    "{% url 'tag_edit' %}", 
+                    "{{ csrf_token }}", 
+                    $(".skill-input").val(),
+                    "skill");
+                  });
+
+                  $(".interest-input").on("focusout", function() {
+                    tag_edit_handler(
+                    "{% url 'tag_edit' %}", 
+                    "{{ csrf_token }}", 
+                    $(".interest-input").val(),
+                    "interest");
+                  });
+
+                  $(".tags").on("click", function() {
+                    tag_delete_handler(
+                      "{% url 'tag_delete' %}",
+                      "{{ csrf_token }}",
+                      $(this).text(),
+                    );
+                    $(this).hide();
+                  })
+                })
 
               #buttons
                 
@@ -305,3 +344,4 @@ html
     script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
     script(src="{% static 'js/profile.js' %}")
+    script(src="{% static 'js/profile_edit.js' %}")

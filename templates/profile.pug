@@ -41,24 +41,30 @@ html
               .tag-field
                 p 個性
                 {% for personality in personality %}
+                {% if not personality.is_hidden %}
                 .tag-style
                   p.tags {{ personality.text }}
+                {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定個性
                 {% endfor %}
               .tag-field
                 p 專長
                 {% for skill in skill %}
+                {% if not skill.is_hidden %}
                 .tag-style
                   p.tags {{ skill.text }}
+                {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定專長
                 {% endfor %}
               .tag-field
                 p 有興趣活動
                 {% for interest in interest %}
+                {% if not interest.is_hidden %}
                 .tag-style
                   p.tags {{ interest.text }}
+                {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定有興趣的活動
                 {% endfor %}
