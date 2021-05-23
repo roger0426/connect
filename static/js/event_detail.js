@@ -54,6 +54,9 @@ function message_handler(URL, CSRF) {
     },
     dataType: 'json',
     success: function(data) {
+      if($(".eventmsg #eventmsg-right #eventmsg-righttop p#event-date").text() == '目前沒有留言喔～') {
+        $("#eventmsg-board").empty();
+      }
       let str = "<div class='eventmsg'> <a> <img class='sender' src='" + data.author_img_url +
           "'></img></a><div id='eventmsg-right'><div id='eventmsg-righttop'><a id='eventmsg-sendername'>" + 
           data.author_name + "</a><p id='event-date'>" + data.msg_date + "</p></div><div id='eventmsg-rightbottom'>" +
