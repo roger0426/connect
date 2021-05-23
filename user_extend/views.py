@@ -92,7 +92,8 @@ def modify(request, id):
 
   
 def profile_edit_view(request, id):
-
+  if(id != request.user.userextend.id):
+    return HttpResponseRedirect(reverse('profile_edit', args=[str(request.user.userextend.id)]))
   obj = UserExtend.objects.get(id=id)
   friend_count = obj.friends.count()
 
