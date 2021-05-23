@@ -5,6 +5,7 @@ from .models import EventsBoard, BoardMessage
 from site_notification.models import SiteNotification
 from .forms import EventCreateForm
 from user_extend.models import UserExtend
+from datetime import datetime, timedelta
 
 # Create your views here.
 def home_view(requests, *args, **kwargs):
@@ -107,6 +108,7 @@ def like_view(request):
         'add': True,
         'remove': False,
         'user_img_url': request.user.userextend.img.url,
+        'user_id': request.user.userextend.id,
         'status': '200'
       })
   return JsonResponse({
@@ -115,19 +117,39 @@ def like_view(request):
   })
   
 
-#functional view
+# #functional view
+# def comment_view(requests, event_id, id):
+#   if requests.method == "POST":
+#     event = get_object_or_404(EventsBoard, id=event_id)
+#     author = UserExtend.objects.get(id=id)
+#     if (requests.POST.get('text')) != "":
+#       comment_obj = BoardMessage.objects.create(
+#         author = author,
+#         for_event = event,
+#         text = requests.POST.get('text')
+#       )
+#       comment_obj.save()
+#   return HttpResponseRedirect(reverse('event_detail', args=[str(event_id)]))
+
+# ajax viewc
 def comment_view(requests, event_id, id):
   if requests.method == "POST":
     event = get_object_or_404(EventsBoard, id=event_id)
     author = UserExtend.objects.get(id=id)
-    if (requests.POST.get('text')) != "":
+    data = requests.POST
+    if (data.get('text')) != "":
       comment_obj = BoardMessage.objects.create(
         author = author,
         for_event = event,
-        text = requests.POST.get('text')
+        text = data.get('text')
       )
       comment_obj.save()
-  return HttpResponseRedirect(reverse('event_detail', args=[str(event_id)]))
+    return JsonResponse({
+      'author': author.id,
+      'author_img_url': author.img.url,
+      'author_name': author.full_name,
+      'msg_date': (comment_obj.date + timedelta(hours=8)).strftime("%b %d, %Y, %I:%M %p")
+    })
 
 
 def search_view(requests):

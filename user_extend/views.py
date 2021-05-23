@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import UserExtend, EventsBoard
 from django.contrib.auth.models import User
 from events_board.models import Comment
 from site_notification.models import SiteNotification
 from tags.models import Tag
 from django.core.files.storage import default_storage
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 # Create your views here.
 def update_profile(request, user_id):
@@ -156,3 +156,10 @@ def profile_edit_view(request, id):
     'notice': notification,
   }
   return render(request, 'profile_edit.pug', context)
+
+def get_user_view(request, id):
+  user = get_object_or_404(UserExtend, id=id)
+  return JsonResponse({
+    'full_name': user.full_name,
+    'img': user.img.url
+  })

@@ -50,16 +50,24 @@ link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/
       img#senderpic
       {% endif %}
       {% if request.user.is_authenticated %}
-      form.comment-operate-region(action="{% url 'comment' event_detail.pk request.user.userextend.pk %}", method="POST")
-        {% csrf_token %}
+      .comment-operate-region
         input.eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
-        input.eventmsg-btn(type="submit", value="送出")
+        input.eventmsg-btn(type="button", value="送出")
+        script.
+          $(document).ready(function(){
+            console.log('in script');
+            $(".eventmsg-btn").on("click", function() {
+              message_handler(
+              "{% url 'comment' event_detail.pk request.user.userextend.pk %}", 
+              "{{ csrf_token }}");
+            })
+          })
       {% else %}
       a.comment-operate-region(href="{% url 'login' %}")
         input.eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
         input.eventmsg-btn(type="submit", value="送出")
       {% endif %}
-  
+      
   #eventwindow-right
     #joinevent-btn
     
@@ -96,7 +104,6 @@ link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/
       script.
         $(document).ready(function(){
           $("#likebutton").on("click", function() {
-            console.log('in script')
             like_handler("{% url 'like' %}", "{{ csrf_token }}", "{{ event_detail.id }}");
           })
         })
