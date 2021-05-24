@@ -71,7 +71,7 @@ $(document).ready(function(){
     $("#eventwindow").animate({opacity: 0}, 400, function() {
       $("#eventwindow").hide();
     })
-    $("#filter1").animate({opacity: 0}, 400, function() {
+    $("#filter1").animate({opacity: 0}, 150, function() {
       $("#filter1").hide();
     })
   });
@@ -120,15 +120,6 @@ $(document).ready(function(){
   }, 450);
 
 
-  function duplicate(duplicateID) {
-    console.log("duplicate eventpost");
-    var original = document.getElementById(duplicateID);
-    var clone = original.cloneNode(true); // "deep" clone
-    clone_id = duplicateID;
-    // or clone.id = ""; if the divs don't need an ID
-    original.parentNode.insertBefore(clone, original.parentNode.firstChild);
-    //$("eventpost").parent.prepend();
-  }
 
   
   //按window外，關閉event window
@@ -150,4 +141,40 @@ $(document).ready(function(){
   });
   */
   
-})
+});
+
+function event_handler(URL, id, CSRF) {
+  $.ajaxSetup({
+    data: {
+      csrfmiddlewaretoken: CSRF
+    }
+  });
+  $.ajax({
+    type: "POST",
+    url: URL,
+    data: {
+      'event-id': id,
+    },
+    dataType: 'json',
+    success: function(data) {
+      console.log("ajax success----------");
+      console.log("title:", data.title);
+      console.log("subtitle:", data.subtitle);
+      console.log("image:", data.image);
+      
+    },
+    error: function(data) {
+      console.log("ajax error");
+    }
+  })
+};
+
+function duplicate(duplicateID) {
+  console.log("duplicate eventpost");
+  var original = document.getElementById(duplicateID);
+  var clone = original.cloneNode(true); // "deep" clone
+  clone_id = duplicateID;
+  // or clone.id = ""; if the divs don't need an ID
+  original.parentNode.insertBefore(clone, original.parentNode.firstChild);
+  //$("eventpost").parent.prepend();
+};

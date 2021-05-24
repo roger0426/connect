@@ -59,7 +59,7 @@ html
               
         #eventboard
           {% for event in event_obj %}
-          a(id="post" href="{% url 'event_detail' id=event.pk %}" margin='0')
+          a(id='{{ event.pk }}' margin='0')
             .eventpost
               .posttop
                 p#post_title.title {{ event.title }}
@@ -93,11 +93,20 @@ html
                 img#likeicon(src="{% static 'file/like-grey.png' %}")
                 {% endif %}
                 p#likesnum {{ event.number_of_likes }}
-                
           {% empty %}
           #eventpost
             p no event
           {% endfor %}
+          
+          script.
+            $('a').on("click", function() {
+              console.log(this.id);
+              $("#eventwindow").show();
+              //$("#filter1").show();
+              event_handler("event/" + this.id, this.id, "{{ csrf_token }}");
+              
+              
+            });
           
           #virtualdiv
             .eventpost

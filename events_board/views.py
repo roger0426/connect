@@ -29,29 +29,62 @@ def home_view(requests, *args, **kwargs):
   return render(requests, 'homepage.pug', context)
 
 
-def event_detail_view(requests, id, *args, **kwargs):
-  obj = EventsBoard.objects.order_by('-create_date')
-  event_detail = EventsBoard.objects.get(id=id)
-  form = EventCreateForm(requests.POST, requests.FILES or None)
-  if(requests.user.is_authenticated):
-    notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
-  else:
-    notification = None
-
-  if form.is_valid():
-    instance = form.save(commit=False)
-    instance.host = requests.user.userextend
-    instance.save()
-    return HttpResponseRedirect('/')
+#def event_detail_view(requests, id, *args, **kwargs):
+#  obj = EventsBoard.objects.order_by('-create_date')
+#  event_detail = EventsBoard.objects.get(id=id)
+#  form = EventCreateForm(requests.POST, requests.FILES or None)
+#  if(requests.user.is_authenticated):
+#    notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+#  else:
+#    notification = None
+#
+#  if form.is_valid():
+#    instance = form.save(commit=False)
+#    instance.host = requests.user.userextend
+#    instance.save()
+#    return HttpResponseRedirect('/')
+#  context = {
+#    'event_obj': obj,
+#    'form': form,
+#    'event_detail': event_detail,
+#    'notice': notification,
+#  }
+#  return render(requests, 'homepage.pug', context)
   
-  context = {
-    'event_obj': obj,
-    'form': form,
-    'event_detail': event_detail,
-    'notice': notification,
-  }
   
-  return render(requests, 'homepage.pug', context)
+def event_detail_view(requests, id):
+  if requests.method == "POST":
+    event = get_object_or_404(EventsBoard, id=id)
+#    if (data.get('event-id')) != "":
+#      comment_obj = BoardMessage.objects.create(
+#        author = author,
+#        for_event = event,
+#        text = data.get('text')
+#      )
+#      comment_obj.save()
+    
+    
+    image_url =  event.image.url if event.image != "" else None
+    event_detail = event.detail if event.detail != "" else None
+    
+    
+    
+    return JsonResponse({
+      'title': event.title,
+      'subtitle': event.subtitle,
+      'image': image_url,
+      'detail': event_detail,
+      'create_date': event.create_date,
+      'event_date': event.event_date,
+      
+      
+      'status': 200,
+      'error_message': 'No error'
+    })
+  return JsonResponse({
+    'status': 404,
+    'error_message': 'Not ajax request'
+  })
 
 # # functional view
 # def like_view(requests, id):
