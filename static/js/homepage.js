@@ -82,7 +82,7 @@ $(document).ready(function(){
       $('input[type=text]').val('');
       $('textarea').val('');
       $('#id_image').val('');
-      $("#eventcreatewindow").css({'content-visibility':  'hidden'});
+      $("#eventcreatewindow").css({'content-visibility': 'hidden'});
     })
     $("#filter1").animate({opacity: 0}, 150, function() {
       $("#filter1").hide();
@@ -92,7 +92,9 @@ $(document).ready(function(){
   $("#submit-btn").click(function() {
     console.log("click event submit");
     console.log($("#id_title").val().length)
+    duplicate('post');
     if ($("#id_title").val().length > 0 && $("#id_detail").val().length > 0) {
+      
       $("#eventcreatewindow").animate({opacity: 0}, 400, function() {
         $("#eventcreatewindow").hide();
       })
@@ -115,9 +117,18 @@ $(document).ready(function(){
 
   let intervalId = window.setInterval(function(){ // check every 0.5 seconds
     $('#insertbar').toggle();
-
   }, 450);
 
+
+  function duplicate(duplicateID) {
+    console.log("duplicate eventpost");
+    var original = document.getElementById(duplicateID);
+    var clone = original.cloneNode(true); // "deep" clone
+    clone_id = duplicateID;
+    // or clone.id = ""; if the divs don't need an ID
+    original.parentNode.insertBefore(clone, original.parentNode.firstChild);
+    //$("eventpost").parent.prepend();
+  }
 
   
   //按window外，關閉event window

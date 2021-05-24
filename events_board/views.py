@@ -148,7 +148,7 @@ def comment_view(requests, event_id, id):
       'author': author.id,
       'author_img_url': author.img.url,
       'author_name': author.full_name,
-      'msg_date': (comment_obj.date + timedelta(hours=8)).strftime("%b %d, %Y, %I:%M %p")
+      'msg_date': (comment_obj.date + timedelta(hours=8)).strftime("%b %d, %Y, %-I:%-M %p")
     })
 
 

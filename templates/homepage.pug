@@ -59,9 +59,9 @@ html
               
         #eventboard
           {% for event in event_obj %}
-          a(href="{% url 'event_detail' id=event.pk %}" margin='0')
-            #eventpost
-              #posttop
+          a(id="post" href="{% url 'event_detail' id=event.pk %}" margin='0')
+            .eventpost
+              .posttop
                 p#post_title.title {{ event.title }}
                 p#post_subtitle.subtitle {{ event.subtitle }}
                 {% if event.image %}
@@ -83,7 +83,7 @@ html
                 #postwanted
                   //p {{ event.people_wanted }}
                 
-              #postbottom
+              .postbottom
                 img#commenticon(src="{% static 'file/participant.png' %}")
                 p#commentnum {{ event.number_of_participants }}
               
@@ -99,9 +99,8 @@ html
             p no event
           {% endfor %}
           
-          //如果event個數 % 3 = 2，建立一個虛擬div
           #virtualdiv
-            #eventpost
+            .eventpost
             
                 
         

@@ -24,7 +24,7 @@ link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/
       p#msgtitle 留言板
       #eventmsg-board
         {% for eventmsg in event_detail.board_message.all reversed %}
-        .eventmsg
+        .eventmsg#eventmsg
           a(href="{% url 'profile' id=eventmsg.author.pk %}")
             img.sender(src='{{ eventmsg.author.img.url }}')
           #eventmsg-right

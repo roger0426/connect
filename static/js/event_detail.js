@@ -57,13 +57,37 @@ function message_handler(URL, CSRF) {
       if($(".eventmsg #eventmsg-right #eventmsg-righttop p#event-date").text() == '目前沒有留言喔～') {
         $("#eventmsg-board").empty();
       }
-      let str = "<div class='eventmsg'> <a> <img class='sender' src='" + data.author_img_url +
-          "'></img></a><div id='eventmsg-right'><div id='eventmsg-righttop'><a id='eventmsg-sendername'>" + 
-          data.author_name + "</a><p id='event-date'>" + data.msg_date + "</p></div><div id='eventmsg-rightbottom'>" +
-          "<p id='eventmsgtext'>" + $("input.eventmsg-insert").val() + "</p></div></div>";
-      console.log(str);
-      $("#eventmsg-board").prepend(str);
+//      let str = "<div class='eventmsg'> <a> <img class='sender' src='" + data.author_img_url +
+//          "'></img></a><div id='eventmsg-right'><div id='eventmsg-righttop'><a id='eventmsg-sendername'>" +
+//          data.author_name + "</a><p id='event-date'>" + data.msg_date + "</p></div><div id='eventmsg-rightbottom'>" +
+//          "<p id='eventmsgtext'>" + $("input.eventmsg-insert").val() + "</p></div></div>";
+//      console.log(str);
+      
+      
+      var clone_id = duplicate('eventmsg');
+      console.log(clone_id);
+      //$('#' + clone_id).css({'background-color': 'red'});
+      $('#' + clone_id + " img").attr('src', data.author_img_url);
+      $('#' + clone_id + ' #eventmsg-sendername').html(data.author_name);
+      $('#' + clone_id + ' #event-date').html(data.msg_date);
+      $('#' + clone_id + " #eventmsgtext").html($("input.eventmsg-insert").val());
+      console.log($("input.eventmsg-insert").val());
+      
+      
+      //$("#eventmsg-board").prepend(str);
+      
       $("input.eventmsg-insert").val("");
     }
   })
+}
+
+var i = 0;
+function duplicate(duplicateID) {
+  console.log("duplicate eventpost");
+  var original = document.getElementById(duplicateID);
+  var clone = original.cloneNode(true); // "deep" clone
+  clone.id = duplicateID + '_new' + ++i;
+  // or clone.id = ""; if the divs don't need an ID
+  original.parentNode.insertBefore(clone, original.parentNode.firstChild);
+  return clone.id
 }
