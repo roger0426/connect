@@ -85,6 +85,8 @@ def event_detail_view(requests, id):
       'event_date': event.event_date,
       'likes': likes,
       'participants': participants,
+      'host_id': event.host.pk,
+      'host_pic': event.host.img.url,
       
       
       'status': 200,

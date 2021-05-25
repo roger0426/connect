@@ -157,6 +157,7 @@ function event_handler(URL, id, CSRF) {
     },
     dataType: 'json',
     success: function(data) {
+      
       console.log("ajax success----------");
       console.log(data)
       console.log("title:", data.title);
@@ -164,9 +165,12 @@ function event_handler(URL, id, CSRF) {
       console.log("host:", data.host);
       console.log("image:", data.image);
       console.log("likes", data.likes);
+      console.log("host:", data.host_id);
+      console.log("host-pic:", data.host_pic);
       
       if(data.image != null) {
         $("#eventwindow" + " #eventpic" + " img").attr('src', data.image);
+        $("#eventwindow" + " #eventpic" + " img").show();
         $("#eventwindow" + " #eventpic" + " p").hide();
       }
       else {
@@ -178,9 +182,19 @@ function event_handler(URL, id, CSRF) {
       $("#eventwindow" + " #description" + " #event-date").html("活動日期<br />" + data.event_date);
       $("#eventwindow" + " #event-detail").html(data.detail);
       
-      
+      $("#eventwindow" + " #eventoperate" + " #organizer-link").attr('href', "/profile/" + data.host_id);
+      $("#eventwindow" + " #eventoperate" + " #organizer-pic").attr('src', data.host_pic);
       
     },
+    
+    complete: function(data) {
+      $("#eventwindow").css({'display': 'flex'});
+      $("#filter1").show();
+//      $("#eventwindow").css({'opacity': 1});
+      $("#eventwindow").animate({'opacity': 1}, 200);
+      $("#filter1").animate({'opacity': 1}, 200);
+    },
+    
     error: function(data) {
       console.log("ajax error");
     }

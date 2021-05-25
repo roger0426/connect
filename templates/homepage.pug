@@ -102,12 +102,6 @@ html
             $('a').on("click", function() {
               console.log(this.id);
               event_handler("event/" + this.id, this.id, "{{ csrf_token }}");
-              
-              
-              $("#eventwindow").css({'display': 'flex'});
-              $("#eventwindow").css({'opacity': 1});
-              $("#filter1").show();
-              $("#filter1").css({'opacity': 1});
             });
           
           #virtualdiv
@@ -198,8 +192,8 @@ html
             a
               img#exitbtn1(src="{% static 'file/exiticon.png' %}")
               
-            a(href="#")
-              img#organizer.member(src='{{ event_detail.host.img.url }}')
+            a#organizer-link(href="#")
+              img#organizer-pic.member(src='{{ event_detail.host.img.url }}')
             #bar
             #member
               
