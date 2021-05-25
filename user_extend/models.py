@@ -8,7 +8,7 @@ class UserExtend(models.Model):
   img = models.ImageField(upload_to='user/', default='user/user_img_default.png')
 
   personal_description = models.TextField(
-    max_length=400,
+    max_length=300,
     default='喔喔，看來他還沒想好介紹')
 
   school = models.CharField(
@@ -48,5 +48,15 @@ class UserExtend(models.Model):
     blank = True,
     null = True
   )
+  @property
+  def image_url(self):
+    from django.contrib.sites.models import Site
+
+    domain = Site.objects.get_current().domain
+    url = 'http://{domain}'.format(domain=domain)
+
+    if self.img and hasattr(self.img, 'url'):
+      return url + self.img.url
+  
   def __str__(self):
-       return "User {0}".format(self.user.username)
+    return "User {0}".format(self.user.username)

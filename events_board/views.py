@@ -6,6 +6,8 @@ from site_notification.models import SiteNotification
 from .forms import EventCreateForm
 from user_extend.models import UserExtend
 from datetime import datetime, timedelta
+from django.forms.models import model_to_dict
+
 
 # Create your views here.
 def home_view(requests, *args, **kwargs):
@@ -66,16 +68,23 @@ def event_detail_view(requests, id):
     
     image_url =  event.image.url if event.image != "" else None
     event_detail = event.detail if event.detail != "" else None
+    likes = list(event.likes.all().values())
+    participants = list(event.participants.all().values())
+    host =  model_to_dict(event.host, fields=['id', 'full_name', 'image_url'])
+    print(host)
     
     
     
     return JsonResponse({
       'title': event.title,
       'subtitle': event.subtitle,
+      'host': host,
       'image': image_url,
       'detail': event_detail,
       'create_date': event.create_date,
       'event_date': event.event_date,
+      'likes': likes,
+      'participants': participants,
       
       
       'status': 200,

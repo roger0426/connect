@@ -158,9 +158,12 @@ function event_handler(URL, id, CSRF) {
     dataType: 'json',
     success: function(data) {
       console.log("ajax success----------");
+      console.log(data)
       console.log("title:", data.title);
       console.log("subtitle:", data.subtitle);
+      console.log("host:", data.host);
       console.log("image:", data.image);
+      console.log("likes", data.likes);
       
       if(data.image != null) {
         $("#eventwindow" + " #eventpic" + " img").attr('src', data.image);
