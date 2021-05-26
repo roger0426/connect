@@ -39,41 +39,35 @@ html
               #description-background
                 p#description {{ user.personal_description }}
               .tag-field
-                .tag-commend
-                  #tag-commend-send-region 
-                    {% if request.user.is_authenticated %}
-                    a(href="{% url 'profile' id=request.user.userextend.pk %}")
-                      img#senderpic(src="{{ request.user.userextend.img.url }}")
-                    {% else %}
-                    img#senderpic(src="{% static 'file/personicon.png' %}")
-                    {% endif %}
-                    {% if request.user.is_authenticated %}
-                    .cmd-txt-region 
-                      input#comment-insert(type="text",name='text',placeholder="對於他的看法？")
-                    button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
-                      script.
-                        $(document).ready(function(){
-                          $("button").on("click", function() {
-                          })
-                        })
-                    {% else %}
-                    a.cmd-txt-region(href="{% url 'login' %}")
-                      input.comment-insert(type="text", name='text', placeholder="對於他的看法？")
-                    button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
-                    {% endif %}
-                  #tag-commend-board
-                    .tagcmd-wrap
-                      #tagfrom 
-                        img.sender(src="{% static 'file/personicon.png' %}")
-                      #tagtext 
-                        p#tagcmd-text 好棒
                 
-                    
                 p 個性
                 {% for personality in personality %}
                 {% if not personality.is_hidden %}
                 .tag-style
                   p.tags {{ personality.text }}
+                  .tag-commend
+                    #tag-commend-send-region
+                      {% if request.user.is_authenticated %}
+                      a(href="{% url 'profile' id=request.user.userextend.pk %}")
+                        img#senderpic(src="{{ request.user.userextend.img.url }}")
+                      {% else %}
+                      img#senderpic(src="{% static 'file/personicon.png' %}")
+                      {% endif %}
+                      {% if request.user.is_authenticated %}
+                      .cmd-txt-region
+                        input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
+                      button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
+                      {% else %}
+                      a.cmd-txt-region(href="{% url 'login' %}")
+                        input.comment-insert(type="text", name='text', placeholder="對於他的看法？")
+                      button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
+                      {% endif %}
+                    #tag-commend-board
+                      .tagcmd-wrap
+                        #tagfrom
+                          img.sender(src="{% static 'file/personicon.png' %}")
+                        #tagtext
+                          p#tagcmd-text 好棒
                 {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定個性
@@ -84,6 +78,29 @@ html
                 {% if not skill.is_hidden %}
                 .tag-style
                   p.tags {{ skill.text }}
+                  .tag-commend
+                    #tag-commend-send-region
+                      {% if request.user.is_authenticated %}
+                      a(href="{% url 'profile' id=request.user.userextend.pk %}")
+                        img#senderpic(src="{{ request.user.userextend.img.url }}")
+                      {% else %}
+                      img#senderpic(src="{% static 'file/personicon.png' %}")
+                      {% endif %}
+                      {% if request.user.is_authenticated %}
+                      .cmd-txt-region
+                        input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
+                      button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
+                      {% else %}
+                      a.cmd-txt-region(href="{% url 'login' %}")
+                        input.comment-insert(type="text", name='text', placeholder="對於他的看法？")
+                      button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
+                      {% endif %}
+                    #tag-commend-board
+                      .tagcmd-wrap
+                        #tagfrom
+                          img.sender(src="{% static 'file/personicon.png' %}")
+                        #tagtext
+                          p#tagcmd-text 好棒
                 {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定專長
@@ -94,6 +111,29 @@ html
                 {% if not interest.is_hidden %}
                 .tag-style
                   p.tags {{ interest.text }}
+                  .tag-commend
+                    #tag-commend-send-region
+                      {% if request.user.is_authenticated %}
+                      a(href="{% url 'profile' id=request.user.userextend.pk %}")
+                        img#senderpic(src="{{ request.user.userextend.img.url }}")
+                      {% else %}
+                      img#senderpic(src="{% static 'file/personicon.png' %}")
+                      {% endif %}
+                      {% if request.user.is_authenticated %}
+                      .cmd-txt-region
+                        input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
+                      button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
+                      {% else %}
+                      a.cmd-txt-region(href="{% url 'login' %}")
+                        input.comment-insert(type="text", name='text', placeholder="對於他的看法？")
+                      button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
+                      {% endif %}
+                    #tag-commend-board
+                      .tagcmd-wrap
+                        #tagfrom
+                          img.sender(src="{% static 'file/personicon.png' %}")
+                        #tagtext
+                          p#tagcmd-text 好棒
                 {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定有興趣的活動

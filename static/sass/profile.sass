@@ -117,6 +117,7 @@ footer
       width: auto
       padding: 1.5vw
       border: solid 2px #FFCFBF
+      z-index: 3
       
       #info
         display: flex
@@ -243,63 +244,73 @@ footer
             font-size: 0.9vw
             margin: 0 0.5vw
             padding: 0.3vw
+            
+          
+          .tag-style:hover
+            background-color: #FFAD94
+            .tag-commend
+              display: flex
+            
           .tag-style
-            width: 7vw
+            min-width: 5vw
             background-color: #FFCFBF
             border-radius: 1vw
             margin-right: 0.5vw
-            
-          .tag-style:hover
-            background-color: #FFAD94
 
-        .tag-commend
-          background-color: #FFCFBF 
-          border-radius: 1vw
-          z-index: 4
-          width: 18vw
-          height: auto  
-          margin: 1vw
-          display: flex
-          flex-direction: column
-          justify-content: space-around
+            .tag-commend
+              display: none
+              //display: flex
+              flex-direction: column
+              justify-content: space-around
+              position: absolute
+              
+              background-color: #FFCFBF
+              border-radius: 1vw
+              z-index: 4
+              width: 18vw
+              height: auto
+              margin: 1vw
 
-          #sendbutton
-            width: 2.5vw
-            height: 2.5vw
-          
-          #tag-commend-send-region
-            margin: 1vw
-            display: flex
-            flex-direction: row
-            align-items: center
-            justify-content: center
-
-            .comment-insert
-              width: 7.5vw
-              background-color: #FFFFFF
-
-          #tag-commend-board
-            background-color: #FFFFFF
-            margin: 0vw 1vw 1vw 1vw
-            border-radius: 0.75vw
-
-            .tagcmd-wrap
-              display: flex
-              flex-direction: row
-              flex-wrap: nowrap
-              align-items: center
-              margin: 0.75vw
-
-              #tagfrom
-                background-color: #646464
+              #sendbutton
                 width: 2.5vw
                 height: 2.5vw
-                border-radius: 50%
+              
+              #tag-commend-send-region
+                margin: 1vw
+                display: flex
+                flex-direction: row
+                align-items: center
+                justify-content: center
 
-              #tagcmd-text
-                background-color: #FFE4DC
-                width: 11vw
-                border-radius: 1vw
+                #senderpic
+                  width: 3vw
+                  height: 3vw
+                .comment-insert
+                  width: 7.5vw
+                  background-color: #FFFFFF
+
+              #tag-commend-board
+                background-color: #FFFFFF
+                margin: 0vw 1vw 1vw 1vw
+                border-radius: 0.75vw
+
+                .tagcmd-wrap
+                  display: flex
+                  flex-direction: row
+                  flex-wrap: nowrap
+                  align-items: center
+                  margin: 0.75vw
+
+                  #tagfrom
+                    background-color: #646464
+                    width: 2.5vw
+                    height: 2.5vw
+                    border-radius: 50%
+
+                  #tagcmd-text
+                    background-color: #FFE4DC
+                    width: 11vw
+                    border-radius: 1vw
                 
 
 
