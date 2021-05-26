@@ -51,7 +51,8 @@ html
                 {% for personality in personality %}
                 {% if not personality.is_hidden %}
                 .tag-style
-                  p.tags {{ personality.text }}
+                  p.tags.normaltag {{ personality.text }}
+                  p.tags.deletetag 刪除
                 {% endif %}
                   
                 {% empty %}
@@ -67,7 +68,8 @@ html
                 {% for skill in skill %}
                 {% if not skill.is_hidden %}
                 .tag-style
-                  p.tags {{ skill.text }}
+                  p.tags.normaltag {{ skill.text }}
+                  p.tags.deletetag 刪除
                 {% endif %}
                 
                 {% empty %}
@@ -83,7 +85,8 @@ html
                 {% for interest in interest %}
                 {% if not interest.is_hidden %}
                 .tag-style
-                  p.tags {{ interest.text }}
+                  p.tags.normaltag {{ interest.text }}
+                  p.tags.deletetag 刪除
                 {% endif %}
 
                 {% empty %}
@@ -124,9 +127,9 @@ html
                     tag_delete_handler(
                       "{% url 'tag_delete' %}",
                       "{{ csrf_token }}",
-                      $.trim($(this).text()),
+                      $.trim($(this).parent().find('.normaltag').text()),
                     );
-                    $(this).hide();
+                    $(this).parent().hide();
                   })
                 })
 

@@ -7,6 +7,27 @@ $(document).ready(function(){
   });
   
   
+  $(".normaltag").mouseenter(function() {
+    if($(this).parent().find('.deletetag').css({'display': 'none'}).length == 0) {
+      $(this).parent().css({'background-color': '#FFAD94'});
+    }
+  });
+  $('.normaltag').mouseleave(function() {
+    if($(this).parent().find('.deletetag').css({'display': 'none'}).length == 0) {
+      $(this).parent().css({'background-color': '#FFCFBF'});
+    }
+  });
+  
+  $(".normaltag").click(function() {
+    if($(this).parent().find('.tag-commend').css("display") == "none") {
+      $(this).parent().find('.tag-commend').css({'display': 'flex'});
+      $(".normaltag").not(this).parent().find('.tag-commend').css({'display': 'none'});
+    }
+    else {
+      $(this).parent().find('.tag-commend').css({'display': 'none'});
+    }
+  });
+  
   $("#tab-navbar :nth-child(1),#tag1").on('click touch', function(){
     console.log("1");
     $('#activities').show();

@@ -44,7 +44,7 @@ html
                 {% for personality in personality %}
                 {% if not personality.is_hidden %}
                 .tag-style
-                  p.tags {{ personality.text }}
+                  p.tags.normaltag {{ personality.text }}
                   .tag-commend
                     #tag-commend-send-region
                       {% if request.user.is_authenticated %}
@@ -77,7 +77,7 @@ html
                 {% for skill in skill %}
                 {% if not skill.is_hidden %}
                 .tag-style
-                  p.tags {{ skill.text }}
+                  p.tags.normaltag {{ skill.text }}
                   .tag-commend
                     #tag-commend-send-region
                       {% if request.user.is_authenticated %}
@@ -110,7 +110,7 @@ html
                 {% for interest in interest %}
                 {% if not interest.is_hidden %}
                 .tag-style
-                  p.tags {{ interest.text }}
+                  p.tags.normaltag {{ interest.text }}
                   .tag-commend
                     #tag-commend-send-region
                       {% if request.user.is_authenticated %}
