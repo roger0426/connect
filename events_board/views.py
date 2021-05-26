@@ -57,14 +57,6 @@ def home_view(requests, *args, **kwargs):
 def event_detail_view(requests, id):
   if requests.method == "POST":
     event = get_object_or_404(EventsBoard, id=id)
-#    if (data.get('event-id')) != "":
-#      comment_obj = BoardMessage.objects.create(
-#        author = author,
-#        for_event = event,
-#        text = data.get('text')
-#      )
-#      comment_obj.save()
-    
     
     image_url =  event.image.url if event.image != "" else None
     event_detail = event.detail if event.detail != "" else None
@@ -72,7 +64,6 @@ def event_detail_view(requests, id):
     participants = list(event.participants.all().values())
     host =  model_to_dict(event.host, fields=['id', 'full_name', 'image_url'])
     print(host)
-    
     
     
     return JsonResponse({

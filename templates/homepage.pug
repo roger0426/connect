@@ -99,7 +99,7 @@ html
           {% endfor %}
           
           script.
-            $('a').on("click", function() {
+            $('#eventboard a').on("click", function() {
               console.log(this.id);
               event_handler("event/" + this.id, this.id, "{{ csrf_token }}");
             });
@@ -197,16 +197,17 @@ html
             #bar
             #member
               
+              //-
+                {% for participant in event_detail.participants.all %}
+                a(href="{% url 'profile' id=participant.pk %}")
+                  img.member.participant(src='{{ participant.img.url }}')
+                {% endfor %}
+  
+                {% for interested_user in event_detail.likes.all %}
+                a(href="{% url 'profile' id=interested_user.pk %}")
+                  img.member.interested(src='{{ interested_user.img.url }}')
+                {% endfor %}
               
-              {% for participant in event_detail.participants.all %}
-              a(href="{% url 'profile' id=participant.pk %}")
-                img.member.participant(src='{{ participant.img.url }}')
-              {% endfor %}
-
-              {% for interested_user in event_detail.likes.all %}
-              a(href="{% url 'profile' id=interested_user.pk %}")
-                img.member.interested(src='{{ interested_user.img.url }}')
-              {% endfor %}
             {% if request.user.is_authenticated %}
             
             {% if event_detail in request.user.userextend.event_like.all %}

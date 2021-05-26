@@ -165,6 +165,7 @@ function event_handler(URL, id, CSRF) {
       console.log("host:", data.host);
       console.log("image:", data.image);
       console.log("likes", data.likes);
+      console.log("participants:", data.particitants);
       console.log("host:", data.host_id);
       console.log("host-pic:", data.host_pic);
       
@@ -185,6 +186,26 @@ function event_handler(URL, id, CSRF) {
       $("#eventwindow" + " #eventoperate" + " #organizer-link").attr('href', "/profile/" + data.host_id);
       $("#eventwindow" + " #eventoperate" + " #organizer-pic").attr('src', data.host_pic);
       
+      $("#member").html("");
+      
+      if(data.likes != undefined) {
+        data.likes.forEach(function(item, i) {
+          console.log(item.full_name);
+          
+          let str = "<a href=\"/profile/" + item.id + "\"><img class=\"member interested\" src=\"" + item.img + "\"></img></a>";
+          
+          $("#eventoperate #member").prepend(str);
+        });
+      };
+      if(data.particitants != undefined) {
+        data.particitants.forEach(function(item, i) {
+          console.log(item.full_name);
+          
+          let str = "<a href=\"/profile/" + item.id + "\"><img class=\"member participant\" src=\"" + item.img + "\"></img></a>";
+          
+          $("#eventoperate #member").prepend(str);
+        });
+      };
     },
     
     complete: function(data) {
@@ -193,6 +214,8 @@ function event_handler(URL, id, CSRF) {
 //      $("#eventwindow").css({'opacity': 1});
       $("#eventwindow").animate({'opacity': 1}, 200);
       $("#filter1").animate({'opacity': 1}, 200);
+      
+      
     },
     
     error: function(data) {
