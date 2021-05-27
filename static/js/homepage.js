@@ -46,7 +46,7 @@ $(document).ready(function(){
       else {
         $("#eventcreatewindow").css({'content-visibility': 'visible'});
       }
-      $("#eventcreatewindow").animate({opacity: 1}, 400);
+      $("#eventcreatewindow").animate({opacity: 1}, 200);
     })
     //$("#sent").toggle();
   });

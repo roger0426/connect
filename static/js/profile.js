@@ -7,16 +7,16 @@ $(document).ready(function(){
   });
   
   
-  $(".normaltag").mouseenter(function() {
-    if($(this).parent().find('.deletetag').css({'display': 'none'}).length == 0) {
-      $(this).parent().css({'background-color': '#FFAD94'});
-    }
-  });
-  $('.normaltag').mouseleave(function() {
-    if($(this).parent().find('.deletetag').css({'display': 'none'}).length == 0) {
-      $(this).parent().css({'background-color': '#FFCFBF'});
-    }
-  });
+//  $(".normaltag").mouseenter(function() {
+//    if($(this).parent().find('.deletetag').css({'display': 'none'}).length == 0) {
+//      $(this).parent().css({'background-color': '#FFAD94'});
+//    }
+//  });
+//  $('.normaltag').mouseleave(function() {
+//    if($(this).parent().find('.deletetag').css({'display': 'none'}).length == 0) {
+//      $(this).parent().css({'background-color': '#FFCFBF'});
+//    }
+//  });
   
   $(".normaltag").click(function() {
     if($(this).parent().find('.tag-commend').css("display") == "none") {
@@ -26,6 +26,14 @@ $(document).ready(function(){
     else {
       $(this).parent().find('.tag-commend').css({'display': 'none'});
     }
+  });
+  
+  
+  $('#friends-avatar a').mouseenter(function() {
+    $(this).find('#friend-hover').css({'display': 'block'});
+  });
+  $('#friends-avatar a').mouseleave(function() {
+    $(this).find('#friend-hover').css({'display': 'none'});
   });
   
   $("#tab-navbar :nth-child(1),#tag1").on('click touch', function(){

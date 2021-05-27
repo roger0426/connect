@@ -39,7 +39,6 @@ html
               #description-background
                 p#description {{ user.personal_description }}
               .tag-field
-                
                 p 個性
                 {% for personality in personality %}
                 {% if not personality.is_hidden %}
@@ -47,20 +46,13 @@ html
                   p.tags.normaltag {{ personality.text }}
                   .tag-commend
                     #tag-commend-send-region
-                      {% if request.user.is_authenticated %}
+                      {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
-                      {% else %}
-                      img#senderpic(src="{% static 'file/personicon.png' %}")
-                      {% endif %}
-                      {% if request.user.is_authenticated %}
                       .cmd-txt-region
                         input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
                       button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
                       {% else %}
-                      a.cmd-txt-region(href="{% url 'login' %}")
-                        input.comment-insert(type="text", name='text', placeholder="對於他的看法？")
-                      button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
                       {% endif %}
                     #tag-commend-board
                       .tagcmd-wrap
@@ -80,20 +72,13 @@ html
                   p.tags.normaltag {{ skill.text }}
                   .tag-commend
                     #tag-commend-send-region
-                      {% if request.user.is_authenticated %}
+                      {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
-                      {% else %}
-                      img#senderpic(src="{% static 'file/personicon.png' %}")
-                      {% endif %}
-                      {% if request.user.is_authenticated %}
                       .cmd-txt-region
                         input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
                       button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
                       {% else %}
-                      a.cmd-txt-region(href="{% url 'login' %}")
-                        input.comment-insert(type="text", name='text', placeholder="對於他的看法？")
-                      button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
                       {% endif %}
                     #tag-commend-board
                       .tagcmd-wrap
@@ -113,20 +98,13 @@ html
                   p.tags.normaltag {{ interest.text }}
                   .tag-commend
                     #tag-commend-send-region
-                      {% if request.user.is_authenticated %}
+                      {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
-                      {% else %}
-                      img#senderpic(src="{% static 'file/personicon.png' %}")
-                      {% endif %}
-                      {% if request.user.is_authenticated %}
                       .cmd-txt-region
                         input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
                       button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
                       {% else %}
-                      a.cmd-txt-region(href="{% url 'login' %}")
-                        input.comment-insert(type="text", name='text', placeholder="對於他的看法？")
-                      button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
                       {% endif %}
                     #tag-commend-board
                       .tagcmd-wrap
@@ -158,6 +136,11 @@ html
               {% for friend in user.friends.all %}
               a(href="{% url 'profile' id=friend.userextend.pk %}")
                 img.friend-img(src="{{ friend.userextend.img.url }}")
+                #friend-hover
+                  p#friend-detail 他們曾經一起參與了3個活動
+                  #friend-detail-list
+                    p 週末開車台北徵乘客兩名
+                    p 臺南深夜亂亂拍
               {% empty %}
               p 快去建立連結吧
               {% endfor %}
@@ -226,6 +209,7 @@ html
                   {% else %}
                   p.date 未設定日期
                   {% endif %}
+                  p.detail {{ activity.detail}}
                 
                 .cardright
                   .info
@@ -253,6 +237,10 @@ html
                         #participant-comment
                           p 這個活動好像還沒有評論
                     {% endfor %}
+                  #event-comment-insert
+                    input.event-comment-text(type="text" id="event{{ activity.pk }}commment")
+                    input.event-comment-btn(type="button" value="送出")
+                    
 
               {% empty %}
               #activity-card.card

@@ -182,20 +182,24 @@ footer
           #department
             font-size: 1.2vw
             margin-right: 0.5vw
+            
           #grade
             font-size: 1vw
-            line-height: 1.2vw
+            //line-height: 1.2vw
+            padding-bottom: 0.2vw
           
           input
-            width: 6vw
+            font-size: 0.8vw
+            text-align: center
+            width: 5.5vw
             border-radius: 3vw
             outline: none
             border: none
-            padding: 0.3vw 0 0.3vw 1vw
-
+            padding: 0.3vw 0.7vw 0.3vw 0.7vw
             background-color: var(--background-color-field)
           input::placeholder
-            font-size: 0.8vw
+            font-size: 1vw
+            width: 5vw
       
       #description-tag
         display: flex
@@ -257,6 +261,8 @@ footer
             color: #555555
             
             
+          .tag-style:hover
+            background-color: #FFAD94
             
           .tag-style
             position: relative
@@ -455,6 +461,18 @@ footer
       justify-content: space-around
       align-items: flex-start
       
+      #friend-hover
+        display: none
+        position: absolute
+        //width: 14vw
+        //height: 5vw
+        padding: 1vw
+        border-radius: 0.5vw
+        background-color: yellow
+        
+        p
+          font-size: 1vw
+      
       .friend-img
         width: 3.2vw
         height: 3.2vw
@@ -542,6 +560,8 @@ footer
         border: solid 2px
         border-color: #75E1C7
         
+        content-visibility: auto
+        
       .cardleft
         display: flex
         flex-direction: column
@@ -565,6 +585,9 @@ footer
           color: gray
           margin-top: 1.5vw
           
+        .detail
+          margin: 1vw
+          font-size: 1vw
       
       .cardright
         display: flex
@@ -667,6 +690,18 @@ footer
                 width: 12vw
                 margin: 0.1vw 1.2vw 0 1vw
                 color: #333333
+        #event-comment-insert
+          position: absolute
+          bottom: 2vw
+          display: flex
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          
+          .event-comment-text
+            width: 15vw
+          .event-comment-btn
+            
 
     #personal-title
       font-size: 1.6vw
