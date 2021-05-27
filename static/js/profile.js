@@ -46,9 +46,9 @@ $(document).ready(function(){
   });
   $("#tab-navbar :nth-child(3),#tag3").on('click touch', function(){
     console.log("3");
-    $('#activities').show();
+    $('#activities').hide();
     $('#projects').hide();
-    $('#personal').hide();
+    $('#personal').show();
     $('#indextag :nth-child(3)').css('background-color','#FFE4DC')
     $('#indextag :not(:nth-child(3))').css('background-color','white')
   });
