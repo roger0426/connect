@@ -71,9 +71,24 @@ footer
   -webkit-backdrop-filter: blur(5px) contrast(70%) saturate(70%) brightness(70%)
   z-index: 6
   
+#relation_graph
+  height: 50vh
+  
+  background-color: #AAA
+  .node
+    fill: #ccc
+    stroke: #fff
+    stroke-width: 2px
+  .link
+    stroke: #777
+    stroke-width: 2px
+
+#world
+  position: fixed
+  z-index: -1
+  top: 0
   
 #container
-
   display: flex
   justify-content: flex-start
   align-items: stretch

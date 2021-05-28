@@ -10,9 +10,13 @@ html
     link(href="{% sass_src 'sass/homepage.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    //script(src="https://d3js.org/d3.v3.js")
+    //script(src="https://d3js.org/d3.v4.js")
+    script(src="https://d3js.org/d3.v5.js")
   {% include 'navbar.pug' %}
 
   body
+    canvas#world
     #phoneerrormsg
       //#errorlogo
       p 尚未針對窄螢幕優化
@@ -40,6 +44,7 @@ html
         
 
       #board
+        //canvas#relation_graph
         #divider
           hr#line1.line
           form
