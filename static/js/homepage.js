@@ -411,80 +411,65 @@ function duplicate(duplicateID) {
 
 var map=[
 	{
-		name:"臺北市"
+		name:"臺北市",
+    category: "fixed"
 	},
 	
 	{
-		name:"新北市"
+		name:"新北市",
+    category: "unfixed"
 	},
 	
 	{
-		name:"桃園市"
+		name:"桃園市",
+    category: "unfixed"
 	},
 	
 	{
-		name:"臺中市"
+		name:"臺中市",
+    category: "unfixed"
 	},
 	
 	{
-		name:"臺南市"
+		name:"臺南市",
+    category: "unfixed"
 	},
 	
 	{
-		name:"高雄市"
+		name:"高雄市",
+    category: "unfixed"
 	},
 	
 	{
-		name:"基隆市"
+		name:"基隆市",
+    category: "unfixed"
+	},
+
+  {
+		name:"花蓮市",
+    category: "unfixed"
+	},
+         
+  {
+		name:"臺南市",
+    category: "unfixed"
 	},
 	
 	{
-		name:"新竹市"
+		name:"高雄市",
+    category: "unfixed"
 	},
 	
 	{
-		name:"嘉義市"
+		name:"基隆市",
+    category: "unfixed"
+	},
+
+  {
+		name:"花蓮市",
+    category: "unfixed"
 	},
 	
-	{
-		name:"新竹縣"
-	},
-	
-	{
-		name:"苗栗縣"
-	},
-	
-	{
-		name:"彰化縣"
-	},
-	
-	{
-		name:"南投縣"
-	},
-	
-	{
-		name:"雲林縣"
-	},
-	
-	{
-		name:"嘉義縣"
-	},
-	
-	{
-		name:"屏東縣"
-	},
-	
-	{
-		name:"宜蘭縣"
-	},
-	
-	{
-		name:"花蓮縣"
-	},
-	
-	{
-		name:"臺東縣"
-	},
 ];
 var links=[
 	{
@@ -496,147 +481,67 @@ var links=[
 	 	target:6
 	},
 	{
-		source:1,
+		source:0,
 	 	target:2
 	},
 	{
 		source:1,
-	 	target:16
+	 	target:6
 	},
 	{
-		source:2,
-	 	target:9
+		source:0,
+	 	target:7
 	},
 	{
-		source:2,
-	 	target:16
+		source:0,
+	 	target:4
 	},
 	{
-		source:3,
-	 	target:9
-	},
-	{
-		source:3,
-	 	target:10
-	},
-	{
-		source:3,
-	 	target:11
-	},
-	{
-		source:3,
-	 	target:12
-	},
-	{
-		source:3,
-	 	target:16
-	},
-	{
-		source:3,
-	 	target:17
-	},
-	{
-		source:4,
+		source:0,
 	 	target:5
 	},
 	{
-		source:4,
-	 	target:14
-	},
-	{
-		source:5,
-	 	target:12
-	},
-	{
-		source:5,
-	 	target:14
-	},
-	{
-		source:5,
-	 	target:15
-	},
-	{
-		source:5,
-	 	target:17
-	},
-	{
-		source:5,
-	 	target:18
-	},
-	{
-		source:7,
-	 	target:10
-	},
-	{
-		source:7,
-	 	target:11
-	},
-	{
-		source:8,
-	 	target:14
-	},
-	{
-		source:9,
-	 	target:10
-	},
-	{
-		source:9,
-	 	target:16
-	},
-	{
-		source:11,
-	 	target:12
-	},
-	{
-		source:11,
-	 	target:13
-	},
-	{
-		source:12,
-	 	target:13
-	},
-	{
-		source:12,
-	 	target:14
-	},
-	{
-		source:12,
-	 	target:17
-	},
-	{
-		source:13,
-		target:14
-	},
-	{
-		source:15,
-	 	target:18
-	},
-	{
-		source:16,
-	 	target:17
-	},
-	{
-		source:17,
-	 	target:18
+		source:3,
+	 	target:7
 	},
 ];
 
 
 var width = window.innerWidth * 0.7
-    height = window.innerHeight * 0.5;
+    height = window.innerHeight * 0.8;
 
-var svg = d3.select('#board').append('svg')
+var svg = d3.select('#graph').append('svg')
     .attr('id', 'relation_graph')
     .attr('position', 'fixed')
     .attr('width', width)
     .attr('height', height)
     .attr('width', '100%');
 
+//const forceX = d3.forceX(width / 2).strength(0.1) //橫向壓縮力
+//const forceY = d3.forceY(height / 2).strength(0.1)
+const forceX = d3.forceX(width / 2).strength(0.05) //橫向壓縮力
+const forceY = d3.forceY(height / 2).strength(0.05)
 
 var simulation = d3.forceSimulation()
-	.force("link", d3.forceLink())
-    .force("charge", d3.forceManyBody(-500))
-    .force("center", d3.forceCenter(width / 2, height / 2));
+    .force("link", d3.forceLink())
+    .force("charge", d3.forceManyBody())
+//    .force("center", d3.forceCenter(width / 2, height / 2))//.strength(0.5))  //width / 2, height / 2
+    .force('x', forceX)
+    .force('y', forceY);
+
+simulation
+	.nodes(map)
+	.on("tick", ticked);
+
+simulation.force("link")
+	.links(links)
+	.distance(50)
+  .strength(0.3);
+
+simulation.force("charge")
+	.strength(-250)
+
+
 
 var link = svg.append("g")
 	.attr("class", "links")
@@ -653,8 +558,21 @@ var node = svg.append("g")
 	.enter().append("circle")
 	.attr("r", 8)
 	.attr("fill", 'black')
-	.attr('stroke','white')
+	.attr('stroke', function(d){
+    if (d.category == 'fixed') {
+      return 'yellow'
+    } else {
+      return 'white'
+    };
+  })
 	.attr('stroke-width',2)
+  .attr('cursor', function(d){
+    if (d.category == 'fixed') {
+      return 'grab'
+    } else {
+      return 'pointer'
+    };
+  })
 	.call(d3.drag()
 		.on("start", dragstarted)
 		.on("drag", dragged)
@@ -671,16 +589,7 @@ var text = svg.selectAll("text")
         return d.name;
      });
 
-simulation
-	.nodes(map)
-	.on("tick", ticked);
 
-simulation.force("link")
-	.links(links)
-	.distance(50);
-
-simulation.force("charge")
-	.strength(-60)
 function ticked() {
 link
 	.attr("x1", function(d) { return d.source.x; })
@@ -690,7 +599,7 @@ link
 
 node
 	.attr("cx", function(d) { return d.x; })
-	.attr("cy", function(d) { return d.y; });
+	.attr("cy", function(d) { return d.y; })
 
 text
 	.attr("x", function(d) { return d.x;})
@@ -699,20 +608,34 @@ text
 
 function dragstarted(d) {
 if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-d.fx = d.x;
-d.fy = d.y;
+  d.fx = d.x;
+  d.fy = d.y;
 }
 
 function dragged(d) {
-d.fx = d3.event.x;
-d.fy = d3.event.y;
+  d.fx = d3.event.x;
+  d.fy = d3.event.y;
 }
 
 function dragended(d) {
 if (!d3.event.active) simulation.alphaTarget(0);
-d.fx = null;
-d.fy = null;
+//  d.fx = null;
+//  d.fy = null;
+  if (d.category == 'fixed') {
+  //    d.category = 'fixed';
+    //d3.select(this).classed("fixed", true);
+    d.fx = d3.event.x;
+    d.fy = d3.event.y;
+  }
+  else
+  {
+  //    d.category = 'unfixed';
+    //d3.select(this).classed("fixed", false);
+    d.fx = null;
+    d.fy = null;
+  }
 }
+
 
 /*
   畫背景飄移force directed graph
