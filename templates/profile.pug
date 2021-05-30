@@ -9,7 +9,7 @@ html
     {% load sass_tags %}
     link(href="{% sass_src 'sass/profile.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
-
+    script(src="https://d3js.org/d3.v5.js")
   {% include 'navbar.pug' %}
 
   body
@@ -128,6 +128,8 @@ html
                 input(type="button", value="傳訊息")
                 {% endif %}
                 
+        #graph
+        
         #bottom-region
           #left-pane
             #title-count
@@ -142,35 +144,36 @@ html
               {% endfor %}
               .vitualimg
               .vitualimg
-            hr#divider1.lefthr
-            p 個性
-            #personality.left-region
-              {% for personality in personality %}
-              .tag-style
-                p.tags {{ personality.text }}
-              {% empty %}
-              p(style="color: #E98C6F") 他好像還沒設定個性
-              {% endfor %}
-            hr#divider2.lefthr
-            p 專長
-            #shill.left-region
-              {% for skill in skill %}
-              .tag-style
-                p.tags {{ skill.text }}
-              {% empty %}
-              p(style="color: #E98C6F") 他好像還沒設定專長
-              {% endfor %}
-            hr#divider3.lefthr
-            p 有興趣活動
-            #interest.left-region
-              {% for interest in interest %}
-              .tag-style
-                p.tags {{ interest.text }}
-              {% empty %}
-              p(style="color: #E98C6F") 他好像還沒設定有興趣的活動
-              {% endfor %}
-              
-            .tags#personality-left
+            //-
+              hr#divider1.lefthr
+              p 個性
+              #personality.left-region
+                {% for personality in personality %}
+                .tag-style
+                  p.tags {{ personality.text }}
+                {% empty %}
+                p(style="color: #E98C6F") 他好像還沒設定個性
+                {% endfor %}
+              hr#divider2.lefthr
+              p 專長
+              #shill.left-region
+                {% for skill in skill %}
+                .tag-style
+                  p.tags {{ skill.text }}
+                {% empty %}
+                p(style="color: #E98C6F") 他好像還沒設定專長
+                {% endfor %}
+              hr#divider3.lefthr
+              p 有興趣活動
+              #interest.left-region
+                {% for interest in interest %}
+                .tag-style
+                  p.tags {{ interest.text }}
+                {% empty %}
+                p(style="color: #E98C6F") 他好像還沒設定有興趣的活動
+                {% endfor %}
+                
+            //.tags#personality-left
 
           #right-pane
             #indextag

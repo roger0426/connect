@@ -40,7 +40,7 @@ $(document).ready(function(){
 })
 
 // check password validaty dynamically
-$('#double-pwd').keyup(function(){
+let intervalId = window.setInterval(function(){ // check every 0.5 seconds
   if ($('#double-pwd').val().length > 0) {
     if ($('#sign-pwd').val() === $('#double-pwd').val()) {
       $('.err-msg').hide();
@@ -61,8 +61,7 @@ $('#double-pwd').keyup(function(){
     $('#sign-up-btn').prop('disabled', false);
   }
   console.log("test double-pw")
-})
-
+}, 500);
 
 
 
