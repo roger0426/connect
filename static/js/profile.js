@@ -112,7 +112,24 @@ $(document).ready(function(){
     }
   }, 2000);
   
-  $
-  
-  
+  $("#sendbutton").click(function() {
+    console.log("sendbutton has been click.")
+    $ajaxSetup({
+      data: {
+        csrfmiddlewaretoken: CSRF
+      }
+    });
+    $.ajax({
+      url: URL,
+      type: "post",
+      data: {
+        'text': $.trim($(".comment-insert").val())
+      },
+      dataType: 'json',
+    }),(data)=>{
+        $('cmttext').html(data)
+        console.log("comment success: "+ data);
+      }
+  });
+
 })

@@ -39,27 +39,28 @@ html
               #description-background
                 p#description {{ user.personal_description }}
               .tag-field
+                
                 p 個性
                 {% for personality in personality %}
                 {% if not personality.is_hidden %}
                 .tag-style
                   p.tags.normaltag {{ personality.text }}
-                  .tag-commend
-                    #tag-commend-send-region
-                      {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
+                  .tag-commend 
+                    #tag-comment-send-region
+                      {% if request.user.is_authenticated %}
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
                       .cmd-txt-region
                         input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
-                      button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
+                      button#sendbutton(type="submmit", src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit")
                       {% else %}
                       {% endif %}
-                    #tag-commend-board
-                      .tagcmd-wrap
-                        #tagfrom
+                    #tag-comment-board
+                      .tagcmt-wrap
+                        #cmtfrom
                           img.sender(src="{% static 'file/personicon.png' %}")
-                        #tagtext
-                          p#tagcmd-text 好棒
+                        #cmttext
+                          p 沒有更多留言囉
                 {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定個性
@@ -70,22 +71,22 @@ html
                 {% if not skill.is_hidden %}
                 .tag-style
                   p.tags.normaltag {{ skill.text }}
-                  .tag-commend
-                    #tag-commend-send-region
-                      {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
+                  .tag-commend  
+                    #tag-comment-send-region
+                      {% if request.user.is_authenticated %}
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
                       .cmd-txt-region
                         input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
-                      button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
+                      button#sendbutton(type="submmit", src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit")
                       {% else %}
                       {% endif %}
-                    #tag-commend-board
-                      .tagcmd-wrap
-                        #tagfrom
+                    #tag-comment-board
+                      .tagcmt-wrap
+                        #cmtfrom
                           img.sender(src="{% static 'file/personicon.png' %}")
-                        #tagtext
-                          p#tagcmd-text 好棒
+                        #cmttext
+                          p 沒有更多留言囉
                 {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定專長
@@ -96,22 +97,22 @@ html
                 {% if not interest.is_hidden %}
                 .tag-style
                   p.tags.normaltag {{ interest.text }}
-                  .tag-commend
-                    #tag-commend-send-region
-                      {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
+                  .tag-commend 
+                    #tag-comment-send-region
+                      {% if request.user.is_authenticated %}
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
                       .cmd-txt-region
                         input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
-                      button#sendbutton(type="image", src="{% static 'file/send-arrow.png' %}", alt="Submit")
+                      button#sendbutton(type="submmit", src="{% static 'file/send-arrow.png' %}", alt="Submit")
                       {% else %}
                       {% endif %}
-                    #tag-commend-board
-                      .tagcmd-wrap
-                        #tagfrom
+                    #tag-comment-board
+                      .tagcmt-wrap
+                        #cmtfrom
                           img.sender(src="{% static 'file/personicon.png' %}")
-                        #tagtext
-                          p#tagcmd-text 好棒
+                        #cmttext
+                          p 沒有更多留言囉
                 {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定有興趣的活動
@@ -136,46 +137,40 @@ html
               {% for friend in user.friends.all %}
               a(href="{% url 'profile' id=friend.userextend.pk %}")
                 img.friend-img(src="{{ friend.userextend.img.url }}")
-                #friend-hover
-                  p#friend-detail 他們曾經一起參與了3個活動
-                  #friend-detail-list
-                    p 週末開車台北徵乘客兩名
-                    p 臺南深夜亂亂拍
               {% empty %}
               p 快去建立連結吧
               {% endfor %}
               .vitualimg
               .vitualimg
-            //-
-              hr#divider1.lefthr
-              p 個性
-              #personality.left-region
-                {% for personality in personality %}
-                .tag-style
-                  p.tags {{ personality.text }}
-                {% empty %}
-                p(style="color: #E98C6F") 他好像還沒設定個性
-                {% endfor %}
-              hr#divider2.lefthr
-              p 專長
-              #shill.left-region
-                {% for skill in skill %}
-                .tag-style
-                  p.tags {{ skill.text }}
-                {% empty %}
-                p(style="color: #E98C6F") 他好像還沒設定專長
-                {% endfor %}
-              hr#divider3.lefthr
-              p 有興趣活動
-              #interest.left-region
-                {% for interest in interest %}
-                .tag-style
-                  p.tags {{ interest.text }}
-                {% empty %}
-                p(style="color: #E98C6F") 他好像還沒設定有興趣的活動
-                {% endfor %}
+            hr#divider1.lefthr
+            p 個性
+            #personality.left-region
+              {% for personality in personality %}
+              .tag-style
+                p.tags {{ personality.text }}
+              {% empty %}
+              p(style="color: #E98C6F") 他好像還沒設定個性
+              {% endfor %}
+            hr#divider2.lefthr
+            p 專長
+            #shill.left-region
+              {% for skill in skill %}
+              .tag-style
+                p.tags {{ skill.text }}
+              {% empty %}
+              p(style="color: #E98C6F") 他好像還沒設定專長
+              {% endfor %}
+            hr#divider3.lefthr
+            p 有興趣活動
+            #interest.left-region
+              {% for interest in interest %}
+              .tag-style
+                p.tags {{ interest.text }}
+              {% empty %}
+              p(style="color: #E98C6F") 他好像還沒設定有興趣的活動
+              {% endfor %}
               
-            //.tags#personality-left
+            .tags#personality-left
 
           #right-pane
             #indextag
@@ -209,7 +204,6 @@ html
                   {% else %}
                   p.date 未設定日期
                   {% endif %}
-                  p.detail {{ activity.detail}}
                 
                 .cardright
                   .info
@@ -237,10 +231,6 @@ html
                         #participant-comment
                           p 這個活動好像還沒有評論
                     {% endfor %}
-                  #event-comment-insert
-                    input.event-comment-text(type="text" id="event{{ activity.pk }}commment")
-                    input.event-comment-btn(type="button" value="送出")
-                    
 
               {% empty %}
               #activity-card.card
@@ -337,8 +327,8 @@ html
       footer
         {% include "footer.pug" %}
 
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
+    script(src="{% static 'js/jquery-3.2.1.min.js' %}")
+    script(src="{% static 'js/jquery-ui.js' %}")
+    script(src="{% static 'js/semantic.min.js")
     script(src="{% static 'js/profile.js' %}")
     script(src="{% static 'js/navbar.js' %}")

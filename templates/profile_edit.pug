@@ -343,8 +343,8 @@ html
       footer
         {% include "footer.pug" %}
 
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
+    script(src="{% static 'js/jquery-3.2.1.min.js' %}")
+    script(src="{% static 'js/jquery-ui.js' %}")
+    script(src="{% static 'js/semantic.min.js")
     script(src="{% static 'js/profile.js' %}")
     script(src="{% static 'js/profile_edit.js' %}")

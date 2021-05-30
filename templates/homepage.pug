@@ -5,7 +5,7 @@ html
     meta(charset="utf-8")
     meta(content="width=device-width, initial-scale=1", name="viewport")
     title CONNECT
-    link(href="{% static 'file/logo.ico' %}",rel="icon")
+    link(href="{% static 'file/logo.icon' %}",rel="icon")
     {% load sass_tags %}
     link(href="{% sass_src 'sass/homepage.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
@@ -240,9 +240,9 @@ html
       #filter1
         
       
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
+    script(src="{% static 'js/jquery-3.2.1.min.js' %}")
+    script(src="{% static 'js/jquery-ui.js' %}")
+    script(src="{% static 'js/semantic.min.js")
     //- script(src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js")
     //- script(src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js")
     script(src="{% static 'js/homepage.js' %}")
