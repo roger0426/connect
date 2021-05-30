@@ -40,7 +40,7 @@ urlpatterns = [
 
     path('event/<int:id>', event_detail_view, name="event_detail"),
     path('like/<int:id>', like_view, name="like"),
-    path('comment/event/<int:event_id>/<int:id>', comment_view, name="comment"),
+    path('comment/<int:event_id>', comment_view, name="comment"),
     path('order/', order_view, name="order"),
 
     path('login/', login_view, name='login'),

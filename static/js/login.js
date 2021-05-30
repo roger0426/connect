@@ -41,6 +41,19 @@ $(document).ready(function(){
 
 // check password validaty dynamically
 let intervalId = window.setInterval(function(){ // check every 0.5 seconds
+  if (!($('#terms').is(':checked')) ||
+      $('#double-pwd').val().length == 0 ||
+      $('#email').val().length == 0 ||
+      $('#sid').val().length == 0) {
+    $('#sign-up-btn').prop('disabled', true);
+
+  } else {
+    $('#sign-up-btn').prop('disabled', false);
+  }
+  console.log("check signup condition")
+}, 500);
+
+$('input').keyup(function() {
   if ($('#double-pwd').val().length > 0) {
     if ($('#sign-pwd').val() === $('#double-pwd').val()) {
       $('.err-msg').hide();
@@ -51,18 +64,7 @@ let intervalId = window.setInterval(function(){ // check every 0.5 seconds
       $('.err-msg').text("喔不，你的密碼好像打錯了！");
     }
   }
-  if (!($('#terms').is(':checked')) ||
-      $('#double-pwd').val().length == 0 ||
-      $('#email').val().length == 0 ||
-      $('#sid').val().length == 0) {
-    $('#sign-up-btn').prop('disabled', true);
-
-  } else {
-    $('#sign-up-btn').prop('disabled', false);
-  }
-  console.log("test double-pw")
-}, 500);
-
+})
 
 
 

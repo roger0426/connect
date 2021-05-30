@@ -62,8 +62,10 @@ def event_detail_view(requests, id):
     event_detail = event.detail if event.detail != "" else None
     likes = list(event.likes.all().values())
     participants = list(event.participants.all().values())
+    comments = list(event.board_message.all().values())
     host =  model_to_dict(event.host, fields=['id', 'full_name', 'image_url'])
     print(host)
+    data = requests.POST
     
     
     return JsonResponse({
@@ -76,9 +78,9 @@ def event_detail_view(requests, id):
       'event_date': event.event_date,
       'likes': likes,
       'participants': participants,
+      'comments': comments,
       'host_id': event.host.pk,
       'host_pic': event.host.img.url,
-      
       
       'status': 200,
       'error_message': 'No error'
@@ -120,6 +122,7 @@ def like_view(request, id):
     data = request.POST
     event = get_object_or_404(EventsBoard, id=id)
     
+    #原本存在，要收回
     if event.likes.filter(id=request.user.userextend.id).exists():
       event.likes.remove(request.user.userextend)
       return JsonResponse({
@@ -128,6 +131,7 @@ def like_view(request, id):
         'user_img_url': request.user.userextend.img.url,
         'status': 200
       })
+    #原本存在，要按讚
     else:
       event.likes.add(request.user.userextend)
       receiver = event.host.user

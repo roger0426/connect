@@ -67,7 +67,7 @@ $(document).ready(function(){
   });
   
   $("#exitbtn1, #filter1").click(function() {
-    console.log("click event exit");
+    //console.log("click event exit");
     $("#eventwindow").animate({opacity: 0}, 400, function() {
       $("#eventwindow").hide();
     })
@@ -77,7 +77,7 @@ $(document).ready(function(){
   });
   
   $("#exitbtn2, #filter1").click(function() {
-    console.log("click event exit");
+    //console.log("click event exit");
     $("#eventcreatewindow").animate({opacity: 0}, 400, function() {
       $('input[type=text]').val('');
       $('textarea').val('');
@@ -119,7 +119,12 @@ $(document).ready(function(){
     $('#insertbar').toggle();
   }, 450);
 
-
+  
+  
+//  //每次click都ajax去更新每個eventpost的參與數、愛心數
+//  $(window).click(function() {
+//    homepage_update(URL, )
+//  }
 
   
   //按window外，關閉event window
@@ -143,7 +148,7 @@ $(document).ready(function(){
   
 });
 
-function event_handler(URL, id, CSRF) {
+function event_handler(URL, event_id, user_id, CSRF) {
   $.ajaxSetup({
     data: {
       csrfmiddlewaretoken: CSRF
@@ -153,21 +158,21 @@ function event_handler(URL, id, CSRF) {
     type: "POST",
     url: URL,
     data: {
-      'event-id': id,
+      'user_id': user_id,
     },
     dataType: 'json',
     success: function(data) {
       
-      console.log("ajax success----------");
+//      console.log("ajax success----------");
       console.log(data)
-      console.log("title:", data.title);
-      console.log("subtitle:", data.subtitle);
-      console.log("host:", data.host);
-      console.log("image:", data.image);
-      console.log("likes", data.likes);
-      console.log("participants:", data.particitants);
-      console.log("host:", data.host_id);
-      console.log("host-pic:", data.host_pic);
+//      console.log("title:", data.title);
+//      console.log("subtitle:", data.subtitle);
+//      console.log("host:", data.host);
+//      console.log("image:", data.image);
+//      console.log("likes", data.likes);
+//      console.log("participants:", data.particitants);
+//      console.log("host:", data.host_id);
+//      console.log("host-pic:", data.host_pic);
       
       if(data.image != null) {
         $("#eventwindow" + " #eventpic" + " img").attr('src', data.image);
@@ -188,11 +193,29 @@ function event_handler(URL, id, CSRF) {
       
       $("#member").html("");
       
+      if(data.comments != undefined) {
+        data.comments.forEach(function(item, i) {
+          console.log(item);
+          var clone_id = duplicate_multi('eventmsg');
+          console.log(clone_id);
+          $('#' + clone_id).show();
+          //$('#' + clone_id + " img").attr('src', data.author_img_url);
+          $('#' + clone_id + ' #eventmsg-sendername').html(item.author_id);
+          $('#' + clone_id + ' #event-date').html(item.date);
+          $('#' + clone_id + " #eventmsgtext").html(item.text);
+        });
+      };
+      
+      $('#likebutton').css("background-image", "url(/static/file/like-bg-n.png");
+      $('#likebutton button').attr("src", "/static/file/like-bg-n.png");
       if(data.likes != undefined) {
         data.likes.forEach(function(item, i) {
-          console.log(item.full_name);
-          
-          let str = "<a href=\"/profile/" + item.id + "\"><img class=\"member interested\" src=\"" + item.img + "\"></img></a>";
+          //console.log(item);
+          if(item.id == user_id) {
+            $('#likebutton').css("background-image", "url(/static/file/like-bg-y.png");
+            $('#likebutton button').attr("src", "/static/file/like-bg-y.png");
+          }
+          let str = "<a href=\"/profile/" + item.id + "\"><img class=\"member interested\" src=\"https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img + "\"></img></a>";
           
           $("#eventoperate #member").prepend(str);
         });
@@ -201,7 +224,7 @@ function event_handler(URL, id, CSRF) {
         data.particitants.forEach(function(item, i) {
           console.log(item.full_name);
           
-          let str = "<a href=\"/profile/" + item.id + "\"><img class=\"member participant\" src=\"" + item.img + "\"></img></a>";
+          let str = "<a href=\"/profile/" + item.id + "\"><img class=\"member participant\" src=\"https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img + "\"></img></a>";
           
           $("#eventoperate #member").prepend(str);
         });
@@ -225,7 +248,7 @@ function event_handler(URL, id, CSRF) {
 };
 
 
-function like_handler(URL, CSRF, event_id) {
+function like_handler(URL, event_id, CSRF) {
   $.ajaxSetup({
     data: {
       csrfmiddlewaretoken: CSRF
@@ -235,7 +258,7 @@ function like_handler(URL, CSRF, event_id) {
     type: 'post',
     url: URL,
     data: {
-      event_id: event_id,
+//      event_id: event_id,
     },
     dataType: 'json',
     success: function(data) {
@@ -243,21 +266,23 @@ function like_handler(URL, CSRF, event_id) {
         console.log('success')
         let img_url = data.user_img_url;
         let hostname = $(location).attr('hostname');
-
+        
         if (data.add) {
           let profile_url = hostname + '/profile/' + data.user_id
           let str = "<a herf='" + profile_url + "'>\
           <img class='member interested' src= " + img_url + "></a>";
-          console.log(str);
+          //console.log(str);
           $('#likebutton').css("background-image", "url(/static/file/like-bg-y.png");
           $('#likebutton button').attr("src", "/static/file/like-bg-y.png");
+          $('#' + event_id + " #likeicon").attr("src", "/static/file/like-y.png");
           $('#member').append(str);
 
         } else if (data.remove) {
           let user_selector = "#member a img[src='" + img_url + "']";
-          console.log(user_selector)
+          //console.log(user_selector)
           $('#likebutton').css("background-image", "url(/static/file/like-bg-n.png");
           $('#likebutton button').attr("src", "/static/file/like-bg-n.png");
+          $('#' + event_id + " #likeicon").attr("src", "/static/file/like-grey.png");
           $(user_selector).remove();
         }
       } else {
@@ -267,7 +292,7 @@ function like_handler(URL, CSRF, event_id) {
   })
 }
 
-function message_handler(URL, CSRF) {
+function message_handler(URL, event_id, CSRF) {
   $.ajaxSetup({
     data: {
       csrfmiddlewaretoken: CSRF
@@ -284,24 +309,14 @@ function message_handler(URL, CSRF) {
       if($(".eventmsg #eventmsg-right #eventmsg-righttop p#event-date").text() == '目前沒有留言喔～') {
         $("#eventmsg-board").empty();
       }
-//      let str = "<div class='eventmsg'> <a> <img class='sender' src='" + data.author_img_url +
-//          "'></img></a><div id='eventmsg-right'><div id='eventmsg-righttop'><a id='eventmsg-sendername'>" +
-//          data.author_name + "</a><p id='event-date'>" + data.msg_date + "</p></div><div id='eventmsg-rightbottom'>" +
-//          "<p id='eventmsgtext'>" + $("input.eventmsg-insert").val() + "</p></div></div>";
-//      console.log(str);
-      
       
       var clone_id = duplicate_multi('eventmsg');
       console.log(clone_id);
-      //$('#' + clone_id).css({'background-color': 'red'});
       $('#' + clone_id + " img").attr('src', data.author_img_url);
       $('#' + clone_id + ' #eventmsg-sendername').html(data.author_name);
       $('#' + clone_id + ' #event-date').html(data.msg_date);
       $('#' + clone_id + " #eventmsgtext").html($("input.eventmsg-insert").val());
       console.log($("input.eventmsg-insert").val());
-      
-      
-      //$("#eventmsg-board").prepend(str);
       
       $("input.eventmsg-insert").val("");
     }

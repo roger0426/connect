@@ -106,7 +106,7 @@ html
             $('#eventboard a').on("click", function() {
               console.log(this.id);
               $('#eventwindow').attr('class', this.id)
-              event_handler("event/" + this.id, this.id, "{{ csrf_token }}");
+              event_handler("event/" + this.id, this.id, {{ request.user.pk }}, "{{ csrf_token }}");
             });
           
           #virtualdiv
@@ -149,25 +149,25 @@ html
           #eventmsgregion
             p#msgtitle 留言板
             #eventmsg-board
-              {% for eventmsg in event_detail.board_message.all reversed %}
-              .eventmsg#eventmsg
-                a(href="{% url 'profile' id=eventmsg.author.pk %}")
-                  img.sender(src='{{ eventmsg.author.img.url }}')
+              .eventmsg#eventmsg(style="display: none")
+                a(href="")
+                  img.sender
                 #eventmsg-right
                   #eventmsg-righttop
-                    a#eventmsg-sendername(href="{% url 'profile' id=eventmsg.author.pk %}") {{ eventmsg.author.full_name }}
-                    p#event-date {{ eventmsg.date }}
+                    a#eventmsg-sendername(href="")
+                    p#event-date
                   #eventmsg-rightbottom
-                    p#eventmsgtext {{ eventmsg.text }}
-              {% empty %}
-              
-              .eventmsg
-                #eventmsg-right
-                  #eventmsg-righttop
-                    p#event-date 目前沒有留言喔～
-              
-              {% endfor %}
-              
+                    p#eventmsgtext
+              //-
+                .eventmsg#eventmsg
+                  a(href="{% url 'profile' id=eventmsg.author.pk %}")
+                    img.sender(src='{{ eventmsg.author.img.url }}')
+                  #eventmsg-right
+                    #eventmsg-righttop
+                      a#eventmsg-sendername(href="{% url 'profile' id=eventmsg.author.pk %}") {{ eventmsg.author.full_name }}
+                      p#event-date {{ eventmsg.date }}
+                    #eventmsg-rightbottom
+                      p#eventmsgtext {{ eventmsg.text }}
           #eventmsg-sender
             {% if request.user.is_authenticated %}
             a(href="{% url 'profile' id=request.user.userextend.pk %}")
@@ -182,6 +182,7 @@ html
               script.
                 $(document).ready(function(){
                   $(".eventmsg-btn").on("click", function() {
+                    message_handler('comment/' + $(this).closest('#eventwindow').attr('class'), $(this).closest('#eventwindow').attr('class'), "{{ csrf_token }}");
                   })
                 })
             {% else %}
@@ -227,7 +228,7 @@ html
             script.
               $(document).ready(function(){
                 $("#likebutton").on("click", function() {
-                  like_handler('like/' + $(this).closest('#eventwindow').attr('class'), "{{ csrf_token }}", "{{ event_detail.id }}");
+                  like_handler('like/' + $(this).closest('#eventwindow').attr('class'), $(this).closest('#eventwindow').attr('class'), "{{ csrf_token }}");
                 })
               })
             // user not authenticated
@@ -242,7 +243,7 @@ html
       
     script(src="{% static 'js/jquery-3.2.1.min.js' %}")
     script(src="{% static 'js/jquery-ui.js' %}")
-    script(src="{% static 'js/semantic.min.js")
+    script(src="{% static 'js/semantic.min.js' %}")
     //- script(src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js")
     //- script(src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js")
     script(src="{% static 'js/homepage.js' %}")
