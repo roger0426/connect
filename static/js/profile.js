@@ -249,11 +249,27 @@ var links=[
 		source:3,
 	 	target:7
 	},
+	{
+		source:0,
+	 	target:8
+	},
+	{
+		source:1,
+	 	target:9
+	},
+	{
+		source:0,
+	 	target:10
+	},
+	{
+		source:0,
+	 	target:11
+	},
 ];
 
 
 var width = window.innerWidth * 0.6
-    height = window.innerHeight * 0.3;
+    height = window.innerHeight * 0.5;
     //width = $('#profilepanel').width
 var svg = d3.select('#graph').append('svg')
     .attr('id', 'relation_graph')
@@ -264,8 +280,8 @@ var svg = d3.select('#graph').append('svg')
 
 //const forceX = d3.forceX(width / 2).strength(0.1) //橫向壓縮力
 //const forceY = d3.forceY(height / 2).strength(0.1)
-const forceX = d3.forceX(width / 2).strength(0.02) //橫向壓縮力
-const forceY = d3.forceY(height / 2).strength(0.1)
+const forceX = d3.forceX(width / 2).strength(0.15) //橫向壓縮力
+const forceY = d3.forceY(height / 2).strength(0.25)
 
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink())
@@ -280,10 +296,10 @@ simulation
 simulation.force("link")
 	.links(links)
 	.distance(50)
-  .strength(0.5);
+  .strength(0.75);
 
 simulation.force("charge")
-	.strength(-100)
+	.strength(-1000)
 
 
 
