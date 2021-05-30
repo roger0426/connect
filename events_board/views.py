@@ -115,10 +115,10 @@ def event_detail_view(requests, id):
 #     return HttpResponseRedirect(reverse('profile_event', args=[url_split[4], str(id)]))
 
 # Ajax function
-def like_view(request):
+def like_view(request, id):
   if request.is_ajax() and request.method == 'POST':
     data = request.POST
-    event = get_object_or_404(EventsBoard, id=data.get('event_id'))
+    event = get_object_or_404(EventsBoard, id=id)
     
     if event.likes.filter(id=request.user.userextend.id).exists():
       event.likes.remove(request.user.userextend)

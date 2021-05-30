@@ -38,8 +38,8 @@ urlpatterns = [
     path('tag_edit/', tag_edit_view, name='tag_edit'),
     path('get_user_detail/<int:id>', get_user_view, name='get_user'),
 
-    path('event/<int:id>', event_detail_view, name='event_detail'),
-    path('like/', like_view, name="like"),
+    path('event/<int:id>', event_detail_view, name="event_detail"),
+    path('like/<int:id>', like_view, name="like"),
     path('comment/event/<int:event_id>/<int:id>', comment_view, name="comment"),
     path('order/', order_view, name="order"),
 

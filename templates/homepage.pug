@@ -105,6 +105,7 @@ html
           script.
             $('#eventboard a').on("click", function() {
               console.log(this.id);
+              $('#eventwindow').attr('class', this.id)
               event_handler("event/" + this.id, this.id, "{{ csrf_token }}");
             });
           
@@ -226,7 +227,7 @@ html
             script.
               $(document).ready(function(){
                 $("#likebutton").on("click", function() {
-                  like_handler("{% url 'like' %}", "{{ csrf_token }}", "{{ event_detail.id }}");
+                  like_handler('like/' + $(this).closest('#eventwindow').attr('class'), "{{ csrf_token }}", "{{ event_detail.id }}");
                 })
               })
             // user not authenticated
