@@ -47,7 +47,7 @@ html
                   p.tags.normaltag {{ personality.text }}
                   .tag-commend 
                     #tag-comment-send-region
-                      {% if request.user.is_authenticated %}
+                      {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
                       .cmd-txt-region
@@ -73,7 +73,7 @@ html
                   p.tags.normaltag {{ skill.text }}
                   .tag-commend  
                     #tag-comment-send-region
-                      {% if request.user.is_authenticated %}
+                      {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
                       .cmd-txt-region
@@ -99,7 +99,7 @@ html
                   p.tags.normaltag {{ interest.text }}
                   .tag-commend 
                     #tag-comment-send-region
-                      {% if request.user.is_authenticated %}
+                      {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
                       .cmd-txt-region
@@ -329,6 +329,6 @@ html
 
     script(src="{% static 'js/jquery-3.2.1.min.js' %}")
     script(src="{% static 'js/jquery-ui.js' %}")
-    script(src="{% static 'js/semantic.min.js")
+    script(src="{% static 'js/semantic.min.js' %}")
     script(src="{% static 'js/profile.js' %}")
     script(src="{% static 'js/navbar.js' %}")

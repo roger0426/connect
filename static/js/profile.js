@@ -28,6 +28,23 @@ $(document).ready(function(){
     }
   });
   
+  $(window).click(function() {
+    var i = 0
+    $('.tag-commend').each(function(c) {
+//      console.log($(this).css('display'));
+      if($(this).css('display') === 'flex') {
+        $('.tag-commend').each(function(c) {
+          $(this).css('display', 'none');
+        })
+        return;
+      }
+    })
+  });
+  
+  $('.normaltag').click(function(event){
+    event.stopPropagation();
+  });
+  
   
   $('#friends-avatar a').mouseenter(function() {
     $(this).find('#friend-hover').css({'display': 'block'});
