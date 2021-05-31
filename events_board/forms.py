@@ -23,7 +23,7 @@ class EventCreateForm(forms.ModelForm):
       'title': forms.TextInput(attrs={'placeholder': '* 活動標題'}),
       'subtitle': forms.TextInput(attrs={'placeholder':'  活動副標題'}),
       'event_tag': forms.TextInput(attrs={'placeholder': '  標籤'}),
-      'detail': forms.Textarea(attrs={'placeholder': '* 編輯文字'}),
+      'detail': forms.Textarea(attrs={'placeholder': '* 活動細節'}),
       'people_limit': forms.NumberInput(attrs={'placeholder': '* 人數'}),
       'event_date':  DateInput
     }

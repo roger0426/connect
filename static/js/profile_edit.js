@@ -10,6 +10,17 @@ $(document).ready(function(){
     $(this).parent().find('.deletetag').css({'display': 'none'});
   });
   
+  let intervalId = window.setInterval(function(){ // check every 0.5 seconds
+    if($('#user-image').val() != "") {
+      $('#editpicfilter').hide();
+      $('#fileselectedfilter').show();
+    }
+    else {
+      $('#editpicfilter').show();
+      $('#fileselectedfilter').hide();
+    }
+  }, 2000);
+  
 })
 
 function tag_edit_handler(URL, CSRF, text, tag_type) {

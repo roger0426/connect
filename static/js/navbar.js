@@ -80,7 +80,7 @@ $(document).ready(function(){
   });
   
   $(window).click(function() {
-    console.log($('#notificationboard').css('display'))
+//    console.log($('#notificationboard').css('display'))
     if($('#notificationboard').css('display') === 'block') {
       console.log("關閉通知");
       $("#alert").css({opacity: 1});
