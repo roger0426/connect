@@ -47,10 +47,10 @@ $(document).ready(function(){
   
   
   $('#friends-avatar a').mouseenter(function() {
-    $(this).find('#friend-hover').css({'display': 'block'});
+    $(this).find('.friend-info').css({'display': 'block'});
   });
   $('#friends-avatar a').mouseleave(function() {
-    $(this).find('#friend-hover').css({'display': 'none'});
+    $(this).find('.friend-info').css({'display': 'none'});
   });
   
   $("#tab-navbar :nth-child(1),#tag1").on('click touch', function(){
@@ -346,13 +346,12 @@ var svg = d3.select('#graph').append('svg')
     .attr('id', 'relation_graph')
     .attr('position', 'fixed')
     .attr('width', width)
-    .attr('height', height)
-    .attr('width', '100%');
+    .attr('height', height);
 
 //const forceX = d3.forceX(width / 2).strength(0.1) //橫向壓縮力
 //const forceY = d3.forceY(height / 2).strength(0.1)
-const forceX = d3.forceX(width / 2).strength(0.15) //橫向壓縮力
-const forceY = d3.forceY(height / 2).strength(0.25)
+const forceX = d3.forceX(width / 2).strength(0.2) //橫向壓縮力
+const forceY = d3.forceY(height / 2).strength(0.3)
 
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink())
@@ -366,12 +365,13 @@ simulation
 
 simulation.force("link")
 	.links(links)
-	.distance(50)
-  .strength(0.75);
+	.distance(70)
+  .strength(0.85);
 
 simulation.force("charge")
-	.strength(-1000)
+	.strength(-1300)
 
+//map[0].attr('id', 'firstnode');
 
 
 var link = svg.append("g")
@@ -379,7 +379,7 @@ var link = svg.append("g")
 	.selectAll("line")
 	.data(links)
 	.enter().append("line")
-	.attr("stroke-width", 2)
+	.attr("stroke-width", 0.5)
 	.attr("stroke","black");
 
 var node = svg.append("g")
@@ -387,8 +387,14 @@ var node = svg.append("g")
 	.selectAll("circle")
 	.data(map)
 	.enter().append("circle")
-	.attr("r", 5.5)
-	.attr("fill", 'black')
+	.attr("r", function(d){
+    if (d.category == 'fixed') {
+      return 10
+    } else {
+      return 4
+    };
+  })
+	.attr("fill", '#AAA')
 	.attr('stroke', function(d){
     if (d.category == 'fixed') {
       return 'red'
@@ -396,7 +402,7 @@ var node = svg.append("g")
       return 'white'
     };
   })
-	.attr('stroke-width',2)
+	.attr('stroke-width',1)
   .attr('cursor', function(d){
     if (d.category == 'fixed') {
       return 'grab'

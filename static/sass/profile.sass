@@ -369,11 +369,10 @@ footer
           background-color: #FDF2EF
           border-color: var(--color-main)
           cursor: pointer
+          margin-left: 1vw
         *:hover
           background-color: #FFDFDF
           
-        input:nth-child(1)
-          margin-left: 1vw
 
 #relation_graph
   height: 50vh
@@ -488,6 +487,16 @@ footer
         width: 3.2vw
         //width: 5vw
         height: 0
+      .friend-info
+        display: none
+        position: absolute
+        padding: 0.5vw
+        background-color: #EEE
+        border: solid #888 0.02vw
+        border-radius: 0.3vw
+        p
+          font-size: 1vw
+        
       
   #right-pane
     background-color: #FFE4DC
@@ -546,6 +555,7 @@ footer
         transform: scale(1.02)
     
     .page-panel
+      position: relative
       display: flex
       flex-direction: column
       flex-wrap: nowrap
@@ -558,7 +568,7 @@ footer
         display: flex
         flex-direction: row
         justify-content: space-around
-        align-items: flex-start
+        align-items: stretch
         background-color: white
         margin: 0 2vw 1vw 2vw
         padding: 1.5vw
@@ -588,33 +598,42 @@ footer
           font-size: 0.85vw
           color: gray
           margin-top: 1.5vw
+        .detail
+          font-size: 1.1vw
+          line-height: 1.3vw
+          width: 15vw
+          max-height: 10vw
+          overflow: scroll
+          margin-top: 1vw
           
       
       .cardright
+        position: relative
         display: flex
         flex-direction: column
         flex-wrap: nowrap
         justify-content: flex-start
         align-items: flex-start
         width: 20vw
+        height: 100%
         //background-color: yellow
         
         .info
           display: flex
           flex-direction: row
           flex-wrap: nowrap
-          justify-content: flex-start
+          justify-content: space-between
           align-items: flex-start
           width: 20vw
           a
             .cardinfott
               font-size: 1.5vw
-              width: 12vw
+              width: 11vw
               //max-width: 15vw
           .rate
             font-size: 0.8vw
             line-height: 1.2vw
-            margin-left: 0.5vw
+            //margin-left: 0.5vw
             //background-color: #75E1C7
             padding: 0 0.3vw
             border-radius: 1vw
@@ -623,7 +642,7 @@ footer
           .charname
             font-size: 0.8vw
             line-height: 1.2vw
-            margin-left: 0.5vw
+            //margin-left: 0.5vw
             background-color: #75E1C7
             padding: 0.2vw 0.3vw
             border-radius: 1vw
@@ -638,7 +657,7 @@ footer
           //background-image: linear-gradient(#EEEEEE, #FFFFFF)
           //border-radius: 1.5vw
           width: 100%
-          height: 12vw
+          //height: 12vw
           overflow: scroll
           overflow-x: hidden
           //overflow-scrolling: touch
@@ -691,6 +710,18 @@ footer
                 width: 12vw
                 margin: 0.1vw 1.2vw 0 1vw
                 color: #333333
+        #eventcomment-insert
+          //position: absolute
+          //bottom: 0
+          display: flex
+          flex-direction: row;
+          justify-content: space-evenly
+          align-items: center;
+          width: 100%
+          input[type=text]
+            width: 65%
+          input[type=button]
+            width: 15%
 
     #personal-title
       font-size: 1.6vw

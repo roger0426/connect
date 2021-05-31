@@ -205,6 +205,10 @@ html
               {% for friend in user.friends.all %}
               a(href="{% url 'profile' id=friend.userextend.pk %}")
                 img.friend-img(src="{{ friend.userextend.img.url }}")
+                .friend-info
+                  p 他們曾一起參與過
+                  p 5
+                  p 個活動
               {% empty %}
               p 快去建立連結吧
               {% endfor %}
@@ -268,18 +272,24 @@ html
                     p#nopicalert 尚未新增圖片
                   {% endif %}
                   #activity-date
-                  {% if activity.event_date %}
-                  p.date {{ activity.event_date }}
-                  {% else %}
-                  p.date 未設定日期
-                  {% endif %}
+                    {% if activity.event_date %}
+                    p.date {{ activity.event_date }}
+                    {% else %}
+                    p.date 未設定日期
+                    {% endif %}
+                  #activity-detail
+                    {% if activity.detail %}
+                    p.detail {{ activity.detail }}
+                    {% else %}
+                    p.detail 未設定詳情
+                    {% endif %}
                 
                 .cardright
                   .info
                     a(href="{% url 'profile_event' id=user.pk event_id=activity.pk%}")
                       p#activity-title.cardinfott {{ activity.title }}
                     {% if activity.comments.count > 0 %}
-                    p#activity-rate.rate {{ activity.get_avg_rating }}★
+                    p#activity-rate.rate {{ activity.get_avg_rating }}/10★
                     {% endif %}
                     p#activity-character.charname 主辦人
                 
@@ -293,13 +303,16 @@ html
                         a(href="{% url 'profile' id=comment.author.pk %}") {{ comment.author.full_name }}
                           //p#participant-name {{ comment.author.full_name }}
                         p#participant-comment {{ comment.text }}
-                        p#participant-rate {{ comment.rate }}★
+                        p#participant-rate {{ comment.rate }}/10★
                     {% empty %}
                     .comment
                       .comment-right
                         #participant-comment
                           p 這個活動好像還沒有評論
                     {% endfor %}
+                  #eventcomment-insert
+                    input(type='text')
+                    input(type='button', value='送出')
 
               {% empty %}
               #activity-card.card
@@ -321,12 +334,18 @@ html
                   #projects-img.card-img
                     p#nopicalert 尚未新增圖片
                   {% endif %}
-                  #projects-date
-                  {% if project.event_date %}
-                  p.date {{ project.event_date }}
-                  {% else %}
-                  p.date 未設定日期
-                  {% endif %}
+                  #project-date
+                    {% if project.event_date %}
+                    p.date {{ project.event_date }}
+                    {% else %}
+                    p.date 未設定日期
+                    {% endif %}
+                  #project-detail
+                    {% if project.detail %}
+                    p.detail {{ project.detail }}
+                    {% else %}
+                    p.detail 未設定詳情
+                    {% endif %}
                   
                 .cardright
                   .info
@@ -378,11 +397,17 @@ html
                     p#nopicalert 尚未新增圖片
                   {% endif %}
                   #personal-date
-                  {% if personal_proj.event_date %}
-                  p.date {{ personal_proj.event_date }}
-                  {% else %}
-                  p.date 未設定日期
-                  {% endif %}
+                    {% if personal.event_date %}
+                    p.date {{ personal.event_date }}
+                    {% else %}
+                    p.date 未設定日期
+                    {% endif %}
+                  #personal-detail
+                    {% if personal.detail %}
+                    p.detail {{ personal.detail }}
+                    {% else %}
+                    p.detail 未設定詳情
+                    {% endif %}
                 .cardright
                   a(href="{% url 'profile_event' id=user.pk event_id=personal_proj.pk%}")
                     p#personal-title {{ personal_proj.title }}
