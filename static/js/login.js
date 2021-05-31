@@ -66,7 +66,29 @@ $('input').keyup(function() {
   }
 })
 
-
+function send_verification_handler(URL, CSRF) {
+  $.ajaxSetup({
+    data: {
+      csrfmiddlewaretoken: CSRF
+    }
+  });
+  $.ajax({
+    type: 'post',
+    url: URL,
+    data: {
+      'sid': $("#sid").val(),
+      'email': $("#email").val()
+    },
+    dataType: 'json',
+    success: function(data) {
+      if (data.status == 200) {
+        console.log("verification email successfully");
+      } else {
+        console.log(data.error_message);
+      }
+    }
+  })
+}
 
 /*
   OK THATS IT. JUST PLAY WITH IT----

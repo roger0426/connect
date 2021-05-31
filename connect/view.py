@@ -1,9 +1,43 @@
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.shortcuts import render
-from django.http import HttpResponseRedirect 
+from django.http import HttpResponseRedirect, JsonResponse
 from user_extend.models import UserExtend
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+from django.conf import settings
 import time
+import hashlib
+
+def hash_func(sid, email):
+  m = hashlib.md5()
+  data = email + sid
+  m.update(data.encode("utf-8"))
+  h = m.hexdigest()
+  return h[3:10]
+
+def send_verification_view(request):
+  data = request.POST
+  token = hash_func(data.get('sid'), data.get('email'))
+  email_template = render_to_string(
+    'email/verification.html',
+    {
+      'sid': data.get('sid'),
+      'token': token
+    }
+  )
+  email = EmailMessage(
+    'Connect 註冊認證通知信',  # title
+    email_template,  # content
+    settings.EMAIL_HOST_USER,  # sender
+    [data.get('email')]  # reciever
+  )
+  email.fail_silently = False
+  email.send()
+  print("Email Sent")
+  return JsonResponse({
+    'status': 200
+  })
 
 
 def login_view(request, *args, **kwargs):
@@ -18,6 +52,7 @@ def login_view(request, *args, **kwargs):
   lname = request.POST.get('lname', '')
   sid   = request.POST.get('sid', '')
   email = request.POST.get('email', '')
+  email_check = request.POST.get('email-check', '')
   sign_pwd = request.POST.get('sign-pwd', '')
   double_pwd = request.POST.get('double-pwd', '')
 
@@ -26,7 +61,11 @@ def login_view(request, *args, **kwargs):
   if User.objects.filter(email=email).exists():
     return render(request, 'login.pug', {'error_message': "這個信箱已經被使用過了"})
 
-  if 'terms' in request.POST and sign_pwd == double_pwd:
+  email_hash = ''
+  if sid != '' and email != '':
+    email_hash = hash_func(sid, email)
+
+  if 'terms' in request.POST and sign_pwd == double_pwd and email_check == email_hash:
     user = User.objects.create_user(
       email = email,
       username = sid,

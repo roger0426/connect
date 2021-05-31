@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from connect.view import login_view, logout
+from connect.view import login_view, logout, send_verification_view
 from about_us.views import about_us_view
 from events_board.views import home_view, event_detail_view, like_view
 from events_board.views import comment_view, search_view, order_view
@@ -49,6 +49,7 @@ urlpatterns = [
     path('order/', order_view, name="order"),
 
     path('login/', login_view, name='login'),
+    path('verify/', send_verification_view, name='verify'),
     path('search/', search_view, name='search'),
     path('about_us/', about_us_view, name='about_us'),
     path('admin/', admin.site.urls),

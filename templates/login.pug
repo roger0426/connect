@@ -9,7 +9,8 @@ html
     {% load sass_tags %}
     link(href="{% sass_src 'sass/login.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
-    
+    script(src="{% static 'js/jquery-3.2.1.min.js' %}")
+    script(src="{% static 'js/jquery-ui.js' %}")
   {% include 'navbar.pug' %}
 
   body
@@ -42,8 +43,22 @@ html
           input#lname.input-area(type="text", name='lname', placeholder="大名")
           label(for='sid')
           input#sid.input-area(type="text", name='sid', placeholder="學號、帳號")
-          label(for='email')
-          input#email.input-area(type="email", name='email', placeholder="信箱")
+          #email-pane
+            label(for='email')
+            input#email.input-area(type="email", name='email', placeholder="信箱")
+            input#send-check(type="button", value="送出驗證碼")
+            script.
+              $(document).ready(function(){
+                $("input#send-check").on("click", function() {
+                  console.log("verification code sent")
+                  send_verification_handler(
+                    "{% url 'verify' %}",
+                    "{{ csrf_token}}",
+                  )
+                });
+              })
+          label(for='email-check')
+          input#email-check.input-area(type="text", name='email-check', placeholder="請輸入驗證碼")
           label(for='sign-pwd')
           input#sign-pwd.input-area(type="password", name="sign-pwd", placeholder="密碼")
           label(for='double-pwd')
@@ -88,8 +103,6 @@ html
         p 加入Connect發起活動與專案，
         p 讓你找到同伴一起完成你想做的事!
     
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
     script(src="{% static 'js/login.js' %}")
     script(src="{% static 'js/navbar.js' %}")
