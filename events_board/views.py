@@ -29,30 +29,6 @@ def home_view(requests, *args, **kwargs):
     'notice': notification,
   }
   return render(requests, 'homepage.pug', context)
-
-
-#def event_detail_view(requests, id, *args, **kwargs):
-#  obj = EventsBoard.objects.order_by('-create_date')
-#  event_detail = EventsBoard.objects.get(id=id)
-#  form = EventCreateForm(requests.POST, requests.FILES or None)
-#  if(requests.user.is_authenticated):
-#    notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
-#  else:
-#    notification = None
-#
-#  if form.is_valid():
-#    instance = form.save(commit=False)
-#    instance.host = requests.user.userextend
-#    instance.save()
-#    return HttpResponseRedirect('/')
-#  context = {
-#    'event_obj': obj,
-#    'form': form,
-#    'event_detail': event_detail,
-#    'notice': notification,
-#  }
-#  return render(requests, 'homepage.pug', context)
-  
   
 def event_detail_view(requests, id):
   if requests.method == "POST":
@@ -89,32 +65,6 @@ def event_detail_view(requests, id):
     'status': 404,
     'error_message': 'Not ajax request'
   })
-
-# # functional view
-# def like_view(requests, id):
-#   prev_url = requests.META.get('HTTP_REFERER')
-#   url_split = prev_url.split('/')
-#   caller_type = url_split[3]
-
-#   print(url_split)
-#   event = get_object_or_404(EventsBoard, id=requests.POST.get('event_id'))
-#   if event.likes.filter(id=requests.user.userextend.id).exists():
-#     event.likes.remove(requests.user.userextend)
-#   else:
-#     event.likes.add(requests.user.userextend)
-#     receiver = event.host.user
-#     sender = requests.user
-#     notification = SiteNotification.objects.create(
-#       text = sender.userextend.full_name + "對您的活動感到有興趣， 快去看看吧",
-#       event = event,
-#       for_user = receiver,
-#       from_user = sender
-#     )
-#     notification.save()
-#   if caller_type == "event":
-#     return HttpResponseRedirect(reverse('event_detail', args=[str(id)]))
-#   else:
-#     return HttpResponseRedirect(reverse('profile_event', args=[url_split[4], str(id)]))
 
 # Ajax function
 def like_view(request, id):
@@ -155,22 +105,7 @@ def like_view(request, id):
     'error_message': 'Not ajax request'
   })
   
-
-# #functional view
-# def comment_view(requests, event_id, id):
-#   if requests.method == "POST":
-#     event = get_object_or_404(EventsBoard, id=event_id)
-#     author = UserExtend.objects.get(id=id)
-#     if (requests.POST.get('text')) != "":
-#       comment_obj = BoardMessage.objects.create(
-#         author = author,
-#         for_event = event,
-#         text = requests.POST.get('text')
-#       )
-#       comment_obj.save()
-#   return HttpResponseRedirect(reverse('event_detail', args=[str(event_id)]))
-
-# ajax viewc
+# Ajax function
 def comment_view(requests, event_id, id):
   if requests.method == "POST":
     event = get_object_or_404(EventsBoard, id=event_id)
