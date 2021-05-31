@@ -28,6 +28,7 @@ header
               a(href="{% url 'profile' id=noticedata.from_user.userextend.pk %}")
                 img#noticesenderpic(src="{{ noticedata.from_user.userextend.img.url }}")
               #notice-right
+                {% if noticedata.notificaition_type == 0 %}
                 #notice-righttop
                   a#noticesendername(href="{% url 'profile' id=noticedata.from_user.userextend.pk %}") {{ noticedata.from_user.userextend.full_name }}
                   //p#notice-detail {{ noticedata.text }}
@@ -36,6 +37,13 @@ header
                   p 有興趣
                 #notice-rightbottom
                   p#notice-date {{ noticedata.date }}
+                {% else %}
+                #notice-righttop
+                  a#noticesendername(href="{% url 'profile' id=noticedata.from_user.userextend.pk %}") {{ noticedata.from_user.userextend.full_name }}
+                  p#notice-detail {{ noticedata.text }}
+                #notice-rightbottom
+                  p#notice-date {{ noticedata.date }}
+                {% endif %}
             
             {% empty %}
             .notice

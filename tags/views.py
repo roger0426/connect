@@ -57,3 +57,14 @@ def tag_edit_view(request):
   return JsonResponse({
     'status': 200
   })
+
+def capitalize_view(request):
+  data = request.POST
+  input_text = data.get('text')
+  cap_text = input_text.upper()
+  print(cap_text)
+
+  return JsonResponse({
+    'status': 200,
+    'cap_text': cap_text
+  })

@@ -128,3 +128,24 @@ def get_user_view(request, id):
     'full_name': user.full_name,
     'img': user.img.url
   })
+
+def friend_request_view(request):
+  data = request.POST
+  if request.user.id  != data.get('user_id'):
+    user = get_object_or_404(User, id=data.get('user_id'))
+    request.user.userextend.unverified_friends.add(user)
+    notification = SiteNotification.objects.create(
+      text = request.user.userextend.full_name + "對您傳送了連結人邀請， 快去看看吧",
+      for_user = user,
+      from_user = request.user,
+      notification_type = 1
+    )
+    notification.save()
+    return JsonResponse({
+      'status': 200,
+    })
+  else:
+    return JsonResponse({
+      'status': 500,
+      'error_message': "[Error] Sending friend request to user himself"
+    })

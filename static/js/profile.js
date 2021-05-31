@@ -151,6 +151,29 @@ $(document).ready(function(){
 
 })
 
+function friend_request_handler(URL, CSRF, request_user_id) {
+  $.ajaxSetup({
+    data: {
+      csrfmiddlewaretoken: CSRF
+    }
+  });
+  $.ajax({
+    type: 'post',
+    url: URL,
+    data: {
+      'user_id': request_user_id
+    },
+    dataType: 'json',
+    success: function(data) {
+      if (data.status == 200) {
+        console.log("friend request sent successfully");
+      } else {
+        console.log(data.error_message);
+      }
+    }
+  })
+}
+
 
 //另一個版本
 

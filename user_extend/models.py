@@ -34,6 +34,12 @@ class UserExtend(models.Model):
     default = 'freshman'
   )
 
+  unverified_friends = models.ManyToManyField(
+    User,
+    related_name = 'unverified_friends',
+    blank = True
+  )
+
   friends = models.ManyToManyField(
     User,
     related_name = 'friends',

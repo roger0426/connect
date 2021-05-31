@@ -10,6 +10,8 @@ html
     link(href="{% sass_src 'sass/profile.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
     script(src="https://d3js.org/d3.v5.js")
+    script(src="{% static 'js/jquery-3.2.1.min.js' %}")
+    script(src="{% static 'js/jquery-ui.js' %}")
   {% include 'navbar.pug' %}
 
   body
@@ -124,8 +126,29 @@ html
                 //a(href="/logout/") 登出
                 a(href="{% url 'profile_edit' request.user.userextend.pk %}") 編輯
                 {% else %}
-                input(type="button", value="建立連結")
+                {% if not user.user in request.user.userextend.unverified_friends.all %}
+                input#create-link(type="button", value="建立連結")
+                input#request-sent(type="button", value="已送出", style="display: none")
+                {% else %}
+                input#request-sent(type="button", value="已送出")
+                {% endif %}
                 input(type="button", value="傳訊息")
+
+                script.
+                  $(document).ready(function(){
+                    $("#create-link").on("click", function() {
+                      if ($("#create-link").val() == "建立連結") {
+                        console.log("friend request sent")
+                        friend_request_handler(
+                          "{% url 'friend_request' %}",
+                          "{{ csrf_token}}",
+                          {{ user.user.pk }},
+                        )
+                        $("#create-link").hide();
+                        $("#request-sent").show();
+                      }
+                    });
+                  })
                 {% endif %}
                 
         #graph
@@ -133,7 +156,7 @@ html
         #bottom-region
           #left-pane
             #title-count
-              p 聯絡人
+              p 連結人
               p#friend-count {{ friend_count }}
             #friends-avatar.left-region
               {% for friend in user.friends.all %}
@@ -330,8 +353,6 @@ html
       footer
         {% include "footer.pug" %}
 
-    script(src="{% static 'js/jquery-3.2.1.min.js' %}")
-    script(src="{% static 'js/jquery-ui.js' %}")
     script(src="{% static 'js/semantic.min.js' %}")
     script(src="{% static 'js/profile.js' %}")
     script(src="{% static 'js/navbar.js' %}")

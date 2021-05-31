@@ -20,7 +20,8 @@ from connect.view import login_view, logout
 from about_us.views import about_us_view
 from events_board.views import home_view, event_detail_view, like_view
 from events_board.views import comment_view, search_view, order_view
-from user_extend.views import profile_view, profile_event_view, modify, profile_edit_view, get_user_view
+from user_extend.views import profile_view, profile_event_view, modify, profile_edit_view
+from user_extend.views import  get_user_view, friend_request_view
 from tags.views import tag_delete_view, tag_edit_view
 from django.contrib.auth import views as auth_views
 
@@ -37,6 +38,7 @@ urlpatterns = [
     path('tag_delete/', tag_delete_view, name='tag_delete'),
     path('tag_edit/', tag_edit_view, name='tag_edit'),
     path('get_user_detail/<int:id>', get_user_view, name='get_user'),
+    path('friend_request/', friend_request_view, name='friend_request'),
 
     path('event/<int:id>', event_detail_view, name="event_detail"),
     path('like/<int:id>', like_view, name="like"),

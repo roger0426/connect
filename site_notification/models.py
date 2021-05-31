@@ -19,8 +19,13 @@ class SiteNotification(models.Model):
     'events_board.EventsBoard',
     on_delete = models.CASCADE,
     related_name = 'notification',
-    blank = True
+    blank = True, 
+    null = True
   )
   date = models.DateTimeField(default=timezone.now)
+
+  # 0: event like notification
+  # 1: add friend notification
+  notification_type = models.IntegerField(default=0)
   def __str__(self):
     return self.from_user.username + "-" + self.for_user.username + "-" + self.text
