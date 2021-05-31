@@ -1,9 +1,9 @@
-@font-face
-  font-family: jf-openhuninn
-  src: url('../fonts/jf-openhuninn-1.1.woff') format("woff")
+//@font-face
+  //font-family: jf-openhuninn
+  //src: url('../fonts/jf-openhuninn-1.1.woff') format("woff")
+  //font-display: auto
 
-  font-display: auto
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
 
 \:root
   --background-color: #FFFFFF
@@ -12,11 +12,13 @@
   --fontcolor-header: #000000
   --fontcolor-text: #000000
   --color-main: #FAAD95
-  --font-family-header: "jf-openhuninn", "Tahoma", "Arial"
+  --font-family-header: "Noto Sans TC", "Tahoma", "Arial"
   --font-style-header: normal
-  --font-family-text: "jf-openhuninn", "Tahoma", "Arial"
+  --font-family-text: "Noto Sans TC", "Tahoma", "Arial"
   --font-style-text: normal
-  --font-family-card: "jf-openhuninn", "Tahoma", "Arial"
+  --font-family-card: "Noto Sans TC", "Tahoma", "Arial"
+  
+  //"jf-openhuninn"
 
 *
   font-family: var(--font-family-text)
@@ -265,7 +267,7 @@ footer
             
           #post_title
             font-size: 1.4vw
-            font-weight: 600
+            font-weight: 500
             width: 13.5vw
             overflow: hidden
             white-space: nowrap
@@ -278,7 +280,7 @@ footer
             overflow: hidden
             white-space: nowrap
             text-overflow: ellipsis
-            font-weight: 100
+            font-weight: 300
             margin-bottom: 0.3vw
             
           #postcreatdate
@@ -434,7 +436,7 @@ footer
       
       #event-title
         font-size: 1.8vw
-        font-weight: 900
+        font-weight: 700
         
       #event-date
         font-size: 1vw
@@ -478,7 +480,7 @@ footer
         //position: absolute
         font-size: 1.3vw
         padding: 0 0 0.5vw 0.7vw
-        font-weight: 900
+        font-weight: 700
         
       #eventmsg-board
         display: flex
