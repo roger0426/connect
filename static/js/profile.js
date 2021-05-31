@@ -174,6 +174,54 @@ function friend_request_handler(URL, CSRF, request_user_id) {
   })
 }
 
+function friend_reply_handler(URL, CSRF, request_user_id, reply_status) {
+  $.ajaxSetup({
+    data: {
+      csrfmiddlewaretoken: CSRF
+    }
+  });
+  $.ajax({
+    type: 'post',
+    url: URL,
+    data: {
+      'user_id': request_user_id,
+      'reply': reply_status
+    },
+    dataType: 'json',
+    success: function(data) {
+      if (data.status == 200) {
+        console.log("friend reply successfully");
+        location.reload();
+      } else {
+        console.log(data.error_message);
+      }
+    }
+  })
+}
+
+function friend_remove_handler(URL, CSRF, request_user_id) {
+  $.ajaxSetup({
+    data: {
+      csrfmiddlewaretoken: CSRF
+    }
+  });
+  $.ajax({
+    type: 'post',
+    url: URL,
+    data: {
+      'user_id': request_user_id,
+    },
+    dataType: 'json',
+    success: function(data) {
+      if (data.status == 200) {
+        console.log("friend remove successfully");
+        location.reload();
+      } else {
+        console.log(data.error_message);
+      }
+    }
+  })
+}
 
 //另一個版本
 

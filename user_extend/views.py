@@ -149,3 +149,43 @@ def friend_request_view(request):
       'status': 500,
       'error_message': "[Error] Sending friend request to user himself"
     })
+
+def friend_reply_view(request):
+  data = request.POST
+  if data.get('reply') == '1':
+    # accept friend request
+    user = get_object_or_404(User, id=data.get('user_id'))
+    user.userextend.unverified_friends.remove(request.user)
+    user.userextend.friends.add(request.user)
+    request.user.userextend.friends.add(user)
+    return JsonResponse({
+      'status': 200,
+    })
+  elif data.get('reply') == '0':
+    user = get_object_or_404(User, id=data.get('user_id'))
+    user.userextend.unverified_friends.remove(request.user)
+    return JsonResponse({
+      'status': 200,
+    })
+  else:
+    return JsonResponse({
+      'status': 500,
+      'error_message': "[Error] Ajax Error"
+    })
+
+def friend_remove_view(request):
+  data = request.POST
+  print(request.user.userextend.friends.all())
+  user = get_object_or_404(User, id=data.get('user_id'))
+  if user in request.user.userextend.friends.all(): 
+    request.user.userextend.friends.remove(user)
+    user.userextend.friends.remove(request.user)
+    print(request.user.userextend.friends.all())
+    return JsonResponse({
+      'status': 200,
+    })
+  else:
+    return JsonResponse({
+      'status': 500,
+      'error_message': "[Error] Ajax Error, friend not found"
+    })
