@@ -311,8 +311,22 @@ html
                           p 這個活動好像還沒有評論
                     {% endfor %}
                   #eventcomment-insert
-                    input(type='text')
-                    input(type='button', value='送出')
+                    input#comment-text(type='text')
+                    input#comment-rate(type='number', min=1, max=10)
+                    input#send-comment(type='button', value='送出')
+
+                    script.
+                      $(document).ready(function(){
+                        $("#send-comment").on("click", function() {
+                          console.log("comment sending" + {{ activity.pk }})
+                          send_comment_handler(
+                            "{% url 'send_comment' %}",
+                            "{{ csrf_token }}",
+                            {{ activity.pk }},
+                            "activity"
+                          )
+                        });
+                      })
 
               {% empty %}
               #activity-card.card

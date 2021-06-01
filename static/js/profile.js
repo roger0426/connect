@@ -212,6 +212,44 @@ function friend_remove_handler(URL, CSRF, request_user_id) {
   })
 }
 
+function send_comment_handler(URL, CSRF, event_id, event_type) {
+  $.ajaxSetup({
+    data: {
+      csrfmiddlewaretoken: CSRF
+    }
+  });
+  $.ajax({
+    type: 'post',
+    url: URL,
+    data: {
+      'event_id': event_id,
+      'text': $("#comment-text").val(),
+      'rate': $("#comment-rate").val()
+    },
+    dataType: 'json',
+    success: function(data) {
+      if (data.status == 200) {
+        console.log("comment sent successfully");
+        let str = "\
+        <div class='comment'>\
+          <a href='/profile/" + data.user_id + "'>\
+            <img id='participant-img' src='" + data.user_img +"'>\
+          </a>\
+          <div class='comment-right'\
+            <a href='/profile/" + data.user_id + "'>" + data.user_name + "</a>\
+            <p id='participant-comment'>" + data.text + "</p>\
+            <p id='participant-rate'>" + data.rate + "/10★</p>\
+          </div>\
+        </div>";
+        console.log(str);
+        $("#" + event_type + "-comment.comments").append(str);
+      } else {
+        console.log(data.error_message);
+      }
+    }
+  })
+}
+
 //另一個版本
 
 var map=[

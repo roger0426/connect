@@ -130,9 +130,7 @@ html
         {{ form.as_table }}
 
         #buttons
-          //input#submit-btn(type="image" src="{% static 'file/submitbtn.png' %}" alt="Submit Form")
           input#submit-btn(type="submit" value='發佈')
-          //p#submit-btn 發佈
     {% endif %}
     footer
       {% include "footer.pug" %}
@@ -250,7 +248,5 @@ html
     script(src="{% static 'js/jquery-3.2.1.min.js' %}")
     script(src="{% static 'js/jquery-ui.js' %}")
     script(src="{% static 'js/semantic.min.js' %}")
-    //- script(src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js")
-    //- script(src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js")
     script(src="{% static 'js/homepage.js' %}")
     script(src="{% static 'js/navbar.js' %}")

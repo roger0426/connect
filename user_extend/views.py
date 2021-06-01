@@ -207,3 +207,30 @@ def friend_remove_view(request):
       'status': 500,
       'error_message': "[Error] Ajax Error, friend not found"
     })
+
+def send_comment_view(request):
+  data = request.POST
+  text = data.get('text')
+  rate = data.get('rate')
+  if text != '' and rate != '':
+    event = get_object_or_404(EventsBoard, id = data.get('event_id'))
+    comment = Comment.objects.create(
+      text = text,
+      for_event = event,
+      author = request.user.userextend,
+      rate = rate
+    )
+    comment.save()
+    return JsonResponse({
+      'status': 200,
+      'text': text,
+      'rate': rate,
+      'user_img': request.user.userextend.img.url,
+      'user_id': request.user.userextend.id,
+      'user_name': request.user.userextend.full_name
+    })
+  else:
+    return JsonResponse({
+      'status': 401,
+      'error_message': "[Error] Empty input of text or rate of the event"
+    })
