@@ -8,9 +8,23 @@ from django.core.files.storage import default_storage
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 # Create your views here.
+
+# return value events that two users have joined
+def get_connect_event_num(user1, user2):
+  # @params user1: UserExtend
+  # @params user2: User
+  count = 0
+  events_host = EventsBoard.objects.filter(host=user1)
+  events_part = EventsBoard.objects.filter(participants = user1)
+  match_events = events_host | events_part # union of two query sets
+  for event in match_events.all():
+    if event.host == user2.userextend or user2.userextend in event.participants.all():
+      count += 1
+  return count
+
 def update_profile(request, user_id):
-    user = User.objects.get(pk=user_id)
-    user.save()
+  user = User.objects.get(pk=user_id)
+  user.save()
 
 def profile_view(requests, id, *args, **kwargs):
   obj = UserExtend.objects.get(id=id)
@@ -23,6 +37,10 @@ def profile_view(requests, id, *args, **kwargs):
   activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
   projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
   personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
+
+  friends = obj.friends.all()
+  friend_connect_counts = [ get_connect_event_num(obj, friend) for friend in obj.friends.all() ]
+  friend_zip = zip(friends, friend_connect_counts)
   if(requests.user.is_authenticated):
     notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
   else:
@@ -34,6 +52,7 @@ def profile_view(requests, id, *args, **kwargs):
     'skill': skill_tags,
     'interest': interest_tags,
     'friend_count': friend_count,
+    'friend_zip': friend_zip,
     'activities': activities,
     'projects': projects,
     'personal_projs': personal_projs,
@@ -49,7 +68,6 @@ def profile_event_view(requests, id, event_id):
   personality_tags = obj.user.tags.filter(tag_type='個性')
   skill_tags = obj.user.tags.filter(tag_type='專長')
   interest_tags = obj.user.tags.filter(tag_type='有興趣的活動')
-
 
   activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
   projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')

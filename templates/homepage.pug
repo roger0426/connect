@@ -106,7 +106,7 @@ html
             $('#eventboard a').on("click", function() {
               console.log(this.id);
               $('#eventwindow').attr('class', this.id)
-              event_handler("event/" + this.id, this.id, {{ request.user.pk }}, "{{ csrf_token }}");
+              event_handler("event/" + this.id, "{{ request.user.id }}", "{{ csrf_token }}");
             });
           
           #virtualdiv

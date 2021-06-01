@@ -39,6 +39,7 @@ def event_detail_view(requests, id):
     likes = list(event.likes.all().values())
     participants = list(event.participants.all().values())
     comments = list(event.board_message.all().values())
+    print(comments)
     host =  model_to_dict(event.host, fields=['id', 'full_name', 'image_url'])
     print(host)
     data = requests.POST

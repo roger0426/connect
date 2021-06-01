@@ -54,6 +54,7 @@ class UserExtend(models.Model):
     blank = True,
     null = True
   )
+
   @property
   def image_url(self):
     from django.contrib.sites.models import Site
@@ -66,3 +67,4 @@ class UserExtend(models.Model):
   
   def __str__(self):
     return "User {0}".format(self.user.username)
+
