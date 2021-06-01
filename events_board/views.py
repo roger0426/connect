@@ -87,7 +87,8 @@ def like_view(request, id):
       receiver = event.host.user
       sender = request.user
       notification = SiteNotification.objects.create(
-        text = sender.userextend.full_name + "對您的活動感到有興趣， 快去看看吧",
+        text = "對您的活動感到有興趣， 快去看看吧",
+        #sender.userextend.full_name +
         event = event,
         for_user = receiver,
         from_user = sender
