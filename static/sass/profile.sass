@@ -124,8 +124,8 @@ footer
         #editpicfilter
           display: block
           position: absolute
-          width: 13.6rem
-          height: 13.6rem
+          width: 13.6vw
+          height: 13.6vw
           border-radius: 50%
           background-color: white
           opacity: 0.7
@@ -137,8 +137,8 @@ footer
         #fileselectedfilter
           display: none
           position: absolute
-          width: 13.6rem
-          height: 13.6rem
+          width: 13.6vw
+          height: 13.6vw
           border-radius: 50%
           background-color: white
           opacity: 0.7
@@ -151,25 +151,25 @@ footer
         width: 13vw
         height: 13vw
         border-radius: 50%
-        border: solid 0.3rem
+        border: solid 0.3vw
         border-color: #FDFDFD
         background-color: white
         margin-bottom: 0.5vh
       #user-name
-        font-size: 2rem
-        margin-top: 0.5rem
-        margin-bottom: 0.5rem
+        font-size: 1.7rem
+        margin-top: 0.5rem 0 0.3rem 0
       #school-info
         display: flex
         flex-direction: row
+        align-items: center
         margin-bottom: 5%
         color: #555555
         #department
-          font-size: 1.2rem
+          font-size: 1.1rem
           margin-right: 0.5rem
         #grade
           font-size: 1rem
-          line-height: 1.2rem
+          line-height: 1rem
         
         input
           width: 6rem
@@ -193,18 +193,17 @@ footer
         //border: solid 2px
         border-radius: 1.3rem
         //border-color: #3AEDC2
-        padding: 1.5rem 1rem
+        padding: 1rem 1rem
         width: auto
         margin-bottom: 0.5rem
         
         #description
-          font-size: 1.25rem
+          font-size: 1.1rem
           padding-left: 0.5rem
         #descriptionarea
           border: none
           background-color: #F9F9F9
-          font-size: 1.25rem
-          padding-left: 0.5rem
+          font-size: 1.1rem
           resize: none
           height: 2.5rem
           width: 97%
@@ -320,8 +319,6 @@ footer
           outline: none
           width: 0.5rem
           
-          font-size: 0.9rem
-          
         input::-webkit-input-placeholder
           content: "test"
           color: black
@@ -348,14 +345,13 @@ footer
           width: auto
           font-size: 1rem
           border-radius: 2rem
-          padding: 0.5rem 1rem
-          margin: 0.5rem 0 0 0
+          padding: 0.25rem 1rem
+          margin: 0.5rem 0 0 0.7rem
           float: right
           border: solid 2px
           background-color: #FDF2EF
           border-color: var(--color-main)
           cursor: pointer
-          margin-left: 1rem
         *:hover
           background-color: #FFDFDF
           
@@ -469,9 +465,8 @@ footer
         border-radius: 50%
         border: #CCCCCC solid 0.1rem
         margin-bottom: 0.5rem
-      .vitualimg
+      .virtualimg
         width: 3.2rem
-        //width: 5rem
         height: 0
       .friend-info
         display: none
@@ -717,7 +712,7 @@ footer
             input[type=button]
               width: 15%
 
-      @media(max-width:1480px)
+      @media only screen and (max-width:1350px)
         .card
           flex-direction: column
           .cardleft
@@ -1084,9 +1079,9 @@ footer
   z-index: 6
 
   
-@media only screen and (max-width: 1100px)
+@media only screen and (max-width: 1000px)
   #profilepanel
-    width: 75vw
+    width: 70vw
     #top-region
       #intro
         flex-direction: column
