@@ -537,7 +537,7 @@ footer
         font-size: 1.3rem
         border: none
         background-color: transparent
-        padding: 0 calc(13rem / 3)
+        padding: 0 calc(90vm / 3)
       *:hover
         position: relative
         transform: scale(1.02)
@@ -563,7 +563,7 @@ footer
         border-radius: 1rem
         border: solid 2px
         border-color: #75E1C7
-        
+
       .cardleft
         display: flex
         flex-direction: column
@@ -589,7 +589,7 @@ footer
         .detail
           font-size: 1.1rem
           line-height: 1.3rem
-          width: 15rem
+          width: 100%
           max-height: 10rem
           overflow: scroll
           margin-top: 1rem
@@ -659,6 +659,7 @@ footer
             justify-content: flex-start;
             align-content: flex-start;
             align-items: center
+            width: 100%
             
             #participant-img
               width: 2.5rem
@@ -670,7 +671,7 @@ footer
               padding: 0 0.5rem 0.7rem 0.5rem
               border-radius: 1rem
               margin-top: 0.5rem
-              width: 15.5rem
+              width: 100%
               margin-left: 0.5rem
               //background-color: white
               
@@ -710,6 +711,16 @@ footer
             width: 65%
           input[type=button]
             width: 15%
+
+      @media(max-width:1480px)
+        .card
+          flex-direction: column
+          .cardleft
+            flex-direction: row
+            .detail
+              height: 100%
+          .cardright
+            width: 100%
 
     #personal-title
       font-size: 1.6rem
