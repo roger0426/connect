@@ -202,12 +202,12 @@ html
               p 連結人
               p#friend-count {{ friend_count }}
             #friends-avatar.left-region
-              {% for friend in user.friends.all %}
+              {% for friend, friend_connect in friend_zip %}
               a(href="{% url 'profile' id=friend.userextend.pk %}")
                 img.friend-img(src="{{ friend.userextend.img.url }}")
                 .friend-info
                   p 他們曾一起參與過
-                  p 5
+                  p {{ friend_connect }}
                   p 個活動
               {% empty %}
               p 快去建立連結吧

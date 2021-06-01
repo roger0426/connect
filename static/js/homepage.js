@@ -148,7 +148,7 @@ $(document).ready(function(){
   
 });
 
-function event_handler(URL, event_id, user_id, CSRF) {
+function event_handler(URL, user_id, CSRF) {
   $.ajaxSetup({
     data: {
       csrfmiddlewaretoken: CSRF
@@ -157,9 +157,7 @@ function event_handler(URL, event_id, user_id, CSRF) {
   $.ajax({
     type: "POST",
     url: URL,
-    data: {
-      'user_id': user_id,
-    },
+    data: {},
     dataType: 'json',
     success: function(data) {
       

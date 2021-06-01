@@ -64,6 +64,9 @@ def login_view(request, *args, **kwargs):
   email_hash = ''
   if sid != '' and email != '':
     email_hash = hash_func(sid, email)
+  
+  if email_check != email_hash:
+    return render(request, 'login.pug', {'error_message': "請輸入正確驗證碼"})
 
   if 'terms' in request.POST and sign_pwd == double_pwd and email_check == email_hash:
     user = User.objects.create_user(
