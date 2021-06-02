@@ -47,7 +47,7 @@ footer
   padding-bottom: 1vh
   width: 100%
   p
-    font-size: 1rem
+    font-size: 1vw
 
 #phoneerrormsg
   display: none
@@ -201,14 +201,14 @@ footer
         margin-left: 0.5rem
         
       #category
-        width: 6.3rem
+        width: 5rem
       #sort
-        width: 10.3rem
+        width: 8rem
         
       select
-        font-size: 1.2rem
+        font-size: 1rem
         border-radius: 1rem
-        padding: 0.2rem 0.7rem
+        padding: 0.1rem 0.7rem
         outline: none
         margin: 0 0.5rem
         
@@ -225,7 +225,7 @@ footer
       .eventpost:hover
         position: relative
         transform: scale(1.01)
-        box-shadow: 0.25rem 0.35rem 0.4rem 0.1rem rgba(150, 150, 150, 0.5)
+        box-shadow: 0.25rem 0.35rem 0.4rem 0.25rem rgba(150, 150, 150, 0.5)
       
       .eventpost
         display: flex
@@ -236,12 +236,12 @@ footer
         align-items: center
         cursor: pointer
                 
-        width: 14rem
+        width: 13rem
         background-color: white
         margin: 1rem
-        padding: 1rem 1.5rem 0.5rem 1.5rem
+        padding: 0.5rem 1.5rem 0.5rem 1.5rem
         border-radius: 1.5rem
-        box-shadow: 0.2rem 0.3rem 0.3rem 0.1rem rgba(150, 150, 150, 0.7)
+        box-shadow: 0.15rem 0.1rem 0.3rem 0.2rem rgba(150, 150, 150, 0.7)
         
         *
           margin: 0
@@ -249,9 +249,9 @@ footer
           //margin-bottom: 0.3rem
         
         .posttop
-          transform: translate(0, calc(-1rem - 1px))
-          width: 14rem
-          padding: 1rem 1.5rem 0.3rem 1.5rem
+          transform: translate(0, calc(-0.5rem - 1px))
+          width: 13rem
+          padding: 0.7rem 1.5rem 0.3rem 1.5rem
           border-radius: 1.5rem 1.5rem 0 0
           background-color: #FFAD94
           height: 5.65rem
@@ -266,22 +266,22 @@ footer
             background-color: #FFDBD0
             
           #post_title
-            font-size: 1.4rem
+            font-size: 1.2rem
             font-weight: 500
-            width: 13.5rem
+            width: 12.5rem
             overflow: hidden
             white-space: nowrap
             text-overflow: ellipsis
-            margin-bottom: 0.3rem
+            margin-bottom: -0.2rem
             
           #post_subtitle
-            font-size: 0.95rem
+            font-size: 0.9rem
             width: 10rem
             overflow: hidden
             white-space: nowrap
             text-overflow: ellipsis
             font-weight: 300
-            margin-bottom: 0.3rem
+            margin-bottom: 0.2rem
             
           #postcreatdate
             font-size: 0.8rem
@@ -318,6 +318,8 @@ footer
         margin-left: 0
       #virtualdiv
         height: 0
+        width: 18rem
+        //margin: 0 4rem
         .eventpost
           box-shadow: none
         *
@@ -432,7 +434,7 @@ footer
       align-content: flex-start;
       justify-content: space-between
       align-items: flex-end
-      width: 22rem
+      width: 70%
       margin-left: 9rem
       
       #event-title
@@ -490,7 +492,7 @@ footer
         align-content: center;
         justify-content: flex-start;
         align-items: flex-start;
-        
+        width: 100%
         overflow: scroll
         overflow-x: hidden
         
@@ -501,7 +503,7 @@ footer
           flex-direction: row;
           flex-wrap: nowrap;
           align-items: center;
-          width: 28.5rem
+          width: 95%
           margin: 0 0 0.4rem 0
           border-radius: 0.5rem
           background-color: #F8FFFD
@@ -522,7 +524,7 @@ footer
             flex-wrap: nowrap;
             justify-content: space-between
             align-items: flex-start;
-            width: 100%
+            width: 85%
             min-height: 2.5rem
             margin-left: 1rem
             
@@ -571,6 +573,7 @@ footer
         margin-left: 1rem
         
       .comment-operate-region
+        position: relative
         display: flex
         flex-direction: row;
         flex-wrap: nowrap;
@@ -583,17 +586,16 @@ footer
         .eventmsg-insert
           outline: none
           border: none
-          width: 19.5rem
+          width: calc(18vw)
           border-radius: 1rem 0 0 1rem
           background-color: #F2F2F2
-          padding: 0.5rem 2.5rem 0.5rem 1rem
+          padding: 0.5rem 1.3rem 0.5rem 1rem
           font-size: 1.1rem
         
-        
-          
         .eventmsg-btn
-          position: relative
-          transform: translateX(-2.5rem)
+          position: absolute
+          right: 0
+          transform: translateX(3.5rem)
           outline: none
           border: none
           border-radius: 1rem
