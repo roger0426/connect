@@ -212,7 +212,7 @@ function friend_remove_handler(URL, CSRF, request_user_id) {
   })
 }
 
-function send_comment_handler(URL, CSRF, event_id, event_type) {
+function send_comment_handler(URL, CSRF, event_id, event_type, text, rate, element) {
   $.ajaxSetup({
     data: {
       csrfmiddlewaretoken: CSRF
@@ -223,8 +223,8 @@ function send_comment_handler(URL, CSRF, event_id, event_type) {
     url: URL,
     data: {
       'event_id': event_id,
-      'text': $("#comment-text").val(),
-      'rate': $("#comment-rate").val()
+      'text': text,
+      'rate': rate
     },
     dataType: 'json',
     success: function(data) {
@@ -241,8 +241,13 @@ function send_comment_handler(URL, CSRF, event_id, event_type) {
             <p id='participant-rate'>" + data.rate + "/10★</p>\
           </div>\
         </div>";
-        console.log(str);
-        $("#" + event_type + "-comment.comments").append(str);
+        if ($(element).children(".comment-right").children("#participant-comment p").text() == "這個活動好像還沒有評論") {
+          $(element).empty();
+        }
+        $(element).append(str);
+        $("input.comment-text").val("");
+        $("input.comment-rate").val("");
+
       } else {
         console.log(data.error_message);
       }

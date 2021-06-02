@@ -213,6 +213,7 @@ def send_comment_view(request):
   text = data.get('text')
   rate = data.get('rate')
   if text != '' and rate != '':
+    print(data.get('event_id'))
     event = get_object_or_404(EventsBoard, id = data.get('event_id'))
     comment = Comment.objects.create(
       text = text,

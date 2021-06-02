@@ -313,29 +313,32 @@ html
                         #participant-comment
                           p 這個活動好像還沒有評論
                     {% endfor %}
-                  #eventcomment-insert
-                    input#comment-text(type='text')
-                    input#comment-rate(type='number', min=1, max=10)
-                    input#send-comment(type='button', value='送出')
-
-                    script.
-                      $(document).ready(function(){
-                        $("#send-comment").on("click", function() {
-                          console.log("comment sending" + {{ activity.pk }})
-                          send_comment_handler(
-                            "{% url 'send_comment' %}",
-                            "{{ csrf_token }}",
-                            {{ activity.pk }},
-                            "activity"
-                          )
-                        });
-                      })
-
+                  .eventcomment-insert
+                    input.comment-text(type='text')
+                    input.comment-rate(type='number', min=1, max=10)
+                    input.send-comment(type='button', value='送出')
+                    // store event id here, not disply
+                    .event-id(style='display:none') {{ activity.id }}
               {% empty %}
               #activity-card.card
                 p.hint(style="color: #E98C6F") 看來他好像還沒參加過活動喔
               {% endfor %}
-                
+              script.
+                $(document).ready(function(){
+                  $(".send-comment").on("click", function() {
+                    console.log("comment sending " + $(this).siblings(".event-id").text())
+                    send_comment_handler(
+                      "{% url 'send_comment' %}",
+                      "{{ csrf_token }}",
+                      $(this).siblings(".event-id").text(),
+                      "activity",
+                      $(this).siblings(".comment-text").val(),
+                      $(this).siblings(".comment-rate").val(),
+                      $(this).parent().siblings(".comments")
+                    )
+                  });
+                })
+
               // so many comments
 
               // so many cards (use for to solve it after the backend has constructed)
