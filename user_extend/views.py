@@ -193,12 +193,10 @@ def friend_reply_view(request):
 
 def friend_remove_view(request):
   data = request.POST
-  print(request.user.userextend.friends.all())
   user = get_object_or_404(User, id=data.get('user_id'))
   if user in request.user.userextend.friends.all(): 
     request.user.userextend.friends.remove(user)
     user.userextend.friends.remove(request.user)
-    print(request.user.userextend.friends.all())
     return JsonResponse({
       'status': 200,
     })
@@ -213,8 +211,13 @@ def send_comment_view(request):
   text = data.get('text')
   rate = data.get('rate')
   if text != '' and rate != '':
-    print(data.get('event_id'))
     event = get_object_or_404(EventsBoard, id = data.get('event_id'))
+    if int(rate) > 10:
+      rate = 10
+    elif int(rate) < 1:
+      rate = 1
+    else:
+      rate = rate
     comment = Comment.objects.create(
       text = text,
       for_event = event,
@@ -228,7 +231,8 @@ def send_comment_view(request):
       'rate': rate,
       'user_img': request.user.userextend.img.url,
       'user_id': request.user.userextend.id,
-      'user_name': request.user.userextend.full_name
+      'user_name': request.user.userextend.full_name,
+      'post_avg_rate': event.get_avg_rating()
     })
   else:
     return JsonResponse({

@@ -104,7 +104,6 @@ html
           
           script.
             $('#eventboard a').on("click", function() {
-              console.log(this.id);
               $('#eventwindow').attr('class', this.id)
               event_handler("event/" + this.id, "{{ request.user.id }}", "{{ csrf_token }}");
             });
@@ -158,7 +157,7 @@ html
                   img.sender
                 #eventmsg-right
                   #eventmsg-righttop
-                    a#eventmsg-sendername
+                    a#eventmsg-sendername 
                     p#event-date
                   #eventmsg-rightbottom
                     p#eventmsgtext
@@ -186,7 +185,10 @@ html
               script.
                 $(document).ready(function(){
                   $(".eventmsg-btn").on("click", function() {
-                    message_handler('comment/' + $(this).closest('#eventwindow').attr('class'), $(this).closest('#eventwindow').attr('class'), "{{ csrf_token }}");
+                    message_handler(
+                      'comment/' + $(this).closest('#eventwindow').attr('class'),
+                      $(this).closest('#eventwindow').attr('class'), 
+                      "{{ csrf_token }}");
                   })
                 })
             {% else %}

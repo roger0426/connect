@@ -212,7 +212,7 @@ function friend_remove_handler(URL, CSRF, request_user_id) {
   })
 }
 
-function send_comment_handler(URL, CSRF, event_id, event_type, text, rate, element, comment_count) {
+function send_comment_handler(URL, CSRF, event_id, text, rate, element, comment_count) {
   $.ajaxSetup({
     data: {
       csrfmiddlewaretoken: CSRF
@@ -235,7 +235,7 @@ function send_comment_handler(URL, CSRF, event_id, event_type, text, rate, eleme
           <a href='/profile/" + data.user_id + "'>\
             <img id='participant-img' src='" + data.user_img +"'>\
           </a>\
-          <div class='comment-right'\
+          <div class='comment-right'>\
             <a href='/profile/" + data.user_id + "'>" + data.user_name + "</a>\
             <p id='participant-comment'>" + data.text + "</p>\
             <p id='participant-rate'>" + data.rate + "/10★</p>\
@@ -249,10 +249,7 @@ function send_comment_handler(URL, CSRF, event_id, event_type, text, rate, eleme
         $("input.comment-text").val("");
         $("input.comment-rate").val("");
         
-        let original_rate_str = $(element).siblings(".info").children(".rate").text()
-        let original_rate = parseFloat(original_rate_str.substring(0, 3))
-        let new_rate = (original_rate * parseInt(comment_count) + parseInt(rate)) / (parseInt(comment_count) + 1);
-        $(element).siblings(".info").children(".rate").text((new_rate).toString().substring(0, 3) + "/10★")
+        $(element).siblings(".info").children(".rate").text(data.post_avg_rate + "/10★")
       } else {
         console.log(data.error_message);
       }

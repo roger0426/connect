@@ -110,7 +110,8 @@ $(document).ready(function(){
   
   let searchParams = window.location.href
   if (searchParams.includes('event')) {
-    console.log('here')
+    console.log('here') 
+
     //$('#eventwindow').show();
     $('#eventwindow').css({'display': 'flex'});
   }
@@ -162,7 +163,6 @@ function event_handler(URL, user_id, CSRF) {
     success: function(data) {
       
 //      console.log("ajax success----------");
-      console.log(data)
 //      console.log("title:", data.title);
 //      console.log("subtitle:", data.subtitle);
 //      console.log("host:", data.host);
@@ -193,12 +193,10 @@ function event_handler(URL, user_id, CSRF) {
       
       if(data.comments != undefined) {
         data.comments.forEach(function(item, i) {
-          console.log(item);
           var clone_id = duplicate_multi('eventmsg');
-          console.log(clone_id);
           $('#' + clone_id).show();
           //$('#' + clone_id + " img").attr('src', data.author_img_url);
-          $('#' + clone_id + ' #eventmsg-sendername').html(item.author_id);
+          $('#' + clone_id + ' #eventmsg-sendername').html(item.author_id); //???
           $('#' + clone_id + ' #event-date').html(item.date);
           $('#' + clone_id + " #eventmsgtext").html(item.text);
         });
@@ -208,7 +206,6 @@ function event_handler(URL, user_id, CSRF) {
       $('#likebutton button').attr("src", "/static/file/like-bg-n.png");
       if(data.likes != undefined) {
         data.likes.forEach(function(item, i) {
-          //console.log(item);
           if(item.id == user_id) {
             $('#likebutton').css("background-image", "url(/static/file/like-bg-y.png");
             $('#likebutton button').attr("src", "/static/file/like-bg-y.png");
@@ -323,7 +320,6 @@ function message_handler(URL, event_id, CSRF) {
 
 var i = 0;
 function duplicate_multi(duplicateID) {
-  console.log("duplicate eventpost");
   var original = document.getElementById(duplicateID);
   var clone = original.cloneNode(true); // "deep" clone
   clone.id = duplicateID + '_new' + ++i;
@@ -334,7 +330,6 @@ function duplicate_multi(duplicateID) {
 
 
 function duplicate(duplicateID) {
-  console.log("duplicate eventpost");
   var original = document.getElementById(duplicateID);
   var clone = original.cloneNode(true); // "deep" clone
   clone_id = duplicateID;

@@ -205,9 +205,8 @@ html
               a(href="{% url 'profile' id=friend.userextend.pk %}")
                 img.friend-img(src="{{ friend.userextend.img.url }}")
                 .friend-info
-                  p 他們曾一起參與過
-                  p {{ friend_connect }}
-                  p 個活動
+                  p {{ user.user.last_name }} 與 {{ friend.last_name }} 曾一起參與過
+                  p {{ friend_connect }} 個活動
               {% empty %}
               p 快去建立連結吧
               {% endfor %}
@@ -331,7 +330,6 @@ html
                       "{% url 'send_comment' %}",
                       "{{ csrf_token }}",
                       $(this).siblings(".event-id").text(),
-                      "activity",
                       $(this).siblings(".comment-text").val(),
                       $(this).siblings(".comment-rate").val(),
                       $(this).parent().siblings(".comments"),
