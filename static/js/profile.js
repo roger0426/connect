@@ -212,7 +212,7 @@ function friend_remove_handler(URL, CSRF, request_user_id) {
   })
 }
 
-function send_comment_handler(URL, CSRF, event_id, event_type, text, rate, element) {
+function send_comment_handler(URL, CSRF, event_id, event_type, text, rate, element, comment_count) {
   $.ajaxSetup({
     data: {
       csrfmiddlewaretoken: CSRF
@@ -241,13 +241,18 @@ function send_comment_handler(URL, CSRF, event_id, event_type, text, rate, eleme
             <p id='participant-rate'>" + data.rate + "/10★</p>\
           </div>\
         </div>";
-        if ($(element).children(".comment-right").children("#participant-comment p").text() == "這個活動好像還沒有評論") {
+        if (comment_count == '0') {
+          console.log('here')
           $(element).empty();
         }
         $(element).append(str);
         $("input.comment-text").val("");
         $("input.comment-rate").val("");
-
+        
+        let original_rate_str = $(element).siblings(".info").children(".rate").text()
+        let original_rate = parseFloat(original_rate_str.substring(0, 3))
+        let new_rate = (original_rate * parseInt(comment_count) + parseInt(rate)) / (parseInt(comment_count) + 1);
+        $(element).siblings(".info").children(".rate").text((new_rate).toString().substring(0, 3) + "/10★")
       } else {
         console.log(data.error_message);
       }

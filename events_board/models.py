@@ -63,7 +63,7 @@ class EventsBoard(models.Model):
     sum = 0
     for comment in comments:
       sum += comment.rate
-    return (sum/count)
+    return format((sum/count), '.1f')
   def __str__(self):
     return self.title
 

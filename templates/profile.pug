@@ -304,7 +304,6 @@ html
                         img#participant-img(src="{{ comment.author.img.url }}")
                       .comment-right
                         a(href="{% url 'profile' id=comment.author.pk %}") {{ comment.author.full_name }}
-                          //p#participant-name {{ comment.author.full_name }}
                         p#participant-comment {{ comment.text }}
                         p#participant-rate {{ comment.rate }}/10★
                     {% empty %}
@@ -317,8 +316,9 @@ html
                     input.comment-text(type='text')
                     input.comment-rate(type='number', min=1, max=10)
                     input.send-comment(type='button', value='送出')
-                    // store event id here, not disply
+                    //- store event id here, not disply
                     .event-id(style='display:none') {{ activity.id }}
+                    .comment-count(style='display:none') {{ activity.number_of_comments }}
               {% empty %}
               #activity-card.card
                 p.hint(style="color: #E98C6F") 看來他好像還沒參加過活動喔
@@ -334,7 +334,8 @@ html
                       "activity",
                       $(this).siblings(".comment-text").val(),
                       $(this).siblings(".comment-rate").val(),
-                      $(this).parent().siblings(".comments")
+                      $(this).parent().siblings(".comments"),
+                      $(this).siblings(".comment-count").text()
                     )
                   });
                 })
