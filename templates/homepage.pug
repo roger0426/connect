@@ -148,25 +148,16 @@ html
           #eventmsgregion
             p#msgtitle 留言板
             #eventmsg-board
-              .eventmsg#eventmsg(style="display: none")
-                a
-                  img.sender
-                #eventmsg-right
-                  #eventmsg-righttop
-                    a#eventmsg-sendername 
-                    p#event-date
-                  #eventmsg-rightbottom
-                    p#eventmsgtext
               //-
-                .eventmsg#eventmsg
-                  a(href="{% url 'profile' id=eventmsg.author.pk %}")
-                    img.sender(src='{{ eventmsg.author.img.url }}')
+                .eventmsg#eventmsg(style="display: none")
+                  a
+                    img.sender
                   #eventmsg-right
                     #eventmsg-righttop
-                      a#eventmsg-sendername(href="{% url 'profile' id=eventmsg.author.pk %}") {{ eventmsg.author.full_name }}
-                      p#event-date {{ eventmsg.date }}
+                      a#eventmsg-sendername
+                      p#event-date
                     #eventmsg-rightbottom
-                      p#eventmsgtext {{ eventmsg.text }}
+                      p#eventmsgtext
           #eventmsg-sender
             {% if request.user.is_authenticated %}
             a(href="{% url 'profile' id=request.user.userextend.pk %}")

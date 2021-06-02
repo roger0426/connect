@@ -205,8 +205,7 @@ html
               a(href="{% url 'profile' id=friend.userextend.pk %}")
                 img.friend-img(src="{{ friend.userextend.img.url }}")
                 .friend-info
-                  p {{ user.user.last_name }} 與 {{ friend.last_name }} 曾一起參與過
-                  p {{ friend_connect }} 個活動
+                  p {{ user.user.full_name }} 與 {{ friend.full_name }} 一起參與過 {{ friend_connect }} 個活動
               {% empty %}
               p 快去建立連結吧
               {% endfor %}

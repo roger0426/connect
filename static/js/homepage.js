@@ -190,6 +190,8 @@ function event_handler(URL, user_id, CSRF) {
       $("#eventwindow" + " #eventoperate" + " #organizer-pic").attr('src', data.host_pic);
       
       $("#member").html("");
+      $("#eventmsg-board").html("<div id=\"eventmsg\" style=\"display: none\" class=\"eventmsg\"><a><img class=\"sender\"></a><div id=\"eventmsg-right\"><div id=\"eventmsg-righttop\"><a id=\"eventmsg-sendername\"></a><p id=\"event-date\"></p></div><div id=\"eventmsg-rightbottom\"><p id=\"eventmsgtext\"></p></div></div></div>");
+      
       
       if(data.comments != undefined) {
         data.comments.forEach(function(item, i) {
