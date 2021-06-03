@@ -6,12 +6,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
 
 \:root
-  --background-color: #FFFFFF
-  --background-color-card: #E8E8E8
-  --fontcolor-navbarbutton: #000000
-  --fontcolor-header: #000000
-  --fontcolor-text: #000000
-  --color-main: #FAAD95
+  --background-color-card: #FFC5B2
+  --background-color-box: #FFFFFF
+  --background-color-filiter: #EEEEEE
+  --background-color-eventwindow: #F5FBFE
+  --background-color-filiter2: #EFFFFB
+  --background-color-create: #F5FBFE
+  --background-color-buttons: #32DEB5
+  --background-color-buttons-hover: #9FE4D4
+
+  --border-color-box: #FFE4DC
+  --border-color-eventwindow: #75E1C7
+  --border-color-participate: #CCCCCC
+  --border-color-create: #FFAD94
+  --border-color-focus: #B9B9B9
+  
+  --fontcolor-before: #888888
+  --fontcolor-hover: #666666
+  --fontcolor-complement: #777777
+  --fontcolor-subtitle: #3DC9A7
+
+  --box-shadow-color: rgba(0, 0, 0, 0.25)
+
   --font-family-header: "Noto Sans TC", "Tahoma", "Arial"
   --font-style-header: normal
   --font-family-text: "Noto Sans TC", "Tahoma", "Arial"
@@ -29,7 +45,7 @@ input, textarea, button, select, a
   -webkit-tap-highlight-color: rgba(255, 228 ,220, 0.5)
 
 body
-  background-color: #FFF6ED
+  background-color: var(--background-color)
 
 a
   text-decoration: none
@@ -37,7 +53,7 @@ a
 
 footer
   height: 5vh
-  background-color: var(--color-main)
+  background-color: var(--background-color-navbar)
   display: flex
   flex-direction: row
   justify-content: space-around
@@ -99,9 +115,9 @@ footer
     flex-direction: row
     justify-content: space-evenly
     align-items: center
-    background-color: white
+    background-color: var(--background-color-box)
     //rgba(255, 219, 208, 1)
-    border: solid 0.2rem #FFCFBF
+    border: solid 0.2rem var(--border-color-box)
     width: 100%
     height: 12%
     border-radius: 1.5rem
@@ -122,7 +138,7 @@ footer
       height: 6rem
       border-radius: 50%
       border: solid 0.2rem white
-      background-color: #EEEEEE
+      background-color: var(--background-color-filiter)
 
     #inserta
       position: absolute
@@ -131,7 +147,7 @@ footer
       height: 3.5rem
 
     #insertbox:hover
-      color: #666666
+      color: var(--fontcolor-hover)
 
     #insertbox
       display: flex
@@ -141,13 +157,13 @@ footer
       height: 3.5rem
       width: 48vw
       border-radius: 1.2rem
-      background-color: #EEEEEE
+      background-color: var(--background-color-filiter)
       cursor: pointer
       border: none
       text-align: left
       padding-left: 1.5rem
       font-size: 1.5rem
-      color: #888888
+      color: var(--fontcolor-before)
     
     #insertbar
       position: relative
@@ -163,9 +179,9 @@ footer
     flex-wrap: nowrap
     align-content: center
     align-items: stretch
-    background-color: white
+    background-color: var(--background-color-box)
     //rgba(255, 219, 208, 1)
-    border: solid 0.2rem #FFCFBF
+    border: solid 0.2rem var(--border-color-box)
     width: 100%
     
     border-radius: 1.5rem
@@ -225,7 +241,11 @@ footer
       .eventpost:hover
         position: relative
         transform: scale(1.01)
+<<<<<<< HEAD
         box-shadow: 0.25rem 0.35rem 0.4rem 0.25rem rgba(150, 150, 150, 0.5)
+=======
+        box-shadow: 0.25rem 0.35rem 0.4rem 0.1rem var(--box-shadow-color)
+>>>>>>> homepage fix
       
       .eventpost
         display: flex
@@ -236,8 +256,13 @@ footer
         align-items: center
         cursor: pointer
                 
+<<<<<<< HEAD
         width: 13rem
         background-color: white
+=======
+        width: 14rem
+        background-color: var(--background-color-box)
+>>>>>>> homepage fix
         margin: 1rem
         padding: 0.5rem 1.5rem 0.5rem 1.5rem
         border-radius: 1.5rem
@@ -253,7 +278,7 @@ footer
           width: 13rem
           padding: 0.7rem 1.5rem 0.3rem 1.5rem
           border-radius: 1.5rem 1.5rem 0 0
-          background-color: #FFAD94
+          background-color: var(--background-color-card)
           height: 5.65rem
           
           
@@ -263,7 +288,7 @@ footer
             border-radius: 0.5rem
             border: solid 1px
             border-color: #999999
-            background-color: #FFDBD0
+            background-color: var(--background-color-filiter)
             
           #post_title
             font-size: 1.2rem
@@ -285,7 +310,7 @@ footer
             
           #postcreatdate
             font-size: 0.8rem
-            color: #777777
+            color: var(--fontcolor-complement)
             text-align: right
         
             
@@ -340,10 +365,6 @@ footer
   cursor: pointer
   z-index: 5
   text-align: center
-  p
-    position: relative
-    top: 30%
-    color: #666666
 
 //#gotop:hover
   //opacity: 0.65
@@ -365,7 +386,7 @@ footer
   display: none
   position: fixed
   flex-direction: row
-  flex-wrap: nowrap
+  flex-wrap: wrap
   align-content: flex-start
   justify-content: space-between
   align-items: flex-start
@@ -376,10 +397,10 @@ footer
   width: 40%
   min-width: 32rem
   padding: 5rem 2rem 1.5rem 2rem
-  background-color: #F5FBFE
+  background: linear-gradient(180deg,var(--border-color-eventwindow), #FFFFFF)
   border-radius: 3rem
-  border: 5px solid rgba(58, 237, 194, 0.5)
-  box-shadow: 10px 10px 25px 5px #00000026
+  border: 5px solid var(--border-color-eventwindow)
+  box-shadow: 10px 10px 25px 5px var(--box-shadow-color)
   z-index: 7
   opacity: 0
   
@@ -390,43 +411,17 @@ footer
     flex-wrap: nowrap
     justify-content: flex-start
     align-items: flex-start
-    
-    width: 85%
-    
-    
-    #eventwindow-bg
-      position: absolute
-      top: 2rem
-      left: 2.5rem
-      height: 7.5rem
-      width: 7.5rem
-      z-index: -1
-      opacity: 1
-      
-      #eventpic
-        height: 100%
-        width: 100%
-        
-        img
-          height: 100%
-          width: 100%
-          border-radius: 1rem
-        p
-          font-size: 1rem
-          line-height: 8rem
-          text-align: center
-          background-color: #EFFFFB
-          
-    
-    
+    width: 90%
+
     
     #description
       display: flex
-      flex-direction: column;
-      flex-wrap: nowrap;
-      align-content: flex-start;
-      justify-content: flex-start;
+      flex-direction: column
+      flex-wrap: nowrap
+      align-content: flex-start
+      justify-content: flex-start
       align-items: flex-start
+<<<<<<< HEAD
     
     #description-top
       display: flex
@@ -441,12 +436,72 @@ footer
       #event-title
         font-size: 1.8rem
         font-weight: 700
+=======
+      width: 100%   
+
+      #description-top
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        align-content: flex-start
+        justify-content: flex-start
+        align-items: flex-start
+        width: 22rem
+        //margin-left: 9rem
+        width: 100%   
         
-      #event-date
-        font-size: 1rem
-        color: #444444
-        margin: 0
+
+        #eventwindow-bg
+          //position: absolute
+          top: 2rem
+          left: 2.5rem
+          height: 7.5rem
+          width: 7.5rem
+          z-index: -1
+          opacity: 1
+          border-radius: 0.5rem
+          
+          #eventpic
+            height: 100%
+            //width: 100%
+            
+            img
+              height: 100%
+              width: 100%
+              border-radius: 1rem
+            p
+              font-size: 1rem
+              line-height: 8rem
+              text-align: center
+              background-color: var(--background-color-filiter2)
+
+        #event-heading 
+          display: flex
+          flex-direction: column
+          width: 60%
+          #event-title
+            font-size: 1.8rem
+            //width: 50rem
+          #event-subtitle
+            font-size: 1rem
+            color: var(--fontcolor-subtitle)
+            //margin: 0.3rem 0 0 9rem    
+
+        #event-date
+          font-size: 1rem
+          color: var(--fontcolor-hover)
+          margin: 0
+>>>>>>> homepage fix
         
+      #event-detail
+        font-size: 1.2rem
+        line-height: 1.5rem
+        min-height: 5rem
+        max-height: 12rem
+        margin: 2.2rem 0 0 1rem
+        width: 98%
+        
+<<<<<<< HEAD
     #event-subtitle
       font-size: 1rem
       color: #3DC9A7
@@ -463,6 +518,10 @@ footer
       overflow: scroll
       overflow-x: hidden
     
+=======
+        overflow: scroll
+        overflow-x: hidden
+>>>>>>> homepage fix
     
     #eventmsgregion
       display: flex
@@ -472,10 +531,10 @@ footer
       align-items: flex-start;
       justify-content: flex-start;
       
-      width: 95%
+      width: 100%
       max-height: 15rem
       min-height: 10rem
-      background-color: #EFFFFB
+      background-color: var(--background-color-filiter2)
       border-radius: 1.5rem
       padding: 0.5rem
       margin: 0.5rem 0 0 0.5rem
@@ -494,20 +553,28 @@ footer
         justify-content: flex-start;
         align-items: flex-start;
         width: 100%
+<<<<<<< HEAD
+=======
+        
+>>>>>>> homepage fix
         overflow: scroll
         overflow-x: hidden
         
         .eventmsg:hover
-          background-color: #EFFFFB
+          background-color: var(--background-color-filiter)
         .eventmsg
           display: flex
           flex-direction: row;
           flex-wrap: nowrap;
           align-items: center;
+<<<<<<< HEAD
           width: 95%
+=======
+          width: 100%
+>>>>>>> homepage fix
           margin: 0 0 0.4rem 0
           border-radius: 0.5rem
-          background-color: #F8FFFD
+          background-color: var(--background-color-filiter2)
           padding: 0.5rem
           
           a
@@ -517,7 +584,7 @@ footer
             width: 2.5rem
             height: 2.5rem
             border-radius: 50%
-            background-color: white
+            background-color: var(--background-color-box)
           
           #eventmsg-right
             display: flex
@@ -547,10 +614,11 @@ footer
               #event-date
                 font-size: 0.7rem
                 width: 15rem
-                color: #666666
+                color: var(--fontcolor-hover)
                 text-align: right
                 
             #eventmsgtext
+<<<<<<< HEAD
               font-size: 0.9rem
               color: #595959
         
@@ -605,6 +673,12 @@ footer
           margin: 0 0 0 0.5rem
           font-size: 1rem
           cursor: pointer
+=======
+              font-size: 1.1rem
+              color: var(--fontcolor-before)
+        
+    
+>>>>>>> homepage fix
 
       
   
@@ -639,8 +713,7 @@ footer
         height: 3rem
         margin-bottom: 0.4rem
         border-radius: 50%
-        border: solid 0.2rem #CCCCCC
-        
+        border: solid 0.2rem var(--border-color-eventwindow)
         
       #bar
         width: 2.5rem
@@ -664,9 +737,9 @@ footer
           border-radius: 50%
           
         .participant
-          border: solid 0.2rem #CCCCCC
+          border: solid 0.2rem var(--border-color-participate)
         .interested
-          border: solid 0.2rem #EEEEEE
+          border: solid 0.2rem var(--background-color-filiter)
           
         
       .login-redirect
@@ -678,12 +751,14 @@ footer
       #likebutton
         position: absolute
         bottom: 5%
-        background-image: url('../file/like-bg-n.png')
+        //background-image: url('../file/like-bg-n.png')
         background-repeat: no-repeat
         background-size: contain
+        height: 3rem
+        width: 3rem
         
         #likebtn-bg
-          background-color: gray
+          background-color: var(--background-color-filiter)
           
           
 
@@ -705,7 +780,58 @@ footer
         #like-n
           display: block
           //width: 70%
-      
+  
+  #eventmsg-sender
+      display: flex
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: flex-start;
+      margin-left: 0.5rem
+      width: 100%
+      //-
+        a
+          margin: 0
+        
+        #senderpic
+          width: 3rem
+          height: 3rem
+          border-radius: 50%
+          background-color: var(--background-color-filiter)
+          border: none
+          margin-left: 1rem
+        
+      .comment-operate-region
+        display: flex
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        align-items: center;
+        justify-content: space-around;
+        margin: 1rem
+        height: 0.5rem
+        width: 100%
+        
+        .eventmsg-insert
+          outline: none
+          border: none
+          //width: 19.5rem
+          border-radius: 1rem 0 0 1rem
+          background-color: var(--background-color-filiter)
+          padding: 0.5rem 2.5rem 0.5rem 1rem
+          font-size: 1.1rem
+        
+        .eventmsg-btn
+          position: relative
+          transform: translateX(-2.5rem)
+          outline: none
+          border: none
+          border-radius: 1rem
+          background-color: var(--border-color-eventwindow)
+          padding: 0.5rem 1rem
+          margin: 0 0 0 0.5rem
+          font-size: 1rem
+          cursor: pointer    
   
   
 
@@ -717,10 +843,10 @@ footer
   left: 50%
   width: 40%
   padding: 3% 0
-  background-color: #F5FBFE
+  background-color: var(--background-color-create)
   border-radius: 3rem
-  border: 5px solid #FFAD94
-  box-shadow: 10px 10px 25px 5px #00000026
+  border: 5px solid var(--border-color-create)
+  box-shadow: 10px 10px 25px 5px var(--box-shadow-color)
   opacity: 0
   z-index: 7
       
@@ -744,7 +870,7 @@ footer
       border: solid 2px
       border-color: #CCCCCC
       //#3AEDC2
-      background-color:
+      background-color: 
       
     h1
       align-items: center
@@ -781,9 +907,9 @@ footer
       padding: 0 1rem
       outline: none
       border: none
-      background-color: #EEEEEE
+      background-color: var(--background-color-filiter)
     input[type=text]:focus
-      border: 2px solid #B9B9B9
+      border: 2px solid var(--border-color-focus)
     input[type=date]
       border-radius: 2.5rem
       margin-bottom: 0.7rem
@@ -793,12 +919,12 @@ footer
       padding: 0 1rem
       outline: none
       border: none
-      background-color: #EEEEEE
-      color: #666666
+      background-color: var(--background-color-filiter)
+      color: var(--fontcolor-hover)
       padding-left: 1.8rem
       margin-right: 0.7rem
     input[type=date]:focus
-      border: 2px solid #B9B9B9
+      border: 2px solid var(--border-color-focus)
     input[type=number]
       border-radius: 2.5rem
       margin-bottom: 0.7rem
@@ -808,15 +934,15 @@ footer
       padding: 0 1rem
       outline: none
       border: none
-      background-color: #EEEEEE
-      color: #666666
+      background-color: var(--background-color-filiter)
+      color: var(--fontcolor-hover)
       padding-left: 1rem
       margin-right: 0.7rem
     input[type=number]:focus
-      border: 2px solid #B9B9B9
+      border: 2px solid var(--border-color-focus)
     textarea
       border-radius: 1rem
-      background-color: #EEEEEE
+      background-color: var(--background-color-filiter)
       border-radius: 1rem
       margin-bottom: 0.7rem
       padding: 1rem 1rem
@@ -826,11 +952,11 @@ footer
       height: 8rem
       width: 100%
     textarea:focus
-      border: 2px solid #B9B9B9
+      border: 2px solid var(--border-color-focus)
     
     select
-      background-color: #EEEEEE
-      color: #666666
+      background-color: var(--background-color-filiter)
+      color: var(--fontcolor-hover)
       height: 2rem
       font-size: 1rem
       border-radius: 1rem
@@ -869,14 +995,14 @@ footer
       background: none
       height: auto
       font-size: 1.5rem
-      background-color: #32DEB5
+      background-color: var(--background-color-buttons)
       border-radius: 2rem
       padding: 0.5rem 0rem
       text-align: center
       margin-top: 2rem
-      border: #32DEB5 solid 2px
+      border: solid 2px var(--background-color-buttons)
     #submit-btn:hover
-      background-color: #9FE4D4
+      background-color: var(--background-color-buttons-hover)
 
 #filter1
   display: none

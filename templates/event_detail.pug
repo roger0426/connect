@@ -4,21 +4,23 @@
 link(href="{% sass_src 'sass/event_detail.sass' %}",rel="stylesheet",type="text/css")
 #eventwindow
   #eventwindow-left
-    #eventwindow-bg
-      {% if event_detail.image %}
-      #eventpic
-        img.pic(src='{{ event_detail.image.url }}')
-      {% else %}
-      #eventpic
-        p 目前沒有圖片
-      {% endif %}
     #description
       #description-top
-        #event-title {{ event_detail.title }}
+        #eventwindow-bg
+          {% if event_detail.image %}
+          #eventpic
+            img.pic(src='{{ event_detail.image.url }}')
+          {% else %}
+          #eventpic
+            p 目前沒有圖片
+          {% endif %}
+        #event-heading
+          #event-title {{ event_detail.title }}
+          #event-subtitle {{ event_detail.subtitle }}
         #event-date 活動日期
           br
           | {{ event_detail.event_date }}
-      #event-subtitle {{ event_detail.subtitle }}
+      
       #event-detail {{ event_detail.detail }}
     #eventmsgregion
       p#msgtitle 留言板

@@ -5,7 +5,7 @@ html
     meta(charset="utf-8")
     meta(content="width=device-width, initial-scale=1", name="viewport")
     title CONNECT
-    link(href="{% static 'file/logo.icon' %}",rel="icon")
+    link(href="{% static 'file/logo.ico' %}",rel="icon")
     {% load sass_tags %}
     link(href="{% sass_src 'sass/homepage.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
@@ -133,17 +133,23 @@ html
     .event-detail
       #eventwindow
         #eventwindow-left
-          #eventwindow-bg
-            #eventpic
-              img.pic
-              p 目前沒有圖片
           #description
             #description-top
-              #event-title {{ event_detail.title }}
+              #eventwindow-bg
+                {% if event_detail.image %}
+                #eventpic
+                  img.pic(src='{{ event_detail.image.url }}')
+                {% else %}
+                #eventpic
+                  p 目前沒有圖片
+                {% endif %}
+              #event-heading
+                #event-title {{ event_detail.title }}
+                #event-subtitle {{ event_detail.subtitle }}
               #event-date 活動日期
                 br
                 | {{ event_detail.event_date }}
-            #event-subtitle {{ event_detail.subtitle }}
+            
             #event-detail {{ event_detail.detail }}
           #eventmsgregion
             p#msgtitle 留言板
