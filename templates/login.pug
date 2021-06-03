@@ -16,7 +16,7 @@ html
   body
     #panel1 <!-- bubble and loging panel -->
       
-      #login-panel
+      #login-panel.panel
         form(action="", method="post") {% csrf_token %} <!-- csrf_token is for safety concern of django -->
           h1 登入 
           hr.solid
@@ -33,7 +33,7 @@ html
             p or
             p#sign-up 註冊
       
-      #sign-up-panel(style="display: none")
+      #sign-up-panel.panel(style="display: none")
         form(action="", method="post", autocomplete="off") {% csrf_token %}
           h1 註冊
           hr.solid
