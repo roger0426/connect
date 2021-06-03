@@ -11,7 +11,8 @@
 
   --background-color-description: #FFFFFF
   --background-color-comment: #EFFFFB
-
+  --background-color-frames: #FFFFFF
+  
   --border-color-frame: #FFE4DC
   
   --border-color-buttons: #FFAD94
@@ -128,45 +129,47 @@ footer
       justify-content: space-start
       align-items: center
       height: 100%
+      
       #user-img
+        cursor: pointer
         input
           display: none
             
         #editpicfilter:hover
-          font-size: 1.33rem
+          font-size: 1.33vw
         
         #editpicfilter //改
           display: block
           position: absolute
-          width: 13.6vw
-          height: 13.6vw
+          width: 13vw
+          height: 13vw
           border-radius: 50%
           background-color: var(--background-color-frames)
           opacity: 0.7
           text-align: center
-          font-size: 1.3rem
-          line-height: 13.6rem
-          color: var(--background-color-frames)
+          font-size: 1.3vw
+          line-height: 13vw
+          color: var(--fontcolor-second)
           
         #fileselectedfilter
           display: none
           position: absolute
-          width: 13.6vw
-          height: 13.6vw
+          width: 13vw
+          height: 13vw
           border-radius: 50%
           background-color: var(--background-color-frames)
           opacity: 0.7
           text-align: center
-          font-size: 1.3rem
-          line-height: 13.6rem
+          font-size: 1.3vw
+          line-height: 13vw
           color: var(--fontcolor-second)
         
       #user-img
         width: 13vw
         height: 13vw
         border-radius: 50%
-        border: solid 0.3vw
-        border-color: var(--border-color-frame)
+        //border: solid 0.3vw
+        //border-color: var(--border-color-frame)
         background-color: var(--background-color-description)
         margin-bottom: 0.5vh
       #user-name
@@ -474,13 +477,8 @@ footer
         //width: 5rem
         //height: 5rem
         border-radius: 50%
-<<<<<<< HEAD
-        border: #CCCCCC solid 0.1rem
-        //margin: 0 0.2rem 0.5rem 0.2rem
-=======
         border: var(--border-color-frame) solid 0.1rem
-        margin-bottom: 0.5rem
->>>>>>> homepage fix
+        //margin: 0 0.2rem 0.5rem 0.2rem
       .virtualimg
         width: 3.7rem
         height: 0
@@ -589,23 +587,14 @@ footer
             border: solid 2px
             border-color: var(--border-color-frame)
             border-radius: 1rem
-<<<<<<< HEAD
-            background-color: #FFE4DC
+            background-color: var(--background-color-event)
             #nopicalert
               width: 12vw
               text-align: center
               font-size: 1.5rem
-              color: #666666
-              line-height: 12vw
-=======
-            background-color: var(--background-color-event)
-            p
-              width: 12rem
-              text-align: center
-              font-size: 1.5rem
               color: var(--fontcolor-second)
-              line-height: 12rem
->>>>>>> homepage fix
+              line-height: 12vw
+              
           #project-date
             width: 6rem
             .date
@@ -650,31 +639,16 @@ footer
                 //max-width: 15rem
             .rate
               font-size: 0.8rem
-<<<<<<< HEAD
               padding: 0 0.3rem
               border-radius: 1rem
               border: solid 0.15rem
-              border-color: #75E1C7
-=======
-              line-height: 1.2rem
-              //margin-left: 0.5rem
-              background-color: var(--background-color-freind)
-              padding: 0 0.3rem
-              border-radius: 1rem
-              border: solid 2px
               border-color: var(--border-color-tag2)
->>>>>>> homepage fix
             .charname
               font-size: 0.8rem
               //line-height: 1.2rem
               //margin-left: 0.5rem
-<<<<<<< HEAD
-              background-color: #75E1C7
-              padding: 0.1rem 0.3rem
-=======
               background-color: var(--background-color-freind)
-              padding: 0.2rem 0.3rem
->>>>>>> homepage fix
+              padding: 0.1rem 0.3rem
               border-radius: 1rem
               border: solid 2px
               border-color: var(--border-color-tag2)
