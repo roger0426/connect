@@ -39,19 +39,23 @@ $(document).ready(function(){
   
 })
 
-// check password validaty dynamically
-let intervalId = window.setInterval(function(){ // check every 0.5 seconds
-  if (!($('#terms').is(':checked')) ||
-      $('#double-pwd').val().length == 0 ||
-      $('#email').val().length == 0 ||
-      $('#sid').val().length == 0) {
-    $('#sign-up-btn').prop('disabled', true);
+$('p#sign-up').on('click', function() {
+  // check password validaty dynamically
+  let intervalId = window.setInterval(function(){ // check every 0.5 seconds
+    if ($("#sign-up-panel").is(":visible")) { // prevent from checking when loggging in
+      if (!($('#terms').is(':checked')) ||
+          $('#double-pwd').val().length == 0 ||
+          $('#email').val().length == 0 ||
+          $('#sid').val().length == 0) {
+        $('#sign-up-btn').prop('disabled', true);
 
-  } else {
-    $('#sign-up-btn').prop('disabled', false);
-  }
-  console.log("check signup condition")
-}, 500);
+      } else {
+        $('#sign-up-btn').prop('disabled', false);
+      }
+      console.log("check signup condition")
+    }
+  }, 500);
+})
 
 $('input').keyup(function() {
   if ($('#double-pwd').val().length > 0) {
@@ -83,6 +87,10 @@ function send_verification_handler(URL, CSRF) {
     success: function(data) {
       if (data.status == 200) {
         console.log("verification email successfully");
+        $("#send-check").prop('disabled', true);
+        setTimeout(function() {
+          $("#send-check").removeAttr("disabled");      
+        }, 60000);
       } else {
         console.log(data.error_message);
       }

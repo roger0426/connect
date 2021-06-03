@@ -27,5 +27,7 @@ class SiteNotification(models.Model):
   # 0: event like notification
   # 1: add friend notification
   notification_type = models.IntegerField(default=0)
+  is_read = models.BooleanField(default=False)
+
   def __str__(self):
     return self.from_user.username + "-" + self.for_user.username + "-" + self.text

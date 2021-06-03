@@ -43,7 +43,13 @@ def profile_view(requests, id, *args, **kwargs):
   friend_zip = zip(friends, friend_connect_counts)
   if(requests.user.is_authenticated):
     notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+    has_unread = False
+    for notice in notification.all():
+      if notice.is_read == False:
+        has_unread = True
+        break
   else:
+    has_unread = None
     notification = None
   
   context = {
@@ -57,6 +63,7 @@ def profile_view(requests, id, *args, **kwargs):
     'projects': projects,
     'personal_projs': personal_projs,
     'notice': notification,
+    'notice_unread': has_unread
   }
   return render(requests, 'profile.pug', context)
 
@@ -74,7 +81,13 @@ def profile_event_view(requests, id, event_id):
   personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
   if(requests.user.is_authenticated):
     notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+    has_unread = False
+    for notice in notification.all():
+      if notice.is_read == False:
+        has_unread = True
+        break
   else:
+    has_unread = None
     notification = None
   
   context = {
@@ -88,6 +101,7 @@ def profile_event_view(requests, id, event_id):
     'personal_projs': personal_projs,
     'event_detail': event_obj,
     'notice': notification,
+    'notice_unread': has_unread
   }
   return render(requests, 'profile.pug', context)
 
@@ -124,7 +138,13 @@ def profile_edit_view(request, id):
   personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
   if(request.user.is_authenticated):
     notification = SiteNotification.objects.filter(for_user = request.user).order_by('-date')
+    has_unread = False
+    for notice in notification.all():
+      if notice.is_read == False:
+        has_unread = True
+        break
   else:
+    has_unread = None
     notification = None
   
   context = {
@@ -137,6 +157,7 @@ def profile_edit_view(request, id):
     'projects': projects,
     'personal_projs': personal_projs,
     'notice': notification,
+    'notice_unread': has_unread
   }
   return render(request, 'profile_edit.pug', context)
 
@@ -156,7 +177,8 @@ def friend_request_view(request):
       text = request.user.userextend.full_name + "對您傳送了連結人邀請， 快去看看吧",
       for_user = user,
       from_user = request.user,
-      notification_type = 1
+      notification_type = 1,
+      is_read = False
     )
     notification.save()
     return JsonResponse({

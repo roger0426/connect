@@ -15,7 +15,13 @@ def home_view(requests, *args, **kwargs):
   form = EventCreateForm(requests.POST, requests.FILES or None)
   if(requests.user.is_authenticated):
     notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+    has_unread = False
+    for notice in notification.all():
+      if notice.is_read == False:
+        has_unread = True
+        break
   else:
+    has_unread = None
     notification = None
 
   if form.is_valid():
@@ -27,6 +33,7 @@ def home_view(requests, *args, **kwargs):
     'event_obj': obj,
     'form': form,
     'notice': notification,
+    'notice_unread': has_unread
   }
   return render(requests, 'homepage.pug', context)
   
@@ -89,7 +96,8 @@ def like_view(request, id):
         #sender.userextend.full_name +
         event = event,
         for_user = receiver,
-        from_user = sender
+        from_user = sender,
+        is_read = False
       )
       notification.save()
       return JsonResponse({

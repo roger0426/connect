@@ -23,6 +23,7 @@ from events_board.views import comment_view, search_view, order_view
 from user_extend.views import profile_view, profile_event_view, modify, profile_edit_view
 from user_extend.views import  get_user_view, friend_request_view, friend_reply_view
 from user_extend.views import  friend_remove_view, send_comment_view
+from site_notification.views import notice_read_view
 from tags.views import tag_delete_view, tag_edit_view
 from django.contrib.auth import views as auth_views
 
@@ -50,6 +51,7 @@ urlpatterns = [
     path('order/', order_view, name="order"),
 
     path('login/', login_view, name='login'),
+    path('read_notification/', notice_read_view, name='read_notification'),
     path('verify/', send_verification_view, name='verify'),
     path('search/', search_view, name='search'),
     path('about_us/', about_us_view, name='about_us'),

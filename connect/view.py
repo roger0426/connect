@@ -26,6 +26,11 @@ def send_verification_view(request):
       'token': token
     }
   )
+  if data.get('sid') == '' or data.get('email') == '':
+    return JsonResponse({
+      'status': 500,
+      'error_message': "[Error] Null input of sid or email"
+    })
   email = EmailMessage(
     'Connect 註冊認證通知信',  # title
     email_template,  # content
@@ -77,9 +82,13 @@ def login_view(request, *args, **kwargs):
       password = sign_pwd
     )
     user.save()
+    if (fname + lname).isalpha():
+      full_name = fname + " " + lname
+    else:
+      full_name = fname + lname
     user_extend = UserExtend.objects.create(
       user = user,
-      full_name = fname + lname,
+      full_name = full_name,
     )
     user_extend.save()
     auth.login(request, user)
