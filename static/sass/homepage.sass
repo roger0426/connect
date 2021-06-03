@@ -24,7 +24,7 @@
   --fontcolor-before: #888888
   --fontcolor-hover: #666666
   --fontcolor-complement: #777777
-  --fontcolor-subtitle: #3DC9A7
+  --fontcolor-subtitle: #333333
 
   --box-shadow-color: rgba(0, 0, 0, 0.25)
 
@@ -57,8 +57,8 @@ footer
   display: flex
   flex-direction: row
   justify-content: space-around
-  align-items: center;
-  flex-wrap: nowrap;
+  align-items: center
+  flex-wrap: nowrap
   //left: -50%
   padding-bottom: 1vh
   width: 100%
@@ -211,9 +211,9 @@ footer
       
       form
         display: flex
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
+        flex-direction: row
+        flex-wrap: wrap
+        align-items: center
         margin-left: 0.5rem
         
       #category
@@ -241,11 +241,7 @@ footer
       .eventpost:hover
         position: relative
         transform: scale(1.01)
-<<<<<<< HEAD
-        box-shadow: 0.25rem 0.35rem 0.4rem 0.25rem rgba(150, 150, 150, 0.5)
-=======
         box-shadow: 0.25rem 0.35rem 0.4rem 0.1rem var(--box-shadow-color)
->>>>>>> homepage fix
       
       .eventpost
         display: flex
@@ -256,13 +252,8 @@ footer
         align-items: center
         cursor: pointer
                 
-<<<<<<< HEAD
-        width: 13rem
-        background-color: white
-=======
         width: 14rem
         background-color: var(--background-color-box)
->>>>>>> homepage fix
         margin: 1rem
         padding: 0.5rem 1.5rem 0.5rem 1.5rem
         border-radius: 1.5rem
@@ -275,7 +266,7 @@ footer
         
         .posttop
           transform: translate(0, calc(-0.5rem - 1px))
-          width: 13rem
+          width: 100%
           padding: 0.7rem 1.5rem 0.3rem 1.5rem
           border-radius: 1.5rem 1.5rem 0 0
           background-color: var(--background-color-card)
@@ -421,35 +412,16 @@ footer
       align-content: flex-start
       justify-content: flex-start
       align-items: flex-start
-<<<<<<< HEAD
     
-    #description-top
-      display: flex
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-content: flex-start;
-      justify-content: space-between
-      align-items: flex-end
-      width: 70%
-      margin-left: 9rem
-      
-      #event-title
-        font-size: 1.8rem
-        font-weight: 700
-=======
-      width: 100%   
-
       #description-top
         display: flex
         flex-direction: row
         flex-wrap: wrap
         align-content: flex-start
-        justify-content: flex-start
+        justify-content: space-between
         align-items: flex-start
-        width: 22rem
+        width: 100%
         //margin-left: 9rem
-        width: 100%   
-        
 
         #eventwindow-bg
           //position: absolute
@@ -460,11 +432,12 @@ footer
           z-index: -1
           opacity: 1
           border-radius: 0.5rem
-          
+            
           #eventpic
             height: 100%
-            //width: 100%
-            
+            width: 100%
+            border-radius: 0.5rem
+              
             img
               height: 100%
               width: 100%
@@ -485,14 +458,13 @@ footer
           #event-subtitle
             font-size: 1rem
             color: var(--fontcolor-subtitle)
-            //margin: 0.3rem 0 0 9rem    
+            //margin: 0.3rem 0 0 9rem                  
 
         #event-date
           font-size: 1rem
           color: var(--fontcolor-hover)
           margin: 0
->>>>>>> homepage fix
-        
+      
       #event-detail
         font-size: 1.2rem
         line-height: 1.5rem
@@ -500,38 +472,19 @@ footer
         max-height: 12rem
         margin: 2.2rem 0 0 1rem
         width: 98%
-        
-<<<<<<< HEAD
-    #event-subtitle
-      font-size: 1rem
-      color: #3DC9A7
-      margin: 0.3rem 0 0 9rem
-      
-    #event-detail
-      font-size: 1.1rem
-      line-height: 1.5rem
-      min-height: 5rem
-      max-height: 9rem
-      margin: 2.2rem 0 0 1rem
-      width: 95%
-      
-      overflow: scroll
-      overflow-x: hidden
-    
-=======
         overflow: scroll
-        overflow-x: hidden
->>>>>>> homepage fix
+        overflow-x: hidden        
     
     #eventmsgregion
       display: flex
-      flex-direction: column;
-      flex-wrap: nowrap;
-      align-content: center;
-      align-items: flex-start;
-      justify-content: flex-start;
+      flex-direction: column
+      flex-wrap: nowrap
+      align-content: center
+      align-items: flex-start
+      justify-content: flex-start
+      box-shadow: inset 0px -1px var(--box-shadow-color)
       
-      width: 100%
+      width: 98%
       max-height: 15rem
       min-height: 10rem
       background-color: var(--background-color-filiter2)
@@ -547,16 +500,13 @@ footer
         
       #eventmsg-board
         display: flex
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-content: center;
-        justify-content: flex-start;
-        align-items: flex-start;
+        flex-direction: column
+        flex-wrap: nowrap
+        align-content: center
+        justify-content: flex-start
+        align-items: flex-start
         width: 100%
-<<<<<<< HEAD
-=======
         
->>>>>>> homepage fix
         overflow: scroll
         overflow-x: hidden
         
@@ -564,14 +514,10 @@ footer
           background-color: var(--background-color-filiter)
         .eventmsg
           display: flex
-          flex-direction: row;
-          flex-wrap: nowrap;
-          align-items: center;
-<<<<<<< HEAD
-          width: 95%
-=======
+          flex-direction: row
+          flex-wrap: nowrap
+          align-items: center
           width: 100%
->>>>>>> homepage fix
           margin: 0 0 0.4rem 0
           border-radius: 0.5rem
           background-color: var(--background-color-filiter2)
@@ -588,10 +534,10 @@ footer
           
           #eventmsg-right
             display: flex
-            flex-direction: column;
-            flex-wrap: nowrap;
+            flex-direction: column
+            flex-wrap: nowrap
             justify-content: space-between
-            align-items: flex-start;
+            align-items: flex-start
             width: 85%
             min-height: 2.5rem
             margin-left: 1rem
@@ -599,11 +545,11 @@ footer
             
             #eventmsg-righttop
               display: flex
-              flex-direction: row;
-              flex-wrap: nowrap;
-              align-content: center;
-              align-items: center;
-              justify-content: space-between;
+              flex-direction: row
+              flex-wrap: nowrap
+              align-content: center
+              align-items: center
+              justify-content: space-between
               width: 100%
               
               
@@ -618,22 +564,24 @@ footer
                 text-align: right
                 
             #eventmsgtext
-<<<<<<< HEAD
               font-size: 0.9rem
               color: #595959
         
     #eventmsg-sender
       display: flex
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-items: center;
-      justify-content: flex-start;
+      flex-direction: row
+      flex-wrap: nowrap
+      align-items: center
+      justify-content: flex-start
       margin-left: 0.5rem
+      width: 100%
       
       a
+        display: none
         margin: 0
       
       #senderpic
+        display: none
         width: 3rem
         height: 3rem
         border-radius: 50%
@@ -644,61 +592,67 @@ footer
       .comment-operate-region
         position: relative
         display: flex
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-content: center;
-        align-items: center;
-        justify-content: space-around;
+        flex-direction: row
+        flex-wrap: nowrap
+        align-content: center
+        align-items: center
+        justify-content: flex-start
         margin: 1rem
         height: 1.5rem
         
         .eventmsg-insert
           outline: none
           border: none
-          width: calc(18vw)
+          width: 60%
           border-radius: 1rem 0 0 1rem
           background-color: #F2F2F2
           padding: 0.5rem 1.3rem 0.5rem 1rem
-          font-size: 1.1rem
+          font-size: 1.1pyrem
         
         .eventmsg-btn
-          position: absolute
-          right: 0
-          transform: translateX(3.5rem)
+          //position: absolute
+          //right: 0
+          //transform: translateX(3.5rem)
           outline: none
           border: none
-          border-radius: 1rem
+          border-radius: 3rem
           background-color: #75E1C7
           padding: 0.5rem 1rem
           margin: 0 0 0 0.5rem
           font-size: 1rem
           cursor: pointer
-=======
-              font-size: 1.1rem
-              color: var(--fontcolor-before)
-        
-    
->>>>>>> homepage fix
 
+        .eventjoin-btn
+          //position: absolute
+          right: 0
+          //transform: translateX(3.5rem)
+          outline: none
+          border: none
+          border-radius: 3rem
+          background-color: #75E1C7
+          padding: 0.5rem 1rem
+          margin: 0 0 0 0.5rem
+          font-size: 1rem
+          cursor: pointer
       
   
   #eventwindow-right
     display: flex
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-content: center;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column
+    flex-wrap: nowrap
+    align-content: center
+    align-items: center
+    justify-content: space-between
     
-    width: 10%
+    width: 7%
     
     #eventoperate
       display: flex
-      flex-direction: column;
-      flex-wrap: nowrap;
-      align-content: center;
-      align-items: center;
-      justify-content: flex-start;
+      flex-direction: column
+      flex-wrap: nowrap
+      align-content: center
+      align-items: center
+      justify-content: flex-start
       
       #exitbtn1
         position: absolute
@@ -724,10 +678,10 @@ footer
       
       #member
         display: flex
-        flex-direction: column;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        align-items: center;
+        flex-direction: column
+        flex-wrap: nowrap
+        justify-content: flex-start
+        align-items: center
         height: 16rem
         overflow: hidden
         .member
@@ -783,10 +737,10 @@ footer
   
   #eventmsg-sender
       display: flex
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-items: center;
-      justify-content: flex-start;
+      flex-direction: row
+      flex-wrap: nowrap
+      align-items: center
+      justify-content: flex-start
       margin-left: 0.5rem
       width: 100%
       //-
@@ -803,11 +757,11 @@ footer
         
       .comment-operate-region
         display: flex
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-content: center;
-        align-items: center;
-        justify-content: space-around;
+        flex-direction: row
+        flex-wrap: nowrap
+        align-content: center
+        align-items: center
+        justify-content: space-around
         margin: 1rem
         height: 0.5rem
         width: 100%
@@ -882,8 +836,8 @@ footer
   form 
     display: flex
     flex-direction: row
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    flex-wrap: wrap
+    justify-content: flex-start
     align-items: stetch
     padding: 0 2rem 2rem 2rem
     //padding-left: 3rem

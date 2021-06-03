@@ -154,7 +154,7 @@ html
           #eventmsgregion
             p#msgtitle 留言板
             #eventmsg-board
-              //-
+              
                 .eventmsg#eventmsg(style="display: none")
                   a
                     img.sender
@@ -164,6 +164,7 @@ html
                       p#event-date
                     #eventmsg-rightbottom
                       p#eventmsgtext
+
           #eventmsg-sender
             {% if request.user.is_authenticated %}
             a(href="{% url 'profile' id=request.user.userextend.pk %}")
@@ -175,6 +176,7 @@ html
             .comment-operate-region
               input.eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
               input.eventmsg-btn(type="button", value="送出")
+              input.eventjoin-btn(type="button", value="加入團隊")
               script.
                 $(document).ready(function(){
                   $(".eventmsg-btn").on("click", function() {
@@ -188,6 +190,7 @@ html
             a.comment-operate-region(href="{% url 'login' %}")
               input.eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
               input.eventmsg-btn(type="submit", value="送出")
+              input.eventjoin-btn(type="button", value="加入團隊")
             {% endif %}
             
         #eventwindow-right
