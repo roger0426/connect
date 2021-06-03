@@ -136,13 +136,9 @@ html
           #description
             #description-top
               #eventwindow-bg
-                {% if event_detail.image %}
                 #eventpic
-                  img.pic(src='{{ event_detail.image.url }}')
-                {% else %}
-                #eventpic
+                  img.pic
                   p 目前沒有圖片
-                {% endif %}
               #event-heading
                 #event-title {{ event_detail.title }}
                 #event-subtitle {{ event_detail.subtitle }}
