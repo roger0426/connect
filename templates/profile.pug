@@ -316,7 +316,7 @@ html
                     input.send-comment(type='button', value='送出')
                     //- store event id here, not disply
                     .event-id(style='display:none') {{ activity.id }}
-                    .comment-count(style='display:none') {{ activity.number_of_comments }}
+                    .comment-count(style='display:none') //這會error我先拿掉{嗨{ activity.number_of_comments }}
               {% empty %}
               #activity-card.card
                 p.hint(style="color: #E98C6F") 看來他好像還沒參加過活動喔

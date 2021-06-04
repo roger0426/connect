@@ -331,25 +331,25 @@ function message_handler(URL, event_id, CSRF) {
   })
 }
 
-// var i = 0;
-// function duplicate_multi(duplicateID) {
-//   var original = document.getElementById(duplicateID);
-//   var clone = original.cloneNode(true); // "deep" clone
-//   clone.id = duplicateID + '_new' + ++i;
-//   // or clone.id = ""; if the divs don't need an ID
-//   original.parentNode.insertBefore(clone, original.parentNode.firstChild);
-//   return clone.id
-// }
+ var i = 0;
+ function duplicate_multi(duplicateID) {
+   var original = document.getElementById(duplicateID);
+   var clone = original.cloneNode(true); // "deep" clone
+   clone.id = duplicateID + '_new' + ++i;
+   // or clone.id = ""; if the divs don't need an ID
+   original.parentNode.insertBefore(clone, original.parentNode.firstChild);
+   return clone.id
+ }
 
 
-// function duplicate(duplicateID) {
-//   var original = document.getElementById(duplicateID);
-//   var clone = original.cloneNode(true); // "deep" clone
-//   clone_id = duplicateID;
-//   // or clone.id = ""; if the divs don't need an ID
-//   original.parentNode.insertBefore(clone, original.parentNode.firstChild);
-//   //$("eventpost").parent.prepend();
-// };
+ function duplicate(duplicateID) {
+   var original = document.getElementById(duplicateID);
+   var clone = original.cloneNode(true); // "deep" clone
+   clone_id = duplicateID;
+   // or clone.id = ""; if the divs don't need an ID
+   original.parentNode.insertBefore(clone, original.parentNode.firstChild);
+   //$("eventpost").parent.prepend();
+ };
 
 
 /*
