@@ -92,9 +92,30 @@ $(document).ready(function(){
   $("#submit-btn").click(function() {
     console.log("click event submit");
     console.log($("#id_title").val().length)
-    
-    if ($("#id_title").val().length > 0 && $("#id_detail").val().length > 0) {
-      
+    let all_pass = 1;
+
+    if ($("#id_title").val().trim().length == 0) {
+      all_pass = 0;
+      $("#id_title").css("border", "0.1rem solid red");
+    }
+    if ($("#id_detail").val().trim().length == 0) {
+      all_pass = 0;
+      $("#id_detail").css("border", "0.1rem solid red");
+    }
+    console.log($("#id_event_date").val())
+    if ($("#id_event_date").val().trim().length == 0) {
+      all_pass = 0;
+      $("#id_event_date").css("border", "0.1rem solid red");
+    }
+    if ($("#id_due_date").val().trim().length == 0) {
+      all_pass = 0;
+      $("#id_due_date").css("border", "0.1rem solid red");
+    }
+    if ($("#id_people_limit").val().trim().length == 0) {
+      all_pass = 0;
+      $("#id_people_limit").css("border", "0.1rem solid red");
+    }
+    if (all_pass == 1) {
       // alert messsage
       Swal.fire({
         position: 'center',
@@ -114,7 +135,13 @@ $(document).ready(function(){
       }, 1000);
       
     } else {
-      alert("活動未創建，請輸入必要欄位");
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: '喔喔，有東西沒填到喔',
+        text: "請再確認一次",
+        showConfirmButton: false,
+      })
     }
   })
 
