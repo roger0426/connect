@@ -205,6 +205,14 @@ html
               a(href="{% url 'profile' id=friend.userextend.pk %}")
                 img.friend-img(src="{{ friend.userextend.img.url }}")
                 .friend-info
+                  .info-brief
+                    img.friend-img(src="{{ friend.userextend.img.url }}")
+                    .info-brief-right
+                      p#friend-name {{ friend.userextend.full_name }}
+                      .info-brief-school
+                        p {{ friend.userextend.department }}
+                        p {{ friend.userextend.grade }}
+                        p 0位共同連結
                   p {{ user.user.last_name }} 與 {{ friend.last_name }} 一起參與過 {{ friend_connect }} 個活動
               {% empty %}
               p 快去建立連結吧

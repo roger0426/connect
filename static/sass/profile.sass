@@ -486,10 +486,36 @@ footer
         display: none
         position: absolute
         padding: 0.5rem
-        background-color: var(--background-color-intro)
-        border: solid #888 0.02rem
-        border-radius: 0.3rem
+        background-color: white
+        border: solid #FFAD94 0.1rem
+        border-radius: 0.8rem
         z-index: 1
+        .info-brief
+          display: flex
+          flex-direction: row
+          margin-bottom: 1rem
+          img
+            width: 4rem
+            height: 4rem
+            margin-right: 1rem
+          p#friend-name
+            font-weight: 700
+            font-size: 1.2rem
+          .info-brief-right
+            display: flex
+            flex-direction: column
+            .info-brief-school
+              display: flex
+              flex-direction: row
+              justify-content: space-around
+              p
+                font-size: 0.9rem
+                margin-right: 0.5rem
+              p:nth-child(1)
+                font-weight: 600
+              p:nth-child(2)
+                font-weight: 600
+                margin-right: 1rem
         p
           font-size: 1rem
         
