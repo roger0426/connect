@@ -50,7 +50,10 @@ class EventsBoard(models.Model):
   ]
 
   event_type = models.CharField(max_length=10, choices=EVENT_CHOICES, default='activity')
-  requirements_str = models.CharField(max_length=100)
+  requirements_str = models.CharField(
+    max_length=100,
+    blank=True,
+  )
 
   def number_of_comments(self):
     return self.comments.count()

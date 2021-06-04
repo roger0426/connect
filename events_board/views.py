@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
-from .models import EventsBoard, BoardMessage
+from .models import EventsBoard, BoardMessage, Comment
 from site_notification.models import SiteNotification
 from .forms import EventCreateForm
 from user_extend.models import UserExtend
@@ -198,3 +198,48 @@ def order_view(requests):
       'notice': notification,
     }
     return render(requests, 'homepage.pug', context)
+
+# @url: 'rate_event'
+# @request parameters
+# 'id': id/pk of the event
+# '[participant_full_name]': comment of that participant
+def rate_event_view(request):
+  if request.method == 'POST':
+    data = request.POST
+    event = get_object_or_404(EventsBoard, id=data.get('id'))
+    if data.has_key(event.host.full_name):
+      comment = Comment.objects.create(
+        text = data.get(event.host.full_name),
+        for_event = event,
+        for_user = event.host,
+        author = request.user.userextend
+      )
+      comment.save()
+    else:
+      return JsonResponse({
+        'status': 404,
+        'error_message': '[Error] Host comment not found'
+      })
+    for participant in event.participants.all():
+      if data.has_key(participant.full_name):
+        comment = Comment.objects.create(
+          text = data.get(participant.full_name),
+          for_event = event,
+          for_user = participant,
+          author = request.user.userextend
+        )
+        comment.save()
+      else:
+        return JsonResponse({
+          'status': 404,
+          'error_message': '[Error] Participant comment not found'
+        })
+    
+    return JsonResponse({
+      'status': 200,
+    })
+  else:
+    return JsonResponse({
+      'status': 500,
+      'error_message': "[Error] Request not post, rejected"
+    })

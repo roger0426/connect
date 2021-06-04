@@ -5,7 +5,6 @@ from .models import EventsBoard
 
 class DateInput(forms.DateInput):
   input_type = 'date'
-  placeholder = 'requirements'
 
 class EventCreateForm(forms.ModelForm):
   
