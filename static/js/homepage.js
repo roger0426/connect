@@ -6,17 +6,6 @@ $(document).ready(function(){
     $('#phoneerrormsg').hide();
   });
   
-  $('#board').click(function() {
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: '活動已創建',
-      text: "正在跳轉回主頁面......",
-      showConfirmButton: false,
-    });
-  })
-  
-  
   
   $("#gotop").mouseenter(function() {
     $("#gotop").css({opacity: 0.65});
@@ -106,6 +95,7 @@ $(document).ready(function(){
     
     if ($("#id_title").val().length > 0 && $("#id_detail").val().length > 0) {
       
+      // alert messsage
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -123,12 +113,6 @@ $(document).ready(function(){
         $('#createevent').submit();
       }, 1000);
       
-      //alert("活動已創建！");
-      //duplicate('post')
-      
-      $('input[type=text]').val('');
-      $('textarea').val('');
-      $('#id_image').val('');
     } else {
       alert("活動未創建，請輸入必要欄位");
     }
@@ -347,25 +331,25 @@ function message_handler(URL, event_id, CSRF) {
   })
 }
 
-var i = 0;
-function duplicate_multi(duplicateID) {
-  var original = document.getElementById(duplicateID);
-  var clone = original.cloneNode(true); // "deep" clone
-  clone.id = duplicateID + '_new' + ++i;
-  // or clone.id = ""; if the divs don't need an ID
-  original.parentNode.insertBefore(clone, original.parentNode.firstChild);
-  return clone.id
-}
+// var i = 0;
+// function duplicate_multi(duplicateID) {
+//   var original = document.getElementById(duplicateID);
+//   var clone = original.cloneNode(true); // "deep" clone
+//   clone.id = duplicateID + '_new' + ++i;
+//   // or clone.id = ""; if the divs don't need an ID
+//   original.parentNode.insertBefore(clone, original.parentNode.firstChild);
+//   return clone.id
+// }
 
 
-function duplicate(duplicateID) {
-  var original = document.getElementById(duplicateID);
-  var clone = original.cloneNode(true); // "deep" clone
-  clone_id = duplicateID;
-  // or clone.id = ""; if the divs don't need an ID
-  original.parentNode.insertBefore(clone, original.parentNode.firstChild);
-  //$("eventpost").parent.prepend();
-};
+// function duplicate(duplicateID) {
+//   var original = document.getElementById(duplicateID);
+//   var clone = original.cloneNode(true); // "deep" clone
+//   clone_id = duplicateID;
+//   // or clone.id = ""; if the divs don't need an ID
+//   original.parentNode.insertBefore(clone, original.parentNode.firstChild);
+//   //$("eventpost").parent.prepend();
+// };
 
 
 /*

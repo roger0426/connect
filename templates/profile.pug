@@ -125,14 +125,14 @@ html
                 a(href="{% url 'profile_edit' request.user.userextend.pk %}") 編輯
                 {% else %}
                 {% if not user.user in request.user.userextend.friends.all %}
-                // page user is not request user's friend yet
+                //- page user is not request user's friend yet
                 {% if not user.user in request.user.userextend.unverified_friends.all %}
                 {% if not request.user in user.unverified_friends.all %}
-                // page user hasn't been linked
+                //- page user hasn't been linked
                 input#create-link(type="button", value="建立連結")
                 input#request-sent(type="button", value="已送出", style="display: none")
                 {% else %}
-                // page user has sent friend request to request user
+                //- page user has sent friend request to request user
                 input#confirm-friend(type="button", value="確認連結")
                 input#cancel-friend(type="button", value="拒絕連結")
                 script.
@@ -158,11 +158,11 @@ html
                   })
                 {% endif %}
                 {% else %}
-                // page user pending verification of friend status
+                //- page user pending verification of friend status
                 input#request-sent(type="button", value="已送出")
                 {% endif %}
                 {% else %}
-                // page user is already request user's friend
+                //- page user is already request user's friend
                 input#remove-friend(type="button", value="取消連結")
                 script.
                   $(document).ready(function(){

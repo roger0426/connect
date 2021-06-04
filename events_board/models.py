@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from datetime import date
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 class IntegerRangeField(models.IntegerField):
     def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
@@ -73,7 +74,13 @@ class Comment(models.Model):
   for_event = models.ForeignKey(
     EventsBoard,
     on_delete=models.CASCADE, 
-    related_name='comments'
+    related_name='event_comments'
+  )
+  for_user = models.ForeignKey(
+    "user_extend.UserExtend",
+    on_delete=models.CASCADE,
+    related_name='event_comments',
+    blank=False,
   )
   author = models.ForeignKey(
     "user_extend.UserExtend",

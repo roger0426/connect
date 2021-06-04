@@ -23,11 +23,6 @@ def home_view(requests, *args, **kwargs):
   else:
     has_unread = None
     notification = None
-
-  if form.is_valid():
-    instance = form.save(commit=False)
-    instance.host = requests.user.userextend
-    instance.save()
   
   context = {
     'event_obj': obj,
@@ -35,6 +30,13 @@ def home_view(requests, *args, **kwargs):
     'notice': notification,
     'notice_unread': has_unread
   }
+
+  if form.is_valid():
+    instance = form.save(commit=False)
+    instance.host = requests.user.userextend
+    instance.save()
+    return HttpResponseRedirect(reverse('home'))
+  
   return render(requests, 'homepage.pug', context)
   
 def event_detail_view(requests, id):
