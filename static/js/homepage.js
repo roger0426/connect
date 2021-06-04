@@ -6,6 +6,17 @@ $(document).ready(function(){
     $('#phoneerrormsg').hide();
   });
   
+  $('#board').click(function() {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: '活動已創建',
+      text: "正在跳轉回主頁面......",
+      showConfirmButton: false,
+    });
+  })
+  
+  
   
   $("#gotop").mouseenter(function() {
     $("#gotop").css({opacity: 0.65});
@@ -92,16 +103,32 @@ $(document).ready(function(){
   $("#submit-btn").click(function() {
     console.log("click event submit");
     console.log($("#id_title").val().length)
-    duplicate('post');
+    
     if ($("#id_title").val().length > 0 && $("#id_detail").val().length > 0) {
       
-      $("#eventcreatewindow").animate({opacity: 0}, 400, function() {
-        $("#eventcreatewindow").hide();
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: '活動已創建',
+        text: "正在跳轉回主頁面",
+        showConfirmButton: false,
       })
-      $("#filter1").animate({opacity: 0}, 400, function() {
-        $("#filter1").hide();
-      })
-      alert("活動已創建！");
+      setTimeout(function(){
+        $("#eventcreatewindow").animate({opacity: 0}, 400, function() {
+          $("#eventcreatewindow").hide();
+        })
+        $("#filter1").animate({opacity: 0}, 400, function() {
+          $("#filter1").hide();
+        })
+        $('#createevent').submit();
+      }, 1000);
+      
+      //alert("活動已創建！");
+      //duplicate('post')
+      
+      $('input[type=text]').val('');
+      $('textarea').val('');
+      $('#id_image').val('');
     } else {
       alert("活動未創建，請輸入必要欄位");
     }

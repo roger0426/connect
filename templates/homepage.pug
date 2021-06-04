@@ -13,6 +13,10 @@ html
     //script(src="https://d3js.org/d3.v3.js")
     //script(src="https://d3js.org/d3.v4.js")
     script(src="https://d3js.org/d3.v5.js")
+    
+    script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+    //script(src="sweetalert2/dist/sweetalert2.min.js")
+    //link(rel="stylesheet", href="sweetalert2/dist/sweetalert2.min.css")
   {% include 'navbar.pug' %}
 
   body
@@ -120,12 +124,13 @@ html
     #eventcreatewindow
       img#exitbtn2(src="{% static 'file/exiticon.png' %}")
       
-      form(action="", method="post", enctype="multipart/form-data", autocomplete="off") {% csrf_token %}
+      form(id="createevent", action="", method="post", enctype="multipart/form-data", autocomplete="off") {% csrf_token %}
         #profile
         {{ form.as_table }}
 
         #buttons
-          input#submit-btn(type="submit" value='發佈')
+          input#submit-btn(type='button', value='發佈')
+          //(type="submit" value='發佈')
     {% endif %}
     footer
       {% include "footer.pug" %}
