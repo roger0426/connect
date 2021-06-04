@@ -4,19 +4,22 @@ from .models import EventsBoard
 
 
 class DateInput(forms.DateInput):
-    input_type = 'date'
+  input_type = 'date'
+  placeholder = 'requirements'
 
 class EventCreateForm(forms.ModelForm):
-
+  
   class Meta:
     model = EventsBoard
     fields = (
       'title',
       'subtitle',
-      'event_date',
-      'people_limit',
-      'event_type',
       'detail',
+      'event_date',
+      'due_date',
+      'people_limit',
+      'requirements_str',
+      'event_type',
       'image',
     )
     widgets = {
@@ -25,5 +28,7 @@ class EventCreateForm(forms.ModelForm):
       'event_tag': forms.TextInput(attrs={'placeholder': '  標籤'}),
       'detail': forms.Textarea(attrs={'placeholder': '* 活動細節'}),
       'people_limit': forms.NumberInput(attrs={'placeholder': '* 人數'}),
-      'event_date':  DateInput
+      'requirements_str': forms.TextInput(attrs={'placeholder': ' 需要能力'}),
+      'event_date':  DateInput,
+      'due_date': DateInput,
     }

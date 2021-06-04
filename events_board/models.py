@@ -1,8 +1,6 @@
 from django.db import models
-from django.conf import settings
 from datetime import date
 from django.utils import timezone
-from django.contrib.auth.models import User
 
 class IntegerRangeField(models.IntegerField):
     def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
@@ -19,8 +17,12 @@ class EventsBoard(models.Model):
   subtitle = models.CharField(max_length=25, blank=True)
   detail = models.TextField()
   image = models.ImageField(upload_to='events/', blank=True)
+
+  # date fields
   create_date = models.DateField(default = date.today)
   event_date = models.DateField(default = date.today, blank=True, null=True)
+  due_date = models.DateField(default = date.today, blank=False, null=True)
+
   people_limit = IntegerRangeField(min_value=1, max_value=999)
   likes = models.ManyToManyField("user_extend.UserExtend", related_name='event_like', blank=True)
   
@@ -48,6 +50,7 @@ class EventsBoard(models.Model):
   ]
 
   event_type = models.CharField(max_length=10, choices=EVENT_CHOICES, default='activity')
+  requirements_str = models.CharField(max_length=100)
 
   def number_of_comments(self):
     return self.comments.count()

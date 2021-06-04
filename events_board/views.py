@@ -49,7 +49,6 @@ def event_detail_view(requests, id):
     participants = list(event.participants.all().values())
     comments = list(event.board_message.all().values())
     host =  model_to_dict(event.host, fields=['id', 'full_name', 'image_url'])
-    data = requests.POST
     
     return JsonResponse({
       'title': event.title,
@@ -76,7 +75,6 @@ def event_detail_view(requests, id):
 # Ajax function
 def like_view(request, id):
   if request.is_ajax() and request.method == 'POST':
-    data = request.POST
     event = get_object_or_404(EventsBoard, id=id)
     
     #原本存在，要收回

@@ -127,7 +127,7 @@ html
       form(id="createevent", action="", method="post", enctype="multipart/form-data", autocomplete="off") {% csrf_token %}
         #profile
         {{ form.as_table }}
-
+        
         #buttons
           input#submit-btn(type='button', value='發佈')
           //(type="submit" value='發佈')

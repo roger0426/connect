@@ -31,7 +31,6 @@ class Tag(models.Model):
   def __str__(self):
     return self.user.username + ' - ' + self.tag_type + ' - ' + self.text
 
-
 class TagComment(models.Model):
   text = models.CharField(max_length=40)
   for_tag = models.ForeignKey(
