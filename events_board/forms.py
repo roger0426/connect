@@ -1,5 +1,4 @@
 from django import forms
-import datetime
 from .models import EventsBoard
 
 
@@ -28,6 +27,6 @@ class EventCreateForm(forms.ModelForm):
       'detail': forms.Textarea(attrs={'placeholder': '* 活動細節'}),
       'people_limit': forms.NumberInput(attrs={'placeholder': '* 人數'}),
       'requirements_str': forms.TextInput(attrs={'placeholder': ' 需要能力'}),
-      'event_date':  DateInput,
-      'due_date': DateInput,
+      'event_date': forms.TextInput(attrs={'placeholder': '* 活動日期'}),
+      'due_date': forms.TextInput(attrs={'placeholder': '* 報名截止'}),
     }

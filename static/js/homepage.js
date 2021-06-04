@@ -30,13 +30,18 @@ $(document).ready(function(){
 
   $("#insertbox").click(function() {
     console.log("click createevent");
-    //$("#eventwindow").show();
-    //$("#eventwindow").animate({opacity: 1}, 400);
-    
-    
+
     $('input[type=text]').val('');
     $('textarea').val('');
     $('#id_image').val('');
+
+    // change "date" filed from text field to date filed
+    $("#id_event_date")
+      .attr("onfocus", "(this.type='date')")
+      .attr("onfocusout", "(this.type='text')")
+    $("#id_due_date")
+      .attr("onfocus", "(this.type='date')")
+      .attr("onfocusout", "(this.type='text')")
     
     $("#filter1").show();
     $("#filter1").animate({opacity: 1}, 200, function() {
@@ -102,7 +107,6 @@ $(document).ready(function(){
       all_pass = 0;
       $("#id_detail").css("border", "0.1rem solid red");
     }
-    console.log($("#id_event_date").val())
     if ($("#id_event_date").val().trim().length == 0) {
       all_pass = 0;
       $("#id_event_date").css("border", "0.1rem solid red");
@@ -115,6 +119,7 @@ $(document).ready(function(){
       all_pass = 0;
       $("#id_people_limit").css("border", "0.1rem solid red");
     }
+    
     if (all_pass == 1) {
       // alert messsage
       Swal.fire({
