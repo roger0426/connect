@@ -9,7 +9,8 @@ html
     {% load sass_tags %}
     link(href="{% sass_src 'sass/profile.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
-    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    //script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src="{% static 'js/jquery.min.js' %}")
 
   {% include 'navbar.pug' %}
 
