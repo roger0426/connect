@@ -103,7 +103,7 @@ footer
   
   
 #top-region
-  margin: 0 0 2rem 0
+  margin: 0
   //position: sticky
   top: 10%
   left: 50%
@@ -370,7 +370,7 @@ footer
           background-color: #FFDFDF
           
 
-#relation_graph
+#relation-graph
   height: 50vh
   width: 60vw
   position: relative
@@ -378,7 +378,7 @@ footer
   left: 50%
   margin-bottom: 2rem
   
-  background-color: #AAA
+  background-color: var(--background-color-intro)
   .node
     fill: #ccc
     stroke: #fff
@@ -396,22 +396,24 @@ footer
   width: 100%
   //height: 100rem
   //background-color: purple
-  margin-bottom: 5rem
+  margin: 2rem 0 5rem 0
 
   #left-pane
     display: flex
     flex-direction: column
     justify-content: flex-start;
     align-items: flex-start
-    
     top: 30%
     left: 20%
     width: 21%
-    //height: auto
+    max-height: calc(100vh - 4vw - 2rem)
+    //overflow: auto
     background-color: var(--background-color-freind)
     border-radius: 1.5rem
     padding: 1.5rem 1rem
     border: solid 2px var(--border-color-frame)
+    position: sticky
+    top: calc(4vw + 1rem)
 
     p
       font-size: 1.2rem
@@ -646,7 +648,6 @@ footer
           justify-content: flex-start
           align-items: flex-start
           width: 22vw
-          //height: 100%
 
           //background-color: yellow
           
@@ -661,7 +662,7 @@ footer
               .cardinfott
                 font-size: 1.5rem
                 line-height: 1.55rem
-                width: 11rem
+                width: 15rem
                 //max-width: 15rem
             .rate
               font-size: 0.8rem
@@ -713,6 +714,7 @@ footer
                 border-radius: 50%
               .comment-right
                 position: relative
+                display: flex
                 background-color: var(--background-color-comment)
                 padding: 0 0.5rem 0.7rem 0.5rem
                 border-radius: 1rem
@@ -741,7 +743,7 @@ footer
                 #participant-comment
                   font-size: 1rem
                   text-align: left
-                  width: 12vw
+                  min-width: 12vw
                   margin: 0.1rem 1.2rem 0 1rem
                   color: var(--fontcolor-main)
           .eventcomment-insert

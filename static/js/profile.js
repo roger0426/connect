@@ -45,6 +45,10 @@ $(document).ready(function(){
     event.stopPropagation();
   });
   
+  $("#user-name").click(function() {
+    console.log("open graph")
+    $("#graph").toggle()
+  })
   
   $('#friends-avatar a').mouseenter(function() {
     $(this).find('.friend-info').css({'display': 'block'});
@@ -377,7 +381,7 @@ var width = window.innerWidth * 0.6
     height = window.innerHeight * 0.5;
     //width = $('#profilepanel').width
 var svg = d3.select('#graph').append('svg')
-    .attr('id', 'relation_graph')
+    .attr('id', 'relation-graph')
     .attr('position', 'fixed')
     .attr('width', width)
     .attr('height', height);

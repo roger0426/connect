@@ -53,10 +53,10 @@ body
   background: transparent //#f1f1f1
   border-radius: 5px
 ::-webkit-scrollbar-thumb
-  background: #888
+  background: #CCC
   border-radius: 2px
 ::-webkit-scrollbar-thumb:hover 
-  background: #666
+  background: #888
 
 a
   text-decoration: none
@@ -479,12 +479,12 @@ footer
           margin-top: 0.7rem
       
       #event-detail
-        font-size: 1.2rem
+        font-size: 1.1rem
         line-height: 1.5rem
         min-height: 5rem
-        max-height: 12rem
+        max-height: 14rem
         margin: 1rem 0 0 0.5rem
-        min-width: 98%
+        min-width: 100%
         overflow: scroll
         overflow-x: hidden        
     
@@ -495,7 +495,7 @@ footer
       align-content: center
       align-items: flex-start
       justify-content: flex-start
-      box-shadow: inset 0px -1px var(--box-shadow-color)
+      box-shadow: inset 0px -1px 5px var(--box-shadow-color)
       
       width: 98%
       max-height: 15rem
@@ -598,7 +598,7 @@ footer
         width: 3rem
         height: 3rem
         border-radius: 50%
-        background-color: #EEEEEE
+        background-color: var(--background-color-filiter)
         border: none
         margin-left: 1rem
         
@@ -609,16 +609,17 @@ footer
         flex-wrap: nowrap
         align-content: center
         align-items: center
-        justify-content: flex-start
+        justify-content: space-between
         margin: 1.2rem 0.7rem 0.3rem 0
         height: 1.5rem
+        width: 100%
         
         .eventmsg-insert
           outline: none
           border: none
           width: 60%
           border-radius: 1rem 0 0 1rem
-          background-color: #F2F2F2
+          background-color: var(--background-color-filiter)
           padding: 0.4rem 1.3rem 0.4rem 1rem
           font-size: 1.1rem
         
@@ -629,7 +630,7 @@ footer
           outline: none
           border: none
           border-radius: 3rem
-          background-color: #75E1C7
+          background-color: var(--border-color-eventwindow)
           padding: 0.5rem 1rem
           font-size: 1rem
           cursor: pointer
@@ -641,9 +642,8 @@ footer
           outline: none
           border: none
           border-radius: 3rem
-          background-color: #75E1C7
+          background-color: var(--border-color-eventwindow)
           padding: 0.5rem 1rem
-          margin: 0 0 0 0.5rem
           font-size: 1rem
           cursor: pointer
       
@@ -747,60 +747,6 @@ footer
         #like-n
           display: block
           //width: 70%
-  
-  #eventmsg-sender
-      display: flex
-      flex-direction: row
-      flex-wrap: nowrap
-      align-items: center
-      justify-content: flex-start
-      margin-left: 0.5rem
-      width: 100%
-      //-
-        a
-          margin: 0
-        
-        #senderpic
-          width: 3rem
-          height: 3rem
-          border-radius: 50%
-          background-color: var(--background-color-filiter)
-          border: none
-          margin-left: 1rem
-        
-      .comment-operate-region
-        display: flex
-        flex-direction: row
-        flex-wrap: nowrap
-        align-content: center
-        align-items: center
-        justify-content: space-around
-        margin: 1rem
-        height: 0.5rem
-        width: 100%
-        
-        .eventmsg-insert
-          outline: none
-          border: none
-          //width: 19.5rem
-          border-radius: 1rem 0 0 1rem
-          background-color: var(--background-color-filiter)
-          padding: 0.5rem 2.5rem 0.5rem 1rem
-          font-size: 1.1rem
-        
-        .eventmsg-btn
-          position: relative
-          transform: translateX(-2.5rem)
-          outline: none
-          border: none
-          border-radius: 1rem
-          background-color: var(--border-color-eventwindow)
-          padding: 0.5rem 1rem
-          margin: 0 0 0 0.5rem
-          font-size: 1rem
-          cursor: pointer    
-  
-  
 
 #eventcreatewindow
   //display: none

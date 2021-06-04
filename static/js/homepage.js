@@ -563,7 +563,8 @@ loop();
 
 function loop() {
   window.requestAnimationFrame(loop);
-  drawBG("#FFF6ED");
+  //drawBG("#FFF6ED");
+  drawBG("white");
   //drawText("Made With ♥ & Javascript" , w / 2 , h / 2 , 65 , "stroke" , "#fff");
   //drawText("By suzan",w / 2 + 250 , h / 2 + 40 , 20 , "fill", "#fff")
   for(var i = 0; i < p.length; i++) {
