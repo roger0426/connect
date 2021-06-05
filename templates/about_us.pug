@@ -9,6 +9,7 @@ html
     link(href="{% static 'file/logo.ico' %}",rel="icon")
     {% load sass_tags %}
     link(href="{% sass_src 'sass/about_us.sass' %}",rel="stylesheet",type="text/css")  
+    link(href="{% sass_src 'sass/variable.sass' %}",rel="stylesheet",type="text/css")
 
   body
     {% include 'navbar.pug' %} 
