@@ -47,16 +47,17 @@ input, textarea, button, select, a
 body
   background-color: var(--background-color)
 
-::-webkit-scrollbar 
-  width: 4px
-::-webkit-scrollbar-track 
-  background: transparent //#f1f1f1
-  border-radius: 5px
-::-webkit-scrollbar-thumb
-  background: #CCC
-  border-radius: 2px
-::-webkit-scrollbar-thumb:hover 
-  background: #888
+//排除設定body的scroll bar，使用預設
+  ::-webkit-scrollbar
+    width: 4px
+  ::-webkit-scrollbar-track
+    background: transparent //#f1f1f1
+    border-radius: 5px
+  ::-webkit-scrollbar-thumb
+    background: #CCC
+    border-radius: 2px
+  ::-webkit-scrollbar-thumb:hover
+    background: #888
 
 a
   text-decoration: none
@@ -249,7 +250,7 @@ footer
       margin: 0 3rem
       margin-bottom: 7rem
       a
-        margin: 1rem
+        margin: 1.45rem
       .eventpost:hover
         position: relative
         transform: scale(1.005)
@@ -343,7 +344,7 @@ footer
             width: auto
       #virtualdiv
         height: 0
-        width: 18rem
+        width: calc(16rem + 2.9rem)
         //margin: 0 4rem
         .eventpost
           box-shadow: none

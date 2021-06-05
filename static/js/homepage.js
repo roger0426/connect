@@ -33,10 +33,11 @@ $(document).ready(function(){
     //$("#eventwindow").show();
     //$("#eventwindow").animate({opacity: 1}, 400);
     
-    
     $('input[type=text]').val('');
     $('textarea').val('');
     $('#id_image').val('');
+    
+    $('body').css({'overflow': 'hidden'});
     
     $("#filter1").show();
     $("#filter1").animate({opacity: 1}, 200, function() {
@@ -50,6 +51,7 @@ $(document).ready(function(){
     })
     //$("#sent").toggle();
   });
+    $('body').css({'overflow': 'auto'});
   
   
   $("#applybutton").click(function() {
@@ -68,6 +70,7 @@ $(document).ready(function(){
   
   $("#exitbtn1, #filter1").click(function() {
     //console.log("click event exit");
+    $('body').css({'overflow': 'auto'});
     $("#eventwindow").animate({opacity: 0}, 400, function() {
       $("#eventwindow").hide();
     })
@@ -78,6 +81,7 @@ $(document).ready(function(){
   
   $("#exitbtn2, #filter1").click(function() {
     //console.log("click event exit");
+    $('body').css({'overflow': 'auto'});
     $("#eventcreatewindow").animate({opacity: 0}, 400, function() {
       $('input[type=text]').val('');
       $('textarea').val('');
@@ -240,6 +244,8 @@ function event_handler(URL, user_id, CSRF) {
     },
     
     complete: function(data) {
+      //lock background
+      $('body').css({'overflow': 'hidden'});
       $("#eventwindow").css({'display': 'flex'});
       $("#filter1").show();
 //      $("#eventwindow").css({'opacity': 1});
