@@ -5,16 +5,29 @@ from .models import EventsBoard, BoardMessage, Comment
 from site_notification.models import SiteNotification
 from .forms import EventCreateForm
 from user_extend.models import UserExtend
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from django.forms.models import model_to_dict
 
 
 # Create your views here.
-def home_view(requests, *args, **kwargs):
+def home_view(request, *args, **kwargs):
   obj = EventsBoard.objects.order_by('-create_date')
-  form = EventCreateForm(requests.POST, requests.FILES or None)
-  if(requests.user.is_authenticated):
-    notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+  form = EventCreateForm(request.POST, request.FILES or None)
+
+  # check if there's any uncomment events
+  today = date.today()
+  need_comment = False
+  need_comment_event = None
+  for event in obj.all():
+    if event.event_date:
+      if event.event_date < today and \
+      not Comment.objects.filter(for_event=event).filter(author=request.user.userextend):
+        need_comment = True
+        need_comment_event = event
+        break # start comment from the newest event
+
+  if(request.user.is_authenticated):
+    notification = SiteNotification.objects.filter(for_user = request.user).order_by('-date')
     has_unread = False
     for notice in notification.all():
       if notice.is_read == False:
@@ -28,19 +41,21 @@ def home_view(requests, *args, **kwargs):
     'event_obj': obj,
     'form': form,
     'notice': notification,
-    'notice_unread': has_unread
+    'notice_unread': has_unread,
+    'need_comment': need_comment,
+    'need_comment_event': need_comment_event,
   }
 
   if form.is_valid():
     instance = form.save(commit=False)
-    instance.host = requests.user.userextend
+    instance.host = request.user.userextend
     instance.save()
     return HttpResponseRedirect(reverse('home'))
   
-  return render(requests, 'homepage.pug', context)
+  return render(request, 'homepage.pug', context)
   
-def event_detail_view(requests, id):
-  if requests.method == "POST":
+def event_detail_view(request, id):
+  if request.method == "POST":
     event = get_object_or_404(EventsBoard, id=id)
     
     image_url =  event.image.url if event.image != "" else None
@@ -113,11 +128,11 @@ def like_view(request, id):
   })
   
 # Ajax function
-def comment_view(requests, event_id):
-  if requests.method == "POST":
+def comment_view(request, event_id):
+  if request.method == "POST":
     event = get_object_or_404(EventsBoard, id=event_id)
-    author = requests.user.userextend
-    data = requests.POST
+    author = request.user.userextend
+    data = request.POST
     if (data.get('text')) != "":
       comment_obj = BoardMessage.objects.create(
         author = author,
@@ -133,27 +148,27 @@ def comment_view(requests, event_id):
     })
 
 
-def search_view(requests):
-  if requests.method == "GET":
+def search_view(request):
+  if request.method == "GET":
     events = EventsBoard.objects.filter(
-      title__contains=requests.GET.get('search'),
+      title__contains=request.GET.get('search'),
     )
     events_sub = EventsBoard.objects.filter(
-      subtitle__contains=requests.GET.get('search'),
+      subtitle__contains=request.GET.get('search'),
     )
     events_detail = EventsBoard.objects.filter(
-      detail__contains=requests.GET.get('search'),
+      detail__contains=request.GET.get('search'),
     )
     events = events.union(events_sub).union(events_detail)
-    form = EventCreateForm(requests.POST, requests.FILES or None)
-    if(requests.user.is_authenticated):
-      notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+    form = EventCreateForm(request.POST, request.FILES or None)
+    if(request.user.is_authenticated):
+      notification = SiteNotification.objects.filter(for_user = request.user).order_by('-date')
     else:
       notification = None
 
     if form.is_valid():
       instance = form.save(commit=False)
-      instance.host = requests.user.userextend
+      instance.host = request.user.userextend
       instance.save()
     
     context = {
@@ -161,13 +176,13 @@ def search_view(requests):
       'form': form,
       'notice': notification,
     }
-    return render(requests, 'homepage.pug', context)
+    return render(request, 'homepage.pug', context)
 
   return HttpResponseRedirect('/')
 
-def order_view(requests):
-  if requests.method == 'GET':
-    selected_item = requests.GET['order']
+def order_view(request):
+  if request.method == 'GET':
+    selected_item = request.GET['order']
     print(selected_item)
     obj = EventsBoard.objects.order_by('-create_date')
     if (selected_item == 'newest'):
@@ -181,15 +196,15 @@ def order_view(requests):
       unsorted_obj = EventsBoard.objects.all()
       obj = sorted(unsorted_obj, key=lambda t: -t.number_of_participants())
 
-    form = EventCreateForm(requests.POST, requests.FILES or None)
-    if(requests.user.is_authenticated):
-      notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+    form = EventCreateForm(request.POST, request.FILES or None)
+    if(request.user.is_authenticated):
+      notification = SiteNotification.objects.filter(for_user = request.user).order_by('-date')
     else:
       notification = None
 
     if form.is_valid():
       instance = form.save(commit=False)
-      instance.host = requests.user.userextend
+      instance.host = request.user.userextend
       instance.save()
     
     context = {
@@ -197,7 +212,7 @@ def order_view(requests):
       'form': form,
       'notice': notification,
     }
-    return render(requests, 'homepage.pug', context)
+    return render(request, 'homepage.pug', context)
 
 # @url: 'rate_event'
 # @request parameters
