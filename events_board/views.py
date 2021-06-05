@@ -217,17 +217,19 @@ def order_view(request):
 # @url: 'rate_event'
 # @request parameters
 # 'id': id/pk of the event
-# '[participant_full_name]': comment of that participant
+# 'participant': list of participants
+# 'comments': comment of participant
 def rate_event_view(request):
-  if request.method == 'POST':
+  if request.method == 'POST':  
     data = request.POST
-    event = get_object_or_404(EventsBoard, id=data.get('id'))
-    if data.has_key(event.host.full_name):
+    event = get_object_or_404(EventsBoard, id=data.get('event_id'))
+    if event.host.full_name in data:
       comment = Comment.objects.create(
         text = data.get(event.host.full_name),
         for_event = event,
         for_user = event.host,
-        author = request.user.userextend
+        author = request.user.userextend,
+        rate = -1
       )
       comment.save()
     else:
@@ -236,19 +238,22 @@ def rate_event_view(request):
         'error_message': '[Error] Host comment not found'
       })
     for participant in event.participants.all():
-      if data.has_key(participant.full_name):
-        comment = Comment.objects.create(
-          text = data.get(participant.full_name),
-          for_event = event,
-          for_user = participant,
-          author = request.user.userextend
-        )
-        comment.save()
-      else:
-        return JsonResponse({
-          'status': 404,
-          'error_message': '[Error] Participant comment not found'
-        })
+      print(participant.full_name)
+      if participant.full_name != request.user.userextend.full_name:
+        if participant.full_name in data:
+          comment = Comment.objects.create(
+            text = data.get(participant.full_name),
+            for_event = event,
+            for_user = participant,
+            author = request.user.userextend,
+            rate = -1
+          )
+          comment.save()
+        else:
+          return JsonResponse({
+            'status': 404,
+            'error_message': '[Error] Participant comment not found'
+          })
     
     return JsonResponse({
       'status': 200,

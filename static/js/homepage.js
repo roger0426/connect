@@ -173,7 +173,6 @@ $(document).ready(function(){
       })
     }
   })
-
   
   let searchParams = window.location.href
   if (searchParams.includes('event')) {
@@ -215,6 +214,66 @@ $(document).ready(function(){
   */
   
 });
+
+function rate_event_handler(URL, event_id, CSRF) {
+  if ($("#comment-window input[type=text]:empty").length == 1) {
+    // all comments are written
+    let data = {};
+    data[$("#first-comment label").text()] = $("#first-comment input[type=text]").val()
+    $('#comment-window label').each(function (e) {
+      if ($(e).text() != "") {
+        data[$(e).text()] = ($(e).siblings("input[type=text]").val());
+      }
+    });
+    data['event_id'] = (event_id);
+
+    $.ajaxSetup({
+      data: {
+        csrfmiddlewaretoken: CSRF
+      }
+    });
+    $.ajax({
+      type: "POST",
+      url: URL,
+      data: data,
+      dataType: 'json',
+      success: function(data) {
+        if (data.status == 200) {
+          console.log("comment successfully")
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '已成功評論',
+            text: "再去看看其他活動吧~",
+            showConfirmButton: false,
+            timer: 1500,
+          })
+          $("#filter1").hide();
+          $("#comment-window").hide();
+        } else {
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: '喔不出錯了',
+            text: "請稍後再試一次" + data.error_message,
+            showConfirmButton: false,
+            timer: 1500,
+          })
+        }
+      }
+    })
+
+  } else {
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: '喔喔，有東西沒填到喔',
+      text: "請再確認一次",
+      showConfirmButton: false,
+      timer: 1500,
+    })
+  }
+}
 
 function event_handler(URL, user_id, CSRF) {
   $.ajaxSetup({
