@@ -215,7 +215,12 @@ html
                         p {{ friend.userextend.department }}
                         p {{ friend.userextend.grade }}
                         p 0位共同連結
-                  p {{ user.user.last_name }} 與 {{ friend.last_name }} 一起參與過 {{ friend_connect }} 個活動
+                  {% if friend_connect %}
+                  p {{ friend.last_name }} 與他一起參與過 {{ friend_connect }} 個活動
+                  //{{ user.user.last_name }}
+                  {% else %}
+                  p {{ friend.last_name }} 與他 還沒有一起參與過活動
+                  {% endif %}
               {% empty %}
               p 快去建立連結吧
               {% endfor %}

@@ -391,6 +391,7 @@ footer
     border: solid 2px var(--border-color-frame)
     position: sticky
     top: calc(4vw + 1rem)
+    z-index: 1
 
     p
       font-size: 1.2rem
@@ -463,38 +464,44 @@ footer
         height: 0
       .friend-info
         display: none
+        flex-direction: column
+        align-items: stretch;
+        align-content: space-between;
         position: absolute
         padding: 0.5rem
         background-color: white
         border: solid #FFAD94 0.1rem
         border-radius: 0.8rem
-        z-index: 1
+        min-width: 14rem;
         .info-brief
           display: flex
-          flex-direction: row
-          margin-bottom: 1rem
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: flex-start;
+          justify-content: flex-start;
           img
             width: 4rem
             height: 4rem
             margin-right: 1rem
           p#friend-name
-            font-weight: 700
+            font-weight: 600
             font-size: 1.2rem
           .info-brief-right
             display: flex
-            flex-direction: column
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
             .info-brief-school
               display: flex
-              flex-direction: row
-              justify-content: space-around
+              flex-direction: column;
+              align-items: flex-start;
               p
-                font-size: 0.9rem
-                margin-right: 0.5rem
+                font-size: 0.8rem
+                color: #666666
               p:nth-child(1)
-                font-weight: 600
+                font-weight: 500
               p:nth-child(2)
-                font-weight: 600
-                margin-right: 1rem
+                font-weight: 500
         p
           font-size: 1rem
         

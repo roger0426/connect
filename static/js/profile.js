@@ -51,7 +51,7 @@ $(document).ready(function(){
   })
   
   $('#friends-avatar a').mouseenter(function() {
-    $(this).find('.friend-info').css({'display': 'block'});
+    $(this).find('.friend-info').css({'display': 'flex'});
   });
   $('#friends-avatar a').mouseleave(function() {
     $(this).find('.friend-info').css({'display': 'none'});
