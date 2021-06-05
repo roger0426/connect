@@ -116,6 +116,25 @@ html
     {% load static %}
     image#gotop(src="{% static 'file/gotop.png' %}")
     {% if request.user.is_authenticated %}
+    #filter1 
+    #need-comment-flag(style="display: none") {{ need_comment }}
+    #comment-window
+      img#exitbtn2(src="{% static 'file/exiticon.png' %}")
+      p 嗨{{ request.user.last_name }}！你對於"{{ need_comment_event.title }}"的體驗如何呢？
+      p 來為活動和參加者評分吧！
+      #first-comment.comment-div
+        p 給 {{ need_comment_event.host.full_name }} 的評語
+        label(for="{{ need_comment_event.host.full_name }}", style="display: none")
+        input(type="text", placeholder="留言.......", name="{{ need_comment_event.host.full_name }}")
+      {% for participant in need_comment_event.participant.all %}
+      .comment-div
+        p 給 {{ participant.full_name }} 的評語
+        label(for="{{ participant.full_name }}", style="display: none")
+        input(type="text", placeholder="留言.......", name="{{ participant.full_name }}")
+      {% endfor %}
+      input#send-comment-btn(type="button", value="送出")
+
+
     #filter1
     #eventcreatewindow
       img#exitbtn2(src="{% static 'file/exiticon.png' %}")

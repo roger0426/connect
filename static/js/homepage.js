@@ -55,6 +55,19 @@ $(document).ready(function(){
     })
     //$("#sent").toggle();
   });
+
+  if($("#need-comment-flag").text() == "True") {
+    $("#filter1").show();
+    $("#filter1").animate({opacity: 1}, 200, function() {
+      if ($("#comment-window").css('display') == 'none') {
+        $("#comment-window").show();
+      }
+      else {
+        $("#comment-window").css({'content-visibility': 'visible'});
+      }
+      $("#comment-window").animate({opacity: 1}, 200);
+    })
+  }
   
   
   $("#applybutton").click(function() {
@@ -88,6 +101,10 @@ $(document).ready(function(){
       $('textarea').val('');
       $('#id_image').val('');
       $("#eventcreatewindow").css({'content-visibility': 'hidden'});
+    })
+    $("#comment-window").animate({opacity: 0}, 400, function() {
+      $('input[type=text]').val('');
+      $("#comment-window").css({'content-visibility': 'hidden'});
     })
     $("#filter1").animate({opacity: 0}, 150, function() {
       $("#filter1").hide();
