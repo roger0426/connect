@@ -46,12 +46,12 @@ $(document).ready(function(){
     
     $("#filter1").show();
     $("#filter1").animate({opacity: 1}, 200, function() {
-      if ($("#eventcreatewindow").css('display') == 'none') {
-        $("#eventcreatewindow").show();
-      }
-      else {
-        $("#eventcreatewindow").css({'content-visibility': 'visible'});
-      }
+//      if ($("#eventcreatewindow").css('display') == 'none') {
+      $("#eventcreatewindow").show();
+//      }
+//      else {
+//        $("#eventcreatewindow").css({'content-visibility': 'visible'});
+//      }
       $("#eventcreatewindow").animate({opacity: 1}, 200);
     })
     //$("#sent").toggle();
@@ -60,12 +60,12 @@ $(document).ready(function(){
   if($("#need-comment-flag").text() == "True") {
     $("#filter1").show();
     $("#filter1").animate({opacity: 1}, 200, function() {
-      if ($("#comment-window").css('display') == 'none') {
-        $("#comment-window").show();
-      }
-      else {
-        $("#comment-window").css({'content-visibility': 'visible'});
-      }
+//      if ($("#comment-window").css('display') == 'none') {
+      $("#comment-window").show();
+//      }
+//      else {
+//        $("#comment-window").css({'content-visibility': 'visible'});
+//      }
       $("#comment-window").animate({opacity: 1}, 200);
     })
   }
@@ -103,11 +103,14 @@ $(document).ready(function(){
       $('input[type=text]').val('');
       $('textarea').val('');
       $('#id_image').val('');
-      $("#eventcreatewindow").css({'content-visibility': 'hidden'});
+      //$("#eventcreatewindow").css({'content-visibility': 'hidden'});
+      $("#eventcreatewindow").hide();
     })
     $("#comment-window").animate({opacity: 0}, 400, function() {
       $('input[type=text]').val('');
-      $("#comment-window").css({'content-visibility': 'hidden'});
+      //$("#comment-window").css({'content-visibility': 'hidden'});
+      $("#comment-window").hide();
+      console.log('hide window')
     })
     $("#filter1").animate({opacity: 0}, 150, function() {
       $("#filter1").hide();
