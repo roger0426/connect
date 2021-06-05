@@ -187,7 +187,7 @@ footer
         //border: solid 2px
         border-radius: 1.3rem
         //border-color: #3AEDC2
-        padding: 1rem 1rem
+        padding: 0.6rem
         width: auto
         margin-bottom: 0.5rem
         
@@ -210,7 +210,7 @@ footer
         background-color: var(--background-color-freind)
         border-radius: 1.5rem
         margin-bottom: 0.5rem
-        padding: 0.5rem
+        padding: 0.3rem
         width: auto
         display: flex
         flex-direction: row
@@ -231,14 +231,13 @@ footer
           padding: 0.3rem 0
           font-weight: 900
           color: var(--background-color-button)
-          
         .tag-style
           position: relative
           min-width: 4rem
           background-color: var(--background-color-tag1)
           border-radius: 1rem
           margin: 0.2rem
-          cursor: pointer
+          cursor: default
 
           .tag-commend
             display: none
@@ -321,11 +320,17 @@ footer
         input:hover
           background-color: #FFAD94
       
+      .tag-field:nth-child(3)
+        .tag-style
+          cursor: pointer
+        .tag-style:hover
+          background-color: var(--background-color-tag1-hover)
+          
       .tag-field:nth-child(4)
         .tag-style
           background-color: #9FE4D4
-        .tag-style:hover
-          background-color: #32DEB5
+        //.tag-style:hover
+          //background-color: #32DEB5
         input
           background-color: #9FE4D4
         input:hover

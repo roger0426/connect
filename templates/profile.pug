@@ -12,6 +12,7 @@ html
     link(href="{% sass_src 'sass/variable.sass' %}",rel="stylesheet",type="text/css")
     script(src="{% static 'js/jquery-3.2.1.min.js' %}")
     script(src="{% static 'js/jquery-ui.js' %}")
+    script(src="{% static 'js/d3.v5.js' %}")
   {% include 'navbar.pug' %}
 
   body
@@ -47,22 +48,23 @@ html
                 {% if not personality.is_hidden %}
                 .tag-style
                   p.tags.normaltag {{ personality.text }}
-                  .tag-commend 
-                    #tag-comment-send-region
-                      {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
-                      a(href="{% url 'profile' id=request.user.userextend.pk %}")
-                        img#senderpic(src="{{ request.user.userextend.img.url }}")
-                      .cmd-txt-region
-                        input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
-                      button#sendbutton(type="submmit", src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit")
-                      {% else %}
-                      {% endif %}
-                    #tag-comment-board
-                      .tagcmt-wrap
-                        #cmtfrom
-                          img.sender(src="{% static 'file/personicon.png' %}")
-                        #cmttext
-                          p 沒有更多留言囉
+                  //-
+                    .tag-commend
+                      #tag-comment-send-region
+                        {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
+                        a(href="{% url 'profile' id=request.user.userextend.pk %}")
+                          img#senderpic(src="{{ request.user.userextend.img.url }}")
+                        .cmd-txt-region
+                          input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
+                        button#sendbutton(type="submmit", src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit")
+                        {% else %}
+                        {% endif %}
+                      #tag-comment-board
+                        .tagcmt-wrap
+                          #cmtfrom
+                            img.sender(src="{% static 'file/personicon.png' %}")
+                          #cmttext
+                            p 沒有更多留言囉
                 {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定個性
@@ -99,22 +101,23 @@ html
                 {% if not interest.is_hidden %}
                 .tag-style
                   p.tags.normaltag {{ interest.text }}
-                  .tag-commend 
-                    #tag-comment-send-region
-                      {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
-                      a(href="{% url 'profile' id=request.user.userextend.pk %}")
-                        img#senderpic(src="{{ request.user.userextend.img.url }}")
-                      .cmd-txt-region
-                        input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
-                      button#sendbutton(type="submmit", src="{% static 'file/send-arrow.png' %}", alt="Submit")
-                      {% else %}
-                      {% endif %}
-                    #tag-comment-board
-                      .tagcmt-wrap
-                        #cmtfrom
-                          img.sender(src="{% static 'file/personicon.png' %}")
-                        #cmttext
-                          p 沒有更多留言囉
+                  //-
+                    .tag-commend 
+                      #tag-comment-send-region
+                        {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
+                        a(href="{% url 'profile' id=request.user.userextend.pk %}")
+                          img#senderpic(src="{{ request.user.userextend.img.url }}")
+                        .cmd-txt-region
+                          input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
+                        button#sendbutton(type="submmit", src="{% static 'file/send-arrow.png' %}", alt="Submit")
+                        {% else %}
+                        {% endif %}
+                      #tag-comment-board
+                        .tagcmt-wrap
+                          #cmtfrom
+                            img.sender(src="{% static 'file/personicon.png' %}")
+                          #cmttext
+                            p 沒有更多留言囉
                 {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定有興趣的活動
