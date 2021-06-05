@@ -97,9 +97,9 @@ footer
     flex-direction: row
     justify-content: space-evenly
     align-items: center
-    background-color: var(--background-color-box)
+    background-color: var(--background-color-container)
     //rgba(255, 219, 208, 1)
-    border: solid 0.2rem var(--border-color-box)
+    border: solid 0.2rem var(--border-color-container)
     width: 100%
     height: 12%
     border-radius: 1.5rem
@@ -119,8 +119,8 @@ footer
       width: 6rem
       height: 6rem
       border-radius: 50%
-      border: solid 0.2rem white
-      background-color: var(--background-color-filiter)
+      border: solid 0.2rem var(--border-color-userpic)
+      background-color: var(--background-color-userpic)
 
     #inserta
       position: absolute
@@ -129,7 +129,7 @@ footer
       height: 3.5rem
 
     #insertbox:hover
-      color: var(--fontcolor-hover)
+      color: var(--fontcolor-placeholder-hover)
 
     #insertbox
       display: flex
@@ -139,13 +139,13 @@ footer
       height: 3.5rem
       width: 48vw
       border-radius: 1.2rem
-      background-color: var(--background-color-filiter)
+      background-color: var(--background-color-inut)
       cursor: pointer
       border: none
       text-align: left
       padding-left: 1.5rem
       font-size: 1.5rem
-      color: var(--fontcolor-before)
+      color: var(--fontcolor-placeholder)
     
     #insertbar
       position: relative
@@ -161,9 +161,9 @@ footer
     flex-wrap: nowrap
     align-content: center
     align-items: stretch
-    background-color: var(--background-color-box)
+    background-color: var(--background-color-container)
     //rgba(255, 219, 208, 1)
-    border: solid 0.2rem var(--border-color-box)
+    border: solid 0.2rem var(--border-color-container)
     width: 100%
     
     border-radius: 1.5rem
@@ -224,7 +224,7 @@ footer
       .eventpost:hover
         position: relative
         transform: scale(1.005)
-        box-shadow: 0.3rem 0.15rem 0.5rem 0.2rem var(--box-shadow-color)
+        box-shadow: 0.3rem 0.15rem 0.5rem 0.2rem var(--boxshadow-color)
       .eventpost
         display: flex
         flex-direction: column
@@ -235,11 +235,11 @@ footer
         cursor: pointer
                
         width: 13rem
-        background-color: var(--background-color-box)
+        background-color: var(--background-color-container)
         //margin: 1rem
         padding: 0.5rem 1.5rem 0.5rem 1.5rem
         border-radius: 1.5rem
-        box-shadow: 0.3rem 0.15rem 0.4rem 0.1rem var(--box-shadow-color)
+        box-shadow: 0.3rem 0.15rem 0.4rem 0.1rem var(--boxshadow-color)
 
         *
           margin: 0
@@ -260,8 +260,8 @@ footer
             width: 2.5rem
             border-radius: 0.5rem
             border: solid 1px
-            border-color: #999999
-            background-color: var(--background-color-filiter)
+            border-color: var(--border-color-userpic)
+            background-color: var(--background-color-userpic)
             
           #post_title
             font-size: 1.2rem
@@ -283,7 +283,7 @@ footer
             
           #postcreatdate
             font-size: 0.8rem
-            color: var(--fontcolor-complement)
+            color: var(--fontcolor-second)
             text-align: right
         
             
@@ -371,7 +371,7 @@ footer
   background: linear-gradient(180deg,var(--border-color-eventwindow), #FFFFFF)
   border-radius: 3rem
   border: 5px solid var(--border-color-eventwindow)
-  box-shadow: 10px 10px 25px 5px var(--box-shadow-color)
+  box-shadow: 10px 10px 25px 5px var(--boxshadow-color)
   z-index: 7
   opacity: 0
   
@@ -419,7 +419,7 @@ footer
             height: 100%
             width: 100%
             border-radius: 0.7rem
-            background-color: var(--background-color-filiter2)
+            background-color: var(--background-color-eventwindow-board)
               
             img
               height: 100%
@@ -440,12 +440,12 @@ footer
             //width: 50rem
           #event-subtitle
             font-size: 1rem
-            color: var(--fontcolor-subtitle)
+            color: var(--fontcolor-second)
             //margin: 0.3rem 0 0 9rem                  
 
         #event-date
           font-size: 0.8rem
-          color: var(--fontcolor-hover)
+          color: var(--fontcolor-second)
           font-weight: 500
           margin-top: 0.7rem
       
@@ -466,12 +466,12 @@ footer
       align-content: center
       align-items: flex-start
       justify-content: flex-start
-      box-shadow: inset 0px -1px 5px var(--box-shadow-color)
+      box-shadow: inset 0px -1px 5px var(--boxshadow-color)
       
       width: 98%
       max-height: 15rem
       min-height: 10rem
-      background-color: var(--background-color-filiter2)
+      background-color: var(--background-color-eventwindow-board)
       border-radius: 1.5rem
       padding: 0.5rem
       margin: 0.5rem 0 0 0
@@ -495,7 +495,7 @@ footer
         overflow-x: hidden
         
         .eventmsg:hover
-          background-color: var(--background-color-filiter)
+          background-color: var(--background-color-inut)
         .eventmsg
           display: flex
           flex-direction: row
@@ -504,7 +504,7 @@ footer
           width: 95%
           margin: 0 0 0.4rem 0
           border-radius: 0.5rem
-          background-color: var(--background-color-filiter2)
+          background-color: var(--background-color-input-hover)
           padding: 0.5rem
           
           a
@@ -514,7 +514,7 @@ footer
             width: 2.5rem
             height: 2.5rem
             border-radius: 50%
-            background-color: var(--background-color-box)
+            background-color: var(--background-color-inut)
           
           #eventmsg-right
             display: flex
@@ -544,7 +544,7 @@ footer
               #event-date
                 font-size: 0.7rem
                 width: 15rem
-                color: var(--fontcolor-hover)
+                color: var(--fontcolor-second)
                 text-align: right
                 
             #eventmsgtext
@@ -569,7 +569,7 @@ footer
         width: 3rem
         height: 3rem
         border-radius: 50%
-        background-color: var(--background-color-filiter)
+        background-color: var(--background-color-userpic)
         border: none
         margin-left: 1rem
         
@@ -590,7 +590,7 @@ footer
           border: none
           width: 60%
           border-radius: 1rem 0 0 1rem
-          background-color: var(--background-color-filiter)
+          background-color: var(--background-color-inut)
           padding: 0.4rem 1.3rem 0.4rem 1rem
           font-size: 1.1rem
         
@@ -651,7 +651,7 @@ footer
         border-radius: 50%
         border: solid 0.2rem var(--border-color-eventwindow)
         flex-start
-        background-color: #FFFFFF
+        background-color: var(--background-color-userpic)
       #bar
         width: 2.5rem
         height: 0.2rem
@@ -677,7 +677,7 @@ footer
         .participant
           border: solid 0.15rem var(--border-color-participate)
         .interested
-          border: solid 0.15rem var(--background-color-filiter)
+          border: solid 0.15rem var(--background-color-userpic)
           
         
       .login-redirect
@@ -696,7 +696,7 @@ footer
         width: 3rem
         
         #likebtn-bg
-          background-color: var(--background-color-filiter)
+          background-color: var(--background-color-userpic)
           
           
 
@@ -727,10 +727,10 @@ footer
   left: 50%
   width: 40%
   padding: 3% 0
-  background-color: var(--background-color-create)
+  background-color: var(--background-color-container)
   border-radius: 3rem
-  border: 0.2rem solid var(--border-color-create)
-  box-shadow: 10px 10px 25px 5px var(--box-shadow-color)
+  border: 0.2rem solid var(--border-color-eventwindow)
+  box-shadow: 10px 10px 25px 5px var(--boxshadow-color)
   opacity: 0
   z-index: 7
       
@@ -791,9 +791,9 @@ footer
       padding: 0 1rem
       outline: none
       border: none
-      background-color: var(--background-color-filiter)
+      background-color: var(--background-color-inut)
     input[type=text]:focus
-      border: 2px solid var(--border-color-focus)
+      border: 2px solid var(--border-color-input-focus)
     input[type=date]
       border-radius: 2.5rem
       margin-bottom: 0.7rem
@@ -803,12 +803,12 @@ footer
       padding: 0 1rem
       outline: none
       border: none
-      background-color: var(--background-color-filiter)
-      color: var(--fontcolor-hover)
+      background-color: var(--background-color-inut)
+      color: var(--fontcolor-placeholder)
       padding-left: 1.8rem
       margin-right: 0.7rem
     input[type=date]:focus
-      border: 2px solid var(--border-color-focus)
+      border: 2px solid var(--border-color-input-focus)
     input[type=number]
       border-radius: 2.5rem
       margin-bottom: 0.7rem
@@ -818,15 +818,15 @@ footer
       padding: 0 1rem
       outline: none
       border: none
-      background-color: var(--background-color-filiter)
-      color: var(--fontcolor-hover)
+      background-color: var(--background-color-inut)
+      color: var(--fontcolor-placeholder)
       padding-left: 1rem
       margin-right: 0.7rem
     input[type=number]:focus
-      border: 2px solid var(--border-color-focus)
+      border: 2px solid var(--border-color-input-focus)
     textarea
       border-radius: 1rem
-      background-color: var(--background-color-filiter)
+      background-color: var(--background-color-input)
       border-radius: 1rem
       margin-bottom: 0.7rem
       padding: 1rem 1rem
@@ -836,11 +836,11 @@ footer
       height: 8rem
       width: 100%
     textarea:focus
-      border: 2px solid var(--border-color-focus)
+      border: 2px solid var(--border-color-input-focus)
     
     select
-      background-color: var(--background-color-filiter)
-      color: var(--fontcolor-hover)
+      background-color: var(--background-color-input)
+      color: var(--fontcolor-placeholder)
       height: 2rem
       font-size: 1rem
       border-radius: 1rem
@@ -879,14 +879,14 @@ footer
       background: none
       height: auto
       font-size: 1.5rem
-      background-color: var(--background-color-buttons)
+      background-color: var(--background-color-button)
       border-radius: 2rem
       padding: 0.2rem 0rem
       text-align: center
       margin-top: 2.5rem
-      border: solid 2px var(--background-color-buttons)
+      border: solid 2px var(--background-color-button)
     #submit-btn:hover
-      background-color: var(--background-color-buttons-hover)
+      background-color: var(--background-color-button-hover)
 
 #filter1
   display: none
