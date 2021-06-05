@@ -239,66 +239,76 @@ footer
           margin: 0.2rem
           cursor: default
 
-          .tag-commend
+          .tag-comment
             display: none
             //display: flex
-            flex-direction: column
-            justify-content: space-around
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: stretch;
             position: absolute
-            
+            top: 2.1rem
             background-color: var(--background-color-event)
             border-radius: 1rem
             z-index: 4
-            width: 20rem
+            width: 17rem
             height: auto
-            margin: 1rem
+            //margin: 1rem
+            padding: 0.7rem
             cursor: default
             border: solid 1px var(--background-color-navbar)
 
             #sendbutton
-              width: 2.5rem
-              height: 2.5rem
+              width: 2rem
+              height: 2rem
             
             #tag-comment-send-region
-              margin: 1rem
+              margin: 0.5rem 0
               display: flex
               flex-direction: row
               align-items: center
-              justify-content: center
+              justify-content: flex-start;
 
               #senderpic
+                display: none
                 width: 3rem
                 height: 3rem
+                margin: 0
+                border-radius: 50%
+                background-color: #DDD
               .comment-insert
-                width: 7.5rem
-                background-color: var(--background-color-description)
+                width: 12rem //9rem
+                background-color: #EEE //var(--background-color-description)
+              .comment-insert::-webkit-input-placeholder
+                color: #888888
 
             #tag-comment-board
               background-color: var(--background-color-userpic)
-              margin: 0rem 1rem 1rem 1rem
+              //margin: 0rem 1rem 1rem 1rem
               border-radius: 0.75rem
-
+              max-height: 40vh
+              overflow: auto
+              
               .tagcmt-wrap
                 display: flex
                 flex-direction: row
                 flex-wrap: nowrap
                 justify-content: space-around
                 align-items: center
-                margin: 0.75rem
+                margin: 1rem 0.75rem
 
                 #cmtfrom
                   background-color: var(--background-color-navbar)
-                  width: 2.5rem
-                  height: 2.5rem
+                  width: 2rem
+                  height: 2rem
                   border-radius: 50%
 
                 #cmttext
                   background-color: var(--background-color-intro)
-                  width: 80%
-                  border-radius: 1rem
-              
-
-
+                  width: 83%
+                  border-radius: 0.7rem
+                  p
+                    text-align: left
 
         input
           font-size: 0.9rem
@@ -619,11 +629,14 @@ footer
               color: var(--fontcolor-second)
               margin-top: 1.5rem
           .event-detail
-            width: 100%
+            width: 110%
+            max-height: 15rem
+            overflow-y: auto
+            overflow-x: hidden
             .detail
               font-size: 1rem
               line-height: 1.2rem
-              width: 110%
+              //width: 110%
               //max-height: 10rem
               //overflow: scroll
               margin-top: 1rem
@@ -687,7 +700,60 @@ footer
             //overflow-scrolling: touch
             //-webkit-overflow-scrolling: touch
             //appearance: none
-            
+            .eventmsg
+              display: flex
+              flex-direction: row
+              flex-wrap: nowrap
+              align-items: center
+              width: 95%
+              margin: 0.5rem 0 0rem 0
+              border-radius: 0.5rem
+              background-color: #DDD //var(--background-color-input-hover)
+              padding: 0.5rem
+              
+              a
+                margin: 0
+              
+              .sender
+                width: 2.5rem
+                height: 2.5rem
+                border-radius: 50%
+                background-color: var(--background-color-inut)
+              
+              #eventmsg-right
+                display: flex
+                flex-direction: column
+                flex-wrap: nowrap
+                justify-content: space-between
+                align-items: flex-start
+                width: 93%
+                min-height: 2.5rem
+                margin-left: 1rem
+                
+                
+                #eventmsg-righttop
+                  display: flex
+                  flex-direction: row
+                  flex-wrap: nowrap
+                  align-content: center
+                  align-items: center
+                  justify-content: space-between
+                  width: 100%
+                  
+                  
+                  #eventmsg-sendername
+                    font-size: 1.05rem
+                    width: 4rem
+                    font-weight: 500
+                  #event-date
+                    font-size: 0.7rem
+                    width: 15rem
+                    color: var(--fontcolor-second)
+                    text-align: right
+                    
+                #eventmsgtext
+                  font-size: 1rem
+                  color: #595959
             .comment
               display: flex
               flex-direction: row;

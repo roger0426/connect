@@ -48,23 +48,6 @@ html
                 {% if not personality.is_hidden %}
                 .tag-style
                   p.tags.normaltag {{ personality.text }}
-                  //-
-                    .tag-commend
-                      #tag-comment-send-region
-                        {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
-                        a(href="{% url 'profile' id=request.user.userextend.pk %}")
-                          img#senderpic(src="{{ request.user.userextend.img.url }}")
-                        .cmd-txt-region
-                          input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
-                        button#sendbutton(type="submmit", src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit")
-                        {% else %}
-                        {% endif %}
-                      #tag-comment-board
-                        .tagcmt-wrap
-                          #cmtfrom
-                            img.sender(src="{% static 'file/personicon.png' %}")
-                          #cmttext
-                            p 沒有更多留言囉
                 {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定個性
@@ -75,22 +58,45 @@ html
                 {% if not skill.is_hidden %}
                 .tag-style
                   p.tags.normaltag {{ skill.text }}
-                  .tag-commend  
+                  .tag-comment
                     #tag-comment-send-region
                       {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
                       .cmd-txt-region
                         input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
-                      button#sendbutton(type="submmit", src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit")
+                      button#sendbutton(src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit")
+                      script.
+                        $(document).ready(function(){
+                          $(".tag-comment #sendbutton").on("click", function() {
+                            
+                          });
+                        })
                       {% else %}
                       {% endif %}
                     #tag-comment-board
+                      {% for tagcomment in notice %}
+                      .tagcmt-wrap
+                        #cmtfrom
+                          img.sender(src="{% static 'file/personicon.png' %}")
+                        #cmttext
+                          p {{ tagcomment.date }}{{ tagcomment.date }}
+                      .eventmsg#eventmsg(style="display: none")
+                        a
+                          img.sender
+                        #eventmsg-right
+                          #eventmsg-righttop
+                            a#eventmsg-sendername
+                            p#event-date
+                          #eventmsg-rightbottom
+                            p#eventmsgtext
+                      {% empty %}
                       .tagcmt-wrap
                         #cmtfrom
                           img.sender(src="{% static 'file/personicon.png' %}")
                         #cmttext
                           p 沒有更多留言囉
+                      {% endfor %}
                 {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定專長
@@ -101,23 +107,6 @@ html
                 {% if not interest.is_hidden %}
                 .tag-style
                   p.tags.normaltag {{ interest.text }}
-                  //-
-                    .tag-commend 
-                      #tag-comment-send-region
-                        {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
-                        a(href="{% url 'profile' id=request.user.userextend.pk %}")
-                          img#senderpic(src="{{ request.user.userextend.img.url }}")
-                        .cmd-txt-region
-                          input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
-                        button#sendbutton(type="submmit", src="{% static 'file/send-arrow.png' %}", alt="Submit")
-                        {% else %}
-                        {% endif %}
-                      #tag-comment-board
-                        .tagcmt-wrap
-                          #cmtfrom
-                            img.sender(src="{% static 'file/personicon.png' %}")
-                          #cmttext
-                            p 沒有更多留言囉
                 {% endif %}
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定有興趣的活動
@@ -315,13 +304,23 @@ html
                   #activity-comment.comments
                     {% for comment in activity.event_comments.all reversed%}
                     {% if comment.for_user.id == user.id %}
-                    .comment
-                      {% load static %}
-                      a(href="{% url 'profile' id=comment.author.pk %}")
-                        img#participant-img(src="{{ comment.author.img.url }}")
-                      .comment-right
-                        a(href="{% url 'profile' id=comment.author.pk %}") {{ comment.author.full_name }}
-                        p#participant-comment {{ comment.text }}
+                    //-
+                      .comment
+                        {% load static %}
+                        a(href="{% url 'profile' id=comment.author.pk %}")
+                          img#participant-img(src="{{ comment.author.img.url }}")
+                        .comment-right
+                          a(href="{% url 'profile' id=comment.author.pk %}") {{ comment.author.full_name }}
+                          p#participant-comment {{ comment.text }}
+                    .eventmsg#eventmsg
+                        a
+                          img.sender
+                        #eventmsg-right
+                          #eventmsg-righttop
+                            a#eventmsg-sendername {{ comment.author.full_name }}
+                            p#event-date
+                          #eventmsg-rightbottom
+                            p#eventmsgtext {{ comment.text }}
                     {% endif %}
                     {% empty %}
                     .comment

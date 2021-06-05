@@ -19,21 +19,21 @@ $(document).ready(function(){
 //  });
   
   $(".normaltag").click(function() {
-    if($(this).parent().find('.tag-commend').css("display") == "none") {
-      $(this).parent().find('.tag-commend').css({'display': 'flex'});
-      $(".normaltag").not(this).parent().find('.tag-commend').css({'display': 'none'});
+    if($(this).parent().find('.tag-comment').css("display") == "none") {
+      $(this).parent().find('.tag-comment').css({'display': 'flex'});
+      $(".normaltag").not(this).parent().find('.tag-comment').css({'display': 'none'});
     }
     else {
-      $(this).parent().find('.tag-commend').css({'display': 'none'});
+      $(this).parent().find('.tag-comment').css({'display': 'none'});
     }
   });
   
   $(window).click(function() {
     var i = 0
-    $('.tag-commend').each(function(c) {
+    $('.tag-comment').each(function(c) {
 //      console.log($(this).css('display'));
       if($(this).css('display') === 'flex') {
-        $('.tag-commend').each(function(c) {
+        $('.tag-comment').each(function(c) {
           $(this).css('display', 'none');
         })
         return;
@@ -41,7 +41,7 @@ $(document).ready(function(){
     })
   });
   
-  $('.normaltag').click(function(event){
+  $('.normaltag, .tag-comment').click(function(event){
     event.stopPropagation();
   });
   
@@ -124,7 +124,7 @@ $(document).ready(function(){
   
   $("#sendbutton").click(function() {
     console.log("sendbutton has been click.")
-    $ajaxSetup({
+    $.ajaxSetup({
       data: {
         csrfmiddlewaretoken: CSRF
       }
