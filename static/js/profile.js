@@ -6,13 +6,10 @@ $(document).ready(function(){
     $('#phoneerrormsg').hide();
   });
   
-  
-  
   $(".normaltag").click(function() {
     if($(this).parent().find('.tag-comment').css("display") == "none") {
       $(this).parent().find('.tag-comment').css({'display': 'flex'});
       $(".normaltag").not(this).parent().find('.tag-comment').css({'display': 'none'});
-      
       $(".normaltag").not(this).parent().css({'box-shadow': 'none'})
       $(this).closest('.tag-style').css({'box-shadow': '0.1rem 0.15rem 0.3rem 0.2rem var(--boxshadow-color)'})
     }
@@ -26,7 +23,6 @@ $(document).ready(function(){
     if($(this).find('.tag-comment').css("display") == "none") {
       $(this).find('.tag-comment').css({'display': 'flex'});
       $(".tag-style").not(this).find('.tag-comment').css({'display': 'none'})
-      
       $(".tag-style").not(this).css({'box-shadow': 'none'})
       $(this).css({'box-shadow': '0.1rem 0.05rem 0.2rem 0.1rem var(--boxshadow-color)'})
     }
@@ -245,7 +241,7 @@ function tag_comment_handler(URL, CSRF, tag_id, text, comment_board, input_regio
       success: function(data) {
         if (data.status == 200) {
           console.log("tag comment add successfully");
-          if (comment_board.children(".tagcmt-wrap").children("#cmttext").children("p").text() == "沒有更多留言囉") { 
+          if (comment_board.children(".tagcmt-wrap").children("p").text() == "目前還沒有評價ㄛ~") { 
             comment_board.empty();
           }
           comment_board.prepend(
@@ -256,6 +252,8 @@ function tag_comment_handler(URL, CSRF, tag_id, text, comment_board, input_regio
               </div>\
             </div>"
           );
+          let comment_count = parseInt(comment_board.parent().siblings(".cmt-count").text());
+          comment_board.parent().siblings(".cmt-count").text(comment_count + 1);
           input_region.hide();
           Swal.fire({
             position: 'center',

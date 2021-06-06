@@ -127,9 +127,9 @@ $(document).ready(function(){
 
   $("#submit-btn").click(function() {
     console.log("click event submit");
-    console.log($("#id_title").val().length)
     let all_pass = 1;
 
+    // check all necessary input field is entered
     if ($("#id_title").val().trim().length == 0) {
       all_pass = 0;
       $("#id_title").css("border", "0.1rem solid red");
@@ -229,9 +229,9 @@ $(document).ready(function(){
 });
 
 function isValid() {
-  var isValid = true;
+  let isValid = true;
   $("#comment-window input[type=text]").each(function() {
-    var element = $(this);
+    let element = $(this);
     if (element.val() == "") {
       isValid = false;
     }
@@ -288,7 +288,6 @@ function rate_event_handler(URL, event_id, CSRF) {
         }
       }
     })
-
   } else {
     Swal.fire({
       position: 'center',
@@ -379,7 +378,6 @@ function event_handler(URL, user_id, CSRF) {
         });
       };
     },
-    
     complete: function(data) {
       //lock background
       $('body').css({'overflow': 'hidden'});
@@ -388,10 +386,7 @@ function event_handler(URL, user_id, CSRF) {
 //      $("#eventwindow").css({'opacity': 1});
       $("#eventwindow").animate({'opacity': 1}, 200);
       $("#filter1").animate({'opacity': 1}, 200);
-      
-      
     },
-    
     error: function(data) {
       console.log("ajax error");
     }

@@ -118,7 +118,7 @@ html
             
     {% if request.user.is_authenticated %}
     #need-comment-flag(style="display: none") {{ need_comment }}
-    #comment-window
+    #comment-window(style="display: none")
       img#exitbtn2(src="{% static 'file/exiticon.png' %}")
       p 嗨{{ request.user.last_name }}！你對於"{{ need_comment_event.title }}"的體驗如何呢？
       p 來為活動和參加者評分吧！
