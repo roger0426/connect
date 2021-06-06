@@ -74,6 +74,7 @@ def event_detail_view(request, id):
       'detail': event_detail,
       'create_date': event.create_date,
       'event_date': event.event_date,
+      'due_date': event.due_date,
       'likes': likes,
       'participants': participants,
       'comments': comments,

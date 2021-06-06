@@ -250,7 +250,7 @@ footer
           width: 100%
           padding: 0.7rem 1.5rem 0.3rem 1.5rem
           border-radius: 1.5rem 1.5rem 0 0
-          background-color: var(--background-color-card)
+          background-color: var(--background-color-tag1) //var(--background-color-card)
           height: 5.65rem
           
           
@@ -419,14 +419,25 @@ footer
             //width: 50rem
           #event-subtitle
             font-size: 1rem
-            color: var(--fontcolor-second)
+            color: var(--fontcolor-third)
             //margin: 0.3rem 0 0 9rem                  
-
-        #event-date
-          font-size: 0.8rem
-          color: var(--fontcolor-second)
-          font-weight: 500
-          margin-top: 0.7rem
+        #date
+          display: flex
+          flex-direction: column;
+          flex-wrap: nowrap;
+          align-items: center;
+          #event-date
+            font-size: 0.8rem
+            color: var(--fontcolor-third)
+            font-weight: 500
+            margin-top: 0.7rem
+            width: 100%
+          #due-date
+            font-size: 0.8rem
+            color: var(--fontcolor-third)
+            font-weight: 500
+            margin-top: 0.7rem
+            width: 100%
       
       #event-detail
         font-size: 1.1rem
@@ -434,9 +445,13 @@ footer
         min-height: 5rem
         max-height: 14rem
         margin: 1rem 0 0 0.5rem
-        min-width: 100%
+        width: calc(100% - 1rem)
         overflow: scroll
-        overflow-x: hidden        
+        overflow-x: hidden
+        margin: 0.5rem
+        padding: 0.5rem
+        border-radius: 1rem
+        background-color: rgba(256, 256, 256, 0.5)
     
     #eventmsgregion
       display: flex
@@ -699,17 +714,21 @@ footer
           //width: 70%
   
   #eventjoinwindow
-    position: fixed
+    position: absolute
     display: none
-    transform: translate(-50%, -53%)
-    top: 65%
+    transform: translate(-50%, 0)
+    //top: 65%
+    bottom: 0
     left: 50%
     width: 100%
     min-width: 35rem
-    height: 75%
+    //height: 75%
+    height: 0
     background-color: var(--background-color-container)
-    z-index: 8
+    z-index: 1
     border-radius: 1rem 1rem 3rem 3rem
+    box-shadow: 10px 10px 25px 5px var(--boxshadow-color)
+    opacity: 0
 
     #exitbtn3
       width: 1.5rem
@@ -724,10 +743,12 @@ footer
       flex-direction: column
       align-items: center
       flex-wrap: nowrap
+      justify-content: space-evenly;
       width: 60%
+      height: 100%
       position: absolute
       left: 50%
-      transform: translate(-50%,25%)
+      transform: translate(-50%, 0)
 
 
       #eventjoinhead
@@ -736,6 +757,11 @@ footer
         argin-bottom: 1rem
         margin-top: -2rem
       
+      form
+        display: flex
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
       #eventjoinability 
         border-radius: 1rem
         background-color: #F2F2F2
@@ -743,20 +769,12 @@ footer
         width: 100%
         height: 4rem
 
-        #abilityhead
-          padding-top: 0.7rem
-          padding-left: 1rem
-
       #eventjoinreason 
         border-radius: 1rem
         background-color: #F2F2F2
         margin-bottom: 0.7rem
         width: 100%
         height: 6rem
-        
-        #reason
-          padding-top: 0.7rem
-          padding-left: 1rem
 
       .eventjoinbtn
         border-radius: 3rem
@@ -876,14 +894,11 @@ footer
   
   form 
     display: flex
-    flex-direction: row
-    flex-wrap: wrap
+    flex-direction: column
     justify-content: flex-start
-    align-items: stetch
     padding: 0 2rem 2rem 2rem
-    //padding-left: 3rem
-    //padding-right: 3rem
-    //padding-bottom: 3rem
+    flex-wrap: nowrap
+    align-items: stretch
     label
       display: none
     span
@@ -897,7 +912,6 @@ footer
       border-radius: 2.5rem
       margin-bottom: 0.7rem
       height: 2rem
-      width: 100%
       font-size: 1rem
       padding: 0 1rem
       outline: none
@@ -944,7 +958,6 @@ footer
       border: none
       font-size: 1rem
       height: 8rem
-      width: 100%
     textarea:focus
       border: 2px solid var(--border-color-input-focus)
     

@@ -116,13 +116,23 @@ $(document).ready(function(){
       $("#filter1").hide();
     })
   });
-
-  $("exitbtn3").click(function(){
-    console.log("event join window exit");
-    $("#eventjoinwindow").animate({opacity: 0}, 400, function() {
+  
+  $("#exitbtn3, #filter1").click(function() {
+    //console.log("click event exit");
+    $('body').css({'overflow': 'auto'});
+    $("#eventjoinwindow").animate({height: 0, opacity: 1}, 400, function() {
       $("#eventjoinwindow").hide();
     })
-    $("#eventjoinwindow").hide();
+  });
+  
+  $(".eventjoin-btn").click(function() {
+    console.log("click event join");
+    $("#eventjoinwindow").show();
+//    $("#eventjoinwindow").css({opacity: 1})
+    $("#eventjoinwindow").animate({'height': '75%', opacity: 1}, 400, function() {
+    })
+//    $("#eventjoinwindow").animate({opacity: 1}, 100, function() {
+//    })
   })
 
   $("#submit-btn").click(function() {
@@ -180,11 +190,6 @@ $(document).ready(function(){
         timer: 1500,
       })
     }
-  })
-
-  $(".eventjoin-btn").click(function() {
-    console.log("click event join");
-    $("#eventjoinwindow").show();
   })
   
   let searchParams = window.location.href
@@ -335,6 +340,7 @@ function event_handler(URL, user_id, CSRF) {
       $("#eventwindow" + " #event-title").html(data.title);
       $("#eventwindow" + " #event-subtitle").html(data.subtitle);
       $("#eventwindow" + " #description" + " #event-date").html("活動日期<br />" + data.event_date);
+      $("#eventwindow" + " #description" + " #due-date").html("報名截止<br />" + data.due_date);
       $("#eventwindow" + " #event-detail").html(data.detail);
       
       $("#eventwindow" + " #eventoperate" + " #organizer-link").attr('href', "/profile/" + data.host_id);

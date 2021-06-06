@@ -171,11 +171,11 @@ html
                   img.pic
                   p 目前沒有圖片
               #event-heading
-                #event-title {{ event_detail.title }}
-                #event-subtitle {{ event_detail.subtitle }}
-              #event-date 活動日期
-                br
-                | {{ event_detail.event_date }}
+                #event-title
+                #event-subtitle
+              #date
+                p#event-date 活動日期
+                p#due-date 報名截止
             
             #event-detail {{ event_detail.detail }}
           #eventmsgregion
@@ -273,10 +273,9 @@ html
           #eventjoincontainer
             
             p#eventjoinhead 申請加入
-            #eventjoinability 
-              p#abilityhead 具備能力
-            #eventjoinreason 
-              p#reason ＊加入理由
+            form
+              textarea(type='text',placeholder='具備能力')
+              textarea(type='text',placeholder='*加入理由')
             input.eventjoinbtn(type="button", value="加入")
 
       #filter1
