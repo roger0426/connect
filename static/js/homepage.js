@@ -117,6 +117,14 @@ $(document).ready(function(){
     })
   });
 
+  $("exitbtn3").click(function(){
+    console.log("event join window exit");
+    $("#eventjoinwindow").animate({opacity: 0}, 400, function() {
+      $("#eventjoinwindow").hide();
+    })
+    $("#eventjoinwindow").hide();
+  })
+
   $("#submit-btn").click(function() {
     console.log("click event submit");
     console.log($("#id_title").val().length)
@@ -172,6 +180,11 @@ $(document).ready(function(){
         timer: 1500,
       })
     }
+  })
+
+  $(".eventjoin-btn").click(function() {
+    console.log("click event join");
+    $("#eventjoinwindow").show();
   })
   
   let searchParams = window.location.href

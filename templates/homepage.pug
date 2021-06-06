@@ -267,6 +267,18 @@ html
               form(action="", method="POST")
                 button(type="image", src="{% static 'file/like-bg-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
             {% endif %}
+
+        #eventjoinwindow 
+          img#exitbtn3(src="{% static 'file/exiticon.png' %}")
+          #eventjoincontainer
+            
+            p#eventjoinhead 申請加入
+            #eventjoinability 
+              p#abilityhead 具備能力
+            #eventjoinreason 
+              p#reason ＊加入理由
+            input.eventjoinbtn(type="button", value="加入")
+
       #filter1
         
       
