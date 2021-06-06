@@ -228,14 +228,27 @@ $(document).ready(function(){
   
 });
 
+function isValid() {
+  var isValid = true;
+  $("#comment-window input[type=text]").each(function() {
+    var element = $(this);
+    if (element.val() == "") {
+      isValid = false;
+    }
+  });
+  return isValid;
+}
+
+
 function rate_event_handler(URL, event_id, CSRF) {
-  if ($("#comment-window input[type=text]:empty").length == 1) {
+  if (isValid()) {
     // all comments are written
     let data = {};
     data[$("#first-comment label").text()] = $("#first-comment input[type=text]").val()
-    $('#comment-window label').each(function (e) {
-      if ($(e).text() != "") {
-        data[$(e).text()] = ($(e).siblings("input[type=text]").val());
+    $('#comment-window .comment-div label').each(function () {
+      var element = $(this);
+      if (element.text() != "") {
+        data[element.text()] = (element.siblings("input[type=text]").val());
       }
     });
     data['event_id'] = (event_id);
