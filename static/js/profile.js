@@ -7,21 +7,23 @@ $(document).ready(function(){
   });
   
   
-//  $(".normaltag").mouseenter(function() {
-//    if($(this).parent().find('.deletetag').css({'display': 'none'}).length == 0) {
-//      $(this).parent().css({'background-color': '#FFAD94'});
-//    }
-//  });
-//  $('.normaltag').mouseleave(function() {
-//    if($(this).parent().find('.deletetag').css({'display': 'none'}).length == 0) {
-//      $(this).parent().css({'background-color': '#FFCFBF'});
-//    }
-//  });
   
   $(".normaltag").click(function() {
+    console.log('nor')
     if($(this).parent().find('.tag-comment').css("display") == "none") {
       $(this).parent().find('.tag-comment').css({'display': 'flex'});
       $(".normaltag").not(this).parent().find('.tag-comment').css({'display': 'none'});
+    }
+    else {
+      $(this).parent().find('.tag-comment').css({'display': 'none'});
+    }
+  });
+  
+  $(".tag-style").click(function() {
+    if($(this).find('.tag-comment').css("display") == "none") {
+      console.log('sty')
+      $(this).find('.tag-comment').css({'display': 'flex'});
+      $(".tag-style").not(this).find('.tag-comment').css({'display': 'none'});
     }
     else {
       $(this).parent().find('.tag-comment').css({'display': 'none'});
@@ -41,7 +43,7 @@ $(document).ready(function(){
     })
   });
   
-  $('.normaltag, .tag-comment').click(function(event){
+  $('.normaltag, .tag-style, .tag-comment').click(function(event){
     event.stopPropagation();
   });
   

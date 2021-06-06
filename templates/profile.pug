@@ -59,6 +59,7 @@ html
                 {% if not skill.is_hidden %}
                 .tag-style
                   p.tags.normaltag {{ skill.text }}
+                  p.cmt-count {{ skill.comments.count }}
                   .tag-comment
                     #tag-comment-send-region
                       {% if request.user.is_authenticated and request.user.pk != user.user.pk and can_comment %}
@@ -87,10 +88,7 @@ html
                             p#eventmsgtext
                       {% empty %}
                       .tagcmt-wrap
-                        #cmtfrom
-                          img.sender(src="{% static 'file/personicon.png' %}")
-                        #cmttext
-                          p 沒有更多留言囉
+                        p 目前還沒有評價ㄛ~
                       {% endfor %}
                 {% endif %}
                 {% empty %}

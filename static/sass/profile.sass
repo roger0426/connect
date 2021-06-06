@@ -238,6 +238,18 @@ footer
           border-radius: 1rem
           margin: 0.2rem
           cursor: default
+          display: flex
+          align-items: center;
+          justify-content: space-between;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          .cmt-count
+            background-color: white
+            width: calc(1rem + 0.5rem)
+            padding: 0
+            border-radius: 50%
+            color: #555555
+            font-size: 1.1rem
 
           .tag-comment
             display: none
@@ -251,7 +263,7 @@ footer
             background-color: var(--background-color-event)
             border-radius: 1rem
             z-index: 4
-            width: 17rem
+            width: 13rem
             height: auto
             //margin: 1rem
             padding: 0.7rem
@@ -293,7 +305,7 @@ footer
                 display: flex
                 flex-direction: row
                 flex-wrap: nowrap
-                justify-content: space-around
+                justify-content: flex-start;
                 align-items: center
                 margin: 1rem 0.75rem
 
@@ -335,6 +347,15 @@ footer
           cursor: pointer
         .tag-style:hover
           background-color: var(--background-color-tag1-hover)
+        p
+          margin: 0 0.5rem 0 0.5rem
+        .cmt-count
+          margin: 0 0.5rem 0 0
+        .tag-style
+          position: relative
+          min-width: 6rem
+          cursor: pointer
+          
           
       .tag-field:nth-child(4)
         .tag-style
