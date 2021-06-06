@@ -55,13 +55,13 @@ html
                 {% endfor %}
               .tag-field
                 p 專長
-                {% for skill in skill %}
+                {% for skill, can_comment in skill %}
                 {% if not skill.is_hidden %}
                 .tag-style
                   p.tags.normaltag {{ skill.text }}
                   .tag-comment
                     #tag-comment-send-region
-                      {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
+                      {% if request.user.is_authenticated and request.user.pk != user.user.pk and can_comment %}
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
                       .cmd-txt-region

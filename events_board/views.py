@@ -18,13 +18,14 @@ def home_view(request, *args, **kwargs):
   today = date.today()
   need_comment = False
   need_comment_event = None
-  for event in obj.all():
-    if event.event_date:
-      if event.event_date < today and \
-      not Comment.objects.filter(for_event=event).filter(author=request.user.userextend):
-        need_comment = True
-        need_comment_event = event
-        break # start comment from the newest event
+  if request.user.is_authenticated:
+    for event in obj.all():
+      if event.event_date:
+        if event.event_date < today and \
+        not Comment.objects.filter(for_event=event).filter(author=request.user.userextend):
+          need_comment = True
+          need_comment_event = event
+          break # start comment from the newest event
 
   if(request.user.is_authenticated):
     notification = SiteNotification.objects.filter(for_user = request.user).order_by('-date')

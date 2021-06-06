@@ -34,6 +34,21 @@ def profile_view(requests, id, *args, **kwargs):
   skill_tags = obj.user.tags.filter(tag_type='專長')
   interest_tags = obj.user.tags.filter(tag_type='有興趣的活動')
 
+  skill_tups = []
+  if requests.user.is_authenticated:
+    can_comment = True
+    for tag in skill_tags:
+      for comment in tag.comments.all():
+        if comment.author == requests.user:
+          can_comment = False
+          break;
+      skill_tups.append((tag, can_comment))
+      can_comment = True
+        
+  else:
+    for tag in skill_tags:
+      skill_tups.append((tag, False))
+
   activities = \
     EventsBoard.objects.filter(host=obj, event_type='activity') | \
     EventsBoard.objects.filter(participants__pk=obj.pk, event_type='activity')
@@ -47,8 +62,8 @@ def profile_view(requests, id, *args, **kwargs):
   friends = obj.friends.all()
   friend_connect_counts = \
     [ get_connect_event_num(obj, friend) for friend in obj.friends.all() ]
-  
   friend_zip = zip(friends, friend_connect_counts)
+
   if(requests.user.is_authenticated):
     notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
     has_unread = False
@@ -63,7 +78,7 @@ def profile_view(requests, id, *args, **kwargs):
   context = {
     'user': obj,
     'personality': personality_tags,
-    'skill': skill_tags,
+    'skill': skill_tups,
     'interest': interest_tags,
     'friend_count': friend_count,
     'friend_zip': friend_zip,

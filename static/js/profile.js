@@ -234,6 +234,9 @@ function tag_comment_handler(URL, CSRF, tag_id, text, comment_board, input_regio
       success: function(data) {
         if (data.status == 200) {
           console.log("tag comment add successfully");
+          if (comment_board.children(".tagcmt-wrap").children("#cmttext").children("p").text() == "沒有更多留言囉") { 
+            comment_board.empty();
+          }
           comment_board.prepend(
             "<div class='tagcmt-wrap'> \
               <img id='cmtfrom' src='" + data.user_img_url + "'>\
