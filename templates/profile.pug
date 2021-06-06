@@ -61,16 +61,16 @@ html
                   p.tags.normaltag {{ skill.text }}
                   p.cmt-count {{ skill.comments.count }}
                   .tag-comment
+                    {% if request.user.is_authenticated and request.user.pk != user.user.pk and can_comment %}
                     #tag-comment-send-region
-                      {% if request.user.is_authenticated and request.user.pk != user.user.pk and can_comment %}
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
                       .cmd-txt-region
                         input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
                       button.sendbutton(src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit")
                       #tag-id(style="display: none") {{ skill.id }}
-                      {% else %}
-                      {% endif %}
+                    {% else %}
+                    {% endif %}
                     #tag-comment-board
                       {% for tagcomment in skill.comments.all %}
                       .tagcmt-wrap

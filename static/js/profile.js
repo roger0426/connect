@@ -9,24 +9,30 @@ $(document).ready(function(){
   
   
   $(".normaltag").click(function() {
-    console.log('nor')
     if($(this).parent().find('.tag-comment').css("display") == "none") {
       $(this).parent().find('.tag-comment').css({'display': 'flex'});
       $(".normaltag").not(this).parent().find('.tag-comment').css({'display': 'none'});
+      
+      $(".normaltag").not(this).parent().css({'box-shadow': 'none'})
+      $(this).closest('.tag-style').css({'box-shadow': '0.1rem 0.15rem 0.3rem 0.2rem var(--boxshadow-color)'})
     }
     else {
       $(this).parent().find('.tag-comment').css({'display': 'none'});
+      $(this).closest('.tag-style').css({'box-shadow': 'none'})
     }
   });
   
   $(".tag-style").click(function() {
     if($(this).find('.tag-comment').css("display") == "none") {
-      console.log('sty')
       $(this).find('.tag-comment').css({'display': 'flex'});
-      $(".tag-style").not(this).find('.tag-comment').css({'display': 'none'});
+      $(".tag-style").not(this).find('.tag-comment').css({'display': 'none'})
+      
+      $(".tag-style").not(this).css({'box-shadow': 'none'})
+      $(this).css({'box-shadow': '0.1rem 0.05rem 0.2rem 0.1rem var(--boxshadow-color)'})
     }
     else {
       $(this).parent().find('.tag-comment').css({'display': 'none'});
+      $(this).css({'box-shadow': 'none'})
     }
   });
   
@@ -37,6 +43,9 @@ $(document).ready(function(){
       if($(this).css('display') === 'flex') {
         $('.tag-comment').each(function(c) {
           $(this).css('display', 'none');
+        })
+        $('.tag-style').each(function(c) {
+          $(this).css({'box-shadow': 'none'})
         })
         return;
       }

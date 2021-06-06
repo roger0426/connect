@@ -283,7 +283,7 @@ function rate_event_handler(URL, event_id, CSRF) {
             title: '喔不出錯了',
             text: data.error_message,
             showConfirmButton: false,
-            timer: 1500,
+            timer: 2000,
           })
         }
       }
@@ -296,7 +296,7 @@ function rate_event_handler(URL, event_id, CSRF) {
       title: '喔喔，有東西沒填到喔',
       text: "請再確認一次",
       showConfirmButton: false,
-      timer: 1500,
+      timer: 2000,
     })
   }
 }
