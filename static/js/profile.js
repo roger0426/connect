@@ -216,51 +216,65 @@ function friend_remove_handler(URL, CSRF, request_user_id) {
   })
 }
 
-function send_comment_handler(URL, CSRF, event_id, text, rate, element, comment_count) {
-  $.ajaxSetup({
-    data: {
-      csrfmiddlewaretoken: CSRF
-    }
-  });
-  $.ajax({
-    type: 'post',
-    url: URL,
-    data: {
-      'event_id': event_id,
-      'text': text,
-      'rate': rate
-    },
-    dataType: 'json',
-    success: function(data) {
-      if (data.status == 200) {
-        console.log("comment sent successfully");
-        let str = "\
-        <div class='comment'>\
-          <a href='/profile/" + data.user_id + "'>\
-            <img id='participant-img' src='" + data.user_img +"'>\
-          </a>\
-          <div class='comment-right'>\
-            <a href='/profile/" + data.user_id + "'>" + data.user_name + "</a>\
-            <p id='participant-comment'>" + data.text + "</p>\
-            <p id='participant-rate'>" + data.rate + "/10★</p>\
-          </div>\
-        </div>";
-        if (comment_count == '0') {
-          console.log('here')
-          $(element).empty();
-        }
-        $(element).append(str);
-        $("input.comment-text").val("");
-        $("input.comment-rate").val("");
-        
-        $(element).siblings(".info").children(".rate").text(data.post_avg_rate + "/10★")
-      } else {
-        console.log(data.error_message);
+function tag_comment_handler(URL, CSRF, tag_id, text, comment_board, input_region) {
+  if (text != "" ) {
+    $.ajaxSetup({
+      data: {
+        csrfmiddlewaretoken: CSRF
       }
-    }
-  })
+    });
+    $.ajax({
+      type: 'post',
+      url: URL,
+      data: {
+        'tag_id': tag_id,
+        'text': text
+      },
+      dataType: 'json',
+      success: function(data) {
+        if (data.status == 200) {
+          console.log("tag comment add successfully");
+          comment_board.prepend(
+            "<div class='tagcmt-wrap'> \
+              <img id='cmtfrom' src='" + data.user_img_url + "'>\
+              <div id='cmttext'>\
+                <p>" + text + "</p>\
+              </div>\
+            </div>"
+          );
+          input_region.hide();
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '已成功評論',
+            text: "繼續評價其他技能吧~",
+            showConfirmButton: false,
+            timer: 1500,
+          })
+        } else {
+          console.log(data.error_message);
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: '喔不出錯了',
+            text: data.error_message,
+            showConfirmButton: false,
+            timer: 1500,
+          })
+        }
+      }
+    })
+  } else {
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: '喔不出錯了',
+      text: "請確認有於輸入格中輸入正確文字",
+      showConfirmButton: false,
+      timer: 1500,
+    })
+  }
 }
-
 //另一個版本
 
 var map=[

@@ -41,7 +41,7 @@ class TagComment(models.Model):
   author = models.ForeignKey(
     User,
     on_delete = models.CASCADE,
-    related_name='comments'
+    related_name='tag_comments'
   )
   date = models.DateTimeField(default=timezone.now)
   def __str__(self):

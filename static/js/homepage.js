@@ -255,7 +255,7 @@ function rate_event_handler(URL, event_id, CSRF) {
             position: 'center',
             icon: 'error',
             title: '喔不出錯了',
-            text: "請稍後再試一次" + data.error_message,
+            text: data.error_message,
             showConfirmButton: false,
             timer: 1500,
           })

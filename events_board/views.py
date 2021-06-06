@@ -238,7 +238,6 @@ def rate_event_view(request):
         'error_message': '[Error] Host comment not found'
       })
     for participant in event.participants.all():
-      print(participant.full_name)
       if participant.full_name != request.user.userextend.full_name:
         if participant.full_name in data:
           comment = Comment.objects.create(

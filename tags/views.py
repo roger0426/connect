@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib.auth.models import User
 from django.urls import reverse
-from .models import Tag
+from .models import Tag, TagComment
 
 # Create your views here.
 def tag_delete_view(request):
@@ -58,13 +58,29 @@ def tag_edit_view(request):
     'status': 200
   })
 
-def capitalize_view(request):
-  data = request.POST
-  input_text = data.get('text')
-  cap_text = input_text.upper()
-  print(cap_text)
-
-  return JsonResponse({
-    'status': 200,
-    'cap_text': cap_text
-  })
+def tag_comment_view(request):
+  if request.method == 'POST':
+    data = request.POST
+    tag = get_object_or_404(Tag, id=data.get('tag_id'))
+    user = request.user
+    if not TagComment.objects.filter(for_tag=tag, author=user).exists():
+      tag_comment = TagComment.objects.create(
+        text=data.get('text'),
+        for_tag=tag,
+        author=user
+      )
+      tag_comment.save()
+      return JsonResponse({
+        'status': 200,
+        'user_img_url': request.user.userextend.img.url
+      })
+    else:
+      return JsonResponse({
+        'status': 404,
+        'error_message': "[Error] duplicated tag comment"
+      })
+  else:
+    return JsonResponse({
+      'status': 500,
+      'error_message': '[Error] request not post, rejected'
+    })

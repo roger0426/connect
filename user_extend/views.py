@@ -35,17 +35,19 @@ def profile_view(requests, id, *args, **kwargs):
   interest_tags = obj.user.tags.filter(tag_type='有興趣的活動')
 
   activities = \
-    EventsBoard.objects.filter(host=obj).filter(event_type='activity') | \
-    EventsBoard.objects.filter(participants__pk=obj.pk).filter(event_type='activity')
+    EventsBoard.objects.filter(host=obj, event_type='activity') | \
+    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='activity')
   projects = \
-    EventsBoard.objects.filter(host=obj).filter(event_type='project') | \
-    EventsBoard.objects.filter(participants__pk=obj.pk).filter(event_type='project')
+    EventsBoard.objects.filter(host=obj, event_type='project') | \
+    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='project')
   personal_projs = \
-    EventsBoard.objects.filter(host=obj).filter(event_type='personal') | \
-    EventsBoard.objects.filter(participants__pk=obj.pk).filter(event_type='personal')
+    EventsBoard.objects.filter(host=obj, event_type='personal') | \
+    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='personal')
 
   friends = obj.friends.all()
-  friend_connect_counts = [ get_connect_event_num(obj, friend) for friend in obj.friends.all() ]
+  friend_connect_counts = \
+    [ get_connect_event_num(obj, friend) for friend in obj.friends.all() ]
+  
   friend_zip = zip(friends, friend_connect_counts)
   if(requests.user.is_authenticated):
     notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')

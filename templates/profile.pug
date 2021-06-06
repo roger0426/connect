@@ -13,6 +13,7 @@ html
     script(src="{% static 'js/jquery-3.2.1.min.js' %}")
     script(src="{% static 'js/jquery-ui.js' %}")
     script(src="{% static 'js/d3.v5.js' %}")
+    script(src="{% static 'js/sweetalert2@11.js' %}")
   {% include 'navbar.pug' %}
 
   body
@@ -65,22 +66,16 @@ html
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
                       .cmd-txt-region
                         input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
-                      button#sendbutton(src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit")
-                      script.
-                        $(document).ready(function(){
-                          $(".tag-comment #sendbutton").on("click", function() {
-                            
-                          });
-                        })
+                      button.sendbutton(src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit")
+                      #tag-id(style="display: none") {{ skill.id }}
                       {% else %}
                       {% endif %}
                     #tag-comment-board
-                      {% for tagcomment in notice %}
+                      {% for tagcomment in skill.comments.all %}
                       .tagcmt-wrap
-                        #cmtfrom
-                          img.sender(src="{% static 'file/personicon.png' %}")
+                        img#cmtfrom(src="{{ tagcomment.author.userextend.img.url }}")
                         #cmttext
-                          p {{ tagcomment.date }}{{ tagcomment.date }}
+                          p {{ tagcomment.text }}
                       .eventmsg#eventmsg(style="display: none")
                         a
                           img.sender
@@ -101,6 +96,19 @@ html
                 {% empty %}
                 p(style="color: #E98C6F") 他好像還沒設定專長
                 {% endfor %}
+              script.
+                $(document).ready(function(){
+                  $("button.sendbutton").on("click", function() {
+                    tag_comment_handler(
+                      "{% url 'tag_comment' %}",
+                      "{{ csrf_token }}",
+                      $(this).siblings("#tag-id").text(),
+                      $(this).siblings(".cmd-txt-region").children("input").val(),
+                      $(this).parent().siblings('#tag-comment-board'),
+                      $(this).parent()
+                    )
+                  });
+                })
               .tag-field
                 p 有興趣活動
                 {% for interest in interest %}

@@ -24,7 +24,7 @@ from user_extend.views import profile_view, profile_event_view, modify, profile_
 from user_extend.views import  get_user_view, friend_request_view, friend_reply_view
 from user_extend.views import  friend_remove_view, send_comment_view
 from site_notification.views import notice_read_view
-from tags.views import tag_delete_view, tag_edit_view
+from tags.views import tag_delete_view, tag_edit_view, tag_comment_view
 from django.contrib.auth import views as auth_views
 
 from django.conf import settings
@@ -39,6 +39,7 @@ urlpatterns = [
     path('profile/edit/<int:id>', profile_edit_view, name='profile_edit'),
     path('tag_delete/', tag_delete_view, name='tag_delete'),
     path('tag_edit/', tag_edit_view, name='tag_edit'),
+    path('tag_comment/', tag_comment_view, name='tag_comment'),
     path('get_user_detail/<int:id>', get_user_view, name='get_user'),
     path('friend_request/', friend_request_view, name='friend_request'),
     path('friend_reply/', friend_reply_view, name='friend_reply'),
