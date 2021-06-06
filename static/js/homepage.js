@@ -463,7 +463,7 @@ function message_handler(URL, event_id, CSRF) {
       $('#' + clone_id + ' #event-date').html(data.msg_date);
       $('#' + clone_id + " #eventmsgtext").html($("input.eventmsg-insert").val());
       console.log($("input.eventmsg-insert").val());
-      
+      $('#' + clone_id).show();
       $("input.eventmsg-insert").val("");
     }
   })
