@@ -185,11 +185,13 @@ def profile_edit_view(request, id):
   }
   return render(request, 'profile_edit.pug', context)
 
-def get_user_view(request, id):
-  user = get_object_or_404(UserExtend, id=id)
+def get_user_view(request):
+  data = request.POST
+  user = get_object_or_404(UserExtend, id=data.get('user_id'))
   return JsonResponse({
-    'full_name': user.full_name,
-    'img': user.img.url
+    'status': 200,
+    'user_name': user.full_name,
+    'user_img_url': user.img.url
   })
 
 def friend_request_view(request):

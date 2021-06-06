@@ -354,10 +354,27 @@ function event_handler(URL, user_id, CSRF) {
         data.comments.forEach(function(item, i) {
           var clone_id = duplicate_multi('eventmsg');
           $('#' + clone_id).show();
-          //$('#' + clone_id + " img").attr('src', data.author_img_url);
-          $('#' + clone_id + ' #eventmsg-sendername').html(item.author_id); //???
-          $('#' + clone_id + ' #event-date').html(item.date);
-          $('#' + clone_id + " #eventmsgtext").html(item.text);
+          // get_user_ajax
+          $.ajax({
+            type: 'post',
+            url: "/get_user_detail/",
+            data: {
+              'user_id': item.author_id
+            },
+            dataType: 'json',
+            success: function(data) {
+              if (data.status == 200) {
+                user_name = data.user_name;
+                user_img_url = data.user_img_url;
+                $('#' + clone_id + ' #eventmsg-sendername').html(data.user_name);
+                $('#' + clone_id + " img").attr('src', data.user_img_url);
+                $('#' + clone_id + ' #event-date').html(item.date);
+                $('#' + clone_id + " #eventmsgtext").html(item.text);
+              } else {
+                console.log('[Error] get user ' + user_id + " error");
+              }
+            }
+          });
         });
       };
       
