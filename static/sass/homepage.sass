@@ -320,26 +320,6 @@ footer
           box-shadow: none
         *
           background: none
-          
-      
-#gotop
-  display: none
-  position: fixed
-  border-radius: 50%
-  right: 3rem
-  bottom: 5rem
-  width: 4rem
-  height: 4rem
-  //font-size: 3rem
-  //background: rgba(250, 173, 149, 1)
-  //color: rgba(0, 0, 0, 1)
-  cursor: pointer
-  z-index: 5
-  text-align: center
-
-//#gotop:hover
-  //opacity: 0.65
-  //background-color: #ffdbd0
   
   
 #filter1
@@ -776,6 +756,7 @@ footer
     background-color: #32DEB5
 
 #eventcreatewindow
+  //display: none
   position: fixed
   transform: translate(-50%, -50%)
   top: 55%
@@ -849,7 +830,7 @@ footer
       background-color: var(--background-color-inut)
     input[type=text]:focus
       border: 2px solid var(--border-color-input-focus)
-    input#id_event_date, input#id_due_date
+    input[type=date]
       border-radius: 2.5rem
       margin-bottom: 0.7rem
       height: 2rem
