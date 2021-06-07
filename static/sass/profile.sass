@@ -276,7 +276,7 @@ footer
               height: 2rem
             
             #tag-comment-send-region
-              margin: 0.5rem 0
+              margin: 0 0 0.5rem 0
               display: flex
               flex-direction: row
               align-items: center
@@ -490,7 +490,7 @@ footer
       
       a
         margin: 0 0.2rem 0.5rem 0.2rem
-      .friend-img
+      img
         width: 3.1rem
         height: 3.1rem
         //width: 5rem
@@ -512,6 +512,7 @@ footer
         border: solid #FFAD94 0.1rem
         border-radius: 0.8rem
         min-width: 14rem;
+        box-shadow: 0.15rem 0.1rem 0.3rem 0.1rem var(--boxshadow-color)
         .info-brief
           display: flex
           flex-direction: row;
@@ -689,6 +690,7 @@ footer
                 font-size: 1.5rem
                 line-height: 1.55rem
                 width: 15rem
+                font-weight: 500
                 //max-width: 15rem
             .rate
               font-size: 0.8rem
@@ -724,15 +726,18 @@ footer
             //overflow-scrolling: touch
             //-webkit-overflow-scrolling: touch
             //appearance: none
+            #comments-title
+              font-size: 0.9rem
+              margin: 0.5rem 0 0.5rem 0.8rem
+              font-weight: 400
             .eventmsg
               display: flex
               flex-direction: row
               flex-wrap: nowrap
-              align-items: center
-              width: 95%
-              margin: 0.5rem 0 0rem 0
+              align-items: flex-start
+              width: calc(100% - 1.5rem)
               border-radius: 0.5rem
-              background-color: #DDD //var(--background-color-input-hover)
+              background-color: var(--green-3) //var(--background-color-input-hover)
               padding: 0.5rem
               
               a
@@ -750,9 +755,9 @@ footer
                 flex-wrap: nowrap
                 justify-content: space-between
                 align-items: flex-start
-                width: 93%
+                width: 83%
                 min-height: 2.5rem
-                margin-left: 1rem
+                margin-left: 0.7rem
                 
                 
                 #eventmsg-righttop
@@ -778,65 +783,6 @@ footer
                 #eventmsgtext
                   font-size: 1rem
                   color: #595959
-            .comment
-              display: flex
-              flex-direction: row;
-              flex-wrap: nowrap;
-              justify-content: flex-start;
-              align-content: flex-start;
-              align-items: center
-              width: 100%
-              
-              #participant-img
-                width: 2.5rem
-                height: 2.5rem
-                border-radius: 50%
-              .comment-right
-                position: relative
-                display: flex
-                background-color: var(--background-color-input)
-                padding: 0 0.5rem 0.7rem 0.5rem
-                border-radius: 1rem
-                margin-top: 0.5rem
-                width: 100%
-                margin-left: 0.5rem
-                
-                //#participant-name
-                a
-                  //position: absolute
-                  font-size: 1rem
-                  font-weight: 600
-                  text-align: left
-                  margin: -0.5v
-                .comments
-                  //background-color: blue
-                  font-size: 1rem
-                  text-align: left
-                #participant-rate
-                  //background-color: green
-                  font-size: 1rem
-                  text-align: right
-                  position: absolute
-                  right: 0.5rem
-                  top: 0.5rem
-                #participant-comment
-                  font-size: 1rem
-                  text-align: left
-                  min-width: 12vw
-                  margin: 0.1rem 1.2rem 0 1rem
-                  color: var(--fontcolor-main)
-          .eventcomment-insert
-            position: absolute
-            bottom: -1rem
-            display: flex
-            flex-direction: row;
-            justify-content: space-evenly
-            align-items: center;
-            width: 100%
-            input[type=text]
-              width: 65%
-            input[type=button]
-              width: 15%
 
       @media only screen and (max-width:1350px)
         .card

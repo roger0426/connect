@@ -205,7 +205,7 @@ html
                 img.friend-img(src="{{ friend.userextend.img.url }}")
                 .friend-info
                   .info-brief
-                    img.friend-img(src="{{ friend.userextend.img.url }}")
+                    img(src="{{ friend.userextend.img.url }}")
                     .info-brief-right
                       p#friend-name {{ friend.userextend.full_name }}
                       .info-brief-school
@@ -308,31 +308,29 @@ html
                     {% endif %}
                 
                   #activity-comment.comments
+                    p#comments-title 其他參與者對 {{ user.full_name }} 的評論
                     {% for comment in activity.event_comments.all reversed%}
                     {% if comment.for_user.id == user.id %}
-                    //-
-                      .comment
-                        {% load static %}
-                        a(href="{% url 'profile' id=comment.author.pk %}")
-                          img#participant-img(src="{{ comment.author.img.url }}")
-                        .comment-right
-                          a(href="{% url 'profile' id=comment.author.pk %}") {{ comment.author.full_name }}
-                          p#participant-comment {{ comment.text }}
                     .eventmsg#eventmsg
                         a
-                          img.sender
+                          img.sender(src='{{ comment.author.img.url }}')
                         #eventmsg-right
                           #eventmsg-righttop
                             a#eventmsg-sendername {{ comment.author.full_name }}
-                            p#event-date
+                            p#event-date {{ comment.date }}
                           #eventmsg-rightbottom
                             p#eventmsgtext {{ comment.text }}
+                    {% else %}
+                    .eventmsg#eventmsg(style='background-color: var(--black-5)')
+                      #eventmsg-right(style='justify-content: center')
+                        #eventmsg-rightbottom
+                          p#eventmsgtext 屬於別人的評論
                     {% endif %}
                     {% empty %}
-                    .comment
-                      .comment-right
-                        #participant-comment
-                          p 這個活動好像還沒有評論
+                    .eventmsg#eventmsg(style='background-color: var(--black-5)')
+                      #eventmsg-right(style='justify-content: center')
+                        #eventmsg-rightbottom
+                          p#eventmsgtext 目前還沒有評論~
                     {% endfor %}
               {% empty %}
               #activity-card.card

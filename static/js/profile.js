@@ -59,9 +59,12 @@ $(document).ready(function(){
   
   $('#friends-avatar a').mouseenter(function() {
     $(this).find('.friend-info').css({'display': 'flex'});
+    $(this).find('.friend-img').css({'box-shadow': '0 0 0.2rem 0.1rem var(--boxshadow-color)'})
+    
   });
   $('#friends-avatar a').mouseleave(function() {
     $(this).find('.friend-info').css({'display': 'none'});
+    $(this).find('.friend-img').css({'box-shadow': 'none'})
   });
   
   $("#tab-navbar :nth-child(1),#tag1").on('click touch', function(){
