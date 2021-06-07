@@ -233,78 +233,6 @@ $(document).ready(function(){
   
 });
 
-function isValid() {
-  let isValid = true;
-  $("#comment-window input[type=text]").each(function() {
-    let element = $(this);
-    if (element.val() == "") {
-      isValid = false;
-    }
-  });
-  return isValid;
-}
-
-
-function rate_event_handler(URL, event_id, CSRF) {
-  if (isValid()) {
-    // all comments are written
-    let data = {};
-    data[$("#first-comment label").text()] = $("#first-comment input[type=text]").val()
-    $('#comment-window .comment-div label').each(function () {
-      var element = $(this);
-      if (element.text() != "") {
-        data[element.text()] = (element.siblings("input[type=text]").val());
-      }
-    });
-    data['event_id'] = (event_id);
-
-    $.ajaxSetup({
-      data: {
-        csrfmiddlewaretoken: CSRF
-      }
-    });
-    $.ajax({
-      type: "POST",
-      url: URL,
-      data: data,
-      dataType: 'json',
-      success: function(data) {
-        if (data.status == 200) {
-          console.log("comment successfully")
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: '已成功評論',
-            text: "再去看看其他活動吧~",
-            showConfirmButton: false,
-            timer: 1500,
-          })
-          $("#filter1").hide();
-          $("#comment-window").hide();
-        } else {
-          Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: '喔不出錯了',
-            text: data.error_message,
-            showConfirmButton: false,
-            timer: 2000,
-          })
-        }
-      }
-    })
-  } else {
-    Swal.fire({
-      position: 'center',
-      icon: 'error',
-      title: '喔喔，有東西沒填到喔',
-      text: "請再確認一次",
-      showConfirmButton: false,
-      timer: 2000,
-    })
-  }
-}
-
 function event_handler(URL, user_id, CSRF) {
   $.ajaxSetup({
     data: {
@@ -400,6 +328,17 @@ function event_handler(URL, user_id, CSRF) {
           $("#eventoperate #member").prepend(str);
         });
       };
+
+      // join window
+      $("#requirement-tags").empty();
+      data.requirements.forEach(function(requirement) {
+        $("#requirement-tags").append(
+          "<label> \
+            <input type='checkbox' class='requirement-tag' value='" + requirement +"'>" + 
+            requirement + 
+          "</label>"
+        );
+      });
     },
     complete: function(data) {
       //lock background
@@ -512,3 +451,125 @@ function message_handler(URL, event_id, CSRF) {
    //$("eventpost").parent.prepend();
  };
 
+function isValid() {
+  let isValid = true;
+  $("#comment-window input[type=text]").each(function() {
+    let element = $(this);
+    if (element.val() == "") {
+      isValid = false;
+    }
+  });
+  return isValid;
+}
+
+function rate_event_handler(URL, event_id, CSRF) {
+  if (isValid()) {
+    // all comments are written
+    let data = {};
+    data[$("#first-comment label").text()] = $("#first-comment input[type=text]").val()
+    $('#comment-window .comment-div label').each(function () {
+      var element = $(this);
+      if (element.text() != "") {
+        data[element.text()] = (element.siblings("input[type=text]").val());
+      }
+    });
+    data['event_id'] = (event_id);
+
+    $.ajaxSetup({
+      data: {
+        csrfmiddlewaretoken: CSRF
+      }
+    });
+    $.ajax({
+      type: "POST",
+      url: URL,
+      data: data,
+      dataType: 'json',
+      success: function(data) {
+        if (data.status == 200) {
+          console.log("comment successfully")
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '已成功評論',
+            text: "再去看看其他活動吧~",
+            showConfirmButton: false,
+            timer: 1500,
+          })
+          $("#filter1").hide();
+          $("#comment-window").hide();
+        } else {
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: '喔不出錯了',
+            text: data.error_message,
+            showConfirmButton: false,
+            timer: 2000,
+          })
+        }
+      }
+    })
+  } else {
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: '喔喔，有東西沒填到喔',
+      text: "請再確認一次",
+      showConfirmButton: false,
+      timer: 2000,
+    })
+  }
+}
+
+function join_event_handler(URL, CSRF, event_id) {
+  if ($("#reason").val() != "") {
+    ability_str = "";
+    $('input:checkbox.requirement-tag').each(function () {
+      ability_str += $(this).val() + ",";
+    });
+    console.log(ability_str);
+    $.ajaxSetup({
+      data: {
+        csrfmiddlewaretoken: CSRF
+      }
+    });
+    $.ajax({
+      type: "POST",
+      url: URL,
+      data: {
+        'event_id': event_id,
+        'ability': ability_str,
+        'reason': $("#reason").val()
+      },
+      dataType: 'json',
+      success: function(data) {
+        if (data.status == 200) {
+          console.log("join request sent successfully");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '已成功送出申請',
+            text: "再去看看其他活動吧~",
+            showConfirmButton: false,
+            timer: 1500,
+          })
+          $('body').css({'overflow': 'auto'});
+          $("#eventjoinwindow").animate({height: 0, opacity: 1}, 400, function() {
+            $("#eventjoinwindow").hide();
+          });
+          $("input.eventjoinbtn").css('disabled', true);
+        } else {
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: '喔不出錯了',
+            text: data.error_message,
+            showConfirmButton: false,
+            timer: 2000,
+          })
+        }
+      }
+    });
+  }
+}

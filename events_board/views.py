@@ -1,12 +1,15 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
-from .models import EventsBoard, BoardMessage, Comment
+from .models import EventsBoard, BoardMessage, Comment, Apply
 from site_notification.models import SiteNotification
 from .forms import EventCreateForm
 from user_extend.models import UserExtend
 from datetime import datetime, timedelta, date
 from django.forms.models import model_to_dict
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+from django.conf import settings
 
 
 # Create your views here.
@@ -22,7 +25,8 @@ def home_view(request, *args, **kwargs):
     for event in obj.all():
       if event.event_date:
         if event.event_date < today and \
-        not Comment.objects.filter(for_event=event).filter(author=request.user.userextend):
+        not Comment.objects.filter(for_event=event).filter(author=request.user.userextend)\
+        and (request.user.userextend in event.participants.all() or event.host == request.user.userextend):
           need_comment = True
           need_comment_event = event
           break # start comment from the newest event
@@ -65,6 +69,7 @@ def event_detail_view(request, id):
     participants = list(event.participants.all().values())
     comments = list(event.board_message.all().values())
     host =  model_to_dict(event.host, fields=['id', 'full_name', 'image_url'])
+    requirements = event.requirements_str.split(',')
     
     return JsonResponse({
       'title': event.title,
@@ -80,7 +85,7 @@ def event_detail_view(request, id):
       'comments': comments,
       'host_id': event.host.pk,
       'host_pic': event.host.img.url,
-      
+      'requirements': requirements,
       'status': 200,
       'error_message': 'No error'
     })
@@ -263,4 +268,63 @@ def rate_event_view(request):
     return JsonResponse({
       'status': 500,
       'error_message': "[Error] Request not post, rejected"
+    })
+
+def join_event_view(request):
+  if request.method == 'POST':
+    data = request.POST
+    event = get_object_or_404(EventsBoard, id=data.get('event_id'))
+    if event.host == request.user.userextend:
+      return JsonResponse({
+        'status': 500,
+        'error_message': "[Error] host cannot be applicant"
+      })
+    if request.user.userextend in event.participants.all():
+      return JsonResponse({
+        'status': 500,
+        'error_message': "[Error] user has been participant"
+      })
+    apply = Apply.objects.create(
+      for_event = event,
+      applicant = request.user.userextend,
+      reason = data.get('reason'),
+      abilities = data.get('ability')
+    )
+    apply.save()
+
+    # send notification to host email
+    notification = SiteNotification.objects.create(
+      text = "申請了你的活動， 快去看看吧",
+      #sender.userextend.full_name +
+      event = event,
+      for_user = event.host.user,
+      from_user = request.user,
+      is_read = False
+    )
+    notification.save()
+    email_template = render_to_string(
+      'email/apply.html',
+      {
+        'event': event,
+        'applicant': request.user.userextend.full_name,
+        'ability': data.get('ability'),
+        'reason': data.get('reason')
+      }
+    )
+    email = EmailMessage(
+      'Connect 新申請通知信',  # title
+      email_template,  # content
+      settings.EMAIL_HOST_USER,  # sender
+      [event.host.user.email]  # reciever
+    )
+    email.fail_silently = False
+    email.send()
+
+    return JsonResponse({
+      'status': 200,
+    })
+  else:
+    return JsonResponse({
+      'status': 500,
+      'error_message': "[Error] request not post, rejected"
     })

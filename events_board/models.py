@@ -114,3 +114,19 @@ class BoardMessage(models.Model):
   date = models.DateTimeField(default=timezone.now)
   def __str__(self):
     return self.for_event.title + "-" + self.author.user.username + "-" + self.text
+
+# Application to specific event
+class Apply(models.Model):
+  for_event = models.ForeignKey(
+    EventsBoard,
+    on_delete = models.CASCADE,
+    related_name = 'applications'
+  )
+  applicant = models.ForeignKey(
+    "user_extend.UserExtend",
+    on_delete = models.CASCADE,
+    related_name = "applications"
+  )
+  reason = models.CharField(max_length=300)
+  abilities = models.CharField(max_length=100)
+  date = models.DateTimeField(default=timezone.now)

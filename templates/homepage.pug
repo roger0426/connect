@@ -274,9 +274,21 @@ html
             
             p#eventjoinhead 申請加入
             form
-              textarea(type='text',placeholder='具備能力')
-              textarea(type='text',placeholder='*加入理由')
+              #requirement-tags
+              //- textarea(type='text',placeholder='具備能力')
+              textarea#reason(type='text',placeholder='*加入理由')
             input.eventjoinbtn(type="button", value="加入")
+            script.
+              $(document).ready(function(){
+                $("input.eventjoinbtn").on("click", function() {
+                  console.log("clicked")
+                  join_event_handler(
+                    "{% url 'join_event' %}",
+                    "{{ csrf_token }}",
+                    $(this).closest('#eventwindow').attr('class')
+                  )
+                })
+              })
 
       #filter1
         

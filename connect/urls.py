@@ -18,7 +18,7 @@ from django.urls import path
 
 from connect.view import login_view, logout, send_verification_view
 from about_us.views import about_us_view
-from events_board.views import home_view, event_detail_view, like_view
+from events_board.views import home_view, event_detail_view, like_view, join_event_view
 from events_board.views import comment_view, search_view, order_view, rate_event_view
 from user_extend.views import profile_view, profile_event_view, modify, profile_edit_view
 from user_extend.views import  get_user_view, friend_request_view, friend_reply_view
@@ -50,6 +50,7 @@ urlpatterns = [
     path('like/<int:id>', like_view, name="like"),
     path('comment/<int:event_id>', comment_view, name="comment"),
     path('rate_event/', rate_event_view, name="rate_event"),
+    path('join_event/', join_event_view, name="join_event"),
     path('order/', order_view, name="order"),
 
     path('login/', login_view, name='login'),
