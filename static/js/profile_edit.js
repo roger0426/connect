@@ -1,13 +1,25 @@
 $(document).ready(function(){
-  $('.tags').mouseenter(function() {
-    $(this).parent().css({'background-color': 'rgba(255, 207, 191, 0.6)'});
-    $(this).parent().find('.normaltag').css({'color': 'rgba(255, 207, 191, 0.6)'});
-    $(this).parent().find('.deletetag').css({'display': 'block'});
+//  $('.tags').mouseenter(function() {
+//    $(this).parent().css({'background-color': 'rgba(255, 207, 191, 0.6)'});
+//    $(this).parent().find('.normaltag').css({'color': 'rgba(255, 207, 191, 0.6)'});
+//    $(this).parent().find('.deletetag').css({'display': 'block'});
+//  });
+//  $('.tags').mouseleave(function() {
+//    $(this).parent().css({'background-color': 'rgba(255, 207, 191)'});
+//    $(this).parent().find('.normaltag').css({'color': 'black'});
+//    $(this).parent().find('.deletetag').css({'display': 'none'});
+//  });
+  
+  $('.tag-style').mouseenter(function() {
+    $(this).css({'cursor': 'pointer'})
+    $(this).css({'background-color': 'rgba(255, 207, 191, 0.6)'});
+    $(this).find('.normaltag').css({'color': 'rgba(255, 207, 191, 0.6)'});
+    $(this).find('.deletetag').css({'display': 'block'});
   });
-  $('.tags').mouseleave(function() {
-    $(this).parent().css({'background-color': 'rgba(255, 207, 191)'});
-    $(this).parent().find('.normaltag').css({'color': 'black'});
-    $(this).parent().find('.deletetag').css({'display': 'none'});
+  $('.tag-style').mouseleave(function() {
+    $(this).css({'background-color': 'rgba(255, 207, 191)'});
+    $(this).find('.normaltag').css({'color': 'black'});
+    $(this).find('.deletetag').css({'display': 'none'});
   });
   
   let intervalId = window.setInterval(function(){ // check every 0.5 seconds

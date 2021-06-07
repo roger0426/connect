@@ -11,7 +11,7 @@ $(document).ready(function(){
       $(this).parent().find('.tag-comment').css({'display': 'flex'});
       $(".normaltag").not(this).parent().find('.tag-comment').css({'display': 'none'});
       $(".normaltag").not(this).parent().css({'box-shadow': 'none'})
-      $(this).closest('.tag-style').css({'box-shadow': '0.1rem 0.15rem 0.3rem 0.2rem var(--boxshadow-color)'})
+      $(this).closest('.tag-style').css({'box-shadow': '0rem 0.05rem 0.2rem 0.1rem var(--boxshadow-color)'})
     }
     else {
       $(this).parent().find('.tag-comment').css({'display': 'none'});
@@ -24,7 +24,7 @@ $(document).ready(function(){
       $(this).find('.tag-comment').css({'display': 'flex'});
       $(".tag-style").not(this).find('.tag-comment').css({'display': 'none'})
       $(".tag-style").not(this).css({'box-shadow': 'none'})
-      $(this).css({'box-shadow': '0.1rem 0.05rem 0.2rem 0.1rem var(--boxshadow-color)'})
+      $(this).css({'box-shadow': '0rem 0.05rem 0.2rem 0.1rem var(--boxshadow-color)'})
     }
     else {
       $(this).parent().find('.tag-comment').css({'display': 'none'});

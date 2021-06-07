@@ -172,7 +172,7 @@ footer
           border: none
           padding: 0.3rem 0 0.3rem 1rem
 
-          background-color: var(--background-color-inut)
+          background-color: var(--background-color-input)
         input::placeholder
           font-size: 0.8rem
     
@@ -221,11 +221,12 @@ footer
           font-size: 0.9rem
           margin: 0 0.5rem
           padding: 0.3rem
+          font-weight: 500
           text-align: center
         .deletetag
           position: absolute
           display: none
-          transform: translate(-50%, -100%)
+          transform: translate(-50%, 0)
           left: 50%
           margin: 0
           padding: 0.3rem 0
@@ -233,7 +234,7 @@ footer
           color: var(--background-color-button)
         .tag-style
           position: relative
-          min-width: 4rem
+          min-width: 4.4rem
           background-color: var(--background-color-tag1)
           border-radius: 1rem
           margin: 0.2rem
@@ -243,6 +244,8 @@ footer
           justify-content: space-between;
           flex-direction: row;
           flex-wrap: nowrap;
+          p
+            font-weight: 400
           .cmt-count
             background-color: white
             width: calc(1rem + 0.5rem)
@@ -360,15 +363,15 @@ footer
           cursor: pointer
           
           
-      .tag-field:nth-child(4)
-        .tag-style
-          background-color: #9FE4D4
+      //.tag-field:nth-child(4)
+        //.tag-style
+          //background-color: #9FE4D4
         //.tag-style:hover
           //background-color: #32DEB5
-        input
-          background-color: #9FE4D4
-        input:hover
-          background-color: #32DEB5
+        //input
+          //background-color: #9FE4D4
+        //input:hover
+          //background-color: #32DEB5
       
       #buttons
         *
@@ -747,7 +750,7 @@ footer
                 width: 2.5rem
                 height: 2.5rem
                 border-radius: 50%
-                background-color: var(--background-color-inut)
+                background-color: var(--background-color-input)
               
               #eventmsg-right
                 display: flex
