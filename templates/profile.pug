@@ -77,18 +77,8 @@ html
                         img#cmtfrom(src="{{ tagcomment.author.userextend.img.url }}")
                         #cmttext
                           p {{ tagcomment.text }}
-                      .eventmsg#eventmsg(style="display: none")
-                        a
-                          img.sender
-                        #eventmsg-right
-                          #eventmsg-righttop
-                            a#eventmsg-sendername
-                            p#event-date
-                          #eventmsg-rightbottom
-                            p#eventmsgtext
                       {% empty %}
-                      .tagcmt-wrap
-                        p 目前還沒有評價ㄛ~
+                      p 目前還沒有評價ㄛ~
                       {% endfor %}
                 {% endif %}
                 {% empty %}

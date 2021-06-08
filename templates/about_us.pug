@@ -74,18 +74,18 @@ html
                 p.description 技能：ps, ai, pr, solidworks
                 p.description 系所：工設110
                 p.description 興趣：看小說, 打排球, 彈吉他
-        
-        a
-          .card
-            img.personal_pic(src="{% static 'file/name5_2.png'%}")
-            .card-bg
-            .card-detail
-              p.personal-name 鄭价閎
-              p.description 工程師
-              .hidden-description(style = "display: none")
-                p.description 技能：Java, C
-                p.description 系所：電機系111
-                p.description 興趣：球類, 手遊, 漫畫, 魔方
+        //
+          a
+            .card
+              img.personal_pic(src="{% static 'file/name5_2.png'%}")
+              .card-bg
+              .card-detail
+                p.personal-name 鄭价閎
+                p.description 工程師
+                .hidden-description(style = "display: none")
+                  p.description 技能：Java, C
+                  p.description 系所：電機系111
+                  p.description 興趣：球類, 手遊, 漫畫, 魔方
 
         
         a(href="{% url 'profile' id=10 %}")
@@ -113,8 +113,27 @@ html
                 p.description 系所：電機系111
                 p.description 興趣：聽音樂, 打遊戲
 
-        #gap3 
+        #gap3
+        .logs
+        
+          .top
+            p.version 0.0.10
+            p.date 21/6/8
+          p.description 又是一個美好的一天，修正了一些bug，看了一些yt
+          
+          .top
+            p.version 
+            p.date
+          p.description
+          
+          .top
+            p.version
+            p.date
+          p.description
+          
+          
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js")
     script(src="{% static 'js/about_us.js' %}")
+    script(src="{% static 'js/navbar.js' %}")
