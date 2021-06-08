@@ -129,4 +129,10 @@ class Apply(models.Model):
   )
   reason = models.CharField(max_length=300)
   abilities = models.CharField(max_length=100)
+  # apply status
+  # 0: not apply
+  # 1: applied, under checking
+  # 2: applied, approved
+  # 3: applied, rejected
+  status = models.IntegerField(default=1)
   date = models.DateTimeField(default=timezone.now)

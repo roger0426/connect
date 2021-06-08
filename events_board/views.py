@@ -68,13 +68,22 @@ def event_detail_view(request, id):
     likes = list(event.likes.all().values())
     participants = list(event.participants.all().values())
     comments = list(event.board_message.all().values())
-    host =  model_to_dict(event.host, fields=['id', 'full_name', 'image_url'])
     requirements = event.requirements_str.split(',')
-    
+    # apply status
+    # 0: not apply
+    # 1: applied, under checking
+    # 2: applied, approved
+    # 3: applied, rejected
+    join_status = 0
+    for application in event.applications.all():
+      if application.applicant == request.user.userextend:
+        join_status = application.status
+        break
+
+
     return JsonResponse({
       'title': event.title,
       'subtitle': event.subtitle,
-      'host': host,
       'image': image_url,
       'detail': event_detail,
       'create_date': event.create_date,
@@ -86,6 +95,7 @@ def event_detail_view(request, id):
       'host_id': event.host.pk,
       'host_pic': event.host.img.url,
       'requirements': requirements,
+      'join_status': join_status,
       'status': 200,
       'error_message': 'No error'
     })

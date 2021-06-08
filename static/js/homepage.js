@@ -299,7 +299,7 @@ function event_handler(URL, user_id, CSRF) {
                 $('#' + clone_id + ' #event-date').html(item.date);
                 $('#' + clone_id + " #eventmsgtext").html(item.text);
               } else {
-                console.log('[Error] get user ' + user_id + " error");
+                console.log('[Error] get user ' + item.author_id + " error");
               }
             }
           });
@@ -321,8 +321,6 @@ function event_handler(URL, user_id, CSRF) {
       };
       if(data.particitants != undefined) {
         data.particitants.forEach(function(item, i) {
-          console.log(item.full_name);
-          
           let str = "<a href=\"/profile/" + item.id + "\"><img class=\"member participant\" src=\"https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img + "\"></img></a>";
           
           $("#eventoperate #member").prepend(str);
@@ -330,6 +328,32 @@ function event_handler(URL, user_id, CSRF) {
       };
 
       // join window
+      if (user_id == data.host_id) {
+        $(".eventjoin-btn").hide();
+        $(".eventedit-btn").show();
+      } else {
+        $(".eventjoin-btn").show();
+        $(".eventedit-btn").hide();
+      }
+      switch (data.join_status) {
+        case 1:
+          $(".eventjoin-btn").attr("value", "審核中");
+          $(".eventjoin-btn").attr("disabled", true);
+          break;
+        case 2:
+          $(".eventjoin-btn").attr("value", "取消加入");
+          $(".eventjoin-btn").attr("disabled", false);
+          break;
+        case 3:
+          $(".eventjoin-btn").attr("value", "無法加入");
+          $(".eventjoin-btn").attr("disabled", false);
+          break;
+        default:
+          $(".eventjoin-btn").attr("value", "申請加入");
+          $(".eventjoin-btn").attr("disabled", false);
+          break;
+      }
+
       $("#requirement-tags").empty();
       data.requirements.forEach(function(requirement) {
         $("#requirement-tags").append(
@@ -558,7 +582,8 @@ function join_event_handler(URL, CSRF, event_id) {
           $("#eventjoinwindow").animate({height: 0, opacity: 1}, 400, function() {
             $("#eventjoinwindow").hide();
           });
-          $("input.eventjoinbtn").css('disabled', true);
+          $(".eventjoin-btn").attr("value", "審核中");
+          $(".eventjoin-btn").attr("disabled", true);
         } else {
           Swal.fire({
             position: 'center',

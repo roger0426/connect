@@ -204,6 +204,7 @@ html
               input.eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
               input.eventmsg-btn(type="button", value="送出")
               input.eventjoin-btn(type="button", value="申請加入")
+              input.eventedit-btn(type="button", value="編輯活動", style="display: none")
               script.
                 $(document).ready(function(){
                   $(".eventmsg-btn").on("click", function() {
