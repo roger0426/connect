@@ -25,7 +25,6 @@ html
         | 請先以電腦網頁瀏覽
       #errorfilter
     
-    {% include 'event_detail.pug' %}
     #profileall
       #profilepanel
         #top-region
@@ -269,7 +268,7 @@ html
               .card(id='{{ activity.pk }}' margin='0')
                 .cardleft
                   {% if activity.image %}
-                  a(href="{% url 'profile_event' id=user.pk event_id=activity.pk%}")
+                  a
                     img#activity-img.card-img(src="{{ activity.image.url }}")
                   {% else %}
                   #activity-img.card-img
@@ -302,26 +301,26 @@ html
                     p#comments-title 其他參與者對 {{ user.full_name }} 的評論
                     {% for comment in activity.event_comments.all reversed%}
                     {% if comment.for_user.id == user.id %}
-                    .eventmsg#eventmsg
+                    .eventcomment#eventcomment
                         a
                           img.sender(src='{{ comment.author.img.url }}')
-                        #eventmsg-right
-                          #eventmsg-righttop
-                            a#eventmsg-sendername {{ comment.author.full_name }}
+                        #eventcomment-right
+                          #eventcomment-righttop
+                            a#eventcomment-sendername {{ comment.author.full_name }}
                             p#event-date {{ comment.date }}
-                          #eventmsg-rightbottom
-                            p#eventmsgtext {{ comment.text }}
+                          #eventcomment-rightbottom
+                            p#eventcommenttext {{ comment.text }}
                     {% else %}
-                    .eventmsg#eventmsg(style='background-color: var(--black-5)')
-                      #eventmsg-right(style='justify-content: center')
-                        #eventmsg-rightbottom
-                          p#eventmsgtext 屬於別人的評論
+                    .eventcomment#eventcomment(style='background-color: var(--black-5)')
+                      #eventcomment-right(style='justify-content: center')
+                        #eventcomment-rightbottom
+                          p#eventcommenttext 屬於別人的評論
                     {% endif %}
                     {% empty %}
-                    .eventmsg#eventmsg(style='background-color: var(--black-5)')
-                      #eventmsg-right(style='justify-content: center')
-                        #eventmsg-rightbottom
-                          p#eventmsgtext 目前還沒有評論~
+                    .eventcomment#eventcomment(style='background-color: var(--black-5)')
+                      #eventcomment-right(style='justify-content: center')
+                        #eventcomment-rightbottom
+                          p#eventcommenttext 目前還沒有評論~
                     {% endfor %}
               {% empty %}
               #activity-card.card
@@ -437,6 +436,17 @@ html
         {% include "footer.pug" %}
     #filter1
     {% include "eventwindow.pug" %}
+    script.
+      $('.info a').on("click", function() {
+        $('#eventwindow').attr('class', this.closest('.card').id)
+        console.log("event/" + this.closest('.card').id)
+        event_handler("../../event/" + this.closest('.card').id, "{{ request.user.id }}", "{{ csrf_token }}");
+      });
+      $('.card-img').on("click", function() {
+        $('#eventwindow').attr('class', this.closest('.card').id)
+        console.log("event/" + this.closest('.card').id)
+        event_handler("../../event/" + this.closest('.card').id, "{{ request.user.id }}", "{{ csrf_token }}");
+      });
 
     script(src="{% static 'js/semantic.min.js' %}")
     script(src="{% static 'js/profile.js' %}")

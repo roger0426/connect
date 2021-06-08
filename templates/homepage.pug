@@ -109,6 +109,7 @@ html
           script.
             $('#eventboard a').on("click", function() {
               $('#eventwindow').attr('class', this.id)
+              console.log("event/" + this.id)
               event_handler("event/" + this.id, "{{ request.user.id }}", "{{ csrf_token }}");
             });
           

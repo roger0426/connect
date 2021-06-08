@@ -137,8 +137,3 @@ html
                 )
               })
             })
-    script.
-      $('.info a').on("click", function() {
-        $('#eventwindow').attr('class', this.closest('.card').id)
-        event_handler("event/" + this.id, "{{ request.user.id }}", "{{ csrf_token }}");
-      });

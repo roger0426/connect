@@ -6,9 +6,6 @@ $(document).ready(function(){
     $('#phoneerrormsg').hide();
   });
 
-  if ($('.eventmsg#eventmsg').length == 0) {
-    
-  }
   
   $(".normaltag").click(function() {
     if($(this).parent().find('.tag-comment').css("display") == "none") {
