@@ -122,15 +122,6 @@ $(document).ready(function(){
     $("#sent").css({opacity: 0, "z-index": -1});
   });
   
-  $("#exitbtn1, #filter1").click(function() {
-    console.log("click event exit");
-    $("#eventwindow").animate({opacity: 0}, 400, function() {
-      $("#eventwindow").hide();
-    })
-    $("#filter1").animate({opacity: 0}, 400, function() {
-      $("#filter1").hide();
-    })
-  });
   
   $("#sendbutton").click(function() {
     console.log("sendbutton has been click.")

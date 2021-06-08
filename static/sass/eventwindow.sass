@@ -1,0 +1,498 @@
+#eventwindow
+  display: none
+  position: fixed
+  flex-direction: row
+  flex-wrap: wrap
+  align-content: flex-start
+  justify-content: space-between
+  align-items: flex-start
+  
+  transform: translate(-50%, -50%)
+  top: 50%
+  left: 50%
+  width: 41%
+  min-width: 35rem
+  padding: 2rem 2rem 1.5rem 2rem
+  background: linear-gradient(180deg,var(--border-color-eventwindow), #FFFFFF)
+  border-radius: 3rem
+  border: 5px solid var(--border-color-eventwindow)
+  box-shadow: 10px 10px 25px 5px var(--boxshadow-color)
+  z-index: 7
+  opacity: 0
+  
+    
+  #eventwindow-left
+    display: flex
+    flex-direction: column
+    flex-wrap: nowrap
+    justify-content: flex-start
+    align-items: flex-start
+    width: 87%
+    margin-left: 5px
+
+    
+    #description
+      display: flex
+      flex-direction: column
+      flex-wrap: nowrap
+      align-content: flex-start
+      justify-content: flex-start
+      align-items: flex-start
+      width: 98%
+    
+      #description-top
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        align-content: flex-start
+        justify-content: space-between
+        align-items: flex-start
+        width: 100%
+        margin-left: 0.5rem
+
+        #eventwindow-bg
+          //position: absolute
+          top: 2rem
+          left: 2.5rem
+          height: 7.5rem
+          width: 7.5rem
+          z-index: -1
+          opacity: 1
+          border-radius: 0.7rem
+            
+          #eventpic
+            height: 100%
+            width: 100%
+            border-radius: 0.7rem
+            background-color: var(--background-color-eventwindow-board)
+              
+            img
+              height: 100%
+              width: 100%
+              border-radius: 1rem
+            p
+              font-size: 1rem
+              line-height: 8rem
+              text-align: center
+
+        #event-heading
+          display: flex
+          flex-direction: column
+          width: calc(11 * 1.5rem)
+          margin-left: 0.7rem
+          #event-title
+            font-size: 1.5rem
+            //width: 50rem
+          #event-subtitle
+            font-size: 1rem
+            color: var(--fontcolor-third)
+            margin: 0 0 0 0.2rem
+          #event-require
+            display: flex
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-top: 0.2rem
+            #requiretag
+              background-color: white
+              border-radius: 0.6rem
+              padding: 0rem 0.4rem
+              margin-right: 0.3rem
+              font-size: 0.85rem
+        #date
+          display: flex
+          flex-direction: column;
+          flex-wrap: nowrap;
+          align-items: center;
+          #event-date
+            font-size: 0.8rem
+            color: var(--fontcolor-third)
+            font-weight: 500
+            margin-top: 0.7rem
+            width: 100%
+          #due-date
+            font-size: 0.8rem
+            color: var(--fontcolor-third)
+            font-weight: 500
+            margin-top: 0.7rem
+            width: 100%
+      
+      #event-detail
+        font-size: 1rem
+        line-height: 1.5rem
+        min-height: 5rem
+        max-height: 14rem
+        margin: 1rem 0 0 0.5rem
+        width: calc(100% - 1rem)
+        overflow: scroll
+        overflow-x: hidden
+        margin: 0.5rem
+        padding: 0.5rem
+        border-radius: 1rem
+        background-color: rgba(256, 256, 256, 0.5)
+    
+    #eventmsgregion
+      display: flex
+      flex-direction: column
+      flex-wrap: nowrap
+      align-content: center
+      align-items: flex-start
+      justify-content: flex-start
+      box-shadow: inset 0px -1px 5px var(--boxshadow-color)
+      
+      width: 95%
+      max-height: 15rem
+      min-height: 10rem
+      background-color: var(--background-color-eventwindow-board)
+      border-radius: 1.5rem
+      padding: 0.5rem
+      margin-left: 0.5rem
+      
+      #msgtitle
+        //position: absolute
+        font-size: 1.3rem
+        padding: 0 0 0.5rem 0.7rem
+        font-weight: 700
+        
+      #eventmsg-board
+        display: flex
+        flex-direction: column
+        flex-wrap: nowrap
+        align-content: center
+        justify-content: flex-start
+        align-items: flex-start
+        width: 100%
+        
+        overflow: scroll
+        overflow-x: hidden
+        
+        .eventmsg:hover
+          background-color: var(--background-color-input)
+        .eventmsg
+          display: flex
+          flex-direction: row
+          flex-wrap: nowrap
+          align-items: center
+          width: 95%
+          margin: 0 0 0.4rem 0
+          border-radius: 0.5rem
+          background-color: var(--background-color-input-hover)
+          padding: 0.5rem
+          
+          a
+            margin: 0
+          
+          .sender
+            width: 2.5rem
+            height: 2.5rem
+            border-radius: 50%
+            background-color: var(--background-color-input)
+          
+          #eventmsg-right
+            display: flex
+            flex-direction: column
+            flex-wrap: nowrap
+            justify-content: space-between
+            align-items: flex-start
+            width: 93%
+            min-height: 2.5rem
+            margin-left: 1rem
+            
+            
+            #eventmsg-righttop
+              display: flex
+              flex-direction: row
+              flex-wrap: nowrap
+              align-content: center
+              align-items: center
+              justify-content: space-between
+              width: 100%
+              
+              
+              #eventmsg-sendername
+                font-size: 1.05rem
+                width: 4rem
+                font-weight: 700
+                color: var(--black-2)
+              #event-date
+                font-size: 0.7rem
+                width: 15rem
+                color: var(--fontcolor-second)
+                text-align: right
+                
+            #eventmsgtext
+              font-size: 0.9rem
+              color: #595959
+        
+    #eventmsg-sender
+      display: flex
+      flex-direction: row
+      flex-wrap: nowrap
+      align-items: center
+      justify-content: flex-start
+      margin-left: 0.5rem
+      width: 100%
+      
+      a
+        display: none
+        margin: 0
+      
+      #senderpic
+        display: none
+        width: 3rem
+        height: 3rem
+        border-radius: 50%
+        background-color: var(--background-color-userpic)
+        border: none
+        margin-left: 1rem
+        
+      .comment-operate-region
+        position: relative
+        display: flex
+        flex-direction: row
+        flex-wrap: nowrap
+        align-content: center
+        align-items: center
+        justify-content: space-between
+        margin: 1.2rem 0.7rem 0.3rem 0
+        height: 1.5rem
+        width: 100%
+        
+        .eventmsg-insert
+          outline: none
+          border: none
+          width: 60%
+          border-radius: 1rem 0 0 1rem
+          background-color: var(--background-color-input)
+          padding: 0.4rem 1.3rem 0.4rem 1rem
+          font-size: 1.1rem
+        
+        .eventmsg-btn
+          //position: absolute
+          //right: 0
+          transform: translateX(-1.5rem)
+          outline: none
+          border: none
+          border-radius: 3rem
+          background-color: var(--border-color-eventwindow)
+          padding: 0.5rem 1rem
+          font-size: 1rem
+          cursor: pointer
+
+        .eventjoin-btn
+          //position: absolute
+          right: 0
+          //transform: translateX(3.5rem)
+          outline: none
+          border: none
+          border-radius: 3rem
+          background-color: var(--border-color-eventwindow)
+          padding: 0.5rem 1rem
+          font-size: 1rem
+          cursor: pointer
+        .eventedit-btn
+          //position: absolute
+          right: 0
+          //transform: translateX(3.5rem)
+          outline: none
+          border: none
+          border-radius: 3rem
+          background-color: var(--border-color-eventwindow)
+          padding: 0.5rem 1rem
+          font-size: 1rem
+          cursor: pointer
+      
+  
+  #eventwindow-right
+    display: flex
+    flex-direction: column
+    flex-wrap: nowrap
+    align-content: center
+    align-items: center
+    justify-content: space-between
+    width: 7%
+    
+    #eventoperate
+      display: flex
+      flex-direction: column
+      flex-wrap: nowrap
+      align-content: center
+      align-items: center
+      justify-content: flex-start
+      
+      #exitbtn1
+        //position: absolute
+        //transform: translate(1.1rem, -3.7rem)
+        width: 1.5rem
+        height: 1.5rem
+        cursor: pointer
+      
+      
+      #organizer-pic
+        width: 3rem
+        height: 3rem
+        margin-bottom: 0.4rem
+        border-radius: 50%
+        border: solid 0.2rem var(--border-color-eventwindow)
+        flex-start
+        background-color: var(--background-color-userpic)
+      #bar
+        width: 2.5rem
+        height: 0.2rem
+        background-color: #AAAAAA
+        border-radius: 0.1rem
+        margin-bottom: 0.4rem
+      
+      #member
+        display: flex
+        flex-direction: column
+        flex-wrap: nowrap
+        justify-content: flex-start
+        align-items: center
+        height: 16rem
+        overflow: hidden
+        
+        .member
+          width: 3rem
+          height: 3rem
+          margin-bottom: 0.2rem
+          border-radius: 50%
+          background-color: #FFFFFF
+        .participant
+          border: solid 0.15rem var(--border-color-participate)
+        .interested
+          border: solid 0.15rem var(--background-color-userpic)
+          
+        
+      .login-redirect
+        position: relative
+        transform: translateY(4rem)
+        height: 4rem
+        width: 4rem
+          
+      #likebutton
+        position: absolute
+        bottom: 3%
+        //background-image: url('../file/like-bg-n.png')
+        background-repeat: no-repeat
+        background-size: contain
+        height: 3rem
+        width: 3rem
+        
+        #likebtn-bg
+          background-color: var(--background-color-userpic)
+          
+          
+
+        button:hover
+          position: relative
+          transform: scale(1.02)
+      
+        button
+          background: Transparent
+          border: none
+          height: 100%
+          width: 100%
+          cursor: pointer
+      
+        #like-y
+          display: none
+          //width: 70%
+
+        #like-n
+          display: block
+          //width: 70%
+  
+  #eventjoinwindow
+    position: absolute
+    display: none
+    transform: translate(-50%, 0)
+    //top: 65%
+    bottom: 0
+    left: 50%
+    width: 100%
+    min-width: 35rem
+    //height: 75%
+    height: 0
+    background-color: var(--background-color-container)
+    z-index: 1
+    border-radius: 1rem 1rem 3rem 3rem
+    box-shadow: 10px 10px 25px 5px var(--boxshadow-color)
+    opacity: 0
+
+    #exitbtn3
+      width: 1.5rem
+      height: 1.5rem
+      cursor: pointer
+      position: absolute
+      right: 1.5rem
+      top: 1.5rem
+
+    #eventjoincontainer
+      display: flex
+      flex-direction: column
+      align-items: center
+      flex-wrap: nowrap
+      justify-content: space-evenly;
+      width: 60%
+      height: 100%
+      position: absolute
+      left: 50%
+      transform: translate(-50%, 0)
+
+
+      #eventjoinhead
+        font-size: 3rem
+        font-color: var(--font-color-main)
+        argin-bottom: 1rem
+        margin-top: -2rem
+      
+      form
+        display: flex
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        #requirement-tags
+          width: 100%
+          display: flex
+          flex-direction: row
+          justify-content: space-around
+
+      #eventjoinability
+        border-radius: 1rem
+        background-color: #F2F2F2
+        margin-bottom: 0.7rem
+        width: 100%
+        height: 4rem
+
+      #eventjoinreason
+        border-radius: 1rem
+        background-color: #F2F2F2
+        margin-bottom: 0.7rem
+        width: 100%
+        height: 6rem
+
+      .eventjoinbtn
+        border-radius: 3rem
+        background-color: var(--border-color-eventwindow)
+        cursor: pointer
+        font-size: 1rem
+        width: 5rem;
+        height: 2.5rem;
+      
+  
+  
+
+#filter1
+  display: none
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  backdrop-filter: blur(5px) contrast(70%) saturate(70%) brightness(70%)
+  -webkit-backdrop-filter: blur(5px) contrast(70%) saturate(70%) brightness(70%)
+  z-index: 6
+  opacity: 0

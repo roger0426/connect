@@ -10,6 +10,7 @@ html
     link(href="{% sass_src 'sass/profile.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/variable.sass' %}",rel="stylesheet",type="text/css")
+    link(href="{% sass_src 'sass/eventwindow.sass' %}",rel="stylesheet",type="text/css")
     script(src="{% static 'js/jquery-3.2.1.min.js' %}")
     script(src="{% static 'js/jquery-ui.js' %}")
     script(src="{% static 'js/d3.v5.js' %}")
@@ -265,7 +266,7 @@ html
 
             #activities.page-panel
               {% for activity in activities %}
-              #activity-card.card
+              .card(id='{{ activity.pk }}' margin='0')
                 .cardleft
                   {% if activity.image %}
                   a(href="{% url 'profile_event' id=user.pk event_id=activity.pk%}")
@@ -289,7 +290,7 @@ html
                 
                 .cardright
                   .info
-                    a(href="{% url 'profile_event' id=user.pk event_id=activity.pk%}")
+                    a
                       p#activity-title.cardinfott {{ activity.title }}
                     {% if activity.host.pk == user.pk %}
                     p#activity-character.charname 主辦人
@@ -344,7 +345,7 @@ html
             
             #projects.page-panel(style="display: none")
               {% for project in projects %}
-              #projects-card.card
+              .card
                 .cardleft
                   {% if project.image %}
                   a(href="{% url 'profile_event' id=user.pk event_id=project.pk%}")
@@ -368,7 +369,7 @@ html
                   
                 .cardright
                   .info
-                    a(href="{% url 'profile_event' id=user.pk event_id=project.pk%}")
+                    a
                       p#project-title.cardinfott {{ project.title }}
                     {% if activity.host.pk == user.pk %}
                     p#projects-character.charname 主辦人
@@ -402,7 +403,7 @@ html
 
             #personal.page-panel(style="display: none")
               {% for personal_proj in personal_projs %}
-              #personal-card.card
+              .card
                 .cardleft
                   {% if personal_proj.image %}
                   a(href="{% url 'profile_event' id=user.pk event_id=personal_proj.pk%}")
@@ -434,7 +435,10 @@ html
                    
       footer
         {% include "footer.pug" %}
+    #filter1
+    {% include "eventwindow.pug" %}
 
     script(src="{% static 'js/semantic.min.js' %}")
     script(src="{% static 'js/profile.js' %}")
     script(src="{% static 'js/navbar.js' %}")
+    script(src="{% static 'js/eventwindow.js' %}")
