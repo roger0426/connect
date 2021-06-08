@@ -184,7 +184,7 @@ function like_handler(URL, event_id, CSRF) {
         console.log('success')
         let img_url = data.user_img_url;
         let hostname = $(location).attr('hostname');
-        
+        let like_sum = parseInt($('#' + event_id + ' #likesnum').text());
         if (data.add) {
           let profile_url = hostname + '/profile/' + data.user_id
           let str = "<a herf='" + profile_url + "'>\
@@ -194,7 +194,7 @@ function like_handler(URL, event_id, CSRF) {
           $('#likebutton button').attr("src", "/static/file/like-bg-y.png");
           $('#' + event_id + " #likeicon").attr("src", "/static/file/like-y.png");
           $('#member').append(str);
-
+          $('#' + event_id + ' #likesnum').text(like_sum + 1);
         } else if (data.remove) {
           let user_selector = "#member a img[src='" + img_url + "']";
           //console.log(user_selector)
@@ -202,6 +202,7 @@ function like_handler(URL, event_id, CSRF) {
           $('#likebutton button').attr("src", "/static/file/like-bg-n.png");
           $('#' + event_id + " #likeicon").attr("src", "/static/file/like-grey.png");
           $(user_selector).remove();
+          $('#' + event_id + ' #likesnum').text(like_sum - 1);
         }
       } else {
         console.log("[Error]: like ajax error");

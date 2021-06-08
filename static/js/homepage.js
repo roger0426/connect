@@ -41,36 +41,52 @@ $(document).ready(function(){
     $("#id_due_date")
       .attr("onfocus", "(this.type='date')")
       .attr("onfocusout", "(this.type='text')")
+
+    // eventcreate window requirements
+    $("#id_requirements_str").before(
+      "<div id='requirements'>\
+        <input type='text' id='add-requirement-btn' placeholder='+'>\
+      </div>"
+    )
+    $("#id_requirements_str").hide();
+
     
     $('body').css({'overflow': 'hidden'});
     
     $("#filter1").show();
     $("#filter1").animate({opacity: 1}, 200, function() {
-//      if ($("#eventcreatewindow").css('display') == 'none') {
       $("#eventcreatewindow").show();
-//      }
-//      else {
-//        $("#eventcreatewindow").css({'content-visibility': 'visible'});
-//      }
       $("#eventcreatewindow").animate({opacity: 1}, 200);
     })
-    //$("#sent").toggle();
   });
+
+  // eventcreate window add-requirement-btn manipulate
+  $(document).on("focus", "#add-requirement-btn",function() {
+    $(this).attr("placeholder", "");
+    $(this).css("width", "2rem");
+  });
+  $(document).on("blur", "#add-requirement-btn",function() {
+    $(this).attr("placeholder", "+");
+    $(this).css("width", "1rem");
+
+    if ($(this).val() != "") {
+      // has requirement value
+      $(this).before(
+        "<p class='requirement-tag'>" + $(this).val() + "</p>"
+      )
+      $(this).val("");
+    }
+  });
+
 
   if($("#need-comment-flag").text() == "True") {
     $("#filter1").show();
     $("#filter1").animate({opacity: 1}, 200, function() {
-//      if ($("#comment-window").css('display') == 'none') {
       $("#comment-window").show();
       $('body').css({'overflow': 'hidden'});
-//      }
-//      else {
-//        $("#comment-window").css({'content-visibility': 'visible'});
-//      }
       $("#comment-window").animate({opacity: 1}, 200);
     })
   }
-  
   
   $("#applybutton").click(function() {
     console.log("click apply");
@@ -119,11 +135,8 @@ $(document).ready(function(){
   $(".eventjoin-btn").click(function() {
     console.log("click event join");
     $("#eventjoinwindow").show();
-//    $("#eventjoinwindow").css({opacity: 1})
     $("#eventjoinwindow").animate({'height': '75%', opacity: 1}, 400, function() {
     })
-//    $("#eventjoinwindow").animate({opacity: 1}, 100, function() {
-//    })
   })
 
   $("#submit-btn").click(function() {
@@ -151,7 +164,16 @@ $(document).ready(function(){
       all_pass = 0;
       $("#id_people_limit").css("border", "0.1rem solid red");
     }
-    
+    let requirement_str = "";
+    // stringify requiremnt str
+    if ($(".requirement-tag").length > 0) {
+      $(".requirement-tag").each(function() {
+        requirement_str += $(this).text() + ",";
+      })
+    }
+    requirement_str = requirement_str.substring(0, requirement_str.length-1)
+    $("#id_requirements_str").val(requirement_str);
+
     if (all_pass == 1) {
       // alert messsage
       Swal.fire({
@@ -194,28 +216,27 @@ $(document).ready(function(){
   let intervalId = window.setInterval(function(){ // check every 0.5 seconds
     $('#insertbar').toggle();
   }, 450);
-  
 });
 
- var i = 0;
- function duplicate_multi(duplicateID) {
-   var original = document.getElementById(duplicateID);
-   var clone = original.cloneNode(true); // "deep" clone
-   clone.id = duplicateID + '_new' + ++i;
-   // or clone.id = ""; if the divs don't need an ID
-   original.parentNode.insertBefore(clone, original.parentNode.firstChild);
-   return clone.id
- }
+var i = 0;
+function duplicate_multi(duplicateID) {
+  var original = document.getElementById(duplicateID);
+  var clone = original.cloneNode(true); // "deep" clone
+  clone.id = duplicateID + '_new' + ++i;
+  // or clone.id = ""; if the divs don't need an ID
+  original.parentNode.insertBefore(clone, original.parentNode.firstChild);
+  return clone.id
+}
 
 
- function duplicate(duplicateID) {
-   var original = document.getElementById(duplicateID);
-   var clone = original.cloneNode(true); // "deep" clone
-   clone_id = duplicateID;
-   // or clone.id = ""; if the divs don't need an ID
-   original.parentNode.insertBefore(clone, original.parentNode.firstChild);
-   //$("eventpost").parent.prepend();
- };
+function duplicate(duplicateID) {
+  var original = document.getElementById(duplicateID);
+  var clone = original.cloneNode(true); // "deep" clone
+  clone_id = duplicateID;
+  // or clone.id = ""; if the divs don't need an ID
+  original.parentNode.insertBefore(clone, original.parentNode.firstChild);
+  //$("eventpost").parent.prepend();
+};
 
 function isValid() {
   let isValid = true;
@@ -294,7 +315,7 @@ function join_event_handler(URL, CSRF, event_id) {
     $('input:checkbox.requirement-tag').each(function () {
       ability_str += $(this).val() + ",";
     });
-    console.log(ability_str);
+    ability_str = ability_str.substring(0,ability_str.length-1);
     $.ajaxSetup({
       data: {
         csrfmiddlewaretoken: CSRF
