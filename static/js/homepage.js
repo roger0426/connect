@@ -558,6 +558,16 @@ function join_event_handler(URL, CSRF, event_id) {
         csrfmiddlewaretoken: CSRF
       }
     });
+    let timerInterval
+    Swal.fire({
+      title: '申請處理中',
+      html: '請稍等......',
+      timer: 2000,
+      timerProgressBar: false,
+      didOpen: () => {
+        Swal.showLoading()
+      },
+    })
     $.ajax({
       type: "POST",
       url: URL,
