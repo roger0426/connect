@@ -62,6 +62,7 @@ $(document).ready(function(){
     $("#filter1").animate({opacity: 1}, 200, function() {
 //      if ($("#comment-window").css('display') == 'none') {
       $("#comment-window").show();
+      $('body').css({'overflow': 'hidden'});
 //      }
 //      else {
 //        $("#comment-window").css({'content-visibility': 'visible'});
@@ -267,6 +268,14 @@ function event_handler(URL, user_id, CSRF) {
       }
       $("#eventwindow" + " #event-title").html(data.title);
       $("#eventwindow" + " #event-subtitle").html(data.subtitle);
+      $('#event-require').html('');
+      if(data.requirements != undefined) {
+        data.requirements.forEach(function(item, i) {
+          console.log(item)
+          $("#eventwindow" + " #event-require").append('<div id=\"requiretag\">' + item + '</div>');
+          
+        });
+      };
       $("#eventwindow" + " #description" + " #event-date").html("活動日期<br />" + data.event_date);
       $("#eventwindow" + " #description" + " #due-date").html("報名截止<br />" + data.due_date);
       $("#eventwindow" + " #event-detail").html(data.detail);
