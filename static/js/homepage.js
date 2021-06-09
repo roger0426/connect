@@ -43,8 +43,10 @@ $(document).ready(function(){
       .attr("onfocusout", "(this.type='text')")
 
     // eventcreate window requirements
+    $("#requirements").remove()
     $("#id_requirements_str").before(
       "<div id='requirements'>\
+        <p id='requiretitle'>特殊要求</p>\
         <input type='text' id='add-requirement-btn' placeholder='+'>\
       </div>"
     )
@@ -63,7 +65,7 @@ $(document).ready(function(){
   // eventcreate window add-requirement-btn manipulate
   $(document).on("focus", "#add-requirement-btn", function() {
     $(this).attr("placeholder", "");
-    $(this).css("width", "2rem");
+    $(this).css("width", "2.5rem");
   });
   $(document).on("blur", "#add-requirement-btn", function() {
     $(this).attr("placeholder", "+");
@@ -71,8 +73,10 @@ $(document).ready(function(){
 
     if ($(this).val() != "") {
       // has requirement value
+      console.log($(this).val().length)
       $(this).before(
-        "<p class='requirement-tag'>" + $(this).val() + "</p>"
+//        "<p class='requirement-tag'>" + $(this).val() + "</p>"
+        "<input class='requirement-tag' size='" + ($(this).val().length*1.5 + 2.5 )+ "' value='" + $(this).val() + "'>"
       )
       $(this).val("");
     }
@@ -154,7 +158,8 @@ $(document).ready(function(){
     // stringify requiremnt str
     if ($(".requirement-tag").length > 0) {
       $(".requirement-tag").each(function() {
-        requirement_str += $(this).text() + ",";
+//        requirement_str += $(this).text() + ",";
+        requirement_str += $(this).val() + ",";
       })
     }
     requirement_str = requirement_str.substring(0, requirement_str.length-1)
