@@ -354,7 +354,8 @@
         justify-content: flex-start
         align-items: center
         height: 16rem
-        overflow: hidden
+        //overflow: hidden
+        
         
         .member
           width: 3rem
@@ -366,6 +367,21 @@
           border: solid 0.15rem var(--border-color-participate)
         .interested
           border: solid 0.15rem var(--background-color-userpic)
+        a
+          position: relative
+          .member-hover
+            display: none
+            position: absolute
+            transform: translate(100%, -50%)
+            top: 50%
+            right: -0.5rem
+            white-space: nowrap
+            padding: 0.2rem 0.3rem
+            background-color: var(--ricewhite)
+            border: solid 2px var(--blue)
+            border-radius: 0.5rem
+            z-index: 3
+          
           
         
       .login-redirect

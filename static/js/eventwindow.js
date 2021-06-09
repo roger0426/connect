@@ -1,4 +1,15 @@
 $(document).ready(function(){
+  //eventwindow likes & participants hover name
+  $(".member").mouseenter(function() {
+    console.log('enter')
+    $(this).find('a').find('.member-hover').show();
+  });
+  $('.member').mouseleave(function() {
+    console.log('leave')
+    $(this).find('a').find('.member-hover').hide();
+  });
+  
+  
   $("#exitbtn1, #filter1").click(function() {
     //console.log("click event exit");
     $('body').css({'overflow': 'auto'});
@@ -67,7 +78,8 @@ function event_handler(URL, user_id, CSRF) {
     dataType: 'json',
     success: function(data) {
       
-//      console.log("ajax success----------");
+      console.log("ajax success----------");
+      console.log(data)
 //      console.log("title:", data.title);
 //      console.log("subtitle:", data.subtitle);
 //      console.log("host:", data.host);
@@ -142,14 +154,21 @@ function event_handler(URL, user_id, CSRF) {
             $('#likebutton').css("background-image", "url(/static/file/like-bg-y.png");
             $('#likebutton button').attr("src", "/static/file/like-bg-y.png");
           }
-          let str = "<a href=\"/profile/" + item.id + "\"><img class=\"member interested\" src=\"https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img + "\"></img></a>";
+          let str = "<a href=\"/profile/" + item.id + "\">\
+                      <img class=\"member interested\" src=\"https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img + "\">\
+                      <p class='member-hover'>" + item.full_name + "</p>\
+                      </img></a>";
           
           $("#eventoperate #member").prepend(str);
         });
       };
+      
       if(data.particitants != undefined) {
         data.particitants.forEach(function(item, i) {
-          let str = "<a href=\"/profile/" + item.id + "\"><img class=\"member participant\" src=\"https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img + "\"></img></a>";
+          let str = "<a href=\"/profile/" + item.id + "\">\
+                      <img class=\"member participant\" src=\"https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img + "\">\
+                      <p class='member-hover'>" + item.full_name + "</p>\
+                      </img></a>";
           
           $("#eventoperate #member").prepend(str);
         });

@@ -76,7 +76,8 @@ html
             img#exitbtn1(src="{% static 'file/exiticon.png' %}")
             
           a#organizer-link(href="#")
-            img#organizer-pic.member(src='{{ event_detail.host.img.url }}')
+            img#organizer-pic.member
+            p.member-hover
           #bar
           #member
             
@@ -84,11 +85,13 @@ html
               {% for participant in event_detail.participants.all %}
               a(href="{% url 'profile' id=participant.pk %}")
                 img.member.participant(src='{{ participant.img.url }}')
+                p.member-hover
               {% endfor %}
 
               {% for interested_user in event_detail.likes.all %}
               a(href="{% url 'profile' id=interested_user.pk %}")
                 img.member.interested(src='{{ interested_user.img.url }}')
+                p.member-hover
               {% endfor %}
             
           {% if request.user.is_authenticated %}
