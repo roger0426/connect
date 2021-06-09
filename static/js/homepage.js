@@ -124,20 +124,6 @@ $(document).ready(function(){
     })
   });
   
-  $("#exitbtn3, #filter1").click(function() {
-    //console.log("click event exit");
-    $('body').css({'overflow': 'auto'});
-    $("#eventjoinwindow").animate({height: 0, opacity: 1}, 400, function() {
-      $("#eventjoinwindow").hide();
-    })
-  });
-  
-  $(".eventjoin-btn").click(function() {
-    console.log("click event join");
-    $("#eventjoinwindow").show();
-    $("#eventjoinwindow").animate({'height': '75%', opacity: 1}, 400, function() {
-    })
-  })
 
   $("#submit-btn").click(function() {
     console.log("click event submit");
@@ -283,8 +269,14 @@ function rate_event_handler(URL, event_id, CSRF) {
             showConfirmButton: false,
             timer: 1500,
           })
-          $("#filter1").hide();
-          $("#comment-window").hide();
+          setTimeout(function(){
+            $("#filter1").animate({opacity: 0}, 300, function() {
+              $("#filter1").hide();
+            })
+            $("#comment-window").animate({opacity: 0}, 300, function() {
+              $("#comment-window").hide();
+            })
+          }, 1800);
         } else {
           Swal.fire({
             position: 'center',

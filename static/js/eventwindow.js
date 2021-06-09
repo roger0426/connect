@@ -5,10 +5,52 @@ $(document).ready(function(){
     $("#eventwindow").animate({opacity: 0}, 400, function() {
       $("#eventwindow").hide();
     })
+    $("#eventjoinwindow").animate({opacity: 0}, 400, function() {
+      $("#eventjoinwindow").hide();
+    $("#eventjoinwindow").css({height: 0})
+    })
+    $("#eventcontrol").animate({opacity: 0}, 400, function() {
+      $("#eventcontrol").hide();
+    $("#eventcontrol").css({height: 0})
+    })
+    
     $("#filter1").animate({opacity: 0}, 150, function() {
       $("#filter1").hide();
     })
   });
+  
+  //event join exit
+  $("#exitbtn3").click(function() {
+    //console.log("click event exit");
+    $('body').css({'overflow': 'auto'});
+    $("#eventjoinwindow").animate({height: 0, opacity: 1}, 400, function() {
+      $("#eventjoinwindow").hide();
+    })
+  });
+  
+  //event control center
+  $("#exitbtn4").click(function() {
+    //console.log("click event exit");
+    $('body').css({'overflow': 'auto'});
+    $("#eventcontrol").animate({opacity: 0}, 400, function() {
+      $("#eventcontrol").hide();
+    })
+  });
+  
+  $(".eventjoin-btn").click(function() {
+    console.log("click event join");
+    $("#eventjoinwindow").show();
+    $("#eventjoinwindow").animate({'height': '75%', opacity: 1}, 400, function() {
+    })
+  })
+  
+  $(".eventedit-btn").click(function() {
+    console.log("click event join");
+    $("#eventcontrol").show();
+    $("#eventcontrol").animate({'height': '75%', opacity: 1}, 400, function() {
+    })
+  })
+  
 });
                   
  

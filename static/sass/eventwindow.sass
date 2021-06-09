@@ -430,7 +430,7 @@
       right: 1.5rem
       top: 1.5rem
 
-    #eventjoincontainer
+    .eventcontainer
       display: flex
       flex-direction: column
       align-items: center
@@ -482,7 +482,21 @@
         width: 5rem;
         height: 2.5rem;
       
-  
+  #eventcontrol
+    position: absolute
+    display: none
+    transform: translate(-50%, 0)
+    //top: 65%
+    bottom: 0
+    left: 50%
+    width: 100%
+    min-width: 35rem
+    //height: 75%
+    height: 0
+    background-color: red //var(--background-color-container)
+    z-index: 1
+    border-radius: 1rem 1rem 3rem 3rem
+    box-shadow: 10px 10px 25px 5px var(--boxshadow-color)
   
 
 #filter1
