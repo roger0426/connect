@@ -55,15 +55,22 @@ html
             select#category
               option(value='recommend') 推薦
               option(value='recommend') 隨機
-          form(action="{% url 'order' %}", method="GET")
+          form()
             p 排序
-            select#sort(name='order', onchange="this.form.submit()")
+            select#sort
               option(value='newest') 最新
               option(value='recent') 最近期
               option(value='most-like') 最多人喜歡
               option(value='most-participant') 最多人參與
           hr#line2.line
-          
+          script.
+            $(document).ready(function(){
+              $("#sort").on("change", function() {
+                sort_event_handler(
+                  "{% url 'order' %}",
+                  "{{ csrf_token }}");
+              })
+            })
               
         #eventboard
           {% for event in event_obj %}

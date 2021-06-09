@@ -198,38 +198,39 @@ def search_view(request):
   return HttpResponseRedirect('/')
 
 def order_view(request):
-  if request.method == 'GET':
-    selected_item = request.GET['order']
-    print(selected_item)
+  if request.method == 'POST':
+    data = request.POST
+    selected_item = data.get('sort_type')
+
     obj = EventsBoard.objects.order_by('-create_date')
-    if (selected_item == 'newest'):
+    if (selected_item == '0'):
       obj = EventsBoard.objects.order_by('-create_date')
-    elif (selected_item == 'recent'):
+    elif (selected_item == '1'):
       obj = EventsBoard.objects.order_by('-event_date')
-    elif (selected_item == 'most-like'):
+    elif (selected_item == '2'):
       unsorted_obj = EventsBoard.objects.all()
       obj = sorted(unsorted_obj, key=lambda t: -t.number_of_likes())
-    elif (selected_item == 'most-participant'):
+    elif (selected_item == '3'):
       unsorted_obj = EventsBoard.objects.all()
       obj = sorted(unsorted_obj, key=lambda t: -t.number_of_participants())
 
-    form = EventCreateForm(request.POST, request.FILES or None)
-    if(request.user.is_authenticated):
-      notification = SiteNotification.objects.filter(for_user = request.user).order_by('-date')
+    if selected_item == '2' or selected_item == '3':
+      obj_id_list = []
+      for event in obj:
+        obj_id_list.append(event.pk)
     else:
-      notification = None
+      obj_id_list = list(obj.values_list('pk', flat=True))
+      print(obj_id_list)
 
-    if form.is_valid():
-      instance = form.save(commit=False)
-      instance.host = request.user.userextend
-      instance.save()
-    
-    context = {
-      'event_obj': obj,
-      'form': form,
-      'notice': notification,
-    }
-    return render(request, 'homepage.pug', context)
+    return JsonResponse({
+      'status': 200,
+      'id_list': obj_id_list
+    })
+  else:
+    return JsonResponse({
+      'status': 500,
+      'error_message': "[Error] request not post, rejected"
+    })
 
 # @url: 'rate_event'
 # @request parameters

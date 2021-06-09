@@ -371,3 +371,51 @@ function join_event_handler(URL, CSRF, event_id) {
     });
   }
 }
+
+
+function sort_event_handler(URL, CSRF) {
+  let sort_type = 0;
+  switch ($("#sort").val()) {
+    case 'newest': 
+      sort_type = 0;
+      break;
+    case 'recent':
+      sort_type = 1;
+      break;
+    case 'most-like':
+      sort_type = 2;
+      break;
+    case 'most-participant':
+      sort_type = 3;
+      break;
+  }
+
+  $.ajaxSetup({
+    data: {
+      csrfmiddlewaretoken: CSRF
+    }
+  });
+  $.ajax({
+    type: "POST",
+    url: URL,
+    data: {
+      'sort_type': sort_type
+    },
+    dataType: 'json',
+    success: function(data) {
+      if (data.status == 200) {
+        console.log('sort type ' + $("#sort").val() + ' sorted');
+        let ordered_arr = [];
+        data.id_list.forEach(function(id) {
+          ordered_arr.push($("#" + id));
+        });
+        $("#eventboard").empty();
+        ordered_arr.forEach(function(element) {
+          $("#eventboard").append(element);
+        });
+      } else {
+        console.log(data.error_message);
+      }
+    }
+  });
+}
