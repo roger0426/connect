@@ -61,11 +61,11 @@ $(document).ready(function(){
   });
 
   // eventcreate window add-requirement-btn manipulate
-  $(document).on("focus", "#add-requirement-btn",function() {
+  $(document).on("focus", "#add-requirement-btn", function() {
     $(this).attr("placeholder", "");
     $(this).css("width", "2rem");
   });
-  $(document).on("blur", "#add-requirement-btn",function() {
+  $(document).on("blur", "#add-requirement-btn", function() {
     $(this).attr("placeholder", "+");
     $(this).css("width", "1rem");
 
@@ -304,8 +304,10 @@ function rate_event_handler(URL, event_id, CSRF) {
 function join_event_handler(URL, CSRF, event_id) {
   if ($("#reason").val() != "") {
     ability_str = "";
-    $('input:checkbox.requirement-tag').each(function () {
-      ability_str += $(this).val() + ",";
+    $('p.requirement-tag').each(function () {
+      if ($(this).css("background-color") == "rgb(255, 173, 148)") {
+        ability_str += $(this).text() + ",";
+      }
     });
     ability_str = ability_str.substring(0,ability_str.length-1);
     $.ajaxSetup({

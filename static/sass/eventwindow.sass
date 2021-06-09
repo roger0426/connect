@@ -98,9 +98,10 @@
             #requiretag
               background-color: white
               border-radius: 0.6rem
-              padding: 0rem 0.4rem
+              padding: 0.1rem 0.5rem
               margin-right: 0.3rem
               font-size: 0.85rem
+              text-align: center
         #date
           display: flex
           flex-direction: column;
@@ -272,7 +273,7 @@
         .eventmsg-btn
           //position: absolute
           //right: 0
-          transform: translateX(-1.5rem)
+          transform: translateX(-3.5rem)
           outline: none
           border: none
           border-radius: 3rem
@@ -436,7 +437,7 @@
       align-items: center
       flex-wrap: nowrap
       justify-content: space-evenly;
-      width: 60%
+      width: 70%
       height: 100%
       position: absolute
       left: 50%
@@ -444,28 +445,53 @@
 
 
       #eventjoinhead
-        font-size: 3rem
+        font-size: 1.7rem
+        font-weight: 600
         font-color: var(--font-color-main)
         argin-bottom: 1rem
-        margin-top: -2rem
+        margin-top: -1.5rem
       
       form
         display: flex
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        width: 75%
+        #requirement-pane
+          background-color: var(--background-color-input)
+          padding: 1rem
+          margin-bottom: 1rem
+          width: 100%
+          border-radius: 1rem
+          #requirement-text
+            margin-bottom: 0.6rem
+            font-size: 0.9rem
         #requirement-tags
           width: 100%
           display: flex
           flex-direction: row
-          justify-content: space-around
+          justify-content: flex-start
+          .requirement-tag
+            padding: 0.2rem 0.5rem
+            border-radius: 0.5rem
+            margin-right: 0.5rem
+            cursor: pointer
+        
+        textarea
+          outline: none
+          border-radius: 1rem
+          border: none
+          background-color: var(--background-color-input)
+          padding: 0.5rem
+          width: 100%
+          height: 3rem
 
       #eventjoinability
         border-radius: 1rem
         background-color: #F2F2F2
         margin-bottom: 0.7rem
         width: 100%
-        height: 4rem
+        height: 40%
 
       #eventjoinreason
         border-radius: 1rem
@@ -481,6 +507,8 @@
         font-size: 1rem
         width: 5rem;
         height: 2.5rem;
+        outline: none
+        border: none
       
   #eventcontrol
     position: absolute

@@ -91,8 +91,7 @@ function event_handler(URL, user_id, CSRF) {
       $('#event-require').html('');
       if(data.requirements != undefined) {
         data.requirements.forEach(function(item, i) {
-          console.log(item)
-          $("#eventwindow" + " #event-require").append('<div id=\"requiretag\">' + item + '</div>');
+          $("#eventwindow" + " #event-require").append("<div id='requiretag'>" + item + "</div>");
           
         });
       };
@@ -186,10 +185,7 @@ function event_handler(URL, user_id, CSRF) {
       $("#requirement-tags").empty();
       data.requirements.forEach(function(requirement) {
         $("#requirement-tags").append(
-          "<label> \
-            <input type='checkbox' class='requirement-tag' value='" + requirement +"'>" +
-            requirement +
-          "</label>"
+          "<p class='requirement-tag' style='background-color: rgb(189, 189, 189)'>" + requirement + "</p>"
         );
       });
     },
@@ -204,6 +200,14 @@ function event_handler(URL, user_id, CSRF) {
     },
     error: function(data) {
       console.log("ajax error");
+    }
+  })
+
+  $(document).on("click", "p.requirement-tag", function() {
+    if ($(this).css("background-color") == "rgb(189, 189, 189)") {
+      $(this).css("background-color", "rgb(255, 173, 148)")
+    } else {
+      $(this).css("background-color", "rgb(189, 189, 189)")
     }
   })
 };
