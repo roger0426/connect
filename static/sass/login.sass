@@ -28,117 +28,103 @@ body
     repeate: no-repeat
     position: absolute
     transform: translate(-50%, -50%)
-    top: 58%
-    left: 30%
+    top: 55%
+    left: 35vw
+    z-index: -2
+
+  .description-head
+    position: absolute
+    transform: translate(-100%, -100%)
+    top: 35%
+    left: 25vw
     z-index: -1
+    h1
+      font-size: 2.5rem
+      text-align: left
+      //width: 20rem
+      //margin-bottom: 1rem
 
-#bubbles
-  position: fixed
-  transform: translate(-50%, -50%)
-  left: 32%
-  top: 54%
-  width: 200px
-  height: 200px
-
-#world
-  position: fixed
-  z-index: -1
-  top: 0
-
-
-.grey-bubble
-  position: absolute
-  background-color: #DEDEDE
-
-.bbox
-  height: 50px
-  width: 50px
-  position: absolute
-  left: 50%
-  top: 50%
-
-#gb1
-  transform: translate(-50%, -50%) rotate(0.12turn)
-  z-index: -2
-#grey-bubble1
-  height: 15rem
-  width:  15rem
-  position: absolute
-  transform: translate(-105%, -50%)
-  top:    50%
-  left:   50%
-
-#gb2
-  transform: translate(-50%, -50%) rotate(0.13turn)
-  z-index: 2
-#grey-bubble2
-  height: 5rem
-  width:  5rem
-  position: absolute
-  transform: translate(200%, -50%)
-  top:    50%
-  left:   50%
-
-#gb3
-  transform: translate(-50%, -50%) rotate(0.86turn)
-  z-index: 3
-#grey-bubble3
-  height: 4rem
-  width:  4rem
-  position: absolute
-  transform: translate(285%, -50%)
-  top:    50%
-  left:   50%
-
-#gb4
-  transform: translate(-50%, -50%) rotate(0.33turn)
-  z-index: 4
-#grey-bubble4
-  height: 2.5rem
-  width:  2.5rem
-  position: absolute
-  transform: translate(600%, -50%)
-  top:    50%
-  left:   50%
-
-#wb1
-  transform: translate(-50%, -50%) rotate(0.12turn)
-  z-index: -1
-#white-bubble1
-  height: 25rem
-  width:  25rem
-  top:    50%
-  left:   50%
-  position: absolute
-  transform: translate(-50%, -50%)
-  background-color: #FFFFFF
-  display: block
-
-.description-head
-  position: absolute
-  transform: translate(-50%, -50%)
-  top: 33%
-  left: 23%
-  z-index: 1
-  h1
-    font-size: 2.5rem
+  .description
+    font-size: 0.9rem
+    margin-top: 1rem
+    position: absolute
+    //transform: translate(-50%, -50%)
+    z-index: -1
+    top: 60%
+    left: 45%
     text-align: left
-    //width: 20rem
-    //margin-bottom: 1rem
+    width: 15rem
+    p
+      margin-bottom: 0.2rem
+      font-weight: 500
 
-.description
-  font-size: 0.9rem
-  margin-top: 1rem
-  position: absolute
-  transform: translate(-50%, -50%)
-  z-index: 1
-  top: 65%
-  left: 46%
-  text-align: left
-  width: 15rem
-  p
-    margin-bottom: 0.2rem
-    font-weight: 500
+  /*#bubbles
+    position: fixed
+    transform: translate(-50%, -50%)
+    left: 32%
+    top: 54%
+    width: 200px
+    height: 200px
+      .grey-bubble
+        position: absolute
+        background-color: #DEDEDE
+      #grey-bubble1
+        height: 15rem
+        width:  15rem
+        position: absolute
+        transform: translate(-105%, -50%)
+        top:    50%
+        left:   50%
+    .bbox
+      height: 50px
+      width: 50px
+      position: absolute
+      left: 50%
+      top: 50%
+    #gb2
+      transform: translate(-50%, -50%) rotate(0.13turn)
+      z-index: 2
+      #grey-bubble2
+        height: 5rem
+        width:  5rem
+        position: absolute
+        transform: translate(200%, -50%)
+        top:    50%
+        left:   50%
+    #gb3
+      transform: translate(-50%, -50%) rotate(0.86turn)
+      z-index: 3
+      #grey-bubble3
+        height: 4rem
+        width:  4rem
+        position: absolute
+        transform: translate(285%, -50%)
+        top:    50%
+        left:   50%
+    #gb4
+      transform: translate(-50%, -50%) rotate(0.33turn)
+      z-index: 4
+      #grey-bubble4
+        height: 2.5rem
+        width:  2.5rem
+        position: absolute
+        transform: translate(600%, -50%)
+        top:    50%
+        left:   50%
+    #wb1
+      transform: translate(-50%, -50%) rotate(0.12turn)
+      z-index: -1
+    #white-bubble1
+      height: 25rem
+      width:  25rem
+      top:    50%
+      left:   50%
+      position: absolute
+      transform: translate(-50%, -50%)
+      background-color: #FFFFFF
+      display: block*/
+
+
 
 #panel1
   display: flex
@@ -146,9 +132,9 @@ body
   flex-wrap: wrap
   position: fixed
   top:  50%
-  right: 3%
+  right: -5vw
   transform: translate(-50%, -50%)
-  width: 18rem
+  width: 24em
   
 
 //#login-panel
@@ -160,7 +146,7 @@ body
   display: flex
   flex-direction: column
   align-items: stretch
-  padding: 1rem
+  padding: 2rem
   z-index: 10
   width: 100%
 
@@ -203,9 +189,9 @@ body
     //display: flex
     //flex-direction: row
     position: relative
-    margin: 7% 0 10% 0
+    margin: 10% 0 10% 0
     outline: none
-    height: 5rem
+    height: 1rem
 
     input
       //outline: none
@@ -265,6 +251,8 @@ body
   padding: 2rem
   z-index: 10
   width: 100%
+  height: 60vh
+  overflow-y: scroll
 
   h1
     text-align: center
