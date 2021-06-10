@@ -18,6 +18,9 @@ html
     //-script(src="{% static 'js/sweetalert2@11.js' %}")
     script(src  ="https://cdn.jsdelivr.net/npm/sweetalert2@11")
     //-script(src="sweetalert2/dist/sweetalert2.min.js")
+    script(src="{% static 'js/homepage.js' %}")
+    script(src="{% static 'js/navbar.js' %}")
+    script(src="{% static 'js/eventwindow.js' %}")
     link(rel="stylesheet", href="sweetalert2/dist/sweetalert2.min.css")
   {% include 'navbar.pug' %}
 
@@ -136,9 +139,11 @@ html
       p 嗨{{ request.user.last_name }}！你對於"{{ need_comment_event.title }}"的體驗如何呢？
       p 來為活動和參加者評分吧！
       #first-comment.comment-div
+        {% if need_comment_event.host != request.user.userextend %}
         p 給 {{ need_comment_event.host.full_name }} 的評語
         label(for="{{ need_comment_event.host.full_name }}", style="display: none") {{ need_comment_event.host.full_name }}
         input(type="text", placeholder="留言.......", name="{{ need_comment_event.host.full_name }}")
+        {% endif %}
       {% for participant in need_comment_event.participants.all %}
       {% if participant.full_name != request.user.userextend.full_name %}
       .comment-div
@@ -184,6 +189,3 @@ html
     script(src="http://code.jquery.com/ui/1.12.1/jquery-ui.js")
     //-script(src="{% static 'js/semantic.min.js' %}")
     script(src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js")
-    script(src="{% static 'js/homepage.js' %}")
-    script(src="{% static 'js/navbar.js' %}")
-    script(src="{% static 'js/eventwindow.js' %}")

@@ -26,10 +26,11 @@ def home_view(request, *args, **kwargs):
       if event.event_date:
         if event.event_date < today and \
         not Comment.objects.filter(for_event=event).filter(author=request.user.userextend)\
-        and (request.user.userextend in event.participants.all() or event.host == request.user.userextend):
-          need_comment = True
-          need_comment_event = event
-          break # start comment from the newest event
+        and (request.user.userextend in event.participants.all()\
+        or (event.host == request.user.userextend and event.participants.count() > 0)):
+            need_comment = True
+            need_comment_event = event
+            break # start comment from the newest event
 
   if(request.user.is_authenticated):
     notification = SiteNotification.objects.filter(for_user = request.user).order_by('-date')
