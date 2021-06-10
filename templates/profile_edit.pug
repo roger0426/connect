@@ -10,7 +10,8 @@ html
     link(href="{% sass_src 'sass/profile.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/variable.sass' %}",rel="stylesheet",type="text/css")
-    script(src="{% static 'js/jquery.min.js' %}")
+    //-script(src="{% static 'js/jquery.min.js' %}")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
 
   {% include 'navbar.pug' %}
 
@@ -347,9 +348,12 @@ html
       footer
         {% include "footer.pug" %}
 
-    script(src="{% static 'js/jquery-3.2.1.min.js' %}")
-    script(src="{% static 'js/jquery-ui.js' %}")
-    script(src="{% static 'js/semantic.min.js")
+    //-script(src="{% static 'js/jquery-3.2.1.min.js' %}")
+    script(src="https://code.jquery.com/jquery-3.2.1.min.js")
+    //-script(src="{% static 'js/jquery-ui.js' %}")
+    script(src="http://code.jquery.com/ui/1.12.1/jquery-ui.js")
+    //-script(src="{% static 'js/semantic.min.js")
+    script(src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js")
     script(src="{% static 'js/profile.js' %}")
     script(src="{% static 'js/profile_edit.js' %}")
     script(src="{% static 'js/navbar.js' %}")
