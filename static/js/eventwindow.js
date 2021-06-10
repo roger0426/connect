@@ -2,11 +2,11 @@ $(document).ready(function(){
 
   //eventwindow likes & participants hover name
   $(document).on("mouseenter", ".member", function() {
-    console.log('enter')
+//    console.log('enter')
     $(this).siblings('.member-hover').show();
   });
   $(document).on("mouseleave", ".member", function() {
-    console.log('leave')
+//    console.log('leave')
     $(this).siblings('.member-hover').hide();
   });
 
@@ -103,8 +103,9 @@ function event_handler(URL, user_id, CSRF) {
       $('#event-require').html('');
       if(data.requirements != undefined) {
         data.requirements.forEach(function(item, i) {
-          $("#eventwindow" + " #event-require").append("<div id='requiretag'>" + item + "</div>");
-          
+          if(item != "") {
+            $("#eventwindow" + " #event-require").append("<div id='requiretag'>" + item + "</div>");
+          }
         });
       };
       $("#eventwindow" + " #description" + " #event-date").html("活動日期<br />" + data.event_date);

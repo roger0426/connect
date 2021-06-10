@@ -20,7 +20,8 @@ from connect.view import login_view, logout, send_verification_view
 from about_us.views import about_us_view
 from events_board.views import home_view, event_detail_view, like_view, join_event_view
 from events_board.views import comment_view, search_view, order_view, rate_event_view
-from user_extend.views import profile_view, profile_event_view, modify, profile_edit_view
+#from user_extend.views import profile_view, profile_event_view, modify, profile_edit_view
+from user_extend.views import profile_view, modify, profile_edit_view
 from user_extend.views import  get_user_view, friend_request_view, friend_reply_view
 from user_extend.views import  friend_remove_view, send_comment_view
 from site_notification.views import notice_read_view
@@ -34,7 +35,7 @@ urlpatterns = [
     path('', home_view, name='home'),
 
     path('profile/<int:id>/', profile_view, name='profile'),
-    path('profile/<int:id>/event/<int:event_id>', profile_event_view, name='profile_event'),
+#    path('profile/<int:id>/event/<int:event_id>', profile_event_view, name='profile_event'),
     path('modify/<int:id>', modify, name='modify_profile'),
     path('profile/edit/<int:id>', profile_edit_view, name='profile_edit'),
     path('tag_delete/', tag_delete_view, name='tag_delete'),

@@ -19,7 +19,7 @@ html
               #event-subtitle
               #event-require
                 //ajax append #requiretag
-                  #requiretag
+                  //#requiretag
             #date
               p#event-date 活動日期
               p#due-date 報名截止
@@ -119,8 +119,8 @@ html
               button(type="image", src="{% static 'file/like-bg-n.png' %}", alt="Submit Form",name="event_id", value="{{ event_detail.id }}")
           {% endif %}
 
-      #eventjoinwindow
-        img#exitbtn3(src="{% static 'file/exiticon.png' %}")
+      #eventjoinwindow.eventsubwindow
+        img#exitbtn3.exitbtn(src="{% static 'file/exiticon.png' %}")
         .eventcontainer
           
           p#eventjoinhead 申請加入
@@ -141,7 +141,14 @@ html
                 )
               })
             })
-      #eventcontrol
-        img#exitbtn4(src="{% static 'file/exiticon.png' %}")
+      #eventcontrol.eventsubwindow
+        img#exitbtn4.exitbtn(src="{% static 'file/exiticon.png' %}")
         .eventcontainer
           
+      #eventlikes.eventsubwindow
+        img#exitbtn5.exitbtn(src="{% static 'file/exiticon.png' %}")
+        .eventcontainer
+        
+      #eventparticipants.eventsubwindow
+        img#exitbtn6.exitbtn(src="{% static 'file/exiticon.png' %}")
+        .eventcontainer

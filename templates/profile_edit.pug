@@ -212,7 +212,7 @@ html
               #activity-card.card
                 .cardleft
                   {% if activity.image %}
-                  a(href="{% url 'profile_event' id=user.pk event_id=activity.pk%}")
+                  a
                     img#activity-img.card-img(src="{{ activity.image.url }}")
                   {% else %}
                   #activity-img.card-img
@@ -227,7 +227,7 @@ html
                 
                 .cardright
                   .info
-                    a(href="{% url 'profile_event' id=user.pk event_id=activity.pk%}")
+                    a
                       p#activity-title.cardinfott {{ activity.title }}
                     {% if activity.comments.count > 0 %}
                     p#activity-rate.rate {{ activity.get_avg_rating }}★
@@ -266,7 +266,7 @@ html
               #projects-card.card
                 .cardleft
                   {% if project.image %}
-                  a(href="{% url 'profile_event' id=user.pk event_id=project.pk%}")
+                  a
                     img#projects-img.card-img(src="{{ project.image.url }}")
                   {% else %}
                   #projects-img.card-img
@@ -281,7 +281,7 @@ html
                   
                 .cardright
                   .info
-                    a(href="{% url 'profile_event' id=user.pk event_id=project.pk%}")
+                    a
                       p#project-title.cardinfott {{ project.title }}
                     {% if projects.comments.count > 0 %}
                     p#projects-rate.rate {{ project.get_avg_rating }}★
@@ -322,7 +322,7 @@ html
               #personal-card.card
                 .cardleft
                   {% if personal_proj.image %}
-                  a(href="{% url 'profile_event' id=user.pk event_id=personal_proj.pk%}")
+                  a
                     img#personal-img.card-img(src="{{ personal_proj.image.url }}")
                   {% else %}
                   #personal-img.card-img
@@ -335,7 +335,7 @@ html
                   p.date 未設定日期
                   {% endif %}
                 .cardright
-                  a(href="{% url 'profile_event' id=user.pk event_id=personal_proj.pk%}")
+                  a
                     p#personal-title {{ personal_proj.title }}
                   p#personal-detail {{ personal_proj.detail }}
               {% empty %}

@@ -90,44 +90,44 @@ def profile_view(requests, id, *args, **kwargs):
   }
   return render(requests, 'profile.pug', context)
 
-def profile_event_view(requests, id, event_id):
-  obj = UserExtend.objects.get(id=id)
-  event_obj = EventsBoard.objects.get(id=event_id)
-  friend_count = obj.friends.count()
-
-  personality_tags = obj.user.tags.filter(tag_type='個性')
-  skill_tags = obj.user.tags.filter(tag_type='專長')
-  interest_tags = obj.user.tags.filter(tag_type='有興趣的活動')
-
-  activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
-  projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
-  personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
-
-  if(requests.user.is_authenticated):
-    notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
-    has_unread = False
-    for notice in notification.all():
-      if notice.is_read == False:
-        has_unread = True
-        break
-  else:
-    has_unread = None
-    notification = None
-  
-  context = {
-    'user': obj,
-    'personality': personality_tags,
-    'skill': skill_tags,
-    'interest': interest_tags,
-    'friend_count': friend_count,
-    'activities': activities,
-    'projects': projects,
-    'personal_projs': personal_projs,
-    'event_detail': event_obj,
-    'notice': notification,
-    'notice_unread': has_unread
-  }
-  return render(requests, 'profile.pug', context)
+#def profile_event_view(requests, id, event_id):
+#  obj = UserExtend.objects.get(id=id)
+#  event_obj = EventsBoard.objects.get(id=event_id)
+#  friend_count = obj.friends.count()
+#
+#  personality_tags = obj.user.tags.filter(tag_type='個性')
+#  skill_tags = obj.user.tags.filter(tag_type='專長')
+#  interest_tags = obj.user.tags.filter(tag_type='有興趣的活動')
+#
+#  activities = EventsBoard.objects.filter(host=obj).filter(event_type='activity')
+#  projects = EventsBoard.objects.filter(host=obj).filter(event_type='project')
+#  personal_projs = EventsBoard.objects.filter(host=obj).filter(event_type='personal')
+#
+#  if(requests.user.is_authenticated):
+#    notification = SiteNotification.objects.filter(for_user = requests.user).order_by('-date')
+#    has_unread = False
+#    for notice in notification.all():
+#      if notice.is_read == False:
+#        has_unread = True
+#        break
+#  else:
+#    has_unread = None
+#    notification = None
+#
+#  context = {
+#    'user': obj,
+#    'personality': personality_tags,
+#    'skill': skill_tags,
+#    'interest': interest_tags,
+#    'friend_count': friend_count,
+#    'activities': activities,
+#    'projects': projects,
+#    'personal_projs': personal_projs,
+#    'event_detail': event_obj,
+#    'notice': notification,
+#    'notice_unread': has_unread
+#  }
+#  return render(requests, 'profile.pug', context)
 
 def modify(request, id):
   user = UserExtend.objects.filter(id = id)
