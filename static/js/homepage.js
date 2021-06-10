@@ -81,6 +81,11 @@ $(document).ready(function(){
       $(this).val("");
     }
   });
+  $(document).on("blur", ".requirement-tag", function() {
+    if ($(this).val() == "") {
+      $(this).remove();
+    }
+  })
 
 
   if($("#need-comment-flag").text() == "True") {
