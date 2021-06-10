@@ -94,6 +94,7 @@ def event_detail_view(request, id):
       'comments': comments,
       'host_id': event.host.pk,
       'host_pic': event.host.img.url,
+      'host_name': event.host.full_name,
       'requirements': requirements,
       'join_status': join_status,
       'status': 200,

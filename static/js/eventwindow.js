@@ -1,15 +1,15 @@
 $(document).ready(function(){
+
   //eventwindow likes & participants hover name
-  $(".member").mouseenter(function() {
+  $(document).on("mouseenter", ".member", function() {
     console.log('enter')
-    $(this).find('a').find('.member-hover').show();
+    $(this).siblings('.member-hover').show();
   });
-  $('.member').mouseleave(function() {
+  $(document).on("mouseleave", ".member", function() {
     console.log('leave')
-    $(this).find('a').find('.member-hover').hide();
+    $(this).siblings('.member-hover').hide();
   });
-  
-  
+
   $("#exitbtn1, #filter1").click(function() {
     //console.log("click event exit");
     $('body').css({'overflow': 'auto'});
@@ -78,16 +78,16 @@ function event_handler(URL, user_id, CSRF) {
     dataType: 'json',
     success: function(data) {
       
-      console.log("ajax success----------");
-      console.log(data)
-//      console.log("title:", data.title);
-//      console.log("subtitle:", data.subtitle);
-//      console.log("host:", data.host);
-//      console.log("image:", data.image);
-//      console.log("likes", data.likes);
-//      console.log("participants:", data.particitants);
-//      console.log("host:", data.host_id);
-//      console.log("host-pic:", data.host_pic);
+      // console.log("ajax success----------");
+      // console.log(data)
+      // console.log("title:", data.title);
+      // console.log("subtitle:", data.subtitle);
+      // console.log("host:", data.host);
+      // console.log("image:", data.image);
+      // console.log("likes", data.likes);
+      // console.log("participants:", data.particitants);
+      // console.log("host:", data.host_id);
+      // console.log("host-pic:", data.host_pic);
       
       if(data.image != null) {
         $("#eventwindow" + " #eventpic" + " img").attr('src', data.image);
@@ -113,6 +113,7 @@ function event_handler(URL, user_id, CSRF) {
       
       $("#eventwindow" + " #eventoperate" + " #organizer-link").attr('href', "/profile/" + data.host_id);
       $("#eventwindow" + " #eventoperate" + " #organizer-pic").attr('src', data.host_pic);
+      $("#eventwindow" + " #eventoperate" + " .member-hover").text(data.host_name);
       
       $("#member").html("");
       $("#eventmsg-board").html("<div id=\"eventmsg\" style=\"display: none\" class=\"eventmsg\"><a><img class=\"sender\"></a><div id=\"eventmsg-right\"><div id=\"eventmsg-righttop\"><a id=\"eventmsg-sendername\"></a><p id=\"event-date\"></p></div><div id=\"eventmsg-rightbottom\"><p id=\"eventmsgtext\"></p></div></div></div>");
@@ -154,10 +155,10 @@ function event_handler(URL, user_id, CSRF) {
             $('#likebutton').css("background-image", "url(/static/file/like-bg-y.png");
             $('#likebutton button').attr("src", "/static/file/like-bg-y.png");
           }
-          let str = "<a href=\"/profile/" + item.id + "\">\
-                      <img class=\"member interested\" src=\"https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img + "\">\
+          let str = "<a href='/profile/" + item.id + "'>\
+                      <img class='member interested' src='https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img + "'>\
                       <p class='member-hover'>" + item.full_name + "</p>\
-                      </img></a>";
+                    </a>";
           
           $("#eventoperate #member").prepend(str);
         });
@@ -165,10 +166,10 @@ function event_handler(URL, user_id, CSRF) {
       
       if(data.particitants != undefined) {
         data.particitants.forEach(function(item, i) {
-          let str = "<a href=\"/profile/" + item.id + "\">\
-                      <img class=\"member participant\" src=\"https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img + "\">\
+          let str = "<a href='/profile/" + item.id + "'>\
+                      <img class='member participant' src='https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img + "'>\
                       <p class='member-hover'>" + item.full_name + "</p>\
-                      </img></a>";
+                    </a>";
           
           $("#eventoperate #member").prepend(str);
         });
