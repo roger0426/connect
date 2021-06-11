@@ -205,9 +205,11 @@ function event_handler(URL, user_id, CSRF) {
 
       $("#requirement-tags").empty();
       data.requirements.forEach(function(requirement) {
-        $("#requirement-tags").append(
-          "<p class='requirement-tag' style='background-color: rgb(189, 189, 189)'>" + requirement + "</p>"
-        );
+        if (requirement != "") {
+          $("#requirement-tags").append(
+            "<p class='requirement-tag' style='background-color: rgb(189, 189, 189)'>" + requirement + "</p>"
+          );
+        }
       });
     },
     complete: function(data) {
@@ -224,14 +226,14 @@ function event_handler(URL, user_id, CSRF) {
     }
   })
 
-  $(document).on("click", "p.requirement-tag", function() {
-    if ($(this).css("background-color") == "rgb(189, 189, 189)") {
-      $(this).css("background-color", "rgb(255, 173, 148)")
-    } else {
-      $(this).css("background-color", "rgb(189, 189, 189)")
-    }
-  })
 };
+$(document).on("click", "p.requirement-tag", function() {
+  if ($(this).css("background-color") == "rgb(189, 189, 189)") {
+    $(this).css("background-color", "rgb(255, 173, 148)")
+  } else {
+    $(this).css("background-color", "rgb(189, 189, 189)")
+  }
+})
 
 function like_handler(URL, event_id, CSRF) {
   $.ajaxSetup({
