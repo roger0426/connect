@@ -315,20 +315,20 @@ html
                           #eventcomment-rightbottom
                             p#eventcommenttext {{ comment.text }}
                     {% else %}
-                    .eventcomment#eventcomment(style='background-color: var(--black-5)')
+                    .eventcomment#eventcomment
                       #eventcomment-right(style='justify-content: center')
                         #eventcomment-rightbottom
                           p#eventcommenttext 屬於別人的評論
                     {% endif %}
                     {% empty %}
-                    .eventcomment#eventcomment(style='background-color: var(--black-5)')
+                    .eventcomment#eventcomment
                       #eventcomment-right(style='justify-content: center')
                         #eventcomment-rightbottom
                           p#eventcommenttext 目前還沒有評論~
                     {% endfor %}
               {% empty %}
               #activity-card.card
-                p.hint(style="color: #E98C6F") 看來他好像還沒參加過活動喔
+                p.hint(style="color: var(--background-color-navbar)") 看來他好像還沒參加過活動喔
               {% endfor %}
               script.
                 $(document).ready(function(){

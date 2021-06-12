@@ -11,6 +11,16 @@ body
   width: 100%
   height: 100%
 
+::-webkit-scrollbar
+  width: 4px
+::-webkit-scrollbar-track
+  background: transparent //#f1f1f1
+  border-radius: 5px
+::-webkit-scrollbar-thumb
+  background: #CCC
+  border-radius: 2px
+::-webkit-scrollbar-thumb:hover
+  background: #888
 
 a
   text-decoration: none
@@ -91,8 +101,8 @@ footer
     left: 50%
     display: flex
     flex-direction: row
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: space-evenly
+    align-items: center
     background-color: var(--background-color-intro)
     border-radius: 3rem
     width: auto
@@ -231,7 +241,7 @@ footer
           margin: 0
           padding: 0.3rem 0
           font-weight: 900
-          color: var(--background-color-button)
+          color: var(--fontcolor-third)
         .tag-style
           position: relative
           min-width: 4.4rem
@@ -247,11 +257,11 @@ footer
           p
             font-weight: 400
           .cmt-count
-            background-color: white
+            background-color: var(--black-1)
             width: calc(1rem + 0.5rem)
             padding: 0
             border-radius: 50%
-            color: #555555
+            color: var(--fontcolor-reverse)
             font-size: 1.1rem
             font-weight: 700
 
@@ -293,9 +303,9 @@ footer
                 border-radius: 50%
                 background-color: #DDD
               .comment-insert
-                width: 8rem //9rem
+                width: 10rem //9rem
                 margin: 0 0.5rem 0 0
-                background-color: #EEE //var(--background-color-description)
+                background-color: var(--background-color-input)
               .comment-insert::-webkit-input-placeholder
                 color: #888888
 
@@ -318,13 +328,14 @@ footer
                   margin: 0
 
                 #cmtfrom
-                  background-color: var(--background-color-navbar)
+                  background-color: var(--border-color-userpic)
                   width: 2rem
                   height: 2rem
                   border-radius: 50%
+                  border: var(--border-color-frame) solid 1px
 
                 #cmttext
-                  background-color: var(--background-color-intro)
+                  background-color: var(--background-color-event)
                   width: 83%
                   border-radius: 0.7rem
                   margin: 0 0 0 0.5rem
@@ -347,9 +358,9 @@ footer
           width: 5rem
         
         input
-          background-color: #FFCFBF
+          background-color: var(--background-color-input)
         input:hover
-          background-color: #FFAD94
+          background-color: var(--background-color-input-hover)
       
       .tag-field:nth-child(3)
         .tag-style
@@ -462,7 +473,7 @@ footer
         font-size: 0.8rem
   
     .tag-style
-      background-color: #FFCFBF
+      background-color: var(--background-color-tag1)
       border-radius: 1.5rem
       margin-right: 0.5rem
       margin: 0.2rem
@@ -476,10 +487,10 @@ footer
             
     #interest
       .tag-style
-        background-color: #75E1C7
+        background-color: var(--background-color-tag3)
       
     .lefthr
-      background-color: #FAAD95
+      //background-color: #FAAD95
       align: center
       height: 1px
       width: 100%
@@ -514,8 +525,8 @@ footer
         align-content: space-between;
         position: absolute
         padding: 0.5rem
-        background-color: white
-        border: solid #FFAD94 0.1rem
+        background-color: var(--background-color-freind)
+        border: solid var(--background-color-navbar) 0.1rem
         border-radius: 0.8rem
         min-width: 14rem;
         box-shadow: 0.15rem 0.1rem 0.3rem 0.1rem var(--boxshadow-color)
@@ -543,7 +554,7 @@ footer
               align-items: flex-start;
               p
                 font-size: 0.8rem
-                color: #666666
+                color: var(--fontcolor-second)
               p:nth-child(1)
                 font-weight: 500
               p:nth-child(2)
@@ -572,7 +583,7 @@ footer
       .tag
         width: calc(100% / 3)
         height: 100%
-        background-color: var(--background-color-freind)
+        //background-color: var(--background-color-freind)
         opacity: 1
         z-index: 0
         border: solid 2px
@@ -583,7 +594,7 @@ footer
         cursor: pointer
                 
       .tag:nth-child(1)
-        background-color: var(--border-color-frame)
+        background-color: var(--background-color-event)
         
     #tab-navbar
         
@@ -629,7 +640,7 @@ footer
         padding: 1.5rem
         border-radius: 1rem
         border: solid 2px
-        border-color: var(--border-color-tag2)
+        border-color: var(--background-color-tag3)
 
         .cardleft
           display: flex
@@ -648,11 +659,11 @@ footer
             background-color: var(--background-color-event)
             cursor: pointer
             #nopicalert
-              width: 12vw
+              width: 10rem
               text-align: center
               font-size: 1.5rem
               color: var(--fontcolor-second)
-              line-height: 12vw
+              line-height: 10rem
               
           #project-date
             width: 6rem
@@ -710,11 +721,11 @@ footer
               font-size: 0.8rem
               //line-height: 1.2rem
               //margin-left: 0.5rem
-              background-color: var(--background-color-freind)
+              background-color: var(--background-color-activity)
               padding: 0.1rem 0.3rem
               border-radius: 1rem
               border: solid 2px
-              border-color: var(--border-color-tag2)
+              border-color: var(--border-color-tag3)
             
           .comments
             display: flex
@@ -745,7 +756,7 @@ footer
               align-items: flex-start
               width: calc(100% - 1.5rem)
               border-radius: 0.5rem
-              background-color: var(--green-3) //var(--background-color-input-hover)
+              background-color: var(--background-color-input-hover)
               padding: 0.5rem
               
               a

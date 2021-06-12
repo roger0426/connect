@@ -11,6 +11,25 @@ $(document).ready(function(){
     $(this).parent().find('.hover').hide();
   });
   
+  $("#gotop").mouseenter(function() {
+    $("#gotop").css({opacity: 0.65});
+  });
+  $('#gotop').mouseleave(function() {
+    $("#gotop").css({opacity: 1});
+  });
+  
+  $("#gotop").click(function(){
+    jQuery("html,body").animate({
+        scrollTop:0
+    },1000);
+  });
+  $(window).scroll(function() {
+    if ( $(this).scrollTop() > 50){
+      $('#gotop').fadeIn("fast");
+    } else {
+      $('#gotop').stop().fadeOut("fast");
+    }
+  });  
   
     
   $('#alert').click(function(){
