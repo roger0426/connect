@@ -133,7 +133,6 @@ html
           script.
             $(document).ready(function(){
               $("input.eventjoinbtn").on("click", function() {
-                console.log("clicked")
                 join_event_handler(
                   "{% url 'join_event' %}",
                   "{{ csrf_token }}",
@@ -144,6 +143,38 @@ html
       #eventcontrol.eventsubwindow
         img#exitbtn4.exitbtn(src="{% static 'file/exiticon.png' %}")
         .eventcontainer
+          input#edit-btn(type="button", value="編輯活動")
+          input#delete-btn(type="button", value="刪除活動")
+
+          script.
+            $(document).ready(function(){
+              $("input#edit-btn").on("click", function() {
+                edit_event_transition();
+              })
+              $("input#delete-btn").on("click", function() {
+                delete_event_handler(
+                  "{% url 'delete_event' %}",
+                  "{{ csrf_token }}",
+                  $(this).closest('#eventwindow').attr('class')
+                )
+              })
+              $(document).on("click", "input#edit-confirm-btn", function() {
+                edit_event_handler(
+                  "{% url 'edit_event' %}",
+                  "{{ csrf_token }}",
+                  $(this).closest('#eventwindow').attr('class')
+                )
+              })
+              $(document).on("click", "input#edit-cancel-btn", function() {
+                let id = $(this).closest('#eventwindow').attr('class')
+                reset_event_window();
+                event_handler(
+                "/event/" + id, 
+                "{{ request.user.id }}", 
+                "{{ csrf_token }}"
+              );
+              })
+            })
           
       #eventlikes.eventsubwindow
         img#exitbtn5.exitbtn(src="{% static 'file/exiticon.png' %}")

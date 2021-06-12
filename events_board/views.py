@@ -341,3 +341,46 @@ def join_event_view(request):
       'status': 500,
       'error_message': "[Error] request not post, rejected"
     })
+
+def edit_event_view(request):
+  if request.method == "POST":
+    data = request.POST
+    event = get_object_or_404(EventsBoard, id=data.get('event_id'))
+    has_change = 0
+    if data.get('title') != "":
+      has_change = 1
+      event.title = data.get('title')
+    if data.get('subtitle') != "":
+      has_change = 1
+      event.subtitle = data.get('subtitle')
+    if data.get('detail') != "":
+      has_change = 1
+      event.detail = data.get('detail')
+    if not has_change:
+      return JsonResponse({
+        'status': 500,
+        'error_message': '[Error] please confirm you have input some string'
+      })
+    event.save()
+    return JsonResponse({
+      'status': 200,
+    })
+  else:
+    return JsonResponse({
+      'status': 500,
+      'error_message': "[Error] request not post, rejected"
+    })
+
+def delete_event_view(request):
+  if request.method == "POST":
+    data = request.POST
+    event = get_object_or_404(EventsBoard, id=data.get('event_id'))
+    event.delete()
+    return JsonResponse({
+      'status': 200,
+    })
+  else:
+    return JsonResponse({
+      'status': 500,
+      'error_message': "[Error] request not post, rejected"
+    })

@@ -17,6 +17,7 @@ $(document).ready(function(){
       $("#eventwindow").hide();
     })
     $("#eventjoinwindow").animate({opacity: 0}, 400, function() {
+      reset_event_window();
       $("#eventjoinwindow").hide();
     $("#eventjoinwindow").css({height: 0})
     })
@@ -48,23 +49,47 @@ $(document).ready(function(){
     })
   });
   
-  $(".eventjoin-btn").click(function() {
-    console.log("click event join");
-    $("#eventjoinwindow").show();
-    $("#eventjoinwindow").animate({'height': '75%', opacity: 1}, 400, function() {
-    })
-  })
-  
-  $(".eventedit-btn").click(function() {
-    console.log("click event join");
-    $("#eventcontrol").show();
-    $("#eventcontrol").animate({'height': '75%', opacity: 1}, 400, function() {
-    })
-  })
-  
 });
+
+$(document).on('click', ".eventjoin-btn", function() {
+  console.log("click event join");
+  $("#eventjoinwindow").show();
+  $("#eventjoinwindow").animate({'height': '75%', opacity: 1}, 400, function() {
+  })
+})
+
+$(document).on('click', ".eventedit-btn", function() {
+  console.log("click event join");
+  $("#eventcontrol").show();
+  $("#eventcontrol").animate({'height': '75%', opacity: 1}, 400, function() {
+  })
+})
+
+function reset_event_window() {
+  // restore to the beginning status of event window
+  $("#event-title").replaceWith(
+    "<div id='event-title'></div>"
+  );
+  $("#event-subtitle").replaceWith(
+    "<div id='event-subtitle'></div>"
+  );
+  $("#event-detail").replaceWith(
+    "<div id='event-detail'></div>"
+  )
+  // $("#eventwindow-bg").replaceWith(
+  //   "<div id='eventwindow-bg'>\
+  //     <div id='eventpic'>\
+  //       <img class='pic' style='display:none'>\
+  //       <p>目前沒有圖片</p>\
+  //     </div>\
+  //   </div>"
+  // );
+  $("#edit-confirm-btn").replaceWith(
+    "<input type='button' class='eventedit-btn' value='編輯活動'>"
+  );
+  $("#edit-cancel-btn").remove();
+}
                   
- 
 function event_handler(URL, user_id, CSRF) {
   $.ajaxSetup({
     data: {
@@ -234,6 +259,125 @@ $(document).on("click", "p.requirement-tag", function() {
     $(this).css("background-color", "rgb(189, 189, 189)")
   }
 })
+
+function edit_event_transition() {
+  $("#event-title").replaceWith(
+    "<input type='text' id='event-title' placeholder='" + $("#event-title").text() +"'>"
+  );
+  $("#event-subtitle").replaceWith(
+    "<input type='text' id='event-subtitle' placeholder='" + $("#event-subtitle").text() +"'>"
+  );
+  $("#event-detail").replaceWith(
+    "<textarea id='event-detail' placeholder='" + $("#event-detail").text() + "'>"
+  );
+  // $("#eventwindow-bg").replaceWith(
+  //   "<input type='file' name='image' alt='image' id='eventwindow-bg'>"
+  // );
+  $(".eventedit-btn").replaceWith(
+    "<input type='button' id='edit-confirm-btn' value='確認'>\
+    <input type='button' id='edit-cancel-btn' value='取消'>"
+  );
+  $('body').css({'overflow': 'auto'});
+  $(".eventsubwindow").animate({height: 0, opacity: 1}, 400, function() {
+    $(".eventsubwindow").hide();
+  });
+}
+
+function edit_event_handler(URL, CSRF, event_id) {
+  $.ajaxSetup({
+    data: {
+      csrfmiddlewaretoken: CSRF
+    }
+  });
+  $.ajax({
+    type: "POST",
+    url: URL,
+    data: {
+      'event_id': event_id,
+      'title': $("#event-title").val(),
+      'subtitle': $("#event-subtitle").val(),
+      'detail': $("#event-detail").val()
+    },
+    dataType: 'json',
+    success: function(data) {
+      if (data.status == 200) {
+        console.log("modify event successfully");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: '已修改活動',
+          text: "正在跳轉回主頁面",
+          showConfirmButton: false,
+        })
+        setTimeout(function(){
+          location.reload();
+        }, 1000);
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: '喔不出錯了',
+          text: data.error_message,
+          showConfirmButton: false,
+          timer: 2000,
+        })
+      }
+    }
+  });
+}
+
+function delete_event_handler(URL, CSRF, event_id) {
+  Swal.fire({
+    title: '你確定嗎？',
+    text: "刪除後將不可恢復",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: '刪掉他'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajaxSetup({
+        data: {
+          csrfmiddlewaretoken: CSRF
+        }
+      });
+      $.ajax({
+        type: "POST",
+        url: URL,
+        data: {
+          'event_id': event_id,
+        },
+        dataType: 'json',
+        success: function(data) {
+          if (data.status == 200) {
+            console.log("delete event successfully");
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: '已刪除活動',
+              text: "正在跳轉回主頁面",
+              showConfirmButton: false,
+            })
+            setTimeout(function(){
+              location.reload();
+            }, 1000);
+          } else {
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: '喔不出錯了',
+              text: data.error_message,
+              showConfirmButton: false,
+              timer: 2000,
+            })
+          }
+        }
+      });
+    }
+  })
+  
+}
 
 function like_handler(URL, event_id, CSRF) {
   $.ajaxSetup({
