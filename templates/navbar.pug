@@ -13,7 +13,10 @@ header
       #title CONNECT.
 
     form(action="{% url 'search' %}", method="GET") 
-     input(type="text", placeholder="Search", name="search")
+      input(type="text", placeholder="Search", name="search")
+      select#category
+        option(value='recommend') 使用者
+        option(value='recommend') 活動
 
     ul
       li 
