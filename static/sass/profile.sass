@@ -144,7 +144,7 @@ footer
           width: 13vw
           height: 13vw
           border-radius: 50%
-          background-color: var(--background-color-frames)
+          background-color: var(--background-color-userpic)
           opacity: 0.7
           text-align: center
           font-size: 1.3vw
@@ -285,8 +285,11 @@ footer
             border: solid 1px var(--background-color-navbar)
             box-shadow: 0.1rem 0.15rem 0.3rem 0.2rem var(--boxshadow-color)
             .sendbutton
-              width: 2rem
-              height: 2rem
+              //width: 2rem
+              //height: 1.3rem
+              padding: 0 0.4rem
+              outline: none
+              border-radius: 0.5rem
             
             #tag-comment-send-region
               margin: 0 0 0.5rem 0
@@ -358,9 +361,9 @@ footer
           width: 5rem
         
         input
-          background-color: var(--background-color-input)
+          background-color: var(--background-color-tag1)
         input:hover
-          background-color: var(--background-color-input-hover)
+          background-color: var(--background-color-tag1-hover)
       
       .tag-field:nth-child(3)
         .tag-style
@@ -840,6 +843,7 @@ footer
     #left-pane
       width: auto
       margin-bottom: 2rem
+      position: static
     #right-pane
       width: auto
     

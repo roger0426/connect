@@ -52,16 +52,16 @@ $(document).ready(function(){
 });
 
 $(document).on('click', ".eventjoin-btn", function() {
-  console.log("click event join");
+  //console.log("click event join");
   $("#eventjoinwindow").show();
   $("#eventjoinwindow").animate({'height': '75%', opacity: 1}, 400, function() {
   })
 })
 
 $(document).on('click', ".eventedit-btn", function() {
-  console.log("click event join");
+  //console.log("click event join");
   $("#eventcontrol").show();
-  $("#eventcontrol").animate({'height': '75%', opacity: 1}, 400, function() {
+  $("#eventcontrol").animate({'height': '30%', opacity: 1}, 400, function() {
   })
 })
 

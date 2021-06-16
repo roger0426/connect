@@ -7,7 +7,7 @@ $(document).ready(function(){
   });
 
   $("#insertbox").click(function() {
-    console.log("click createevent");
+    //console.log("click createevent");
     $('input[type=text]').val('');
     $('textarea').val('');
     $('#id_image').val('');
@@ -104,7 +104,7 @@ $(document).ready(function(){
       $('input[type=text]').val('');
       //$("#comment-window").css({'content-visibility': 'hidden'});
       $("#comment-window").hide();
-      console.log('hide window')
+      //console.log('hide window')
     })
     $("#filter1").animate({opacity: 0}, 150, function() {
       $("#filter1").hide();
@@ -181,9 +181,6 @@ $(document).ready(function(){
   
   let searchParams = window.location.href
   if (searchParams.includes('event')) {
-    console.log('here') 
-
-    //$('#eventwindow').show();
     $('#eventwindow').css({'display': 'flex'});
   }
 
@@ -395,6 +392,7 @@ function sort_event_handler(URL, CSRF) {
         ordered_arr.forEach(function(element) {
           $("#eventboard").append(element);
         });
+        $("#eventboard").append("<div id=\"virtualdiv\"></div><div id=\"virtualdiv\"></div><div id=\"virtualdiv\"></div><div id=\"virtualdiv\"></div>");
       } else {
         console.log(data.error_message);
       }

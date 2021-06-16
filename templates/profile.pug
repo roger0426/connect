@@ -71,7 +71,7 @@ html
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
                       .cmd-txt-region
                         input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
-                      button.sendbutton(src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit")
+                      button.sendbutton(src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit") 送出
                       #tag-id(style="display: none") {{ skill.id }}
                     {% else %}
                     {% endif %}
@@ -113,6 +113,7 @@ html
                 {% endfor %}
 
               #buttons
+                {% if request.user.is_authenticated %}
                 {% if request.user.is_authenticated and request.user.pk == user.user.pk %}
                 a(href="{% url 'profile_edit' request.user.userextend.pk %}") 編輯
                 {% else %}
@@ -169,7 +170,7 @@ html
                   })
                 {% endif %}
 
-                input(type="button", value="傳訊息")
+                //input(type="button", value="傳訊息")
 
                 script.
                   $(document).ready(function(){
@@ -184,6 +185,10 @@ html
                       $("#request-sent").show();
                     });
                   })
+                {% endif %}
+                
+                {% else %}
+                a(href="{% url 'login' %}" title="登入") 立刻加入connect
                 {% endif %}
                            
         #graph(style="display: none")

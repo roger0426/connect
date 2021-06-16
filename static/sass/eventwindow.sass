@@ -96,11 +96,13 @@
             justify-content: flex-start;
             align-items: flex-start;
             margin-top: 0.2rem
+            max-height: 7rem;
+            overflow: auto;
             #requiretag
               background-color: white
               border-radius: 0.6rem
               padding: 0.1rem 0.5rem
-              margin-right: 0.3rem
+              margin: 0 0.5rem 0.3rem 0
               font-size: 0.85rem
               text-align: center
         #date
@@ -274,7 +276,7 @@
         .eventmsg-btn
           //position: absolute
           //right: 0
-          transform: translateX(-3.5rem)
+          transform: translateX(-1.4rem)
           outline: none
           border: none
           border-radius: 3rem
@@ -343,6 +345,7 @@
       .member-hover
         display: none
         position: absolute
+        transform: translate(3.7rem, -150%);
         font-size: 0.8rem
         white-space: nowrap
         padding: 0.2rem 0.3rem
@@ -477,18 +480,22 @@
           margin-bottom: 1rem
           width: 100%
           border-radius: 1rem
+          max-height: 7rem;
+          overflow: auto;
           #requirement-text
             margin-bottom: 0.6rem
             font-size: 0.9rem
         #requirement-tags
           width: 100%
           display: flex
-          flex-direction: row
-          justify-content: flex-start
+          flex-direction: row;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          align-items: center;
           .requirement-tag
             padding: 0.2rem 0.5rem
             border-radius: 0.5rem
-            margin-right: 0.5rem
+            margin: 0 0.5rem 0.3rem 0
             cursor: pointer
         
         textarea
