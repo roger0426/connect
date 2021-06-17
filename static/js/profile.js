@@ -53,10 +53,10 @@ $(document).ready(function(){
     event.stopPropagation();
   });
   
-  $("#user-name").click(function() {
-    console.log("open graph")
-    $("#graph").toggle()
-  })
+//  $("#user-name").click(function() {
+//    console.log("open graph")
+//    $("#graph").toggle()
+//  })
   
   $('#friends-avatar a').mouseenter(function() {
     $(this).find('.friend-info').css({'display': 'flex'});
