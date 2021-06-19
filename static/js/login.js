@@ -66,6 +66,7 @@ $('input').keyup(function() {
       $('.err-msg').show();
       $('#sign-up-btn').prop('disabled', true);
       $('.err-msg').text("喔不，你的密碼好像打錯了！");
+//      $('#sign-up-panel').css('height', '77vh');
     }
   }
 })

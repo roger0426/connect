@@ -407,14 +407,12 @@ html
                 p.hint(style="color: #E98C6F") 看來他好像還沒參與過專案
               {% endfor %}
                     
-
-
-            #personal.page-panel(style="display: none")
+            #personal.page-panel
               {% for personal_proj in personal_projs %}
-              .card
+              .card(id='{{ activity.pk }}' margin='0')
                 .cardleft
                   {% if personal_proj.image %}
-                  a(href="{% url 'profile_event' id=user.pk event_id=personal_proj.pk%}")
+                  a
                     img#personal-img.card-img(src="{{ personal_proj.image.url }}")
                   {% else %}
                   #personal-img.card-img
@@ -433,13 +431,13 @@ html
                     p.detail 未設定詳情
                     {% endif %}
                 .cardright
-                  a(href="{% url 'profile_event' id=user.pk event_id=personal_proj.pk%}")
+                  a
                     p#personal-title {{ personal_proj.title }}
                   p#personal-detail {{ personal_proj.detail }}
               {% empty %}
-              #activity-card.card
-                p.hint(style="color: #E98C6F") 看來他好像還沒新增過個人專案
-              {% endfor %}
+              #personal-card.card
+                  p.hint(style="color: #E98C6F") 看來他好像還沒新增過個人專案
+                {% endfor %}
                    
       footer
         {% include "footer.pug" %}

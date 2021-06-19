@@ -42,7 +42,7 @@ $(document).ready(function(){
   
   //event control center
   $("#exitbtn4").click(function() {
-    //console.log("click event exit");
+    console.log("click event exit");
     $('body').css({'overflow': 'auto'});
     $("#eventcontrol").animate({opacity: 0}, 400, function() {
       $("#eventcontrol").hide();
@@ -162,6 +162,7 @@ function event_handler(URL, user_id, CSRF) {
                 user_name = data.user_name;
                 user_img_url = data.user_img_url;
                 $('#' + clone_id + ' #eventmsg-sendername').html(data.user_name);
+                $('#' + clone_id + " a").attr('href', 'profile/' + item.author_id);
                 $('#' + clone_id + " img").attr('src', data.user_img_url);
                 $('#' + clone_id + ' #event-date').html(item.date);
                 $('#' + clone_id + " #eventmsgtext").html(item.text);

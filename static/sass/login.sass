@@ -24,12 +24,11 @@ body
 #background-element
     
   #login-leftpic
-    width: 45rem
-    repeate: no-repeat
+    width: 37rem
     position: absolute
     transform: translate(-50%, -50%)
     top: 55%
-    left: 35vw
+    left: 32%
     z-index: -2
 
   .description-head
@@ -146,14 +145,14 @@ body
   display: flex
   flex-direction: column
   align-items: stretch
-  padding: 2rem
+  padding: 1.5rem 2rem
   z-index: 10
   width: 100%
 
   h1
     text-align: center
-    font-size: 2rem
-    margin: 0rem 0 1rem 0
+    font-size: 2.5rem
+    margin: 0 0 0.5rem 0
   hr
     height: 0rem
     border: #FFC5B2 solid 0.1rem
@@ -251,16 +250,12 @@ body
   padding: 2rem
   z-index: 10
   width: 100%
-  height: 60vh
-  overflow-y: scroll
+  //height: 72vh
+  overflow-y: auto
 
-  h1
-    text-align: center
-    font-size: 3rem
-    margin: 1rem 0 1rem 0
   hr
     border-top: #FFC5B2 solid 0.15rem
-    margin-bottom: 1rem
+    margin-bottom: 0.2rem
 
   form
     display: flex
@@ -277,7 +272,12 @@ body
         border: none
         padding: 1% 2%
         font-size: 0.8rem
-        background-color: #3AEDC2
+        background-color: var(--background-color-button)//#3AEDC2
+        cursor: pointer
+      input[type=button]:hover
+        background-color: var(--background-color-button-hover)
+      input[type=button]:active
+        background-color: var(--background-color-button)
 
   .input-area
     border-radius: 2vh
@@ -287,7 +287,7 @@ body
     text-indent: 1em
     padding: 5px 0px 5px 0px
     border: 0.15rem solid #FFC5B2
-    margin: 0.5rem 0.5rem 0
+    margin: 0.4rem 0.5rem 0
   
   .err-msg
     font-size: 1.2rem
@@ -303,33 +303,30 @@ body
     label
       margin-top: 0.7rem
       margin-left: 0.8rem
-      font-size: 0.8rem
+      font-size: 0.7rem
     input
       margin-top: 0.7rem
       margin-left: 0.8rem
   .buttons
-    //display: flex
-    //flex-direction: row
-    position: relative
-    margin: 5% 0 3% 0
-    outline: none
-    height: 5rem
+    position: relative;
+    margin: 10% 0 5% 0;
+    outline: none;
+    height: 1rem;
 
     input
-      //outline: none
-      position: absolute
-      transform: translate(-50%, -50%)
-      top: 50%
-      left: 50%
-      //margin: 0 1rem 0 50%
-      padding: 5% 10% 5% 10%
-      background-color: #3AEDC2
-      border: none
-      border-radius: 3vh
-      height: auto
-      width: auto
-      outline: none
-      font-size:  1.7rem
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      padding: 0.2rem 0.8rem;
+      background-color: #3AEDC2;
+      border: none;
+      border-radius: 3vh;
+      height: auto;
+      width: auto;
+      outline: none;
+      font-size: 1.3rem;
+      text-align: center;
 
     p
       position: absolute
