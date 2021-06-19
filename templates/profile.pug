@@ -353,7 +353,7 @@ html
             
             #projects.page-panel(style="display: none")
               {% for project in projects %}
-              .card
+              .card(id='{{ project.pk }}' margin='0')
                 .cardleft
                   {% if project.image %}
                   a
@@ -409,7 +409,7 @@ html
                     
             #personal.page-panel
               {% for personal_proj in personal_projs %}
-              .card(id='{{ activity.pk }}' margin='0')
+              .card(id='{{ personal_proj.pk }}' margin='0')
                 .cardleft
                   {% if personal_proj.image %}
                   a
@@ -436,8 +436,8 @@ html
                   p#personal-detail {{ personal_proj.detail }}
               {% empty %}
               #personal-card.card
-                  p.hint(style="color: #E98C6F") 看來他好像還沒新增過個人專案
-                {% endfor %}
+                p.hint(style="color: #E98C6F") 看來他好像還沒新增過個人專案
+              {% endfor %}
                    
       footer
         {% include "footer.pug" %}
@@ -447,12 +447,12 @@ html
       $('.info a').on("click", function() {
         $('#eventwindow').attr('class', this.closest('.card').id)
         console.log("event/" + this.closest('.card').id)
-        event_handler("../../event/" + this.closest('.card').id, "{{ request.user.id }}", "{{ csrf_token }}");
+        event_handler("/event/" + this.closest('.card').id, "{{ request.user.id }}", "{{ csrf_token }}");
       });
       $('.card-img').on("click", function() {
         $('#eventwindow').attr('class', this.closest('.card').id)
         console.log("event/" + this.closest('.card').id)
-        event_handler("../../event/" + this.closest('.card').id, "{{ request.user.id }}", "{{ csrf_token }}");
+        event_handler("/event/" + this.closest('.card').id, "{{ request.user.id }}", "{{ csrf_token }}");
       });
 
     //-script(src="{% static 'js/semantic.min.js' %}")
