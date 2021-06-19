@@ -14,11 +14,19 @@ $(document).ready(function(){
 
     // change "date" filed from text field to date filed
     $("#id_event_date")
-      .attr("onfocus", "(this.type='date')")
-      .attr("onfocusout", "(this.type='text')")
+    .on("focus", function() {
+      $(this).attr('type', 'date');
+    })
+    .on("focusout", function() {
+      $(this).attr('type', 'text');
+    })
     $("#id_due_date")
-      .attr("onfocus", "(this.type='date')")
-      .attr("onfocusout", "(this.type='text')")
+    .on("focus", function() {
+      $(this).attr('type', 'date');
+    })
+    .on("focusout", function() {
+      $(this).attr('type', 'text');
+    })
 
     // eventcreate window requirements
     $("#requirements").remove()

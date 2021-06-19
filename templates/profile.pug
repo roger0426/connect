@@ -199,7 +199,7 @@ html
               p 連結人
               p#friend-count {{ friend_count }}
             #friends-avatar.left-region
-              {% for friend, friend_connect in friend_zip %}
+              {% for friend, friend_connect, common_friend in friend_zip %}
               a(href="{% url 'profile' id=friend.userextend.pk %}")
                 img.friend-img(src="{{ friend.userextend.img.url }}")
                 .friend-info
@@ -210,12 +210,12 @@ html
                       .info-brief-school
                         p {{ friend.userextend.department }}
                         p {{ friend.userextend.grade }}
-                        p n 位共同連結
+                        p {{ common_friend }} 位共同連結
                   {% if friend_connect %}
                   p {{ friend.last_name }} 與他一起參與過 {{ friend_connect }} 個活動
                   //{{ user.user.last_name }}
                   {% else %}
-                  p {{ friend.last_name }} 與他 還沒有一起參與過活動
+                  p {{ friend.last_name }} 與他還沒有一起參與過活動
                   {% endif %}
               {% empty %}
               p 快去建立連結吧
@@ -356,7 +356,7 @@ html
               .card
                 .cardleft
                   {% if project.image %}
-                  a(href="{% url 'profile_event' id=user.pk event_id=project.pk%}")
+                  a
                     img#projects-img.card-img(src="{{ project.image.url }}")
                   {% else %}
                   #projects-img.card-img

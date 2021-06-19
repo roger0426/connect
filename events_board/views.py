@@ -77,9 +77,10 @@ def event_detail_view(request, id):
     # 3: applied, rejected
     join_status = 0
     for application in event.applications.all():
-      if application.applicant == request.user.userextend:
-        join_status = application.status
-        break
+      if request.user.is_authenticated:
+        if application.applicant == request.user.userextend:
+          join_status = application.status
+          break
 
 
     return JsonResponse({

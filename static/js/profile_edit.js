@@ -54,7 +54,7 @@ function tag_edit_handler(URL, CSRF, text, tag_type) {
       if (data.status == 200) {
         console.log('[Success] Successfully add new tag ' + text);
         $('.' + tag_type + '-input').before(
-          "<div class='tag-style'><p class='tags normaltag'>" + text + "</p><p class='tags deletetag'>刪除</p></div>"
+          "<div class='tag-style'><pz class='tags normaltag'>" + text + "</pz><p class='tags deletetag'>刪除</p></div>"
         );
         $('.' + tag_type + '-input').val("")
       } else {

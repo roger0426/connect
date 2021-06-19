@@ -77,6 +77,16 @@ function send_verification_handler(URL, CSRF) {
       csrfmiddlewaretoken: CSRF
     }
   });
+  let timerInterval
+  Swal.fire({
+    title: '申請處理中',
+    html: '請稍等......',
+    timer: 2000,
+    timerProgressBar: false,
+    didOpen: () => {
+      Swal.showLoading()
+    },
+  })
   $.ajax({
     type: 'post',
     url: URL,
@@ -92,8 +102,24 @@ function send_verification_handler(URL, CSRF) {
         setTimeout(function() {
           $("#send-check").removeAttr("disabled");      
         }, 60000);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: '確認信已送出',
+          text: "去確認看看吧，如未收到信件請於60秒後重試",
+          showConfirmButton: false,
+          timer: 2000,
+        });
       } else {
         console.log(data.error_message);
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: '喔不出錯了',
+          text: "請再確認一次 " + data.error_message,
+          showConfirmButton: false,
+          timer: 2000,
+        })
       }
     }
   })
