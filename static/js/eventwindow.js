@@ -125,7 +125,8 @@ function event_handler(URL, user_id, CSRF) {
       };
       $("#eventwindow" + " #description" + " #event-date").html("活動日期<br />" + data.event_date);
       $("#eventwindow" + " #description" + " #due-date").html("報名截止<br />" + data.due_date);
-      $("#eventwindow" + " #event-detail").html(data.detail);
+      let br_detail = data.detail.replaceAll("\n", "<br>");
+      $("#eventwindow" + " #event-detail").html(br_detail);
       
       $("#eventwindow" + " #eventoperate" + " #organizer-link").attr('href', "/profile/" + data.host_id);
       $("#eventwindow" + " #eventoperate" + " #organizer-pic").attr('src', data.host_pic);
