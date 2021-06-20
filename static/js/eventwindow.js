@@ -126,6 +126,9 @@ function event_handler(URL, user_id, CSRF) {
       $("#eventwindow" + " #description" + " #event-date").html("活動日期<br />" + data.event_date);
       $("#eventwindow" + " #description" + " #due-date").html("報名截止<br />" + data.due_date);
       let br_detail = data.detail.replaceAll("\n", "<br>");
+      let detail_url = br_detail.match(/(http[s]?:\/\/)?([^\/\s]+\/)(.*)/g)
+      br_detail = br_detail.replace(detail_url, "<a href='" + detail_url + "' style='color: blue; margin:0'>" + detail_url + "</a>");
+
       $("#eventwindow" + " #event-detail").html(br_detail);
       
       $("#eventwindow" + " #eventoperate" + " #organizer-link").attr('href', "/profile/" + data.host_id);
@@ -389,6 +392,14 @@ function delete_event_handler(URL, CSRF, event_id) {
 }
 
 function like_handler(URL, event_id, CSRF) {
+  if ($('#likebutton button').attr("src") == "/static/file/like-bg-y.png") {
+    $('#likebutton').css("background-image", "url(/static/file/like-bg-n.png");
+    $('#likebutton button').attr("src", "/static/file/like-bg-n.png");
+  } else {
+    $('#likebutton').css("background-image", "url(/static/file/like-bg-y.png");
+    $('#likebutton button').attr("src", "/static/file/like-bg-y.png");
+  }
+
   $.ajaxSetup({
     data: {
       csrfmiddlewaretoken: CSRF
@@ -412,16 +423,12 @@ function like_handler(URL, event_id, CSRF) {
           let str = "<a herf='" + profile_url + "'>\
           <img class='member interested' src= " + img_url + "></a>";
           //console.log(str);
-          $('#likebutton').css("background-image", "url(/static/file/like-bg-y.png");
-          $('#likebutton button').attr("src", "/static/file/like-bg-y.png");
           $('#' + event_id + " #likeicon").attr("src", "/static/file/like-y.png");
           $('#member').append(str);
           $('#' + event_id + ' #likesnum').text(like_sum + 1);
         } else if (data.remove) {
           let user_selector = "#member a img[src='" + img_url + "']";
           //console.log(user_selector)
-          $('#likebutton').css("background-image", "url(/static/file/like-bg-n.png");
-          $('#likebutton button').attr("src", "/static/file/like-bg-n.png");
           $('#' + event_id + " #likeicon").attr("src", "/static/file/like-grey.png");
           $(user_selector).remove();
           $('#' + event_id + ' #likesnum').text(like_sum - 1);

@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from connect.view import login_view, logout, send_verification_view
+from connect.view import login_view, logout, send_verification_view, signup_view
+from connect.view import login_request_view
 from about_us.views import about_us_view
 from events_board.views import home_view, event_detail_view, like_view, join_event_view
 from events_board.views import comment_view, search_view, order_view, rate_event_view
@@ -59,6 +60,8 @@ urlpatterns = [
     path('order/', order_view, name="order"),
 
     path('login/', login_view, name='login'),
+    path('login_request/', login_request_view, name='login_request'),
+    path('signup/', signup_view, name='sign_up'),
     path('read_notification/', notice_read_view, name='read_notification'),
     path('verify/', send_verification_view, name='verify'),
     path('search/', search_view, name='search'),

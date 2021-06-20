@@ -30,16 +30,30 @@ $(document).ready(function(){
   .on('click touch', function(){
     console.log($('#terms').is(':checked'))
     if (!($('#terms').is(':checked'))) {
-      alert('Please check your have accepted the terms.');
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: '喔不出錯了',
+        text: "請同意使用條款",
+        showConfirmButton: false,
+        timer: 2000,
+      })
     }
     if (!($('#sign-pwd').val() === $('#double-pwd').val())) {
-      alert('Please check your have typed correct password twice');
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: '喔不出錯了',
+        text: "請輸入兩次正確的密碼",
+        showConfirmButton: false,
+        timer: 2000,
+      })
     }
   })
   
 })
 
-$('p#sign-up').on('click', function() {
+$(document).on('click', 'p#sign-up', function() {
   // check password validaty dynamically
   let intervalId = window.setInterval(function(){ // check every 0.5 seconds
     if ($("#sign-up-panel").is(":visible")) { // prevent from checking when loggging in
@@ -57,7 +71,7 @@ $('p#sign-up').on('click', function() {
   }, 500);
 })
 
-$('input').keyup(function() {
+$(document).on('keyup', 'input', function() {
   if ($('#double-pwd').val().length > 0) {
     if ($('#sign-pwd').val() === $('#double-pwd').val()) {
       $('.err-msg').hide();
@@ -117,6 +131,77 @@ function send_verification_handler(URL, CSRF) {
           icon: 'error',
           title: '喔不出錯了',
           text: "請再確認一次 " + data.error_message,
+          showConfirmButton: false,
+          timer: 2000,
+        })
+      }
+    }
+  })
+}
+
+function sign_up_handler(URL, CSRF) {
+  $.ajaxSetup({
+    data: {
+      csrfmiddlewaretoken: CSRF
+    }
+  });
+  $.ajax({
+    type: 'post',
+    url: URL,
+    data: {
+      'fname': $('#fname').val(),
+      'lname': $('#lname').val(),
+      'sid': $("#sid").val(),
+      'email': $("#email").val(),
+      'email-check': $("#email-check").val(),
+      'sign-pwd': $("#sign-pwd").val(),
+      'double-pwd': $("#double-pwd").val()
+    },
+    dataType: 'json',
+    success: function(data) {
+      if (data.status == 200) {
+        console.log("sign up successfully");
+        document.location.href="/";
+      } else {
+        console.log(data.error_message);
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: '喔不出錯了',
+          text: data.error_message,
+          showConfirmButton: false,
+          timer: 2000,
+        })
+      }
+    }
+  })
+}
+
+function login_handler(URL, CSRF) {
+  console.log(CSRF)
+  $.ajaxSetup({
+    data: {
+      csrfmiddlewaretoken: CSRF
+    }
+  });
+  $.ajax({
+    type: 'post',
+    url: URL,
+    data: {
+      'username': $("#username").val(),
+      'password': $("#password").val()
+    },
+    dataType: 'json',
+    success: function(data) {
+      if (data.status == 200) {
+        console.log("login successfully");
+        document.location.href="/";
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: '喔不出錯了',
+          text: data.error_message,
           showConfirmButton: false,
           timer: 2000,
         })
