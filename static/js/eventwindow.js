@@ -2,11 +2,9 @@ $(document).ready(function(){
 
   //eventwindow likes & participants hover name
   $(document).on("mouseenter", ".member", function() {
-//    console.log('enter')
     $(this).siblings('.member-hover').show();
   });
   $(document).on("mouseleave", ".member", function() {
-//    console.log('leave')
     $(this).siblings('.member-hover').hide();
   });
 
@@ -42,7 +40,7 @@ $(document).ready(function(){
   
   //event control center
   $("#exitbtn4").click(function() {
-    console.log("click event exit");
+    // console.log("click event exit");
     $('body').css({'overflow': 'auto'});
     $("#eventcontrol").animate({opacity: 0}, 400, function() {
       $("#eventcontrol").hide();
@@ -76,14 +74,6 @@ function reset_event_window() {
   $("#event-detail").replaceWith(
     "<div id='event-detail'></div>"
   )
-  // $("#eventwindow-bg").replaceWith(
-  //   "<div id='eventwindow-bg'>\
-  //     <div id='eventpic'>\
-  //       <img class='pic' style='display:none'>\
-  //       <p>目前沒有圖片</p>\
-  //     </div>\
-  //   </div>"
-  // );
   $("#edit-confirm-btn").replaceWith(
     "<input type='button' class='eventedit-btn' value='編輯活動'>"
   );
@@ -142,7 +132,19 @@ function event_handler(URL, user_id, CSRF) {
       $("#eventwindow" + " #eventoperate" + " .member-hover").text(data.host_name);
       
       $("#member").html("");
-      $("#eventmsg-board").html("<div id=\"eventmsg\" style=\"display: none\" class=\"eventmsg\"><a><img class=\"sender\"></a><div id=\"eventmsg-right\"><div id=\"eventmsg-righttop\"><a id=\"eventmsg-sendername\"></a><p id=\"event-date\"></p></div><div id=\"eventmsg-rightbottom\"><p id=\"eventmsgtext\"></p></div></div></div>");
+      $("#eventmsg-board").html(
+        "<div id='eventmsg' style='display: none' class='eventmsg'>\
+          <a><img class='sender'></a>\
+          <div id='eventmsg-right'>\
+            <div id='eventmsg-righttop'>\
+              <a id='eventmsg-sendername'></a>\
+              <p id='event-date'></p>\
+            </div>\
+            <div id='eventmsg-rightbottom'>\
+              <p id='eventmsgtext'></p>\
+            </div>\
+          </div>\
+        </div>");
       
       
       if(data.comments != undefined) {
@@ -154,7 +156,8 @@ function event_handler(URL, user_id, CSRF) {
             type: 'post',
             url: "/get_user_detail/",
             data: {
-              'user_id': item.author_id
+              'user_id': item.author_id,
+              'need_detail': false
             },
             dataType: 'json',
             success: function(data) {
@@ -183,7 +186,9 @@ function event_handler(URL, user_id, CSRF) {
             $('#likebutton button').attr("src", "/static/file/like-bg-y.png");
           }
           let str = "<a href='/profile/" + item.id + "'>\
-                      <img class='member interested' src='https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img + "'>\
+                      <img class='member interested' \
+                      src='https://res.cloudinary.com/connect-universe/image/upload/v1/" +
+                      item.img + "'>\
                       <p class='member-hover'>" + item.full_name + "</p>\
                     </a>";
           
@@ -194,7 +199,9 @@ function event_handler(URL, user_id, CSRF) {
       if(data.particitants != undefined) {
         data.particitants.forEach(function(item, i) {
           let str = "<a href='/profile/" + item.id + "'>\
-                      <img class='member participant' src='https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img + "'>\
+                      <img class='member participant' \
+                      src='https://res.cloudinary.com/connect-universe/image/upload/v1/" + 
+                      item.img + "'>\
                       <p class='member-hover'>" + item.full_name + "</p>\
                     </a>";
           
@@ -454,6 +461,162 @@ function message_handler(URL, event_id, CSRF) {
       $("input.eventmsg-insert").val("");
     }
   })
+}
+
+function join_event_handler(URL, CSRF, event_id) {
+  if ($("#reason").val() != "") {
+    ability_str = "";
+    $('p.requirement-tag').each(function () {
+      if ($(this).css("background-color") == "rgb(255, 173, 148)") {
+        ability_str += $(this).text() + ",";
+      }
+    });
+    ability_str = ability_str.substring(0,ability_str.length-1);
+    $.ajaxSetup({
+      data: {
+        csrfmiddlewaretoken: CSRF
+      }
+    });
+    let timerInterval
+    Swal.fire({
+      title: '申請處理中',
+      html: '請稍等......',
+      timer: 2000,
+      timerProgressBar: false,
+      didOpen: () => {
+        Swal.showLoading()
+      },
+    })
+    $.ajax({
+      type: "POST",
+      url: URL,
+      data: {
+        'event_id': event_id,
+        'ability': ability_str,
+        'reason': $("#reason").val()
+      },
+      dataType: 'json',
+      success: function(data) {
+        if (data.status == 200) {
+          console.log("join request sent successfully");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '已成功送出申請',
+            text: "再去看看其他活動吧~",
+            showConfirmButton: false,
+            timer: 1500,
+          })
+          $('body').css({'overflow': 'auto'});
+          $("#eventjoinwindow").animate({height: 0, opacity: 1}, 400, function() {
+            $("#eventjoinwindow").hide();
+          });
+          $(".eventjoin-btn").attr("value", "審核中");
+          $(".eventjoin-btn").attr("disabled", true);
+        } else {
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: '喔不出錯了',
+            text: data.error_message,
+            showConfirmButton: false,
+            timer: 2000,
+          })
+        }
+      }
+    });
+  }
+}
+
+function get_apply_handler(URL, CSRF, event_id) {
+  $("#member-control-list").empty();
+  $("#member-control-list").html(
+    "<div id='member-profile' style='display: none' class='member-profile'><a>\
+      <div id='member-profile-left'><img>\
+        <div id='member-detail'>\
+          <p id='m-name'>姓名</p>\
+          <p id='m-grade'>電機系大三</p>\
+        </div>\
+      </div></a>\
+    <div id='member-profile-right'>\
+      <p id='m-ability'>具備能力：</p>\
+      <p id='m-reason'>加入理由：</p>\
+      <p id='m-status'>已加入</p>\
+    </div>\
+    </div>"
+  );
+  $.ajaxSetup({
+    data: {
+      csrfmiddlewaretoken: CSRF
+    }
+  });
+  $.ajax({
+    type: "POST",
+    url: URL,
+    data: {
+      'event_id': event_id,
+    },
+    dataType: 'json',
+    success: function(data) {
+      if (data.status == 200) {
+        console.log("applies get successfully");
+        if (data.applications.length == 0) {
+          $("#no-apply").show();
+        } else {
+          $("#no-apply").hide();
+          data.applications.forEach(function(application) {
+            let clone_id = duplicate_multi("member-profile");
+            $("#" + clone_id).show();
+            console.log(application);
+            $.ajax({
+              type: 'post',
+              url: "/get_user_detail/",
+              data: {
+                'user_id': application.applicant_id,
+                'need_detail': true
+              },
+              dataType: 'json',
+              success: function(data) {
+                if (data.status == 200) {
+                  applicant_name = data.user_name;
+                  applicant_img_url = data.user_img_url;
+                  $('#' + clone_id + ' a #member-profile-left #member-detail p#m-name').html(data.user_name);
+                  $('#' + clone_id + " a").attr('href', 'profile/' + application.applicant_id);
+                  $('#' + clone_id + " a #member-profile-left img").attr('src', data.user_img_url);
+                  $('#' + clone_id + ' a #member-profile-left #member-detail p#m-grade').html(data.user_department + data.user_grade);
+                  $('#' + clone_id + " #member-profile-right p#m-ability").html("具備能力： " + application.abilities);
+                  $('#' + clone_id + " #member-profile-right p#m-reason").html("加入理由： " + application.reason);
+                  console.log(application.status);
+                  switch (application.status) {
+                    case 1: 
+                      $('#' + clone_id + " #member-profile-right p#m-status").html("未核准");
+                      break;
+                    case 2: 
+                      $('#' + clone_id + " #member-profile-right p#m-status").html("已加入");
+                      break;
+                    case 3: 
+                      $('#' + clone_id + " #member-profile-right p#m-status").html("已拒絕");
+                      break;
+                  }
+                } else {
+                  console.log('[Error] get user ' + applicant.author_id + " error");
+                }
+              }
+            });
+          })
+        }
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: '喔不出錯了',
+          text: data.error_message,
+          showConfirmButton: false,
+          timer: 2000,
+        })
+      }
+    }
+  });
 }
 
 var i = 0;

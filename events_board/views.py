@@ -372,6 +372,21 @@ def edit_event_view(request):
       'error_message': "[Error] request not post, rejected"
     })
 
+def get_apply_view(request):
+  if request.method == 'POST':
+    event_id = request.POST.get('event_id')
+    event = get_object_or_404(EventsBoard, id=event_id)
+    applications = event.applications.all().values()
+    return JsonResponse({
+      'status': 200,
+      'applications': list(applications)
+    })
+  else:
+    return JsonResponse({
+      'status': 500,
+      'error_message': "[Error] request not post, rejected"
+    })
+
 def delete_event_view(request):
   if request.method == "POST":
     data = request.POST

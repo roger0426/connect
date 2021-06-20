@@ -60,6 +60,13 @@ html
                     $(this).closest('#eventwindow').attr('class'),
                     "{{ csrf_token }}");
                 })
+                $(".eventedit-btn").on("click", function() {
+                  get_apply_handler(
+                    "{% url 'get_apply' %}",
+                    "{{ csrf_token }}",
+                    $(this).closest('#eventwindow').attr('class')
+                  );
+                })
               })
           {% else %}
           a.comment-operate-region(href="{% url 'login' %}")
@@ -145,40 +152,8 @@ html
         .eventcontainer
           t1 參與人
           p 報名申請
+          p#no-apply(style="display: none") 還沒有人申請欸 (இ﹏இ`｡) 。
           #member-control-list
-            #member-profile
-              #member-profile-left
-                img
-                #member-detail
-                  p 姓名
-                  p 電機系大三
-                  p 參與過15個活動
-              #member-profile-right
-                p 具備能力：
-                p 加入理由：
-                p 已加入
-            #member-profile
-              #member-profile-left
-                img
-                #member-detail
-                  p 姓名
-                  p 電機系大三
-                  p 參與過15個活動
-              #member-profile-right
-                p 具備能力：
-                p 加入理由：
-                p 已加入
-            #member-profile
-              #member-profile-left
-                img
-                #member-detail
-                  p 姓名
-                  p 電機系大三
-                  p 參與過15個活動
-              #member-profile-right
-                p 具備能力：
-                p 加入理由：
-                p 已加入
           input#edit-btn(type="button", value="編輯活動")
           input#delete-btn(type="button", value="刪除活動")
 

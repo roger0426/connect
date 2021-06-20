@@ -82,7 +82,7 @@ def login_view(request, *args, **kwargs):
       password = sign_pwd
     )
     user.save()
-    if (fname + lname).isalpha():
+    if not is_all_chinese(fname + lname):
       full_name = fname + " " + lname
     else:
       full_name = fname + lname
@@ -112,3 +112,9 @@ def home_view(request):
 def logout(request):
   auth.logout(request)
   return HttpResponseRedirect('/')
+
+def is_all_chinese(strs):
+  for _char in strs:
+    if not '\u4e00' <= _char <= '\u9fa5':
+      return False
+  return True

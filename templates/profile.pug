@@ -19,6 +19,7 @@ html
     script(src="https://d3js.org/d3.v5.js")
     //-script(src="{% static 'js/sweetalert2@11.js' %}")
     script(src  ="https://cdn.jsdelivr.net/npm/sweetalert2@11")
+    script(src="{% static 'js/eventwindow.js' %}")
   {% include 'navbar.pug' %}
 
   body
@@ -210,7 +211,13 @@ html
                       .info-brief-school
                         p {{ friend.userextend.department }}
                         p {{ friend.userextend.grade }}
+                        {% if request.user.is_authenticated %}
+                        {% if common_friend == -1 %}
+                        p 這就是你！
+                        {% else %}
                         p {{ common_friend }} 位共同連結
+                        {% endif %}
+                        {% endif %}
                   {% if friend_connect %}
                   p {{ friend.last_name }} 與他一起參與過 {{ friend_connect }} 個活動
                   //{{ user.user.last_name }}
@@ -460,4 +467,3 @@ html
     
     script(src="{% static 'js/profile.js' %}")
     script(src="{% static 'js/navbar.js' %}")
-    script(src="{% static 'js/eventwindow.js' %}")

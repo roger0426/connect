@@ -543,7 +543,7 @@
         border-radius: 1rem
         
       
-        #member-profile
+        .member-profile
           display: flex
           flex-direction: row;
           flex-wrap: nowrap;
@@ -555,27 +555,29 @@
           margin: 0.3rem 0
           border-radius: 1rem
           
-          #member-profile-left
-            display: flex
-            flex-direction: row;
-            flex-wrap: nowrap;
-            align-items: center;
-            width: 30%
-            
-            img
-              width: 3.5rem
-              height: 3.5rem
-              border-radius: 50%
-              border: solid 2px #DDDDDD
-            
-            #member-detail
+          a
+            #member-profile-left
               display: flex
-              flex-direction: column;
-              align-items: flex-start;
-              justify-content: center;
-              p
-                font-size: 0.7rem
-                font-weight: 700
+              flex-direction: row;
+              flex-wrap: nowrap;
+              align-items: center;
+              width: 30%
+              
+              img
+                width: 3.5rem
+                height: 3.5rem
+                border-radius: 50%
+                border: solid 2px #DDDDDD
+                margin-right: 1rem
+              
+              #member-detail
+                display: flex
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                p
+                  font-size: 0.7rem
+                  font-weight: 700
                 
           #member-profile-right
             display: flex

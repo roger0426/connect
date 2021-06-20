@@ -67,10 +67,13 @@ def profile_view(request, id, *args, **kwargs):
     user_friends = request.user.userextend.friends.all()
     for friend in friends:
       common_count = 0
-      friends_of_friend = friend.friends.all()
-      for ff in friends_of_friend:
-        if ff.user in user_friends:
-          common_count += 1
+      if friend == request.user:
+        common_count = -1
+      else:
+        friends_of_friend = friend.friends.all()
+        for ff in friends_of_friend:
+          if ff.user in user_friends:
+            common_count += 1
       common_list.append(common_count)
   friend_zip = zip(friends, friend_connect_counts, common_list)
 
@@ -198,12 +201,21 @@ def profile_edit_view(request, id):
 def get_user_view(request):
   data = request.POST
   user = get_object_or_404(UserExtend, id=data.get('user_id'))
-  return JsonResponse({
-    'status': 200,
-    'user_name': user.full_name,
-    'user_img_url': user.img.url
-  })
-
+  if data.get('need_detail'):
+    return JsonResponse({
+      'status': 200,
+      'user_name': user.full_name,
+      'user_img_url': user.img.url,
+      'user_department': user.department,
+      'user_grade': user.grade
+    })
+  else:
+    return JsonResponse({
+      'status': 200,
+      'user_name': user.full_name,
+      'user_img_url': user.img.url
+    })
+  
 def friend_request_view(request):
   data = request.POST
   if request.user.id  != data.get('user_id'):
