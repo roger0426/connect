@@ -125,7 +125,7 @@ function event_handler(URL, user_id, CSRF) {
       };
       $("#eventwindow" + " #description" + " #event-date").html("活動日期<br />" + data.event_date);
       $("#eventwindow" + " #description" + " #due-date").html("報名截止<br />" + data.due_date);
-      let br_detail = data.detail.replaceAll("\n", "<br>");
+      let br_detail = data.detail.replaceAll("\n", "<br> ");
       let detail_url = br_detail.match(/(http[s]?:\/\/)?([^\/\s]+\/)(.*)/g)
       br_detail = br_detail.replace(detail_url, "<a href='" + detail_url + "' style='color: blue; margin:0'>" + detail_url + "</a>");
 
