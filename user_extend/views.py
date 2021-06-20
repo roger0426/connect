@@ -7,6 +7,7 @@ from tags.models import Tag
 from django.core.files.storage import default_storage
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
+from connect.utils import input_format
 # Create your views here.
 
 # return value events that two users have joined
@@ -146,11 +147,14 @@ def modify(request, id):
   user = UserExtend.objects.filter(id = id)
   if(request.method == 'POST'):
     if(request.POST.get('description')):
-      user.update(personal_description = request.POST.get('description'))
+      user.update(personal_description = 
+          input_format(request.POST.get('description')))
     if(request.POST.get('department')):
-      user.update(department = request.POST.get('department'))
+      user.update(department = 
+          input_format(request.POST.get('department')))
     if(request.POST.get('grade')):
-      user.update(grade = request.POST.get('grade'))
+      user.update(grade = 
+          input_format(request.POST.get('grade')))
     if(request.FILES):
       image = request.FILES['image']
       if (user.get(id=id).img):
@@ -162,7 +166,8 @@ def modify(request, id):
   
 def profile_edit_view(request, id):
   if(id != request.user.userextend.id):
-    return HttpResponseRedirect(reverse('profile_edit', args=[str(request.user.userextend.id)]))
+    return HttpResponseRedirect(
+        reverse('profile_edit', args=[str(request.user.userextend.id)]))
   obj = UserExtend.objects.get(id=id)
   friend_count = obj.friends.count()
 
@@ -278,8 +283,8 @@ def friend_remove_view(request):
 
 def send_comment_view(request):
   data = request.POST
-  text = data.get('text')
-  rate = data.get('rate')
+  text = input_format(data.get('text'))
+  rate = input_format(data.get('rate'))
   if text != '' and rate != '':
     event = get_object_or_404(EventsBoard, id = data.get('event_id'))
     if int(rate) > 10:

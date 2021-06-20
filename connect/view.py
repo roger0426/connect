@@ -6,6 +6,7 @@ from user_extend.models import UserExtend
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.conf import settings
+from .utils import is_all_chinese, input_format
 import time
 import hashlib
 
@@ -18,7 +19,10 @@ def hash_func(sid, email):
 
 def send_verification_view(request):
   data = request.POST
-  token = hash_func(data.get('sid'), data.get('email'))
+  clean_sid = input_format(data.get('sid'))
+  clean_email = input_format(data.get('email'))
+
+  token = hash_func(clean_sid, clean_email)
   email_template = render_to_string(
     'email/verification.html',
     {
@@ -26,7 +30,7 @@ def send_verification_view(request):
       'token': token
     }
   )
-  if data.get('sid') == '' or data.get('email') == '':
+  if clean_sid == '' or clean_email == '':
     return JsonResponse({
       'status': 500,
       'error_message': "[Error] Null input of sid or email"
@@ -35,7 +39,7 @@ def send_verification_view(request):
     'Connect 註冊認證通知信',  # title
     email_template,  # content
     settings.EMAIL_HOST_USER,  # sender
-    [data.get('email')]  # reciever
+    [clean_email]  # reciever
   )
   email.fail_silently = False
   email.send()
@@ -50,16 +54,16 @@ def login_view(request, *args, **kwargs):
   if request.user.is_authenticated:
     return HttpResponseRedirect('/')
 
-  username = request.POST.get('username', '')
-  password = request.POST.get('password', '')
+  username = input_format(request.POST.get('username', ''))
+  password = input_format(request.POST.get('password', ''))
 
-  fname = request.POST.get('fname', '')
-  lname = request.POST.get('lname', '')
-  sid   = request.POST.get('sid', '')
-  email = request.POST.get('email', '')
-  email_check = request.POST.get('email-check', '')
-  sign_pwd = request.POST.get('sign-pwd', '')
-  double_pwd = request.POST.get('double-pwd', '')
+  fname = input_format(request.POST.get('fname', ''))
+  lname = input_format(request.POST.get('lname', ''))
+  sid   = input_format(request.POST.get('sid', ''))
+  email = input_format(request.POST.get('email', ''))
+  email_check = input_format(request.POST.get('email-check', ''))
+  sign_pwd = input_format(request.POST.get('sign-pwd', ''))
+  double_pwd = input_format(request.POST.get('double-pwd', ''))
 
   if User.objects.filter(username=sid).exists():
     return render(request, 'login.pug', {'error_message': "這個帳號已經被註冊過了"})
@@ -112,9 +116,3 @@ def home_view(request):
 def logout(request):
   auth.logout(request)
   return HttpResponseRedirect('/')
-
-def is_all_chinese(strs):
-  for _char in strs:
-    if not '\u4e00' <= _char <= '\u9fa5':
-      return False
-  return True

@@ -4,13 +4,11 @@ from django.urls import reverse
 from .models import EventsBoard, BoardMessage, Comment, Apply
 from site_notification.models import SiteNotification
 from .forms import EventCreateForm
-from user_extend.models import UserExtend
-from datetime import datetime, timedelta, date
-from django.forms.models import model_to_dict
+from datetime import timedelta, date
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.conf import settings
-
+from connect.utils import input_format
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -54,6 +52,10 @@ def home_view(request, *args, **kwargs):
 
   if form.is_valid():
     instance = form.save(commit=False)
+    instance.title = input_format(instance.title)
+    instance.subtitle = input_format(instance.subtitle)
+    instance.detail = input_format(instance.detail)
+    instance.requirements_str = input_format(instance.requirements_str)
     instance.host = request.user.userextend
     instance.save()
     return HttpResponseRedirect(reverse('home'))
@@ -153,11 +155,12 @@ def comment_view(request, event_id):
     event = get_object_or_404(EventsBoard, id=event_id)
     author = request.user.userextend
     data = request.POST
-    if (data.get('text')) != "":
+    clean_text = input_format(data.get('text'))
+    if (clean_text) != "":
       comment_obj = BoardMessage.objects.create(
         author = author,
         for_event = event,
-        text = data.get('text')
+        text = clean_text
       )
       comment_obj.save()
     return JsonResponse({
@@ -298,11 +301,13 @@ def join_event_view(request):
         'status': 500,
         'error_message': "[Error] user has been participant"
       })
+    clean_reason = input_format(data.get('reason'))
+    clean_ability = input_format(data.get('ability'))
     apply = Apply.objects.create(
       for_event = event,
       applicant = request.user.userextend,
-      reason = data.get('reason'),
-      abilities = data.get('ability')
+      reason = clean_reason,
+      abilities = clean_ability
     )
     apply.save()
 
@@ -321,8 +326,8 @@ def join_event_view(request):
       {
         'event': event,
         'applicant': request.user.userextend.full_name,
-        'ability': data.get('ability'),
-        'reason': data.get('reason')
+        'ability': clean_reason,
+        'reason': clean_ability
       }
     )
     email = EmailMessage(
@@ -348,15 +353,18 @@ def edit_event_view(request):
     data = request.POST
     event = get_object_or_404(EventsBoard, id=data.get('event_id'))
     has_change = 0
-    if data.get('title') != "":
+    clean_title = input_format(data.get('title'))
+    clean_sub = input_format(data.get('subtitle'))
+    clean_detail = input_format(data.get('detail'))
+    if clean_title != "":
       has_change = 1
-      event.title = data.get('title')
-    if data.get('subtitle') != "":
+      event.title = clean_title
+    if clean_sub != "":
       has_change = 1
-      event.subtitle = data.get('subtitle')
-    if data.get('detail') != "":
+      event.subtitle = clean_sub
+    if clean_detail != "":
       has_change = 1
-      event.detail = data.get('detail')
+      event.detail = clean_detail
     if not has_change:
       return JsonResponse({
         'status': 500,
