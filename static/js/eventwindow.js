@@ -125,9 +125,15 @@ function event_handler(URL, user_id, CSRF) {
       };
       $("#eventwindow" + " #description" + " #event-date").html("活動日期<br />" + data.event_date);
       $("#eventwindow" + " #description" + " #due-date").html("報名截止<br />" + data.due_date);
-      let br_detail = data.detail.replaceAll("\n", "<br> ");
-      let detail_url = br_detail.match(/(http[s]?:\/\/)?([^\/\s]+\/)(.*)/g)
-      br_detail = br_detail.replace(detail_url, "<a href='" + detail_url + "' style='color: blue; margin:0'>" + detail_url + "</a>");
+      let url_detail = data.detail.replaceAll(
+          /(\s+)((http[s]?:\/\/)?([^\/\s]+\/)(.*))/g,
+          (string, g1, g2, g3, g4, g5) => {
+            return g1 + "<a href='" + g2 + "'\
+                style='color: blue; margin:0' target='_blank' \
+                rel='noopener noreferrer'>" + g2 + "</a>"
+          }
+      )
+      let br_detail = url_detail.replaceAll("\n", "<br> ");
 
       $("#eventwindow" + " #event-detail").html(br_detail);
       

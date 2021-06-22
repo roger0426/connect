@@ -227,7 +227,7 @@ def friend_request_view(request):
     user = get_object_or_404(User, id=data.get('user_id'))
     request.user.userextend.unverified_friends.add(user)
     notification = SiteNotification.objects.create(
-      text = request.user.userextend.full_name + "對您傳送了連結人邀請， 快去看看吧",
+      text = "對您傳送了連結人邀請， 快去看看吧",
       for_user = user,
       from_user = request.user,
       notification_type = 1,
