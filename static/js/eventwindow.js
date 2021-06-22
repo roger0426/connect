@@ -175,7 +175,7 @@ function event_handler(URL, user_id, CSRF) {
                 user_name = data.user_name;
                 user_img_url = data.user_img_url;
                 $('#' + clone_id + ' #eventmsg-sendername').html(data.user_name);
-                $('#' + clone_id + " a").attr('href', 'profile/' + item.author_id);
+                $('#' + clone_id + " a").attr('href', '/profile/' + item.author_id);
                 $('#' + clone_id + " img").attr('src', data.user_img_url);
                 $('#' + clone_id + ' #event-date').html(item.date);
                 $('#' + clone_id + " #eventmsgtext").html(item.text);
@@ -352,7 +352,8 @@ function delete_event_handler(URL, CSRF, event_id) {
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: '刪掉他'
+    confirmButtonText: '刪掉他',
+    cancelButtonText: '取消'
   }).then((result) => {
     if (result.isConfirmed) {
       $.ajaxSetup({
@@ -425,7 +426,7 @@ function like_handler(URL, event_id, CSRF) {
         let hostname = $(location).attr('hostname');
         let like_sum = parseInt($('#' + event_id + ' #likesnum').text());
         if (data.add) {
-          let profile_url = hostname + '/profile/' + data.user_id
+          let profile_url = '/profile/' + data.user_id
           let str = "<a herf='" + profile_url + "'>\
           <img class='member interested' src= " + img_url + "></a>";
           //console.log(str);

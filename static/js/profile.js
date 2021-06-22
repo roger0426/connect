@@ -200,22 +200,44 @@ function friend_remove_handler(URL, CSRF, request_user_id) {
       csrfmiddlewaretoken: CSRF
     }
   });
-  $.ajax({
-    type: 'post',
-    url: URL,
-    data: {
-      'user_id': request_user_id,
-    },
-    dataType: 'json',
-    success: function(data) {
-      if (data.status == 200) {
-        console.log("friend remove successfully");
-        location.reload();
-      } else {
-        console.log(data.error_message);
-      }
+  Swal.fire({
+    title: '你確定嗎？',
+    text: "確定要移除這位連結人嗎？",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: '移除他',
+    cancelButtonText: '取消'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        type: 'post',
+        url: URL,
+        data: {
+          'user_id': request_user_id,
+        },
+        dataType: 'json',
+        success: function(data) {
+          if (data.status == 200) {
+            console.log("friend remove successfully");
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: '已移除連結人',
+              text: "正在跳轉...",
+              showConfirmButton: false,
+            })
+            setTimeout(function(){
+              location.reload();
+            }, 1000);
+          } else {
+            console.log(data.error_message);
+          }
+        }
+      })
     }
-  })
+  });
 }
 
 function tag_comment_handler(URL, CSRF, tag_id, text, comment_board, input_region) {
