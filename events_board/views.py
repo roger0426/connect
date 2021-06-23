@@ -70,7 +70,7 @@ def event_detail_view(request, id):
     event_detail = event.detail if event.detail != "" else None
     likes = list(event.likes.all().values())
     participants = list(event.participants.all().values())
-    comments = list(event.board_message.all().values())
+    comments = list(event.board_message.order_by('date').values())
     requirements = event.requirements_str.split(',')
     # apply status
     # 0: not apply
@@ -129,7 +129,7 @@ def like_view(request, id):
       receiver = event.host.user
       sender = request.user
       notification = SiteNotification.objects.create(
-        text = "對您的活動感到有興趣， 快去看看吧",
+        text = "對{}感到有興趣， 快去看看吧".format(event.title),
         #sender.userextend.full_name +
         event = event,
         for_user = receiver,
@@ -313,7 +313,7 @@ def join_event_view(request):
 
     # send notification to host email
     notification = SiteNotification.objects.create(
-      text = "申請了你的活動， 快去看看吧",
+      text = "申請了{}， 快去看看吧".format(event.title),
       #sender.userextend.full_name +
       event = event,
       for_user = event.host.user,

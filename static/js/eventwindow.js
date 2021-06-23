@@ -156,7 +156,7 @@ function event_handler(URL, user_id, CSRF) {
           </div>\
         </div>");
       
-      
+      console.log(data.comments)
       if(data.comments != undefined) {
         data.comments.forEach(function(item, i) {
           var clone_id = duplicate_multi('eventmsg');
@@ -237,6 +237,7 @@ function event_handler(URL, user_id, CSRF) {
           $(".eventjoin-btn").attr("disabled", false);
           break;
         case 3:
+        case 4:
           $(".eventjoin-btn").attr("value", "無法加入");
           $(".eventjoin-btn").attr("disabled", false);
           break;
@@ -542,6 +543,7 @@ function join_event_handler(URL, CSRF, event_id) {
     });
   }
 }
+
 
 function get_apply_handler(URL, CSRF, event_id) {
   $("#member-control-list").empty();

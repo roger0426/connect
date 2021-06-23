@@ -17,21 +17,12 @@ class UserExtend(models.Model):
   )
   department = models.CharField(
     max_length=20,
-    default='電機工程學系'
+    default='未設定系所'
   )
-
-  YEAR_IN_SCHOOL_CHOICE = [
-    ('freshman', '一年級'),
-    ('sophomore', '二年級'),
-    ('junior', '三年級'),
-    ('senior', '四年級'),
-    ('graduate', '研究生'),
-  ]
 
   grade = models.CharField(
     max_length = 9,
-    choices = YEAR_IN_SCHOOL_CHOICE,
-    default = 'freshman'
+    default = '未設定年級'
   )
 
   unverified_friends = models.ManyToManyField(

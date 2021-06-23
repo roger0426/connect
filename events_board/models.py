@@ -13,8 +13,8 @@ class IntegerRangeField(models.IntegerField):
 
 class EventsBoard(models.Model):
   # basic information
-  title = models.CharField(max_length=15)
-  subtitle = models.CharField(max_length=25, blank=True)
+  title = models.CharField(max_length=30)
+  subtitle = models.CharField(max_length=40, blank=True)
   detail = models.TextField()
   image = models.ImageField(upload_to='events/', blank=True)
 
@@ -134,5 +134,6 @@ class Apply(models.Model):
   # 1: applied, under checking
   # 2: applied, approved
   # 3: applied, rejected
+  # 4: event closed
   status = models.IntegerField(default=1)
   date = models.DateTimeField(default=timezone.now)
