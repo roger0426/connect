@@ -63,8 +63,8 @@ html
           form()
             p 排序
             select#sort
-              option(value='newest') 最新
-              option(value='recent') 最近期
+              option(value='newest') 最新建立
+              option(value='recent') 近期活動
               option(value='most-like') 最多人喜歡
               option(value='most-participant') 最多人參與
           hr#line2.line
@@ -114,8 +114,8 @@ html
                 {% endif %}
                 p#likesnum {{ event.number_of_likes }}
           {% empty %}
-          #eventpost
-            p no event
+          .eventpost(style='width: 100%; margin-top: 3rem; padding: 2rem 0')
+            p 目前沒有相關內容
           {% endfor %}
           
           script.

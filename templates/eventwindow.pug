@@ -51,7 +51,7 @@ html
             input.eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
             input.eventmsg-btn(type="button", value="送出")
             input.eventjoin-btn(type="button", value="申請加入")
-            input.eventedit-btn(type="button", value="編輯活動", style="display: none")
+            input.eventedit-btn(type="button", value="控制中心", style="display: none")
             script.
               $(document).ready(function(){
                 $(".eventmsg-btn").on("click", function() {
@@ -151,11 +151,13 @@ html
         img#exitbtn4.exitbtn(src="{% static 'file/exiticon.png' %}")
         .eventcontainer
           t1 參與人
-          p 報名申請
           p#no-apply(style="display: none") 還沒有人申請欸 (இ﹏இ`｡) 。
           #member-control-list
-          input#edit-btn(type="button", value="編輯活動")
-          input#delete-btn(type="button", value="刪除活動")
+            //p 報名申請
+          #control-btns
+            input#edit-btn(type="button", value="編輯活動")
+            input#end-btn(type="button", value="結束活動")
+            input#delete-btn(type="button", value="刪除活動")
 
           script.
             $(document).ready(function(){

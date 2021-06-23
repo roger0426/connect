@@ -41,7 +41,7 @@ $(document).ready(function(){
   //event control center
   $("#exitbtn4").click(function() {
     // console.log("click event exit");
-    $('body').css({'overflow': 'auto'});
+    //$('body').css({'overflow': 'auto'});
     $("#eventcontrol").animate({opacity: 0}, 400, function() {
       $("#eventcontrol").hide();
     })
@@ -60,6 +60,8 @@ $(document).on('click', ".eventedit-btn", function() {
   //console.log("click event join");
   $("#eventcontrol").show();
   $("#eventcontrol").animate({'height': '75%', opacity: 1}, 400, function() {
+//    $('.comment-operate-region input[type=text]').hide()
+//    $('.comment-operate-region .eventmsg-btn').hide()
   })
 })
 
@@ -75,7 +77,7 @@ function reset_event_window() {
     "<div id='event-detail'></div>"
   )
   $("#edit-confirm-btn").replaceWith(
-    "<input type='button' class='eventedit-btn' value='編輯活動'>"
+    "<input type='button' class='eventedit-btn' value='控制中心'>"
   );
   $("#edit-cancel-btn").remove();
 }
@@ -552,7 +554,7 @@ function get_apply_handler(URL, CSRF, event_id) {
       <div id='member-profile-left'><img>\
         <div id='member-detail'>\
           <p id='m-name'>姓名</p>\
-          <p id='m-grade'>電機系大三</p>\
+          <p id='m-grade'>校系年級</p>\
         </div>\
       </div></a>\
     <div id='member-profile-right'>\
