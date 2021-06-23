@@ -157,8 +157,7 @@ function event_handler(URL, user_id, CSRF) {
             </div>\
           </div>\
         </div>");
-      
-      console.log(data.comments)
+
       if(data.comments != undefined) {
         data.comments.forEach(function(item, i) {
           var clone_id = duplicate_multi('eventmsg');
@@ -557,11 +556,15 @@ function get_apply_handler(URL, CSRF, event_id) {
           <p id='m-grade'>校系年級</p>\
         </div>\
       </div></a>\
-    <div id='member-profile-right'>\
-      <p id='m-ability'>具備能力：</p>\
-      <p id='m-reason'>加入理由：</p>\
-      <p id='m-status'>已加入</p>\
-    </div>\
+      <div id='member-profile-right'>\
+        <p id='m-ability'>具備能力：</p>\
+        <p id='m-reason'>加入理由：</p>\
+        <p id='m-status'>已加入</p>\
+        <div class='reply-btns'>\
+          <input type='button' class='accept-btn member-btn' value='接受申請'>\
+          <input type='button' class='reject-btn member-btn' value='拒絕'>\
+        </div>\
+      </div>\
     </div>"
   );
   $.ajaxSetup({
@@ -586,7 +589,7 @@ function get_apply_handler(URL, CSRF, event_id) {
           data.applications.forEach(function(application) {
             let clone_id = duplicate_multi("member-profile");
             $("#" + clone_id).show();
-            console.log(application);
+            $("#" + clone_id).addClass("apply" + application.id)
             $.ajax({
               type: 'post',
               url: "/get_user_detail/",
@@ -605,16 +608,18 @@ function get_apply_handler(URL, CSRF, event_id) {
                   $('#' + clone_id + ' a #member-profile-left #member-detail p#m-grade').html(data.user_department + data.user_grade);
                   $('#' + clone_id + " #member-profile-right p#m-ability").html("具備能力： " + application.abilities);
                   $('#' + clone_id + " #member-profile-right p#m-reason").html("加入理由： " + application.reason);
-                  console.log(application.status);
+                  
                   switch (application.status) {
                     case 1: 
                       $('#' + clone_id + " #member-profile-right p#m-status").html("未核准");
                       break;
                     case 2: 
                       $('#' + clone_id + " #member-profile-right p#m-status").html("已加入");
+                      $('#' + clone_id + " #member-profile-right .reply-btns").hide();
                       break;
-                    case 3: 
+                    case 3:
                       $('#' + clone_id + " #member-profile-right p#m-status").html("已拒絕");
+                      $('#' + clone_id + " #member-profile-right .reply-btns").hide();
                       break;
                   }
                 } else {
@@ -623,6 +628,47 @@ function get_apply_handler(URL, CSRF, event_id) {
               }
             });
           })
+        }
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: '喔不出錯了',
+          text: data.error_message,
+          showConfirmButton: false,
+          timer: 2000,
+        })
+      }
+    }
+  });
+}
+
+function reply_apply_handler(URL, CSRF, element_id, is_accepted) {
+  $.ajaxSetup({
+    data: {
+      csrfmiddlewaretoken: CSRF
+    }
+  });
+  $.ajax({
+    type: "POST",
+    url: URL,
+    data: {
+      'application': element_id,
+      'is_accepted': is_accepted
+    },
+    dataType: 'json',
+    success: function(data) {
+      if (data.status == 200) {
+        console.log("reply application successfully");
+        if (data.accepted) {
+          // accepted
+          console.log()
+          $(".apply" + data.application_id + " #member-profile-right .reply-btns").hide();
+          $(".apply" + data.application_id + " #member-profile-right #m-status").text('已加入');
+        } else {
+          // rejected
+          $(".apply" + data.application_id + " #member-profile-right .reply-btns").hide();
+          $(".apply" + data.application_id + " #member-profile-right #m-status").text('已拒絕');
         }
       } else {
         Swal.fire({

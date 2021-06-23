@@ -152,8 +152,28 @@ html
         .eventcontainer
           t1 參與人
           p#no-apply(style="display: none") 還沒有人申請欸 (இ﹏இ`｡) 。
+          //- application
           #member-control-list
-            //p 報名申請
+          script.
+            $(document).ready(function(){
+              $(document).on("click", "input.accept-btn", function() {
+                reply_apply_handler(
+                  "{% url 'reply_apply' %}",
+                  "{{ csrf_token }}",
+                  $(this).closest('.member-profile').attr('class'),
+                  1
+                )
+              })
+              $(document).on("click", "input.reject-btn", function() {
+                reply_apply_handler(
+                  "{% url 'reply_apply' %}",
+                  "{{ csrf_token }}",
+                  $(this).closest('.member-profile').attr('class'),
+                  0
+                )
+              })
+            })
+
           #control-btns
             input#edit-btn(type="button", value="編輯活動")
             input#end-btn(type="button", value="結束活動")

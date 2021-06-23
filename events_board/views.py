@@ -395,6 +395,39 @@ def get_apply_view(request):
       'error_message': "[Error] request not post, rejected"
     })
 
+def reply_apply_view(request):
+  if request.method == 'POST':
+    data = request.POST
+
+    application_id = (int)(data.get('application')[20:])
+    print(data.get('is_accepted'))
+    application = get_object_or_404(Apply, id=application_id)
+    if data.get('is_accepted') == '1':
+      application.status = 2
+      application.save()
+      event = application.for_event
+      event.participants.add(request.user.userextend)
+      event.save()
+      return JsonResponse({
+        'status': 200,
+        'application_id': application_id,
+        'accepted': True
+      })
+    else:
+      application.status = 3
+      application.save()
+      return JsonResponse({
+        'status': 200,
+        'application_id': application_id,
+        'accepted': False
+      })
+  else:
+    return JsonResponse({
+      'status': 500,
+      'error_message': '[Error] request no post, rejected'
+    })
+
+
 def delete_event_view(request):
   if request.method == "POST":
     data = request.POST
