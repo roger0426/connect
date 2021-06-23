@@ -58,14 +58,14 @@ $(document).ready(function(){
 //    $("#graph").toggle()
 //  })
   
-  $('#friends-avatar a').mouseenter(function() {
-    $(this).find('.friend-info').css({'display': 'flex'});
-    $(this).find('.friend-img').css({'box-shadow': '0 0 0.2rem 0.1rem var(--boxshadow-color)'})
+  $('#friends-avatar img').mouseenter(function() {
+    $(this).parent().find('.friend-info').css({'display': 'flex'});
+    $(this).parent().find('.friend-img').css({'box-shadow': '0 0 0.2rem 0.1rem var(--boxshadow-color)'})
     
   });
-  $('#friends-avatar a').mouseleave(function() {
-    $(this).find('.friend-info').css({'display': 'none'});
-    $(this).find('.friend-img').css({'box-shadow': 'none'})
+  $('#friends-avatar img').not('.friend-info').mouseleave(function() {
+    $(this).parent().find('.friend-info').css({'display': 'none'});
+    $(this).parent().find('.friend-img').css({'box-shadow': 'none'})
   });
   
   $("#tab-navbar :nth-child(1),#tag1").on('click touch', function(){

@@ -51,7 +51,7 @@ $(document).ready(function(){
   // eventcreate window add-requirement-btn manipulate
   $(document).on("focus", "#add-requirement-btn", function() {
     $(this).attr("placeholder", "");
-    $(this).css("width", "2.5rem");
+    $(this).css("width", "5rem");
   });
   $(document).on("blur", "#add-requirement-btn", function() {
     $(this).attr("placeholder", "+");

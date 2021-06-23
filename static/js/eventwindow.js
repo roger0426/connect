@@ -280,13 +280,13 @@ $(document).on("click", "p.requirement-tag", function() {
 
 function edit_event_transition() {
   $("#event-title").replaceWith(
-    "<input type='text' id='event-title' placeholder='" + $("#event-title").text() +"'>"
+    "<input type='text' id='event-title' value='" + $("#event-title").text() +"'>"
   );
   $("#event-subtitle").replaceWith(
-    "<input type='text' id='event-subtitle' placeholder='" + $("#event-subtitle").text() +"'>"
+    "<input type='text' id='event-subtitle' value='" + $("#event-subtitle").text() +"'>"
   );
   $("#event-detail").replaceWith(
-    "<textarea id='event-detail' placeholder='" + $("#event-detail").text() + "'>"
+    "<textarea id='event-detail'>" + $("#event-detail").text()
   );
   // $("#eventwindow-bg").replaceWith(
   //   "<input type='file' name='image' alt='image' id='eventwindow-bg'>"

@@ -414,7 +414,7 @@ html
                 p.hint(style="color: #E98C6F") 看來他好像還沒參與過專案
               {% endfor %}
                     
-            #personal.page-panel
+            #personal.page-panel(style="display: none")
               {% for personal_proj in personal_projs %}
               .card(id='{{ personal_proj.pk }}' margin='0')
                 .cardleft
