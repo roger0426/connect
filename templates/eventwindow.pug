@@ -136,7 +136,8 @@ html
               p#requirement-text 具備的能力
               #requirement-tags
             textarea#reason(type='text', placeholder='* 加入理由')
-          input.eventjoinbtn(type="button", value="加入")
+          input.eventjoinbtn.btn(type="button", value="加入")
+          input.loadingbtn.btn(type="button", value="處理中...", style="display: none")
           script.
             $(document).ready(function(){
               $("input.eventjoinbtn").on("click", function() {
@@ -150,7 +151,7 @@ html
       #eventcontrol.eventsubwindow
         img#exitbtn4.exitbtn(src="{% static 'file/exiticon.png' %}")
         .eventcontainer
-          t1 參與人
+          p 參與人
           p#no-apply(style="display: none") 還沒有人申請欸 (இ﹏இ`｡) 。
           //- application
           #member-control-list
@@ -177,7 +178,7 @@ html
           #control-btns
             input#edit-btn(type="button", value="編輯活動")
             input#end-btn(type="button", value="結束活動")
-            input#delete-btn(type="button", value="刪除活動")
+            input#delete-btn(type="button", value="取消活動")
 
           script.
             $(document).ready(function(){

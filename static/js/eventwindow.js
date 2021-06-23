@@ -42,7 +42,7 @@ $(document).ready(function(){
   $("#exitbtn4").click(function() {
     // console.log("click event exit");
     //$('body').css({'overflow': 'auto'});
-    $("#eventcontrol").animate({opacity: 0}, 400, function() {
+    $("#eventcontrol").animate({height: 0, opacity: 0}, 400, function() {
       $("#eventcontrol").hide();
     })
   });
@@ -234,7 +234,7 @@ function event_handler(URL, user_id, CSRF) {
           $(".eventjoin-btn").attr("disabled", true);
           break;
         case 2:
-          $(".eventjoin-btn").attr("value", "取消加入");
+          $(".eventjoin-btn").attr("value", "退出活動");
           $(".eventjoin-btn").attr("disabled", false);
           break;
         case 3:
@@ -482,6 +482,8 @@ function message_handler(URL, event_id, CSRF) {
 
 function join_event_handler(URL, CSRF, event_id) {
   if ($("#reason").val() != "") {
+    $('.eventjoinbtn').hide();
+    $('.loadingbtn').show();
     ability_str = "";
     $('p.requirement-tag').each(function () {
       if ($(this).css("background-color") == "rgb(255, 173, 148)") {
@@ -498,7 +500,7 @@ function join_event_handler(URL, CSRF, event_id) {
     Swal.fire({
       title: '申請處理中',
       html: '請稍等......',
-      timer: 2000,
+//      timer: 2000,
       timerProgressBar: false,
       didOpen: () => {
         Swal.showLoading()
@@ -542,6 +544,9 @@ function join_event_handler(URL, CSRF, event_id) {
         }
       }
     });
+  }
+  else{
+    $('#reason').css({"border": "solid 2px red"});
   }
 }
 
@@ -611,14 +616,14 @@ function get_apply_handler(URL, CSRF, event_id) {
                   
                   switch (application.status) {
                     case 1: 
-                      $('#' + clone_id + " #member-profile-right p#m-status").html("未核准");
+                      $('#' + clone_id + " #member-profile-right p#m-status").html("當前狀態： 未核准");
                       break;
                     case 2: 
-                      $('#' + clone_id + " #member-profile-right p#m-status").html("已加入");
+                      $('#' + clone_id + " #member-profile-right p#m-status").html("當前狀態： 已加入");
                       $('#' + clone_id + " #member-profile-right .reply-btns").hide();
                       break;
                     case 3:
-                      $('#' + clone_id + " #member-profile-right p#m-status").html("已拒絕");
+                      $('#' + clone_id + " #member-profile-right p#m-status").html("當前狀態： 已拒絕");
                       $('#' + clone_id + " #member-profile-right .reply-btns").hide();
                       break;
                   }
@@ -664,11 +669,11 @@ function reply_apply_handler(URL, CSRF, element_id, is_accepted) {
           // accepted
           console.log()
           $(".apply" + data.application_id + " #member-profile-right .reply-btns").hide();
-          $(".apply" + data.application_id + " #member-profile-right #m-status").text('已加入');
+          $(".apply" + data.application_id + " #member-profile-right #m-status").text('當前狀態： 已加入');
         } else {
           // rejected
           $(".apply" + data.application_id + " #member-profile-right .reply-btns").hide();
-          $(".apply" + data.application_id + " #member-profile-right #m-status").text('已拒絕');
+          $(".apply" + data.application_id + " #member-profile-right #m-status").text('當前狀態： 已拒絕');
         }
       } else {
         Swal.fire({

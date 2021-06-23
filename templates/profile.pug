@@ -79,7 +79,30 @@ html
                     #tag-comment-board
                       {% for tagcomment in skill.comments.all %}
                       .tagcmt-wrap
-                        img#cmtfrom(src="{{ tagcomment.author.userextend.img.url }}")
+                        a(href="{% url 'profile' id=tagcomment.author.pk %}")
+                          img#cmtfrom(src="{{ tagcomment.author.userextend.img.url }}")
+                          .friend-info(style='display: none')
+                            .info-brief
+                              img(src="{{ tagcomment.author.userextend.img.url }}")
+                              .info-brief-right
+                                p#friend-name {{ tagcomment.author.full_name }}
+                                .info-brief-school
+                                  p 系所{{ tagcomment.author.school }}
+                                  p 年級{{ tagcomment.author.grade }}
+                                  {% if request.user.is_authenticated %}
+                                  {% if common_friend == -1 %}
+                                  p 這就是你！
+                                  {% else %}
+                                  p {{ common_friend }} 位共同連結
+                                  {% endif %}
+                                  {% endif %}
+                            {% if friend_connect %}
+                            p {{ friend.last_name }} 與他一起參與過 {{ friend_connect }} 個活動
+                            //{{ user.user.last_name }}
+                            {% else %}
+                            p {{ friend.last_name }} 與他還沒有一起參與過活動
+                            {% endif %}
+                            
                         #cmttext
                           p {{ tagcomment.text }}
                       {% empty %}

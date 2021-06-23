@@ -58,12 +58,12 @@ $(document).ready(function(){
 //    $("#graph").toggle()
 //  })
   
-  $('#friends-avatar img').mouseenter(function() {
+  $('#friends-avatar img, .tagcmt-wrap a img').mouseenter(function() {
     $(this).parent().find('.friend-info').css({'display': 'flex'});
     $(this).parent().find('.friend-img').css({'box-shadow': '0 0 0.2rem 0.1rem var(--boxshadow-color)'})
     
   });
-  $('#friends-avatar img').not('.friend-info').mouseleave(function() {
+  $('#friends-avatar img, .tagcmt-wrap a img').not('.friend-info').mouseleave(function() {
     $(this).parent().find('.friend-info').css({'display': 'none'});
     $(this).parent().find('.friend-img').css({'box-shadow': 'none'})
   });
