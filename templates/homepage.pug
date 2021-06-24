@@ -81,27 +81,64 @@ html
           {% for event in event_obj %}
           a(id='{{ event.pk }}' margin='0')
             .eventpost
+              {% if event.is_closed %}
+              .posttop(style="background-color: #E0E0E0")
+                p#post_title.title {{ event.title }}
+                p#post_subtitle.subtitle {{ event.subtitle }}
+                {% if event.image %}
+                img#postimgs(src="{{ event.image.url }}")
+                {% else %}
+                //- #postimgs
+                {% endif %}
+                #add_pic
+                  #addpic_bg
+                    #addicon
+                #posttag
+                  #tags
+                #postcreatdate
+                  //- p {{ event.create_date }}   
+                #postwanted
+                  //- p {{ event.people_wanted }}
+              {% else %}
+              {% if event.host == request.user.userextend %}
+              .posttop(style="background-color: #9FE4D4")
+                p#post_title.title {{ event.title }}
+                p#post_subtitle.subtitle {{ event.subtitle }}
+                {% if event.image %}
+                img#postimgs(src="{{ event.image.url }}")
+                {% else %}
+                //- #postimgs
+                {% endif %}
+                #add_pic
+                  #addpic_bg
+                    #addicon
+                #posttag
+                  #tags   
+                #postcreatdate
+                  //- p {{ event.create_date }}  
+                #postwanted
+                  //- p {{ event.people_wanted }}
+              {% else %}
               .posttop
                 p#post_title.title {{ event.title }}
                 p#post_subtitle.subtitle {{ event.subtitle }}
                 {% if event.image %}
                 img#postimgs(src="{{ event.image.url }}")
                 {% else %}
-                //#postimgs
+                //- #postimgs
                 {% endif %}
                 #add_pic
                   #addpic_bg
                     #addicon
-                  
-                  
                 #posttag
-                  #tags
-                
+                  #tags   
                 #postcreatdate
-                  //p {{ event.create_date }}
-                  
+                  //- p {{ event.create_date }}  
                 #postwanted
-                  //p {{ event.people_wanted }}
+                  //- p {{ event.people_wanted }}
+              {% endif %}
+              {% endif %}
+                
                 
               .postbottom
                 img#commenticon(src="{% static 'file/participant.png' %}")

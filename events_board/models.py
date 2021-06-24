@@ -17,6 +17,7 @@ class EventsBoard(models.Model):
   subtitle = models.CharField(max_length=40, blank=True)
   detail = models.TextField()
   image = models.ImageField(upload_to='events/', blank=True)
+  manual_closed = models.BooleanField(default=False)
 
   # date fields
   create_date = models.DateField(default = date.today)
@@ -41,7 +42,6 @@ class EventsBoard(models.Model):
     default = '',
     blank = True,
   )
-
 
   EVENT_CHOICES = [
     ('activity', '活動'),
@@ -77,6 +77,9 @@ class EventsBoard(models.Model):
       return -1000
     delta = self.event_date - date.today()
     return delta.days
+  
+  def is_closed(self):
+    return self.delta_date() < 0 or self.manual_closed
 
   def __str__(self):
     return self.title
