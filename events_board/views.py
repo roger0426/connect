@@ -9,6 +9,7 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.conf import settings
 from connect.utils import input_format
+import sys
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -214,7 +215,7 @@ def order_view(request):
     elif (selected_item == '1'):
       # obj = EventsBoard.objects.order_by('-event_date')
       unsorted_obj = obj
-      obj = sorted(unsorted_obj, key=lambda t: -t.delta_date())
+      obj = sorted(unsorted_obj, key=lambda t: t.delta_date() if t.delta_date() > 0 else sys.maxsize - t.delta_date())
     elif (selected_item == '2'):
       unsorted_obj = obj
       obj = sorted(unsorted_obj, key=lambda t: -t.number_of_likes())
