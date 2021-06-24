@@ -23,7 +23,7 @@ def home_view(request, *args, **kwargs):
   if request.user.is_authenticated:
     for event in obj.all():
       if event.event_date:
-        if event.event_date < today and \
+        if event.is_closed() and \
         not Comment.objects.filter(for_event=event).filter(author=request.user.userextend)\
         and (request.user.userextend in event.participants.all()\
         or (event.host == request.user.userextend and event.participants.count() > 0)):
@@ -373,6 +373,21 @@ def edit_event_view(request):
         'status': 500,
         'error_message': '[Error] please confirm you have input some string'
       })
+    event.save()
+    return JsonResponse({
+      'status': 200,
+    })
+  else:
+    return JsonResponse({
+      'status': 500,
+      'error_message': "[Error] request not post, rejected"
+    })
+
+def end_event_view(request):
+  if request.method == 'POST':
+    data = request.POST
+    event = get_object_or_404(EventsBoard, id=data.get('event_id'))
+    event.manual_closed = True
     event.save()
     return JsonResponse({
       'status': 200,

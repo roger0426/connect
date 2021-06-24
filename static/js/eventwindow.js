@@ -397,7 +397,61 @@ function delete_event_handler(URL, CSRF, event_id) {
       });
     }
   })
-  
+}
+
+function end_event_handler(URL, CSRF, event_id) {
+  Swal.fire({
+    title: '你確定嗎？',
+    text: "這將會結束活動",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: '結束活動',
+    cancelButtonText: '取消'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajaxSetup({
+        data: {
+          csrfmiddlewaretoken: CSRF
+        }
+      });
+      $.ajax({
+        type: "POST",
+        url: URL,
+        data: {
+          'event_id': event_id,
+        },
+        dataType: 'json',
+        success: function(data) {
+          if (data.status == 200) {
+            console.log("end event successfully");
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: '已結束活動',
+              text: "期待你下次的活動~",
+              showConfirmButton: false,
+              timer: 1500
+            });
+            $("a#" + event_id + " .posttop").css('background-color', '#E0E0E0');
+            $("#eventcontrol").animate({height: 0, opacity: 0}, 400, function() {
+              $("#eventcontrol").hide();
+            })
+          } else {
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: '喔不出錯了',
+              text: data.error_message,
+              showConfirmButton: false,
+              timer: 2000,
+            })
+          }
+        }
+      });
+    }
+  })
 }
 
 function like_handler(URL, event_id, CSRF) {

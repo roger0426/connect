@@ -136,7 +136,7 @@ html
               p#requirement-text 具備的能力
               #requirement-tags
             textarea#reason(type='text', placeholder='* 加入理由')
-          input.eventjoinbtn.btn(type="button", value="加入")
+          input.eventjoinbtn.btn(type="button", value="申請")
           input.loadingbtn.btn(type="button", value="處理中...", style="display: none")
           script.
             $(document).ready(function(){
@@ -188,6 +188,13 @@ html
               $("input#delete-btn").on("click", function() {
                 delete_event_handler(
                   "{% url 'delete_event' %}",
+                  "{{ csrf_token }}",
+                  $(this).closest('#eventwindow').attr('class')
+                )
+              })
+              $("input#end-btn").on("click", function() {
+                end_event_handler(
+                  "{% url 'end_event' %}",
                   "{{ csrf_token }}",
                   $(this).closest('#eventwindow').attr('class')
                 )

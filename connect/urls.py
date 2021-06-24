@@ -22,7 +22,7 @@ from about_us.views import about_us_view
 from events_board.views import home_view, event_detail_view, like_view, join_event_view
 from events_board.views import comment_view, search_view, order_view, rate_event_view
 from events_board.views import edit_event_view, delete_event_view, get_apply_view
-from events_board.views import reply_apply_view
+from events_board.views import reply_apply_view, end_event_view
 #from user_extend.views import profile_view, profile_event_view, modify, profile_edit_view
 from user_extend.views import profile_view, modify, profile_edit_view
 from user_extend.views import  get_user_view, friend_request_view, friend_reply_view
@@ -58,6 +58,7 @@ urlpatterns = [
     path('reply_apply/', reply_apply_view, name="reply_apply"),
     path('get_apply/', get_apply_view, name="get_apply"),
     path('edit_event/', edit_event_view, name="edit_event"),
+    path('end_event/', end_event_view, name="end_event"),
     path('delete_event/', delete_event_view, name="delete_event"),
     path('order/', order_view, name="order"),
 

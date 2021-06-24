@@ -7,7 +7,6 @@ $(document).ready(function(){
   });
 
   $(".post-condition").each(function() {
-    console.log($(this).text())
     if ($(this).text() == '0') {
       $(this).parent().css('background-color', '#E0E0E0');
     } else if ($(this).text() == '1') {
