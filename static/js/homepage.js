@@ -1,6 +1,5 @@
 $(document).ready(function(){
-  $('#loadingfilter').hide();
-  $('#loadinggif').hide();
+  $('#loading').hide();
   
   $('#phoneerrormsg').click(function(){
     $('#phoneerrormsg').hide();

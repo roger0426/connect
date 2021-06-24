@@ -126,6 +126,16 @@ function event_handler(URL, user_id, CSRF) {
       // console.log("host:", data.host_id);
       // console.log("host-pic:", data.host_pic);
       
+      $("#loading").show();
+      
+      //lock background
+      $('body').css({'overflow': 'hidden'});
+      $("#eventwindow").css({'display': 'flex'});
+      $("#filter1").show();
+//      $("#eventwindow").css({'opacity': 1});
+      $("#eventwindow").animate({'opacity': 1}, 200);
+      $("#filter1").animate({'opacity': 1}, 200);
+      
       if(data.image != null) {
         $("#eventwindow" + " #eventpic" + " img").attr('src', data.image);
         $("#eventwindow" + " #eventpic" + " img").show();
@@ -235,8 +245,9 @@ function event_handler(URL, user_id, CSRF) {
           }
         });
       };
-      $("#eventoperate #member #like-m").append("<p id=\"likepage-btn\"class=\"member member-btn\">+" + n + "</p>");
-      
+      if(n >= 3){
+        $("#eventoperate #member #like-m").append("<p id=\"likepage-btn\"class=\"member member-btn\">+" + n + "</p>");
+      }
       n = 0;
       $("#eventoperate #member #part-m").append("<p id=\"mt\">成員</p>");
         console.log(data.particitants)
@@ -257,7 +268,10 @@ function event_handler(URL, user_id, CSRF) {
           }
         });
       };
-      $("#eventoperate #member #part-m").append("<p id=\"partpage-btn\"class=\"member member-btn\">+" + n + "</p>");
+      if(n >= 3){
+        $("#eventoperate #member #part-m").append("<p id=\"partpage-btn\"class=\"member member-btn\">+" + n + "</p>");
+      }
+      
 
       // join window
       if (user_id == data.host_id) {
@@ -297,13 +311,7 @@ function event_handler(URL, user_id, CSRF) {
       });
     },
     complete: function(data) {
-      //lock background
-      $('body').css({'overflow': 'hidden'});
-      $("#eventwindow").css({'display': 'flex'});
-      $("#filter1").show();
-//      $("#eventwindow").css({'opacity': 1});
-      $("#eventwindow").animate({'opacity': 1}, 200);
-      $("#filter1").animate({'opacity': 1}, 200);
+      $("#loading").hide();
     },
     error: function(data) {
       console.log("ajax error");
@@ -527,7 +535,7 @@ function like_handler(URL, event_id, CSRF) {
           <img class='member interested' src= " + img_url + "></a>";
           //console.log(str);
           $('#' + event_id + " #likeicon").attr("src", "/static/file/like-y.png");
-          $('#member').append(str);
+          $('#member #like-m').append(str);
           $('#' + event_id + ' #likesnum').text(like_sum + 1);
         } else if (data.remove) {
           let user_selector = "#member a img[src='" + img_url + "']";

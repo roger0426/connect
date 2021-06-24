@@ -7,17 +7,13 @@ html
     title CONNECT
     link(href="{% static 'file/logo.ico' %}",rel="icon")
     {% load sass_tags %}
+    link(href="{% sass_src 'sass/variable.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/homepage.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
-    link(href="{% sass_src 'sass/variable.sass' %}",rel="stylesheet",type="text/css")
     link(href="{% sass_src 'sass/eventwindow.sass' %}",rel="stylesheet",type="text/css")
-    //-script(src="{% static 'js/d3.v5.js' %}")
     script(src="https://d3js.org/d3.v5.js")
-    //-script(src="{% static 'js/jquery.min.js' %}")
-    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
-    //-script(src="{% static 'js/sweetalert2@11.js' %}")
-    script(src  ="https://cdn.jsdelivr.net/npm/sweetalert2@11")
-    //-script(src="sweetalert2/dist/sweetalert2.min.js")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")\
+    script(src  ="https://cdn.jsdelivr.net/npm/sweetalert2@11")\
     script(src="{% static 'js/homepage.js' %}")
     script(src="{% static 'js/navbar.js' %}")
     script(src="{% static 'js/eventwindow.js' %}")

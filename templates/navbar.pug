@@ -6,8 +6,9 @@ link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
 link(href="{% sass_src 'sass/variable.sass' %}",rel="stylesheet",type="text/css")
 header
   #navbar
-    //#loadingfilter
-    //img#loadinggif
+    #loading
+      #loadingfilter
+      img#loadinggif(src="{% static 'file/connectloading.gif' %}")
     
     a(href="{% url 'home' %}")
       #title CONNECT.
@@ -21,7 +22,7 @@ header
     ul
       li 
         //a#event.button(href="{{ home_url }}")
-        a#feedback.button(href="https://forms.gle/jg1putGAWZntSeNPA" title="問題回報")
+        a#feedback.button(href="https://forms.gle/jg1putGAWZntSeNPA")
         #feedback-hover.hover 問題回報
       li
         {% if notice_unread %}
@@ -95,19 +96,19 @@ header
             })
           }
       li 
-        a#message.button(href="#" title="功能開發中")
+        a#message.button(href="#")
         #message-hover.hover 功能開發中
         //
           訊息
       li
-        a#aboutus.button(href="/about_us" title="about us")
+        a#aboutus.button(href="/about_us")
         #aboutus-hover.hover 關於我們
         
       {% if request.user.is_authenticated %}
       
       {% if request.user.is_authenticated and request.user.pk == user.user.pk %}
       li
-        a#logout.button(href="/logout/" title="登出")
+        a#logout.button(href="/logout/")
         #logout-hover.hover 登出
       {% else %}
       li
@@ -118,7 +119,7 @@ header
       
       {% else %}
       li
-        a#profile.button(href="{% url 'login' %}" title="登入")
+        a#profile.button(href="{% url 'login' %}")
       {% endif %}
   
   {% load static %}
