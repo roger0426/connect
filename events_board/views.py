@@ -250,20 +250,21 @@ def rate_event_view(request):
   if request.method == 'POST':  
     data = request.POST
     event = get_object_or_404(EventsBoard, id=data.get('event_id'))
-    if event.host.full_name in data:
-      comment = Comment.objects.create(
-        text = data.get(event.host.full_name),
-        for_event = event,
-        for_user = event.host,
-        author = request.user.userextend,
-        rate = -1
-      )
-      comment.save()
-    else:
-      return JsonResponse({
-        'status': 404,
-        'error_message': '[Error] Host comment not found'
-      })
+    if event.host != request.user.userextend:
+      if event.host.full_name in data:
+        comment = Comment.objects.create(
+          text = data.get(event.host.full_name),
+          for_event = event,
+          for_user = event.host,
+          author = request.user.userextend,
+          rate = -1
+        )
+        comment.save()
+      else:
+        return JsonResponse({
+          'status': 404,
+          'error_message': '[Error] Host comment not found'
+        })
     for participant in event.participants.all():
       if participant.full_name != request.user.userextend.full_name:
         if participant.full_name in data:

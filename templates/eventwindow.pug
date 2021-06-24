@@ -56,7 +56,7 @@ html
               $(document).ready(function(){
                 $(".eventmsg-btn").on("click", function() {
                   message_handler(
-                    'comment/' + $(this).closest('#eventwindow').attr('class'),
+                    '/comment/' + $(this).closest('#eventwindow').attr('class'),
                     $(this).closest('#eventwindow').attr('class'),
                     "{{ csrf_token }}");
                 })
@@ -115,7 +115,11 @@ html
           script.
             $(document).ready(function(){
               $("#likebutton").on("click", function() {
-                like_handler('like/' + $(this).closest('#eventwindow').attr('class'), $(this).closest('#eventwindow').attr('class'), "{{ csrf_token }}");
+                like_handler(
+                  '/like/' + $(this).closest('#eventwindow').attr('class'), 
+                  $(this).closest('#eventwindow').attr('class'), 
+                  "{{ csrf_token }}"
+                );
               })
             })
           // user not authenticated
