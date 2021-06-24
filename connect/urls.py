@@ -17,10 +17,10 @@ from django.contrib import admin
 from django.urls import path
 
 from connect.view import login_view, logout, send_verification_view, signup_view
-from connect.view import login_request_view
+from connect.view import login_request_view, search_view
 from about_us.views import about_us_view
 from events_board.views import home_view, event_detail_view, like_view, join_event_view
-from events_board.views import comment_view, search_view, order_view, rate_event_view
+from events_board.views import comment_view, order_view, rate_event_view
 from events_board.views import edit_event_view, delete_event_view, get_apply_view
 from events_board.views import reply_apply_view, end_event_view
 #from user_extend.views import profile_view, profile_event_view, modify, profile_edit_view

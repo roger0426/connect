@@ -6,6 +6,10 @@ from user_extend.models import UserExtend
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.conf import settings
+from events_board.models import EventsBoard
+from events_board.forms import EventCreateForm
+from site_notification.models import SiteNotification
+from tags.models import Tag
 from .utils import is_all_chinese, input_format
 import hashlib
 
@@ -129,6 +133,67 @@ def login_request_view(request):
         'status': 404,
         'error_message': '錯誤的使用者名稱或密碼，請再試一次'
       })
+
+def search_view(request):
+  if request.method == "GET":
+    form = EventCreateForm(request.POST, request.FILES or None)
+    if(request.user.is_authenticated):
+      notification = SiteNotification.objects.filter(for_user = request.user).order_by('-date')
+    else:
+      notification = None
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.host = request.user.userextend
+
+    events = EventsBoard.objects.filter(
+      title__icontains=request.GET.get('search')
+    )
+    events_sub = EventsBoard.objects.filter(
+      subtitle__icontains=request.GET.get('search')
+    )
+    events_detail = EventsBoard.objects.filter(
+      detail__icontains=request.GET.get('search')
+    )
+    events = events.union(events_sub).union(events_detail)
+
+    user = UserExtend.objects.filter(
+      full_name__icontains=request.GET.get('search')
+    )
+    username_user = User.objects.filter(
+      username=request.GET.get('search')
+    )
+    tagged_users = User.objects.filter(
+      tags__text__contains=request.GET.get('search')
+    )
+    origin_users = username_user.union(tagged_users)
+    referenced_users = UserExtend.objects.filter(
+      id__in=origin_users.values('userextend__id'))
+
+    user = user.union(referenced_users)
+    common_list = []
+    if request.user.is_authenticated:
+      user_friends = request.user.userextend.friends.all()
+      for filtered_user in user:
+        common_count = 0
+        if filtered_user.user == request.user:
+          common_count = -1
+        else:
+          friends_of_friend = filtered_user.friends.all()
+          for ff in friends_of_friend:
+            if ff in user_friends:
+              common_count += 1
+        common_list.append(common_count)
+    user_zip = zip(user, common_list)
+
+    context = {
+      'event_obj': events,
+      'user_zip': user_zip,
+      'form': form,
+      'notice': notification,
+    }
+    return render(request, 'homepage.pug', context)
+
+  return HttpResponseRedirect('/')
 
 def home_view(request):
   return render(request, 'homepage.pug', {})

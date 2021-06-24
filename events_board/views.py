@@ -171,39 +171,6 @@ def comment_view(request, event_id):
       'msg_date': (comment_obj.date + timedelta(hours=8)).strftime("%b %d, %Y, %-I:%-M %p")
     })
 
-
-def search_view(request):
-  if request.method == "GET":
-    events = EventsBoard.objects.filter(
-      title__contains=request.GET.get('search'),
-    )
-    events_sub = EventsBoard.objects.filter(
-      subtitle__contains=request.GET.get('search'),
-    )
-    events_detail = EventsBoard.objects.filter(
-      detail__contains=request.GET.get('search'),
-    )
-    events = events.union(events_sub).union(events_detail)
-    form = EventCreateForm(request.POST, request.FILES or None)
-    if(request.user.is_authenticated):
-      notification = SiteNotification.objects.filter(for_user = request.user).order_by('-date')
-    else:
-      notification = None
-
-    if form.is_valid():
-      instance = form.save(commit=False)
-      instance.host = request.user.userextend
-      instance.save()
-    
-    context = {
-      'event_obj': events,
-      'form': form,
-      'notice': notification,
-    }
-    return render(request, 'homepage.pug', context)
-
-  return HttpResponseRedirect('/')
-
 def order_view(request):
   if request.method == 'POST':
     data = request.POST

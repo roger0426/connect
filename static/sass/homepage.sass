@@ -208,8 +208,55 @@ footer
       align-items: flex-start
       margin: 0 3rem
       margin-bottom: 7rem
+      
       a
         margin: 1.45rem
+      .user-info:hover
+        position: relative
+        transform: scale(1.005)
+        box-shadow: 0.3rem 0.15rem 0.5rem 0.2rem var(--boxshadow-color)
+      .user-info
+        flex-direction: column
+        align-content: center;
+        padding: 1rem 1.5rem 1rem 1.5rem
+        background-color: var(--background-color-freind)
+        border: solid var(--background-color-navbar) 0.1rem
+        border-radius: 0.8rem
+        min-width: 13rem;
+        box-shadow: 0.15rem 0.1rem 0.3rem 0.1rem var(--boxshadow-color)
+        .info-brief
+          display: flex
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: flex-start;
+          justify-content: flex-start;
+          img
+            width: 4rem
+            height: 4rem
+            margin-right: 1rem
+          p#user-name
+            font-weight: 600
+            font-size: 1.2rem
+          .info-brief-right
+            display: flex
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            .info-brief-school
+              display: flex
+              flex-direction: column;
+              align-items: flex-start;
+              p
+                font-size: 0.8rem
+                color: var(--fontcolor-second)
+              p:nth-child(1)
+                font-weight: 500
+              p:nth-child(2)
+                font-weight: 500
+      .break
+        flex-basis: 100%
+        height: 0
+      
       .eventpost:hover
         position: relative
         transform: scale(1.005)

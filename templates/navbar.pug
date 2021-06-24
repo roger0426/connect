@@ -14,9 +14,9 @@ header
 
     form(action="{% url 'search' %}", method="GET") 
       input(type="text", placeholder="Search", name="search")
-      select#category
-        option(value='recommend') 活動
-        option(value='recommend') 使用者
+      //- select#category(name="dropdown")
+      //-   option(value='activity') 活動
+      //-   option(value='user') 使用者
 
     ul
       li 
