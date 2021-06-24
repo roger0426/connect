@@ -6,6 +6,15 @@ $(document).ready(function(){
     $('#phoneerrormsg').hide();
   });
 
+  $(".post-condition").each(function() {
+    console.log($(this).text())
+    if ($(this).text() == '0') {
+      $(this).parent().css('background-color', '#E0E0E0');
+    } else if ($(this).text() == '1') {
+      $(this).parent().css('background-color', '#9FE4D4');
+    }
+  });
+
   $("#insertbox").click(function() {
     //console.log("click createevent");
     $('input[type=text]').val('');
