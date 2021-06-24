@@ -1,13 +1,5 @@
 $(document).ready(function(){
 
-  //eventwindow likes & participants hover name
-  $(document).on("mouseenter", ".member", function() {
-    $(this).siblings('.member-hover').show();
-  });
-  $(document).on("mouseleave", ".member", function() {
-    $(this).siblings('.member-hover').hide();
-  });
-
   $("#exitbtn1, #filter1").click(function() {
     //console.log("click event exit");
     $('body').css({'overflow': 'auto'});
@@ -17,11 +9,19 @@ $(document).ready(function(){
     $("#eventjoinwindow").animate({opacity: 0}, 400, function() {
       reset_event_window();
       $("#eventjoinwindow").hide();
-    $("#eventjoinwindow").css({height: 0})
+      $("#eventjoinwindow").css({height: 0})
     })
     $("#eventcontrol").animate({opacity: 0}, 400, function() {
       $("#eventcontrol").hide();
-    $("#eventcontrol").css({height: 0})
+      $("#eventcontrol").css({height: 0})
+    })
+    $("#eventlikes-window").animate({opacity: 0}, 400, function() {
+      $("#eventlikes-window").hide();
+      $("#eventlikes-window").css({height: 0})
+    })
+    $("#eventpart-window").animate({opacity: 0}, 400, function() {
+      $("#eventpart-window").hide();
+      $("#eventpart-window").css({height: 0})
     })
     
     $("#filter1").animate({opacity: 0}, 150, function() {
@@ -29,30 +29,42 @@ $(document).ready(function(){
     })
   });
   
-  //event join exit
-  $("#exitbtn3").click(function() {
-    //console.log("click event exit");
-    $('body').css({'overflow': 'auto'});
-    $("#eventjoinwindow").animate({height: 0, opacity: 1}, 400, function() {
-      $("#eventjoinwindow").hide();
-    })
-  });
-  
-  //event control center
-  $("#exitbtn4").click(function() {
+  $("#exitbtn3, #exitbtn4, #exitbtn5, #exitbtn6").click(function() {
     // console.log("click event exit");
     //$('body').css({'overflow': 'auto'});
-    $("#eventcontrol").animate({height: 0, opacity: 0}, 400, function() {
-      $("#eventcontrol").hide();
+    $(".eventsubwindow").animate({height: 0, opacity: 0}, 400, function() {
+      $(".eventsubwindow").hide();
     })
   });
-  
+});
+
+//eventwindow likes & participants hover name
+$(document).on("mouseenter", ".member", function() {
+  console.log("in");
+  $(this).siblings('.member-hover').show();
+});
+$(document).on("mouseleave", ".member", function() {
+  $(this).siblings('.member-hover').hide();
 });
 
 $(document).on('click', ".eventjoin-btn", function() {
   //console.log("click event join");
   $("#eventjoinwindow").show();
   $("#eventjoinwindow").animate({'height': '75%', opacity: 1}, 400, function() {
+  })
+})
+
+$(document).on('click', "#likepage-btn", function() {
+  //console.log("click event join");
+  $("#eventlikes-window").show();
+  $("#eventlikes-window").animate({'height': '75%', opacity: 1}, 400, function() {
+  })
+})
+
+$(document).on('click', "#partpage-btn", function() {
+  //console.log("click event join");
+  $("#eventpart-window").show();
+  $("#eventpart-window").animate({'height': '75%', opacity: 1}, 400, function() {
   })
 })
 
@@ -143,7 +155,9 @@ function event_handler(URL, user_id, CSRF) {
       $("#eventwindow" + " #eventoperate" + " #organizer-pic").attr('src', data.host_pic);
       $("#eventwindow" + " #eventoperate" + " .member-hover").text(data.host_name);
       
-      $("#member").html("");
+      $("#member").html(
+        "<div id='like-m'></div>\
+          <div id='part-m'></div>");
       $("#eventmsg-board").html(
         "<div id='eventmsg' style='display: none' class='eventmsg'>\
           <a><img class='sender'></a>\
@@ -190,35 +204,52 @@ function event_handler(URL, user_id, CSRF) {
       
       $('#likebutton').css("background-image", "url(/static/file/like-bg-n.png");
       $('#likebutton button').attr("src", "/static/file/like-bg-n.png");
+      $("#eventoperate #member #like-m").append("<p id=\"lt\">按讚</p>");
+      
+      var n = 0;
       if(data.likes != undefined) {
         data.likes.forEach(function(item, i) {
-          if(item.id == user_id) {
-            $('#likebutton').css("background-image", "url(/static/file/like-bg-y.png");
-            $('#likebutton button').attr("src", "/static/file/like-bg-y.png");
+          if(i < 2){
+            if(item.id == user_id) {
+              $('#likebutton').css("background-image", "url(/static/file/like-bg-y.png");
+              $('#likebutton button').attr("src", "/static/file/like-bg-y.png");
+            }
+            let str = "<a href='/profile/" + item.id + "'>\
+                        <img class='member interested' \
+                        src='https://res.cloudinary.com/connect-universe/image/upload/v1/" +
+                        item.img + "'>\
+                        <p class='member-hover'>" + item.full_name + "</p>\
+                      </a>";
+            $("#eventoperate #member #like-m").append(str);
+            n = 0;
+          }else{
+            n = i - 1;
           }
-          let str = "<a href='/profile/" + item.id + "'>\
-                      <img class='member interested' \
-                      src='https://res.cloudinary.com/connect-universe/image/upload/v1/" +
-                      item.img + "'>\
-                      <p class='member-hover'>" + item.full_name + "</p>\
-                    </a>";
-          
-          $("#eventoperate #member").prepend(str);
         });
       };
+      $("#eventoperate #member #like-m").append("<p id=\"likepage-btn\"class=\"member member-btn\">+" + n + "</p>");
       
+      n = 0;
+      $("#eventoperate #member #part-m").append("<p id=\"mt\">成員</p>");
+        console.log(data.particitants)
       if(data.particitants != undefined) {
         data.particitants.forEach(function(item, i) {
-          let str = "<a href='/profile/" + item.id + "'>\
-                      <img class='member participant' \
-                      src='https://res.cloudinary.com/connect-universe/image/upload/v1/" + 
-                      item.img + "'>\
-                      <p class='member-hover'>" + item.full_name + "</p>\
-                    </a>";
-          
-          $("#eventoperate #member").prepend(str);
+          if(i < 2){
+            let str = "<a href='/profile/" + item.id + "'>\
+                        <img class='member participant' \
+                        src='https://res.cloudinary.com/connect-universe/image/upload/v1/" +
+                        item.img + "'>\
+                        <p class='member-hover'>" + item.full_name + "</p>\
+                      </a>";
+            
+            $("#eventoperate #member #part-m").append(str);
+            n = 0;
+          }else{
+            n = i - 1;
+          }
         });
       };
+      $("#eventoperate #member #part-m").append("<p id=\"partpage-btn\"class=\"member member-btn\">+" + n + "</p>");
 
       // join window
       if (user_id == data.host_id) {
@@ -272,6 +303,7 @@ function event_handler(URL, user_id, CSRF) {
   })
 
 };
+
 $(document).on("click", "p.requirement-tag", function() {
   if ($(this).css("background-color") == "rgb(189, 189, 189)") {
     $(this).css("background-color", "rgb(255, 173, 148)")

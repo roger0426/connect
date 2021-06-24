@@ -87,7 +87,6 @@ html
             p.member-hover
           #bar
           #member
-            
             //-
               {% for participant in event_detail.participants.all %}
               a(href="{% url 'profile' id=participant.pk %}")
@@ -221,10 +220,11 @@ html
               })
             })
           
-      #eventlikes.eventsubwindow
+      #eventlikes-window.eventsubwindow
         img#exitbtn5.exitbtn(src="{% static 'file/exiticon.png' %}")
         .eventcontainer
+          #likeslist
         
-      #eventparticipants.eventsubwindow
+      #eventpart-window.eventsubwindow
         img#exitbtn6.exitbtn(src="{% static 'file/exiticon.png' %}")
         .eventcontainer

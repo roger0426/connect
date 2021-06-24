@@ -136,7 +136,7 @@ input[type='button']:active
       
       #event-detail
         font-size: 0.95rem
-        line-height: 1.5rem
+        line-height: 1.35rem
         min-height: 5rem
         max-height: 14rem
         margin: 1rem 0 0 0.5rem
@@ -158,8 +158,7 @@ input[type='button']:active
       box-shadow: inset 0px -1px 5px var(--boxshadow-color)
       
       width: 95%
-      max-height: 15rem
-      min-height: 10rem
+      height: 15rem
       background-color: var(--background-color-eventwindow-board)
       border-radius: 1.5rem
       padding: 0.5rem
@@ -321,6 +320,7 @@ input[type='button']:active
       align-content: center
       align-items: center
       justify-content: flex-start
+      height: 30.5rem
       
       #exitbtn1
         //position: absolute
@@ -333,7 +333,6 @@ input[type='button']:active
       #organizer-pic
         width: 3rem
         height: 3rem
-        margin-bottom: 0.4rem
         border-radius: 50%
         border: solid 0.2rem var(--border-color-eventwindow)
         justify-content: flex-start
@@ -351,8 +350,8 @@ input[type='button']:active
         z-index: 3
       #bar
         width: 2.5rem
-        height: 0.2rem
-        background-color: #AAAAAA
+        height: 0.15rem
+        background-color: var(--black-4)
         border-radius: 0.1rem
         margin-bottom: 0.4rem
       
@@ -364,8 +363,7 @@ input[type='button']:active
         align-items: center
         overflow-y: auto;
         overflow-x: hidden;
-        max-height: 21.5rem;
-        
+        width: 3.5rem;
         .member
           width: 3rem
           height: 3rem
@@ -373,11 +371,39 @@ input[type='button']:active
           border-radius: 50%
           background-color: #FFFFFF 
         .participant
-          border: solid 0.15rem var(--border-color-participate)
+          border: solid 0.1rem var(--border-color-participate)
         .interested
-          border: solid 0.15rem var(--background-color-userpic)
-        a
-          position: relative
+          border: solid 0.1rem var(--background-color-userpic)
+          
+        .member-btn:hover
+          transform: scale(1.02)
+        .member-btn:active
+          transform: scale(0.97)
+        .member-btn
+          border: none
+          background-color: var(--black-4)
+          line-height: 3.2rem
+          text-align: center
+          cursor: pointer
+      
+        #like-m
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          height: 11.8rem;
+          overflow: hidden;
+          #lt
+            font-size: 0.85rem
+            color: var(--black-2)
+        #part-m
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          height: 11.8rem
+          overflow: hidden;
+          #mt
+            font-size: 0.85rem
+            color: var(--black-2)
  
       .login-redirect
         position: relative
@@ -443,9 +469,7 @@ input[type='button']:active
       right: 1.5rem
       top: 1.5rem
       z-index: 1
-  
-  #eventjoinwindow
-    #exitbtn3
+      
     .eventcontainer
       display: flex
       flex-direction: column
@@ -457,8 +481,10 @@ input[type='button']:active
       position: absolute
       left: 50%
       transform: translate(-50%, 0)
-
-
+  
+  #eventjoinwindow
+    #exitbtn3
+    .eventcontainer
       #eventjoinhead
         font-size: 1.7rem
         font-weight: 600
@@ -533,16 +559,6 @@ input[type='button']:active
       
   #eventcontrol
     .eventcontainer
-      display: flex
-      flex-direction: column
-      align-items: center
-      flex-wrap: nowrap
-      justify-content: space-evenly;
-      width: 100%
-      height: 100%
-      position: absolute
-      left: 50%
-      transform: translate(-50%, 0)
       
       p
         font-size: 2rem
@@ -557,6 +573,7 @@ input[type='button']:active
         max-height: 55%;
         overflow: auto;
         width: 85%
+        height: 14rem
         background-color: var(--black-5)
         border-radius: 1rem
         padding: 0.5rem 0

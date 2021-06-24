@@ -51,14 +51,14 @@ def profile_view(request, id, *args, **kwargs):
       skill_tups.append((tag, False))
 
   activities = \
-    EventsBoard.objects.filter(host=obj, event_type='activity') | \
-    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='activity')
+    EventsBoard.objects.filter(host=obj, event_type='activity').order_by('-create_date') | \
+    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='activity').order_by('-create_date')
   projects = \
-    EventsBoard.objects.filter(host=obj, event_type='project') | \
-    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='project')
+    EventsBoard.objects.filter(host=obj, event_type='project').order_by('-create_date') | \
+    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='project').order_by('-create_date')
   personal_projs = \
-    EventsBoard.objects.filter(host=obj, event_type='personal') | \
-    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='personal')
+    EventsBoard.objects.filter(host=obj, event_type='personal').order_by('-create_date') | \
+    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='personal').order_by('-create_date')
 
   friends = obj.friends.all()
   friend_connect_counts = \

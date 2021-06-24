@@ -8,9 +8,9 @@ $(document).ready(function(){
 
   $(".post-condition").each(function() {
     if ($(this).text() == '0') {
-      $(this).parent().css('background-color', '#E0E0E0');
+      $(this).parent().css('background-color', 'var(--black-5)');
     } else if ($(this).text() == '1') {
-      $(this).parent().css('background-color', '#9FE4D4');
+      $(this).parent().css('background-color', 'var(--orange-2)');
     }
   });
 
