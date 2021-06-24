@@ -12,7 +12,7 @@ from connect.utils import input_format
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
-  obj = EventsBoard.objects.order_by('-create_date')
+  obj = EventsBoard.objects.order_by('-id')
   form = EventCreateForm(request.POST, request.FILES or None)
 
   # check if there's any uncomment events
@@ -208,19 +208,21 @@ def order_view(request):
     data = request.POST
     selected_item = data.get('sort_type')
 
-    obj = EventsBoard.objects.order_by('-create_date')
+    obj = EventsBoard.objects.order_by('-id')
     if (selected_item == '0'):
-      obj = EventsBoard.objects.order_by('-create_date')
+      obj = EventsBoard.objects.order_by('-id')
     elif (selected_item == '1'):
-      obj = EventsBoard.objects.order_by('-event_date')
+      # obj = EventsBoard.objects.order_by('-event_date')
+      unsorted_obj = obj
+      obj = sorted(unsorted_obj, key=lambda t: -t.delta_date())
     elif (selected_item == '2'):
-      unsorted_obj = EventsBoard.objects.all()
+      unsorted_obj = obj
       obj = sorted(unsorted_obj, key=lambda t: -t.number_of_likes())
     elif (selected_item == '3'):
-      unsorted_obj = EventsBoard.objects.all()
+      unsorted_obj = obj
       obj = sorted(unsorted_obj, key=lambda t: -t.number_of_participants())
 
-    if selected_item == '2' or selected_item == '3':
+    if selected_item != '0':
       obj_id_list = []
       for event in obj:
         obj_id_list.append(event.pk)
@@ -406,11 +408,12 @@ def reply_apply_view(request):
       application.status = 2
       application.save()
       event = application.for_event
-      event.participants.add(request.user.userextend)
+      event.participants.add(application.applicant)
       event.save()
       return JsonResponse({
         'status': 200,
         'application_id': application_id,
+        'event_id': event.id,
         'accepted': True
       })
     else:

@@ -670,6 +670,9 @@ function reply_apply_handler(URL, CSRF, element_id, is_accepted) {
           console.log()
           $(".apply" + data.application_id + " #member-profile-right .reply-btns").hide();
           $(".apply" + data.application_id + " #member-profile-right #m-status").text('當前狀態： 已加入');
+          let origin_participant_num = parseInt(
+            $('#' + data.event_id + ' #commentnum').text());
+          $('#' + data.event_id + ' #commentnum').text(origin_participant_num + 1);
         } else {
           // rejected
           $(".apply" + data.application_id + " #member-profile-right .reply-btns").hide();

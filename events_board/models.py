@@ -71,6 +71,13 @@ class EventsBoard(models.Model):
     for comment in comments:
       sum += comment.rate
     return format((sum/count), '.1f')
+
+  def delta_date(self):
+    if not self.event_date:
+      return -1000
+    delta = self.event_date - date.today()
+    return delta.days
+
   def __str__(self):
     return self.title
 
