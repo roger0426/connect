@@ -70,5 +70,9 @@ $(document).ready(function(){
   });
 
   
-
+  $('.button, #title').not('#alert, #message').on("click", function() {
+    $("#loading").show()
+    $("#loading").animate({'opacity': 1}, 200, function() {
+    })
+  })
 })

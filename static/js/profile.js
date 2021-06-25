@@ -1,6 +1,7 @@
 $(document).ready(function(){
-  $('#loadingfilter').hide();
-  $('#loadinggif').hide();
+  $("#loading").animate({'opacity': 0}, 500, function() {
+    $("#loading").hide()
+  })
   
   $('#phoneerrormsg').click(function(){
     $('#phoneerrormsg').hide();

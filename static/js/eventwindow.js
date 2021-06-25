@@ -47,6 +47,12 @@ $(document).on("mouseleave", ".member", function() {
   $(this).siblings('.member-hover').hide();
 });
 
+$(document).on("click", "a", function() {
+  $("#loading").show();
+  $("#loading").animate({'opacity': 1}, 200, function() {
+  });
+});
+
 $(document).on('click', ".eventjoin-btn", function() {
   //console.log("click event join");
   $("#eventjoinwindow").show();

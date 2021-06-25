@@ -23,6 +23,8 @@ html
   {% include 'navbar.pug' %}
 
   body
+    #loading
+      img#loadinggif(src="{% static 'file/connectloading.gif' %}")
     #phoneerrormsg
       //#errorlogo
       p 尚未針對窄螢幕優化
@@ -470,11 +472,17 @@ html
     {% include "eventwindow.pug" %}
     script.
       $('.info a').on("click", function() {
+        $("#loading").show()
+        $("#loading").animate({'opacity': 1}, 200, function() {
+        })
         $('#eventwindow').attr('class', this.closest('.card').id)
         console.log("event/" + this.closest('.card').id)
         event_handler("/event/" + this.closest('.card').id, "{{ request.user.id }}", "{{ csrf_token }}");
       });
       $('.card-img').on("click", function() {
+        $("#loading").show()
+        $("#loading").animate({'opacity': 1}, 200, function() {
+        })
         $('#eventwindow').attr('class', this.closest('.card').id)
         console.log("event/" + this.closest('.card').id)
         event_handler("/event/" + this.closest('.card').id, "{{ request.user.id }}", "{{ csrf_token }}");
