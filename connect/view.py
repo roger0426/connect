@@ -155,39 +155,34 @@ def search_view(request):
       detail__icontains=request.GET.get('search')
     )
     events = events.union(events_sub).union(events_detail)
-
+    
+    # high relative users
     user = UserExtend.objects.filter(
       full_name__icontains=request.GET.get('search')
     )
     username_user = User.objects.filter(
       username=request.GET.get('search')
     )
+
+    # tagged users
     tagged_users = User.objects.filter(
       tags__text__contains=request.GET.get('search')
     )
-    origin_users = username_user.union(tagged_users)
-    referenced_users = UserExtend.objects.filter(
-      id__in=origin_users.values('userextend__id'))
 
+    referenced_users = UserExtend.objects.filter(
+      id__in=username_user.values('userextend__id'))
     user = user.union(referenced_users)
-    common_list = []
-    if request.user.is_authenticated:
-      user_friends = request.user.userextend.friends.all()
-      for filtered_user in user:
-        common_count = 0
-        if filtered_user.user == request.user:
-          common_count = -1
-        else:
-          friends_of_friend = filtered_user.friends.all()
-          for ff in friends_of_friend:
-            if ff in user_friends:
-              common_count += 1
-        common_list.append(common_count)
-    user_zip = zip(user, common_list)
+    origin_user_zip = zip_common_friends(user, request.user)
+
+    tagged_user_extend = UserExtend.objects.filter(
+      id__in=tagged_users.values('userextend__id'))
+    tagged_user_zip = zip_common_friends(tagged_user_extend, request.user)
+    
 
     context = {
       'event_obj': events,
-      'user_zip': user_zip,
+      'origin_user_zip': origin_user_zip,
+      'tagged_user_zip': tagged_user_zip,
       'form': form,
       'notice': notification,
     }
@@ -201,3 +196,20 @@ def home_view(request):
 def logout(request):
   auth.logout(request)
   return HttpResponseRedirect('/')
+
+def zip_common_friends(user_list, request_user):
+  common_list = []
+  if request_user.is_authenticated:
+    user_friends = request_user.userextend.friends.all()
+    for filtered_user in user_list:
+      common_count = 0
+      if filtered_user.user == request_user:
+        common_count = -1
+      else:
+        friends_of_friend = filtered_user.friends.all()
+        for ff in friends_of_friend:
+          if ff in user_friends:
+            common_count += 1
+      common_list.append(common_count)
+  user_zip = zip(user_list, common_list)
+  return user_zip

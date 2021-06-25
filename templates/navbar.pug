@@ -15,10 +15,7 @@ header
 
     form(action="{% url 'search' %}", method="GET") 
       input#search-insert(type="text", placeholder="Search", name="search")
-      //- select#category(name="dropdown")
-      //-   option(value='activity') 活動
-      //-   option(value='user') 使用者
-
+      
     ul
       li 
         //a#event.button(href="{{ home_url }}")

@@ -74,7 +74,16 @@ html
             })
               
         #eventboard
-          {% for user, common_friend in user_zip %}
+          {% if origin_user_zip %}
+          p.search-info 相關使用者
+          #virtualdiv
+          #virtualdiv
+          #virtualdiv
+          #virtualdiv
+          .break
+          hr
+          {% endif %}
+          {% for user, common_friend in origin_user_zip %}
           a.user-a(id='profile_{{ user.id }}' href="/profile/{{ user.id }}" margin="0")
             .user-info
               .info-brief
@@ -98,6 +107,48 @@ html
           #virtualdiv
           #virtualdiv
           .break
+          {% if tagged_user_zip %}
+          p.search-info 擁有相關Tag的使用者
+          #virtualdiv
+          #virtualdiv
+          #virtualdiv
+          #virtualdiv
+          .break
+          hr
+          {% endif %}
+          {% for user, common_friend in tagged_user_zip %}
+          a.user-a(id='profile_{{ user.id }}' href="/profile/{{ user.id }}" margin="0")
+            .user-info
+              .info-brief
+                img(src="{{ user.img.url }}")
+                .info-brief-right
+                  p#user-name {{ user.full_name }}
+                  .info-brief-school
+                    p {{ user.department }}
+                    p {{ user.grade }}
+                    {% if request.user.is_authenticated %}
+                    {% if common_friend == -1 %}
+                    p 這就是你！
+                    {% else %}
+                    p {{ common_friend }} 位共同連結
+                    {% endif %}
+                    {% endif %}
+              
+          {% endfor %}
+          #virtualdiv
+          #virtualdiv
+          #virtualdiv
+          #virtualdiv
+          .break
+          {% if tagged_user_zip or origin_user_zip %}
+          p.search-info 相關活動
+          #virtualdiv
+          #virtualdiv
+          #virtualdiv
+          #virtualdiv
+          .break
+          hr
+          {% endif %}
           {% if event_obj %}
           {% for event in event_obj %}
           a.event-a(id='{{ event.pk }}' margin='0')
