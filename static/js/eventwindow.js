@@ -222,6 +222,22 @@ function event_handler(URL, user_id, CSRF) {
       $('#likebutton button').attr("src", "/static/file/like-bg-n.png");
       $("#eventoperate #member #like-m").append("<p id='lt'>按讚</p>");
       
+      $("#likeslist").html(
+        "<div id='like-info' class='like-info' style='display: none;'>\
+          <div class='info-brief'>\
+            <a><img id='info-brief-img'></a>\
+            <div class='info-brief-right'>\
+              <p id='friend-name'></p>\
+              <div class='info-brief-school'>\
+                <p id='info-brief-department'>電機工程學系</p>\
+                <p id='info-brief-grade'>初心者喵喵</p>\
+                <p id='info-brief-connectnum'></p>\
+              </div>\
+            </div>\
+          </div>\
+        </div>");
+      $("#likeslist").append(
+        "<div id='virtual-like'></div><div id='virtual-like'></div>");
       var n = 0;
       if(data.likes != undefined) {
         data.likes.forEach(function(item, i) {
@@ -241,6 +257,19 @@ function event_handler(URL, user_id, CSRF) {
           }else{
             n = i - 1;
           }
+          
+          let clone_id = duplicate_multi('like-info');
+//          let text = data.text;
+          console.log(item)
+          $('#' + clone_id).css({'display': 'block'});
+          $('#' + clone_id + ' .info-brief a').attr('href', '/profile/' + item.id);
+          $('#' + clone_id + ' .info-brief #friend-name').html(item.full_name);
+          $('#' + clone_id + ' .info-brief #info-brief-department').html(item.department);
+          $('#' + clone_id + ' .info-brief #info-brief-grade').html(item.grade);
+          
+          
+          $('#' + clone_id + " .info-brief img").attr('src', item.img);
+          
         });
       };
       if(n >= 1){
