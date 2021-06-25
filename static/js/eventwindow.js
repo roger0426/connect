@@ -37,13 +37,6 @@ $(document).ready(function(){
     })
   });
   
-  $('body').keyup(function(){
-    if($('#eventwindow').css('display') == 'none'){
-      console.log('insert')
-      var search = document.getElementById('search-insert')
-      search.focus();
-    }
-  })
 });
 
 //eventwindow likes & participants hover name

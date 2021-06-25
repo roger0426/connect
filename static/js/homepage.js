@@ -1,6 +1,15 @@
 $(document).ready(function(){
   $('#loading').hide();
   
+  
+  $('body').keyup(function(){
+    if(($('#eventwindow').css('display') == 'none') && ($('#eventcreatewindow').css('display') == 'none')){
+      console.log('insert')
+      var search = document.getElementById('search-insert')
+      search.focus();
+    }
+  });
+  
   $('#phoneerrormsg').click(function(){
     $('#phoneerrormsg').hide();
   });
