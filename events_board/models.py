@@ -13,8 +13,8 @@ class IntegerRangeField(models.IntegerField):
 
 class EventsBoard(models.Model):
   # basic information
-  title = models.CharField(max_length=30)
-  subtitle = models.CharField(max_length=40, blank=True)
+  title = models.CharField(max_length=40)
+  subtitle = models.CharField(max_length=50, blank=True)
   detail = models.TextField()
   image = models.ImageField(upload_to='events/', blank=True)
   manual_closed = models.BooleanField(default=False)
@@ -110,7 +110,7 @@ class Comment(models.Model):
 
 # Comment messages on the board
 class BoardMessage(models.Model):
-  text = models.CharField(max_length=50)
+  text = models.CharField(max_length=100)
   for_event = models.ForeignKey(
     EventsBoard,
     on_delete=models.CASCADE, 

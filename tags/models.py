@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 class Tag(models.Model):
-  text = models.CharField(max_length=10)
+  text = models.CharField(max_length=20)
   # link with user
   user = models.ForeignKey(
     User,
@@ -32,7 +32,7 @@ class Tag(models.Model):
     return self.user.username + ' - ' + self.tag_type + ' - ' + self.text
 
 class TagComment(models.Model):
-  text = models.CharField(max_length=40)
+  text = models.CharField(max_length=50)
   for_tag = models.ForeignKey(
     Tag,
     on_delete=models.CASCADE, 
