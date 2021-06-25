@@ -3,7 +3,9 @@ $(document).ready(function(){
   
   
   $('body').keyup(function(){
-    if(($('#eventwindow').css('display') == 'none') && ($('#eventcreatewindow').css('display') == 'none')){
+    if(($('#eventwindow').css('display') == 'none') 
+        && ($('#eventcreatewindow').css('display') == 'none')
+        && ($('#comment-window').css('display') == 'none')){
       console.log('insert')
       var search = document.getElementById('search-insert')
       search.focus();
