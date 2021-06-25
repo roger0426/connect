@@ -277,6 +277,17 @@ function rate_event_handler(URL, event_id, CSRF) {
               $("#comment-window").hide();
             })
           }, 1800);
+        } else if (data.status == 503) {
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: '您已評價過此活動了',
+            text: "正在跳轉...",
+            showConfirmButton: false,
+          })
+          setTimeout(function(){
+            location.reload();
+          }, 1000);
         } else {
           Swal.fire({
             position: 'center',
