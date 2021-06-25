@@ -147,7 +147,7 @@ function event_handler(URL, user_id, CSRF) {
       if(data.requirements != undefined) {
         data.requirements.forEach(function(item, i) {
           if(item != "") {
-            $("#eventwindow" + " #event-require").append("<div id='requiretag'>" + item + "</div>");
+            $("#eventwindow" + " #event-require").append("<div class='requiretag'>" + item + "</div>");
           }
         });
       };
@@ -339,6 +339,13 @@ function edit_event_transition() {
   $("#event-detail").replaceWith(
     "<textarea id='event-detail'>" + $("#event-detail").text()
   );
+  
+  $('.requiretag').each(function(item,i){
+    console.log($(this).text())
+    $(this).replaceWith(
+      "<input type='text' class='requiretag' value='" + $(this).text() + "'>"
+    );
+  })
   // $("#eventwindow-bg").replaceWith(
   //   "<input type='file' name='image' alt='image' id='eventwindow-bg'>"
   // );

@@ -357,6 +357,49 @@ footer
                   border: var(--border-color-frame) solid 1px
                 .friend-info
                   transform: translate(-105%, -65%)
+                  display: none
+                  flex-direction: column
+                  align-items: stretch;
+                  align-content: space-between;
+                  position: absolute
+                  padding: 0.5rem
+                  background-color: var(--background-color-freind)
+                  border: solid var(--background-color-navbar) 0.1rem
+                  border-radius: 0.8rem
+                  min-width: 14rem;
+                  box-shadow: 0.15rem 0.1rem 0.3rem 0.1rem var(--boxshadow-color)
+                  p
+                    padding: 0
+                    text-align: left
+                  .info-brief
+                    display: flex
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    img
+                      width: 4rem
+                      height: 4rem
+                      margin-right: 1rem
+                    p#friend-name
+                      font-weight: 600
+                      font-size: 1.2rem
+                    .info-brief-right
+                      display: flex
+                      flex-direction: column;
+                      align-items: flex-start;
+                      justify-content: flex-start;
+                      .info-brief-school
+                        display: flex
+                        flex-direction: column;
+                        align-items: flex-start;
+                        p
+                          font-size: 0.8rem
+                          color: var(--fontcolor-second)
+                        p:nth-child(1)
+                          font-weight: 500
+                        p:nth-child(2)
+                          font-weight: 500
 
                 #cmttext
                   background-color: var(--background-color-event)
@@ -547,6 +590,46 @@ footer
         
       .friend-info
         transform: translate(0, 0)
+        display: none
+        flex-direction: column
+        align-items: stretch;
+        align-content: space-between;
+        position: absolute
+        padding: 0.5rem
+        background-color: var(--background-color-freind)
+        border: solid var(--background-color-navbar) 0.1rem
+        border-radius: 0.8rem
+        min-width: 14rem;
+        box-shadow: 0.15rem 0.1rem 0.3rem 0.1rem var(--boxshadow-color)
+        .info-brief
+          display: flex
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: flex-start;
+          justify-content: flex-start;
+          img
+            width: 4rem
+            height: 4rem
+            margin-right: 1rem
+          p#friend-name
+            font-weight: 600
+            font-size: 1.2rem
+          .info-brief-right
+            display: flex
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            .info-brief-school
+              display: flex
+              flex-direction: column;
+              align-items: flex-start;
+              p
+                font-size: 0.8rem
+                color: var(--fontcolor-second)
+              p:nth-child(1)
+                font-weight: 500
+              p:nth-child(2)
+                font-weight: 500
       .virtualimg
         width: 3.7rem
         height: 0
@@ -807,48 +890,6 @@ footer
       font-size: 1.6rem
       margin-bottom: 1rem
 
-
-.friend-info
-  display: none
-  flex-direction: column
-  align-items: stretch;
-  align-content: space-between;
-  position: absolute
-  padding: 0.5rem
-  background-color: var(--background-color-freind)
-  border: solid var(--background-color-navbar) 0.1rem
-  border-radius: 0.8rem
-  min-width: 14rem;
-  box-shadow: 0.15rem 0.1rem 0.3rem 0.1rem var(--boxshadow-color)
-  .info-brief
-    display: flex
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    justify-content: flex-start;
-    img
-      width: 4rem
-      height: 4rem
-      margin-right: 1rem
-    p#friend-name
-      font-weight: 600
-      font-size: 1.2rem
-    .info-brief-right
-      display: flex
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      .info-brief-school
-        display: flex
-        flex-direction: column;
-        align-items: flex-start;
-        p
-          font-size: 0.8rem
-          color: var(--fontcolor-second)
-        p:nth-child(1)
-          font-weight: 500
-        p:nth-child(2)
-          font-weight: 500
 
   
 @media only screen and (max-width: 1023px)
