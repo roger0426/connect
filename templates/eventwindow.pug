@@ -60,6 +60,15 @@ html
                     $(this).closest('#eventwindow').attr('class'),
                     "{{ csrf_token }}");
                 })
+                $(".eventmsg-btn").on("keydown", function(e) {
+                  let key = e.which;
+                  if (key == 13 && $(".eventmsg-insert").text() != "") {
+                    message_handler(
+                      '/comment/' + $(this).closest('#eventwindow').attr('class'),
+                      $(this).closest('#eventwindow').attr('class'),
+                      "{{ csrf_token }}");
+                  }
+                })
                 $(".eventedit-btn").on("click", function() {
                   get_apply_handler(
                     "{% url 'get_apply' %}",

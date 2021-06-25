@@ -41,7 +41,6 @@ $(document).ready(function(){
 
 //eventwindow likes & participants hover name
 $(document).on("mouseenter", ".member", function() {
-  console.log("in");
   $(this).siblings('.member-hover').show();
 });
 $(document).on("mouseleave", ".member", function() {
@@ -203,7 +202,9 @@ function event_handler(URL, user_id, CSRF) {
                 $('#' + clone_id + ' #eventmsg-sendername').html(data.user_name);
                 $('#' + clone_id + " a").attr('href', '/profile/' + item.author_id);
                 $('#' + clone_id + " img").attr('src', data.user_img_url);
-                $('#' + clone_id + ' #event-date').html(item.date);
+                let shft_time = (parseInt(item.date.substring(11, 13)) + 8) % 24
+                let time = item.date.substring(0, 10) + ' ' + shft_time + item.date.substring(13, 19)
+                $('#' + clone_id + ' #event-date').html(time);
                 $('#' + clone_id + " #eventmsgtext").html(item.text);
               } else {
                 console.log('[Error] get user ' + item.author_id + " error");
@@ -215,7 +216,7 @@ function event_handler(URL, user_id, CSRF) {
       
       $('#likebutton').css("background-image", "url(/static/file/like-bg-n.png");
       $('#likebutton button').attr("src", "/static/file/like-bg-n.png");
-      $("#eventoperate #member #like-m").append("<p id=\"lt\">按讚</p>");
+      $("#eventoperate #member #like-m").append("<p id='lt'>按讚</p>");
       
       var n = 0;
       if(data.likes != undefined) {
@@ -238,14 +239,14 @@ function event_handler(URL, user_id, CSRF) {
           }
         });
       };
-      if(n >= 3){
-        $("#eventoperate #member #like-m").append("<p id=\"likepage-btn\"class=\"member member-btn\">+" + n + "</p>");
+      if(n >= 1){
+        $("#eventoperate #member #like-m").append("<p id='likepage-btn' class='member member-btn'>+" + n + "</p>");
       }
       n = 0;
-      $("#eventoperate #member #part-m").append("<p id=\"mt\">成員</p>");
-        console.log(data.particitants)
-      if(data.particitants != undefined) {
-        data.particitants.forEach(function(item, i) {
+      $("#eventoperate #member #part-m").append("<p id='mt'>成員</p>");
+      console.log(data.participants)
+      if(data.participants != undefined) {
+        data.participants.forEach(function(item, i) {
           if(i < 2){
             let str = "<a href='/profile/" + item.id + "'>\
                         <img class='member participant' \
@@ -261,8 +262,9 @@ function event_handler(URL, user_id, CSRF) {
           }
         });
       };
-      if(n >= 3){
-        $("#eventoperate #member #part-m").append("<p id=\"partpage-btn\"class=\"member member-btn\">+" + n + "</p>");
+      if(n >= 1){
+        console.log("three")
+        $("#eventoperate #member #part-m").append("<p id='partpage-btn' class='member member-btn'>+" + n + "</p>");
       }
       
 

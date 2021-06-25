@@ -85,7 +85,6 @@ def event_detail_view(request, id):
           join_status = application.status
           break
 
-
     return JsonResponse({
       'title': event.title,
       'subtitle': event.subtitle,
@@ -168,7 +167,7 @@ def comment_view(request, event_id):
       'author': author.id,
       'author_img_url': author.img.url,
       'author_name': author.full_name,
-      'msg_date': (comment_obj.date + timedelta(hours=8)).strftime("%b %d, %Y, %-I:%-M %p")
+      'msg_date': (comment_obj.date + timedelta(hours=8)).strftime("%Y-%m-%d %-H:%M:%S")
     })
 
 def order_view(request):
