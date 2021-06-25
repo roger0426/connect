@@ -154,10 +154,12 @@ html
           a.event-a(id='{{ event.pk }}' margin='0')
             .eventpost
               .posttop
-                {% if event.is_closed %}
-                .post-condition(style="display: none") 0
-                {% elif event.host == request.user.userextend %}
+                {% if not event.is_closed %}
+                {% if event.host == request.user.userextend %}
                 .post-condition(style="display: none") 1
+                {% else %}
+                .post-condition(style="display: none") 0
+                {% endif %}
                 {% endif %}
                 p#post_title.title {{ event.title }}
                 p#post_subtitle.subtitle {{ event.subtitle }}
