@@ -569,13 +569,12 @@ function message_handler(URL, event_id, CSRF) {
       if($(".eventmsg #eventmsg-right #eventmsg-righttop p#event-date").text() == '目前沒有留言喔～') {
         $("#eventmsg-board").empty();
       }
-      
-      var clone_id = duplicate_multi('eventmsg');
-      console.log(clone_id);
+      let clone_id = duplicate_multi('eventmsg');
+      let text = data.text;
       $('#' + clone_id + " img").attr('src', data.author_img_url);
       $('#' + clone_id + ' #eventmsg-sendername').html(data.author_name);
       $('#' + clone_id + ' #event-date').html(data.msg_date);
-      $('#' + clone_id + " #eventmsgtext").html($("input.eventmsg-insert").val());
+      $('#' + clone_id + " #eventmsgtext").html(text);
       console.log($("input.eventmsg-insert").val());
       $('#' + clone_id).show();
       $("input.eventmsg-insert").val("");

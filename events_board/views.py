@@ -8,7 +8,8 @@ from datetime import timedelta, date
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.conf import settings
-from connect.utils import input_format
+from connect.utils import input_format, get_tagged_name
+from user_extend.models import UserExtend
 import sys
 
 # Create your views here.
@@ -148,7 +149,7 @@ def like_view(request, id):
     'status': 404,
     'error_message': 'Not ajax request'
   })
-  
+
 # Ajax function
 def comment_view(request, event_id):
   if request.method == "POST":
@@ -157,17 +158,44 @@ def comment_view(request, event_id):
     data = request.POST
     clean_text = input_format(data.get('text'))
     if (clean_text) != "":
+      name_list = get_tagged_name(clean_text)
+      for name in name_list:
+        try:
+          tagged_user = UserExtend.objects.get(full_name=name)
+        except UserExtend.DoesNotExist:
+          tagged_user = None
+        if tagged_user:
+          notification = SiteNotification.objects.create(
+            text = "在 {} 中的留言中提及了你".format(event.title),
+            #sender.userextend.full_name +
+            event = event,
+            for_user = tagged_user.user,
+            from_user = request.user,
+            is_read = False
+          )
+          notification.save()
+          clean_text = clean_text.replace(name,
+          "<a href='/profile/" + str(tagged_user.id) + "' \
+            style='color: blue; margin:0'>" + name + " </a>")
+
+
       comment_obj = BoardMessage.objects.create(
         author = author,
         for_event = event,
         text = clean_text
       )
       comment_obj.save()
+      return JsonResponse({
+        'author': author.id,
+        'author_img_url': author.img.url,
+        'author_name': author.full_name,
+        'text': clean_text,
+        'tagged_list': name_list,
+        'msg_date': (comment_obj.date + timedelta(hours=8)).strftime("%Y-%m-%d %-H:%M:%S")
+      })
     return JsonResponse({
-      'author': author.id,
-      'author_img_url': author.img.url,
-      'author_name': author.full_name,
-      'msg_date': (comment_obj.date + timedelta(hours=8)).strftime("%Y-%m-%d %-H:%M:%S")
+      'status': 500,
+      'error_message': '[Error] Null input text'
     })
 
 def order_view(request):
