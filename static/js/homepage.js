@@ -1,5 +1,7 @@
 $(document).ready(function(){
-  $('#loading').hide();
+  $("#loading").animate({'opacity': 0}, 500, function() {
+    $("#loading").hide()
+  })
   
   
   $('body').keyup(function(){

@@ -4,11 +4,8 @@
 {% load static %}
 link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")  
 link(href="{% sass_src 'sass/variable.sass' %}",rel="stylesheet",type="text/css")
-header
+body
   #navbar
-    #loading
-      #loadingfilter
-      img#loadinggif(src="{% static 'file/connectloading.gif' %}")
     
     a(href="{% url 'home' %}")
       #title CONNECT.

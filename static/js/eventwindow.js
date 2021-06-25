@@ -118,8 +118,6 @@ function event_handler(URL, user_id, CSRF) {
       // console.log("host:", data.host_id);
       // console.log("host-pic:", data.host_pic);
       
-      $("#loading").show();
-      
       //lock background
       $('body').css({'overflow': 'hidden'});
       $("#eventwindow").css({'display': 'flex'});
@@ -306,7 +304,9 @@ function event_handler(URL, user_id, CSRF) {
       });
     },
     complete: function(data) {
-      $("#loading").hide();
+      $("#loading").animate({'opacity': 0}, 500, function() {
+        $("#loading").hide()
+      })
     },
     error: function(data) {
       console.log("ajax error");
