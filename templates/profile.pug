@@ -349,11 +349,6 @@ html
                             p#event-date {{ comment.date }}
                           #eventcomment-rightbottom
                             p#eventcommenttext {{ comment.text }}
-                    {% else %}
-                    .eventcomment#eventcomment
-                      #eventcomment-right(style='justify-content: center')
-                        #eventcomment-rightbottom
-                          p#eventcommenttext 屬於別人的評論
                     {% endif %}
                     {% empty %}
                     .eventcomment#eventcomment

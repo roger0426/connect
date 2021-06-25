@@ -144,6 +144,20 @@ $(document).ready(function(){
       }
   });
 
+  $(".comments").each(function() {
+    if ($(this).children('.eventcomment').length == 0) {
+      $(this).append(
+        "<div id='eventcomment' class='eventcomment'>\
+          <div id='eventcomment-right' style='justify-content: center'>\
+            <div id='eventcomment-rightbottom'>\
+              <p id='eventcommenttext'>目前還沒有評論~</p>\
+            </div>\
+          </div>\
+        </div>"
+      )
+    }
+  })
+
 })
 
 function friend_request_handler(URL, CSRF, request_user_id) {
@@ -267,7 +281,7 @@ function tag_comment_handler(URL, CSRF, tag_id, text, comment_board, input_regio
               <div id='cmttext'>\
                 <p>" + text + "</p>\
               </div>\
-            </div>"
+            </>"
           );
           let comment_count = parseInt(comment_board.parent().siblings(".cmt-count").text());
           comment_board.parent().siblings(".cmt-count").text(comment_count + 1);

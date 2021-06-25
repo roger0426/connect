@@ -51,14 +51,17 @@ def profile_view(request, id, *args, **kwargs):
       skill_tups.append((tag, False))
 
   activities = \
-    EventsBoard.objects.filter(host=obj, event_type='activity').order_by('-create_date') | \
-    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='activity').order_by('-create_date')
+    EventsBoard.objects.filter(host=obj, event_type='activity').union( \
+    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='activity'))
+  activities = activities.order_by('-id')
   projects = \
-    EventsBoard.objects.filter(host=obj, event_type='project').order_by('-create_date') | \
-    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='project').order_by('-create_date')
+    EventsBoard.objects.filter(host=obj, event_type='project').union( \
+    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='project'))
+  activities = activities.order_by('-id')
   personal_projs = \
-    EventsBoard.objects.filter(host=obj, event_type='personal').order_by('-create_date') | \
-    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='personal').order_by('-create_date')
+    EventsBoard.objects.filter(host=obj, event_type='personal').union( \
+    EventsBoard.objects.filter(participants__pk=obj.pk, event_type='personal'))
+  activities = activities.order_by('-id')
 
   friends = obj.friends.all()
   friend_connect_counts = \
@@ -88,7 +91,7 @@ def profile_view(request, id, *args, **kwargs):
   else:
     has_unread = None
     notification = None
-  
+
   context = {
     'user': obj,
     'personality': personality_tags,
