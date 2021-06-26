@@ -30,10 +30,9 @@ def get_common_friend_count(user1, request_user):
   common_count = 0
   if request_user.is_authenticated:
     request_friend_list = request_user.userextend.friends.all()
+    if request_user == user1:
+      return -1
     for friend in user1.userextend.friends.all():
-      if friend == request_user:
-        common_count = -1
-        break
       if friend in request_friend_list:
         common_count += 1
   return common_count
@@ -55,7 +54,7 @@ def profile_view(request, id, *args, **kwargs):
         if comment.author == request.user:
           can_comment = False
         common_friend_count = get_common_friend_count(comment.author, request.user)
-        connect_event_count = get_connect_event_num(comment.author.userextend, request.user)
+        connect_event_count = get_connect_event_num(comment.author.userextend, obj.user)
         comment_list.append((comment, common_friend_count, connect_event_count))
 
       skill_tups.append((tag, can_comment, comment_list))
