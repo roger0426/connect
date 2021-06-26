@@ -241,11 +241,11 @@ function event_handler(URL, user_id, CSRF) {
       var n = 0;
       if(data.likes != undefined) {
         data.likes.forEach(function(item, i) {
+          if(item.id == user_id) {
+            $('#likebutton').css("background-image", "url(/static/file/like-bg-y.png");
+            $('#likebutton button').attr("src", "/static/file/like-bg-y.png");
+          }
           if(i < 2){
-            if(item.id == user_id) {
-              $('#likebutton').css("background-image", "url(/static/file/like-bg-y.png");
-              $('#likebutton button').attr("src", "/static/file/like-bg-y.png");
-            }
             let str = "<a href='/profile/" + item.id + "'>\
                         <img class='member interested' \
                         src='https://res.cloudinary.com/connect-universe/image/upload/v1/" +
