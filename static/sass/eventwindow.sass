@@ -571,13 +571,11 @@ input[type='button']:active
         flex-wrap: nowrap;
         align-items: center;
         justify-content: flex-start;
-        max-height: 55%;
         overflow: auto;
         width: 85%
-        height: 14rem
-        background-color: var(--black-5)
+        height: 17rem
         border-radius: 1rem
-        padding: 0.5rem 0
+        padding: 1rem 0.5rem;
       
         .member-profile
           display: flex
@@ -586,11 +584,12 @@ input[type='button']:active
           align-items: center;
           align-content: flex-start;
           justify-content: flex-start;
-          width: 95%
-          background-color: #EEEEEE
-          margin: 0.3rem 0
-          border-radius: 1rem
-          padding: 0.3rem 0;
+          width: 90%
+          margin-bottom: 1rem
+          padding: 0.5rem;
+          border: solid var(--background-color-navbar) 0.15rem;
+          border-radius: 0.8rem;
+          box-shadow: 0.15rem 0.1rem 0.3rem 0.1rem var(--boxshadow-color)
           
           a
             #member-profile-left
@@ -626,8 +625,9 @@ input[type='button']:active
             width: calc(100% - 11.5rem)
             p
               font-size: 0.8rem
-              text-aligh: right
-              width: 95%
+              width: calc(99% - 4rem);
+              text-indent: -4rem;
+              margin-left: 4rem;
             .member-btn
               margin: 0.3rem 0 0.3rem 0
               height: 1.5rem
@@ -680,10 +680,16 @@ input[type='button']:active
         overflow: auto
         border-radius: 0 0 3rem 3rem
         bottom: 0
+        width: 97%
         
         #virtual-like
           width: calc((100% - 6 * 2 * 0.5rem) / 3 - 1rem + 2.3rem)
           height: 0
+        
+        .like-info:hover
+          transform: scale(1.02)
+        .like-info:active
+          transform: scale(1)
         
         .like-info
           padding: 0.5rem
@@ -693,7 +699,10 @@ input[type='button']:active
           padding: 0.5rem;
           border: solid var(--background-color-navbar) 0.15rem;
           border-radius: 0.8rem;
-          box-shadow: 0.15rem 0.1rem 0.3rem 0.1rem var(--boxshadow-color);
+          box-shadow: 0.15rem 0.1rem 0.3rem 0.1rem var(--boxshadow-color)
+          cursor: pointer
+          a
+            margin: 0
           .info-brief
             display: flex
             #info-brief-img

@@ -224,8 +224,8 @@ function event_handler(URL, user_id, CSRF) {
       
       $("#likeslist").html(
         "<div id='like-info' class='like-info' style='display: none;'>\
-          <div class='info-brief'>\
-            <a><img id='info-brief-img'></a>\
+          <a><div class='info-brief'>\
+            <img id='info-brief-img'>\
             <div class='info-brief-right'>\
               <p id='friend-name'></p>\
               <div class='info-brief-school'>\
@@ -234,7 +234,7 @@ function event_handler(URL, user_id, CSRF) {
                 <p id='info-brief-connectnum'></p>\
               </div>\
             </div>\
-          </div>\
+          </div></a>\
         </div>");
       $("#likeslist").append(
         "<div id='virtual-like'></div><div id='virtual-like'></div>");
@@ -261,7 +261,7 @@ function event_handler(URL, user_id, CSRF) {
           let clone_id = duplicate_multi('like-info');
 //          let text = data.text;
           $('#' + clone_id).css({'display': 'block'});
-          $('#' + clone_id + ' .info-brief a').attr('href', '/profile/' + item.id);
+          $('#' + clone_id + ' a').attr('href', '/profile/' + item.id);
           $('#' + clone_id + ' .info-brief #friend-name').html(item.full_name);
           $('#' + clone_id + ' .info-brief #info-brief-department').html(item.department);
           $('#' + clone_id + ' .info-brief #info-brief-grade').html(item.grade);

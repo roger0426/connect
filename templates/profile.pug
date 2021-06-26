@@ -343,14 +343,14 @@ html
                     {% for comment in activity.event_comments.all reversed%}
                     {% if comment.for_user.id == user.id %}
                     .eventcomment#eventcomment
-                        a
-                          img.sender(src='{{ comment.author.img.url }}')
-                        #eventcomment-right
-                          #eventcomment-righttop
-                            a#eventcomment-sendername {{ comment.author.full_name }}
-                            p#event-date {{ comment.date }}
-                          #eventcomment-rightbottom
-                            p#eventcommenttext {{ comment.text }}
+                      a(href='/profile/{{ comment.author.pk }}')
+                        img.sender(src='{{ comment.author.img.url }}')
+                      #eventcomment-right
+                        #eventcomment-righttop
+                          a#eventcomment-sendername {{ comment.author.full_name }}
+                          p#event-date {{ comment.date }}
+                        #eventcomment-rightbottom
+                          p#eventcommenttext {{ comment.text }}
                     {% endif %}
                     {% empty %}
                     .eventcomment#eventcomment
