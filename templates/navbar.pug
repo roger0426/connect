@@ -6,7 +6,7 @@ link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")
 link(href="{% sass_src 'sass/variable.sass' %}",rel="stylesheet",type="text/css")
 body
   #navbar
-    
+    img#selecticon(src="{% static './file/app-selectericon.png'%}")
     a(href="{% url 'home' %}")
       #title CONNECT.
 
@@ -16,7 +16,7 @@ body
     ul
       li 
         //a#event.button(href="{{ home_url }}")
-        a#feedback.button(href="https://forms.gle/jg1putGAWZntSeNPA")
+        a#feedback.button(href="https://forms.gle/jg1putGAWZntSeNPA" target="_blank" rel="noopener noreferrer")
         #feedback-hover.hover 問題回報
       li
         {% if notice_unread %}

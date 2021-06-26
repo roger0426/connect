@@ -70,9 +70,43 @@ $(document).ready(function(){
   });
 
   
-  $('#title, #profile, #feedback').on("click", function() {
+  $('#title, #profile, #aboutus').on("click", function() {
     $("#loading").show()
     $("#loading").animate({'opacity': 1}, 200, function() {
     })
+  })
+  
+  
+  //app responsive
+  $('#selecticon').click(function(){
+    if ($('#feedback').css('display') === "none"){
+      $('#navbar').css({'border-radius': '0 0 0.5rem 0.5rem'});
+      $("#navbar").animate({'padding-bottom': '5rem'}, 500, function() {
+      });
+      $("#container").animate({'padding-top': '4.5rem'}, 500, function() {
+        $('#feedback, #alert, #message, #aboutus').css({'display': "block"});
+      });
+      $("#profilepanel").animate({'padding-top': '4.5rem'}, 500, function() {
+        $('#feedback, #alert, #message, #aboutus').css({'display': "block"});
+      });
+      $("#group-img").animate({'top': '7.5rem'}, 500, function() {
+        $('#feedback, #alert, #message, #aboutus').css({'display': "block"});
+      });
+      $("#img-cards").animate({'top': '20rem'}, 500, function() {
+      });
+    } else {
+      $('#navbar').css({'border-radius': '0'});
+      $('#feedback, #alert, #message, #aboutus').css({'display': "none"});
+      $("#navbar").animate({'padding-bottom': '0'}, 500, function() {
+      });
+      $("#container").animate({'padding-top': '0'}, 500, function() {
+      });
+      $("#profilepanel").animate({'padding-top': '0'}, 500, function() {
+      });
+      $("#group-img").animate({'top': '2rem'}, 500, function() {
+      });
+      $("#img-cards").animate({'top': '14rem'}, 500, function() {
+      });
+    }
   })
 })

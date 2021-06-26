@@ -20,7 +20,8 @@
   background-color: var(--background-color-navbar)
 
   z-index: 6
-  
+  #selecticon
+    display: none
 a
   margin-left: 3%
   text-decoration: none
@@ -64,7 +65,7 @@ a
     white-space: nowrasp
     list-style-type: none
     margin-right: 7vw
-    height: 100%
+    //height: 100%
 
   li
     display: block
@@ -280,6 +281,69 @@ a
   //opacity: 0.65
   //background-color: #ffdbd0
       
-@media only screen and (max-width: 450px)
+//tablet responsive
+@media only screen and (max-width: 1024px)
+  #selecticon
+
+
+//phone responsive
+@media only screen and (max-width: 480px)
   #navbar
-    display: none
+    #selecticon
+      display: block
+      width: 2.5rem
+      height: 2.5rem
+      margin-left: 0.5rem
+    a
+      #title
+        font-weight: 500;
+        font-size: 2rem;
+    form
+      display: none
+      input#search-insert
+      
+    ul
+      width: 3.5rem
+      margin-right: 0.9rem
+      li
+        position: absolute
+        
+        margin-right: 0
+        #feedback
+          background-image: url('../file/feedbackicon.png')
+          display: none
+          transform: translate(-50%, calc(6.45rem - 100%)) scale(1.45)
+          height: 2.4rem;
+        #alert
+        
+          display: none
+          transform: translate(-50%, calc(7rem - 100%))
+        #message
+          background-image: url('../file/msgicon-wd.png')
+          display: none
+          transform: translate(-50%, calc(7rem - 100%))
+          width: 3.5rem;
+          height: 3.5rem;
+        #aboutus
+          background-image: url('../file/groupicon-wd.png')
+          display: none
+          transform: translate(-50%, calc(7rem - 100%))
+          width: 3.5rem;
+          height: 3.5rem;
+        
+        
+        
+      li:nth-child(1)
+        left: 20%
+      li:nth-child(2)
+        left: 40%
+      li:nth-child(3)
+        left: 60%
+      li:nth-child(4)
+        left: 80%
+      li:nth-child(5)
+        position: static
+        transform: translate(0, 0)
+        #profile
+      
+      
