@@ -177,8 +177,6 @@ def comment_view(request, event_id):
           clean_text = clean_text.replace(name,
           "<a href='/profile/" + str(tagged_user.id) + "' \
             style='color: blue; margin:0'>" + name + " </a>")
-
-
       comment_obj = BoardMessage.objects.create(
         author = author,
         for_event = event,
@@ -433,6 +431,14 @@ def reply_apply_view(request):
       event = application.for_event
       event.participants.add(application.applicant)
       event.save()
+
+      notification = SiteNotification.objects.create(
+        event = event,
+        from_user = request.user,
+        for_user = application.applicant.user,
+        text = "接受了你對 {} 的申請".format(event.title)
+      )
+      notification.save()
       return JsonResponse({
         'status': 200,
         'application_id': application_id,
@@ -442,6 +448,13 @@ def reply_apply_view(request):
     else:
       application.status = 3
       application.save()
+      notification = SiteNotification.objects.create(
+        event = application.for_event,
+        from_user = request.user,
+        for_user = application.applicant.user,
+        text = "拒絕了你對 {} 的申請".format(application.for_event.title)
+      )
+      notification.save()
       return JsonResponse({
         'status': 200,
         'application_id': application_id,

@@ -260,16 +260,23 @@ function event_handler(URL, user_id, CSRF) {
           
           let clone_id = duplicate_multi('like-info');
 //          let text = data.text;
-          console.log(item)
           $('#' + clone_id).css({'display': 'block'});
           $('#' + clone_id + ' .info-brief a').attr('href', '/profile/' + item.id);
           $('#' + clone_id + ' .info-brief #friend-name').html(item.full_name);
           $('#' + clone_id + ' .info-brief #info-brief-department').html(item.department);
           $('#' + clone_id + ' .info-brief #info-brief-grade').html(item.grade);
           
-          
-          $('#' + clone_id + " .info-brief img").attr('src', item.img);
-          
+          if ((item.img).substring(0,5) == 'media') {
+            $('#' + clone_id + " .info-brief img").attr(
+              'src', 
+              "https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img
+            );
+          } else {
+            $('#' + clone_id + " .info-brief img").attr(
+              'src', 
+              "https://res.cloudinary.com/connect-universe/image/upload/v1/media/" + item.img
+            );
+          }
         });
       };
       if(n >= 1){
@@ -602,18 +609,20 @@ function message_handler(URL, event_id, CSRF) {
     },
     dataType: 'json',
     success: function(data) {
-      if($(".eventmsg #eventmsg-right #eventmsg-righttop p#event-date").text() == '目前沒有留言喔～') {
-        $("#eventmsg-board").empty();
+      if (data.status == 200) {
+        if($(".eventmsg #eventmsg-right #eventmsg-righttop p#event-date").text() == '目前沒有留言喔～') {
+          $("#eventmsg-board").empty();
+        }
+        let clone_id = duplicate_multi('eventmsg');
+        let text = data.text;
+        $('#' + clone_id + " img").attr('src', data.author_img_url);
+        $('#' + clone_id + ' #eventmsg-sendername').html(data.author_name);
+        $('#' + clone_id + ' #event-date').html(data.msg_date);
+        $('#' + clone_id + " #eventmsgtext").html(text);
+        console.log($("input.eventmsg-insert").val());
+        $('#' + clone_id).show();
+        $("input.eventmsg-insert").val("");
       }
-      let clone_id = duplicate_multi('eventmsg');
-      let text = data.text;
-      $('#' + clone_id + " img").attr('src', data.author_img_url);
-      $('#' + clone_id + ' #eventmsg-sendername').html(data.author_name);
-      $('#' + clone_id + ' #event-date').html(data.msg_date);
-      $('#' + clone_id + " #eventmsgtext").html(text);
-      console.log($("input.eventmsg-insert").val());
-      $('#' + clone_id).show();
-      $("input.eventmsg-insert").val("");
     }
   })
 }

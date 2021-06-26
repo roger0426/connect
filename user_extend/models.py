@@ -5,7 +5,7 @@ from events_board.models import EventsBoard
 class UserExtend(models.Model):
   user = models.OneToOneField(User, on_delete = models.CASCADE)
   full_name = models.CharField(max_length=12, default='')
-  img = models.ImageField(upload_to='user/', default='user/user_img_default_xanio9.png')
+  img = models.ImageField(upload_to='user/', default='media/user/user_img_default_xanio9.png')
 
   personal_description = models.TextField(
     max_length=300,
