@@ -135,6 +135,7 @@ def like_view(request, id):
         event = event,
         for_user = receiver,
         from_user = sender,
+        notification_type = 0,
         is_read = False
       )
       notification.save()
@@ -171,6 +172,7 @@ def comment_view(request, event_id):
             event = event,
             for_user = tagged_user.user,
             from_user = request.user,
+            notification_type = 0,
             is_read = False
           )
           notification.save()
@@ -322,10 +324,10 @@ def join_event_view(request):
     # send notification to host email
     notification = SiteNotification.objects.create(
       text = "申請了{}， 快去看看吧".format(event.title),
-      #sender.userextend.full_name +
       event = event,
       for_user = event.host.user,
       from_user = request.user,
+      notification_type = 0,
       is_read = False
     )
     notification.save()
@@ -436,6 +438,7 @@ def reply_apply_view(request):
         event = event,
         from_user = request.user,
         for_user = application.applicant.user,
+        notification_type = 0,
         text = "接受了你對 {} 的申請".format(event.title)
       )
       notification.save()
@@ -452,6 +455,7 @@ def reply_apply_view(request):
         event = application.for_event,
         from_user = request.user,
         for_user = application.applicant.user,
+        notification_type = 0,
         text = "拒絕了你對 {} 的申請".format(application.for_event.title)
       )
       notification.save()

@@ -234,8 +234,10 @@ def friend_reply_view(request):
     notification = SiteNotification.objects.create(
       from_user = request.user,
       for_user = user,
-      text = "接受了你的連結人邀請！"
+      text = "接受了你的連結人邀請！",
+      notification_type = 1
     )
+    notification.save()
     return JsonResponse({
       'status': 200,
     })

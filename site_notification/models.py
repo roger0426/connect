@@ -24,9 +24,10 @@ class SiteNotification(models.Model):
   )
   date = models.DateTimeField(default=timezone.now)
 
-  # 0: event like notification
-  # 1: add friend notification
-  notification_type = models.IntegerField(default=0)
+  #-1: none
+  # 0: event notification
+  # 1: friend notification
+  notification_type = models.IntegerField(default=-1)
   is_read = models.BooleanField(default=False)
 
   def __str__(self):
