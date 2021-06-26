@@ -47,7 +47,7 @@ $(document).on("mouseleave", ".member", function() {
   $(this).siblings('.member-hover').hide();
 });
 
-$(document).on("click", "a", function() {
+$(document).on("click", "#eventmsgregion a, #eventoperate a", function() {
   $("#loading").show();
   $("#loading").animate({'opacity': 1}, 200, function() {
   });
@@ -736,8 +736,10 @@ function get_apply_handler(URL, CSRF, event_id) {
         console.log("applies get successfully");
         if (data.applications.length == 0) {
           $("#no-apply").show();
+          $("#member-control-list").hide();
         } else {
           $("#no-apply").hide();
+          $("#member-control-list").css({'display': 'flex'});
           data.applications.forEach(function(application) {
             let clone_id = duplicate_multi("member-profile");
             $("#" + clone_id).show();

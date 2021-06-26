@@ -69,6 +69,9 @@ html
           script.
             $(document).ready(function(){
               $("#sort").on("change", function() {
+                $("#loading").show()
+                $("#loading").animate({'opacity': 1}, 500, function() {
+                })
                 sort_event_handler(
                   "{% url 'order' %}",
                   "{{ csrf_token }}");

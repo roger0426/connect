@@ -369,6 +369,11 @@ function sort_event_handler(URL, CSRF) {
       } else {
         console.log(data.error_message);
       }
+    },
+    complete: function(){
+      $("#loading").animate({'opacity': 0}, 500, function() {
+      $("#loading").hide()
+      })
     }
   });
 }

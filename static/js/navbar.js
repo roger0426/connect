@@ -65,12 +65,12 @@ $(document).ready(function(){
     }
   });
   
-  $('#alert, #notificationboard, #message').click(function(event){
+  $('#alert, #notificationboard').click(function(event){
     event.stopPropagation();
   });
 
   
-  $('.button, #title').not('#alert').on("click", function() {
+  $('#title, #profile, #feedback').on("click", function() {
     $("#loading").show()
     $("#loading").animate({'opacity': 1}, 200, function() {
     })
