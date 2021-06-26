@@ -23,9 +23,20 @@ def get_connect_event_num(user1, user2):
       count += 1
   return count
 
-def update_profile(request, user_id):
-  user = User.objects.get(pk=user_id)
-  user.save()
+# return number of common friends between specific user and request user's friends
+def get_common_friend_count(user1, request_user):
+  # @params user1: User
+  # @params request_user: User
+  common_count = 0
+  if request_user.is_authenticated:
+    request_friend_list = request_user.userextend.friends.all()
+    for friend in user1.userextend.friends.all():
+      if friend == request_user:
+        common_count = -1
+        break
+      if friend in request_friend_list:
+        common_count += 1
+  return common_count
 
 def profile_view(request, id, *args, **kwargs):
   obj = UserExtend.objects.get(id=id)
@@ -39,13 +50,18 @@ def profile_view(request, id, *args, **kwargs):
   if request.user.is_authenticated:
     can_comment = True
     for tag in skill_tags:
+      comment_list = []
       for comment in tag.comments.all():
         if comment.author == request.user:
           can_comment = False
-          break;
-      skill_tups.append((tag, can_comment))
+        common_friend_count = get_common_friend_count(comment.author, request.user)
+        connect_event_count = get_connect_event_num(comment.author.userextend, request.user)
+        comment_list.append((comment, common_friend_count, connect_event_count))
+
+      skill_tups.append((tag, can_comment, comment_list))
       can_comment = True
-        
+
+      
   else:
     for tag in skill_tags:
       skill_tups.append((tag, False))

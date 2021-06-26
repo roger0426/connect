@@ -62,7 +62,7 @@ html
                 {% endfor %}
               .tag-field
                 p 專長
-                {% for skill, can_comment in skill %}
+                {% for skill, can_comment, comment_list in skill %}
                 {% if not skill.is_hidden %}
                 .tag-style
                   p.tags.normaltag {{ skill.text }}
@@ -79,9 +79,9 @@ html
                     {% else %}
                     {% endif %}
                     #tag-comment-board
-                      {% for tagcomment in skill.comments.all %}
+                      {% for tagcomment, common_friend, friend_connect in comment_list %}
                       .tagcmt-wrap
-                        a(href="{% url 'profile' id=tagcomment.author.pk %}")
+                        a(href="{% url 'profile' id=tagcomment.author.userextend.pk %}")
                           img#cmtfrom(src="{{ tagcomment.author.userextend.img.url }}")
                           .friend-info(style='display: none')
                             .info-brief
