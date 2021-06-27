@@ -51,8 +51,12 @@ html
         
         a(href="{% url 'login' %}")
           #userpic
+        form#search-form(action="{% url 'search' %}", method="GET")
+          input#search-btn(type="image", src="{% static 'file/search-bg.png' %}" alt="submit")
+          input.search-insert(type="text", placeholder="Search", name="search")
         a#inserta(href="{% url 'login' %}")
-        button#insertbox 發起活動？
+        button#insertbox
+          p#add-text 發起活動？
         
         {% endif %}
         
