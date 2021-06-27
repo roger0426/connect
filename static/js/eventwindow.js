@@ -154,11 +154,11 @@ function event_handler(URL, user_id, CSRF) {
       $("#eventwindow" + " #description" + " #event-date").html("活動日期<br />" + data.event_date);
       $("#eventwindow" + " #description" + " #due-date").html("報名截止<br />" + data.due_date);
       let url_detail = data.detail.replaceAll(
-          /(\s+)((http[s]?:\/\/)?([^\/\s]+\/)(.*))/g,
-          (string, g1, g2, g3, g4, g5) => {
-            return g1 + "<a href='" + g2 + "'\
+          /(http[s]?:\/\/([^\s]+))(\s+|$)/g,
+          (string, g1, g2, g3) => {
+            return "<a href='" + g1 + "'\
                 style='color: blue; margin:0' target='_blank' \
-                rel='noopener noreferrer'>" + g2 + "</a>"
+                rel='noopener noreferrer'>" + g1 + "</a>" + g3
           }
       )
       let br_detail = url_detail.replaceAll("\n", "<br> ");
