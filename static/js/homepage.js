@@ -8,8 +8,7 @@ $(document).ready(function(){
     if(($('#eventwindow').css('display') == 'none') 
         && ($('#eventcreatewindow').css('display') == 'none')
         && ($('#comment-window').css('display') == 'none')){
-      console.log('insert')
-      var search = document.getElementById('search-insert')
+      var search = $('.search-insert')
       search.focus();
     }
   });
@@ -59,7 +58,7 @@ $(document).ready(function(){
 
         $("#id_due_date")
         .attr('type', 'text')
-        .attr('placeholder', '活動日期 (yyyy-mm-dd)');
+        .attr('placeholder', '報名截止 (yyyy-mm-dd)');
       }
     }
     
@@ -162,24 +161,24 @@ $(document).ready(function(){
 
     // check all necessary input field is entered
     if ($("#id_title").val().trim().length == 0) {
-      all_pass = 0;
       $("#id_title").css("border", "0.1rem solid red");
+      all_pass = 0;
     }
     if ($("#id_detail").val().trim().length == 0) {
-      all_pass = 0;
       $("#id_detail").css("border", "0.1rem solid red");
-    }
-    if ($("#id_event_date").val().trim().length != 10) {
       all_pass = 0;
+    }
+    if ($("#id_event_date").val().length != 10) {
       $("#id_event_date").css("border", "0.1rem solid red");
-    }
-    if ($("#id_due_date").val().trim().length != 10) {
       all_pass = 0;
+    }
+    if ($("#id_due_date").val().length != 10) {
       $("#id_due_date").css("border", "0.1rem solid red");
+      all_pass = 0;
     }
     if ($("#id_people_limit").val().trim().length == 0) {
-      all_pass = 0;
       $("#id_people_limit").css("border", "0.1rem solid red");
+      all_pass = 0;
     }
     let requirement_str = "";
     // stringify requiremnt str
@@ -192,8 +191,9 @@ $(document).ready(function(){
     requirement_str = requirement_str.substring(0, requirement_str.length-1)
     $("#id_requirements_str").val(requirement_str);
 
-    let date_regex = /^(2[0-1][0-9][0-9])-(([0][1-9])|(1[0-2]))-(([0-2][0-9])|([3][0-1]))$/g
+    let date_regex = /^(2[0-1][0-9][0-9])-(([0][1-9])|(1[0-2]))-((0[1-9])|([1-2][0-9])|([3][0-1]))$/g
     if ($("#id_event_date").val().match(date_regex).length != 1) {
+      $("#id_event_date").css("border", "0.1rem solid red");
       all_pass = 0;
       Swal.fire({
         position: 'center',
@@ -202,9 +202,10 @@ $(document).ready(function(){
         text: "請再確認活動日期格式",
         showConfirmButton: false,
         timer: 1500,
-      })
+      });
     }
-    if ($("#id_due_date").val().match(date_regex).length != 1) {
+    if ($("#id_due_date").val().match(date_regex).length != 1) { 
+      $("#id_due_date").css("border", "0.1rem solid red");
       all_pass = 0;
       Swal.fire({
         position: 'center',
@@ -213,7 +214,7 @@ $(document).ready(function(){
         text: "請再確認報名截止日期格式",
         showConfirmButton: false,
         timer: 1500,
-      })
+      });
     }
     if (all_pass == 1) {
       // alert messsage
@@ -242,7 +243,7 @@ $(document).ready(function(){
         text: "請再確認一次",
         showConfirmButton: false,
         timer: 1500,
-      })
+      });
     }
   })
   

@@ -57,74 +57,6 @@ body
       margin-bottom: 0.2rem
       font-weight: 500
 
-  /*#bubbles
-    position: fixed
-    transform: translate(-50%, -50%)
-    left: 32%
-    top: 54%
-    width: 200px
-    height: 200px
-      .grey-bubble
-        position: absolute
-        background-color: #DEDEDE
-      #grey-bubble1
-        height: 15rem
-        width:  15rem
-        position: absolute
-        transform: translate(-105%, -50%)
-        top:    50%
-        left:   50%
-    .bbox
-      height: 50px
-      width: 50px
-      position: absolute
-      left: 50%
-      top: 50%
-    #gb2
-      transform: translate(-50%, -50%) rotate(0.13turn)
-      z-index: 2
-      #grey-bubble2
-        height: 5rem
-        width:  5rem
-        position: absolute
-        transform: translate(200%, -50%)
-        top:    50%
-        left:   50%
-    #gb3
-      transform: translate(-50%, -50%) rotate(0.86turn)
-      z-index: 3
-      #grey-bubble3
-        height: 4rem
-        width:  4rem
-        position: absolute
-        transform: translate(285%, -50%)
-        top:    50%
-        left:   50%
-    #gb4
-      transform: translate(-50%, -50%) rotate(0.33turn)
-      z-index: 4
-      #grey-bubble4
-        height: 2.5rem
-        width:  2.5rem
-        position: absolute
-        transform: translate(600%, -50%)
-        top:    50%
-        left:   50%
-    #wb1
-      transform: translate(-50%, -50%) rotate(0.12turn)
-      z-index: -1
-    #white-bubble1
-      height: 25rem
-      width:  25rem
-      top:    50%
-      left:   50%
-      position: absolute
-      transform: translate(-50%, -50%)
-      background-color: #FFFFFF
-      display: block*/
-
-
-
 #panel1
   display: flex
   flex-direction: row
@@ -263,14 +195,18 @@ body
     align-items: stretch
     
     #email-pane
+      display: flex
+      flex-direction: row
+      flex-wrap: nowrap
+      align-items: center
       input#email
         width: 65%
       input[type=button]
         height: 2rem
-        border-radius: 1vh
+        border-radius: 0.8rem
         outline: none
         border: none
-        padding: 1% 2%
+        padding: 2%
         font-size: 0.8rem
         background-color: var(--background-color-button)//#3AEDC2
         cursor: pointer
@@ -352,24 +288,56 @@ body
       cursor: pointer
       text-decoration: underline
 //*********************************************
+
+// tablet responsive
+@media only screen and (max-width: 1350px)
+  body
+    display: flex
+    flex-direction: column
+  #panel1
+    position: static
+    transform: translate(0, 0)
+    margin: 7rem 20% 6rem 20%
+    width: 60%
+  .panel
+    margin: 0 auto
+    position: static
+    transform: translate(0, 0)
+  #background-element
+    position: static
+    #login-leftpic
+      position: static
+      width: 70%
+      height: auto
+      transform: translate(0, 0)
+      margin: 0 15%
+    .description-head
+      display: none
+    .description
+      position: static
+      margin: 0 auto 7rem 10%
+      width: 80%
+      font-size: 1.1rem
+      .final-description
+        color: var(--green-1)
+        font-size: 1.4rem
   
 //phone responsive
 @media only screen and (max-width: 450px)
-  #bubbles
-    display: none
+  body
+    display: flex
+    flex-direction: column
   #panel1
-    top: 40%
-    left: 50%
-    width: 65%
-    height: 60%
-  
-  #introduction
-    top: 85%
-    left: 50%
-    width: 80% 
-    h1
-      font-size: 13rem
-      margin: 10px 0px
-    p
-      font-size: 5rem
-      margin: 10px 0px
+    position: static
+    transform: translate(0, 0)
+    margin: 5rem 5% 2rem 5%
+    width: 90%
+  #background-element
+    #login-leftpic
+      width: 90%
+      margin: 0 5%
+    .description
+      font-size: 0.8rem
+      margin-left: 1.5rem
+      .final-description
+        font-size: 1rem

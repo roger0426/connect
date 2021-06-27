@@ -42,7 +42,7 @@ html
           img#userpic(src="{{ request.user.userextend.img.url }}")
         form#search-form(action="{% url 'search' %}", method="GET")
           input#search-btn(type="image", src="{% static 'file/search-bg.png' %}" alt="submit")
-          input#search-insert(type="text", placeholder="Search", name="search")
+          input.search-insert(type="text", placeholder="Search", name="search")
         button#insertbox 
           p#add-text 發起活動？
           p#insertbar |
