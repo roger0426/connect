@@ -35,7 +35,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', include('pwa.urls')),
     path('', home_view, name='home'),
 
     path('profile/<int:id>/', profile_view, name='profile'),
@@ -72,4 +71,5 @@ urlpatterns = [
     path('about_us/', about_us_view, name='about_us'),
     path('admin/', admin.site.urls),
     path('logout/', logout),
+    path('', include('pwa.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
