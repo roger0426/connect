@@ -33,20 +33,36 @@ $(document).ready(function(){
     $('#id_image').val('');
 
     // change "date" filed from text field to date filed
-    $("#id_event_date")
-    .on("focus", function() {
-      $(this).attr('type', 'date');
-    })
-    .on("focusout", function() {
-      $(this).attr('type', 'text');
-    })
-    $("#id_due_date")
-    .on("focus", function() {
-      $(this).attr('type', 'date');
-    })
-    .on("focusout", function() {
-      $(this).attr('type', 'text');
-    })
+    let ua = navigator.userAgent.toLowerCase(); 
+    if (ua.indexOf('safari') != -1) { 
+      if (ua.indexOf('chrome') > -1) {
+        // Chrome
+        $("#id_event_date")
+        .on("focus", function() {
+          $(this).attr('type', 'date');
+        })
+        .on("focusout", function() {
+          $(this).attr('type', 'text');
+        })
+        $("#id_due_date")
+        .on("focus", function() {
+          $(this).attr('type', 'date');
+        })
+        .on("focusout", function() {
+          $(this).attr('type', 'text');
+        })
+      } else {
+        // Safari
+        $("#id_event_date")
+        .attr('type', 'text')
+        .attr('placeholder', '活動日期 (yyyy-mm-dd)');
+
+        $("#id_due_date")
+        .attr('type', 'text')
+        .attr('placeholder', '活動日期 (yyyy-mm-dd)');
+      }
+    }
+    
 
     // eventcreate window requirements
     $("#requirements").remove()
@@ -153,11 +169,11 @@ $(document).ready(function(){
       all_pass = 0;
       $("#id_detail").css("border", "0.1rem solid red");
     }
-    if ($("#id_event_date").val().trim().length == 0) {
+    if ($("#id_event_date").val().trim().length != 10) {
       all_pass = 0;
       $("#id_event_date").css("border", "0.1rem solid red");
     }
-    if ($("#id_due_date").val().trim().length == 0) {
+    if ($("#id_due_date").val().trim().length != 10) {
       all_pass = 0;
       $("#id_due_date").css("border", "0.1rem solid red");
     }
@@ -176,6 +192,29 @@ $(document).ready(function(){
     requirement_str = requirement_str.substring(0, requirement_str.length-1)
     $("#id_requirements_str").val(requirement_str);
 
+    let date_regex = /^(2[0-1][0-9][0-9])-(([0][1-9])|(1[0-2]))-(([0-2][0-9])|([3][0-1]))$/g
+    if ($("#id_event_date").val().match(date_regex).length != 1) {
+      all_pass = 0;
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: '日期格式錯誤',
+        text: "請再確認活動日期格式",
+        showConfirmButton: false,
+        timer: 1500,
+      })
+    }
+    if ($("#id_due_date").val().match(date_regex).length != 1) {
+      all_pass = 0;
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: '日期格式錯誤',
+        text: "請再確認報名截止日期格式",
+        showConfirmButton: false,
+        timer: 1500,
+      })
+    }
     if (all_pass == 1) {
       // alert messsage
       Swal.fire({
