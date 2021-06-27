@@ -38,7 +38,6 @@ $(document).ready(function(){
       $(".alert").css({opacity: 1});
 //      $('#clickfilter').hide();
       
-      if()
       //desktop
       $("#notificationboard").animate({height: 0}, 500, function() {
         $("#notificationboard").hide();
