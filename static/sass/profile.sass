@@ -941,24 +941,100 @@ footer
     #profilepanel
       width: 95%
       margin: 5vh 5vh 1rem 5vh
-      #user-img
-        width: 5rem
-        height: 5rem
       #top-region
         #intro
+          border-radius: 2rem;
           flex-direction: column
           margin-top: 1.5rem
+          background-color: transparent
           #info
             #user-img
-              width: 30vw
-              height: 30vw
+              border: solid 2px var(--black-4);
+              width: 45vw
+              height: 45vw
+            #user-name
+              font-size: 2.1rem;
+              font-weight: 500;
+            #school-info
+              line-height: 1.5rem;
+              #department
+                font-size: 1.4rem;
+                font-weight: 400;
+              #grade
+                font-size: 1.2rem;
+                font-weight: 400;
+          #description-tag
+            #description-background
+              background-color: var(--black-5);
+              font-weight: 500;
+              color: var(--black-1);
+              #description
+                font-size: 0.9rem;
+                
+            .tag-field
+              font-size: 0.9rem;
+              background-color: var(--black-5);
+              min-width: 0
+              padding: 0.15rem;
+              margin-bottom: 0
+              p
+                padding: 0.15rem;
+            .tag-field:nth-child(2)
+              border-radius: 1rem 1rem 0 0
+            .tag-field:nth-child(5)
+              border-radius: 0 0 1rem 1rem
+            .tag-field:nth-child(3)
+              border-radius: 0
+              .tag-style
+                min-width: 0
+                .cmt-count
+                  width: calc(0.9rem + 0.5rem);
+                  font-size: 0.9rem;
+                .tag-comment
+              p
+                padding: 0.15rem;
+            #buttons
+              *
+                font-size: 1.2rem;
+                padding: 0.5rem 2rem;
       #bottom-region
+        margin: 1rem 0 5rem 0;
         #left-pane
-          width: calc(100% - 2rem)
+          width: auto
+          padding: 1rem 1.5rem;
+          #title-count
+            p
+              font-size: 1.3rem;
+              font-weight: 500;
+            #friend-count
+              p
+                margin-left: 1rem;
+                color: var(--black-1);
+        #friends-avatar
+          //max-height: 22.7rem
+          max-height: 15.8rem
+          overflow: auto;
+          a
+            img
+              display: none
+              
+            .friend-info
+              display: block
+              position: static
+              .info-brief
+                img
+                  display: block
+                .info-brief-right
+                  #friend-name
+                    font-weight: 700;
+                    font-size: 1.1rem;
+                  #info-brief-school
+                    p
+                      line-height: 1.1rem
+                      
+          .virtualimg
+            width: 4.2rem
         .comments
           max-height: 20vh
         .info
           margin-bottom: 0.5rem
-
-  *
-    font-size: 80%

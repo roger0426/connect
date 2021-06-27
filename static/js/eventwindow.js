@@ -352,6 +352,15 @@ function event_handler(URL, user_id, CSRF) {
     },
     error: function(data) {
       console.log("ajax error");
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: '喔不出錯了',
+        html: '可能需要檢查你的網路連線喔~',
+        text: data.error_message,
+        showConfirmButton: false,
+        timer: 2000,
+      })
     }
   })
 
