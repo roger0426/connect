@@ -129,6 +129,10 @@ def like_view(request, id):
       event.likes.add(request.user.userextend)
       receiver = event.host.user
       sender = request.user
+      # prevent duplicate like notification
+      prev_notices = SiteNotification.objects.filter(event=event).filter(from_user=sender)
+      for notice in prev_notices:
+        notice.delete()
       notification = SiteNotification.objects.create(
         text = "對{}感到有興趣， 快去看看吧".format(event.title),
         #sender.userextend.full_name +

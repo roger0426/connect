@@ -579,7 +579,13 @@ function like_handler(URL, event_id, CSRF) {
           <img class='member interested' src= " + img_url + "></a>";
           //console.log(str);
           $('#' + event_id + " #likeicon").attr("src", "/static/file/like-y.png");
-          $('#member #like-m').append(str);
+          if ($('#likepage-btn').length > 0) {
+            if ($(".interested").length < 2) {
+              $('#likepage-btn').before(str);
+            } 
+          } else {
+            $('#member #like-m').append(str);
+          }
           $('#' + event_id + ' #likesnum').text(like_sum + 1);
         } else if (data.remove) {
           let user_selector = "#member a img[src='" + img_url + "']";
