@@ -276,6 +276,21 @@ a
   cursor: pointer
   z-index: 5
   //text-align: center
+  -webkit-tap-highlight-color: transparent
+
+footer
+  height: 3rem
+  background-color: var(--background-color-navbar)
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  align-items: center
+  flex-wrap: nowrap
+  //left: -50%
+  //padding-bottom: 1vh
+  width: 100%
+  p
+    font-size: 0.65rem
 
 //#gotop:hover
   //opacity: 0.65
@@ -288,6 +303,7 @@ a
 
 //phone responsive
 @media only screen and (max-width: 480px)
+
   #navbar
     width: 100%
     #selecticon
@@ -315,23 +331,30 @@ a
           display: none
           transform: translate(-50%, calc(6.45rem - 100%)) scale(1.45)
           height: 2.4rem;
+        #feedback-hover
+          display: none
         #alert
         
           display: none
           transform: translate(-50%, calc(7rem - 100%))
+        #alert-hover
+          display: none
         #message
           background-image: url('../file/msgicon-wd.png')
           display: none
           transform: translate(-50%, calc(7rem - 100%))
           width: 3.5rem;
           height: 3.5rem;
+        #meswage-hover
+          display: none
         #aboutus
-          background-image: url('../file/groupicon-wd.png')
+          background-image: url('../file/groupicon-wd-bg.png')
           display: none
           transform: translate(-50%, calc(7rem - 100%))
           width: 3.5rem;
           height: 3.5rem;
-        
+        #aboutus-hover
+          display: none
         
         
       li:nth-child(1)
@@ -347,4 +370,9 @@ a
         transform: translate(0, 0)
         #profile
       
-      
+  footer
+    height: auto
+    flex-direction: column
+    padding: 0.7rem 0
+    p
+      font-size: 0.65rem

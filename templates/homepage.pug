@@ -6,6 +6,7 @@ html
     {% progressive_web_app_meta %}
     meta(charset="utf-8")
     meta(content="width=device-width, initial-scale=1", name="viewport")
+    meta(name="apple-mobile-web-app-capable" content="yes")
     title CONNECT
     link(href="{% static 'file/logo.ico' %}",rel="icon")
     {% load sass_tags %}
@@ -169,6 +170,7 @@ html
                 {% endif %}
                 p#post_title.title {{ event.title }}
                 p#post_subtitle.subtitle {{ event.subtitle }}
+                p#post_detail {{ event.detail }}
                 {% if event.image %}
                 img#postimgs(src="{{ event.image.url }}")
                 {% else %}

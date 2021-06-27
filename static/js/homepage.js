@@ -217,6 +217,25 @@ $(document).ready(function(){
   }, 450);
 });
 
+$(window).bind('beforeunload',function(){
+//  $('#loading').hide();
+});
+
+var len = 10; // 超過50個字以"..."取代
+$("#post_detail").each(function(item, i){
+    console.log($(this))
+    console.log(item)
+    console.log(item.text())
+    console.log(item.text().length)
+//    if($(this).text().length > len){
+//
+//        $(this).attr("title",$(this).text());
+//        var text=$(this).text().substring(0,len-1)+"...";
+//        $(this).text(text);
+//    }
+});
+
+
 var i = 0;
 function duplicate_multi(duplicateID) {
   var original = document.getElementById(duplicateID);
