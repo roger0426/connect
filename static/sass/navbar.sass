@@ -341,58 +341,97 @@ footer
       margin-right: 0.9rem
       li
         position: absolute
-        
         margin-right: 0
+        
         #home
           display: block
           transform: translate(-50%, -50%)
-          width: 3.5rem;
-          height: 3.5rem;
+          width: 13vw
+          height: 13vw
+          max-height: 3rem
         #feedback
           transform: translate(-100%, 0)
         #profile
+          background-color: transparent
+          border: none
+          border-radius: 0
+          background-image: url('../file/app-profile.png')
+          display: block
           transform: translate(-50%, -50%)
-          height: 2.4rem;
+          width: 13vw
+          height: 13vw
+          max-height: 3rem
+          img
+            display: none
+        #logout
+          background-image: url('../file/app-logout.png')
+          display: block
+          transform: translate(-50%, -50%)
+          width: 13vw
+          height: 13vw
+          max-height: 3rem
         #feedback-hover
           display: none
         #alert
+          display: none
+        #appalert
+          display: block
           transform: translate(-50%, -50%)
-        #alert-hover
+          width: 13vw
+          height: 13vw
+          max-height: 3rem
+        #notificationboard
+          display: none;
+          margin: 0.5vh 0 0 0;
+          padding: 0.5rem;
+          position: fixed;
+          transform: translate(-50%, 0)
+          height: 0vh;
+          width: calc(100% - 1rem - 2px);
+          top: 3.2rem
+          left: 50%
+          right: auto
+          background-color: #EEE;
+          border-radius: 1.5rem;
+          border: solid 2px #CCC;
+          //box-shadow: 0rem 0.5rem 0.6rem 0rem var(--black-2);
         #message
-          background-image: url('../file/msgicon-wd.png')
+          background-image: url('../file/app-message.png')
+          display: block
           transform: translate(-50%, -50%)
-          width: 3.5rem;
-          height: 3.5rem;
+          width: 13vw
+          height: 13vw
+          max-height: 3rem
         #message-hover
         #aboutus
-          background-image: url('../file/groupicon-wd.png')
+          background-image: url('../file/app-group.png')
+          display: block
           transform: translate(-50%, -50%)
-          width: 3.5rem;
-          height: 3.5rem;
+          width: 13vw
+          height: 13vw
+          max-height: 3rem
         #aboutus-hover
-        #notificationboard
-          margin-top: 6.5rem
         
       li:nth-child(5)
-        left: calc(100% / 6 * 5)
+        left: calc(100% / 5 * 5 - 100% / 10)
         position: fixed;
-        bottom: 0;
+        bottom: -0.4rem
       li:nth-child(2)
-        left: calc(100% / 6 * 4)
+        left: calc(100% / 5 * 4 - 100% / 10)
         position: fixed;
-        bottom: 0;
+        bottom: -0.4rem
       li:nth-child(3)
-        left: calc(100% / 6 * 3)
+        left: calc(100% / 5 * 3 - 100% / 10)
         position: fixed;
-        bottom: 0;
+        bottom: -0.4rem
       li:nth-child(4)
-        left: calc(100% / 6 * 2)
+        left: calc(100% / 5 * 2 - 100% / 10)
         position: fixed;
-        bottom: 0;
+        bottom: -0.4rem
       li:nth-child(6)
-        left: calc(100% / 6 * 1)
+        left: calc(100% / 5 * 1 - 100% / 10)
         position: fixed;
-        bottom: 0;
+        bottom: -0.4rem
       li:nth-child(1)
         position: absolute
         transform: translate(0, 0)

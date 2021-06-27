@@ -21,9 +21,11 @@ body
         #feedback-hover.hover 問題回報
       li
         {% if notice_unread %}
-        a#alert.button(title="通知" style="background-image: url({% static './file/noticeicon_red.png'%});")
+        a#alert.button.alert(title="通知" style="background-image: url({% static './file/noticeicon_red.png'%});")
+        a#appalert.button.alert(title="通知" style="background-image: url({% static './file/app-notice_red.png'%});")
         {% else %}
-        a#alert.button(title="通知" style="background-image: url({% static './file/noticeicon.png'%});")
+        a#alert.button.alert(title="通知" style="background-image: url({% static './file/noticeicon.png'%});")
+        a#appalert.button.alert(title="通知" style="background-image: url({% static './file/app-notice.png'%});")
         {% endif %}
         #notificationboard
           p#noticeheading 通知

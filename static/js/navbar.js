@@ -32,24 +32,33 @@ $(document).ready(function(){
   });  
   
     
-  $('#alert').click(function(){
+  $('.alert').click(function(){
     if ( $('#notificationboard').css('display') == 'block') {
       console.log("關閉通知");
-      $("#alert").css({opacity: 1});
+      $(".alert").css({opacity: 1});
 //      $('#clickfilter').hide();
+      
+      if()
+      //desktop
       $("#notificationboard").animate({height: 0}, 500, function() {
         $("#notificationboard").hide();
       });
+      //pwa
+      
+      
     } else {
       $("#alert-hover").hide();
       console.log("打開通知");
-      $("#alert").css({opacity: 0.6})
+      $(".alert").css({opacity: 0.6})
       $("#notificationboard").show();
 //      $('#clickfilter').show();
 //      $('#notificationboard').css({"display": 'flex'});
       
+      //desktop
       $("#notificationboard").animate({height: '45vh'}, 500, function() {
       });
+      //pwa
+      
     }
   });
   
@@ -57,7 +66,7 @@ $(document).ready(function(){
 //    console.log($('#notificationboard').css('display'))
     if($('#notificationboard').css('display') === 'block') {
       console.log("關閉通知");
-      $("#alert").css({opacity: 1});
+      $(".alert").css({opacity: 1});
 //      $('#clickfilter').hide();
       $("#notificationboard").animate({height: 0}, 500, function() {
         $("#notificationboard").hide();
@@ -65,7 +74,7 @@ $(document).ready(function(){
     }
   });
   
-  $('#alert, #notificationboard').click(function(event){
+  $('.alert, #notificationboard').click(function(event){
     event.stopPropagation();
   });
 
@@ -84,19 +93,19 @@ $(document).ready(function(){
 //      $("#navbar").animate({'padding-bottom': '5rem'}, 150, function() {
 //      });
 //      $("#container").animate({'padding-top': '4.5rem'}, 150, function() {
-//        $('#feedback, #alert, #message, #aboutus').css({'display': "block"});
+//        $('#feedback, .alert, #message, #aboutus').css({'display': "block"});
 //      });
 //      $("#profilepanel").animate({'padding-top': '4.5rem'}, 150, function() {
-//        $('#feedback, #alert, #message, #aboutus').css({'display': "block"});
+//        $('#feedback, .alert, #message, #aboutus').css({'display': "block"});
 //      });
 //      $("#group-img").animate({'top': '7.5rem'}, 150, function() {
-//        $('#feedback, #alert, #message, #aboutus').css({'display': "block"});
+//        $('#feedback, .alert, #message, #aboutus').css({'display': "block"});
 //      });
 //      $("#img-cards").animate({'top': '20rem'}, 150, function() {
 //      });
 //    } else {
 //      $('#navbar').css({'border-radius': '0'});
-//      $('#feedback, #alert, #message, #aboutus').css({'display': "none"});
+//      $('#feedback, .alert, #message, #aboutus').css({'display': "none"});
 //      $("#navbar").animate({'padding-bottom': '0'}, 150, function() {
 //      });
 //      $("#container").animate({'padding-top': '0'}, 150, function() {
