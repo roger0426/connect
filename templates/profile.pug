@@ -413,6 +413,7 @@ html
                     {% endif %}
                 
                   #projects-comment.comments
+                    p#comments-title 其他參與者對 {{ user.full_name }} 的評論
                     {% for comment in project.event_comments.all reversed %}
                     .comment
                       {% load static %}
@@ -423,10 +424,10 @@ html
                           //p#participant-name {{ comment.author.full_name }}
                         p#participant-comment {{ comment.text }}
                     {% empty %}
-                    .comment
-                      .comment-right
-                        #participant-comment
-                          p 這個活動好像還沒有評論
+                    .eventcomment#eventcomment
+                      #eventcomment-right(style='justify-content: center')
+                        #eventcomment-rightbottom
+                          p#eventcommenttext 目前還沒有評論~
                     {% endfor %}           
 
               {% empty %}

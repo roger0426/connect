@@ -186,6 +186,7 @@ def comment_view(request, event_id):
       )
       comment_obj.save()
       return JsonResponse({
+        'status': 200,
         'author': author.id,
         'author_img_url': author.img.url,
         'author_name': author.full_name,

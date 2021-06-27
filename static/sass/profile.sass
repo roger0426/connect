@@ -702,7 +702,7 @@ footer
       justify-content: flex-start
       //background-color: red
       .hint
-        margin-left: 2rem
+        text-align: center
         font-size: 1rem
       .card
         display: flex
@@ -890,11 +890,21 @@ footer
       font-size: 1.6rem
       margin-bottom: 1rem
 
-
+@media only screen and (max-width: 1230px)
+   #right-pane
+    width: calc(100%)
+    .date
+      display: none
+    .detail
+      display: none
+    .cardleft
+      margin-bottom: 1rem
+    #comments-title
+      margin-left: 0.5rem
   
 @media only screen and (max-width: 1023px)
   #profilepanel
-    width: 70vw
+    width: 90%
     #top-region
       #intro
         flex-direction: column
@@ -904,30 +914,43 @@ footer
       flex-direction: column;
       align-items: center;
     #left-pane
-      width: auto
+      width: calc(100% - 2rem)
       margin-bottom: 2rem
       position: static
+    #comments-title
+      margin-
     #right-pane
-      width: auto
+      width: calc(100%)
+      .date
+        display: none
+      .detail
+        display: none
+      .cardleft
+        margin-bottom: 1rem
     
 
 @media only screen and (max-width: 450px)
   
-  #phoneerrormsg
-    display: block
-  #profilepanel
-    width: 80vw
-    margin: 5vh
-    #top-region
-      #intro
-        flex-direction: column
-        #info
-          #user-img
-            width: 30vw
-            height: 30vw
-    #bottom-region
-      #left-pane
-        width: calc(100% - 2rem)
+  footer
+    display: none
+  #profileall
+    width: 100%
+    margin-bottom: 1rem
+    #intro
+      margin-top: 1.5rem
+    #profilepanel
+      width: 95%
+      margin: 5vh 5vh 1rem 5vh
+      #top-region
+        #intro
+          flex-direction: column
+          #info
+            #user-img
+              width: 30vw
+              height: 30vw
+      #bottom-region
+        #left-pane
+          width: calc(100% - 2rem)
 
   *
     font-size: 80%

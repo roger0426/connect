@@ -35,7 +35,9 @@ def get_common_friend_count(user1, request_user):
     for friend in user1.userextend.friends.all():
       if friend in request_friend_list:
         common_count += 1
-  return common_count
+    return common_count
+  else:
+    return 0
 
 def profile_view(request, id, *args, **kwargs):
   obj = UserExtend.objects.get(id=id)
@@ -46,24 +48,22 @@ def profile_view(request, id, *args, **kwargs):
   interest_tags = obj.user.tags.filter(tag_type='有興趣的活動')
 
   skill_tups = []
-  if request.user.is_authenticated:
-    can_comment = True
-    for tag in skill_tags:
-      comment_list = []
-      for comment in tag.comments.all():
-        if comment.author == request.user:
-          can_comment = False
-        common_friend_count = get_common_friend_count(comment.author, request.user)
-        connect_event_count = get_connect_event_num(comment.author.userextend, obj.user)
-        comment_list.append((comment, common_friend_count, connect_event_count))
+  
+  can_comment = True
+  for tag in skill_tags:
+    comment_list = []
+    for comment in tag.comments.all():
+      if comment.author == request.user:
+        can_comment = False
+      common_friend_count = get_common_friend_count(comment.author, request.user)
+      connect_event_count = get_connect_event_num(comment.author.userextend, obj.user)
+      comment_list.append((comment, common_friend_count, connect_event_count))
+    if request.user.is_authenticated:
+        skill_tups.append((tag, can_comment, comment_list))
+        can_comment = True
+    else:
+        skill_tups.append((tag, False, comment_list))
 
-      skill_tups.append((tag, can_comment, comment_list))
-      can_comment = True
-
-      
-  else:
-    for tag in skill_tags:
-      skill_tups.append((tag, False))
 
   activities = \
     EventsBoard.objects.filter(host=obj, event_type='activity').union( \
@@ -83,17 +83,11 @@ def profile_view(request, id, *args, **kwargs):
     [ get_connect_event_num(obj, friend) for friend in obj.friends.all() ]
   common_list = []
   if request.user.is_authenticated:
-    user_friends = request.user.userextend.friends.all()
     for friend in friends:
-      common_count = 0
-      if friend == request.user:
-        common_count = -1
-      else:
-        friends_of_friend = friend.friends.all()
-        for ff in friends_of_friend:
-          if ff.user in user_friends:
-            common_count += 1
+      common_count = get_common_friend_count(friend, request.user)
       common_list.append(common_count)
+  else:
+    common_list = [0] * len(friends)
   friend_zip = zip(friends, friend_connect_counts, common_list)
 
   if(request.user.is_authenticated):
