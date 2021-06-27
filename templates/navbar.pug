@@ -5,6 +5,7 @@
 link(href="{% sass_src 'sass/navbar.sass' %}",rel="stylesheet",type="text/css")  
 link(href="{% sass_src 'sass/variable.sass' %}",rel="stylesheet",type="text/css")
 body
+  #navbar-2
   #navbar
     img#selecticon(src="{% static './file/app-selectericon.png'%}")
     a(href="{% url 'home' %}")
@@ -121,6 +122,9 @@ body
       li
         a#profile.button(href="{% url 'login' %}")
       {% endif %}
+      
+      li
+        a#home.button(href="{{ home_url }}")
   
   {% load static %}
   image#gotop(src="{% static 'file/gotop.png' %}")  

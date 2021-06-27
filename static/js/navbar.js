@@ -77,36 +77,36 @@ $(document).ready(function(){
   })
   
   
-  //app responsive
-  $('#selecticon').click(function(){
-    if ($('#feedback').css('display') === "none"){
-      $('#navbar').css({'border-radius': '0 0 0.5rem 0.5rem'});
-      $("#navbar").animate({'padding-bottom': '5rem'}, 150, function() {
-      });
-      $("#container").animate({'padding-top': '4.5rem'}, 150, function() {
-        $('#feedback, #alert, #message, #aboutus').css({'display': "block"});
-      });
-      $("#profilepanel").animate({'padding-top': '4.5rem'}, 150, function() {
-        $('#feedback, #alert, #message, #aboutus').css({'display': "block"});
-      });
-      $("#group-img").animate({'top': '7.5rem'}, 150, function() {
-        $('#feedback, #alert, #message, #aboutus').css({'display': "block"});
-      });
-      $("#img-cards").animate({'top': '20rem'}, 150, function() {
-      });
-    } else {
-      $('#navbar').css({'border-radius': '0'});
-      $('#feedback, #alert, #message, #aboutus').css({'display': "none"});
-      $("#navbar").animate({'padding-bottom': '0'}, 150, function() {
-      });
-      $("#container").animate({'padding-top': '0'}, 150, function() {
-      });
-      $("#profilepanel").animate({'padding-top': '0'}, 150, function() {
-      });
-      $("#group-img").animate({'top': '2rem'}, 150, function() {
-      });
-      $("#img-cards").animate({'top': '14rem'}, 150, function() {
-      });
-    }
-  })
+//  //app responsive
+//  $('#selecticon').click(function(){
+//    if ($('#feedback').css('display') === "none"){
+//      $('#navbar').css({'border-radius': '0 0 0.5rem 0.5rem'});
+//      $("#navbar").animate({'padding-bottom': '5rem'}, 150, function() {
+//      });
+//      $("#container").animate({'padding-top': '4.5rem'}, 150, function() {
+//        $('#feedback, #alert, #message, #aboutus').css({'display': "block"});
+//      });
+//      $("#profilepanel").animate({'padding-top': '4.5rem'}, 150, function() {
+//        $('#feedback, #alert, #message, #aboutus').css({'display': "block"});
+//      });
+//      $("#group-img").animate({'top': '7.5rem'}, 150, function() {
+//        $('#feedback, #alert, #message, #aboutus').css({'display': "block"});
+//      });
+//      $("#img-cards").animate({'top': '20rem'}, 150, function() {
+//      });
+//    } else {
+//      $('#navbar').css({'border-radius': '0'});
+//      $('#feedback, #alert, #message, #aboutus').css({'display': "none"});
+//      $("#navbar").animate({'padding-bottom': '0'}, 150, function() {
+//      });
+//      $("#container").animate({'padding-top': '0'}, 150, function() {
+//      });
+//      $("#profilepanel").animate({'padding-top': '0'}, 150, function() {
+//      });
+//      $("#group-img").animate({'top': '2rem'}, 150, function() {
+//      });
+//      $("#img-cards").animate({'top': '14rem'}, 150, function() {
+//      });
+//    }
+//  })
 })

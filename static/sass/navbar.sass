@@ -6,6 +6,15 @@
   margin: 0
   padding: 0
 
+#navbar-2
+  position: fixed
+  bottom: 0
+  left: 0
+  width: 100%
+  height: 4.2rem
+  background-color: var(--background-color-navbar)
+  z-index: 6
+
 #navbar
   display: flex
   flex-direction: row
@@ -154,6 +163,9 @@ a
         height: 2rem
     #logout
       background-image: url('../file/logouticon.png')
+    #home
+      background-image: url('../file/app-home.png')
+      display: none
       
     #notificationboard
       display: none
@@ -304,11 +316,12 @@ footer
 @media only screen and (max-width: 480px)
 
   #navbar
-    width: 100%
+    justify-content: center;
     #selecticon
-      display: block
+      display: none
       width: 2.5rem
-      height: 2.5rem
+      //height: 2.5rem
+      height: 0
       margin-left: 0.5rem
     a
       #title
@@ -319,54 +332,70 @@ footer
       input#search-insert
       
     ul
-      width: 3.5rem
+      position: absolute
+      width: 100%
       margin-right: 0.9rem
       li
         position: absolute
         
         margin-right: 0
+        #home
+          display: block
+          transform: translate(-50%, -50%)
+          width: 3.5rem;
+          height: 3.5rem;
         #feedback
-          background-image: url('../file/feedbackicon.png')
-          display: none
-          transform: translate(-50%, calc(6.45rem - 100%)) scale(1.45)
+          transform: translate(-100%, 0)
+        #profile
+          transform: translate(-50%, -50%)
           height: 2.4rem;
         #feedback-hover
           display: none
         #alert
-          display: none
-          transform: translate(-50%, calc(7rem - 100%))
+          transform: translate(-50%, -50%)
         #alert-hover
         #message
           background-image: url('../file/msgicon-wd.png')
-          display: none
-          transform: translate(-50%, calc(7rem - 100%))
+          transform: translate(-50%, -50%)
           width: 3.5rem;
           height: 3.5rem;
         #message-hover
         #aboutus
-          background-image: url('../file/groupicon-wd-bg.png')
-          display: none
-          transform: translate(-50%, calc(7rem - 100%))
+          background-image: url('../file/groupicon-wd.png')
+          transform: translate(-50%, -50%)
           width: 3.5rem;
           height: 3.5rem;
         #aboutus-hover
         #notificationboard
           margin-top: 6.5rem
         
-      li:nth-child(1)
-        left: 20%
-      li:nth-child(2)
-        left: 40%
-      li:nth-child(3)
-        left: 60%
-      li:nth-child(4)
-        left: 80%
       li:nth-child(5)
-        position: static
+        left: calc(100% / 6 * 5)
+        position: fixed;
+        bottom: 0;
+      li:nth-child(2)
+        left: calc(100% / 6 * 4)
+        position: fixed;
+        bottom: 0;
+      li:nth-child(3)
+        left: calc(100% / 6 * 3)
+        position: fixed;
+        bottom: 0;
+      li:nth-child(4)
+        left: calc(100% / 6 * 2)
+        position: fixed;
+        bottom: 0;
+      li:nth-child(6)
+        left: calc(100% / 6 * 1)
+        position: fixed;
+        bottom: 0;
+      li:nth-child(1)
+        position: absolute
         transform: translate(0, 0)
-        #profile
+        right: 0
   #gotop
     right: 1.5rem;
+    bottom: 4.5rem
     width: 4rem;
     height: 4rem;
   footer
