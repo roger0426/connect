@@ -11,7 +11,7 @@ django-appconf==1.0.4
 django-cloudinary-storage==0.3.0
 django-compressor==2.4
 django-datetime-widget2==0.9.5
-django-notification-system==1.5.2
+django-pwa==1.0.10
 django-sass-processor==1.0.0
 django-taggit==1.4.0
 django-tagulous==1.1.0
