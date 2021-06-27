@@ -34,7 +34,7 @@ html
             #info
               {% if user.img %}
               label#user-img
-                input#user-image(type="file", name="image", alt="image")
+                input#user-image(type="file", name="image")
                 p#editpicfilter 點擊上傳新照片
                 p#fileselectedfilter 已選擇新照片
                 img#user-img(src="{{ user.img.url }}")

@@ -32,8 +32,64 @@ $(document).ready(function(){
       $('#fileselectedfilter').hide();
     }
   }, 2000);
-  
+
+  // image preprocessor
+  const MIME_TYPE = "image/jpeg";
+  const QUALITY = 0.3;
+
+  const input = document.getElementById("user-image");
+  input.onchange = function (ev) {
+    const file = ev.target.files[0]; // get the file
+    const blobURL = URL.createObjectURL(file);
+    const img = new Image();
+    img.src = blobURL;
+    img.onerror = function () {
+      URL.revokeObjectURL(this.src);
+      // Handle the failure properly
+      console.log("Cannot load image");
+    };
+    img.onload = function () {
+      URL.revokeObjectURL(this.src);
+      const [startX, startY, width] = calculateStart(img.width, img.height);
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = width;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, startX, startY, width, width, 0, 0, width, width);
+      canvas.toBlob(
+        (blob) => {
+          // Handle the compressed image. es. upload or save in local state
+          let new_img = new File([blob], "userpic.jpeg")
+          let container = new DataTransfer();
+          container.items.add(new_img);
+          let fileInputElement = document.getElementById('user-image');
+          fileInputElement.files = container.files;
+        },
+        MIME_TYPE,
+        QUALITY
+      );
+      canvas.setAttribute("id", "user-img");
+      if ($("img#user-img").length > 0) {
+        $("img#user-img").replaceWith(canvas);
+      } else {
+        $("canvas#user-img").replaceWith(canvas);
+      }
+      
+    };
+  };
 })
+
+function calculateStart(width, height) {
+  if (width > height) {
+    let startX = Math.round((width / 2) - (height / 2));
+    return [startX, 0, height];
+  } else if (width < height) {
+    let startY = Math.round((height / 2) - (width / 2));
+    return [0, startY, width];
+  } else {
+    return [0, 0, width];
+  }
+}
 
 function tag_edit_handler(URL, CSRF, text, tag_type) {
   $.ajaxSetup({
