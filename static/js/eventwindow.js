@@ -121,6 +121,10 @@ function reset_event_window() {
     "<input type='button' class='eventedit-btn' value='控制中心'>"
   );
   $("#edit-cancel-btn").remove();
+  if($(window).width() < 480){}else{
+    $('#date').css({'flex-direction': 'column'});
+    $('#event-heading').css({'width': '20vw', 'min-width': 'calc(11 * 1.5rem)'})
+  }
 }
                   
 function event_handler(URL, user_id, CSRF) {
@@ -284,7 +288,7 @@ function event_handler(URL, user_id, CSRF) {
       $("#eventoperate #member #like-m").append("<p id='lt'>按讚</p>");
       
       $("#likeslist").html(
-        "<div id='like-info' class='like-info' style='display: none;'>\
+        "<div id='like-info' class='member-info' style='display: none;'>\
           <a><div class='info-brief'>\
             <img id='info-brief-img'>\
             <div class='info-brief-right'>\
@@ -298,7 +302,7 @@ function event_handler(URL, user_id, CSRF) {
           </div></a>\
         </div>");
       $("#likeslist").append(
-        "<div id='virtual-like'></div><div id='virtual-like'></div>");
+        "<div class='virtual-info'></div><div class='virtual-info'></div>");
       var n = 0;
       if(data.likes != undefined) {
         data.likes.forEach(function(item, i) {
@@ -354,8 +358,29 @@ function event_handler(URL, user_id, CSRF) {
           $("#eventoperate #member #like-m").append("<p id='likepage-btn' class='member member-btn'><br>+" + n + "<br>有興趣<br></p>");
         }
       }
+      
+      
+      
       n = 0;
       $("#eventoperate #member #part-m").append("<p id='mt'>成員</p>");
+      $("#participantslist").html(
+        "<div id='part-info' class='member-info' style='display: none;'>\
+          <a><div class='info-brief'>\
+            <img id='info-brief-img'>\
+            <div class='info-brief-right'>\
+              <p id='friend-name'></p>\
+              <div class='info-brief-school'>\
+                <p id='info-brief-department'>電機工程學系</p>\
+                <p id='info-brief-grade'>初心者喵喵</p>\
+                <p id='info-brief-connectnum'></p>\
+              </div>\
+            </div>\
+          </div></a>\
+        </div>");
+      $("#participantslist").append(
+        "<div class='virtual-info'></div><div class='virtual-info'></div>");
+      
+      
       console.log(data.participants)
       if(data.participants != undefined) {
         data.participants.forEach(function(item, i) {
@@ -371,6 +396,26 @@ function event_handler(URL, user_id, CSRF) {
             n = 0;
           }else{
             n = i - 1;
+          }
+          
+          let clone_id = duplicate_multi('part-info');
+//          let text = data.text;
+          $('#' + clone_id).css({'display': 'block'});
+          $('#' + clone_id + ' a').attr('href', '/profile/' + item.id);
+          $('#' + clone_id + ' .info-brief #friend-name').html(item.full_name);
+          $('#' + clone_id + ' .info-brief #info-brief-department').html(item.department);
+          $('#' + clone_id + ' .info-brief #info-brief-grade').html(item.grade);
+          
+          if ((item.img).substring(0,5) == 'media') {
+            $('#' + clone_id + " .info-brief img").attr(
+              'src',
+              "https://res.cloudinary.com/connect-universe/image/upload/v1/" + item.img
+            );
+          } else {
+            $('#' + clone_id + " .info-brief img").attr(
+              'src',
+              "https://res.cloudinary.com/connect-universe/image/upload/v1/media/" + item.img
+            );
           }
         });
       };
@@ -479,6 +524,10 @@ function edit_event_transition() {
   $("#event-detail").replaceWith(
     "<textarea id='event-detail'>" + $("#event-detail").text()
   );
+  if($(window).width() < 480) {}else{
+    $('#date').css({'flex-direction': 'row'});
+    $('#event-heading').css({'width': '25vw', 'min-width': 'calc(14 * 1.5rem)'})
+  }
   if ($('.requiretag').length > 0) {
     $('.requiretag:last').after("<input type='text' class='require-insert' placeholder='+'>");
     $('.requiretag').each(function(){
