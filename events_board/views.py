@@ -85,6 +85,14 @@ def event_detail_view(request, id):
         if application.applicant == request.user.userextend:
           join_status = application.status
           break
+    
+    if event.delta_date() >= 0:
+      event_status = 0
+      if request.user.is_authenticated:
+        if request.user.userextend == event.host:
+          event_status = 2
+    else:
+      event_status = 1
 
     return JsonResponse({
       'title': event.title,
@@ -102,6 +110,7 @@ def event_detail_view(request, id):
       'host_name': event.host.full_name,
       'requirements': requirements,
       'join_status': join_status,
+      'event_status': event_status,
       'status': 200,
       'error_message': 'No error'
     })

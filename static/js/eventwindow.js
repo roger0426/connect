@@ -131,6 +131,20 @@ function event_handler(URL, user_id, CSRF) {
 //      $("#eventwindow").css({'opacity': 1});
       $("#eventwindow").animate({'opacity': 1}, 200);
       $("#filter1").animate({'opacity': 1}, 200);
+      switch (data.event_status) {
+        case 0:
+          $("#eventwindow").css("background", "linear-gradient(180deg,var(--orange-2), #FFFFFF)");
+          $("#eventwindow").css("border", "5px solid var(--orange-2)");
+          break;
+        case 1:
+          $("#eventwindow").css("background", "linear-gradient(180deg,var(--black-4), #FFFFFF)");
+          $("#eventwindow").css("border", "5px solid var(--black-4)");
+          break;
+        case 2:
+          $("#eventwindow").css("background", "linear-gradient(180deg,var(--green-1), #FFFFFF)");
+          $("#eventwindow").css("border", "5px solid var(--green-1)");
+          break;
+      }
       
       if(data.image != null) {
         $("#eventwindow" + " #eventpic" + " img").attr('src', data.image);
