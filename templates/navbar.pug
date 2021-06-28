@@ -68,8 +68,8 @@ body
         #alert-hover.hover 通知
         script.
           $(document).ready(function() {
-            $("a#alert").on("click", function() {
-              if ($("a#alert").css('background-image') != "/static/file/noticeicon.png") {
+            $(".alert").on("click", function() {
+              if ($(".alert").css('background-image') != "/static/file/noticeicon.png" &&  $(".alert").css('background-image') != "/static/file/app-notice.png") {
                 notice_read_handler(
                   "{% url 'read_notification' %}",
                   "{{ csrf_token}}",
@@ -90,7 +90,8 @@ body
               dataType: 'json',
               success: function(data) {
                 if (data.status == 200) {
-                  console.log("all notices are read");
+                  //console.log("all notices are read");
+                  $("#appalert").css("background-image", "url(/static/file/app-notice.png)");
                   $("#alert").css("background-image", "url(/static/file/noticeicon.png)");
                 } else {
                   console.log(data.error_message);

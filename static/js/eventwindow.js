@@ -133,15 +133,27 @@ function event_handler(URL, user_id, CSRF) {
       $("#filter1").animate({'opacity': 1}, 200);
       switch (data.event_status) {
         case 0:
-          $("#eventwindow").css("background", "linear-gradient(180deg,var(--orange-2), #FFFFFF)");
+          if($(window).width() < 480) {
+            $("#eventwindow").css("background", "linear-gradient(180deg,var(--orange-2) 40vw, #FFFFFF 50vw)");
+          }else{
+            $("#eventwindow").css("background", "linear-gradient(180deg,var(--orange-2), #FFFFFF)");
+          }
           $("#eventwindow").css("border", "5px solid var(--orange-2)");
           break;
         case 1:
-          $("#eventwindow").css("background", "linear-gradient(180deg,var(--black-4), #FFFFFF)");
+          if($(window).width() < 480) {
+            $("#eventwindow").css("background", "linear-gradient(180deg,var(--black-4) 40vw, #FFFFFF 50vw)");
+          }else{
+            $("#eventwindow").css("background", "linear-gradient(180deg,var(--black-4), #FFFFFF)");
+          }
           $("#eventwindow").css("border", "5px solid var(--black-4)");
           break;
         case 2:
-          $("#eventwindow").css("background", "linear-gradient(180deg,var(--green-1), #FFFFFF)");
+          if($(window).width() < 480) {
+            $("#eventwindow").css("background", "linear-gradient(180deg,var(--green-1) 40vw, #FFFFFF 50vw)");
+          }else{
+            $("#eventwindow").css("background", "linear-gradient(180deg,varvar(--green-1), #FFFFFF)");
+          }
           $("#eventwindow").css("border", "5px solid var(--green-1)");
           break;
       }
@@ -165,15 +177,16 @@ function event_handler(URL, user_id, CSRF) {
           }
         });
       };
-      if($(window).width() < 480)
-      if ($('#event-require').is(':empty')){
-        console.log('empty')
-        $('#event-require').css({'height': '0rem'});
-        $('#event-detail').css({'margin-top': '0.5rem'});
-      }
-      else{
-        $('#event-require').css({'height': '4rem'});
-        $('#event-detail').css({'margin-top': '5rem'});
+      if($(window).width() < 480) {
+        if ($('#event-require').is(':empty')){
+          console.log('empty')
+          $('#event-require').css({'height': '0rem'});
+          $('#event-detail').css({'margin-top': '0.5rem'});
+        }
+        else{
+          $('#event-require').css({'height': '4rem'});
+          $('#event-detail').css({'margin-top': '3.5rem'});
+        }
       }
       
       $("#eventwindow" + " #description" + " #event-date").html("活動日期<br />" + data.event_date);

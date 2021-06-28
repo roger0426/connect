@@ -1,7 +1,7 @@
 $(document).ready(function(){
-  $("#loading").animate({'opacity': 0}, 500, function() {
-    $("#loading").hide()
-  })
+//  $("#loading").animate({'opacity': 0}, 500, function() {
+//    $("#loading").hide()
+//  })
   
   
   $('body').keyup(function(){
@@ -314,11 +314,19 @@ $(document).ready(function(){
   }, 450);
 });
 
-$(window).bind('beforeunload',function(){
-//  $('#loading').hide();
+
+
+$(function () {
+    // page is loaded, it is safe to hide loading animation
+    console.log('done')
+    $('#loading').hide();
+
+    $(window).on('beforeunload', function () {
+        // user has triggered a navigation, show the loading animation
+      console.log('loading')
+      $('#loading').show();
+    });
 });
-
-
 
 var i = 0;
 function duplicate_multi(duplicateID) {

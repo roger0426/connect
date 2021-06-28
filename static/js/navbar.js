@@ -47,7 +47,6 @@ $(document).ready(function(){
       
     } else {
       $("#alert-hover").hide();
-      console.log("打開通知");
       $(".alert").css({opacity: 0.6})
       $("#notificationboard").show();
 //      $('#clickfilter').show();
