@@ -733,3 +733,77 @@ input[type='button']:active
   opacity: 0
 
 
+//tablet responsive
+@media only screen and (max-width: 1024px)
+  #phoneerrormsg
+
+
+//phone responsive
+@media only screen and (max-width: 480px)
+  .event-detail
+    #eventwindow
+      min-width: 0;
+      width: calc(100% - 3rem);
+      max-height: 90%;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      padding: 1.5rem 0.5rem 1rem 0.5rem;
+      #eventwindow-left
+        width: 100%;
+        margin: 0;
+        #description
+          #description-top
+            #eventwindow-bg
+              height: 35vw
+              width: 35vw
+              #eventpic
+                p
+                  line-height: 35vw
+            #event-heading
+              min-width: 0;
+              width: calc((100% - 37vw));
+              margin: 0
+              margin-top: 2.3rem;
+              #event-title
+                font-size: 1.2rem;
+                font-weight: 500;
+              #event-subtitle
+                line-height: 1rem;
+                font-size: 0.9rem;
+                font-weight: 500;
+                margin: 0 0.1rem 0 0.1rem;
+                color: var(--black-1);
+                height: 4.4rem;
+                overflow: auto;
+              #event-require
+                position: absolute;
+                left: 1.5rem;
+                top: 41vw
+                height: 4rem;
+                width: 88%
+            #date
+              position: absolute;
+              flex-direction: row;
+              transform: translate(0, 0);
+              left: 41.5vw
+              top: 1rem
+              #event-date
+                margin: 0 3vw 0 0
+                font-size: 0.8rem
+                width: 5rem
+              #due-date
+                margin: 0 3vw 0 0
+                font-size: 0.8rem
+                width: 5rem
+          #event-detail
+            margin: 5rem 0 0 0.5rem;
+            width: calc(100% - 1.5rem);
+                
+        #eventmsgregion
+          height: 5rem;
+          width: calc(100% - 2rem);
+          margin-top: 0.5rem;
+        #eventmsg-sender
+      #eventwindow-right
+        #eventoperate
+      #eventjoinwindow

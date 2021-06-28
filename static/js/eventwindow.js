@@ -165,6 +165,17 @@ function event_handler(URL, user_id, CSRF) {
           }
         });
       };
+      if($(window).width() < 480)
+      if ($('#event-require').is(':empty')){
+        console.log('empty')
+        $('#event-require').css({'height': '0rem'});
+        $('#event-detail').css({'margin-top': '0.5rem'});
+      }
+      else{
+        $('#event-require').css({'height': '4rem'});
+        $('#event-detail').css({'margin-top': '5rem'});
+      }
+      
       $("#eventwindow" + " #description" + " #event-date").html("活動日期<br />" + data.event_date);
       $("#eventwindow" + " #description" + " #due-date").html("報名截止<br />" + data.due_date);
       let url_detail = data.detail.replaceAll(
