@@ -38,12 +38,16 @@ $(document).ready(function(){
       $(".alert").css({opacity: 1});
 //      $('#clickfilter').hide();
       
-      //desktop
-      $("#notificationboard").animate({height: 0}, 500, function() {
-        $("#notificationboard").hide();
-      });
-      //pwa
       
+      //pwa
+      if($(window).width() < 480) {
+        $("#notificationboard").hide();
+      }else{
+        //desktop
+        $("#notificationboard").animate({height: 0}, 500, function() {
+          $("#notificationboard").hide();
+        });
+      }
       
     } else {
       $("#alert-hover").hide();
@@ -52,10 +56,16 @@ $(document).ready(function(){
 //      $('#clickfilter').show();
 //      $('#notificationboard').css({"display": 'flex'});
       
-      //desktop
-      $("#notificationboard").animate({height: '45vh'}, 500, function() {
-      });
+      
       //pwa
+      if($(window).width() < 480) {
+        $("#notificationboard").css({'height': 'calc(100% - 3.5rem - 4.2rem + -2vh)', 'border': 'none', 'border-radius': 0})
+        $("#notices").css({height: 'calc(100% - 2.5rem)'})
+      }else{
+        //desktop
+        $("#notificationboard").animate({height: '45vh'}, 500, function() {
+        });
+      }
       
     }
   });
@@ -65,10 +75,15 @@ $(document).ready(function(){
     if($('#notificationboard').css('display') === 'block') {
       console.log("關閉通知");
       $(".alert").css({opacity: 1});
-//      $('#clickfilter').hide();
-      $("#notificationboard").animate({height: 0}, 500, function() {
+      
+      if($(window).width() < 480) {
         $("#notificationboard").hide();
-      });
+      }else{
+        $("#notificationboard").animate({height: 0}, 500, function() {
+          $("#notificationboard").hide();
+        });
+      }
+      
     }
   });
   
@@ -77,7 +92,7 @@ $(document).ready(function(){
   });
 
   
-  $('#title, #profile, #aboutus').on("click", function() {
+  $('#title, #profile, #aboutus, #home, #aboutus, #profile').on("click", function() {
     $("#loading").show()
     $("#loading").animate({'opacity': 1}, 200, function() {
     })

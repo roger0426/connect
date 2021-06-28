@@ -175,7 +175,7 @@ function event_handler(URL, user_id, CSRF) {
           if($(window).width() < 480) {
             $("#eventwindow").css("background", "linear-gradient(180deg,var(--green-1) 40vw, #FFFFFF 50vw)");
           }else{
-            $("#eventwindow").css("background", "linear-gradient(180deg,varvar(--green-1), #FFFFFF)");
+            $("#eventwindow").css("background", "linear-gradient(180deg,var(--green-1), #FFFFFF)");
           }
           $("#eventwindow").css("border", "5px solid var(--green-1)");
           break;
@@ -208,7 +208,7 @@ function event_handler(URL, user_id, CSRF) {
         }
         else{
           $('#event-require').css({'height': '4rem'});
-          $('#event-detail').css({'margin-top': '3.5rem'});
+          $('#event-detail').css({'margin-top': '20vw'});
         }
       }
       
