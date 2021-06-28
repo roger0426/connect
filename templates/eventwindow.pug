@@ -48,7 +48,7 @@ html
           {% endif %}
           {% if request.user.is_authenticated %}
           .comment-operate-region
-            input.eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
+            input.eventmsg-insert(type="text", name='text', placeholder="傳送訊息..." autocomplete="off")
             input.eventmsg-btn(type="button", value="送出")
             input.eventjoin-btn(type="button", value="申請加入")
             input.eventedit-btn(type="button", value="控制中心", style="display: none")
@@ -79,7 +79,7 @@ html
               })
           {% else %}
           a.comment-operate-region(href="{% url 'login' %}")
-            input.eventmsg-insert(type="text", name='text', placeholder="傳送訊息...")
+            input.eventmsg-insert(type="text", name='text', placeholder="傳送訊息..." autocomplete="off")
             input.eventmsg-btn(type="submit", value="送出")
             input.eventjoin-btn(type="button", value="加入團隊")
           {% endif %}

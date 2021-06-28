@@ -233,22 +233,24 @@ html
     #need-comment-flag(style="display: none") {{ need_comment }}
     #comment-window(style="display: none")
       img#exitbtn2(src="{% static 'file/exiticon.png' %}")
-      p 嗨{{ request.user.last_name }}！你對於"{{ need_comment_event.title }}"的體驗如何呢？
+      p 嗨{{ request.user.last_name }}！
+      p 你對於"{{ need_comment_event.title }}"的體驗如何呢？
       p 來為活動和參加者評分吧！
-      #first-comment.comment-div
-        {% if need_comment_event.host != request.user.userextend %}
-        p 給 {{ need_comment_event.host.full_name }} 的評語
-        label(for="{{ need_comment_event.host.full_name }}", style="display: none") {{ need_comment_event.host.full_name }}
-        input(type="text", placeholder="留言.......", name="{{ need_comment_event.host.full_name }}")
+      #comment-region
+        #first-comment.comment-div
+          {% if need_comment_event.host != request.user.userextend %}
+          p 給 {{ need_comment_event.host.full_name }} 的評語
+          label(for="{{ need_comment_event.host.full_name }}", style="display: none") {{ need_comment_event.host.full_name }}
+          input(type="text", placeholder="留言.......", name="{{ need_comment_event.host.full_name }}" autocomplete="off")
+          {% endif %}
+        {% for participant in need_comment_event.participants.all %}
+        {% if participant.full_name != request.user.userextend.full_name %}
+        .comment-div
+          p 給 {{ participant.full_name }} 的評語
+          label(for="{{ participant.full_name }}", style="display: none") {{ participant.full_name }}
+          input(type="text", placeholder="留言.......", name="{{ participant.full_name }}" autocomplete="off")
         {% endif %}
-      {% for participant in need_comment_event.participants.all %}
-      {% if participant.full_name != request.user.userextend.full_name %}
-      .comment-div
-        p 給 {{ participant.full_name }} 的評語
-        label(for="{{ participant.full_name }}", style="display: none") {{ participant.full_name }}
-        input(type="text", placeholder="留言.......", name="{{ participant.full_name }}")
-      {% endif %}
-      {% endfor %}
+        {% endfor %}
       input#send-comment-btn(type="button", value="送出")
       script.
         $(document).ready(function(){

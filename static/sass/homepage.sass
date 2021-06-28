@@ -660,7 +660,7 @@ a
 
 
 //phone responsive
-@media only screen and (max-width: 480px)
+@media only screen and (max-width: 540px)
   #phoneerrormsg
     display: none
   #filter1
@@ -785,3 +785,27 @@ a
       #submit-btn
         margin-top: 0
     
+  #comment-window
+    width: calc(100% - 5rem)
+    max-height: 90%
+    padding: 0 1rem
+    overflow: auto
+    p
+      font-size: 0.9rem
+      margin-left: 0
+    p:first-of-type
+      margin-top: 3rem
+    #comment-region
+      margin-top: 2rem
+      max-height: 20rem
+      overflow: scroll
+      .comment-div
+        margin: 0
+        p
+          margin: 0 0 0.2rem 0
+      input[type="text"]
+        width: 100%
+        border-radius: 2rem
+        margin-bottom: 0.5rem
+    input[type='button']
+      margin-bottom: 1rem
