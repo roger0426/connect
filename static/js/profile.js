@@ -255,8 +255,18 @@ function friend_remove_handler(URL, CSRF, request_user_id) {
   });
 }
 
-function tag_comment_handler(URL, CSRF, tag_id, text, comment_board, input_region) {
-  if (text != "" ) {
+function tag_comment_handler(URL, CSRF, tag_id, text, comment_board, sendbutton) {
+  console.log(sendbutton.text())
+  if (text == "" && sendbutton.text() == "送出") {
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: '喔不出錯了',
+      text: "請確認有於輸入格中輸入正確文字",
+      showConfirmButton: false,
+      timer: 1500,
+    })
+  } else {
     $.ajaxSetup({
       data: {
         csrfmiddlewaretoken: CSRF
@@ -271,22 +281,48 @@ function tag_comment_handler(URL, CSRF, tag_id, text, comment_board, input_regio
       },
       dataType: 'json',
       success: function(data) {
-        if (data.status == 200) {
+        if (data.status == 200 || data.status == 201) {
           console.log("tag comment add successfully");
-          if (comment_board.children(".tagcmt-wrap").children("p").text() == "目前還沒有評價ㄛ~") { 
+          if (comment_board.children("p").text() == "目前還沒有評價ㄛ~") { 
             comment_board.empty();
           }
-          comment_board.prepend(
-            "<div class='tagcmt-wrap'> \
-              <img id='cmtfrom' src='" + data.user_img_url + "'>\
-              <div id='cmttext'>\
-                <p>" + text + "</p>\
-              </div>\
-            </>"
-          );
+          
           let comment_count = parseInt(comment_board.parent().siblings(".cmt-count").text());
-          comment_board.parent().siblings(".cmt-count").text(comment_count + 1);
-          input_region.hide();
+          if (data.status == 200) {
+            comment_board.parent().siblings(".cmt-count").text(comment_count + 1);
+            sendbutton.text("修改");
+            comment_board.prepend(
+              "<div class='tagcmt-wrap'> \
+                <img id='cmtfrom' src='" + data.user_img_url + "'>\
+                <div id='cmttext'>\
+                  <p>" + text + "</p>\
+                </div>\
+              </>"
+            );
+          } else if (data.status == 201 && text == "") {
+            comment_board.parent().siblings(".cmt-count").text(comment_count - 1);
+            sendbutton.text("送出");
+            comment_board.closest(".comment-insert").val("");
+            comment_board.children('.tagcmt-wrap').each(function() {
+              if ($(this).children('img#cmtfrom').attr('src') == data.user_img_url) {
+                $(this).remove();
+              }
+              if ($(this).children('a').children('img#cmtfrom').attr('src') == data.user_img_url) {
+                $(this).remove();
+              }
+            });
+          } else {
+            comment_board.children('.tagcmt-wrap').each(function() {
+              if ($(this).children('img#cmtfrom').attr('src') == data.user_img_url) {
+                $(this).children("#cmttext").children("p").text(text);
+              }
+              if ($(this).children('a').children('img#cmtfrom').attr('src') == data.user_img_url) {
+                $(this).children("#cmttext").children("p").text(text);
+              }
+            });
+          }
+          
+          
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -307,15 +343,6 @@ function tag_comment_handler(URL, CSRF, tag_id, text, comment_board, input_regio
           })
         }
       }
-    })
-  } else {
-    Swal.fire({
-      position: 'center',
-      icon: 'error',
-      title: '喔不出錯了',
-      text: "請確認有於輸入格中輸入正確文字",
-      showConfirmButton: false,
-      timer: 1500,
     })
   }
 }

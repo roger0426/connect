@@ -67,21 +67,30 @@ html
                 {% endfor %}
               .tag-field
                 p 專長
-                {% for skill, can_comment, comment_list in skill %}
+                {% for skill, can_comment, comment_list, prior_comment in skill %}
                 {% if not skill.is_hidden %}
                 .tag-style.skill-style
                   p.tags.normaltag {{ skill.text }}
                   p.cmt-count {{ skill.comments.count }}
                   .tag-comment
-                    {% if request.user.is_authenticated and request.user.pk != user.user.pk and can_comment %}
+                    {% if request.user.is_authenticated and request.user.pk != user.user.pk %}
+                    {% if can_comment %}
                     #tag-comment-send-region
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")
                         img#senderpic(src="{{ request.user.userextend.img.url }}")
                       .cmd-txt-region
-                        input.comment-insert(type="text",name='text',placeholder="對於他的看法？")
+                        input.comment-insert(type="text",name='text', placeholder="認證{{ user.user.last_name }}的此項技能")
                       button.sendbutton(src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit") 送出
                       #tag-id(style="display: none") {{ skill.id }}
                     {% else %}
+                    #tag-comment-send-region
+                      a(href="{% url 'profile' id=request.user.userextend.pk %}")
+                        img#senderpic(src="{{ request.user.userextend.img.url }}")
+                      .cmd-txt-region
+                        input.comment-insert(type="text",name='text', value="{{ prior_comment }}", placeholder="認證{{ user.user.last_name }}的此項技能")
+                      button.sendbutton(src="{% static 'file/send-arrow.png' %}", alt="Submit" id="cmd-send-submmit") 修改
+                      #tag-id(style="display: none") {{ skill.id }}
+                    {% endif %}
                     {% endif %}
                     #tag-comment-board
                       {% for tagcomment, common_friend, friend_connect in comment_list %}
@@ -128,7 +137,7 @@ html
                       $(this).siblings("#tag-id").text(),
                       $(this).siblings(".cmd-txt-region").children("input").val(),
                       $(this).parent().siblings('#tag-comment-board'),
-                      $(this).parent()
+                      $(this)
                     )
                   });
                 })

@@ -50,19 +50,22 @@ def profile_view(request, id, *args, **kwargs):
   skill_tups = []
   
   can_comment = True
+  prior_comment = ""
   for tag in skill_tags:
     comment_list = []
     for comment in tag.comments.all():
       if comment.author == request.user:
         can_comment = False
+        prior_comment = comment.text
       common_friend_count = get_common_friend_count(comment.author, request.user)
       connect_event_count = get_connect_event_num(comment.author.userextend, obj.user)
       comment_list.append((comment, common_friend_count, connect_event_count))
     if request.user.is_authenticated:
-        skill_tups.append((tag, can_comment, comment_list))
-        can_comment = True
+      skill_tups.append((tag, can_comment, comment_list, prior_comment))
+      can_comment = True
     else:
-        skill_tups.append((tag, False, comment_list))
+      skill_tups.append((tag, False, comment_list, ""))
+
 
 
   activities = \

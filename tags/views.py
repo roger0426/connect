@@ -75,9 +75,18 @@ def tag_comment_view(request):
         'user_img_url': request.user.userextend.img.url
       })
     else:
+      tag_comment = get_object_or_404(TagComment, for_tag=tag, author=user)
+      if data.get('text') == "":
+        tag_comment.delete()
+        return JsonResponse({
+          'status': 201,
+          'user_img_url': request.user.userextend.img.url
+        })
+      tag_comment.text = data.get('text')
+      tag_comment.save()
       return JsonResponse({
-        'status': 404,
-        'error_message': "[Error] duplicated tag comment"
+        'status': 201,
+        'user_img_url': request.user.userextend.img.url
       })
   else:
     return JsonResponse({
