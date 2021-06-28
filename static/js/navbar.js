@@ -59,7 +59,7 @@ $(document).ready(function(){
       
       //pwa
       if($(window).width() < 480) {
-        $("#notificationboard").css({'height': 'calc(100% - 3.5rem - 4.2rem + -2vh)', 'border': 'none', 'border-radius': 0})
+        $("#notificationboard").css({'height': 'calc(100% - 4.5rem - 4.2rem + -2vh)', 'border': 'none', 'border-radius': 0, 'top': '4.2rem'})
         $("#notices").css({height: 'calc(100% - 2.5rem)'})
       }else{
         //desktop

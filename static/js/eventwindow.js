@@ -121,6 +121,8 @@ function reset_event_window() {
     "<input type='button' class='eventedit-btn' value='控制中心'>"
   );
   $("#edit-cancel-btn").remove();
+  $('#date').css({'flex-direction': 'column'});
+  $('#event-heading').css({'width': '20vw', 'min-width': 'calc(11 * 1.5rem)'})
 }
                   
 function event_handler(URL, user_id, CSRF) {
@@ -479,6 +481,8 @@ function edit_event_transition() {
   $("#event-detail").replaceWith(
     "<textarea id='event-detail'>" + $("#event-detail").text()
   );
+  $('#date').css({'flex-direction': 'row'});
+  $('#event-heading').css({'width': '25vw', 'min-width': 'calc(14 * 1.5rem)'})
   if ($('.requiretag').length > 0) {
     $('.requiretag:last').after("<input type='text' class='require-insert' placeholder='+'>");
     $('.requiretag').each(function(){
