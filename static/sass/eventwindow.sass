@@ -398,7 +398,7 @@ input[type='button']:active
           display: flex;
           align-items: center;
           flex-direction: column;
-          #mt
+          #pt
             font-size: 0.85rem
             color: var(--black-2)
             margin-bottom: 0.1rem
@@ -771,6 +771,7 @@ input[type='button']:active
               #event-title
                 font-size: 1.3rem;
                 font-weight: 500;
+                line-height: 1.5rem;
               #event-subtitle
                 line-height: 1rem;
                 font-size: 0.9rem;
@@ -808,29 +809,105 @@ input[type='button']:active
             width: calc(100% - 1.5rem);
             font-size: 0.9rem
             margin-top: 0.5rem;
-            min-height: 3rem;
-            max-height: 7rem;
+            min-height: 20vw
+            max-height: 30vw
+            padding: 0.1rem 0.5rem;
+            border: solid 2px var(--black-4);
                 
         #eventmsgregion
-          height: 30vh
+          height: 25vh
           width: calc(100% - 2rem);
-          margin-top: 0.5rem;
           box-shadow: none;
           #msgtitle
             font-size: 1.1rem;
             padding: 0 0 0.3rem 0;
+          #eventmsg-board
+            .eventmsg
+              padding: 0
+              background-color: transparent
+              min-height: 2.5rem
+              align-items: flex-start;
+              #eventmsg-right
+                justify-content: flex-start;
+                #eventmsg-righttop
+                  #eventmsg-sendername
+                    height: auto
+                    font-size: 0.8rem
+                  #event-date
+                #eventmsg-rightbottom
+                  #eventmsgtext
+                    font-size: 0.75rem;
         #eventmsg-sender
           .comment-operate-region
+            margin: 0.7rem 0.7rem 0.3rem 0;
             input
+              font-size: 0.9rem;
             .eventmsg-insert
               width: 70%
             .eventmsg-btn
               left: auto
             .eventjoin-btn
-              position: absolute
+              position: fixed
+              bottom: 1.2rem;
+              right: 17vw;
             .eventedit-btn
-              position: absolute
+              position: fixed
+              bottom: 1.2rem;
+              right: 17vw;
             
       #eventwindow-right
+        width: 100%
+        margin-top: 1rem;
         #eventoperate
+          position: relative
+          left: 0;
+          width: 100%;
+          justify-content: flex-start;
+          flex-direction: row;
+          height: auto
+        
+          #exitbtn1
+            position: fixed;
+            top: 0.8rem;
+            right: 0.8rem;
+          #organizer-link
+            margin: 0
+            height: 2.9rem;
+            #organizer-pic
+              width: 2.5rem;
+              height: 2.5rem;
+          #bar
+            height: 1.7rem;
+            width: 2px;
+            margin: 0 0.5rem;
+          #member
+            flex-direction: row;
+            
+            #like-m
+              flex-direction: row;
+              #lt
+              a
+                img
+                p
+              #likepage-btn
+                margin: 0 0.3rem;
+                line-height: 1rem;
+                font-size: 0.8rem;
+                font-weight: 900;
+                line-height: 0.8rem;
+            #part-m
+              flex-direction: row;
+              #mt
+              a
+                img
+                p
+              #partpage-btn
+                margin: 0 0.3rem;
+                line-height: 1rem;
+                font-size: 0.8rem;
+                font-weight: 900;
+                line-height: 0.8rem;
+          #likebutton
+            bottom: 0;
+            right: 0;
       #eventjoinwindow

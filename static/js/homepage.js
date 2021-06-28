@@ -1,7 +1,13 @@
 $(document).ready(function(){
-//  $("#loading").animate({'opacity': 0}, 500, function() {
-//    $("#loading").hide()
-//  })
+  $("#loading").animate({'opacity': 0}, 300, function() {
+    $("#loading").hide()
+  })
+  
+  $(window).on('beforeunload', function () {
+      // user has triggered a navigation, show the loading animation
+    console.log('loading')
+    $('#loading').show();
+  });
   
   
   $('body').keyup(function(){
@@ -312,20 +318,6 @@ $(document).ready(function(){
   let intervalId = window.setInterval(function(){ // check every 0.5 seconds
     $('#insertbar').toggle();
   }, 450);
-});
-
-
-
-$(function () {
-    // page is loaded, it is safe to hide loading animation
-    console.log('done')
-    $('#loading').hide();
-
-    $(window).on('beforeunload', function () {
-        // user has triggered a navigation, show the loading animation
-      console.log('loading')
-      $('#loading').show();
-    });
 });
 
 var i = 0;

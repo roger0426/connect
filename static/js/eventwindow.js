@@ -317,8 +317,19 @@ function event_handler(URL, user_id, CSRF) {
           }
         });
       };
+      if($(window).width() < 480) {
+        $("#eventoperate #member #like-m").html("");
+      }
       if(n >= 1){
-        $("#eventoperate #member #like-m").append("<p id='likepage-btn' class='member member-btn'>+" + n + "</p>");
+        if($(window).width() < 480) {
+          $("#eventoperate #member #like-m").append("<p id='likepage-btn' class='member member-btn'><br>+" + (n+2) + "<br>有興趣<br></p>");
+        }else{
+          $("#eventoperate #member #like-m").append("<p id='likepage-btn' class='member member-btn'>+" + n + "</p>");
+        }
+      }else{
+        if($(window).width() < 480) {
+          $("#eventoperate #member #like-m").append("<p id='likepage-btn' class='member member-btn'><br>+" + n + "<br>有興趣<br></p>");
+        }
       }
       n = 0;
       $("#eventoperate #member #part-m").append("<p id='mt'>成員</p>");
@@ -340,9 +351,20 @@ function event_handler(URL, user_id, CSRF) {
           }
         });
       };
+      
+      if($(window).width() < 480) {
+        $("#eventoperate #member #part-m").html("");
+      }
       if(n >= 1){
-        console.log("three")
-        $("#eventoperate #member #part-m").append("<p id='partpage-btn' class='member member-btn'>+" + n + "</p>");
+        if($(window).width() < 480) {
+          $("#eventoperate #member #part-m").append("<p id='partpage-btn' class='member member-btn'><br>+" + (n+2) + "<br>已加入<br></p>");
+        }else{
+          $("#eventoperate #member #part-m").append("<p id='partpage-btn' class='member member-btn'>+" + n + "</p>");
+        }
+      }else{
+        if($(window).width() < 480) {
+          $("#eventoperate #member #part-m").append("<p id='partpage-btn' class='member member-btn'><br>+" + n + "<br>已加入<br></p>");
+        }
       }
       
 
@@ -384,8 +406,20 @@ function event_handler(URL, user_id, CSRF) {
       });
     },
     complete: function(data) {
-      $("#loading").animate({'opacity': 0}, 500, function() {
-        $("#loading").hide()
+//      $("#loading").animate({'opacity': 0}, 200, function() {
+//        $("#loading").hide()
+//      })
+      
+//      $('eventwindow').load(function(){
+//        console.log('done2')
+//        $('#loading').hide();
+//      })
+
+      $('eventwindow').ready(function(){
+        console.log('ready')
+        $("#loading").animate({'opacity': 0}, 200, function() {
+          $("#loading").hide()
+        })
       })
     },
     error: function(data) {
