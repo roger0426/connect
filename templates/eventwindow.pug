@@ -195,6 +195,10 @@ html
             $(document).ready(function(){
               $("input#edit-btn").on("click", function() {
                 edit_event_transition();
+                if($(window).width() < 480) {}else{
+                  $('#date').css({'flex-direction': 'row'});
+                  $('#event-heading').css({'width': '25vw', 'min-width': 'calc(14 * 1.5rem)'})
+                }
               })
               $("input#delete-btn").on("click", function() {
                 delete_event_handler(
@@ -220,6 +224,10 @@ html
               $(document).on("click", "input#edit-cancel-btn", function() {
                 let id = $(this).closest('#eventwindow').attr('class')
                 reset_event_window();
+                if($(window).width() < 480){}else{
+                  $('#date').css({'flex-direction': 'row'});
+                  $('#event-heading').css({'width': '20vw', 'min-width': 'calc(11 * 1.5rem)'})
+                }
                 event_handler(
                 "/event/" + id, 
                 "{{ request.user.id }}", 
