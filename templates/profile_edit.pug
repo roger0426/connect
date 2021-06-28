@@ -54,7 +54,7 @@ html
                 p 個性
                 {% for personality in personality %}
                 {% if not personality.is_hidden %}
-                .tag-style
+                .tag-style.personality-style
                   p.tags.normaltag {{ personality.text }}
                   p.tags.deletetag 刪除
                 {% endif %}
@@ -71,7 +71,7 @@ html
                 p 專長
                 {% for skill in skill %}
                 {% if not skill.is_hidden %}
-                .tag-style
+                .tag-style.skill-style
                   p.tags.normaltag {{ skill.text }}
                   p.tags.deletetag 刪除
                 {% endif %}
@@ -88,7 +88,7 @@ html
                 p 有興趣活動
                 {% for interest in interest %}
                 {% if not interest.is_hidden %}
-                .tag-style
+                .tag-style.interest-style
                   p.tags.normaltag {{ interest.text }}
                   p.tags.deletetag 刪除
                 {% endif %}

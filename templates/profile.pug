@@ -59,7 +59,7 @@ html
                 p 個性
                 {% for personality in personality %}
                 {% if not personality.is_hidden %}
-                .tag-style
+                .tag-style.personality-style
                   p.tags.normaltag {{ personality.text }}
                 {% endif %}
                 {% empty %}
@@ -69,7 +69,7 @@ html
                 p 專長
                 {% for skill, can_comment, comment_list in skill %}
                 {% if not skill.is_hidden %}
-                .tag-style
+                .tag-style.skill-style
                   p.tags.normaltag {{ skill.text }}
                   p.cmt-count {{ skill.comments.count }}
                   .tag-comment
@@ -136,7 +136,7 @@ html
                 p 有興趣活動
                 {% for interest in interest %}
                 {% if not interest.is_hidden %}
-                .tag-style
+                .tag-style.interest-style
                   p.tags.normaltag {{ interest.text }}
                 {% endif %}
                 {% empty %}
