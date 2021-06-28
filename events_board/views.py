@@ -10,6 +10,7 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from connect.utils import input_format, get_tagged_name
 from user_extend.models import UserExtend
+from django.core.files.storage import default_storage
 import sys
 
 # Create your views here.
@@ -380,6 +381,7 @@ def edit_event_view(request):
     clean_title = input_format(data.get('title'))
     clean_sub = input_format(data.get('subtitle'))
     clean_detail = input_format(data.get('detail'))
+    clean_requirement = input_format(data.get('requirement_str'))
     if clean_title != "":
       has_change = 1
       event.title = clean_title
@@ -389,6 +391,10 @@ def edit_event_view(request):
     if clean_detail != "":
       has_change = 1
       event.detail = clean_detail
+    if clean_requirement != "":
+      event.requirements_str = clean_requirement
+    event.event_date = data.get('event_date')
+    event.due_date = data.get('due_date')
     if not has_change:
       return JsonResponse({
         'status': 500,
@@ -398,6 +404,29 @@ def edit_event_view(request):
     return JsonResponse({
       'status': 200,
     })
+  else:
+    return JsonResponse({
+      'status': 500,
+      'error_message': "[Error] request not post, rejected"
+    })
+
+def modify_event_img(request):
+  if request.method == 'POST':
+    event = get_object_or_404(EventsBoard, id=request.POST.get('event_id'))
+    if(request.FILES):
+      image = request.FILES['image']
+      if (event.image):
+        event.image.delete()
+      image_name = default_storage.save("event/" + image.name, image)
+      event.update(image = image_name)
+      return JsonResponse({
+        'status':200
+      })
+    else:
+      return JsonResponse({
+        'status': 404,
+        'error_message': "[Error] No file found"
+      })
   else:
     return JsonResponse({
       'status': 500,

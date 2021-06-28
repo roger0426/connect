@@ -27,6 +27,7 @@ class SiteNotification(models.Model):
   #-1: none
   # 0: event notification
   # 1: friend notification
+  # 2: tag notification
   notification_type = models.IntegerField(default=-1)
   is_read = models.BooleanField(default=False)
 

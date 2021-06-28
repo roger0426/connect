@@ -36,7 +36,30 @@ $(document).ready(function(){
       $(".eventsubwindow").hide();
     })
   });
-  
+
+  $(document).on("focus", ".require-insert", function() {
+    $(this).attr("placeholder", "");
+    $(this).css("width", "5rem");
+  });
+  $(document).on("blur", ".require-insert", function() {
+    $(this).attr("placeholder", "+");
+    $(this).css("width", "1rem");
+
+    if ($(this).val() != "") {
+      // has requirement value
+      $(this).before(
+//        "<p class='requirement-tag'>" + $(this).val() + "</p>"
+        "<input class='requiretag' size='" + ($(this).val().length*1.5 + 2.5 )+ "' value='" + $(this).val() + "'>"
+      )
+      $(this).val("");
+    }
+  });
+  $(document).on("blur", ".requiretag", function() {
+    if ($(this).val() == "") {
+      $(this).remove();
+    }
+  })
+
 });
 
 //eventwindow likes & participants hover name
@@ -189,8 +212,8 @@ function event_handler(URL, user_id, CSRF) {
         }
       }
       
-      $("#eventwindow" + " #description" + " #event-date").html("活動日期<br />" + data.event_date);
-      $("#eventwindow" + " #description" + " #due-date").html("報名截止<br />" + data.due_date);
+      $("#eventwindow" + " #description" + " #event-date").html("<p>活動日期</p><p id='event_date'>" + data.event_date + "</p>");
+      $("#eventwindow" + " #description" + " #due-date").html("<p>報名截止</p><p id='due_date'>" + data.due_date + "</p>");
       let url_detail = data.detail.replaceAll(
           /(http[s]?:\/\/([^\s]+))(\s+|$)/g,
           (string, g1, g2, g3) => {
@@ -456,13 +479,40 @@ function edit_event_transition() {
   $("#event-detail").replaceWith(
     "<textarea id='event-detail'>" + $("#event-detail").text()
   );
+  if ($('.requiretag').length > 0) {
+    $('.requiretag:last').after("<input type='text' class='require-insert' placeholder='+'>");
+    $('.requiretag').each(function(){
+      console.log($(this).text())
+      $(this).replaceWith(
+        "<input type='text' class='requiretag' value='" + $(this).text() + "'>"
+      );
+    })
+  } else {
+    $("#event-require").append("<input type='text' class='require-insert' placeholder='+'>");
+  }
   
-  $('.requiretag').each(function(item,i){
-    console.log($(this).text())
-    $(this).replaceWith(
-      "<input type='text' class='requiretag' value='" + $(this).text() + "'>"
-    );
-  })
+  let ua = navigator.userAgent.toLowerCase(); 
+  if (ua.indexOf('safari') != -1) { 
+    if (ua.indexOf('chrome') > -1) {
+      // Chrome
+      console.log($("p#event_date").text())
+      $("p#event_date").replaceWith(
+        "<input type='date' id='event_date' value='" + $("p#event_date").text() + "'>"
+      );
+      $("p#due_date").replaceWith(
+        "<input type='date' id='due_date' value='" + $("p#due_date").text() + "'>"
+      );
+    } else {
+      // Safari
+      $("p#event_date").replaceWith(
+        "<input type='text' id='event_date' value='" + $("p#event_date").text() + "'>"
+      );
+      $("p#due_date").replaceWith(
+        "<input type='text' id='due_date' value='" + $("p#due_date").text() + "'>"
+      );
+    }
+  }
+
   // $("#eventwindow-bg").replaceWith(
   //   "<input type='file' name='image' alt='image' id='eventwindow-bg'>"
   // );
@@ -477,6 +527,39 @@ function edit_event_transition() {
 }
 
 function edit_event_handler(URL, CSRF, event_id) {
+  let date_regex = /^(2[0-1][0-9][0-9])-(([0][1-9])|(1[0-2]))-((0[1-9])|([1-2][0-9])|([3][0-1]))$/g
+  if ($("#event_date").val().match(date_regex).length != 1) {
+    $("#event_date").css("border", "0.1rem solid red");
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: '日期格式錯誤',
+      text: "請再確認活動日期格式",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    return;
+  }
+  if ($("#due_date").val().match(date_regex).length != 1) { 
+    $("#due_date").css("border", "0.1rem solid red");
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: '日期格式錯誤',
+      text: "請再確認報名截止日期格式",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    return;
+  }
+
+  let requirement_str = "";
+  // stringify requiremnt str
+  if ($(".requiretag").length > 0) {
+    $(".requiretag").each(function() {
+      requirement_str += $(this).val() + ",";
+    })
+  }
   $.ajaxSetup({
     data: {
       csrfmiddlewaretoken: CSRF
@@ -489,22 +572,27 @@ function edit_event_handler(URL, CSRF, event_id) {
       'event_id': event_id,
       'title': $("#event-title").val(),
       'subtitle': $("#event-subtitle").val(),
-      'detail': $("#event-detail").val()
+      'detail': $("#event-detail").val(),
+      'event_date': $("#event_date").val(),
+      'due_date': $("#due_date").val(),
+      'requirement_str': requirement_str
     },
     dataType: 'json',
     success: function(data) {
       if (data.status == 200) {
         console.log("modify event successfully");
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: '已修改活動',
-          text: "正在跳轉回主頁面",
-          showConfirmButton: false,
-        })
-        setTimeout(function(){
-          location.reload();
-        }, 1000);
+        if ($("canvas").length == 0) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '已修改活動',
+            text: "正在跳轉回主頁面",
+            showConfirmButton: false,
+          })
+          setTimeout(function(){
+            location.reload();
+          }, 1000);
+        }
       } else {
         Swal.fire({
           position: 'center',

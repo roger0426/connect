@@ -40,8 +40,10 @@ body
                   {% if noticedata.notification_type == 0 %}
                   a.notice-detail {{ noticedata.text }}
                   #notice-event(style="display: none") {{ noticedata.event.id }}
-                  {% else %}
+                  {% elif noticedata.notification_type == 1 %}
                   a.notice-detail(href="{% url 'profile' id=noticedata.from_user.userextend.pk %}") {{ noticedata.text }}
+                  {% else %}
+                  a.notice-detail(href="{% url 'profile' id=request.user.userextend.pk %}") {{ noticedata.text }}
                   {% endif %}
                 #notice-rightbottom
                   p#notice-date {{ noticedata.date }}

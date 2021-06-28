@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib.auth.models import User
 from django.urls import reverse
 from .models import Tag, TagComment
+from site_notification.models import SiteNotification
 
 # Create your views here.
 def tag_delete_view(request):
@@ -65,11 +66,18 @@ def tag_comment_view(request):
     user = request.user
     if not TagComment.objects.filter(for_tag=tag, author=user).exists():
       tag_comment = TagComment.objects.create(
-        text=data.get('text'),
-        for_tag=tag,
-        author=user
+        text = data.get('text'),
+        for_tag = tag,
+        author = user
       )
       tag_comment.save()
+      notification = SiteNotification.objects.create(
+        text = "在你的專長\"{}\"上新增了認證".format(tag.text),
+        from_user = user,
+        for_user = tag.user,
+        notification_type = 2
+      )
+      notification.save()
       return JsonResponse({
         'status': 200,
         'user_img_url': request.user.userextend.img.url
@@ -84,6 +92,13 @@ def tag_comment_view(request):
         })
       tag_comment.text = data.get('text')
       tag_comment.save()
+      notification = SiteNotification.objects.create(
+        text = "修改了他對你的專長\"{}\"的認證".format(tag.text),
+        from_user = user,
+        for_user = tag.user,
+        notification_type = 2
+      )
+      notification.save()
       return JsonResponse({
         'status': 201,
         'user_img_url': request.user.userextend.img.url

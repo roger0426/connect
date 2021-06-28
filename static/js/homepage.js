@@ -247,7 +247,7 @@ $(document).ready(function(){
     // stringify requiremnt str
     if ($(".requirement-tag").length > 0) {
       $(".requirement-tag").each(function() {
-//        requirement_str += $(this).text() + ",";
+
         requirement_str += $(this).val() + ",";
       })
     }
