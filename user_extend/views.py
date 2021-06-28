@@ -126,6 +126,8 @@ def modify(request, id):
     if(request.POST.get('description')):
       user.update(personal_description = 
           input_format(request.POST.get('description')))
+    else:
+      user.update(personal_description = "喔喔，看來他還沒想好介紹")
     if(request.POST.get('department')):
       user.update(department = 
           input_format(request.POST.get('department')))

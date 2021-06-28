@@ -60,9 +60,9 @@ html
                     $(this).closest('#eventwindow').attr('class'),
                     "{{ csrf_token }}");
                 })
-                $(".eventmsg-btn").on("keydown", function(e) {
+                $(".eventmsg-insert").on("keypress", function(e) {
                   let key = e.which;
-                  if (key == 13 && $(".eventmsg-insert").text() != "") {
+                  if (key == 13 && $(".eventmsg-insert").val() != "") {
                     message_handler(
                       '/comment/' + $(this).closest('#eventwindow').attr('class'),
                       $(this).closest('#eventwindow').attr('class'),

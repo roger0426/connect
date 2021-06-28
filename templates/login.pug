@@ -96,6 +96,15 @@ html
                   "{{ csrf_token }}",
                 )
               });
+              $(document).on("keypress", "input#password", function(e) {
+                let key = e.which;
+                if (key == 13) {
+                  login_handler(
+                    "{% url 'login_request' %}",
+                    "{{ csrf_token }}",
+                  );
+                }
+              });
             })
     #background-element
       image#login-leftpic(src="{% static 'file/login-leftpic.png' %}")
