@@ -539,15 +539,18 @@ input[type='button']:active
             border-radius: 0.5rem
             margin: 0 0.5rem 0.3rem 0
             cursor: pointer
+            font-size: 1rem
         
         textarea
           outline: none
           border-radius: 1rem
           border: none
           background-color: var(--background-color-input)
-          padding: 0.5rem
+          padding: 1rem
           width: 100%
-          height: 3rem
+          resize: none
+          height: 5rem
+          padding: 1rem
 
       #eventjoinability
         border-radius: 1rem
@@ -796,6 +799,8 @@ input[type='button']:active
               font-size: 1.3rem;
               font-weight: 500;
               line-height: 1.5rem;
+            input#event-title
+              margin-top: 0.5rem
             #event-subtitle
               line-height: 1rem;
               font-size: 0.9rem;
@@ -804,6 +809,8 @@ input[type='button']:active
               color: var(--black-1);
               height: 4.4rem;
               overflow: auto;
+            input#event-subtitle
+              height: 1.3rem
             #event-require
               position: absolute;
               left: 1.5rem;
@@ -828,6 +835,13 @@ input[type='button']:active
               margin: 0 3vw 0 0
               font-size: 0.7rem
               width: 5rem
+            input#event_date
+              width: 4rem
+              margin-right: 0.3rem
+              font-size: 0.6rem
+            input#due_date
+              width: 5rem
+              font-size: 0.6rem
         #event-detail
           margin: 3.5rem 0 0 0.5rem;
           width: calc(100% - 1.5rem);
@@ -950,6 +964,9 @@ input[type='button']:active
         min-width: 0
           
     #eventjoinwindow
+      .requirement-tag
+        font-size: 0.8rem
+      
     #eventcontrol
       #no-apply
         font-size: 1rem;

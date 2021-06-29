@@ -252,8 +252,8 @@ function event_handler(URL, user_id, CSRF) {
         </div>");
 
       if(data.comments != undefined) {
-        data.comments.reverse().forEach(function(item, i) {
-          var clone_id = duplicate_multi('eventmsg');
+        data.comments.forEach(function(item, i) {
+          var clone_id = duplicate_multi('eventmsg', true);
           $('#' + clone_id).show();
           // get_user_ajax
           $.ajax({
@@ -1090,12 +1090,16 @@ function reply_apply_handler(URL, CSRF, element_id, is_accepted) {
 }
 
 var i = 0;
-function duplicate_multi(duplicateID) {
+function duplicate_multi(duplicateID, reverse=false) {
   var original = document.getElementById(duplicateID);
   var clone = original.cloneNode(true); // "deep" clone
   clone.id = duplicateID + '_new' + ++i;
   // or clone.id = ""; if the divs don't need an ID
-  original.parentNode.insertBefore(clone, original.parentNode.firstChild);
+  if (!reverse) {
+    original.parentNode.insertBefore(clone, original.parentNode.firstChild);
+  } else {
+    original.parentNode.appendChild(clone, original.parentNode.lastChild);
+  }
   return clone.id
 }
 
