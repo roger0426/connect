@@ -159,7 +159,7 @@ $(document).ready(function(){
 
   // image preprocessor
   const MIME_TYPE = "image/jpeg";
-  const QUALITY = 0.3;
+  const QUALITY = 0.2;
 
   const input = document.getElementById("id_image");
   input.onchange = function (ev) {

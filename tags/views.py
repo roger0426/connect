@@ -8,8 +8,12 @@ from site_notification.models import SiteNotification
 # Create your views here.
 def tag_delete_view(request):
   data = request.POST
-  tag_obj = Tag.objects.filter(text=data.get('text')).filter(user=request.user)
-  tag_obj.update(is_hidden = True)
+  tag_obj = Tag.objects.get(text=data.get('text'), user=request.user)
+  if tag_obj.comments.count() == 0:
+    tag_obj.delete()
+  else:
+    tag_obj.is_hidden = True
+    tag_obj.save()
   return JsonResponse({
     'status': 200
   })
