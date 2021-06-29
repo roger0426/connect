@@ -69,7 +69,7 @@ html
                   p.tags.normaltag {{ skill.text }}
                   p.cmt-count {{ skill.comments.count }}
                   .tag-comment
-                    {% if request.user.is_authenticated and request.user.pk != user.user.pk and request.user in user.friends%}
+                    {% if request.user.is_authenticated and request.user.pk != user.user.pk and request.user in user.friends.all %}
                     {% if can_comment %}
                     #tag-comment-send-region
                       a(href="{% url 'profile' id=request.user.userextend.pk %}")

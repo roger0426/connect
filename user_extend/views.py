@@ -42,7 +42,6 @@ def get_common_friend_count(user1, request_user):
 def profile_view(request, id, *args, **kwargs):
   obj = UserExtend.objects.get(id=id)
   friend_count = obj.friends.count()
-
   personality_tags = obj.user.tags.filter(tag_type='個性')
   skill_tags = obj.user.tags.filter(tag_type='專長')
   interest_tags = obj.user.tags.filter(tag_type='有興趣的活動')
