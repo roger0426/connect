@@ -238,7 +238,6 @@ def order_view(request):
         obj_id_list.append(event.pk)
     else:
       obj_id_list = list(obj.values_list('pk', flat=True))
-      print(obj_id_list)
 
     return JsonResponse({
       'status': 200,
@@ -468,7 +467,6 @@ def reply_apply_view(request):
     data = request.POST
 
     application_id = (int)(data.get('application')[20:])
-    print(data.get('is_accepted'))
     application = get_object_or_404(Apply, id=application_id)
     if data.get('is_accepted') == '1':
       application.status = 2

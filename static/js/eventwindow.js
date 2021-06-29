@@ -206,7 +206,6 @@ function event_handler(URL, user_id, CSRF) {
       };
       if($(window).width() < 480) {
         if ($('#event-require').is(':empty')){
-          console.log('empty')
           $('#event-require').css({'height': '0rem'});
           $('#event-detail').css({'margin-top': '0.5rem'});
         }
@@ -579,13 +578,12 @@ function edit_event_transition() {
     }
   }
 
-  // $("#eventwindow-bg").replaceWith(
-  //   "<input type='file' name='image' alt='image' id='eventwindow-bg'>"
-  // );
   $(".eventedit-btn").replaceWith(
     "<input type='button' id='edit-confirm-btn' value='確認'>\
     <input type='button' id='edit-cancel-btn' value='取消'>"
   );
+  $("#like-m").hide();
+  $("#part-m").hide();
   $('body').css({'overflow': 'auto'});
   $(".eventsubwindow").animate({height: 0, opacity: 1}, 400, function() {
     $(".eventsubwindow").hide();
@@ -1064,7 +1062,6 @@ function reply_apply_handler(URL, CSRF, element_id, is_accepted) {
         console.log("reply application successfully");
         if (data.accepted) {
           // accepted
-          console.log()
           $(".apply" + data.application_id + " #member-profile-right .reply-btns").hide();
           $(".apply" + data.application_id + " #member-profile-right #m-status").text('當前狀態： 已加入');
           let origin_participant_num = parseInt(

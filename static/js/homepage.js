@@ -5,7 +5,6 @@ $(document).ready(function(){
   
   $(window).on('beforeunload', function () {
       // user has triggered a navigation, show the loading animation
-    console.log('loading')
     $('#loading').show();
   });
   
@@ -125,7 +124,6 @@ $(document).ready(function(){
   }
   
   $("#applybutton").click(function() {
-    console.log("click apply");
     //$("#sent").show();
     $('#sent').css({"z-index": 1});
     $("#sent").animate({opacity: 1}, 500, function() {
@@ -134,7 +132,6 @@ $(document).ready(function(){
   });
   
   $("#sent").click(function() {
-    console.log("click sent");
     $("#sent").css({opacity: 0, "z-index": -1});
   });
   
@@ -154,7 +151,6 @@ $(document).ready(function(){
       $('input[type=text]').val('');
       //$("#comment-window").css({'content-visibility': 'hidden'});
       $("#comment-window").hide();
-      //console.log('hide window')
     })
     $("#filter1").animate({opacity: 0}, 150, function() {
       $("#filter1").hide();
@@ -219,7 +215,6 @@ $(document).ready(function(){
   
 
   $("#submit-btn").click(function() {
-    console.log("click event submit");
     let all_pass = 1;
 
     // check all necessary input field is entered
