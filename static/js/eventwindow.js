@@ -263,8 +263,8 @@ function event_handler(URL, user_id, CSRF) {
           </div>\
         </div>");
 
-      if(data.comments != undefined) {
-        data.comments.forEach(function(item, i) {
+      if(data.comments_zip != undefined) {
+        data.comments_zip.forEach(function(item) {
           var clone_id = duplicate_multi('eventmsg', true);
           $('#' + clone_id).show();
           // get_user_ajax
@@ -272,7 +272,7 @@ function event_handler(URL, user_id, CSRF) {
             type: 'post',
             url: "/get_user_detail/",
             data: {
-              'user_id': item.author_id,
+              'user_id': item[0].author_id,
               'need_detail': false
             },
             dataType: 'json',
@@ -281,14 +281,12 @@ function event_handler(URL, user_id, CSRF) {
                 user_name = data.user_name;
                 user_img_url = data.user_img_url;
                 $('#' + clone_id + ' #eventmsg-sendername').html(data.user_name);
-                $('#' + clone_id + " a").attr('href', '/profile/' + item.author_id);
+                $('#' + clone_id + " a").attr('href', '/profile/' + item[0].author_id);
                 $('#' + clone_id + " img").attr('src', data.user_img_url);
-                let shft_time = (parseInt(item.date.substring(11, 13)) + 8) % 24
-                let time = item.date.substring(0, 10) + ' ' + shft_time + item.date.substring(13, 19)
-                $('#' + clone_id + ' #event-date').html(time);
-                $('#' + clone_id + " #eventmsgtext").html(item.text);
+                $('#' + clone_id + ' #event-date').html(item[1]);
+                $('#' + clone_id + " #eventmsgtext").html(item[0].text);
               } else {
-                console.log('[Error] get user ' + item.author_id + " error");
+                console.log('[Error] get user ' + item[0].author_id + " error");
               }
             }
           });
@@ -876,7 +874,7 @@ function message_handler(URL, event_id, CSRF) {
         let text = data.text;
         $('#' + clone_id + " img").attr('src', data.author_img_url);
         $('#' + clone_id + ' #eventmsg-sendername').html(data.author_name);
-        $('#' + clone_id + ' #event-date').html(data.msg_date);
+        $('#' + clone_id + ' #event-date').html("1秒前");
         $('#' + clone_id + " #eventmsgtext").html(text);
         console.log($("input.eventmsg-insert").val());
         $('#' + clone_id).show();

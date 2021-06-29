@@ -46,7 +46,7 @@ body
                   a.notice-detail(href="{% url 'profile' id=request.user.userextend.pk %}") {{ noticedata.text }}
                   {% endif %}
                 #notice-rightbottom
-                  p#notice-date {{ noticedata.date }}
+                  p#notice-date {{ noticedata.delta_time }}
               {% if not noticedata.is_read %}
               #notice-status
                 span#notice-dot

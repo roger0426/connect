@@ -11,7 +11,7 @@ from django.conf import settings
 from connect.utils import input_format, get_tagged_name
 from user_extend.models import UserExtend
 from django.core.files.storage import default_storage
-import sys
+import sys, datetime
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -64,6 +64,23 @@ def home_view(request, *args, **kwargs):
     return HttpResponseRedirect(reverse('home'))
   
   return render(request, 'homepage.pug', context)
+
+def delta_time_calculate(time):
+  # @params time: utc awared datetime 
+  current_time = datetime.datetime.utcnow()
+  naive = time.replace(tzinfo=None)
+  delta = current_time - naive
+  seconds_in_day = 24 * 60 * 60
+  mins, secs = divmod(delta.days * seconds_in_day + delta.seconds, 60)
+  hours = mins // 60
+  days = hours // 24
+  if days > 0:
+    return str(days) + "天前"
+  if hours > 0:
+    return str(hours) + "小時前"
+  if mins > 0:
+    return str(mins) + "分鐘前"
+  return str(secs) + "秒前"
   
 def event_detail_view(request, id):
   if request.method == "POST":
@@ -74,6 +91,10 @@ def event_detail_view(request, id):
     likes = list(event.likes.all().values())
     participants = list(event.participants.all().values())
     comments = list(event.board_message.order_by('-date').values())
+    delta_times = [
+      delta_time_calculate(comment.date) for comment in event.board_message.order_by('-date')
+    ]
+    comments_zip = list(zip(comments, delta_times))
     requirements = event.requirements_str.split(',')
     # apply status
     # 0: not apply
@@ -105,7 +126,7 @@ def event_detail_view(request, id):
       'due_date': event.due_date,
       'likes': likes,
       'participants': participants,
-      'comments': comments,
+      'comments_zip': comments_zip,
       'host_id': event.host.pk,
       'host_pic': event.host.img.url,
       'host_name': event.host.full_name,
