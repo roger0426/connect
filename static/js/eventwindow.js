@@ -352,7 +352,7 @@ function event_handler(URL, user_id, CSRF) {
         if($(window).width() < 480) {
           $("#eventoperate #member #like-m").append(
             "<p id='likepage-btn' class='member member-btn'><br>+" +
-            (n+2) + "<br>有興趣<br></p>"
+            total_like + "<br>有興趣<br></p>"
           );
         }else{
           $("#eventoperate #member #like-m").append(
@@ -436,7 +436,7 @@ function event_handler(URL, user_id, CSRF) {
         if($(window).width() < 480) {
           $("#eventoperate #member #part-m").append(
             "<p id='partpage-btn' class='member member-btn'><br>+" +
-             (n+2) + "<br>已加入<br></p>"
+            total_participants + "<br>已加入<br></p>"
           );
         }else{
           $("#eventoperate #member #part-m").append(
