@@ -78,9 +78,11 @@ $(document).on("click", "#eventmsgregion a, #eventoperate a", function() {
 
 $(document).on('click', ".eventjoin-btn", function() {
   //console.log("click event join");
-  $("#eventjoinwindow").show();
-  $("#eventjoinwindow").animate({'height': '75%', opacity: 1}, 400, function() {
-  })
+  if($(".eventjoin-btn").val() === '申請加入'){
+    $("#eventjoinwindow").show();
+    $("#eventjoinwindow").animate({'height': '75%', opacity: 1}, 400, function() {
+    })
+  }
 })
 
 $(document).on('click', "#likepage-btn", function() {

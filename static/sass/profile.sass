@@ -227,8 +227,8 @@ footer
           border: none
           font-size: 1.1rem
           resize: none
-          height: 2.5rem
-          width: 97%
+          height: 4.5rem
+          width: calc(100% - 1.2rem)
           padding: 0.5rem
           border-radius: 0.6rem
           outline: none
@@ -261,6 +261,8 @@ footer
           padding: 0.3rem 0
           font-weight: 900
           color: var(--fontcolor-third)
+        .deletetagicon
+           display: none
         .personality-style
           background-color: var(--yellow)
         .personality-style:hover
@@ -809,6 +811,7 @@ footer
                 font-weight: 500
                 cursor: pointer
                 //max-width: 15rem
+                word-break: break-all
             .rate
               font-size: 0.8rem
               padding: 0 0.3rem
@@ -973,27 +976,30 @@ footer
         #intro
           border-radius: 2rem;
           flex-direction: column
-          margin-top: 1.5rem
+          margin-top: 2.5rem
           background-color: transparent
+          padding: 1rem 1.5rem;
+          
           #info
             #user-img
-              border: solid 2px var(--black-4);
-              width: 45vw
-              height: 45vw
+              width: 46vw
+              height: 46vw
+              
               #editpicfilter
-                width: 46vw
-                height: 46vw
+                width: calc(46vw + 4px)
+                height: calc(46vw + 4px)
                 font-size: 1rem
-                vertical-align: middle
-                display: table-cell
-                line-height: 10rem
+                line-height: 46vw
               #fileselectedfilter
+                width: calc(46vw + 4px)
+                height: calc(46vw + 4px)
+                font-size: 1rem
+                line-height: 46vw
+              img
+                border: solid 2px var(--black-4);
                 width: 46vw
                 height: 46vw
-                font-size: 1rem
-                vertical-align: middle
-                display: table-cell
-                line-height: 10rem
+                
             #user-name
               font-size: 2.1rem;
               font-weight: 500;
@@ -1015,7 +1021,7 @@ footer
               #descriptionarea
                 background-color: white
                 align-items: center
-                width: 94%
+                font-size: 1rem;
                 
             .tag-field
               font-size: 0.9rem;
@@ -1025,9 +1031,18 @@ footer
               margin-bottom: 0
               p
                 padding: 0.15rem;
+                margin-right: 0.2rem
+              .tag-style
+                .deletetagicon
+                  display: block
+                  width: 1rem
+                  padding-right: 0.3rem;
+                  
             .tag-field:nth-child(2)
               border-radius: 1rem 1rem 0 0
             .tag-field:nth-child(4)
+              border-radius: 0 0 1rem 1rem
+            .tag-field:nth-child(5)
               border-radius: 0 0 1rem 1rem
             .tag-field:nth-child(5)
               border-radius: 0 0 1rem 1rem 

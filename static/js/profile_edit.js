@@ -140,6 +140,15 @@ function tag_edit_handler(URL, CSRF, text, tag_type) {
       } else {
         $('.' + tag_type + '-input').val("")
         console.log("[Error] " + data.error_message);
+        if(data.error_message === 'Duplicate Tag'){
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            text: '名稱重複了喔～',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       }
     }
   })

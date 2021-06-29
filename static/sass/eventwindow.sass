@@ -890,7 +890,7 @@ input[type='button']:active
             z-index: 1;
           .eventedit-btn
             position: fixed
-            bottom: 1.2rem
+            bottom: 2vh
             right: 17vw
             z-index: 1
           #edit-confirm-btn
@@ -914,7 +914,7 @@ input[type='button']:active
         justify-content: flex-start;
         flex-direction: row;
         height: auto
-        bottom: 0.5rem
+        bottom: 1rem
       
         #exitbtn1
           position: fixed
@@ -959,38 +959,49 @@ input[type='button']:active
               line-height: 0.8rem;
         #likebutton
           right: 0;
-          bottom: calc(2.5vw - 0.5vh);
+          bottom: 0
     .eventsubwindow
         min-width: 0
-          
+        .eventcontainer
+          .memberlist
+            .member-info
+              width: calc((100% - 5rem) / 2);
+              margin: 0.5rem 0;
+              a
+                .info-brief
+                  #info-brief-img
+                    margin: 0
+                  .info-brief-right
+                    #friend-name
+                    .info-brief-school
+                      #info-brief-department
+                      #info-brief-grade
+                      #info-brief-connectnum
     #eventjoinwindow
       .requirement-tag
         font-size: 0.8rem
       
     #eventcontrol
-      #no-apply
-        font-size: 1rem;
-        margin: 12vh 0;
       .eventcontainer
+        #no-apply
+          font-size: 1rem;
+          margin: 12vh 0;
+        #member-control-list
+          height: 20rem;
+          padding: 0;
+          .member-profile
+            flex-direction: column;
+            align-items: flex-start;
+            #member-profile-right
+              position: relative;
+              width: calc(100% - 1rem);
+              margin-left: 1rem;
+              .reply-btns
+                position: absolute;
+                bottom: -0.5rem;
+                right: 0.2rem;
         #control-btns
           input
             margin: 0 1vw;
-            font-size: 0.7rem;
+            font-size: 0.9rem;
             font-weight: 600;
-    .eventsubwindow
-      .eventcontainer
-        .memberlist
-          .member-info
-            width: calc((100% - 5rem) / 2);
-            margin: 0.5rem 0;
-            a
-              .info-brief
-                #info-brief-img
-                  margin: 0
-                .info-brief-right
-                  #friend-name
-                  .info-brief-school
-                    #info-brief-department
-                    #info-brief-grade
-                    #info-brief-connectnum
-    #eventpart-window
