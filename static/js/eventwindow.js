@@ -304,6 +304,7 @@ function event_handler(URL, user_id, CSRF) {
       $("#likeslist").append(
         "<div class='virtual-info'></div><div class='virtual-info'></div>");
       var n = 0;
+      let total_like = data.likes.length;
       if(data.likes != undefined) {
         data.likes.forEach(function(item, i) {
           if(item.id == user_id) {
@@ -349,13 +350,22 @@ function event_handler(URL, user_id, CSRF) {
       }
       if(n >= 1){
         if($(window).width() < 480) {
-          $("#eventoperate #member #like-m").append("<p id='likepage-btn' class='member member-btn'><br>+" + (n+2) + "<br>有興趣<br></p>");
+          $("#eventoperate #member #like-m").append(
+            "<p id='likepage-btn' class='member member-btn'><br>+" +
+            (n+2) + "<br>有興趣<br></p>"
+          );
         }else{
-          $("#eventoperate #member #like-m").append("<p id='likepage-btn' class='member member-btn'>+" + n + "</p>");
+          $("#eventoperate #member #like-m").append(
+            "<p id='likepage-btn' class='member member-btn'>+" + n + "</p>"
+          );
         }
       }else{
         if($(window).width() < 480) {
-          $("#eventoperate #member #like-m").append("<p id='likepage-btn' class='member member-btn'><br>+" + n + "<br>有興趣<br></p>");
+          console.log("here2")
+          $("#eventoperate #member #like-m").append(
+            "<p id='likepage-btn' class='member member-btn'><br>+" +
+             total_like + "<br>有興趣<br></p>"
+          );
         }
       }
       
@@ -380,8 +390,7 @@ function event_handler(URL, user_id, CSRF) {
       $("#participantslist").append(
         "<div class='virtual-info'></div><div class='virtual-info'></div>");
       
-      
-      console.log(data.participants)
+      let total_participants = data.participants.length
       if(data.participants != undefined) {
         data.participants.forEach(function(item, i) {
           if(i < 2){
@@ -425,13 +434,21 @@ function event_handler(URL, user_id, CSRF) {
       }
       if(n >= 1){
         if($(window).width() < 480) {
-          $("#eventoperate #member #part-m").append("<p id='partpage-btn' class='member member-btn'><br>+" + (n+2) + "<br>已加入<br></p>");
+          $("#eventoperate #member #part-m").append(
+            "<p id='partpage-btn' class='member member-btn'><br>+" +
+             (n+2) + "<br>已加入<br></p>"
+          );
         }else{
-          $("#eventoperate #member #part-m").append("<p id='partpage-btn' class='member member-btn'>+" + n + "</p>");
+          $("#eventoperate #member #part-m").append(
+            "<p id='partpage-btn' class='member member-btn'>+" + n + "</p>"
+          );
         }
       }else{
         if($(window).width() < 480) {
-          $("#eventoperate #member #part-m").append("<p id='partpage-btn' class='member member-btn'><br>+" + n + "<br>已加入<br></p>");
+          $("#eventoperate #member #part-m").append(
+            "<p id='partpage-btn' class='member member-btn'><br>+" +
+            total_participants + "<br>已加入<br></p>"
+          );
         }
       }
       
@@ -791,26 +808,33 @@ function like_handler(URL, event_id, CSRF) {
         let img_url = data.user_img_url;
         let hostname = $(location).attr('hostname');
         let like_sum = parseInt($('#' + event_id + ' #likesnum').text());
+        console.log(like_sum);
         if (data.add) {
-          let profile_url = '/profile/' + data.user_id
-          let str = "<a herf='" + profile_url + "'>\
-          <img class='member interested' src= " + img_url + "></a>";
-          //console.log(str);
-          $('#' + event_id + " #likeicon").attr("src", "/static/file/like-y.png");
-          if ($('#likepage-btn').length > 0) {
-            if ($(".interested").length < 2) {
-              $('#likepage-btn').before(str);
-            } 
+          if($(window).width() > 480) {
+            let profile_url = '/profile/' + data.user_id
+            let str = "<a herf='" + profile_url + "'>\
+            <img class='member interested' src= " + img_url + "></a>";
+            //console.log(str);
+            if ($('#likepage-btn').length > 0) {
+              if ($(".interested").length < 2) {
+                $('#likepage-btn').before(str);
+              } 
+            } else {
+              $('#member #like-m').append(str);
+            }
           } else {
-            $('#member #like-m').append(str);
+            
           }
+          $('#' + event_id + " #likeicon").attr("src", "/static/file/like-y.png");
           $('#' + event_id + ' #likesnum').text(like_sum + 1);
+          $('#likepage-btn').html("<br>+" + (like_sum + 1) + "<br>有興趣<br>")
         } else if (data.remove) {
           let user_selector = "#member a img[src='" + img_url + "']";
           //console.log(user_selector)
           $('#' + event_id + " #likeicon").attr("src", "/static/file/like-grey.png");
           $(user_selector).remove();
           $('#' + event_id + ' #likesnum').text(like_sum - 1);
+          $('#likepage-btn').html("<br>+" + (like_sum - 1) + "<br>有興趣<br>")
         }
       } else {
         console.log("[Error]: like ajax error");
