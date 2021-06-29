@@ -10,13 +10,37 @@ $(document).ready(function(){
 //    $(this).parent().find('.deletetag').css({'display': 'none'});
 //  });
   
-  $('.tag-style').mouseenter(function() {
+  $('.personality-style').mouseenter(function() {
+    $(this).css({'cursor': 'pointer'})
+    $(this).css({'background-color': 'rgba(249, 213, 103, 0.6)'});
+    $(this).find('.normaltag').css({'color': 'rgba(249, 213, 103, 0.6)'});
+    $(this).find('.deletetag').css({'display': 'block'});
+  });
+  $('.personality-style').mouseleave(function() {
+    $(this).css({'background-color': 'rgba(249, 213, 103)'});
+    $(this).find('.normaltag').css({'color': 'black'});
+    $(this).find('.deletetag').css({'display': 'none'});
+  });
+
+  $('.skill-style').mouseenter(function() {
+    $(this).css({'cursor': 'pointer'})
+    $(this).css({'background-color': 'rgba(159, 228, 212, 0.6)'});
+    $(this).find('.normaltag').css({'color': 'rgba(159, 228, 212, 0.6)'});
+    $(this).find('.deletetag').css({'display': 'block'});
+  });
+  $('.skill-style').mouseleave(function() {
+    $(this).css({'background-color': 'rgba(159, 228, 212)'});
+    $(this).find('.normaltag').css({'color': 'black'});
+    $(this).find('.deletetag').css({'display': 'none'});
+  });
+
+  $('.interest-style').mouseenter(function() {
     $(this).css({'cursor': 'pointer'})
     $(this).css({'background-color': 'rgba(255, 207, 191, 0.6)'});
     $(this).find('.normaltag').css({'color': 'rgba(255, 207, 191, 0.6)'});
     $(this).find('.deletetag').css({'display': 'block'});
   });
-  $('.tag-style').mouseleave(function() {
+  $('.interest-style').mouseleave(function() {
     $(this).css({'background-color': 'rgba(255, 207, 191)'});
     $(this).find('.normaltag').css({'color': 'black'});
     $(this).find('.deletetag').css({'display': 'none'});
@@ -110,7 +134,7 @@ function tag_edit_handler(URL, CSRF, text, tag_type) {
       if (data.status == 200) {
         console.log('[Success] Successfully add new tag ' + text);
         $('.' + tag_type + '-input').before(
-          "<div class='tag-style'><pz class='tags normaltag'>" + text + "</pz><p class='tags deletetag'>刪除</p></div>"
+          "<div class='tag-style " + tag_type + "-style'><p class='tags normaltag'>" + text + "</p><p class='tags deletetag'>刪除</p></div>"
         );
         $('.' + tag_type + '-input').val("")
       } else {
