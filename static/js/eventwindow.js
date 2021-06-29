@@ -815,9 +815,15 @@ function like_handler(URL, event_id, CSRF) {
       if (data.status == 200) {
         console.log('success')
         let img_url = data.user_img_url;
-        let hostname = $(location).attr('hostname');
-        let like_sum = parseInt($('#' + event_id + ' #likesnum').text());
-        console.log(like_sum);
+        // parse current like number
+        let like_sum = 0;
+        if ($('#' + event_id + ' #likesnum').length > 0) {
+          like_sum = parseInt($('#' + event_id + ' #likesnum').text());
+        } else {
+          let re = /[0-9]+/g; // match integerpart
+          like_sum = parseInt($('#like-m #likepage-btn').text().match(re)[0]);
+        }
+        
         if (data.add) {
           if($(window).width() > 480) {
             let profile_url = '/profile/' + data.user_id
@@ -831,8 +837,6 @@ function like_handler(URL, event_id, CSRF) {
             } else {
               $('#member #like-m').append(str);
             }
-          } else {
-            
           }
           $('#' + event_id + " #likeicon").attr("src", "/static/file/like-y.png");
           $('#' + event_id + ' #likesnum').text(like_sum + 1);
