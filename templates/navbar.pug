@@ -47,7 +47,10 @@ body
                   {% endif %}
                 #notice-rightbottom
                   p#notice-date {{ noticedata.date }}
-                
+              {% if not noticedata.is_read %}
+              #notice-status
+                span#notice-dot
+              {% endif %}        
             
             {% empty %}
             .notice

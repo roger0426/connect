@@ -73,7 +73,7 @@ def event_detail_view(request, id):
     event_detail = event.detail if event.detail != "" else None
     likes = list(event.likes.all().values())
     participants = list(event.participants.all().values())
-    comments = list(event.board_message.order_by('date').values())
+    comments = list(event.board_message.order_by('-date').values())
     requirements = event.requirements_str.split(',')
     # apply status
     # 0: not apply

@@ -178,7 +178,7 @@ a
       width: 22rem
       top: 0
       right: 8rem
-      background-color: #EEE
+      background-color: white
       //opacity: 0.95
       
       border-radius: 1.5rem
@@ -186,6 +186,7 @@ a
       
       #noticeheading
         font-size: 1.5rem
+        font-weight: 600
         margin: 0.5vh 0 0.5vh 1vw
     
       #notices
@@ -237,7 +238,7 @@ a
             #notice-righttop
               display: flex
               flex-direction: row
-              flex-wrap: nowrap
+              flex-wrap: wrap
               align-content: flex-start
               justify-content: flex-start
               align-items: flex-end
@@ -257,6 +258,7 @@ a
               .notice-detail
                 font-size: 0.8rem
                 font-weight: 400
+                white-space: normal
               #noticeevent
                 font-size: 1.2rem
                 font-weight: 600
@@ -273,6 +275,15 @@ a
                 color: #777777
                 font-weight: 700
                 //background-color: pink
+          #notice-status
+            width: 8%
+            #notice-dot
+              display: block
+              width: 5px
+              height: 5px
+              float: right
+              border-radius: 50%
+              background-color: red
 
 #gotop
   display: none
@@ -393,7 +404,7 @@ footer
           top: 3.2rem
           left: 50%
           right: auto
-          background-color: #EEE;
+          background-color: white;
           border-radius: 1.5rem;
           border: solid 2px #CCC;
           //box-shadow: 0rem 0.5rem 0.6rem 0rem var(--black-2);

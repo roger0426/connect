@@ -252,7 +252,7 @@ function event_handler(URL, user_id, CSRF) {
         </div>");
 
       if(data.comments != undefined) {
-        data.comments.forEach(function(item, i) {
+        data.comments.reverse().forEach(function(item, i) {
           var clone_id = duplicate_multi('eventmsg');
           $('#' + clone_id).show();
           // get_user_ajax
