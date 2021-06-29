@@ -106,6 +106,19 @@ $(document).on('click', ".eventedit-btn", function() {
   })
 })
 
+//scroll shadow handler
+//var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
+//$('').height() -
+//$('.eventmsg-board').addEventListener('scroll', function(e) {
+//  if ($('.eventmsg-board').scrollTop === 0) { //hide top
+//    //$('.eventmsg-board').css;
+//    console.log('top')
+//  } else {
+//    //el.classList.add('scrollGradientTop');
+//    console.log('not top')
+//  }
+//});
+
 function reset_event_window() {
   // restore to the beginning status of event window
   $("#event-title").replaceWith(
@@ -210,8 +223,8 @@ function event_handler(URL, user_id, CSRF) {
           $('#event-detail').css({'margin-top': '0.5rem'});
         }
         else{
-          $('#event-require').css({'height': '4rem'});
-          $('#event-detail').css({'margin-top': '20vw'});
+          $('#event-require').css({'height': '7vh'});
+          $('#event-detail').css({'margin-top': '8.5vh'});
         }
       }
       
