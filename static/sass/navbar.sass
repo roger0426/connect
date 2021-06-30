@@ -331,7 +331,17 @@ footer
   //opacity: 0.65
   //background-color: #ffdbd0
   
-  
+
+//for phones with notch(瀏海)
+@media screen and (display-mode: standalone)
+  #navbar
+    padding-top: 1.5rem
+  #profileall
+    #profilepanel
+      #top-region
+        #intro
+          margin-top: 2.5rem
+
 //tablet responsive
 @media only screen and (max-width: 1024px)
   #selecticon
@@ -343,7 +353,7 @@ footer
     display: block
   #navbar
     justify-content: center;
-    padding-top: 1rem
+    //padding-top: 1rem
     #selecticon
       display: none
       width: 2.5rem

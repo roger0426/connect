@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  
   $('.button').mouseenter(function() {
     if( this.id == 'alert' && $('#notificationboard').css('display') == 'block' ) {
       //$("#alert-hover").show();
@@ -59,7 +58,7 @@ $(document).ready(function(){
       
       //pwa
       if($(window).width() < 480) {
-        $("#notificationboard").css({'height': 'calc(100% - 4.5rem - 4.2rem + -2vh)', 'border': 'none', 'border-radius': 0, 'top': '4.2rem'})
+        $("#notificationboard").css({'height': 'calc(100% - 4.5rem - 4.2rem + -2vh)', 'border': 'none', 'border-radius': 0, 'top': '3.2rem'})
         $("#notices").css({height: 'calc(100% - 2.5rem)'})
       }else{
         //desktop
@@ -92,11 +91,11 @@ $(document).ready(function(){
   });
 
   
-  $('#title, #profile, #aboutus, #home, #aboutus, #profile').on("click", function() {
-    $("#loading").show()
-    $("#loading").animate({'opacity': 1}, 200, function() {
-    })
-  })
+//  $('#title, #profile, #aboutus, #home, #aboutus, #profile').on("click", function() {
+//    $("#loading").show()
+//    $("#loading").animate({'opacity': 1}, 200, function() {
+//    })
+//  })
   
   
 //  //app responsive
