@@ -5,11 +5,11 @@ $(document).ready(function(){
   //$("#alert").parent().hide();
   
   //$("#message").parent().hide();
-  
   $('#sign-up')
   .on('click touch', function(){ 
     $('#login-panel').hide();
     $('#sign-up-panel').show();
+    $("#terms").show();
     console.log('here');
   })
 
@@ -71,7 +71,7 @@ $(document).on('click', 'p#sign-up', function() {
   }, 500);
 })
 
-$(document).on('keyup', 'input', function() {
+$(document).on('keyup', '#double-pwd', function() {
   if ($('#double-pwd').val().length > 0) {
     if ($('#sign-pwd').val() === $('#double-pwd').val()) {
       $('.err-msg').hide();
