@@ -77,7 +77,7 @@ body
                   if ($(this).children("#notice-righttop").children("#notice-event").length > 0) {
                     event_handler(
                       "/event/" + $(this).children("#notice-righttop").children("#notice-event").text(),
-                      "{{ request.user.id }}",
+                      "{{ request.user.userextend.id }}",
                       "{{ csrf_token}}",
                     )
                   }

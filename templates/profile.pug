@@ -488,7 +488,7 @@ html
         })
         $('#eventwindow').attr('class', this.closest('.card').id)
         console.log("event/" + this.closest('.card').id)
-        event_handler("/event/" + this.closest('.card').id, "{{ request.user.id }}", "{{ csrf_token }}");
+        event_handler("/event/" + this.closest('.card').id, "{{ request.user.userextend.id }}", "{{ csrf_token }}");
       });
       $('.card-img').on("click", function() {
         $("#loading").show()
@@ -496,7 +496,7 @@ html
         })
         $('#eventwindow').attr('class', this.closest('.card').id)
         console.log("event/" + this.closest('.card').id)
-        event_handler("/event/" + this.closest('.card').id, "{{ request.user.id }}", "{{ csrf_token }}");
+        event_handler("/event/" + this.closest('.card').id, "{{ request.user.userextend.id }}", "{{ csrf_token }}");
       });
 
     //-script(src="{% static 'js/semantic.min.js' %}")

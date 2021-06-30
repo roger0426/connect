@@ -467,6 +467,7 @@ function event_handler(URL, user_id, CSRF) {
 
       // join window
       if (user_id == data.host_id) {
+        console
         $(".eventjoin-btn").hide();
         $(".eventedit-btn").show();
       } else {
