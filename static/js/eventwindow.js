@@ -314,7 +314,7 @@ function event_handler(URL, user_id, CSRF) {
           </div></a>\
         </div>");
       $("#likeslist").append(
-        "<div class='virtual-info'></div><div class='virtual-info'></div>");
+        "<div class='virtual-info'></div><div class='virtual-info'></div><div class='virtual-info'></div>");
       var n = 0;
       let total_like = data.likes.length;
       if(data.likes != undefined) {
@@ -400,7 +400,7 @@ function event_handler(URL, user_id, CSRF) {
           </div></a>\
         </div>");
       $("#participantslist").append(
-        "<div class='virtual-info'></div><div class='virtual-info'></div>");
+        "<div class='virtual-info'></div><div class='virtual-info'></div><div class='virtual-info'></div>");
       
       let total_participants = data.participants.length
       if(data.participants != undefined) {
@@ -842,14 +842,32 @@ function like_handler(URL, event_id, CSRF) {
           }
           $('#' + event_id + " #likeicon").attr("src", "/static/file/like-y.png");
           $('#' + event_id + ' #likesnum').text(like_sum + 1);
-          $('#likepage-btn').html("<br>+" + (like_sum + 1) + "<br>有興趣<br>")
+          if ($(window).width() < 480) {
+            $('#likepage-btn').html("<br>+" + (like_sum + 1) + "<br>有興趣<br>")
+          } else {
+            if (like_sum > 2) {
+              $('#likepage-btn').text("+" + (like_sum - 1));
+            } else {
+              $('#likepage-btn').text("+" + (like_sum + 1));
+            }
+            
+          }
         } else if (data.remove) {
           let user_selector = "#member a img[src='" + img_url + "']";
           //console.log(user_selector)
           $('#' + event_id + " #likeicon").attr("src", "/static/file/like-grey.png");
           $(user_selector).remove();
           $('#' + event_id + ' #likesnum').text(like_sum - 1);
-          $('#likepage-btn').html("<br>+" + (like_sum - 1) + "<br>有興趣<br>")
+          if ($(window).width() < 480) {
+            $('#likepage-btn').html("<br>+" + (like_sum - 1) + "<br>有興趣<br>")
+          } else {
+            if (like_sum > 2) {
+              $('#likepage-btn').text("+" + (like_sum - 3));
+            } else {
+              $('#likepage-btn').text("+" + (like_sum - 1));
+            }
+            
+          }
         }
       } else {
         console.log("[Error]: like ajax error");
