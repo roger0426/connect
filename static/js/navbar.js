@@ -90,6 +90,17 @@ $(document).ready(function(){
     event.stopPropagation();
   });
 
+  $("#message").click(function() {
+    Swal.fire({
+      position: 'center',
+      icon: 'warning',
+      title: '功能開發中',
+      text: "可以之後再回來看看喔~",
+      showConfirmButton: false,
+      timer: 1500,
+    })
+  })
+
   
 //  $('#title, #profile, #aboutus, #home, #aboutus, #profile').on("click", function() {
 //    $("#loading").show()

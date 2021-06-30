@@ -11,11 +11,11 @@ from events_board.forms import EventCreateForm
 from site_notification.models import SiteNotification
 from tags.models import Tag
 from .utils import is_all_chinese, input_format
-import hashlib
+import hashlib, os
 
-def hash_func(sid, email):
+def hash_func(email):
   m = hashlib.md5()
-  data = email + sid
+  data = email + os.environ['EMAIL_HASH_KEY']
   m.update(data.encode("utf-8"))
   h = m.hexdigest()
   return h[3:10]
@@ -36,7 +36,7 @@ def send_verification_view(request):
   if clean_sid == '' or clean_email == '':
     return JsonResponse({
       'status': 500,
-      'error_message': "[Error] Null input of sid or email"
+      'error_message': "[Error] Null input of email"
     })
   email = EmailMessage(
     'Connect 註冊認證通知信',  # title
@@ -46,7 +46,6 @@ def send_verification_view(request):
   )
   email.fail_silently = False
   email.send()
-  print("Email Sent")
   return JsonResponse({
     'status': 200
   })
@@ -74,7 +73,7 @@ def signup_view(request):
     
     email_hash = ''
     if sid != '' and email != '':
-      email_hash = hash_func(sid, email)
+      email_hash = hash_func(email)
     
     if email_check != email_hash:
       return JsonResponse({

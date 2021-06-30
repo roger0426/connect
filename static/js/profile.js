@@ -37,7 +37,7 @@ $(document).ready(function(){
   if ($(".tag-field:nth-child(3)").children().length == 1) {
     $(this).last("<p style='color: #E98C6F'>他好像還沒設定個性</p>");
   }
-  
+
   $(window).click(function() {
     var i = 0
     $('.tag-comment').each(function(c) {
