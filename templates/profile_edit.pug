@@ -152,6 +152,33 @@ html
                 a(href="{% url 'profile' id=request.user.userextend.pk %}") 取消
                 script.
                   $(document).ready(function(){
+                    $("form input").on("keydown", function(e) {
+                      if (e.keyCode == 13) {
+                        e.preventDefault();
+                        if ($(".personality-input").val() != "") {
+                          tag_edit_handler(
+                            "{% url 'tag_edit' %}", 
+                            "{{ csrf_token }}", 
+                            $.trim($(".personality-input").val()),
+                            "personality");
+                        }
+                        if ($(".skill-input").val() != "") {
+                          tag_edit_handler(
+                            "{% url 'tag_edit' %}", 
+                            "{{ csrf_token }}", 
+                            $.trim($(".skill-input").val()),
+                            "skill");
+                        }
+                        if ($(".interest-input").val() != "") {
+                          tag_edit_handler(
+                            "{% url 'tag_edit' %}", 
+                            "{{ csrf_token }}", 
+                            $.trim($(".interest-input").val()),
+                            "interest");
+                        }
+                        $("#intro").submit();
+                      }
+                    })
                     $("#submit-btn").on("click", function() {
                       $(this).preventDefault();
                       if ($(".personality-input").val() != "") {
@@ -177,6 +204,7 @@ html
                       }
                       $("#intro").submit();
                     })
+                  })
                 {% else %}
                 input(type="button", value="建立連結")
                 input(type="button", value="傳訊息")
