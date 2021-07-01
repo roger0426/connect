@@ -7,5 +7,4 @@ DerivedData/
 *.pyc
 */__pycache__
 
-*.css.map
 db.sqlite3
