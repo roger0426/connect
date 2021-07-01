@@ -182,7 +182,7 @@ def profile_edit_view(request, id):
   return render(request, 'profile_edit.pug', context)
 
 def get_user_view(request):
-  data = request.POST
+  data = request.GET
   user = get_object_or_404(UserExtend, id=data.get('user_id'))
   if data.get('need_detail'):
     return JsonResponse({

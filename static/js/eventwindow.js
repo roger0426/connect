@@ -142,14 +142,9 @@ function reset_event_window() {
   }
 }
                   
-function event_handler(URL, user_id, CSRF) {
-  $.ajaxSetup({
-    data: {
-      csrfmiddlewaretoken: CSRF
-    }
-  });
+function event_handler(URL, user_id) {
   $.ajax({
-    type: "POST",
+    type: "GET",
     url: URL,
     data: {},
     dataType: 'json',
@@ -271,7 +266,7 @@ function event_handler(URL, user_id, CSRF) {
           $('#' + clone_id).show();
           // get_user_ajax
           $.ajax({
-            type: 'post',
+            type: 'GET',
             url: "/get_user_detail/",
             data: {
               'user_id': item[0].author_id,
@@ -280,6 +275,7 @@ function event_handler(URL, user_id, CSRF) {
             dataType: 'json',
             success: function(data) {
               if (data.status == 200) {
+                console.log("success")
                 user_name = data.user_name;
                 user_img_url = data.user_img_url;
                 $('#' + clone_id + ' #eventmsg-sendername').html(data.user_name);

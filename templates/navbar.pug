@@ -78,7 +78,6 @@ body
                     event_handler(
                       "/event/" + $(this).children("#notice-righttop").children("#notice-event").text(),
                       "{{ request.user.userextend.id }}",
-                      "{{ csrf_token}}",
                     )
                   }
                 });

@@ -83,7 +83,7 @@ def delta_time_calculate(time):
   return str(secs) + "秒前"
   
 def event_detail_view(request, id):
-  if request.method == "POST":
+  if request.method == "GET":
     event = get_object_or_404(EventsBoard, id=id)
     
     image_url =  event.image.url if event.image != "" else None
