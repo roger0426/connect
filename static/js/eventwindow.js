@@ -1023,7 +1023,7 @@ function get_apply_handler(URL, CSRF, event_id) {
             $("#" + clone_id).show();
             $("#" + clone_id).addClass("apply" + application.id)
             $.ajax({
-              type: 'post',
+              type: 'GET',
               url: "/get_user_detail/",
               data: {
                 'user_id': application.applicant_id,

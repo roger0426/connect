@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
    '*',
