@@ -60,7 +60,9 @@ $(document).on('click', 'p#sign-up', function() {
       if (!($('#terms').is(':checked')) ||
           $('#double-pwd').val().length == 0 ||
           $('#email').val().length == 0 ||
-          $('#sid').val().length == 0) {
+          $('#sid').val().length == 0 ||
+          $('#fname').val().length == 0 ||
+          $('#lname').val().length == 0) {
         $('#sign-up-btn').prop('disabled', true);
 
       } else {
@@ -80,7 +82,6 @@ $(document).on('keyup', '#double-pwd', function() {
       $('.err-msg').show();
       $('#sign-up-btn').prop('disabled', true);
       $('.err-msg').text("喔不，你的密碼好像打錯了！");
-//      $('#sign-up-panel').css('height', '77vh');
     }
   }
 })

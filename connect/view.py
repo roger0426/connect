@@ -38,6 +38,17 @@ def send_verification_view(request):
       'status': 500,
       'error_message': "[Error] Null input of sid or email"
     })
+  if User.objects.filter(username=clean_sid).exists():
+      return JsonResponse({
+        'status': 500,
+        'error_message': "這個帳號已經被註冊過了"
+      })
+  if User.objects.filter(email=clean_email).exists():
+    return JsonResponse({
+      'status': 500, 
+      'error_message': "這個信箱已經被使用過了"
+    })
+  
   email = EmailMessage(
     'Connect 註冊認證通知信',  # title
     email_template,  # content
