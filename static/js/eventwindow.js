@@ -32,9 +32,13 @@ $(document).ready(function(){
   $("#exitbtn3, #exitbtn4, #exitbtn5, #exitbtn6").click(function() {
     // console.log("click event exit");
     //$('body').css({'overflow': 'auto'});
-    $(".eventsubwindow").animate({height: 0, opacity: 0}, 400, function() {
+    if($(window).width() < 480){
       $(".eventsubwindow").hide();
-    })
+    }else{
+      $(".eventsubwindow").animate({height: 0, opacity: 0}, 400, function() {
+        $(".eventsubwindow").hide();
+      })
+    }
   });
 
   $(document).on("focus", ".require-insert", function() {
@@ -80,32 +84,51 @@ $(document).on('click', ".eventjoin-btn", function() {
   //console.log("click event join");
   if($(".eventjoin-btn").val() === '申請加入'){
     $("#eventjoinwindow").show();
-    $("#eventjoinwindow").animate({'height': '75%', opacity: 1}, 400, function() {
-    })
+    if($(window).width() < 480){
+      $('#eventjoinwindow').css({'opacity': '1', 'height': '100%', 'border-radius': '3rem'});
+    }else{
+      $("#eventjoinwindow").show();
+      $("#eventjoinwindow").animate({'height': '75%', opacity: 1}, 400, function() {
+      })
+    }
   }
+  
 })
 
 $(document).on('click', "#likepage-btn", function() {
   //console.log("click event join");
   $("#eventlikes-window").show();
-  $("#eventlikes-window").animate({'height': '75%', opacity: 1}, 400, function() {
-  })
+  if($(window).width() < 480){
+    $('#eventlikes-window').css({'opacity': '1', 'height': '100%', 'border-radius': '3rem'});
+  }else{
+    $("#eventlikes-window").animate({'height': '75%', opacity: 1}, 400, function() {
+    })
+  }
+  
 })
 
 $(document).on('click', "#partpage-btn", function() {
   //console.log("click event join");
   $("#eventpart-window").show();
-  $("#eventpart-window").animate({'height': '75%', opacity: 1}, 400, function() {
-  })
+  if($(window).width() < 480){
+    $('#eventpart-window').css({'opacity': '1', 'height': '100%', 'border-radius': '3rem'});
+  }else{
+    $("#eventpart-window").animate({'height': '75%', opacity: 1}, 400, function() {
+    })
+  }
 })
 
 $(document).on('click', ".eventedit-btn", function() {
-  //console.log("click event join");
+//  console.log("click event edit");
   $("#eventcontrol").show();
-  $("#eventcontrol").animate({'height': '75%', opacity: 1}, 400, function() {
-//    $('.comment-operate-region input[type=text]').hide()
-//    $('.comment-operate-region .eventmsg-btn').hide()
-  })
+  if($(window).width() < 480){
+    $('#eventcontrol').css({'opacity': '1', 'height': '100%', 'border-radius': '3rem'});
+  }else{
+    $("#eventcontrol").animate({'height': '75%', opacity: 1}, 400, function() {
+//      $('.comment-operate-region input[type=text]').hide()
+//      $('.comment-operate-region .eventmsg-btn').hide()
+    })
+  }
 })
 
 //scroll shadow handler
@@ -463,7 +486,6 @@ function event_handler(URL, user_id) {
 
       // join window
       if (user_id == data.host_id) {
-        console
         $(".eventjoin-btn").hide();
         $(".eventedit-btn").show();
       } else {
