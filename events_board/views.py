@@ -371,8 +371,8 @@ def join_event_view(request):
       {
         'event': event,
         'applicant': request.user.userextend.full_name,
-        'ability': clean_reason,
-        'reason': clean_ability
+        'ability': clean_ability,
+        'reason': clean_reason
       }
     )
     email = EmailMessage(
