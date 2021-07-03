@@ -168,7 +168,7 @@ html
           {% endif %}
           {% if event_obj %}
           {% for event in event_obj %}
-          a.event-a(id='{{ event.pk }}' margin='0')
+          a.event-a(id='{{ event.pk }}' margin='0' href="#event_{{event.pk}}")
             .eventpost
               .posttop
                 {% if not event.is_closed %}
@@ -212,16 +212,26 @@ html
           {% endfor %}
           {% endif %}
           script.
-            $('#eventboard a.event-a').on("click", function() {
+            function show_event_window(event_id) {
               $("#loading").show()
               $("#loading").animate({'opacity': 1}, 200, function() {
               })
-              $('#eventwindow').attr('class', this.id)
+              $('#eventwindow').attr('class', event_id)
               event_handler(
-                "/event/" + this.id, 
+                "/event/" + event_id, 
                 "{{ request.user.userextend.id }}", 
               );
-            });
+            }
+            let current_url = window.location.href;
+            let regex = /#event_([0-9]+)/;
+            let event_id = current_url.match(regex)
+            if (event_id) {
+              show_event_window(event_id[1]);
+            }
+            $('#eventboard a.event-a').on(
+              "click", 
+              function() { show_event_window(this.id); }
+            );
           
           #virtualdiv
           #virtualdiv

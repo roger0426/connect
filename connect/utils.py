@@ -8,8 +8,8 @@ def input_format(string):
 
 # used in messages on event board
 def get_tagged_name(string):
-  regex = re.compile("(^|\s+)@([^\s]*)(\s+|$)")
-  return [x.group(2) for x in re.finditer(regex, string)]
+  regex = re.compile("@([^\s]*)(\s+|$)")
+  return [x.group(1) for x in re.finditer(regex, string)]
 
 def is_all_chinese(strs):
   for _char in strs:

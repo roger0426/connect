@@ -2,6 +2,19 @@ $(document).ready(function(){
 
   $("#exitbtn1, #filter1").click(function() {
     //console.log("click event exit");
+    let event_regex = /#event_[0-9]+/g;
+    let origin_url = window.location.href.replace(event_regex, "");
+    let origin_url_split = origin_url.split("/");
+    origin_url_split = origin_url_split.slice(3, origin_url_split.length-1);
+    let latter_url = "/";
+    if (origin_url_split.length > 0) {
+      origin_url_split.forEach(
+        (element) => {
+          latter_url += element + "/";
+        }
+      );
+    }
+    history.pushState(null, '', latter_url); 
     $('body').css({'overflow': 'auto'});
     $("#eventwindow").animate({opacity: 0}, 400, function() {
       $("#eventwindow").hide();

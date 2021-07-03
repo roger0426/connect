@@ -319,10 +319,10 @@ html
               .card(id='{{ activity.pk }}' margin='0')
                 .cardleft
                   {% if activity.image %}
-                  a
+                  a(href="#event_{{ activity.pk }}")
                     img#activity-img.card-img(src="{{ activity.image.url }}")
                   {% else %}
-                  #activity-img.card-img
+                  a#activity-img.card-img(href="#event_{{ activity.pk }}")
                     p#nopicalert 尚未新增圖片
                   {% endif %}
                   #activity-date
@@ -340,7 +340,7 @@ html
                 
                 .cardright
                   .info
-                    a
+                    a(href="#event_{{ activity.pk }}")
                       p#activity-title.cardinfott {{ activity.title }}
                     {% if activity.host.pk == user.pk %}
                     p#activity-character.charname 主辦人
@@ -393,10 +393,10 @@ html
               .card(id='{{ project.pk }}' margin='0')
                 .cardleft
                   {% if project.image %}
-                  a
+                  a(href="#event_{{ project.pk }}")
                     img#projects-img.card-img(src="{{ project.image.url }}")
                   {% else %}
-                  #projects-img.card-img
+                  a#projects-img.card-img(href="#event_{{ project.pk }}")
                     p#nopicalert 尚未新增圖片
                   {% endif %}
                   #project-date
@@ -414,7 +414,7 @@ html
                   
                 .cardright
                   .info
-                    a
+                    a(href="#event_{{ project.pk }}")
                       p#project-title.cardinfott {{ project.title }}
                     {% if activity.host.pk == user.pk %}
                     p#projects-character.charname 主辦人
@@ -450,10 +450,10 @@ html
               .card(id='{{ personal_proj.pk }}' margin='0')
                 .cardleft
                   {% if personal_proj.image %}
-                  a
+                  a(href="#event_{{ personal_proj.pk }}")
                     img#personal-img.card-img(src="{{ personal_proj.image.url }}")
                   {% else %}
-                  #personal-img.card-img
+                  a#personal-img.card-img(href="#event_{{ personal_proj.pk }}")
                     p#nopicalert 尚未新增圖片
                   {% endif %}
                   #personal-date
@@ -469,7 +469,7 @@ html
                     p.detail 未設定詳情
                     {% endif %}
                 .cardright
-                  a
+                  a(href="#event_{{ personal_proj.pk }}")
                     p#personal-title {{ personal_proj.title }}
                   p#personal-detail {{ personal_proj.detail }}
               {% empty %}
@@ -482,24 +482,27 @@ html
     #filter1
     {% include "eventwindow.pug" %}
     script.
-      $('.info a').on("click", function() {
+      function show_event_window(event_id) {
         $("#loading").show()
         $("#loading").animate({'opacity': 1}, 200, function() {
         })
-        $('#eventwindow').attr('class', this.closest('.card').id)
-        console.log("event/" + this.closest('.card').id)
-        event_handler("/event/" + this.closest('.card').id, "{{ request.user.userextend.id }}", "{{ csrf_token }}");
+        $('#eventwindow').attr('class', event_id)
+        event_handler(
+          "/event/" + event_id, 
+          "{{ request.user.userextend.id }}", 
+        );
+      }
+      let current_url = window.location.href;
+      let regex = /#event_([0-9]+)/;
+      let event_id = current_url.match(regex)
+      if (event_id) {
+        show_event_window(event_id[1]);
+      }
+      $('.info a').on("click", function() {
+        show_event_window(this.closest('.card').id);
       });
       $('.card-img').on("click", function() {
-        $("#loading").show()
-        $("#loading").animate({'opacity': 1}, 200, function() {
-        })
-        $('#eventwindow').attr('class', this.closest('.card').id)
-        console.log("event/" + this.closest('.card').id)
-        event_handler(
-          "/event/" + this.closest('.card').id, 
-          "{{ request.user.userextend.id }}"
-        );
+        show_event_window(this.closest('.card').id);
       });
 
     //-script(src="{% static 'js/semantic.min.js' %}")
