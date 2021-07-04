@@ -274,6 +274,23 @@ $(document).ready(function(){
         timer: 1500,
       });
     }
+    // check event date after due date
+    const event_date_obj = new Date($("#id_event_date").val());
+    const due_date_obj = new Date($("#id_due_date").val());
+    let delta = event_date_obj - due_date_obj;
+    if (delta < 0) {
+      all_pass = 0;
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: '日期格式錯誤',
+        text: "請確認活動日期在報名截止日期之後",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
+    
     if (all_pass == 1) {
       // alert messsage
       Swal.fire({

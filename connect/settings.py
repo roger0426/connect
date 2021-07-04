@@ -221,13 +221,13 @@ PWA_APP_DEBUG_MODE = False
 PWA_APP_ICONS = [
   {
     'src': '/static/file/Logo-bg-o.png',
-    'sizes': '210x210'
+    'sizes': '200x200'
   }
 ]
 PWA_APP_ICONS_APPLE = [
   {
     'src': '/static/file/Logo-bg-o.png',
-    'sizes': '210x210'
+    'sizes': '200x200'
   }
 ]
 PWA_APP_SPLASH_SCREEN = [
