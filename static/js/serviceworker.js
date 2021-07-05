@@ -1,7 +1,32 @@
 // Base Service Worker implementation.  To use your own Service Worker, set the PWA_SERVICE_WORKER_PATH variable in settings.py
 
 var staticCacheName = "django-pwa-v" + new Date().getTime();
-var filesToCache = [];
+var filesToCache = [
+  '/offline',
+  '/static/js/homepage.js',
+  '/static/js/profile.js',
+  '/static/js/login.js',
+  '/static/js/eventwindow.js',
+  '/static/js/navbar.js',
+  '/static/sass/eventwindow.css',
+  '/static/sass/homepage.css',
+  '/static/sass/profile.css',
+  '/static/sass/navbar.css',
+  '/static/sass/variable.css',
+  '/static/sass/login.css',
+  '/static/file/groupphoto_M.png',
+  '/static/file/app-notice.png',
+  '/static/file/app-message.png',
+  '/static/file/app-home.png',
+  '/static/file/app-group.png',
+  '/static/file/app-nootice_red.png',
+  '/static/file/feedbackicon.png',
+  '/static/file/like-bg-n.png',
+  '/static/file/like-bg-y.png',
+  '/static/file/like-grey.png',
+  '/static/file/like-y.png',
+  '/static/file/like-n.png'
+];
 
 // Cache on install
 self.addEventListener("install", event => {
