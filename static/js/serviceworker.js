@@ -19,7 +19,7 @@ var filesToCache = [
   '/static/file/app-message.png',
   '/static/file/app-home.png',
   '/static/file/app-group.png',
-  '/static/file/app-nootice_red.png',
+  '/static/file/app-notice_red.png',
   '/static/file/feedbackicon.png',
   '/static/file/like-bg-n.png',
   '/static/file/like-bg-y.png',
