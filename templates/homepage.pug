@@ -35,6 +35,7 @@ html
       #errorfilter
   
     #container
+      img#pull_loading(src="{% static 'file/connectloading.gif' %}")
       #create
         {% if request.user.is_authenticated %}
         

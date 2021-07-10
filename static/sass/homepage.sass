@@ -80,6 +80,8 @@ a
   margin: 5rem auto 5rem auto
   z-index: 0
 
+  #pull_loading
+    display: none
   #create
     display: flex
     flex-direction: row
@@ -668,7 +670,11 @@ a
     backdrop-filter: blur(1px) contrast(95%) saturate(70%) brightness(80%);
   #container
     width: 90%
-    margin: 4.3rem auto 5rem auto;
+    margin: 0rem auto 5rem auto;
+    #pull_loading
+      display: block
+      width: 4rem
+      height: 4rem 
     #create
       padding: 0.7rem 0
       a
