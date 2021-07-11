@@ -5,39 +5,64 @@
   --fontcolor-navbarbutton: #000000;
   --fontcolor-header: #000000;
   --fontcolor-text: #000000;
-  --color-main: #FAAD95; }
+  --color-main: #FAAD95;
+}
 
 * {
   font-family: var(--font-family-text);
   padding: 0;
-  margin: 0; }
+  margin: 0;
+}
 
 body {
   background-color: #FFF6ED;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+}
+
+::-webkit-input-placeholder {
+  color: #FFCFBF;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #FFCFBF;
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  color: #FFCFBF;
+  opacity: 1;
+}
 
 ::placeholder {
   color: #FFCFBF;
-  opacity: 1; }
+  opacity: 1;
+}
 
 #background-element #login-leftpic {
   width: 37rem;
   position: absolute;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   top: 55%;
   left: 32%;
-  z-index: -2; }
+  z-index: -2;
+}
 
 #background-element .description-head {
   position: absolute;
-  transform: translate(-100%, -100%);
+  -webkit-transform: translate(-100%, -100%);
+          transform: translate(-100%, -100%);
   top: 35%;
   left: 25vw;
-  z-index: -1; }
-  #background-element .description-head h1 {
-    font-size: 2.5rem;
-    text-align: left; }
+  z-index: -1;
+}
+
+#background-element .description-head h1 {
+  font-size: 2.5rem;
+  text-align: left;
+}
 
 #background-element .description {
   font-size: 0.9rem;
@@ -47,252 +72,406 @@ body {
   top: 60%;
   left: 45%;
   text-align: left;
-  width: 15rem; }
-  #background-element .description p {
-    margin-bottom: 0.2rem;
-    font-weight: 500; }
+  width: 15rem;
+}
+
+#background-element .description p {
+  margin-bottom: 0.2rem;
+  font-weight: 500;
+}
 
 #panel1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   position: fixed;
   top: 50%;
   right: -5vw;
-  transform: translate(-50%, -50%);
-  width: 24em; }
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 24em;
+}
 
 #login-panel {
   background-color: white;
   border: 0.2rem solid #FFC5B2;
-  box-shadow: 5px 10px 25px 0px #00000026;
+  -webkit-box-shadow: 5px 10px 25px 0px #00000026;
+          box-shadow: 5px 10px 25px 0px #00000026;
   border-radius: 3vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   padding: 1.5rem 2rem;
   z-index: 10;
   width: 100%;
-  overflow-y: auto; }
-  #login-panel h1 {
-    text-align: center;
-    font-size: 2rem;
-    margin: 0 0 0.5rem 0; }
-  #login-panel hr {
-    height: 0rem;
-    border: #FFC5B2 solid 0.1rem;
-    background-color: #FFC5B2; }
-  #login-panel form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch; }
-  #login-panel .input-area {
-    border-radius: 3vh;
-    height: 2.5rem;
-    font-size: 1rem;
-    outline: none;
-    text-indent: 1em;
-    border: 0.15rem solid #FFC5B2; }
-  #login-panel .input-description {
-    margin: 1rem 0 0.2rem 0;
-    font-size: 1rem; }
-  #login-panel #forgot {
-    font-size: 0.7rem;
-    text-align: right;
-    margin-top: 0.2rem;
-    padding-right: 0.5rem; }
-  #login-panel #forgot:hover {
-    cursor: pointer;
-    text-decoration: underline; }
-  #login-panel .buttons {
-    position: relative;
-    margin: 10% 0 10% 0;
-    outline: none;
-    height: 1rem; }
-    #login-panel .buttons input {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      top: 50%;
-      left: 50%;
-      padding: 0.2rem 0.8rem;
-      background-color: #3AEDC2;
-      border: none;
-      border-radius: 3vh;
-      height: auto;
-      width: auto;
-      outline: none;
-      font-size: 1.3rem;
-      text-align: center; }
-    #login-panel .buttons input:hover {
-      cursor: pointer; }
-    #login-panel .buttons p {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      top: 50%;
-      right: 18%;
-      text-align: center;
-      font-size: 0.8rem; }
-    #login-panel .buttons #sign-up {
-      font-size: 1rem;
-      position: absolute;
-      transform: translate(0, -50%);
-      top: 50%;
-      right: 7%;
-      color: #2ADDB2; }
-    #login-panel .buttons #sign-up:hover {
-      cursor: pointer;
-      text-decoration: underline; }
-  #login-panel hr {
-    margin: 0; }
+  overflow-y: auto;
+}
+
+#login-panel h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+}
+
+#login-panel hr {
+  height: 0rem;
+  border: #FFC5B2 solid 0.1rem;
+  background-color: #FFC5B2;
+}
+
+#login-panel form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+#login-panel .input-area {
+  border-radius: 3vh;
+  height: 2.5rem;
+  font-size: 1rem;
+  outline: none;
+  text-indent: 1em;
+  border: 0.15rem solid #FFC5B2;
+}
+
+#login-panel .input-description {
+  margin: 1rem 0 0.2rem 0;
+  font-size: 1rem;
+}
+
+#login-panel #forgot {
+  font-size: 0.7rem;
+  text-align: right;
+  margin-top: 0.2rem;
+  padding-right: 0.5rem;
+}
+
+#login-panel #forgot:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#login-panel .buttons {
+  position: relative;
+  margin: 10% 0 10% 0;
+  outline: none;
+  height: 1rem;
+}
+
+#login-panel .buttons input {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  padding: 0.2rem 0.8rem;
+  background-color: #3AEDC2;
+  border: none;
+  border-radius: 3vh;
+  height: auto;
+  width: auto;
+  outline: none;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+#login-panel .buttons input:hover {
+  cursor: pointer;
+}
+
+#login-panel .buttons p {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 50%;
+  right: 18%;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+#login-panel .buttons #sign-up {
+  font-size: 1rem;
+  position: absolute;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  top: 50%;
+  right: 7%;
+  color: #2ADDB2;
+}
+
+#login-panel .buttons #sign-up:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#login-panel hr {
+  margin: 0;
+}
 
 #sign-up-panel {
   background-color: white;
   border: 0.2rem solid #FFC5B2;
-  box-shadow: 5px 10px 25px 0px #00000026;
+  -webkit-box-shadow: 5px 10px 25px 0px #00000026;
+          box-shadow: 5px 10px 25px 0px #00000026;
   border-radius: 3vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   padding: 2rem;
   z-index: 10;
   width: 100%;
-  overflow-y: auto; }
-  #sign-up-panel hr {
-    border-top: #FFC5B2 solid 0.15rem;
-    margin-bottom: 0.2rem; }
-  #sign-up-panel form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch; }
-    #sign-up-panel form #email-pane {
-      display: flex;
-      flex-direction: row;
+  overflow-y: auto;
+}
+
+#sign-up-panel hr {
+  border-top: #FFC5B2 solid 0.15rem;
+  margin-bottom: 0.2rem;
+}
+
+#sign-up-panel form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+#sign-up-panel form #email-pane {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-      align-items: center; }
-      #sign-up-panel form #email-pane input#email {
-        width: 65%; }
-      #sign-up-panel form #email-pane input[type=button] {
-        height: 2rem;
-        border-radius: 0.8rem;
-        outline: none;
-        border: none;
-        padding: 2%;
-        font-size: 0.8rem;
-        background-color: var(--background-color-button);
-        cursor: pointer; }
-      #sign-up-panel form #email-pane input[type=button]:hover {
-        background-color: var(--background-color-button-hover); }
-      #sign-up-panel form #email-pane input[type=button]:active {
-        background-color: var(--background-color-button); }
-  #sign-up-panel .input-area {
-    border-radius: 2vh;
-    height: 2rem;
-    outline: none;
-    text-indent: 1em;
-    padding: 5px 0px 5px 0px;
-    border: 0.15rem solid #FFC5B2;
-    margin: 0.4rem 0.5rem 0; }
-  #sign-up-panel .err-msg {
-    font-size: 1.2rem;
-    text-align: center;
-    color: #FF7575;
-    margin-top: 0.5rem; }
-  #sign-up-panel #term-div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: nowrap; }
-    #sign-up-panel #term-div label {
-      margin-top: 0.7rem;
-      margin-left: 0.8rem;
-      font-size: 0.7rem; }
-    #sign-up-panel #term-div input {
-      margin-top: 0.7rem;
-      margin-left: 0.8rem; }
-  #sign-up-panel .buttons {
-    position: relative;
-    margin: 10% 0 5% 0;
-    outline: none;
-    height: 1rem; }
-    #sign-up-panel .buttons input {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      top: 50%;
-      left: 50%;
-      padding: 0.2rem 0.8rem;
-      background-color: #3AEDC2;
-      border: none;
-      border-radius: 3vh;
-      height: auto;
-      width: auto;
-      outline: none;
-      font-size: 1.3rem;
-      text-align: center; }
-    #sign-up-panel .buttons p {
-      position: absolute;
-      transform: translate(-50%, -60%);
-      top: 50%;
-      right: 18%;
-      text-align: center;
-      font-size: 1rem; }
-    #sign-up-panel .buttons #login {
-      font-size: 1.2rem;
-      position: absolute;
-      transform: translate(0, -50%);
-      top: 50%;
-      right: 5%;
-      color: #2ADDB2; }
-    #sign-up-panel .buttons #login:hover {
-      cursor: pointer;
-      text-decoration: underline; }
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#sign-up-panel form #email-pane input#email {
+  width: 65%;
+}
+
+#sign-up-panel form #email-pane input[type=button] {
+  height: 2rem;
+  border-radius: 0.8rem;
+  outline: none;
+  border: none;
+  padding: 2%;
+  font-size: 0.8rem;
+  background-color: var(--background-color-button);
+  cursor: pointer;
+}
+
+#sign-up-panel form #email-pane input[type=button]:hover {
+  background-color: var(--background-color-button-hover);
+}
+
+#sign-up-panel form #email-pane input[type=button]:active {
+  background-color: var(--background-color-button);
+}
+
+#sign-up-panel .input-area {
+  border-radius: 2vh;
+  height: 2rem;
+  outline: none;
+  text-indent: 1em;
+  padding: 5px 0px 5px 0px;
+  border: 0.15rem solid #FFC5B2;
+  margin: 0.4rem 0.5rem 0;
+}
+
+#sign-up-panel .err-msg {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #FF7575;
+  margin-top: 0.5rem;
+}
+
+#sign-up-panel #term-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+#sign-up-panel #term-div label {
+  margin-top: 0.7rem;
+  margin-left: 0.8rem;
+  font-size: 0.7rem;
+}
+
+#sign-up-panel #term-div input {
+  margin-top: 0.7rem;
+  margin-left: 0.8rem;
+}
+
+#sign-up-panel .buttons {
+  position: relative;
+  margin: 10% 0 5% 0;
+  outline: none;
+  height: 1rem;
+}
+
+#sign-up-panel .buttons input {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  padding: 0.2rem 0.8rem;
+  background-color: #3AEDC2;
+  border: none;
+  border-radius: 3vh;
+  height: auto;
+  width: auto;
+  outline: none;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+#sign-up-panel .buttons p {
+  position: absolute;
+  -webkit-transform: translate(-50%, -60%);
+          transform: translate(-50%, -60%);
+  top: 50%;
+  right: 18%;
+  text-align: center;
+  font-size: 1rem;
+}
+
+#sign-up-panel .buttons #login {
+  font-size: 1.2rem;
+  position: absolute;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  top: 50%;
+  right: 5%;
+  color: #2ADDB2;
+}
+
+#sign-up-panel .buttons #login:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 
 @media only screen and (max-width: 1024px) {
   body {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column; }
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
   #panel1 {
     position: static;
-    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
     margin: 7rem 20% 6rem 20%;
-    width: 60%; }
+    width: 60%;
+  }
   .panel {
     margin: 0 auto;
     position: static;
-    transform: translate(0, 0); }
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
   #background-element {
-    position: static; }
-    #background-element #login-leftpic {
-      position: static;
-      width: 70%;
-      height: auto;
-      transform: translate(0, 0);
-      margin: 0 15%; }
-    #background-element .description-head {
-      display: none; }
-    #background-element .description {
-      position: static;
-      margin: 0 auto 7rem 10%;
-      width: 80%;
-      font-size: 1.1rem; }
-      #background-element .description .final-description {
-        color: var(--green-1);
-        font-size: 1.4rem; } }
+    position: static;
+  }
+  #background-element #login-leftpic {
+    position: static;
+    width: 70%;
+    height: auto;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    margin: 0 15%;
+  }
+  #background-element .description-head {
+    display: none;
+  }
+  #background-element .description {
+    position: static;
+    margin: 0 auto 7rem 10%;
+    width: 80%;
+    font-size: 1.1rem;
+  }
+  #background-element .description .final-description {
+    color: var(--green-1);
+    font-size: 1.4rem;
+  }
+}
 
 @media only screen and (max-width: 480px) {
   body {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column; }
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
   #panel1 {
     position: static;
     margin: 5rem 1rem 2rem 1rem;
-    width: calc(100% - 2rem); }
+    width: calc(100% - 2rem);
+  }
   #background-element #login-leftpic {
     width: 90%;
-    margin: 0 5%; }
+    margin: 0 5%;
+  }
   #background-element .description {
     font-size: 0.8rem;
-    margin-left: 1.5rem; }
-    #background-element .description .final-description {
-      font-size: 1rem; } }
-
+    margin-left: 1.5rem;
+  }
+  #background-element .description .final-description {
+    font-size: 1rem;
+  }
+}
 /*# sourceMappingURL=login.css.map */

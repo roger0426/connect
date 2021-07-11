@@ -8,3 +8,5 @@ DerivedData/
 */__pycache__
 
 db.sqlite3
+
+*.css.map

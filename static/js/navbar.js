@@ -176,7 +176,7 @@ function swipeCheck(){
   if (isPullDown(changeY, changeX) ) {
     if($(window).width() < 480){
       console.log('pull down reloading');
-      $('#container').css('margin-top', "4rem");
+      $('#container').css('margin-top', "5rem");
       location.reload();
     }else{}
   }
