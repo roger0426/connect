@@ -97,6 +97,8 @@ a {
 
 #container #pull_loading {
   display: none;
+  height: 5rem;
+  width: 5rem;
 }
 
 #container #create {
